@@ -106,7 +106,7 @@
 }
 
 - (void) didNotRegister {
-    [self delDidRegisterForRemoteNotifications];
+    [self delDidFailBecauseOfError];
 }
 
 // <Private> function
