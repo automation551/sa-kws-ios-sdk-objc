@@ -7,6 +7,7 @@
 //
 
 #import "PushRegisterPermission.h"
+#import "KWSSystemVersion.h"
 
 @interface PushRegisterPermission ()
 @property (nonatomic, weak) UIApplication *appRef;
@@ -22,7 +23,17 @@
 }
 
 - (void) isRegistered {
-    BOOL isRegistered = [_appRef isRegisteredForRemoteNotifications];
+    
+    BOOL isRegistered = false;
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        isRegistered = ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]);
+    }
+    else {
+        UIRemoteNotificationType types = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+        isRegistered = (types & UIRemoteNotificationTypeAlert);
+    }
+    
     if (isRegistered) {
         [self delIsRegisteredInSystem];
     } else {
@@ -31,12 +42,21 @@
 }
 
 - (void) registerPush {
-    [_appRef registerForRemoteNotifications];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        [_appRef registerForRemoteNotifications];
+    }
+    else {
+        UIRemoteNotificationType type = (UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound);
+        [_appRef registerForRemoteNotificationTypes:type];
+    }
 }
 
 - (void) unregisterPush {
     [_appRef unregisterForRemoteNotifications];
 }
+
+// <Delegate> functions
 
 - (void) delIsRegisteredInSystem {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(isRegisteredInSystem)]) {

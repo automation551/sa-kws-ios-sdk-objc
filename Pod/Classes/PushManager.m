@@ -8,6 +8,7 @@
 
 #import "PushManager.h"
 #import "KWSLogger.h"
+#import "KWSSystemVersion.h"
 
 @interface PushManager ()
 @property (nonatomic, weak) UIApplication *appRef;
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) PushRegisterPermission *pushRegister;
 @property (nonatomic, assign) SEL settingsSelector;
 @property (nonatomic, assign) SEL registeredSelector;
+@property (nonatomic, assign) SEL failureSelector;
 @end
 
 @implementation PushManager
@@ -38,6 +40,7 @@
         _pushRegister = [[PushRegisterPermission alloc] init];
         _settingsSelector = @selector(application:didRegisterUserNotificationSettings:);
         _registeredSelector = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
+        _failureSelector = @selector(application:didFailToRegisterForRemoteNotificationsWithError:);
     }
     return self;
 }
@@ -47,9 +50,15 @@
 - (void) registerForPushNotifications {
     [KWSLogger log:@"Start registering for Push Notifications | becoming App Delegate"];
     [self takeAppDelegateControl];
-    UIUserNotificationType type = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type categories:nil];
-    [_appRef registerUserNotificationSettings:settings];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        UIUserNotificationType type = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type categories:nil];
+        [_appRef registerUserNotificationSettings:settings];
+    }
+    else {
+        [_pushRegister registerPush];
+    }
 }
 
 // <UIApplicationDelegate> functions
@@ -67,6 +76,13 @@
     NSString *token = [self getToken:deviceToken];
     [self delDidRegister];
     [KWSLogger log:[NSString stringWithFormat:@"Was able to register for Push Notifications with token %@", token]];
+}
+
+- (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [self performFailureSelector:application withError:error];
+    [self resumeAppDelegateControl];
+    [self delDidNotRegister];
+    [KWSLogger err:@"Failed to register for Push Notification"];
 }
 
 // <PushCheckPermision>
@@ -102,6 +118,12 @@
 - (void) performRegisteredSelector:(UIApplication*)app withData:(NSData*)token {
     if (_appDelegateRef != NULL && [_appDelegateRef respondsToSelector:_registeredSelector]){
         [_appDelegateRef performSelector:_registeredSelector withObject:app withObject:token];
+    }
+}
+
+- (void) performFailureSelector:(UIApplication*)app withError:(NSError*)error {
+    if (_appDelegateRef != NULL && [_appDelegateRef respondsToSelector:_failureSelector]) {
+        [_appDelegateRef performSelector:_failureSelector withObject:app withObject:error];
     }
 }
 

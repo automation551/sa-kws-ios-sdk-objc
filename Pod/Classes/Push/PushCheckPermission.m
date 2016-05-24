@@ -7,6 +7,7 @@
 //
 
 #import "PushCheckPermission.h"
+#import "KWSSystemVersion.h"
 
 #define kUserHasSeenDialog @"UserHasSeenDialog"
 
@@ -30,21 +31,39 @@
 }
 
 - (void) check {
+    
     if (!_hasUserSeenDialog) {
         [self delPushEnabledInSystem];
         return;
     }
-    UIUserNotificationSettings *settings = [_appRef currentUserNotificationSettings];
-    if (settings != NULL) {
-        if (settings.types != UIUserNotificationTypeNone) {
-            [self delPushEnabledInSystem];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        UIUserNotificationSettings *settings = [_appRef currentUserNotificationSettings];
+        if (settings != NULL) {
+            if (settings.types != UIUserNotificationTypeNone) {
+                [self delPushEnabledInSystem];
+                return;
+            }
+            [self delPushDisabledInSystem];
             return;
         }
         [self delPushDisabledInSystem];
         return;
     }
-    [self delPushDisabledInSystem];
+    else {
+        UIRemoteNotificationType types = [_appRef enabledRemoteNotificationTypes];
+        
+        if (types & UIRemoteNotificationTypeAlert) {
+            [self delPushEnabledInSystem];
+            return;
+        }else {
+            [self delPushEnabledInSystem];
+            return;
+        }
+    }
 }
+
+// <Delegate> functions
 
 - (void) markSystemDialogAsSeen {
     _hasUserSeenDialog = true;
