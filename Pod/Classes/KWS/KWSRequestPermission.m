@@ -62,21 +62,18 @@
 }
 
 - (void) delPushPermissionRequestedInKWS {
-    NSLog(@"KWSRequestPermission ==> pushPermissionRequestedInKWS");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushPermissionRequestedInKWS)]) {
         [_delegate pushPermissionRequestedInKWS];
     }
 }
 
 - (void) delParentEmailIsMissingInKWS {
-    NSLog(@"KWSRequestPermission ==> parentEmailIsMissingInKWS");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(parentEmailIsMissingInKWS)]) {
         [_delegate parentEmailIsMissingInKWS];
     }
 }
 
 - (void) delRequestError {
-    NSLog(@"KWSRequestPermission ==> requestError");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(requestError)]) {
         [_delegate requestError];
     }

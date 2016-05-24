@@ -53,14 +53,12 @@
 }
 
 - (void) delPushEnabledInSystem {
-    NSLog(@"PushCheckPermission ==> pushEnabledInSystem");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushEnabledInSystem)]) {
         [_delegate pushEnabledInSystem];
     }
 }
 
 - (void) delPushDisabledInSystem {
-    NSLog(@"PushCheckPermission ==> pushDisabledInSystem");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushDisabledInSystem)]) {
         [_delegate pushDisabledInSystem];
     }

@@ -47,14 +47,12 @@
 }
 
 - (void) delEmailSubmittedInKWS {
-    NSLog(@"KWSParentEmail ==> emailSubmittedInKWS");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailSubmittedInKWS)]) {
         [_delegate emailSubmittedInKWS];
     }
 }
 
 - (void) delEmailError {
-    NSLog(@"KWSParentEmail ==> emailError");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailError)]) {
         [_delegate emailError];
     }

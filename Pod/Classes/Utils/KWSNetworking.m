@@ -7,6 +7,7 @@
 //
 
 #import "KWSNetworking.h"
+#import "KWSLogger.h"
 
 @implementation KWSNetworking
 
@@ -24,6 +25,13 @@
         NSString *jsonResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (jsonResponse) {
+                [KWSLogger log:[NSString stringWithFormat:@"GET request OK to %@ | %ld", endpoint, statusCode]];
+            } else {
+                [KWSLogger err:[NSString stringWithFormat:@"GET request NOK to %@", endpoint]];
+            }
+            
             response(jsonResponse, statusCode);
         });
     };
@@ -49,6 +57,14 @@
         NSString *jsonResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (jsonResponse) {
+                [KWSLogger log:[NSString stringWithFormat:@"POST request OK to %@ | %ld", endpoint, statusCode]];
+            } else {
+                [KWSLogger err:[NSString stringWithFormat:@"POST request NOK to %@", endpoint]];
+            }
+            
+            
             response(jsonResponse, statusCode);
         });
     };

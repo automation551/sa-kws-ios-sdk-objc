@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+// imports
+#import "KWSManager.h"
+#import "PushManager.h"
+#import "KWSParentEmail.h"
+
+// forward declarations
 @class KWSMetadata;
 
 // Protocol
@@ -26,7 +32,7 @@
 
 // Class
 
-@interface KWS : NSObject
+@interface KWS : NSObject <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol>
 
 @property (nonatomic, strong) NSString *oauthToken;
 @property (nonatomic, strong) NSString *kwsApiUrl;

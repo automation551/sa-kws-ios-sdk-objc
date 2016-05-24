@@ -11,6 +11,10 @@
 #import "NSObject+ModelToString.h"
 #import "NSObject+StringToModel.h"
 
+@interface KWS ()
+@property (nonatomic, strong) KWSParentEmail *parentEmail;
+@end
+
 @implementation KWS
 
 + (KWS*) sdk {
@@ -21,6 +25,13 @@
         }
     }
     return sharedManager;
+}
+
+- (instancetype) init {
+    if (self = [super init]) {
+        
+    }
+    return self;
 }
 
 // <Setup> function
@@ -37,18 +48,66 @@
 // <Public> functions
 
 - (void) checkIfNotificationsAreAllowed {
-    
+    [KWSManager sharedInstance].delegate = self;
+    [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
 }
 
 - (void) submitParentEmail:(NSString*)email {
-    
+    _parentEmail = [[KWSParentEmail alloc] init];
+    _parentEmail.delegate = self;
+    [_parentEmail submit:email];
 }
 
 - (void) registerForRemoteNotifications {
-    
+    [PushManager sharedInstance].delegate = self;
+    [[PushManager sharedInstance] registerForPushNotifications];
 }
 
+// <KWSManagerProtocol> delegate
 
+- (void) pushDisabledInSystem {
+    [self delDidFailBecauseRemoteNotificationsAreDisabled];
+}
+
+- (void) pushDisabledInKWS {
+    [self delDidFailBecauseKWSDoesNotAllowRemoteNotificaitons];
+}
+
+- (void) parentEmailIsMissingInKWS {
+    [self delDidFailBecauseKWSCouldNotFindParentEmail];
+}
+
+- (void) networkError {
+    [self delDidFailBecauseOfError];
+}
+
+- (void) isAllowedToRegister {
+    [self delIsAllowedToRegisterForRemoteNotifications];
+}
+
+- (void) isAlreadyRegistered {
+    [self delIsAlreadyRegisteredForRemoteNotifications];
+}
+
+// <KWSParentEmailProtocol> delegate
+
+- (void) emailSubmittedInKWS {
+    [self delIsAllowedToRegisterForRemoteNotifications];
+}
+
+- (void) emailError {
+    [self delDidFailBecauseOfError];
+}
+
+// <PushManagerProtocol> delegate
+
+- (void) didRegister {
+    [self delDidRegisterForRemoteNotifications];
+}
+
+- (void) didNotRegister {
+    [self delDidRegisterForRemoteNotifications];
+}
 
 // <Private> function
 
@@ -60,6 +119,50 @@
     NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:[NSString stringWithFormat:@"%@==", tokenO] options:NSDataBase64DecodingIgnoreUnknownCharacters];
     NSString *decodedJson = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
     return [[KWSMetadata alloc] initModelFromJsonString:decodedJson andOptions:Strict];
+}
+
+// <Del> functions
+
+- (void) delIsAllowedToRegisterForRemoteNotifications {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(isAllowedToRegisterForRemoteNotifications)]) {
+        [_delegate isAllowedToRegisterForRemoteNotifications];
+    }
+}
+
+- (void) delIsAlreadyRegisteredForRemoteNotifications {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(isAlreadyRegisteredForRemoteNotifications)]) {
+        [_delegate isAlreadyRegisteredForRemoteNotifications];
+    }
+}
+
+- (void) delDidRegisterForRemoteNotifications {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didRegisterForRemoteNotifications)]) {
+        [_delegate didRegisterForRemoteNotifications];
+    }
+}
+
+- (void) delDidFailBecauseKWSDoesNotAllowRemoteNotificaitons {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseKWSDoesNotAllowRemoteNotificaitons)]) {
+        [_delegate didFailBecauseKWSDoesNotAllowRemoteNotificaitons];
+    }
+}
+
+- (void) delDidFailBecauseKWSCouldNotFindParentEmail {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseKWSCouldNotFindParentEmail)]) {
+        [_delegate didFailBecauseKWSCouldNotFindParentEmail];
+    }
+}
+
+- (void) delDidFailBecauseRemoteNotificationsAreDisabled {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseRemoteNotificationsAreDisabled)]) {
+        [_delegate didFailBecauseRemoteNotificationsAreDisabled];
+    }
+}
+
+- (void) delDidFailBecauseOfError {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseOfError)]) {
+        [_delegate didFailBecauseOfError];
+    }
 }
 
 @end

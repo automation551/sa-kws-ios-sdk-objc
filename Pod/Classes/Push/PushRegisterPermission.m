@@ -39,14 +39,12 @@
 }
 
 - (void) delIsRegisteredInSystem {
-    NSLog(@"PushRegisterPermission ==> isRegisteredInSystem");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(isRegisteredInSystem)]) {
         [_delegate isRegisteredInSystem];
     }
 }
 
 - (void) delIsNotRegisteredInSystem {
-    NSLog(@"PushRegisterPermission ==> isNotRegisteredInSystem");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(isNotRegisteredInSystem)]) {
         [_delegate isNotRegisteredInSystem];
     }

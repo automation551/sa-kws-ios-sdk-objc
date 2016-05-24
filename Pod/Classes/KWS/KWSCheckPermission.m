@@ -62,21 +62,18 @@
 }
 
 - (void) delCheckError {
-    NSLog(@"KWSCheckPermission ==> checkError");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkError)] ) {
         [_delegate checkError];
     }
 }
 
 - (void) delPushDisabledInKWS {
-    NSLog(@"KWSCheckPermission ==> pushDisabledInKWS");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushDisabledInKWS)]) {
         [_delegate pushDisabledInKWS];
     }
 }
 
 - (void) delPushEnabledInKWS {
-    NSLog(@"KWSCheckPermission ==> pushEnabledInKWS");
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushEnabledInKWS)]) {
         [_delegate pushEnabledInKWS];
     }
