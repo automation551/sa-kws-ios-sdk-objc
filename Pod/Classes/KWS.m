@@ -12,7 +12,15 @@
 #import "NSObject+StringToModel.h"
 
 @interface KWS ()
+// the parent email object
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
+
+// KWS setup properties
+@property (nonatomic, strong) NSString *oauthToken;
+@property (nonatomic, strong) NSString *kwsApiUrl;
+@property (nonatomic, strong) KWSMetadata *metadata;
+@property (nonatomic, weak) id <KWSProtocol> delegate;
+
 @end
 
 @implementation KWS
@@ -107,6 +115,20 @@
 
 - (void) didNotRegister {
     [self delDidFailBecauseOfError];
+}
+
+// getters
+
+- (NSString*) getOAuthToken {
+    return _oauthToken;
+}
+
+- (NSString*) getKWSApiUrl {
+    return _kwsApiUrl;
+}
+
+- (KWSMetadata*) getMetadata {
+    return _metadata;
 }
 
 // <Private> function

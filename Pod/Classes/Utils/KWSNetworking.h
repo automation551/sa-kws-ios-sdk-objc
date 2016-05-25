@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^response)(NSString *json, NSInteger code);
-typedef void (^netresponse)(NSData * data, NSURLResponse * response, NSError * error);
+typedef void (^KWSResponse)(NSString *json, NSInteger code);
+typedef void (^KWSNetResponse)(NSData * data, NSURLResponse * response, NSError * error);
 
 @interface KWSNetworking : NSObject
 
-+ (void) sendGET:(NSString*)endpoint token:(NSString*)token callback:(response)response;
-+ (void) sendPOST:(NSString*)endpoint token:(NSString*)token body:(NSDictionary*)body callback:(response)response;
++ (void) sendGET:(NSString*)endpoint token:(NSString*)token callback:(KWSResponse)response;
++ (void) sendPOST:(NSString*)endpoint token:(NSString*)token body:(NSDictionary*)body callback:(KWSResponse)response;
 
 @end

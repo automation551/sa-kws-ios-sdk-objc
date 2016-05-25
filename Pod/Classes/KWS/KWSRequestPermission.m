@@ -24,13 +24,17 @@
 
 - (void) request {
     
-    if ([KWS sdk].kwsApiUrl != NULL && [KWS sdk].oauthToken != NULL && [KWS sdk].metadata != NULL) {
+    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
+    NSString *oauthToken = [[KWS sdk] getOAuthToken];
+    KWSMetadata *metadata = [[KWS sdk] getMetadata];
+    
+    if (kwsApiUrl && oauthToken && metadata) {
         
-        NSInteger userId = [KWS sdk].metadata.userId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", [KWS sdk].kwsApiUrl, (long)userId];
+        NSInteger userId = metadata.userId;
+        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", kwsApiUrl, (long)userId];
         NSDictionary *body = @{@"permissions":@[@"sendPushNotification"]};
         
-        [KWSNetworking sendPOST:endpoint token:[KWS sdk].oauthToken body:body callback:^(NSString *json, NSInteger code) {
+        [KWSNetworking sendPOST:endpoint token:oauthToken body:body callback:^(NSString *json, NSInteger code) {
             
             if (json) {
                 KWSError *error = [[KWSError alloc] initModelFromJsonString:json andOptions:Strict];

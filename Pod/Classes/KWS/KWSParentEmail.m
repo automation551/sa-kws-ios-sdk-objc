@@ -24,13 +24,22 @@
 
 - (void) submit:(NSString *)email {
     
-    if ([KWS sdk].kwsApiUrl != NULL && [KWS sdk].oauthToken != NULL && [KWS sdk].metadata != NULL) {
+    // validate
+    if (![self validateEmail:email withStricterFilter:YES]){
+        [self delEmailError];
+    }
+    
+    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
+    NSString *oauthToken = [[KWS sdk] getOAuthToken];
+    KWSMetadata *metadata = [[KWS sdk] getMetadata];
+    
+    if (kwsApiUrl && oauthToken && metadata) {
         
-        NSInteger userId = [KWS sdk].metadata.userId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", [KWS sdk].kwsApiUrl, (long)userId];
+        NSInteger userId = metadata.userId;
+        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", kwsApiUrl, (long)userId];
         NSDictionary *body = @{@"permissions":@[@"sendPushNotification"], @"parentEmail": email};
         
-        [KWSNetworking sendPOST:endpoint token:[KWS sdk].oauthToken body:body callback:^(NSString *json, NSInteger code) {
+        [KWSNetworking sendPOST:endpoint token:oauthToken body:body callback:^(NSString *json, NSInteger code) {
             
             if (code == 200 || code == 204){
                 [self delEmailSubmittedInKWS];
@@ -44,6 +53,18 @@
         [self delEmailError];
     }
     
+}
+
+- (BOOL) validateEmail:(NSString*)email withStricterFilter:(BOOL) stricterFilter {
+    if (!email) {
+        return false;
+    }
+    
+    NSString *stricterFilterString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSString *laxString = @".+@.+\\.[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
 }
 
 - (void) delEmailSubmittedInKWS {

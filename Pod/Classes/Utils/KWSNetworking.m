@@ -11,14 +11,14 @@
 
 @implementation KWSNetworking
 
-+ (void) sendGET:(NSString*)endpoint token:(NSString*)token callback:(response)response {
++ (void) sendGET:(NSString*)endpoint token:(NSString*)token callback:(KWSResponse)response {
     NSURL *url = [NSURL URLWithString:endpoint];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.URL = url;
     request.HTTPMethod = @"GET";
     [request setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
     
-    netresponse resp = ^(NSData *data, NSURLResponse *urlresponse, NSError *error) {
+    KWSNetResponse resp = ^(NSData *data, NSURLResponse *urlresponse, NSError *error) {
         
         NSHTTPURLResponse *httpresponse = (NSHTTPURLResponse*)urlresponse;
         NSInteger statusCode = httpresponse.statusCode;
@@ -41,7 +41,7 @@
     [task resume];
 }
 
-+ (void) sendPOST:(NSString*)endpoint token:(NSString*)token body:(NSDictionary*)body callback:(response)response {
++ (void) sendPOST:(NSString*)endpoint token:(NSString*)token body:(NSDictionary*)body callback:(KWSResponse)response {
     NSURL *url = [NSURL URLWithString:endpoint];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.URL = url;
@@ -50,7 +50,7 @@
     [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject:body options:NSJSONWritingPrettyPrinted error:nil];
     
-    netresponse resp = ^(NSData *data, NSURLResponse *urlresponse, NSError *error) {
+    KWSNetResponse resp = ^(NSData *data, NSURLResponse *urlresponse, NSError *error) {
         
         NSHTTPURLResponse *httpresponse = (NSHTTPURLResponse*)urlresponse;
         NSInteger statusCode = httpresponse.statusCode;

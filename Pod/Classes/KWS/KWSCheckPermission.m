@@ -24,12 +24,16 @@
 
 - (void) check {
     
-    if ([KWS sdk].kwsApiUrl != NULL && [KWS sdk].oauthToken != NULL && [KWS sdk].metadata != NULL) {
+    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
+    NSString *oauthToken = [[KWS sdk] getOAuthToken];
+    KWSMetadata *metadata = [[KWS sdk] getMetadata];
+    
+    if (kwsApiUrl && oauthToken && metadata != NULL) {
         
-        NSInteger userId = [KWS sdk].metadata.userId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld", [KWS sdk].kwsApiUrl, (long)userId];
+        NSInteger userId = metadata.userId;
+        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld", kwsApiUrl, (long)userId];
         
-        [KWSNetworking sendGET:endpoint token:[KWS sdk].oauthToken callback:^(NSString *json, NSInteger code) {
+        [KWSNetworking sendGET:endpoint token:oauthToken callback:^(NSString *json, NSInteger code) {
             
             if ((code == 200 || code == 204) && json != NULL) {
                 

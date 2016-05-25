@@ -20,6 +20,15 @@
 
 @protocol KWSProtocol <NSObject>
 
+// potential public protocols
+// kwsDidRegisterForRemoteNotification:(KWS*)sdk withToken:(NSString*)token
+// kwsIsAllowedToRegisterForRemoteNotifications:(KWS*)sdk;
+// kwsDidFailToRegisterForRemoteNotification:(KWS*)sdk;
+//  - sdk.isPushEnabled()?
+//  - sdk.isKWSAllowing()?
+//  - sdk.isParentEmail()?
+//  - sdk.isOtherError()?
+
 - (void) isAllowedToRegisterForRemoteNotifications;
 - (void) isAlreadyRegisteredForRemoteNotifications;
 - (void) didRegisterForRemoteNotifications;
@@ -34,11 +43,6 @@
 
 @interface KWS : NSObject <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol>
 
-@property (nonatomic, strong) NSString *oauthToken;
-@property (nonatomic, strong) NSString *kwsApiUrl;
-@property (nonatomic, strong) KWSMetadata *metadata;
-@property (nonatomic, weak) id <KWSProtocol> delegate;
-
 // singleton func
 + (KWS*) sdk;
 
@@ -49,5 +53,10 @@
 - (void) checkIfNotificationsAreAllowed;
 - (void) submitParentEmail:(NSString*)email;
 - (void) registerForRemoteNotifications;
+
+// getters
+- (NSString*) getOAuthToken;
+- (NSString*) getKWSApiUrl;
+- (KWSMetadata*) getMetadata;
 
 @end
