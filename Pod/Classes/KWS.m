@@ -36,7 +36,7 @@
 
 // <Setup> function
 
-- (void) setup:(NSString *)oauthToken url:(NSString *)kwsApiUrl delegate:(id<KWSProtocol>)delegate {
+- (void) setupWithOAuthToken:(NSString*)oauthToken kwsApiUrl:(NSString*)kwsApiUrl delegate:(id<KWSProtocol>)delegate {
     self.oauthToken = oauthToken;
     self.kwsApiUrl = kwsApiUrl;
     self.delegate = delegate;
@@ -70,7 +70,7 @@
 }
 
 - (void) pushDisabledInKWS {
-    [self delDidFailBecauseKWSDoesNotAllowRemoteNotificaitons];
+    [self delDidFailBecauseKWSDoesNotAllowRemoteNotifications];
 }
 
 - (void) parentEmailIsMissingInKWS {
@@ -141,9 +141,9 @@
     }
 }
 
-- (void) delDidFailBecauseKWSDoesNotAllowRemoteNotificaitons {
+- (void) delDidFailBecauseKWSDoesNotAllowRemoteNotifications {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseKWSDoesNotAllowRemoteNotificaitons)]) {
-        [_delegate didFailBecauseKWSDoesNotAllowRemoteNotificaitons];
+        [_delegate didFailBecauseKWSDoesNotAllowRemoteNotifications];
     }
 }
 

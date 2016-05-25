@@ -23,7 +23,7 @@
 - (void) isAllowedToRegisterForRemoteNotifications;
 - (void) isAlreadyRegisteredForRemoteNotifications;
 - (void) didRegisterForRemoteNotifications;
-- (void) didFailBecauseKWSDoesNotAllowRemoteNotificaitons;
+- (void) didFailBecauseKWSDoesNotAllowRemoteNotifications;
 - (void) didFailBecauseKWSCouldNotFindParentEmail;
 - (void) didFailBecauseRemoteNotificationsAreDisabled;
 - (void) didFailBecauseOfError;
@@ -43,7 +43,7 @@
 + (KWS*) sdk;
 
 // setup func
-- (void) setup:(NSString*)oauthToken url:(NSString*)kwsApiUrl delegate:(id<KWSProtocol>)delegate;
+- (void) setupWithOAuthToken:(NSString*)oauthToken kwsApiUrl:(NSString*)kwsApiUrl delegate:(id<KWSProtocol>)delegate;
 
 // public funcs
 - (void) checkIfNotificationsAreAllowed;
