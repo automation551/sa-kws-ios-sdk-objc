@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/KWS/KWSCheckPermission.h

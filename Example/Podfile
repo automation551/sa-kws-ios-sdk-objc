@@ -1,0 +1,4 @@
+
+target 'KWSiOSSDKObjC_Example' do
+  pod 'KWSiOSSDKObjC', :path => '../'
+end
