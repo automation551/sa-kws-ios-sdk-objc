@@ -1,2517 +1,965 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>01352BC01493BF2F966B90D78D773923</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B6D44253AB0BC299088E760D758935D9</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>017ED8FF5D37AB210E6D7BF14DFB8992</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C1D3DD92E52DBED050A142F53A4F041A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>02C179BA10862B377AA6A1305ED1A2C5</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F62BA2ACE466C19EC9690D3C6B5CA196</string>
-				<string>7CF47CF88C1F3326846DF2764DBDE8E4</string>
-				<string>09D948E15276EA055B53125CF19FF2D9</string>
-				<string>6EAEF55635814AB02A687149AE39B589</string>
-				<string>29468B7401A021090DDD7F35C52F6F61</string>
-				<string>73352352B2C32C791B738EAE7B89014A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-KWSiOSSDKObjC_Example</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-KWSiOSSDKObjC_Example</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>052A17875CB827423D627183396CEB60</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>RELEASE=1</string>
-				</array>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>SYMROOT</key>
-				<string>${SRCROOT}/../build</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>05FAFDD66FF2A53B05260BA5B880281B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E484AB6053E90874B11FB5FB0F4993F1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>062080702AAE2DAB850309C976D75E6C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0DEE08E2CBB805AF8C482082DE5DBAE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>084D8F39382E9F7DD6157E0007E954C6</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>09D948E15276EA055B53125CF19FF2D9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0A1B36AE89090CF2FA4DCD1361BD65FD</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SAJsonParser.bundle</string>
-			<key>path</key>
-			<string>SAJsonParser.bundle</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>0B301FFD2544AEBA1FD55AB34A7E71FC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3BBE5865FC30F39EFEFE34C02CC3ED97</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0C25E115D39FF0A6706B142DDCA354C0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SAJsonParser-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0D3B0D3E3390161D2AC882CB33DEA925</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>72E08E9A9B3DB959359F6C81B78F2F40</string>
-				<string>B80ECCF567FEA95E2D3C16BE5505BE7B</string>
-				<string>1F7021B575E6262C3E659BCB0E54EB3C</string>
-				<string>27027BECE8425B52FEFB3B1AAB7A0FBD</string>
-				<string>9F44503D007CD523F87A37E6439BAB2D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Utils</string>
-			<key>path</key>
-			<string>Utils</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0DEE08E2CBB805AF8C482082DE5DBAE6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSObject+SAJson.m</string>
-			<key>path</key>
-			<string>Pod/Classes/NSObject+SAJson.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0DF31B9B6E92C40C96E29CFD6A6ECD32</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>SASerializationProtocol.h</string>
-			<key>path</key>
-			<string>Pod/Classes/SASerializationProtocol.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0EC5FDBAF063F4DC6B1F9F81F9CB90F7</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>KWSiOSSDKObjC.bundle</string>
-			<key>path</key>
-			<string>KWSiOSSDKObjC.bundle</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>1598C8887BDF2D9D05DE9F6A1961DB18</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>5EBD972B5C0F3DA51038CE4E1841A3B3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pod</string>
-			<key>path</key>
-			<string>Pod</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>171C48521C3AE8EC3F99B53CBA73F7E1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>18959C9BEF64AE8236DD46C5526EE78F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>A209A2C2916B9575C78F0853E7E02E83</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>19B378AE30ADCDF00FC154132230A840</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3D6541E6FA7AEA6F1F0FF27DDCE73567</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>19DC0BA2059F4E9E47DE9980B7C17228</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSUser.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1D1B53125D9B61FA9447CCA9C077BD19</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>SAJsonParser.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1E32736EEFB10B31D838870880FCB46D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSiOSSDKObjC-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1F7021B575E6262C3E659BCB0E54EB3C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSNetworking.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2363469066EC29A68BD46C3882A4114A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>01352BC01493BF2F966B90D78D773923</string>
-				<string>A71BF517617B268AD6363B9680A3AC2E</string>
-				<string>E93A1B612CA7C02D0BC300F984D5DEAA</string>
-				<string>7E3CAC0B5B730B70A1E01D916A8485D3</string>
-				<string>6006D42071D9208D381ACEFE1E0799CE</string>
-				<string>C8DC6C8C3A1D6DA60C9D28E967DFF702</string>
-				<string>7AD179E233EDD73C756B4446E2A81DD3</string>
-				<string>87BBA3829FCBEDC4773DCF79AB2FFCFF</string>
-				<string>FCD1C5855AE2594FBFA10142BB372E2E</string>
-				<string>4A58B2C1DD462D5372EB8977656948AF</string>
-				<string>6644EEBFA45D26206390FCCEFF943F24</string>
-				<string>CBDAA01211BBC0B55006F31D47248E47</string>
-				<string>703C495588DE17BB26DDC69B7B469F63</string>
-				<string>5B3B72D504A9F9CC236DD635D14E6C2C</string>
-				<string>EF952EE0CF3E51E1AC40262F165A0D3C</string>
-				<string>0B301FFD2544AEBA1FD55AB34A7E71FC</string>
-				<string>05FAFDD66FF2A53B05260BA5B880281B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>24802BB8B3FA11A3A035F476F0463DE0</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>C5C10D50ACD0EBFFB68380567F3D95F0</string>
-				<string>B73CFFEF932CCB0DD48097046A86990D</string>
-				<string>890920561661FF29F439B5BAC1EDD4DB</string>
-				<string>2BB1869781AF33D98D6B3329C87E1805</string>
-				<string>5249E0CBD69906CB44BA0FFB421CD972</string>
-				<string>7C3CC6BBCFDBD9E42F1279F8D623C96C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>258FA5AB566983A2490251DE61F8D64D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSError.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>25B55443BF1E60C8C9E79D3CB01E61DF</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>A88B02FD2ED142388744876424E8E8AB</string>
-			<key>remoteInfo</key>
-			<string>SAJsonParser</string>
-		</dict>
-		<key>26A7927D4407EE9D77598CDFEC7A07C1</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libSAJsonParser.a</string>
-			<key>path</key>
-			<string>libSAJsonParser.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>27027BECE8425B52FEFB3B1AAB7A0FBD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSNetworking.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>27608254DBFD2F12BB45D73AB76DD8D3</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>ED259D31541845DAA41E890005D76BDD</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>28C6E5A9F9B82E5E3448240AE5132681</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>D7B36F34D33AA62AC4530D24A66EE8A2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>29468B7401A021090DDD7F35C52F6F61</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>29BEF327A38EE2AAC4D6028BBDBB9DE1</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>73352352B2C32C791B738EAE7B89014A</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>2AB8684349C2A8E3899970775D94A0CB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>6AE56834150579B074F15DAC362D6404</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>2BB1869781AF33D98D6B3329C87E1805</key>
-		<dict>
-			<key>fileRef</key>
-			<string>33A6C75C034D2E2F0E76E0A614A4EF3C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>2C255FF3E56F4CAE590093A25E408D66</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSParentEmail.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>B37F0F91F85060E28F1DAAB522DC7EC1</string>
-				<string>052A17875CB827423D627183396CEB60</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>2E3052460B4D21A0AAEC6C4C277DC7D2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>ED9A59BC54DF598B3F6EFFE90C72A791</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>2E389DE3F5293EF46B7A826DC1FCC2AC</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>8FB143124D676244B3D77186F3085986</string>
-				<string>973569526339C5D58836942B7907948D</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>33A6C75C034D2E2F0E76E0A614A4EF3C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>SADeserializationProtocol.h</string>
-			<key>path</key>
-			<string>Pod/Classes/SADeserializationProtocol.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>357EEB51797F3A9191220DEDC463F981</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>8D6A74AD96D2684751356076DD9BA570</string>
-			<key>buildPhases</key>
-			<array>
-				<string>BB0DBAEAA4381C6B783E30F230188837</string>
-				<string>28C6E5A9F9B82E5E3448240AE5132681</string>
-				<string>2363469066EC29A68BD46C3882A4114A</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>578679CAD0B7C00E870C582B056AE914</string>
-				<string>400D45C09B4BE3EB1964216A56C1A887</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>KWSiOSSDKObjC</string>
-			<key>productName</key>
-			<string>KWSiOSSDKObjC</string>
-			<key>productReference</key>
-			<string>834895DE312350746992B2E70A6927FC</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>366853E2415072C2A46793271F7B0EE1</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libPods-KWSiOSSDKObjC_Example.a</string>
-			<key>path</key>
-			<string>libPods-KWSiOSSDKObjC_Example.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>3726138D02887A1F3063B765FBFC079D</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>6FD3B8ADF5BC9F4FC5AE364B6158FF1A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>376AB5D4061CAEDB9EADEB6EBCE7377C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>DEA7C1B7FDB56EA6BFC4BABD1CAB3430</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A4A3F525C09A85A54B911F3AB051C97</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>D0AC97DDEC11339ADCF0817A4EDCFF1B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3B5A0CE4B5C8A847817A7BB560C7BEA9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSArray+SAJson.m</string>
-			<key>path</key>
-			<string>Pod/Classes/NSArray+SAJson.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3BBE5865FC30F39EFEFE34C02CC3ED97</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>PushManager.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3D6541E6FA7AEA6F1F0FF27DDCE73567</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSPermissions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3F6EBAC4008ED8647652D609AA8F57E1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSInvalid.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>400D45C09B4BE3EB1964216A56C1A887</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>SAJsonParser</string>
-			<key>target</key>
-			<string>A88B02FD2ED142388744876424E8E8AB</string>
-			<key>targetProxy</key>
-			<string>E1F9022345AA4E6F8DD10666E68A1410</string>
-		</dict>
-		<key>42FA68C09B9B3A7EB6AE56900C2BDBA2</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B2AA057BDFF35BC0F8B53F2B7238B3BF</string>
-				<string>461442255547FBEB43832928BCD07874</string>
-				<string>E484AB6053E90874B11FB5FB0F4993F1</string>
-				<string>4687CF51733D06879849420F8B96DD22</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Push</string>
-			<key>path</key>
-			<string>Push</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>44CCD372AF4071C6BBEAA5431D88AF46</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>45037336E7A8BCECCB54D7BA1B15E719</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>KWSiOSSDKObjC</string>
-			<key>target</key>
-			<string>357EEB51797F3A9191220DEDC463F981</string>
-			<key>targetProxy</key>
-			<string>787EFBEB8A409432915FFFF67F53363D</string>
-		</dict>
-		<key>461442255547FBEB43832928BCD07874</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>PushCheckPermission.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4687CF51733D06879849420F8B96DD22</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>PushRegisterPermission.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4A58B2C1DD462D5372EB8977656948AF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E33AE350A63E9A5F7F2EC7ED5D0E2008</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>51CA5EB92810903B6D5FF89410A4B31E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>D21F3D3918B0DCC73CD25BEC0EEDFBB2</string>
-				<string>C1D3DD92E52DBED050A142F53A4F041A</string>
-				<string>2C255FF3E56F4CAE590093A25E408D66</string>
-				<string>83F0624D0C0C2C36739F431E60572BE6</string>
-				<string>BD1D150501E811F87CAF5524622B3C94</string>
-				<string>6AE56834150579B074F15DAC362D6404</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>KWS</string>
-			<key>path</key>
-			<string>KWS</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5249E0CBD69906CB44BA0FFB421CD972</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F8008EDEF84E9FBFE15EC71CB63D0A19</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>527471B9EFB275AFC47EBCF7186481BD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>258FA5AB566983A2490251DE61F8D64D</string>
-				<string>D2DF894DFAE9DEEB8A8027D8CABB41A3</string>
-				<string>B203B1E0E78002780BD49F46136B8178</string>
-				<string>3F6EBAC4008ED8647652D609AA8F57E1</string>
-				<string>790F3097EDFCF5B01F4EFAE57C3749F9</string>
-				<string>F2A61D33A810FAF9497A6772747002AE</string>
-				<string>E33AE350A63E9A5F7F2EC7ED5D0E2008</string>
-				<string>ED9A59BC54DF598B3F6EFFE90C72A791</string>
-				<string>CED44B57732C99009642EFE7AD9CBB76</string>
-				<string>3D6541E6FA7AEA6F1F0FF27DDCE73567</string>
-				<string>19DC0BA2059F4E9E47DE9980B7C17228</string>
-				<string>92D0E41E0EB3106FCD83BF12F9746E16</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Models</string>
-			<key>path</key>
-			<string>Models</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>52C9C5B2AA4C268BA10DAF6BA847148E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>1598C8887BDF2D9D05DE9F6A1961DB18</string>
-				<string>B28E2828990B29892FDF61B3FA156151</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>KWSiOSSDKObjC</string>
-			<key>path</key>
-			<string>../..</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>53F661C0CA7190D2CF05023FB33D61E4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>084D8F39382E9F7DD6157E0007E954C6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>iOS</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>55880A0441938FA844ED2AA91A56287C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B80ECCF567FEA95E2D3C16BE5505BE7B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>578679CAD0B7C00E870C582B056AE914</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>KWSiOSSDKObjC-KWSiOSSDKObjC</string>
-			<key>target</key>
-			<string>C8A30596FDE06B125CDB239D0BABF248</string>
-			<key>targetProxy</key>
-			<string>EC2B44AD6CF6881ED4F996DEE9EF6004</string>
-		</dict>
-		<key>5B3B72D504A9F9CC236DD635D14E6C2C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>19DC0BA2059F4E9E47DE9980B7C17228</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>5C3BCCB2C2A0E9E3799E47BE78A19328</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8FF9E485F7EB528D34FEC1E3D4C6CB1A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>5DE37C9CFD48DF9C0F60E09EE73D3629</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3B5A0CE4B5C8A847817A7BB560C7BEA9</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>5EBD972B5C0F3DA51038CE4E1841A3B3</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D44253AB0BC299088E760D758935D9</string>
-				<string>69D7DB55983907E4737C53B7BEE21157</string>
-				<string>BA841535AB5D1FFF74E74A9D4001A0E9</string>
-				<string>8A66F9A1FAACBA03B6380F6B4187B46E</string>
-				<string>3BBE5865FC30F39EFEFE34C02CC3ED97</string>
-				<string>B7929452F5634A95429B2D2117D85D33</string>
-				<string>51CA5EB92810903B6D5FF89410A4B31E</string>
-				<string>527471B9EFB275AFC47EBCF7186481BD</string>
-				<string>42FA68C09B9B3A7EB6AE56900C2BDBA2</string>
-				<string>0D3B0D3E3390161D2AC882CB33DEA925</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Classes</string>
-			<key>path</key>
-			<string>Classes</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6006D42071D9208D381ACEFE1E0799CE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>72E08E9A9B3DB959359F6C81B78F2F40</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>64DD35F51E31136B6A258B71B6B8E5E4</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>A523510893F5BF4712D4A69BA84F922D</string>
-			<key>buildPhases</key>
-			<array>
-				<string>CDE692F6BDECEF1881FE65C98A3549C3</string>
-				<string>171C48521C3AE8EC3F99B53CBA73F7E1</string>
-				<string>E0890A1E0FE11F14A6180EFF99E188F0</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>SAJsonParser-SAJsonParser</string>
-			<key>productName</key>
-			<string>SAJsonParser-SAJsonParser</string>
-			<key>productReference</key>
-			<string>0A1B36AE89090CF2FA4DCD1361BD65FD</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle</string>
-		</dict>
-		<key>6644EEBFA45D26206390FCCEFF943F24</key>
-		<dict>
-			<key>fileRef</key>
-			<string>CED44B57732C99009642EFE7AD9CBB76</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>67CE7E75ABCA26E2E2F9AD89442A2C43</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>29468B7401A021090DDD7F35C52F6F61</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>69D7DB55983907E4737C53B7BEE21157</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWS.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6AA37BC58CEFB8956E3FA8B479FFCB48</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>AA26A22B2C01A1C32AF59169A379AC6F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>SAJsonParser</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>bundle</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>6AE56834150579B074F15DAC362D6404</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSRequestPermission.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6D47BE9E6DC7400899E8205D775F8A70</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2A61D33A810FAF9497A6772747002AE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>6EAEF55635814AB02A687149AE39B589</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6FD3B8ADF5BC9F4FC5AE364B6158FF1A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>084D8F39382E9F7DD6157E0007E954C6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>703C495588DE17BB26DDC69B7B469F63</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9F44503D007CD523F87A37E6439BAB2D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>706165C2465F7B6717AF61720E6A8CA7</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSiOSSDKObjC-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>71625217A5571337493F6C483B36AD76</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3F6EBAC4008ED8647652D609AA8F57E1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>72E08E9A9B3DB959359F6C81B78F2F40</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSLogger.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>73352352B2C32C791B738EAE7B89014A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>734FF4AB9BE9BA6401D7B541038ECB8C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>83F0624D0C0C2C36739F431E60572BE6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>76173A050998B762E8F873ADA037163A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D2DF894DFAE9DEEB8A8027D8CABB41A3</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>787EFBEB8A409432915FFFF67F53363D</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>357EEB51797F3A9191220DEDC463F981</string>
-			<key>remoteInfo</key>
-			<string>KWSiOSSDKObjC</string>
-		</dict>
-		<key>790F3097EDFCF5B01F4EFAE57C3749F9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSMetadata.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7AD179E233EDD73C756B4446E2A81DD3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>790F3097EDFCF5B01F4EFAE57C3749F9</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7BF26C75DC58174BD0016C3498517C97</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSDictionary+SAJson.m</string>
-			<key>path</key>
-			<string>Pod/Classes/NSDictionary+SAJson.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C3CC6BBCFDBD9E42F1279F8D623C96C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0DF31B9B6E92C40C96E29CFD6A6ECD32</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CF47CF88C1F3326846DF2764DBDE8E4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7DB346D0F39D3F0E887471402A8071AB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
-				<string>C8E251598F110F5A50511A811BBA1BBF</string>
-				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
-				<string>376AB5D4061CAEDB9EADEB6EBCE7377C</string>
-				<string>CCA510CFBEA2D207524CDA0D73C3B561</string>
-				<string>A4144D78B9C2244C7B4A4761ACA53CC6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7E3CAC0B5B730B70A1E01D916A8485D3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B203B1E0E78002780BD49F46136B8178</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7FE3B2693797EDC28DF7F164A40C74F4</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>67CE7E75ABCA26E2E2F9AD89442A2C43</string>
-				<string>29BEF327A38EE2AAC4D6028BBDBB9DE1</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>834895DE312350746992B2E70A6927FC</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libKWSiOSSDKObjC.a</string>
-			<key>path</key>
-			<string>libKWSiOSSDKObjC.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>83F0624D0C0C2C36739F431E60572BE6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSParentEmail.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>87807A5288B64B49DC4F0A1A634535B6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>69D7DB55983907E4737C53B7BEE21157</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>87BBA3829FCBEDC4773DCF79AB2FFCFF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1F7021B575E6262C3E659BCB0E54EB3C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>890920561661FF29F439B5BAC1EDD4DB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A5F1214C8CBBCA217EDED688C056CCAB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>8A66F9A1FAACBA03B6380F6B4187B46E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSManager.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8D6A74AD96D2684751356076DD9BA570</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>AC3A2B461C628B9F637E55403383DCF9</string>
-				<string>27608254DBFD2F12BB45D73AB76DD8D3</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>8FB143124D676244B3D77186F3085986</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>ED259D31541845DAA41E890005D76BDD</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>KWSiOSSDKObjC</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>bundle</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>8FF9E485F7EB528D34FEC1E3D4C6CB1A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SAJsonParser-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>92D0E41E0EB3106FCD83BF12F9746E16</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSUser.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>954FEC29B22ED7E806B29786396B56A8</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>7FE3B2693797EDC28DF7F164A40C74F4</string>
-			<key>buildPhases</key>
-			<array>
-				<string>3A4A3F525C09A85A54B911F3AB051C97</string>
-				<string>18959C9BEF64AE8236DD46C5526EE78F</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>45037336E7A8BCECCB54D7BA1B15E719</string>
-				<string>A3C0B5D9B4BAFEA94F46A2CB4E82EC20</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-KWSiOSSDKObjC_Example</string>
-			<key>productName</key>
-			<string>Pods-KWSiOSSDKObjC_Example</string>
-			<key>productReference</key>
-			<string>366853E2415072C2A46793271F7B0EE1</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>973569526339C5D58836942B7907948D</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>ED259D31541845DAA41E890005D76BDD</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>KWSiOSSDKObjC</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>bundle</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>9DE35A17075527692A5A39B5E22CB885</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSArray+SAJson.h</string>
-			<key>path</key>
-			<string>Pod/Classes/NSArray+SAJson.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9ED51DC72DFF7D91A04C60070AA0BAB6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4687CF51733D06879849420F8B96DD22</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>9F44503D007CD523F87A37E6439BAB2D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSSystemVersion.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A10AC860FBC78E51B87B9D23B24B62A0</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>SAJsonParser-SAJsonParser</string>
-			<key>target</key>
-			<string>64DD35F51E31136B6A258B71B6B8E5E4</string>
-			<key>targetProxy</key>
-			<string>DCF3BA63AE4C77C5001F2E9698F2FA2C</string>
-		</dict>
-		<key>A209A2C2916B9575C78F0853E7E02E83</key>
-		<dict>
-			<key>fileRef</key>
-			<string>084D8F39382E9F7DD6157E0007E954C6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A2BA2E4108B62829B4AEF2984638F293</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B7929452F5634A95429B2D2117D85D33</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A3C0B5D9B4BAFEA94F46A2CB4E82EC20</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>SAJsonParser</string>
-			<key>target</key>
-			<string>A88B02FD2ED142388744876424E8E8AB</string>
-			<key>targetProxy</key>
-			<string>25B55443BF1E60C8C9E79D3CB01E61DF</string>
-		</dict>
-		<key>A4144D78B9C2244C7B4A4761ACA53CC6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>02C179BA10862B377AA6A1305ED1A2C5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A523510893F5BF4712D4A69BA84F922D</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>6AA37BC58CEFB8956E3FA8B479FFCB48</string>
-				<string>E25DBE47113D7FC544FEA5C173240F80</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>A5F1214C8CBBCA217EDED688C056CCAB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSObject+SAJson.h</string>
-			<key>path</key>
-			<string>Pod/Classes/NSObject+SAJson.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A71BF517617B268AD6363B9680A3AC2E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D21F3D3918B0DCC73CD25BEC0EEDFBB2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A88B02FD2ED142388744876424E8E8AB</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>B4293E363D353E3952621302889ECC95</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F620E1E528394AB7BF484185FD1B4683</string>
-				<string>3726138D02887A1F3063B765FBFC079D</string>
-				<string>24802BB8B3FA11A3A035F476F0463DE0</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>A10AC860FBC78E51B87B9D23B24B62A0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>SAJsonParser</string>
-			<key>productName</key>
-			<string>SAJsonParser</string>
-			<key>productReference</key>
-			<string>26A7927D4407EE9D77598CDFEC7A07C1</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>AA26A22B2C01A1C32AF59169A379AC6F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>SAJsonParser-Private.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AC3A2B461C628B9F637E55403383DCF9</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>ED259D31541845DAA41E890005D76BDD</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B203B1E0E78002780BD49F46136B8178</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSInvalid.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B28E2828990B29892FDF61B3FA156151</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>FB797050A327C1CD540211AC45D05730</string>
-				<string>ED259D31541845DAA41E890005D76BDD</string>
-				<string>706165C2465F7B6717AF61720E6A8CA7</string>
-				<string>1E32736EEFB10B31D838870880FCB46D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>Example/Pods/Target Support Files/KWSiOSSDKObjC</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B2AA057BDFF35BC0F8B53F2B7238B3BF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>PushCheckPermission.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B37F0F91F85060E28F1DAAB522DC7EC1</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>SYMROOT</key>
-				<string>${SRCROOT}/../build</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B4293E363D353E3952621302889ECC95</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>DE5EAE3F09C5367B266FD06EB8F0485B</string>
-				<string>C6254207C763EC7716A48436E8E7923D</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B6D44253AB0BC299088E760D758935D9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWS.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B73CFFEF932CCB0DD48097046A86990D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D907E03FDBC7B0F5282BFDC8740F7037</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B7929452F5634A95429B2D2117D85D33</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>PushManager.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B7ACF607746B23919DBE0667017EBBEB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>27027BECE8425B52FEFB3B1AAB7A0FBD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B80ECCF567FEA95E2D3C16BE5505BE7B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSLogger.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BA6428E9F66FD5A23C0A2E06ED26CD2F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>name</key>
-			<string>Podfile</string>
-			<key>path</key>
-			<string>../Podfile</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-			<key>xcLanguageSpecificationIdentifier</key>
-			<string>xcode.lang.ruby</string>
-		</dict>
-		<key>BA841535AB5D1FFF74E74A9D4001A0E9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSManager.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BB0DBAEAA4381C6B783E30F230188837</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>87807A5288B64B49DC4F0A1A634535B6</string>
-				<string>017ED8FF5D37AB210E6D7BF14DFB8992</string>
-				<string>76173A050998B762E8F873ADA037163A</string>
-				<string>71625217A5571337493F6C483B36AD76</string>
-				<string>55880A0441938FA844ED2AA91A56287C</string>
-				<string>F0F90B1156AA57C40087630CA67890C9</string>
-				<string>6D47BE9E6DC7400899E8205D775F8A70</string>
-				<string>B7ACF607746B23919DBE0667017EBBEB</string>
-				<string>734FF4AB9BE9BA6401D7B541038ECB8C</string>
-				<string>2E3052460B4D21A0AAEC6C4C277DC7D2</string>
-				<string>19B378AE30ADCDF00FC154132230A840</string>
-				<string>2AB8684349C2A8E3899970775D94A0CB</string>
-				<string>D10E15A2D200E841DD26F5162C2C760D</string>
-				<string>C03ABCEB6FA7305E85C39313DFCD300E</string>
-				<string>D567841A790B490D519F19F89212F83B</string>
-				<string>A2BA2E4108B62829B4AEF2984638F293</string>
-				<string>9ED51DC72DFF7D91A04C60070AA0BAB6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>BC3CA7F9E30CC8F7E2DD044DD34432FC</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>53F661C0CA7190D2CF05023FB33D61E4</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BD1D150501E811F87CAF5524622B3C94</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSRequestPermission.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C03ABCEB6FA7305E85C39313DFCD300E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>706165C2465F7B6717AF61720E6A8CA7</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C1D3DD92E52DBED050A142F53A4F041A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSCheckPermission.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C5C10D50ACD0EBFFB68380567F3D95F0</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9DE35A17075527692A5A39B5E22CB885</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C6254207C763EC7716A48436E8E7923D</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>AA26A22B2C01A1C32AF59169A379AC6F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/SAJsonParser/SAJsonParser-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>C8A30596FDE06B125CDB239D0BABF248</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>2E389DE3F5293EF46B7A826DC1FCC2AC</string>
-			<key>buildPhases</key>
-			<array>
-				<string>CED3693121107D3F364B5DFB19276F5A</string>
-				<string>44CCD372AF4071C6BBEAA5431D88AF46</string>
-				<string>D338FA8D7E672AA785C0112D310ABC1B</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>KWSiOSSDKObjC-KWSiOSSDKObjC</string>
-			<key>productName</key>
-			<string>KWSiOSSDKObjC-KWSiOSSDKObjC</string>
-			<key>productReference</key>
-			<string>0EC5FDBAF063F4DC6B1F9F81F9CB90F7</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle</string>
-		</dict>
-		<key>C8DC6C8C3A1D6DA60C9D28E967DFF702</key>
-		<dict>
-			<key>fileRef</key>
-			<string>BA841535AB5D1FFF74E74A9D4001A0E9</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C8E251598F110F5A50511A811BBA1BBF</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>52C9C5B2AA4C268BA10DAF6BA847148E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Development Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CBDAA01211BBC0B55006F31D47248E47</key>
-		<dict>
-			<key>fileRef</key>
-			<string>BD1D150501E811F87CAF5524622B3C94</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>CCA510CFBEA2D207524CDA0D73C3B561</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0EC5FDBAF063F4DC6B1F9F81F9CB90F7</string>
-				<string>0A1B36AE89090CF2FA4DCD1361BD65FD</string>
-				<string>834895DE312350746992B2E70A6927FC</string>
-				<string>366853E2415072C2A46793271F7B0EE1</string>
-				<string>26A7927D4407EE9D77598CDFEC7A07C1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CCCF4433824068B14431AB58CAE7F590</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>1D1B53125D9B61FA9447CCA9C077BD19</string>
-				<string>AA26A22B2C01A1C32AF59169A379AC6F</string>
-				<string>8FF9E485F7EB528D34FEC1E3D4C6CB1A</string>
-				<string>0C25E115D39FF0A6706B142DDCA354C0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/SAJsonParser</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CDE692F6BDECEF1881FE65C98A3549C3</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>CDEF5EF49D77284702B5C871FFFC8856</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7BF26C75DC58174BD0016C3498517C97</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>CED3693121107D3F364B5DFB19276F5A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>CED44B57732C99009642EFE7AD9CBB76</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSPermissions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D0AC97DDEC11339ADCF0817A4EDCFF1B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>09D948E15276EA055B53125CF19FF2D9</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D10E15A2D200E841DD26F5162C2C760D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>92D0E41E0EB3106FCD83BF12F9746E16</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D21F3D3918B0DCC73CD25BEC0EEDFBB2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSCheckPermission.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D2DF894DFAE9DEEB8A8027D8CABB41A3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSError.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D338FA8D7E672AA785C0112D310ABC1B</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>D41D8CD98F00B204E9800998ECF8427E</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastSwiftUpdateCheck</key>
-				<string>0700</string>
-				<key>LastUpgradeCheck</key>
-				<string>0700</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>2D8E8EC45A3A1A1D94AE762CB5028504</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>7DB346D0F39D3F0E887471402A8071AB</string>
-			<key>productRefGroup</key>
-			<string>CCA510CFBEA2D207524CDA0D73C3B561</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>357EEB51797F3A9191220DEDC463F981</string>
-				<string>C8A30596FDE06B125CDB239D0BABF248</string>
-				<string>954FEC29B22ED7E806B29786396B56A8</string>
-				<string>A88B02FD2ED142388744876424E8E8AB</string>
-				<string>64DD35F51E31136B6A258B71B6B8E5E4</string>
-			</array>
-		</dict>
-		<key>D567841A790B490D519F19F89212F83B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>461442255547FBEB43832928BCD07874</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D7B36F34D33AA62AC4530D24A66EE8A2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>084D8F39382E9F7DD6157E0007E954C6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D907E03FDBC7B0F5282BFDC8740F7037</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSDictionary+SAJson.h</string>
-			<key>path</key>
-			<string>Pod/Classes/NSDictionary+SAJson.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DCF3BA63AE4C77C5001F2E9698F2FA2C</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>64DD35F51E31136B6A258B71B6B8E5E4</string>
-			<key>remoteInfo</key>
-			<string>SAJsonParser-SAJsonParser</string>
-		</dict>
-		<key>DE5EAE3F09C5367B266FD06EB8F0485B</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>AA26A22B2C01A1C32AF59169A379AC6F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/SAJsonParser/SAJsonParser-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>DEA7C1B7FDB56EA6BFC4BABD1CAB3430</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>9DE35A17075527692A5A39B5E22CB885</string>
-				<string>3B5A0CE4B5C8A847817A7BB560C7BEA9</string>
-				<string>D907E03FDBC7B0F5282BFDC8740F7037</string>
-				<string>7BF26C75DC58174BD0016C3498517C97</string>
-				<string>A5F1214C8CBBCA217EDED688C056CCAB</string>
-				<string>0DEE08E2CBB805AF8C482082DE5DBAE6</string>
-				<string>33A6C75C034D2E2F0E76E0A614A4EF3C</string>
-				<string>F8008EDEF84E9FBFE15EC71CB63D0A19</string>
-				<string>0DF31B9B6E92C40C96E29CFD6A6ECD32</string>
-				<string>CCCF4433824068B14431AB58CAE7F590</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>SAJsonParser</string>
-			<key>path</key>
-			<string>SAJsonParser</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E0890A1E0FE11F14A6180EFF99E188F0</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E1F9022345AA4E6F8DD10666E68A1410</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>A88B02FD2ED142388744876424E8E8AB</string>
-			<key>remoteInfo</key>
-			<string>SAJsonParser</string>
-		</dict>
-		<key>E25DBE47113D7FC544FEA5C173240F80</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>AA26A22B2C01A1C32AF59169A379AC6F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>SAJsonParser</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>bundle</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>E33AE350A63E9A5F7F2EC7ED5D0E2008</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KWSParentEmailError.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E484AB6053E90874B11FB5FB0F4993F1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>PushRegisterPermission.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E93A1B612CA7C02D0BC300F984D5DEAA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>258FA5AB566983A2490251DE61F8D64D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>EC2B44AD6CF6881ED4F996DEE9EF6004</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>C8A30596FDE06B125CDB239D0BABF248</string>
-			<key>remoteInfo</key>
-			<string>KWSiOSSDKObjC-KWSiOSSDKObjC</string>
-		</dict>
-		<key>ED259D31541845DAA41E890005D76BDD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>KWSiOSSDKObjC-Private.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>ED9A59BC54DF598B3F6EFFE90C72A791</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSParentEmailError.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EF952EE0CF3E51E1AC40262F165A0D3C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B2AA057BDFF35BC0F8B53F2B7238B3BF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F0F90B1156AA57C40087630CA67890C9</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8A66F9A1FAACBA03B6380F6B4187B46E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2A61D33A810FAF9497A6772747002AE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KWSMetadata.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F620E1E528394AB7BF484185FD1B4683</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>5DE37C9CFD48DF9C0F60E09EE73D3629</string>
-				<string>CDEF5EF49D77284702B5C871FFFC8856</string>
-				<string>062080702AAE2DAB850309C976D75E6C</string>
-				<string>5C3BCCB2C2A0E9E3799E47BE78A19328</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F62BA2ACE466C19EC9690D3C6B5CA196</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F8008EDEF84E9FBFE15EC71CB63D0A19</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>SAJsonParser.h</string>
-			<key>path</key>
-			<string>Pod/Classes/SAJsonParser.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FB797050A327C1CD540211AC45D05730</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>KWSiOSSDKObjC.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FCD1C5855AE2594FBFA10142BB372E2E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2C255FF3E56F4CAE590093A25E408D66</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>D41D8CD98F00B204E9800998ECF8427E</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		016A3E544B92F573CCB663A68EA4EBDA /* KWSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F518E115A4743A1F764455DC57FF92 /* KWSUser.m */; };
+		062080702AAE2DAB850309C976D75E6C /* NSObject+SAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE08E2CBB805AF8C482082DE5DBAE6 /* NSObject+SAJson.m */; };
+		0D775430E2B7ED8141F38C67477C3C0B /* KWSRequestPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 43140AFD48ABAB67D920414F3313067B /* KWSRequestPermission.h */; };
+		0F540470070C2AF23935154D8902EE45 /* KWS.h in Headers */ = {isa = PBXBuildFile; fileRef = 458E19833611622C4770D7179C809F32 /* KWS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13247E1B92C8759FBFA1A576747505D4 /* PushCheckPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EE0D8AB1E344D774237DCA30135A1 /* PushCheckPermission.m */; };
+		14DB308B7A261CEC70C0F77313312CAA /* KWSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E14A2A03A2367CACCF59DE5F13964AA /* KWSLogger.m */; };
+		1567E330E80C7A7719960C137D5F4A92 /* KWS.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EE19CD11EF4DBE56EE5DEC61C8AF /* KWS.m */; };
+		17C03D0618596D842D0CABB5B335144D /* KWSParentEmail.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B811E8AB37FB884A91D6F148D85823 /* KWSParentEmail.h */; };
+		1B975CE3B0EF18EE80AAEF64C0382654 /* KWSPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E881D91A7BFBF416B9FB3151383ABC /* KWSPermissions.m */; };
+		28825B9371A83D0F1C06641643A435EA /* PushCheckPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FDA82F1466B6E7AFFF3CADFDAF8A087 /* PushCheckPermission.h */; };
+		2BB1869781AF33D98D6B3329C87E1805 /* SADeserializationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A6C75C034D2E2F0E76E0A614A4EF3C /* SADeserializationProtocol.h */; };
+		34C018BCB58480D724A1EF7B58375DF0 /* PushRegisterPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 41572CE1CBB6BF3E4364735AD0EC1373 /* PushRegisterPermission.m */; };
+		354E55E6BFBD3341B1A6E937A6A0476E /* PushManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E41504767B884AA8C7A0F48FE02664E /* PushManager.h */; };
+		3E5AAD84F2B8729C7510813A7CB2711B /* KWSiOSSDKObjC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B8ADB738DAAF9FFEDAF80F3C01D0ED /* KWSiOSSDKObjC-dummy.m */; };
+		45A087916BBB1C4BDC55846B25B2F3A2 /* KWSError.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FC68AAB2FB8A83A87C7AB63BED99F0E /* KWSError.h */; };
+		4A7F72EC5FAAD109EE6CE8EE126F3C7E /* KWSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9A57C31FA2B0AB4D0698DB359CBBCF /* KWSManager.m */; };
+		4C4186F8D645CFA1EA1C64941671D164 /* KWSSystemVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2A0980B5404258FC378DC334ADAB85 /* KWSSystemVersion.h */; };
+		4C6DFF59600E63431A53DBF2AFD83B86 /* KWSPermissions.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D25F25031A2DE4E9D01BF11DD237CC /* KWSPermissions.h */; };
+		5249E0CBD69906CB44BA0FFB421CD972 /* SAJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = F8008EDEF84E9FBFE15EC71CB63D0A19 /* SAJsonParser.h */; };
+		575D5BDCFC87695F0CA0564AB8698AD0 /* KWSCheckPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B852A4C6D6DC7C0479C5EF5C0FCD1F7 /* KWSCheckPermission.h */; };
+		5A650EC5E25D8C5084FE6F0E546AED14 /* KWSRequestPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBFB0474E1B34C71A848E8E7D4407B /* KWSRequestPermission.m */; };
+		5C3BCCB2C2A0E9E3799E47BE78A19328 /* SAJsonParser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF9E485F7EB528D34FEC1E3D4C6CB1A /* SAJsonParser-dummy.m */; };
+		5C8625CE2A6140E29039F97C1FDE84C5 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F45A9EB92BA599F752A75F3B2D0F4 /* PushManager.m */; };
+		5DE37C9CFD48DF9C0F60E09EE73D3629 /* NSArray+SAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A0CE4B5C8A847817A7BB560C7BEA9 /* NSArray+SAJson.m */; };
+		6FD3B8ADF5BC9F4FC5AE364B6158FF1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084D8F39382E9F7DD6157E0007E954C6 /* Foundation.framework */; };
+		790302CF4116AC4643B3C16BED3090F3 /* KWSNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 98DCD419D21EFCA185DCB5F403FE6A57 /* KWSNetworking.h */; };
+		7C3CC6BBCFDBD9E42F1279F8D623C96C /* SASerializationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF31B9B6E92C40C96E29CFD6A6ECD32 /* SASerializationProtocol.h */; };
+		7EE1E3E5EC15BB7150A83471FFE0BB7A /* KWSManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 574E3137B7A291777896EF548A886B92 /* KWSManager.h */; };
+		890920561661FF29F439B5BAC1EDD4DB /* NSObject+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = A5F1214C8CBBCA217EDED688C056CCAB /* NSObject+SAJson.h */; };
+		8A3BE33B2DA8147CFA445F025081C2FF /* KWSError.m in Sources */ = {isa = PBXBuildFile; fileRef = 33554D41D4AFDE0173FEB143E9A0A68D /* KWSError.m */; };
+		940112B9DB3426331F5EFD9140A2562F /* KWSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = FA159BA3FFA7A24D4EB17833C73AEC96 /* KWSLogger.h */; };
+		97FE062ADD195C9E5CD49541E559B7F4 /* KWSMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A099794A58FF58B93C10421C7B0C1DE8 /* KWSMetadata.h */; };
+		999D640DDA3590CA71CC6C7C32FF165D /* PushRegisterPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 6423C431E9218730E03EC4A6BB4669A0 /* PushRegisterPermission.h */; };
+		9A992AB2E8F930B827AAF3FB5F8FFC09 /* KWSParentEmailError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B70223478042D3DCCD5B98AE2753A5D /* KWSParentEmailError.m */; };
+		A075747D29B260AEBFEDB2E2A26F1ED6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084D8F39382E9F7DD6157E0007E954C6 /* Foundation.framework */; };
+		A209A2C2916B9575C78F0853E7E02E83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084D8F39382E9F7DD6157E0007E954C6 /* Foundation.framework */; };
+		A99D92E0B0E5AE6664D72F0A0D634ABF /* KWSParentEmailError.h in Headers */ = {isa = PBXBuildFile; fileRef = 804A4D619A1A55FD304B81BB33988DF5 /* KWSParentEmailError.h */; };
+		AA2AF1DE5C7FFEA05AE6FFDB594F15AE /* KWSUser.h in Headers */ = {isa = PBXBuildFile; fileRef = F38E1B98440F109463A0EED06B130123 /* KWSUser.h */; };
+		B40C09CEA44512377FA42C3812B2B23E /* KWSMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 8527825C8DAC52D2F69C06A08069E9D3 /* KWSMetadata.m */; };
+		B73CFFEF932CCB0DD48097046A86990D /* NSDictionary+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = D907E03FDBC7B0F5282BFDC8740F7037 /* NSDictionary+SAJson.h */; };
+		BC6B969DC47E1CED7F0D06AE56D23B5E /* KWSInvalid.h in Headers */ = {isa = PBXBuildFile; fileRef = 736BFACF1F74DEA328B23A31FA8F6C6D /* KWSInvalid.h */; };
+		C5C10D50ACD0EBFFB68380567F3D95F0 /* NSArray+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DE35A17075527692A5A39B5E22CB885 /* NSArray+SAJson.h */; };
+		CC7A78C4D63518AEAF3153D045FC407C /* KWSInvalid.m in Sources */ = {isa = PBXBuildFile; fileRef = 895277D24F9CF1BD881BDA2E73B6EDC9 /* KWSInvalid.m */; };
+		CDEF5EF49D77284702B5C871FFFC8856 /* NSDictionary+SAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF26C75DC58174BD0016C3498517C97 /* NSDictionary+SAJson.m */; };
+		CE132D45C8AACE3B7510D982091AB309 /* KWSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E06C2E49CA15569FB101261F10DE6D6 /* KWSNetworking.m */; };
+		D078A3BB53193D4BC80FDC5ACD99D8A7 /* KWSParentEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0384E2B77A16EB65FC190C40CA5CEA /* KWSParentEmail.m */; };
+		D0AC97DDEC11339ADCF0817A4EDCFF1B /* Pods-KWSiOSSDKObjC_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D948E15276EA055B53125CF19FF2D9 /* Pods-KWSiOSSDKObjC_Example-dummy.m */; };
+		EFC0A26F8031A3DAED2F1E97AE2618CD /* KWSCheckPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = E810161D01794C7A69F3E0FCB20F8B21 /* KWSCheckPermission.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B48F5E054D4179C0E854ACB4176C0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1414BD1A1ADF99852017F5D7EC71C9F6;
+			remoteInfo = KWSiOSSDKObjC;
+		};
+		4B9ACCEC6FC26951D8481923D8E4B76E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64DD35F51E31136B6A258B71B6B8E5E4;
+			remoteInfo = "SAJsonParser-SAJsonParser";
+		};
+		ACFDFFBBA584ED5784BEE76A79A3DDD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A88B02FD2ED142388744876424E8E8AB;
+			remoteInfo = SAJsonParser;
+		};
+		F1EE4D1CA9A22610CA3B43D3EC6AA509 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27B70A20120B79A0A7D2A95005807CC6;
+			remoteInfo = "KWSiOSSDKObjC-KWSiOSSDKObjC";
+		};
+		FF08C78434243BE0307209CCDA718042 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A88B02FD2ED142388744876424E8E8AB;
+			remoteInfo = SAJsonParser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		015F48272DD4A6D9A102C6780AEC2884 /* KWSiOSSDKObjC-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "KWSiOSSDKObjC-Private.xcconfig"; sourceTree = "<group>"; };
+		03E881D91A7BFBF416B9FB3151383ABC /* KWSPermissions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSPermissions.m; sourceTree = "<group>"; };
+		04D25F25031A2DE4E9D01BF11DD237CC /* KWSPermissions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSPermissions.h; sourceTree = "<group>"; };
+		084D8F39382E9F7DD6157E0007E954C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		09D948E15276EA055B53125CF19FF2D9 /* Pods-KWSiOSSDKObjC_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KWSiOSSDKObjC_Example-dummy.m"; sourceTree = "<group>"; };
+		0A1B36AE89090CF2FA4DCD1361BD65FD /* SAJsonParser.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SAJsonParser.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A9A57C31FA2B0AB4D0698DB359CBBCF /* KWSManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSManager.m; sourceTree = "<group>"; };
+		0C25E115D39FF0A6706B142DDCA354C0 /* SAJsonParser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAJsonParser-prefix.pch"; sourceTree = "<group>"; };
+		0DEE08E2CBB805AF8C482082DE5DBAE6 /* NSObject+SAJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SAJson.m"; path = "Pod/Classes/NSObject+SAJson.m"; sourceTree = "<group>"; };
+		0DF31B9B6E92C40C96E29CFD6A6ECD32 /* SASerializationProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SASerializationProtocol.h; path = Pod/Classes/SASerializationProtocol.h; sourceTree = "<group>"; };
+		1D1B53125D9B61FA9447CCA9C077BD19 /* SAJsonParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAJsonParser.xcconfig; sourceTree = "<group>"; };
+		1D4EE0D8AB1E344D774237DCA30135A1 /* PushCheckPermission.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PushCheckPermission.m; sourceTree = "<group>"; };
+		1E32736EEFB10B31D838870880FCB46D /* KWSiOSSDKObjC-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KWSiOSSDKObjC-prefix.pch"; sourceTree = "<group>"; };
+		1FFBFB0474E1B34C71A848E8E7D4407B /* KWSRequestPermission.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSRequestPermission.m; sourceTree = "<group>"; };
+		26A7927D4407EE9D77598CDFEC7A07C1 /* libSAJsonParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSAJsonParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		283F45A9EB92BA599F752A75F3B2D0F4 /* PushManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PushManager.m; sourceTree = "<group>"; };
+		29468B7401A021090DDD7F35C52F6F61 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		2B70223478042D3DCCD5B98AE2753A5D /* KWSParentEmailError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSParentEmailError.m; sourceTree = "<group>"; };
+		2D2A0980B5404258FC378DC334ADAB85 /* KWSSystemVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSSystemVersion.h; sourceTree = "<group>"; };
+		33554D41D4AFDE0173FEB143E9A0A68D /* KWSError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSError.m; sourceTree = "<group>"; };
+		33A6C75C034D2E2F0E76E0A614A4EF3C /* SADeserializationProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SADeserializationProtocol.h; path = Pod/Classes/SADeserializationProtocol.h; sourceTree = "<group>"; };
+		366853E2415072C2A46793271F7B0EE1 /* libPods-KWSiOSSDKObjC_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KWSiOSSDKObjC_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5A0CE4B5C8A847817A7BB560C7BEA9 /* NSArray+SAJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+SAJson.m"; path = "Pod/Classes/NSArray+SAJson.m"; sourceTree = "<group>"; };
+		3E41504767B884AA8C7A0F48FE02664E /* PushManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PushManager.h; sourceTree = "<group>"; };
+		41572CE1CBB6BF3E4364735AD0EC1373 /* PushRegisterPermission.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PushRegisterPermission.m; sourceTree = "<group>"; };
+		43140AFD48ABAB67D920414F3313067B /* KWSRequestPermission.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSRequestPermission.h; sourceTree = "<group>"; };
+		458E19833611622C4770D7179C809F32 /* KWS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWS.h; sourceTree = "<group>"; };
+		4A0384E2B77A16EB65FC190C40CA5CEA /* KWSParentEmail.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSParentEmail.m; sourceTree = "<group>"; };
+		574E3137B7A291777896EF548A886B92 /* KWSManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSManager.h; sourceTree = "<group>"; };
+		5E06C2E49CA15569FB101261F10DE6D6 /* KWSNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSNetworking.m; sourceTree = "<group>"; };
+		5FDA82F1466B6E7AFFF3CADFDAF8A087 /* PushCheckPermission.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PushCheckPermission.h; sourceTree = "<group>"; };
+		6423C431E9218730E03EC4A6BB4669A0 /* PushRegisterPermission.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PushRegisterPermission.h; sourceTree = "<group>"; };
+		6E14A2A03A2367CACCF59DE5F13964AA /* KWSLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSLogger.m; sourceTree = "<group>"; };
+		6EAEF55635814AB02A687149AE39B589 /* Pods-KWSiOSSDKObjC_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KWSiOSSDKObjC_Example-resources.sh"; sourceTree = "<group>"; };
+		6FC68AAB2FB8A83A87C7AB63BED99F0E /* KWSError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSError.h; sourceTree = "<group>"; };
+		73352352B2C32C791B738EAE7B89014A /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Example.release.xcconfig"; sourceTree = "<group>"; };
+		736BFACF1F74DEA328B23A31FA8F6C6D /* KWSInvalid.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSInvalid.h; sourceTree = "<group>"; };
+		7B852A4C6D6DC7C0479C5EF5C0FCD1F7 /* KWSCheckPermission.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSCheckPermission.h; sourceTree = "<group>"; };
+		7BF26C75DC58174BD0016C3498517C97 /* NSDictionary+SAJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+SAJson.m"; path = "Pod/Classes/NSDictionary+SAJson.m"; sourceTree = "<group>"; };
+		7CF47CF88C1F3326846DF2764DBDE8E4 /* Pods-KWSiOSSDKObjC_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KWSiOSSDKObjC_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		804A4D619A1A55FD304B81BB33988DF5 /* KWSParentEmailError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSParentEmailError.h; sourceTree = "<group>"; };
+		8527825C8DAC52D2F69C06A08069E9D3 /* KWSMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSMetadata.m; sourceTree = "<group>"; };
+		895277D24F9CF1BD881BDA2E73B6EDC9 /* KWSInvalid.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSInvalid.m; sourceTree = "<group>"; };
+		89B811E8AB37FB884A91D6F148D85823 /* KWSParentEmail.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSParentEmail.h; sourceTree = "<group>"; };
+		8FF9E485F7EB528D34FEC1E3D4C6CB1A /* SAJsonParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAJsonParser-dummy.m"; sourceTree = "<group>"; };
+		98DCD419D21EFCA185DCB5F403FE6A57 /* KWSNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSNetworking.h; sourceTree = "<group>"; };
+		9DE35A17075527692A5A39B5E22CB885 /* NSArray+SAJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+SAJson.h"; path = "Pod/Classes/NSArray+SAJson.h"; sourceTree = "<group>"; };
+		A099794A58FF58B93C10421C7B0C1DE8 /* KWSMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSMetadata.h; sourceTree = "<group>"; };
+		A5F1214C8CBBCA217EDED688C056CCAB /* NSObject+SAJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+SAJson.h"; path = "Pod/Classes/NSObject+SAJson.h"; sourceTree = "<group>"; };
+		AA26A22B2C01A1C32AF59169A379AC6F /* SAJsonParser-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SAJsonParser-Private.xcconfig"; sourceTree = "<group>"; };
+		B6B8ADB738DAAF9FFEDAF80F3C01D0ED /* KWSiOSSDKObjC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KWSiOSSDKObjC-dummy.m"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C9F518E115A4743A1F764455DC57FF92 /* KWSUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSUser.m; sourceTree = "<group>"; };
+		CAC3EE19CD11EF4DBE56EE5DEC61C8AF /* KWS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWS.m; sourceTree = "<group>"; };
+		D0B1975FF94F63EBAE0C3CC900495008 /* KWSiOSSDKObjC.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KWSiOSSDKObjC.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D49AB15E64E865EF8A03308544AB746B /* libKWSiOSSDKObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKWSiOSSDKObjC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D907E03FDBC7B0F5282BFDC8740F7037 /* NSDictionary+SAJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+SAJson.h"; path = "Pod/Classes/NSDictionary+SAJson.h"; sourceTree = "<group>"; };
+		E810161D01794C7A69F3E0FCB20F8B21 /* KWSCheckPermission.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSCheckPermission.m; sourceTree = "<group>"; };
+		F38E1B98440F109463A0EED06B130123 /* KWSUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSUser.h; sourceTree = "<group>"; };
+		F62BA2ACE466C19EC9690D3C6B5CA196 /* Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F8008EDEF84E9FBFE15EC71CB63D0A19 /* SAJsonParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAJsonParser.h; path = Pod/Classes/SAJsonParser.h; sourceTree = "<group>"; };
+		FA159BA3FFA7A24D4EB17833C73AEC96 /* KWSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSLogger.h; sourceTree = "<group>"; };
+		FB797050A327C1CD540211AC45D05730 /* KWSiOSSDKObjC.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KWSiOSSDKObjC.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		171C48521C3AE8EC3F99B53CBA73F7E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18959C9BEF64AE8236DD46C5526EE78F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A209A2C2916B9575C78F0853E7E02E83 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3726138D02887A1F3063B765FBFC079D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FD3B8ADF5BC9F4FC5AE364B6158FF1A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74BDDBD257989803F698A907CB04C940 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A075747D29B260AEBFEDB2E2A26F1ED6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED3C45FAA25C6365DFD6B8CB7197D19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02C179BA10862B377AA6A1305ED1A2C5 /* Pods-KWSiOSSDKObjC_Example */ = {
+			isa = PBXGroup;
+			children = (
+				F62BA2ACE466C19EC9690D3C6B5CA196 /* Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown */,
+				7CF47CF88C1F3326846DF2764DBDE8E4 /* Pods-KWSiOSSDKObjC_Example-acknowledgements.plist */,
+				09D948E15276EA055B53125CF19FF2D9 /* Pods-KWSiOSSDKObjC_Example-dummy.m */,
+				6EAEF55635814AB02A687149AE39B589 /* Pods-KWSiOSSDKObjC_Example-resources.sh */,
+				29468B7401A021090DDD7F35C52F6F61 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */,
+				73352352B2C32C791B738EAE7B89014A /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */,
+			);
+			name = "Pods-KWSiOSSDKObjC_Example";
+			path = "Target Support Files/Pods-KWSiOSSDKObjC_Example";
+			sourceTree = "<group>";
+		};
+		0D3B0D3E3390161D2AC882CB33DEA925 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA159BA3FFA7A24D4EB17833C73AEC96 /* KWSLogger.h */,
+				6E14A2A03A2367CACCF59DE5F13964AA /* KWSLogger.m */,
+				98DCD419D21EFCA185DCB5F403FE6A57 /* KWSNetworking.h */,
+				5E06C2E49CA15569FB101261F10DE6D6 /* KWSNetworking.m */,
+				2D2A0980B5404258FC378DC334ADAB85 /* KWSSystemVersion.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1598C8887BDF2D9D05DE9F6A1961DB18 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				5EBD972B5C0F3DA51038CE4E1841A3B3 /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		376AB5D4061CAEDB9EADEB6EBCE7377C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEA7C1B7FDB56EA6BFC4BABD1CAB3430 /* SAJsonParser */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		42FA68C09B9B3A7EB6AE56900C2BDBA2 /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				5FDA82F1466B6E7AFFF3CADFDAF8A087 /* PushCheckPermission.h */,
+				1D4EE0D8AB1E344D774237DCA30135A1 /* PushCheckPermission.m */,
+				6423C431E9218730E03EC4A6BB4669A0 /* PushRegisterPermission.h */,
+				41572CE1CBB6BF3E4364735AD0EC1373 /* PushRegisterPermission.m */,
+			);
+			path = Push;
+			sourceTree = "<group>";
+		};
+		51CA5EB92810903B6D5FF89410A4B31E /* KWS */ = {
+			isa = PBXGroup;
+			children = (
+				7B852A4C6D6DC7C0479C5EF5C0FCD1F7 /* KWSCheckPermission.h */,
+				E810161D01794C7A69F3E0FCB20F8B21 /* KWSCheckPermission.m */,
+				89B811E8AB37FB884A91D6F148D85823 /* KWSParentEmail.h */,
+				4A0384E2B77A16EB65FC190C40CA5CEA /* KWSParentEmail.m */,
+				43140AFD48ABAB67D920414F3313067B /* KWSRequestPermission.h */,
+				1FFBFB0474E1B34C71A848E8E7D4407B /* KWSRequestPermission.m */,
+			);
+			path = KWS;
+			sourceTree = "<group>";
+		};
+		527471B9EFB275AFC47EBCF7186481BD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6FC68AAB2FB8A83A87C7AB63BED99F0E /* KWSError.h */,
+				33554D41D4AFDE0173FEB143E9A0A68D /* KWSError.m */,
+				736BFACF1F74DEA328B23A31FA8F6C6D /* KWSInvalid.h */,
+				895277D24F9CF1BD881BDA2E73B6EDC9 /* KWSInvalid.m */,
+				A099794A58FF58B93C10421C7B0C1DE8 /* KWSMetadata.h */,
+				8527825C8DAC52D2F69C06A08069E9D3 /* KWSMetadata.m */,
+				804A4D619A1A55FD304B81BB33988DF5 /* KWSParentEmailError.h */,
+				2B70223478042D3DCCD5B98AE2753A5D /* KWSParentEmailError.m */,
+				04D25F25031A2DE4E9D01BF11DD237CC /* KWSPermissions.h */,
+				03E881D91A7BFBF416B9FB3151383ABC /* KWSPermissions.m */,
+				F38E1B98440F109463A0EED06B130123 /* KWSUser.h */,
+				C9F518E115A4743A1F764455DC57FF92 /* KWSUser.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52C9C5B2AA4C268BA10DAF6BA847148E /* KWSiOSSDKObjC */ = {
+			isa = PBXGroup;
+			children = (
+				1598C8887BDF2D9D05DE9F6A1961DB18 /* Pod */,
+				B28E2828990B29892FDF61B3FA156151 /* Support Files */,
+			);
+			name = KWSiOSSDKObjC;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				084D8F39382E9F7DD6157E0007E954C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5EBD972B5C0F3DA51038CE4E1841A3B3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				458E19833611622C4770D7179C809F32 /* KWS.h */,
+				CAC3EE19CD11EF4DBE56EE5DEC61C8AF /* KWS.m */,
+				574E3137B7A291777896EF548A886B92 /* KWSManager.h */,
+				0A9A57C31FA2B0AB4D0698DB359CBBCF /* KWSManager.m */,
+				3E41504767B884AA8C7A0F48FE02664E /* PushManager.h */,
+				283F45A9EB92BA599F752A75F3B2D0F4 /* PushManager.m */,
+				51CA5EB92810903B6D5FF89410A4B31E /* KWS */,
+				527471B9EFB275AFC47EBCF7186481BD /* Models */,
+				42FA68C09B9B3A7EB6AE56900C2BDBA2 /* Push */,
+				0D3B0D3E3390161D2AC882CB33DEA925 /* Utils */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				C8E251598F110F5A50511A811BBA1BBF /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				376AB5D4061CAEDB9EADEB6EBCE7377C /* Pods */,
+				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
+				A4144D78B9C2244C7B4A4761ACA53CC6 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A4144D78B9C2244C7B4A4761ACA53CC6 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				02C179BA10862B377AA6A1305ED1A2C5 /* Pods-KWSiOSSDKObjC_Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B28E2828990B29892FDF61B3FA156151 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB797050A327C1CD540211AC45D05730 /* KWSiOSSDKObjC.xcconfig */,
+				015F48272DD4A6D9A102C6780AEC2884 /* KWSiOSSDKObjC-Private.xcconfig */,
+				B6B8ADB738DAAF9FFEDAF80F3C01D0ED /* KWSiOSSDKObjC-dummy.m */,
+				1E32736EEFB10B31D838870880FCB46D /* KWSiOSSDKObjC-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/KWSiOSSDKObjC";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53F661C0CA7190D2CF05023FB33D61E4 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8E251598F110F5A50511A811BBA1BBF /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				52C9C5B2AA4C268BA10DAF6BA847148E /* KWSiOSSDKObjC */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0B1975FF94F63EBAE0C3CC900495008 /* KWSiOSSDKObjC.bundle */,
+				0A1B36AE89090CF2FA4DCD1361BD65FD /* SAJsonParser.bundle */,
+				D49AB15E64E865EF8A03308544AB746B /* libKWSiOSSDKObjC.a */,
+				366853E2415072C2A46793271F7B0EE1 /* libPods-KWSiOSSDKObjC_Example.a */,
+				26A7927D4407EE9D77598CDFEC7A07C1 /* libSAJsonParser.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CCCF4433824068B14431AB58CAE7F590 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D1B53125D9B61FA9447CCA9C077BD19 /* SAJsonParser.xcconfig */,
+				AA26A22B2C01A1C32AF59169A379AC6F /* SAJsonParser-Private.xcconfig */,
+				8FF9E485F7EB528D34FEC1E3D4C6CB1A /* SAJsonParser-dummy.m */,
+				0C25E115D39FF0A6706B142DDCA354C0 /* SAJsonParser-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SAJsonParser";
+			sourceTree = "<group>";
+		};
+		DEA7C1B7FDB56EA6BFC4BABD1CAB3430 /* SAJsonParser */ = {
+			isa = PBXGroup;
+			children = (
+				9DE35A17075527692A5A39B5E22CB885 /* NSArray+SAJson.h */,
+				3B5A0CE4B5C8A847817A7BB560C7BEA9 /* NSArray+SAJson.m */,
+				D907E03FDBC7B0F5282BFDC8740F7037 /* NSDictionary+SAJson.h */,
+				7BF26C75DC58174BD0016C3498517C97 /* NSDictionary+SAJson.m */,
+				A5F1214C8CBBCA217EDED688C056CCAB /* NSObject+SAJson.h */,
+				0DEE08E2CBB805AF8C482082DE5DBAE6 /* NSObject+SAJson.m */,
+				33A6C75C034D2E2F0E76E0A614A4EF3C /* SADeserializationProtocol.h */,
+				F8008EDEF84E9FBFE15EC71CB63D0A19 /* SAJsonParser.h */,
+				0DF31B9B6E92C40C96E29CFD6A6ECD32 /* SASerializationProtocol.h */,
+				CCCF4433824068B14431AB58CAE7F590 /* Support Files */,
+			);
+			path = SAJsonParser;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		24802BB8B3FA11A3A035F476F0463DE0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5C10D50ACD0EBFFB68380567F3D95F0 /* NSArray+SAJson.h in Headers */,
+				B73CFFEF932CCB0DD48097046A86990D /* NSDictionary+SAJson.h in Headers */,
+				890920561661FF29F439B5BAC1EDD4DB /* NSObject+SAJson.h in Headers */,
+				2BB1869781AF33D98D6B3329C87E1805 /* SADeserializationProtocol.h in Headers */,
+				5249E0CBD69906CB44BA0FFB421CD972 /* SAJsonParser.h in Headers */,
+				7C3CC6BBCFDBD9E42F1279F8D623C96C /* SASerializationProtocol.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B7E614082DE2E8B36587F76594E9BE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F540470070C2AF23935154D8902EE45 /* KWS.h in Headers */,
+				575D5BDCFC87695F0CA0564AB8698AD0 /* KWSCheckPermission.h in Headers */,
+				45A087916BBB1C4BDC55846B25B2F3A2 /* KWSError.h in Headers */,
+				BC6B969DC47E1CED7F0D06AE56D23B5E /* KWSInvalid.h in Headers */,
+				940112B9DB3426331F5EFD9140A2562F /* KWSLogger.h in Headers */,
+				7EE1E3E5EC15BB7150A83471FFE0BB7A /* KWSManager.h in Headers */,
+				97FE062ADD195C9E5CD49541E559B7F4 /* KWSMetadata.h in Headers */,
+				790302CF4116AC4643B3C16BED3090F3 /* KWSNetworking.h in Headers */,
+				17C03D0618596D842D0CABB5B335144D /* KWSParentEmail.h in Headers */,
+				A99D92E0B0E5AE6664D72F0A0D634ABF /* KWSParentEmailError.h in Headers */,
+				4C6DFF59600E63431A53DBF2AFD83B86 /* KWSPermissions.h in Headers */,
+				0D775430E2B7ED8141F38C67477C3C0B /* KWSRequestPermission.h in Headers */,
+				4C4186F8D645CFA1EA1C64941671D164 /* KWSSystemVersion.h in Headers */,
+				AA2AF1DE5C7FFEA05AE6FFDB594F15AE /* KWSUser.h in Headers */,
+				28825B9371A83D0F1C06641643A435EA /* PushCheckPermission.h in Headers */,
+				354E55E6BFBD3341B1A6E937A6A0476E /* PushManager.h in Headers */,
+				999D640DDA3590CA71CC6C7C32FF165D /* PushRegisterPermission.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1414BD1A1ADF99852017F5D7EC71C9F6 /* KWSiOSSDKObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5794A6EEDB3BD47E7E59ED35E9D0E4D /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC" */;
+			buildPhases = (
+				8C68B1F253B11FA65EC7C9DDC401E735 /* Sources */,
+				74BDDBD257989803F698A907CB04C940 /* Frameworks */,
+				B0B7E614082DE2E8B36587F76594E9BE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE534C8DF9B5D3BBDAE790B280B43D7A /* PBXTargetDependency */,
+				23A1F58F1945326F32EA161E6CB43CDC /* PBXTargetDependency */,
+			);
+			name = KWSiOSSDKObjC;
+			productName = KWSiOSSDKObjC;
+			productReference = D49AB15E64E865EF8A03308544AB746B /* libKWSiOSSDKObjC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		27B70A20120B79A0A7D2A95005807CC6 /* KWSiOSSDKObjC-KWSiOSSDKObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9489CF26B8DFDC01C7BAB925C4512B84 /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC-KWSiOSSDKObjC" */;
+			buildPhases = (
+				BB6857266FA53E114A95B353C708E87A /* Sources */,
+				EED3C45FAA25C6365DFD6B8CB7197D19 /* Frameworks */,
+				2FF121CD4F88065E4244B39CC80922D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KWSiOSSDKObjC-KWSiOSSDKObjC";
+			productName = "KWSiOSSDKObjC-KWSiOSSDKObjC";
+			productReference = D0B1975FF94F63EBAE0C3CC900495008 /* KWSiOSSDKObjC.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		64DD35F51E31136B6A258B71B6B8E5E4 /* SAJsonParser-SAJsonParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A523510893F5BF4712D4A69BA84F922D /* Build configuration list for PBXNativeTarget "SAJsonParser-SAJsonParser" */;
+			buildPhases = (
+				CDE692F6BDECEF1881FE65C98A3549C3 /* Sources */,
+				171C48521C3AE8EC3F99B53CBA73F7E1 /* Frameworks */,
+				E0890A1E0FE11F14A6180EFF99E188F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SAJsonParser-SAJsonParser";
+			productName = "SAJsonParser-SAJsonParser";
+			productReference = 0A1B36AE89090CF2FA4DCD1361BD65FD /* SAJsonParser.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		954FEC29B22ED7E806B29786396B56A8 /* Pods-KWSiOSSDKObjC_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FE3B2693797EDC28DF7F164A40C74F4 /* Build configuration list for PBXNativeTarget "Pods-KWSiOSSDKObjC_Example" */;
+			buildPhases = (
+				3A4A3F525C09A85A54B911F3AB051C97 /* Sources */,
+				18959C9BEF64AE8236DD46C5526EE78F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54CA63FA68381D1C3B3D2F2F4008285B /* PBXTargetDependency */,
+				F91938EE259572CDCDEFE897816BF4F4 /* PBXTargetDependency */,
+			);
+			name = "Pods-KWSiOSSDKObjC_Example";
+			productName = "Pods-KWSiOSSDKObjC_Example";
+			productReference = 366853E2415072C2A46793271F7B0EE1 /* libPods-KWSiOSSDKObjC_Example.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A88B02FD2ED142388744876424E8E8AB /* SAJsonParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4293E363D353E3952621302889ECC95 /* Build configuration list for PBXNativeTarget "SAJsonParser" */;
+			buildPhases = (
+				F620E1E528394AB7BF484185FD1B4683 /* Sources */,
+				3726138D02887A1F3063B765FBFC079D /* Frameworks */,
+				24802BB8B3FA11A3A035F476F0463DE0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBE9362278066C65101FA4EBF52F516F /* PBXTargetDependency */,
+			);
+			name = SAJsonParser;
+			productName = SAJsonParser;
+			productReference = 26A7927D4407EE9D77598CDFEC7A07C1 /* libSAJsonParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = CCA510CFBEA2D207524CDA0D73C3B561 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1414BD1A1ADF99852017F5D7EC71C9F6 /* KWSiOSSDKObjC */,
+				27B70A20120B79A0A7D2A95005807CC6 /* KWSiOSSDKObjC-KWSiOSSDKObjC */,
+				954FEC29B22ED7E806B29786396B56A8 /* Pods-KWSiOSSDKObjC_Example */,
+				A88B02FD2ED142388744876424E8E8AB /* SAJsonParser */,
+				64DD35F51E31136B6A258B71B6B8E5E4 /* SAJsonParser-SAJsonParser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FF121CD4F88065E4244B39CC80922D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0890A1E0FE11F14A6180EFF99E188F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A4A3F525C09A85A54B911F3AB051C97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0AC97DDEC11339ADCF0817A4EDCFF1B /* Pods-KWSiOSSDKObjC_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C68B1F253B11FA65EC7C9DDC401E735 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1567E330E80C7A7719960C137D5F4A92 /* KWS.m in Sources */,
+				EFC0A26F8031A3DAED2F1E97AE2618CD /* KWSCheckPermission.m in Sources */,
+				8A3BE33B2DA8147CFA445F025081C2FF /* KWSError.m in Sources */,
+				CC7A78C4D63518AEAF3153D045FC407C /* KWSInvalid.m in Sources */,
+				14DB308B7A261CEC70C0F77313312CAA /* KWSLogger.m in Sources */,
+				4A7F72EC5FAAD109EE6CE8EE126F3C7E /* KWSManager.m in Sources */,
+				B40C09CEA44512377FA42C3812B2B23E /* KWSMetadata.m in Sources */,
+				CE132D45C8AACE3B7510D982091AB309 /* KWSNetworking.m in Sources */,
+				D078A3BB53193D4BC80FDC5ACD99D8A7 /* KWSParentEmail.m in Sources */,
+				9A992AB2E8F930B827AAF3FB5F8FFC09 /* KWSParentEmailError.m in Sources */,
+				1B975CE3B0EF18EE80AAEF64C0382654 /* KWSPermissions.m in Sources */,
+				5A650EC5E25D8C5084FE6F0E546AED14 /* KWSRequestPermission.m in Sources */,
+				016A3E544B92F573CCB663A68EA4EBDA /* KWSUser.m in Sources */,
+				3E5AAD84F2B8729C7510813A7CB2711B /* KWSiOSSDKObjC-dummy.m in Sources */,
+				13247E1B92C8759FBFA1A576747505D4 /* PushCheckPermission.m in Sources */,
+				5C8625CE2A6140E29039F97C1FDE84C5 /* PushManager.m in Sources */,
+				34C018BCB58480D724A1EF7B58375DF0 /* PushRegisterPermission.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB6857266FA53E114A95B353C708E87A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE692F6BDECEF1881FE65C98A3549C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F620E1E528394AB7BF484185FD1B4683 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DE37C9CFD48DF9C0F60E09EE73D3629 /* NSArray+SAJson.m in Sources */,
+				CDEF5EF49D77284702B5C871FFFC8856 /* NSDictionary+SAJson.m in Sources */,
+				062080702AAE2DAB850309C976D75E6C /* NSObject+SAJson.m in Sources */,
+				5C3BCCB2C2A0E9E3799E47BE78A19328 /* SAJsonParser-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		23A1F58F1945326F32EA161E6CB43CDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SAJsonParser;
+			target = A88B02FD2ED142388744876424E8E8AB /* SAJsonParser */;
+			targetProxy = FF08C78434243BE0307209CCDA718042 /* PBXContainerItemProxy */;
+		};
+		54CA63FA68381D1C3B3D2F2F4008285B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KWSiOSSDKObjC;
+			target = 1414BD1A1ADF99852017F5D7EC71C9F6 /* KWSiOSSDKObjC */;
+			targetProxy = 4B48F5E054D4179C0E854ACB4176C0AE /* PBXContainerItemProxy */;
+		};
+		CBE9362278066C65101FA4EBF52F516F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SAJsonParser-SAJsonParser";
+			target = 64DD35F51E31136B6A258B71B6B8E5E4 /* SAJsonParser-SAJsonParser */;
+			targetProxy = 4B9ACCEC6FC26951D8481923D8E4B76E /* PBXContainerItemProxy */;
+		};
+		EE534C8DF9B5D3BBDAE790B280B43D7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "KWSiOSSDKObjC-KWSiOSSDKObjC";
+			target = 27B70A20120B79A0A7D2A95005807CC6 /* KWSiOSSDKObjC-KWSiOSSDKObjC */;
+			targetProxy = F1EE4D1CA9A22610CA3B43D3EC6AA509 /* PBXContainerItemProxy */;
+		};
+		F91938EE259572CDCDEFE897816BF4F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SAJsonParser;
+			target = A88B02FD2ED142388744876424E8E8AB /* SAJsonParser */;
+			targetProxy = ACFDFFBBA584ED5784BEE76A79A3DDD5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		052A17875CB827423D627183396CEB60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		24974BA39609B840BDDCC16F46543534 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 015F48272DD4A6D9A102C6780AEC2884 /* KWSiOSSDKObjC-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = KWSiOSSDKObjC;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		29BEF327A38EE2AAC4D6028BBDBB9DE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73352352B2C32C791B738EAE7B89014A /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3437BD44061135165CDE6B248ED7726A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 015F48272DD4A6D9A102C6780AEC2884 /* KWSiOSSDKObjC-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = KWSiOSSDKObjC;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		67CE7E75ABCA26E2E2F9AD89442A2C43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29468B7401A021090DDD7F35C52F6F61 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6AA37BC58CEFB8956E3FA8B479FFCB48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA26A22B2C01A1C32AF59169A379AC6F /* SAJsonParser-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = SAJsonParser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		B37F0F91F85060E28F1DAAB522DC7EC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C16B5E97FD60C0924DADFFADF73A4E67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 015F48272DD4A6D9A102C6780AEC2884 /* KWSiOSSDKObjC-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C6254207C763EC7716A48436E8E7923D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA26A22B2C01A1C32AF59169A379AC6F /* SAJsonParser-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SAJsonParser/SAJsonParser-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		DE5EAE3F09C5367B266FD06EB8F0485B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA26A22B2C01A1C32AF59169A379AC6F /* SAJsonParser-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SAJsonParser/SAJsonParser-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E25DBE47113D7FC544FEA5C173240F80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA26A22B2C01A1C32AF59169A379AC6F /* SAJsonParser-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = SAJsonParser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		E8F85832D3E2F098BF3B2AFB216BFE1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 015F48272DD4A6D9A102C6780AEC2884 /* KWSiOSSDKObjC-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B37F0F91F85060E28F1DAAB522DC7EC1 /* Debug */,
+				052A17875CB827423D627183396CEB60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FE3B2693797EDC28DF7F164A40C74F4 /* Build configuration list for PBXNativeTarget "Pods-KWSiOSSDKObjC_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67CE7E75ABCA26E2E2F9AD89442A2C43 /* Debug */,
+				29BEF327A38EE2AAC4D6028BBDBB9DE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9489CF26B8DFDC01C7BAB925C4512B84 /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC-KWSiOSSDKObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3437BD44061135165CDE6B248ED7726A /* Debug */,
+				24974BA39609B840BDDCC16F46543534 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A523510893F5BF4712D4A69BA84F922D /* Build configuration list for PBXNativeTarget "SAJsonParser-SAJsonParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AA37BC58CEFB8956E3FA8B479FFCB48 /* Debug */,
+				E25DBE47113D7FC544FEA5C173240F80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5794A6EEDB3BD47E7E59ED35E9D0E4D /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C16B5E97FD60C0924DADFFADF73A4E67 /* Debug */,
+				E8F85832D3E2F098BF3B2AFB216BFE1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4293E363D353E3952621302889ECC95 /* Build configuration list for PBXNativeTarget "SAJsonParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE5EAE3F09C5367B266FD06EB8F0485B /* Debug */,
+				C6254207C763EC7716A48436E8E7923D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
