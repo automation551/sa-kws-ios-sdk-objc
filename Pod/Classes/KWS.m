@@ -8,8 +8,6 @@
 
 #import "KWS.h"
 #import "KWSMetadata.h"
-#import "NSObject+ModelToString.h"
-#import "NSObject+StringToModel.h"
 
 @interface KWS ()
 // the parent email object
@@ -49,7 +47,7 @@
     self.kwsApiUrl = kwsApiUrl;
     self.delegate = delegate;
     self.metadata = [self getMetadata:oauthToken];
-    NSLog(@"Json Model: %@", [self.metadata jsonStringPreetyRepresentation]);
+    NSLog(@"Json Model: %@", [self.metadata jsonPreetyStringRepresentation]);
     
 }
 
@@ -140,7 +138,7 @@
     if (tokenO == nil) return nil;
     NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:[NSString stringWithFormat:@"%@==", tokenO] options:NSDataBase64DecodingIgnoreUnknownCharacters];
     NSString *decodedJson = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
-    return [[KWSMetadata alloc] initModelFromJsonString:decodedJson andOptions:Strict];
+    return [[KWSMetadata alloc] initWithJsonString:decodedJson];
 }
 
 // <Del> functions

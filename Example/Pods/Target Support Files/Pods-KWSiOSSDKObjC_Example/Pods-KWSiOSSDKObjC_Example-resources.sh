@@ -60,12 +60,10 @@ install_resource()
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${BUILT_PRODUCTS_DIR}/KWSiOSSDKObjC.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/SAJsonParser.bundle"
-  install_resource "${BUILT_PRODUCTS_DIR}/SAUtils.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${BUILT_PRODUCTS_DIR}/KWSiOSSDKObjC.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/SAJsonParser.bundle"
-  install_resource "${BUILT_PRODUCTS_DIR}/SAUtils.bundle"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

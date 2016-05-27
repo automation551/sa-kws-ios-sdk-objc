@@ -1,22 +1,20 @@
 //
-//  KWSError.m
+//  KWSParentEmailError.m
 //  Pods
 //
-//  Created by Gabriel Coman on 24/05/2016.
+//  Created by Gabriel Coman on 27/05/2016.
 //
 //
 
-#import "KWSError.h"
-#import "KWSInvalid.h"
+#import "KWSParentEmailError.h"
 
-@implementation KWSError
+@implementation KWSParentEmailError
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super init]) {
         _code = [[jsonDictionary objectForKey:@"code"] integerValue];
-        _codeMeaning = [jsonDictionary objectForKey:@"codeMeaning"];
         _errorMessage = [jsonDictionary objectForKey:@"errorMessage"];
-        _invalid = [[KWSInvalid alloc] initWithJsonDictionary:[jsonDictionary objectForKey:@"invalid"]];
+        _codeMeaning = [jsonDictionary objectForKey:@"codeMeaning"];
     }
     return self;
 }
@@ -28,9 +26,8 @@
 - (NSDictionary*) dictionaryRepresentation {
     return @{
         @"code": @(_code),
-        @"codeMeaning": nullSafe(_codeMeaning),
         @"errorMessage": nullSafe(_errorMessage),
-        @"invalid": [_invalid dictionaryRepresentation]
+        @"codeMeaning": nullSafe(_codeMeaning)
     };
 }
 

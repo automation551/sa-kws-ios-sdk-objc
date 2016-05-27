@@ -12,8 +12,6 @@
 // aux
 #import "KWS.h"
 #import "KWSNetworking.h"
-#import "NSObject+StringToModel.h"
-#import "NSObject+ModelToString.h"
 
 // models
 #import "KWSMetadata.h"

@@ -12,8 +12,6 @@
 // aux
 #import "KWS.h"
 #import "KWSNetworking.h"
-#import "NSObject+StringToModel.h"
-#import "NSObject+ModelToString.h"
 
 // models
 #import "KWSMetadata.h"
@@ -37,8 +35,8 @@
             
             if ((code == 200 || code == 204) && json != NULL) {
                 
-                KWSUser *user = [[KWSUser alloc] initModelFromJsonString:json andOptions:Strict];
-                NSLog(@"User data: %@", [user jsonStringPreetyRepresentation] );
+                KWSUser *user = [[KWSUser alloc] initWithJsonString:json];
+                NSLog(@"User data: %@", [user jsonPreetyStringRepresentation] );
                 
                 if (user) {
                     

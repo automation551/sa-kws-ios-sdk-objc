@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SAJsonParser.h"
 
 @class KWSPermissions;
 
-@interface KWSUser : NSObject
+@interface KWSUser : NSObject <SASerializationProtocol, SADeserializationProtocol>
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;

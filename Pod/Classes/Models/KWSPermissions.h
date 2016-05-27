@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SAJsonParser.h"
 
-@interface KWSPermissions : NSObject
+@interface KWSPermissions : NSObject <SADeserializationProtocol, SASerializationProtocol>
 @property (nonatomic, strong) NSNumber *sendPushNotification;
 @end

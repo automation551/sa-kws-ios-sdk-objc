@@ -7,7 +7,25 @@
 //
 
 #import "KWSInvalid.h"
+#import "KWSParentEmailError.h"
 
 @implementation KWSInvalid
+
+- (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
+    if (self = [super init]){
+        _parentEmail = [[KWSParentEmailError alloc] initWithJsonDictionary:[jsonDictionary objectForKey:@"parentEmail"]];
+    }
+    return self;
+}
+
+- (BOOL) isValid {
+    return true;
+}
+
+- (NSDictionary*) dictionaryRepresentation {
+    return @{
+        @"parentEmail": [_parentEmail dictionaryRepresentation]
+    };
+}
 
 @end

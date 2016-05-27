@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SAJsonParser.h"
 
-@class KWSError;
+@class KWSParentEmailError;
 
-@interface KWSInvalid : NSObject
-@property (nonatomic, strong) KWSError *parentEmail;
+@interface KWSInvalid : NSObject <SADeserializationProtocol, SASerializationProtocol>
+@property (nonatomic, strong) KWSParentEmailError *parentEmail;
 @end

@@ -12,12 +12,11 @@
 // aux
 #import "KWS.h"
 #import "KWSNetworking.h"
-#import "NSObject+StringToModel.h"
-#import "NSObject+ModelToString.h"
 
 // models
 #import "KWSMetadata.h"
 #import "KWSError.h"
+#import "KWSParentEmailError.h"
 #import "KWSInvalid.h"
 
 @implementation KWSRequestPermission
@@ -37,8 +36,8 @@
         [KWSNetworking sendPOST:endpoint token:oauthToken body:body callback:^(NSString *json, NSInteger code) {
             
             if (json) {
-                KWSError *error = [[KWSError alloc] initModelFromJsonString:json andOptions:Strict];
-                NSLog(@"%@", [error jsonStringPreetyRepresentation]);
+                KWSError *error = [[KWSError alloc] initWithJsonString:json];
+                NSLog(@"%@", [error jsonPreetyStringRepresentation]);
                 
                 if (code == 200 || code == 204) {
                     [self delPushPermissionRequestedInKWS];
