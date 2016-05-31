@@ -8,17 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
-typedef id (^SAArrayIterator)(id item);
-
 @interface NSDictionary (SAJson)
 
-// custom inits
-- (id) initWithJsonString:(NSString*)jsonString;
-- (id) initWithJsonData:(NSData*)jsonData;
+/**
+ *  Factory constructor for a dictionary with a json string
+ *
+ *  @param jsonString valid json string
+ *
+ *  @return a new dictionary instance
+ */
 + (NSDictionary*) dictionaryWithJsonString:(NSString*)jsonString;
-+ (NSDictionary*) dictionaryWithJsonData:(NSData*)jsonData;
 
-// other dict functions
-- (NSArray*) arrayForKey:(NSString*)key withIterator:(SAArrayIterator)iterator;
+/**
+ *  Factory constructor for a dictionary with a json data object
+ *
+ *  @param jsonData a valid json data object
+ *
+ *  @return a new dictionary instance
+ */
++ (NSDictionary*) dictionaryWithJsonData:(NSData*)jsonData;
 
 @end

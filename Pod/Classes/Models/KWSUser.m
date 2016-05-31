@@ -32,7 +32,7 @@
         @"firstName": nullSafe(_firstName),
         @"lastName": nullSafe(_lastName),
         @"email": nullSafe(_email),
-        @"applicationPermissions": [_applicationPermissions dictionaryRepresentation]
+        @"applicationPermissions": nullSafe([_applicationPermissions dictionaryRepresentation])
     };
 }
 

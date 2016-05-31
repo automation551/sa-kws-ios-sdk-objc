@@ -11,8 +11,7 @@
 
 @implementation NSObject (SAJson)
 
-// deserialization
-
+// default implementation (that should be overridden)
 - (id) initWithJsonDictionary:(NSDictionary*)jsonDictionary{
     if (self = [self init]){
         
@@ -20,6 +19,7 @@
     return self;
 }
 
+// default implementation - should be left as it is
 - (id) initWithJsonString:(NSString*)jsonString {
     NSDictionary *jsonDictionary = [NSDictionary dictionaryWithJsonString:jsonString];
     if (self = [self initWithJsonDictionary:jsonDictionary]) {
@@ -28,6 +28,7 @@
     return self;
 }
 
+// default implementation - should be left as it is
 - (id) initWithJsonData:(NSData*)jsonData {
     NSDictionary *jsonDictionary = [NSDictionary dictionaryWithJsonData:jsonData];
     if (self = [self initWithJsonDictionary:jsonDictionary]) {
@@ -36,16 +37,19 @@
     return self;
 }
 
+// default implementation - should be left as it is
 - (BOOL) isValid {
     return true;
 }
 
 // serialization
 
+// default implementation that should be overriden
 - (NSDictionary*) dictionaryRepresentation {
     return @{};
 }
 
+// default implementation - should be left as it is
 - (NSString*) jsonPreetyStringRepresentation {
     NSDictionary *dictionary = [self dictionaryRepresentation];
     if ([NSJSONSerialization isValidJSONObject:dictionary]) {
@@ -55,6 +59,7 @@
     return nil;
 }
 
+// default implementation - should be left as it is
 - (NSString*) jsonCompactStringRepresentation {
     NSDictionary *dictionary = [self dictionaryRepresentation];
     if ([NSJSONSerialization isValidJSONObject:dictionary]) {
@@ -64,6 +69,7 @@
     return nil;
 }
 
+// default implementation - should be left as it is
 - (NSData*) jsonDataRepresentation {
     NSDictionary *dictionary = [self dictionaryRepresentation];
     if ([NSJSONSerialization isValidJSONObject:dictionary]) {

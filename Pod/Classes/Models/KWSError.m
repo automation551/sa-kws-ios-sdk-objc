@@ -30,7 +30,7 @@
         @"code": @(_code),
         @"codeMeaning": nullSafe(_codeMeaning),
         @"errorMessage": nullSafe(_errorMessage),
-        @"invalid": [_invalid dictionaryRepresentation]
+        @"invalid": nullSafe([_invalid dictionaryRepresentation])
     };
 }
 

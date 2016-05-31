@@ -24,7 +24,7 @@
 
 - (NSDictionary*) dictionaryRepresentation {
     return @{
-        @"parentEmail": [_parentEmail dictionaryRepresentation]
+        @"parentEmail": nullSafe([_parentEmail dictionaryRepresentation])
     };
 }
 

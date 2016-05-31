@@ -1,7 +1,7 @@
 PODS:
-  - KWSiOSSDKObjC (1.0.3):
+  - KWSiOSSDKObjC (1.0.4):
     - SAJsonParser
-  - SAJsonParser (1.1.1)
+  - SAJsonParser (1.1.2)
 
 DEPENDENCIES:
   - KWSiOSSDKObjC (from `../`)
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  KWSiOSSDKObjC: 2717c86f84f861693e3f662276ccaeebe5d26f15
-  SAJsonParser: 8bcf160ab21ca81f2528b87665f87fff87a11ecf
+  KWSiOSSDKObjC: 7865d6824c52703a179905eea6e3317187542725
+  SAJsonParser: 0428f82b9bd71c3641dc5e4033a80d8bf955d523
 
 COCOAPODS: 0.38.2

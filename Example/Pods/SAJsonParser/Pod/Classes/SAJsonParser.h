@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  Include all the public headers for SAJsonParser
+ */
 #import "NSDictionary+SAJson.h"
 #import "NSArray+SAJson.h"
 #import "NSObject+SAJson.h"

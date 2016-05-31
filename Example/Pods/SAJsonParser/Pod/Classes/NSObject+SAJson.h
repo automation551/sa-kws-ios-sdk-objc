@@ -10,5 +10,9 @@
 #import "SADeserializationProtocol.h"
 #import "SASerializationProtocol.h"
 
+/**
+ *  This class is used to provide an extension to NSObject in order to implement
+ *  the SADeserialization and SASerialization protocols
+ */
 @interface NSObject (SAJson) <SADeserializationProtocol, SASerializationProtocol>
 @end
