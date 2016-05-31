@@ -14,10 +14,10 @@
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]) {
         
-        _code = [[jsonDictionary objectForKey:@"code"] integerValue];
-        _codeMeaning = [jsonDictionary objectForKey:@"codeMeaning"];
-        _errorMessage = [jsonDictionary objectForKey:@"errorMessage"];
-        _invalid = [[KWSInvalid alloc] initWithJsonDictionary:[jsonDictionary objectForKey:@"invalid"]];
+        _code = [[jsonDictionary safeObjectForKey:@"code"] integerValue];
+        _codeMeaning = [jsonDictionary safeObjectForKey:@"codeMeaning"];
+        _errorMessage = [jsonDictionary safeObjectForKey:@"errorMessage"];
+        _invalid = [[KWSInvalid alloc] initWithJsonDictionary:[jsonDictionary safeObjectForKey:@"invalid"]];
     }
     return self;
 }

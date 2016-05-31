@@ -1,6 +1,6 @@
 {
   "name": "KWSiOSSDKObjC",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "summary": "The SuperAwesome Kids Web Services SDK",
   "description": "The SuperAwesome Kids Web Services iOS SDK",
   "homepage": "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc",
@@ -14,7 +14,7 @@
   "source": {
     "git": "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git",
     "branch": "master",
-    "tag": "1.0.6"
+    "tag": "1.0.7"
   },
   "platforms": {
     "ios": "7.0"

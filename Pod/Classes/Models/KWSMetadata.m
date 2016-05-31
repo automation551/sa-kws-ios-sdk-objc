@@ -13,13 +13,13 @@
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]) {
         
-        _userId = [[jsonDictionary objectForKey:@"userId"] integerValue];
-        _appId = [[jsonDictionary objectForKey:@"appId"] integerValue];
-        _clientId = [[jsonDictionary objectForKey:@"clientId"] integerValue];
-        _scope = [jsonDictionary objectForKey:@"scope"];
-        _iat = [[jsonDictionary objectForKey:@"iat"] integerValue];
-        _exp = [[jsonDictionary objectForKey:@"exp"] integerValue];
-        _iss = [jsonDictionary objectForKey:@"iss"];
+        _userId = [[jsonDictionary safeObjectForKey:@"userId"] integerValue];
+        _appId = [[jsonDictionary safeObjectForKey:@"appId"] integerValue];
+        _clientId = [[jsonDictionary safeObjectForKey:@"clientId"] integerValue];
+        _scope = [jsonDictionary safeObjectForKey:@"scope"];
+        _iat = [[jsonDictionary safeObjectForKey:@"iat"] integerValue];
+        _exp = [[jsonDictionary safeObjectForKey:@"exp"] integerValue];
+        _iss = [jsonDictionary safeObjectForKey:@"iss"];
     }
     
     return self;

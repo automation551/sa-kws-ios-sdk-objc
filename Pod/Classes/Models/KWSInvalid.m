@@ -13,7 +13,7 @@
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]){
-        _parentEmail = [[KWSParentEmailError alloc] initWithJsonDictionary:[jsonDictionary objectForKey:@"parentEmail"]];
+        _parentEmail = [[KWSParentEmailError alloc] initWithJsonDictionary:[jsonDictionary safeObjectForKey:@"parentEmail"]];
     }
     return self;
 }
