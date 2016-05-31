@@ -12,10 +12,11 @@
 @implementation KWSError
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
-    if (self = [super init]) {
-        _code = [jsonDictionary safeIntForKey:@"code"];
-        _codeMeaning = [jsonDictionary safeStringForKey:@"codeMeaning"];
-        _errorMessage = [jsonDictionary safeStringForKey:@"errorMessage"];
+    if (self = [super initWithJsonDictionary:jsonDictionary]) {
+        
+        _code = [[jsonDictionary objectForKey:@"code"] integerValue];
+        _codeMeaning = [jsonDictionary objectForKey:@"codeMeaning"];
+        _errorMessage = [jsonDictionary objectForKey:@"errorMessage"];
         _invalid = [[KWSInvalid alloc] initWithJsonDictionary:[jsonDictionary objectForKey:@"invalid"]];
     }
     return self;

@@ -11,10 +11,10 @@
 @implementation KWSParentEmailError
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
-    if (self = [super init]) {
-        _code = [jsonDictionary safeIntForKey:@"code"];
-        _errorMessage = [jsonDictionary safeStringForKey:@"errorMessage"];
-        _codeMeaning = [jsonDictionary safeStringForKey:@"codeMeaning"];
+    if (self = [super initWithJsonDictionary:jsonDictionary]) {
+        _code = [[jsonDictionary objectForKey:@"code"] integerValue];
+        _errorMessage = [jsonDictionary objectForKey:@"errorMessage"];
+        _codeMeaning = [jsonDictionary objectForKey:@"codeMeaning"];
     }
     return self;
 }

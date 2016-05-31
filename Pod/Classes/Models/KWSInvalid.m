@@ -12,7 +12,7 @@
 @implementation KWSInvalid
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
-    if (self = [super init]){
+    if (self = [super initWithJsonDictionary:jsonDictionary]){
         _parentEmail = [[KWSParentEmailError alloc] initWithJsonDictionary:[jsonDictionary objectForKey:@"parentEmail"]];
     }
     return self;

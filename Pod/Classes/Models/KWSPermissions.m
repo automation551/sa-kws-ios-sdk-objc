@@ -11,8 +11,8 @@
 @implementation KWSPermissions
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
-    if (self = [super init]){
-        _sendPushNotification = [jsonDictionary safeObjectForKey:@"sendPushNotification"];
+    if (self = [super initWithJsonDictionary:jsonDictionary]){
+        _sendPushNotification = [jsonDictionary objectForKey:@"sendPushNotification"];
     }
     return self;
 }
