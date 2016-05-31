@@ -13,10 +13,10 @@
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super init]){
-        _username = [jsonDictionary objectForKey:@"username"];
-        _firstName = [jsonDictionary objectForKey:@"firstName"];
-        _lastName = [jsonDictionary objectForKey:@"lastName"];
-        _email = [jsonDictionary objectForKey:@"email"];
+        _username = [jsonDictionary safeStringForKey:@"username"];
+        _firstName = [jsonDictionary safeStringForKey:@"firstName"];
+        _lastName = [jsonDictionary safeStringForKey:@"lastName"];
+        _email = [jsonDictionary safeStringForKey:@"email"];
         _applicationPermissions = [[KWSPermissions alloc] initWithJsonDictionary:[jsonDictionary objectForKey:@"applicationPermissions"]];
     }
     return self;

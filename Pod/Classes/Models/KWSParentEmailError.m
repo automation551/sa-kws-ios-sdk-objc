@@ -12,9 +12,9 @@
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super init]) {
-        _code = [[jsonDictionary objectForKey:@"code"] integerValue];
-        _errorMessage = [jsonDictionary objectForKey:@"errorMessage"];
-        _codeMeaning = [jsonDictionary objectForKey:@"codeMeaning"];
+        _code = [jsonDictionary safeIntForKey:@"code"];
+        _errorMessage = [jsonDictionary safeStringForKey:@"errorMessage"];
+        _codeMeaning = [jsonDictionary safeStringForKey:@"codeMeaning"];
     }
     return self;
 }

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6951584A51A5FAED96243758"
+               BlueprintIdentifier = "898A12262D6D382FC2DEA703"
                BuildableName = "libSAJsonParser.a"
                BlueprintName = "SAJsonParser"
                ReferencedContainer = "container:Pods.xcodeproj">

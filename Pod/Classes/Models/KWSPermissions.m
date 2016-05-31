@@ -12,7 +12,7 @@
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super init]){
-        _sendPushNotification = [jsonDictionary objectForKey:@"sendPushNotification"];
+        _sendPushNotification = [jsonDictionary safeObjectForKey:@"sendPushNotification"];
     }
     return self;
 }
