@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D908073ACB98059E9554F4E0"
+               BlueprintIdentifier = "EE5633EF82F09B34550487E0"
                BuildableName = "libPods-KWSiOSSDKObjC_Example.a"
                BlueprintName = "Pods-KWSiOSSDKObjC_Example"
                ReferencedContainer = "container:Pods.xcodeproj">
