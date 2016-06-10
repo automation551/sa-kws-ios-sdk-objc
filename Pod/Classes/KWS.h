@@ -58,5 +58,6 @@
 - (NSString*) getOAuthToken;
 - (NSString*) getKWSApiUrl;
 - (KWSMetadata*) getMetadata;
+- (KWSMetadata*) getMetadata:(NSString*)oauthToken;
 
 @end
