@@ -1,7 +1,9 @@
 PODS:
-  - KWSiOSSDKObjC (1.0.8):
+  - Firebase (2.3.3)
+  - KWSiOSSDKObjC (1.1.0):
+    - Firebase
     - SAJsonParser
-  - SAJsonParser (1.2.0)
+  - SAJsonParser (1.2.1)
 
 DEPENDENCIES:
   - KWSiOSSDKObjC (from `../`)
@@ -11,7 +13,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  KWSiOSSDKObjC: edceac29d5cc586b2f7d65f9eeadaf18f0ff941e
-  SAJsonParser: b2ca75e9916c9f416adb1c75707ba776de760140
+  Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
+  KWSiOSSDKObjC: 9b016b976d4cc8c701ccc506d2034df82d6363ee
+  SAJsonParser: 04485e1bca30a5c6f96101cd825486321d364346
 
 COCOAPODS: 0.38.2

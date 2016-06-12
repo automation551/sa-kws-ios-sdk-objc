@@ -11,6 +11,6 @@
 
 @class KWSParentEmailError;
 
-@interface KWSInvalid : NSObject <SADeserializationProtocol, SASerializationProtocol>
+@interface KWSInvalid : SABaseObject <SADeserializationProtocol, SASerializationProtocol>
 @property (nonatomic, strong) KWSParentEmailError *parentEmail;
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SAJsonParser.h"
 
-@interface KWSMetadata : NSObject <SASerializationProtocol, SADeserializationProtocol>
+@interface KWSMetadata : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
 @property (nonatomic, assign) NSInteger userId;
 @property (nonatomic, assign) NSInteger appId;
 @property (nonatomic, assign) NSInteger clientId;

@@ -11,7 +11,7 @@
 
 @class KWSInvalid;
 
-@interface KWSError : NSObject <SASerializationProtocol, SADeserializationProtocol>
+@interface KWSError : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
 @property (nonatomic, assign) NSInteger code;
 @property (nonatomic, strong) NSString *codeMeaning;
 @property (nonatomic, strong) NSString *errorMessage;

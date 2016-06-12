@@ -1,5 +1,6 @@
+FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/Firebase" "$(PODS_ROOT)/Firebase"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/KWSiOSSDKObjC" "${PODS_ROOT}/Headers/Public/SAJsonParser"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/KWSiOSSDKObjC" -isystem "${PODS_ROOT}/Headers/Public/SAJsonParser"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"KWSiOSSDKObjC" -l"SAJsonParser"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Firebase" "${PODS_ROOT}/Headers/Public/KWSiOSSDKObjC" "${PODS_ROOT}/Headers/Public/SAJsonParser"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Firebase" -isystem "${PODS_ROOT}/Headers/Public/KWSiOSSDKObjC" -isystem "${PODS_ROOT}/Headers/Public/SAJsonParser"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"KWSiOSSDKObjC" -l"SAJsonParser" -l"c++" -l"icucore" -framework "CFNetwork" -framework "Firebase" -framework "Security" -framework "SystemConfiguration"
 PODS_ROOT = ${SRCROOT}/Pods

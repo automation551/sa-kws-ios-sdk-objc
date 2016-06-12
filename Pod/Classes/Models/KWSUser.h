@@ -11,7 +11,7 @@
 
 @class KWSPermissions;
 
-@interface KWSUser : NSObject <SASerializationProtocol, SADeserializationProtocol>
+@interface KWSUser : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;

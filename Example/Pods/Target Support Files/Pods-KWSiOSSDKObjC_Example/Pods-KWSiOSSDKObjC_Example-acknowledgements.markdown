@@ -1,6 +1,10 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## Firebase
+
+https://www.firebase.com/terms/terms-of-service.html
+
 ## KWSiOSSDKObjC
 
 Copyright (c) 2016 Gabriel Coman <dev.gabriel.coman@gmail.com>
