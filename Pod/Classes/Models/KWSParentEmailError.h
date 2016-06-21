@@ -6,7 +6,7 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "SAJsonParser.h"
 
 @interface KWSParentEmailError : SABaseObject <SADeserializationProtocol, SASerializationProtocol>

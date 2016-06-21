@@ -6,7 +6,7 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef void (^KWSResponse)(NSString *json, NSInteger code);
 typedef void (^KWSNetResponse)(NSData * data, NSURLResponse * response, NSError * error);
