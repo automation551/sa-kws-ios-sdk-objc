@@ -1,6 +1,6 @@
 PODS:
   - Firebase (2.3.3)
-  - KWSiOSSDKObjC (1.1.1):
+  - KWSiOSSDKObjC (1.1.3):
     - Firebase
     - SAJsonParser
   - SAJsonParser (1.2.1)
@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
-  KWSiOSSDKObjC: 1129dbd6ce4d38aea9e741a57cc2ed0693ad17d6
+  KWSiOSSDKObjC: f9bc192e80e206cef3d5a3bf5b26e779f5075a9c
   SAJsonParser: 04485e1bca30a5c6f96101cd825486321d364346
 
 COCOAPODS: 0.38.2
