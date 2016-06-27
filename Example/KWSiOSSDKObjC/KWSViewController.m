@@ -56,6 +56,10 @@
     
 }
 
+- (void) didFailBecauseParentEmailIsInvalid {
+    
+}
+
 - (void) didFailBecauseKWSCouldNotFindParentEmail {
     [[KWS sdk] submitParentEmail:@"dev.gabriel.coman@gmail.com"];
 }

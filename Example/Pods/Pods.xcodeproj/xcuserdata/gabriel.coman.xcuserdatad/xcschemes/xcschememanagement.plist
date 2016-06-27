@@ -4,22 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>KWSiOSSDKObjC-KWSiOSSDKObjC.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>KWSiOSSDKObjC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-KWSiOSSDKObjC_Example.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SAJsonParser-SAJsonParser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>40AC2AE8BB198D3E1AFCEDF9F44C62BA</key>
+		<key>15D1641BA6D280021295D07311886012</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>64DD35F51E31136B6A258B71B6B8E5E4</key>
+		<key>4943560A0E2E519B8E9DBFDECD187DF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70A78AA863AAA5C702A7DB80F597F109</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>954FEC29B22ED7E806B29786396B56A8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE722C83092514034B014F2FE380A8B7</key>
+		<key>4F2FC28044042B555BEE5B9BAEFAA1B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

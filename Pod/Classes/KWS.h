@@ -35,6 +35,7 @@
 - (void) didFailBecauseKWSDoesNotAllowRemoteNotifications;
 - (void) didFailBecauseKWSCouldNotFindParentEmail;
 - (void) didFailBecauseRemoteNotificationsAreDisabled;
+- (void) didFailBecauseParentEmailIsInvalid;
 - (void) didFailBecauseOfError;
 
 @end

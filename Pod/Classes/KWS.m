@@ -102,7 +102,7 @@
 }
 
 - (void) emailError {
-    [self delDidFailBecauseOfError];
+    [self delDidFaileBecauseParentEmailIsInvalid];
 }
 
 // <PushManagerProtocol> delegate
@@ -189,6 +189,12 @@
 - (void) delDidFailBecauseRemoteNotificationsAreDisabled {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseRemoteNotificationsAreDisabled)]) {
         [_delegate didFailBecauseRemoteNotificationsAreDisabled];
+    }
+}
+
+- (void) delDidFaileBecauseParentEmailIsInvalid {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseParentEmailIsInvalid)]) {
+        [_delegate didFailBecauseParentEmailIsInvalid];
     }
 }
 
