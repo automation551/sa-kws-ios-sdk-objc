@@ -14,7 +14,7 @@
 // protocol
 @protocol PushManagerProtocol <NSObject>
 
-- (void) didRegisterWithToken:(NSString*)systemToken andFirebaseToken:(NSString*)firebaseToken;
+- (void) didRegisterWithSystem:(NSString*)token;
 - (void) didNotRegister;
 
 @end

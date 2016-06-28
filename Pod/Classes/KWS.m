@@ -11,8 +11,9 @@
 #import "Firebase.h"
 #import "KWSLogger.h"
 #import "KWSSubscribeToken.h"
+#import "FirebaseGetToken.h"
 
-@interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, KWSSubscribeTokenProtocol>
+@interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, KWSSubscribeTokenProtocol, FirebaseGetTokenProtocol>
 // the parent email object
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
 
@@ -20,9 +21,12 @@
 @property (nonatomic, strong) NSString *oauthToken;
 @property (nonatomic, strong) NSString *kwsApiUrl;
 @property (nonatomic, strong) KWSMetadata *metadata;
+@property (nonatomic, strong) FirebaseGetToken *firebaseGetToken;
 @property (nonatomic, strong) KWSSubscribeToken *subscribeToken;
 @property (nonatomic, weak) id <KWSProtocol> delegate;
-@property (nonatomic, assign) BOOL setupOK;
+
+@property (nonatomic, strong) NSString *systemToken;
+@property (nonatomic, strong) NSString *firebaseToken;
 
 @end
 
@@ -52,31 +56,12 @@
     self.kwsApiUrl = kwsApiUrl;
     self.delegate = delegate;
     self.metadata = [self getMetadata:oauthToken];
-    
-    NSLog(@"Json Model: %@", [self.metadata jsonPreetyStringRepresentation]);
-    
-    _setupOK = false;
-    
-    // start configuration - if available
-    @try {
-        [FIRApp configure];
-        [KWSLogger log:@"Configured Firebase"];
-        _setupOK = true;
-    } @catch (NSException *exception) {
-        [KWSLogger err:@"Could not configure Firebase"];
-        _setupOK = false;
-    } @finally {
-        // do nothing
-    }
+    [KWSLogger log:[self.metadata jsonPreetyStringRepresentation]];
 }
 
 // <Public> functions
 
 - (void) checkIfNotificationsAreAllowed {
-    if (!_setupOK) {
-        [self delDidFailBecauseFirebaseIsNotSetupCorrectly];
-        return;
-    }
     [KWSManager sharedInstance].delegate = self;
     [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
 }
@@ -130,19 +115,38 @@
 
 // <PushManagerProtocol> delegate
 
-- (void) didRegisterWithToken:(NSString *)systemToken andFirebaseToken:(NSString *)firebaseToken {
-    _subscribeToken = [[KWSSubscribeToken alloc] init];
-    _subscribeToken.delegate = self;
-    [_subscribeToken request:firebaseToken];
+- (void) didRegisterWithSystem:(NSString *)token {
+    _firebaseGetToken = [[FirebaseGetToken alloc] init];
+    _firebaseGetToken.delegate = self;
+    _systemToken = token;
+    [_firebaseGetToken setup];
 }
 
 - (void) didNotRegister {
     [self delDidFailBecauseOfError];
 }
 
+// <FirebaseGetTokenProtocol> delegate
+
+- (void) didGetFirebaseToken: (NSString*) token {
+    _subscribeToken = [[KWSSubscribeToken alloc] init];
+    _subscribeToken.delegate = self;
+    _firebaseToken = token;
+    [_subscribeToken request:token];
+}
+
+- (void) didFailToGetFirebaseToken {
+    [self delDidFailBecauseOfError];
+}
+
+- (void) didFailBecauseFirebaseIsNotSetup {
+    [self delDidFailBecauseFirebaseIsNotSetupCorrectly];
+}
+
 // <KWSSubscribeTokenProtocol> delegate
 
 - (void) tokenWasSubscribed {
+    [KWSLogger log:[NSString stringWithFormat:@"Did register with\n - System Token: %@\n - Firebase Token: %@", _systemToken, _firebaseToken]];
     [self delDidRegisterForRemoteNotifications];
 }
 

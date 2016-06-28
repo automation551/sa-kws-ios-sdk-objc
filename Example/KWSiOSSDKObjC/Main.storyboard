@@ -21,7 +21,7 @@
                                 <rect key="frame" x="20" y="28" width="131" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="doSomething:" destination="whP-gf-Uak" eventType="touchUpInside" id="Lt6-h2-An3"/>
+                                    <action selector="startProcess:" destination="whP-gf-Uak" eventType="touchUpInside" id="3R6-kb-XXP"/>
                                 </connections>
                             </button>
                         </subviews>

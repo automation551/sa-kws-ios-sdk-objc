@@ -9,19 +9,35 @@
 #import "FirebaseGetToken.h"
 #import "Firebase.h"
 #import "KWSLogger.h"
+#import "Firebase.h"
 
 #define MAXIMUM_NR_TIMES 30
 
 @interface FirebaseGetToken ()
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) NSInteger times;
+@property (nonatomic, assign) BOOL setupOK;
 @end
 
 @implementation FirebaseGetToken
 
-- (void) request {
+- (void) setup {
     
-    // start firebase request
+    _setupOK = true;
+    
+    @try {
+        [FIRApp configure];
+        [self request];
+    } @catch (NSException *exception) {
+        [KWSLogger err:@"Could not configure Firebase"];
+        _setupOK = false;
+        [self delDidFailBecauseFirebaseIsNotSetup];
+    } @finally {
+        // do nothing
+    }
+}
+
+- (void) request {
     _times = 0;
     _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(internalTimerFunc) userInfo:nil repeats:YES];
 }
@@ -40,6 +56,7 @@
         _timer = nil;
         [self delFailToGetFirebaseToken];
     } else {
+        _times++;
         [KWSLogger log:[NSString stringWithFormat:@"Trying to get Firebase token try %ld / %ld", _times, MAXIMUM_NR_TIMES]];
     }
 }
@@ -53,6 +70,12 @@
 - (void) delFailToGetFirebaseToken {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailToGetFirebaseToken)]) {
         [_delegate didFailToGetFirebaseToken];
+    }
+}
+
+- (void) delDidFailBecauseFirebaseIsNotSetup {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseFirebaseIsNotSetup)]) {
+        [_delegate didFailBecauseFirebaseIsNotSetup];
     }
 }
 

@@ -27,10 +27,12 @@
     BOOL isRegistered = false;
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        isRegistered = ([_appRef isRegisteredForRemoteNotifications]);
+        UIUserNotificationSettings *settings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        isRegistered = (settings.types & UIRemoteNotificationTypeAlert);
+//        isRegistered = [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
     }
     else {
-        UIRemoteNotificationType types = [_appRef enabledRemoteNotificationTypes];
+        UIRemoteNotificationType types = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
         isRegistered = (types & UIRemoteNotificationTypeAlert);
     }
     

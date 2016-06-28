@@ -13,6 +13,7 @@
 
 - (void) didGetFirebaseToken: (NSString*) token;
 - (void) didFailToGetFirebaseToken;
+- (void) didFailBecauseFirebaseIsNotSetup;
 
 @end
 
@@ -22,7 +23,7 @@
 // delegate
 @property (nonatomic, weak) id<FirebaseGetTokenProtocol> delegate;
 
-// request
-- (void) request;
+// setuo
+- (void) setup;
 
 @end

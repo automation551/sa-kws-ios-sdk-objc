@@ -33,7 +33,7 @@
         
         [KWSNetworking sendPOST:endpoint token:oauthToken body:@{} callback:^(NSString *json, NSInteger code) {
             
-            if (code == 200) {
+            if (code == 200 || code == 204) {
                 NSLog(@"Payload ==> %@", json);
                 [self delTokenWasUnsubscribed];
             } else {

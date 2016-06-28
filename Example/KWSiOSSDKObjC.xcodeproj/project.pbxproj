@@ -11,6 +11,7 @@
 		1B87E4A41CF89E400053FD8F /* KWSTokenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B87E4A31CF89E400053FD8F /* KWSTokenTests.m */; };
 		1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B87E4A51CF89E590053FD8F /* KWSCheckPermissionTests.m */; };
 		1B87E4A81CF89E690053FD8F /* KWSKWSRequestPermissionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B87E4A71CF89E690053FD8F /* KWSKWSRequestPermissionTests.m */; };
+		1B92FD131D229B2500B75617 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B92FD121D229B2500B75617 /* GoogleService-Info.plist */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -43,6 +44,7 @@
 		1B87E4A31CF89E400053FD8F /* KWSTokenTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSTokenTests.m; sourceTree = "<group>"; };
 		1B87E4A51CF89E590053FD8F /* KWSCheckPermissionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSCheckPermissionTests.m; sourceTree = "<group>"; };
 		1B87E4A71CF89E690053FD8F /* KWSKWSRequestPermissionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSKWSRequestPermissionTests.m; sourceTree = "<group>"; };
+		1B92FD121D229B2500B75617 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* KWSiOSSDKObjC_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KWSiOSSDKObjC_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,6 +142,7 @@
 		6003F593195388D20070C39A /* Example for KWSiOSSDKObjC */ = {
 			isa = PBXGroup;
 			children = (
+				1B92FD121D229B2500B75617 /* GoogleService-Info.plist */,
 				6003F59C195388D20070C39A /* KWSAppDelegate.h */,
 				6003F59D195388D20070C39A /* KWSAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -285,6 +288,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				1B92FD131D229B2500B75617 /* GoogleService-Info.plist in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				1B467E671CF45A0000362A1A /* README.rst in Resources */,
 			);

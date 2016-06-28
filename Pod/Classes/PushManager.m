@@ -11,14 +11,12 @@
 #import "KWSSystemVersion.h"
 #import "Firebase.h"
 #import "KWSSubscribeToken.h"
-#import "FirebaseGetToken.h"
 
-@interface PushManager () <FirebaseGetTokenProtocol>
+@interface PushManager ()
 @property (nonatomic, weak) UIApplication *appRef;
 @property (nonatomic, strong) id<UIApplicationDelegate> appDelegateRef;
 @property (nonatomic, strong) PushCheckPermission *pushCheck;
 @property (nonatomic, strong) PushRegisterPermission *pushRegister;
-@property (nonatomic, strong) FirebaseGetToken *firebaseGetToken;
 @property (nonatomic, assign) SEL settingsSelector;
 @property (nonatomic, assign) SEL registeredSelector;
 @property (nonatomic, assign) SEL failureSelector;
@@ -43,7 +41,6 @@
         _appDelegateRef = nil;
         _pushCheck = [[PushCheckPermission alloc] init];
         _pushRegister = [[PushRegisterPermission alloc] init];
-        _firebaseGetToken = [[FirebaseGetToken alloc] init];
         _settingsSelector = @selector(application:didRegisterUserNotificationSettings:);
         _registeredSelector = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
         _failureSelector = @selector(application:didFailToRegisterForRemoteNotificationsWithError:);
@@ -79,9 +76,7 @@
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [self performRegisteredSelector:application withData:deviceToken];
     [self resumeAppDelegateControl];
-    _tmpSystemToken = [self getToken:deviceToken];
-    _firebaseGetToken.delegate = self;
-    [_firebaseGetToken request];
+    [self delDidRegisterWithSystem:deviceToken];
 }
 
 - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -101,17 +96,6 @@
 - (void) pushDisabledInSystem {
     [KWSLogger err:@"Push Notifications are disabled on system - aborting registration"];
     [self resumeAppDelegateControl];
-    [self delDidNotRegister];
-}
-
-// <FirebaseGetTokenProtocol>
-
-- (void) didGetFirebaseToken:(NSString *)token {
-    [KWSLogger log:[NSString stringWithFormat:@"Successfully registered with\n\t - System token: %@\n\t - Firebase token: %@", _tmpSystemToken, token]];
-    [self delDidRegisterWithToken:_tmpSystemToken andFirebaseToken:token];
-}
-
-- (void) didFailToGetFirebaseToken {
     [self delDidNotRegister];
 }
 
@@ -155,9 +139,9 @@
 
 // <Del> functions
 
-- (void) delDidRegisterWithToken:(NSString*)systemToken andFirebaseToken:(NSString*)firebaseToken {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didRegisterWithToken:andFirebaseToken:)]){
-        [_delegate didRegisterWithToken:systemToken andFirebaseToken:firebaseToken];
+- (void) delDidRegisterWithSystem:(NSString*)token {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didRegisterWithSystem:)]) {
+        [_delegate didRegisterWithSystem:token];
     }
 }
 
