@@ -8,8 +8,11 @@
 
 #import "KWS.h"
 #import "KWSMetadata.h"
+#import "Firebase.h"
+#import "KWSLogger.h"
+#import "KWSSubscribeToken.h"
 
-@interface KWS ()
+@interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, KWSSubscribeTokenProtocol>
 // the parent email object
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
 
@@ -17,6 +20,7 @@
 @property (nonatomic, strong) NSString *oauthToken;
 @property (nonatomic, strong) NSString *kwsApiUrl;
 @property (nonatomic, strong) KWSMetadata *metadata;
+@property (nonatomic, strong) KWSSubscribeToken *subscribeToken;
 @property (nonatomic, weak) id <KWSProtocol> delegate;
 
 @end
@@ -47,8 +51,17 @@
     self.kwsApiUrl = kwsApiUrl;
     self.delegate = delegate;
     self.metadata = [self getMetadata:oauthToken];
+    
     NSLog(@"Json Model: %@", [self.metadata jsonPreetyStringRepresentation]);
     
+    // start configuration - if available
+    @try {
+        [FIRApp configure];
+    } @catch (NSException *exception) {
+        [KWSLogger err:@"Could not configure FIRApp"];
+    } @finally {
+        // nothing
+    }
 }
 
 // <Public> functions
@@ -107,11 +120,23 @@
 
 // <PushManagerProtocol> delegate
 
-- (void) didRegister {
-    [self delDidRegisterForRemoteNotifications];
+- (void) didRegisterWithToken:(NSString *)systemToken andFirebaseToken:(NSString *)firebaseToken {
+    _subscribeToken = [[KWSSubscribeToken alloc] init];
+    _subscribeToken.delegate = self;
+    [_subscribeToken request:firebaseToken];
 }
 
 - (void) didNotRegister {
+    [self delDidFailBecauseOfError];
+}
+
+// <KWSSubscribeTokenProtocol> delegate
+
+- (void) tokenWasSubscribed {
+    [self delDidRegisterForRemoteNotifications];
+}
+
+- (void) tokenError {
     [self delDidFailBecauseOfError];
 }
 

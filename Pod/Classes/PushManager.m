@@ -9,6 +9,8 @@
 #import "PushManager.h"
 #import "KWSLogger.h"
 #import "KWSSystemVersion.h"
+#import "Firebase.h"
+#import "KWSSubscribeToken.h"
 
 @interface PushManager ()
 @property (nonatomic, weak) UIApplication *appRef;
@@ -25,7 +27,7 @@
 + (PushManager*) sharedInstance {
     static PushManager *sharedManager = nil;
     @synchronized(self) {
-        if (sharedManager == nil){
+        if (sharedManager == nil) {
             sharedManager = [[self alloc] init];
         }
     }
@@ -73,9 +75,10 @@
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [self performRegisteredSelector:application withData:deviceToken];
     [self resumeAppDelegateControl];
-    NSString *token = [self getToken:deviceToken];
-    [self delDidRegister];
-    [KWSLogger log:[NSString stringWithFormat:@"Was able to register for Push Notifications with token %@", token]];
+    NSString *systemToken = [self getToken:deviceToken];
+    NSString *firebaseToken = [[FIRInstanceID instanceID] token]; // just home is not nil for now
+    [KWSLogger log:[NSString stringWithFormat:@"Was able to register for Push Notifications with:\n\t - system token: %@\n\t - firebase token: %@", systemToken, firebaseToken]];
+    [self delDidRegisterWithToken:systemToken andFirebaseToken:firebaseToken];
 }
 
 - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -138,9 +141,9 @@
 
 // <Del> functions
 
-- (void) delDidRegister {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didRegister)]){
-        [_delegate didRegister];
+- (void) delDidRegisterWithToken:(NSString*)systemToken andFirebaseToken:(NSString*)firebaseToken {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didRegisterWithToken:andFirebaseToken:)]){
+        [_delegate didRegisterWithToken:systemToken andFirebaseToken:firebaseToken];
     }
 }
 

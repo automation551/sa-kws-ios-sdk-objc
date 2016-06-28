@@ -42,7 +42,7 @@
 
 // Class
 
-@interface KWS : NSObject <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol>
+@interface KWS : NSObject
 
 // singleton func
 + (KWS*) sdk;

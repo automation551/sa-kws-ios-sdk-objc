@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/KWS/KWSSubscribeToken.h
