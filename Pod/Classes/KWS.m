@@ -64,8 +64,9 @@
         _setupOK = true;
     } @catch (NSException *exception) {
         [KWSLogger err:@"Could not configure Firebase"];
-    } @finally {
         _setupOK = false;
+    } @finally {
+        // do nothing
     }
 }
 
