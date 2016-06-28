@@ -72,6 +72,10 @@
     
 }
 
+- (void) didFailBecauseFirebaseIsNotSetupCorrectly {
+    
+}
+
 - (IBAction)doSomething:(id)sender {
     NSLog(@"Do something");
 }

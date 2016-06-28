@@ -26,7 +26,7 @@
     NSString *oauthToken = [[KWS sdk] getOAuthToken];
     KWSMetadata *metadata = [[KWS sdk] getMetadata];
     
-    if (kwsApiUrl && oauthToken && metadata) {
+    if (kwsApiUrl && oauthToken && metadata && token) {
         
         NSInteger userId = metadata.userId;
         NSInteger appId = metadata.appId;

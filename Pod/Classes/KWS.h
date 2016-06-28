@@ -37,6 +37,7 @@
 - (void) didFailBecauseRemoteNotificationsAreDisabled;
 - (void) didFailBecauseParentEmailIsInvalid;
 - (void) didFailBecauseOfError;
+- (void) didFailBecauseFirebaseIsNotSetupCorrectly;
 
 @end
 

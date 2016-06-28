@@ -22,6 +22,7 @@
 @property (nonatomic, strong) KWSMetadata *metadata;
 @property (nonatomic, strong) KWSSubscribeToken *subscribeToken;
 @property (nonatomic, weak) id <KWSProtocol> delegate;
+@property (nonatomic, assign) BOOL setupOK;
 
 @end
 
@@ -54,19 +55,27 @@
     
     NSLog(@"Json Model: %@", [self.metadata jsonPreetyStringRepresentation]);
     
+    _setupOK = false;
+    
     // start configuration - if available
     @try {
         [FIRApp configure];
+        [KWSLogger log:@"Configured Firebase"];
+        _setupOK = true;
     } @catch (NSException *exception) {
-        [KWSLogger err:@"Could not configure FIRApp"];
+        [KWSLogger err:@"Could not configure Firebase"];
     } @finally {
-        // nothing
+        _setupOK = false;
     }
 }
 
 // <Public> functions
 
 - (void) checkIfNotificationsAreAllowed {
+    if (!_setupOK) {
+        [self delDidFailBecauseFirebaseIsNotSetupCorrectly];
+        return;
+    }
     [KWSManager sharedInstance].delegate = self;
     [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
 }
@@ -226,6 +235,12 @@
 - (void) delDidFailBecauseOfError {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseOfError)]) {
         [_delegate didFailBecauseOfError];
+    }
+}
+
+- (void) delDidFailBecauseFirebaseIsNotSetupCorrectly {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseFirebaseIsNotSetupCorrectly)]){
+        [_delegate didFailBecauseFirebaseIsNotSetupCorrectly];
     }
 }
 
