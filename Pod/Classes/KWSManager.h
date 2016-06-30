@@ -9,16 +9,17 @@
 #import <UIKit/UIKit.h>
 
 // imports
-#import "KWSCheckPermission.h"
+#import "KWSCheckAllowed.h"
 #import "KWSRequestPermission.h"
-#import "PushCheckPermission.h"
-#import "PushRegisterPermission.h"
+#import "PushCheckAllowed.h"
+#import "PushCheckRegistered.h"
+#import "PushRegister.h"
 
 // protocol
 @protocol KWSManagerProtocol <NSObject>
 
-- (void) pushDisabledInSystem;
-- (void) pushDisabledInKWS;
+- (void) pushNotAllowedInSystem;
+- (void) pushNotAllowedInKWS;
 - (void) parentEmailIsMissingInKWS;
 - (void) networkError;
 - (void) isAllowedToRegister;
@@ -27,7 +28,7 @@
 @end
 
 // class
-@interface KWSManager : NSObject <KWSCheckPermissionProtocol, KWSRequestPermissionProtocol, PushCheckPermissionProtocol, PushRegisterPermissionProtocol>
+@interface KWSManager : NSObject <KWSCheckAllowedProtocol, KWSRequestPermissionProtocol, PushCheckAllowedProtocol, PushCheckRegisteredProtocol>
 
 // singleton
 + (KWSManager*) sharedInstance;

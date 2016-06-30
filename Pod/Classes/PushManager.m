@@ -15,8 +15,9 @@
 @interface PushManager ()
 @property (nonatomic, weak) UIApplication *appRef;
 @property (nonatomic, strong) id<UIApplicationDelegate> appDelegateRef;
-@property (nonatomic, strong) PushCheckPermission *pushCheck;
-@property (nonatomic, strong) PushRegisterPermission *pushRegister;
+@property (nonatomic, strong) PushCheckAllowed *pushCheckAllowed;
+@property (nonatomic, strong) PushCheckRegistered *pushCheckRegistered;
+@property (nonatomic, strong) PushRegister *pushRegister;
 @property (nonatomic, assign) SEL settingsSelector;
 @property (nonatomic, assign) SEL registeredSelector;
 @property (nonatomic, assign) SEL failureSelector;
@@ -24,6 +25,8 @@
 @end
 
 @implementation PushManager
+
+// MARK: Init functions
 
 + (PushManager*) sharedInstance {
     static PushManager *sharedManager = nil;
@@ -39,8 +42,9 @@
     if (self = [super init]) {
         _appRef = [UIApplication sharedApplication];
         _appDelegateRef = nil;
-        _pushCheck = [[PushCheckPermission alloc] init];
-        _pushRegister = [[PushRegisterPermission alloc] init];
+        _pushCheckAllowed = [[PushCheckAllowed alloc] init];
+        _pushCheckRegistered = [[PushCheckRegistered alloc] init];
+        _pushRegister = [[PushRegister alloc] init];
         _settingsSelector = @selector(application:didRegisterUserNotificationSettings:);
         _registeredSelector = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
         _failureSelector = @selector(application:didFailToRegisterForRemoteNotificationsWithError:);
@@ -48,7 +52,7 @@
     return self;
 }
 
-// <Public> function
+// MARK: Public functions
 
 - (void) registerForPushNotifications {
     [KWSLogger log:@"Start registering for Push Notifications | becoming App Delegate"];
@@ -64,13 +68,13 @@
     }
 }
 
-// <UIApplicationDelegate> functions
+// MARK: UIApplicationDelegate
 
 - (void) application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
     [self performSettingsSelector:application withSettings:notificationSettings];
-    _pushCheck.delegate = self;
-    [_pushCheck markSystemDialogAsSeen];
-    [_pushCheck check];
+    _pushCheckAllowed.delegate = self;
+    [_pushCheckAllowed markSystemDialogAsSeen];
+    [_pushCheckAllowed check];
 }
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -86,20 +90,20 @@
     [KWSLogger err:@"Failed to register for Push Notification"];
 }
 
-// <PushCheckPermision>
+// MARK: PushCheckAllowed
 
-- (void) pushEnabledInSystem {
+- (void) pushAllowedInSystem {
     [KWSLogger log:@"Push Notificaitons are enabled on system - start registration"];
     [_pushRegister registerPush];
 }
 
-- (void) pushDisabledInSystem {
+- (void) pushNotAllowedInSystem {
     [KWSLogger err:@"Push Notifications are disabled on system - aborting registration"];
     [self resumeAppDelegateControl];
     [self delDidNotRegister];
 }
 
-// <Private> functions
+// MARK: Private functions
 
 - (NSString*) getToken:(NSData *)deviceToken {
     const char* data = [deviceToken bytes];
@@ -137,7 +141,7 @@
     [UIApplication sharedApplication].delegate = _appDelegateRef;
 }
 
-// <Del> functions
+// MARK: Delegate handler functions
 
 - (void) delDidRegisterWithSystem:(NSString*)token {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(didRegisterWithSystem:)]) {

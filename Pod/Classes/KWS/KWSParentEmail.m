@@ -20,6 +20,8 @@
 
 @implementation KWSParentEmail
 
+// MARK: Main class function
+
 - (void) submit:(NSString *)email {
     
     // validate
@@ -53,6 +55,8 @@
     
 }
 
+// MARK: Aux private functions
+
 - (BOOL) validateEmail:(NSString*)email withStricterFilter:(BOOL) stricterFilter {
     if (!email) {
         return false;
@@ -64,6 +68,8 @@
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
 }
+
+// MARK: Delegate handler functions
 
 - (void) delEmailSubmittedInKWS {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailSubmittedInKWS)]) {

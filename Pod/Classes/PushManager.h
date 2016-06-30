@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PushCheckPermission.h"
-#import "PushRegisterPermission.h"
+#import "PushCheckAllowed.h"
+#import "PushCheckRegistered.h"
+#import "PushRegister.h"
 
 // protocol
 @protocol PushManagerProtocol <NSObject>
@@ -20,7 +21,7 @@
 @end
 
 // class
-@interface PushManager : NSObject <UIApplicationDelegate, PushCheckPermissionProtocol>
+@interface PushManager : NSObject <UIApplicationDelegate, PushCheckAllowedProtocol>
 
 // singleton
 + (PushManager*) sharedInstance;

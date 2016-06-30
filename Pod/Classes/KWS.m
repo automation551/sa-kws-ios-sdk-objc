@@ -79,38 +79,38 @@
 
 // <KWSManagerProtocol> delegate
 
-- (void) pushDisabledInSystem {
-    [self delDidFailBecauseRemoteNotificationsAreDisabled];
+- (void) pushNotAllowedInSystem {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NoSystemPermission];
 }
 
-- (void) pushDisabledInKWS {
-    [self delDidFailBecauseKWSDoesNotAllowRemoteNotifications];
+- (void) pushNotAllowedInKWS {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NoKWSPermission];
 }
 
 - (void) parentEmailIsMissingInKWS {
-    [self delDidFailBecauseKWSCouldNotFindParentEmail];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailNotFound];
 }
 
 - (void) networkError {
-    [self delDidFailBecauseOfError];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
 }
 
 - (void) isAllowedToRegister {
-    [self delIsAllowedToRegisterForRemoteNotifications];
+    [self delKWSSDKDoesAllowUserToRegisterForRemoteNotifications];
 }
 
 - (void) isAlreadyRegistered {
-    [self delIsAlreadyRegisteredForRemoteNotifications];
+    [self delKWSSDKDidRegisterUserForRemoteNotifications];
 }
 
 // <KWSParentEmailProtocol> delegate
 
 - (void) emailSubmittedInKWS {
-    [self delIsAllowedToRegisterForRemoteNotifications];
+    [self delKWSSDKDoesAllowUserToRegisterForRemoteNotifications];
 }
 
 - (void) emailError {
-    [self delDidFaileBecauseParentEmailIsInvalid];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailInvalid];
 }
 
 // <PushManagerProtocol> delegate
@@ -123,7 +123,7 @@
 }
 
 - (void) didNotRegister {
-    [self delDidFailBecauseOfError];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
 }
 
 // <FirebaseGetTokenProtocol> delegate
@@ -136,22 +136,22 @@
 }
 
 - (void) didFailToGetFirebaseToken {
-    [self delDidFailBecauseOfError];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseCouldNotGetToken];
 }
 
 - (void) didFailBecauseFirebaseIsNotSetup {
-    [self delDidFailBecauseFirebaseIsNotSetupCorrectly];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseNotSetup];
 }
 
 // <KWSSubscribeTokenProtocol> delegate
 
 - (void) tokenWasSubscribed {
     [KWSLogger log:[NSString stringWithFormat:@"Did register with\n - System Token: %@\n - Firebase Token: %@", _systemToken, _firebaseToken]];
-    [self delDidRegisterForRemoteNotifications];
+    [self delKWSSDKDidRegisterUserForRemoteNotifications];
 }
 
 - (void) tokenError {
-    [self delDidFailBecauseOfError];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
 }
 
 // getters
@@ -195,57 +195,21 @@
 
 // <Del> functions
 
-- (void) delIsAllowedToRegisterForRemoteNotifications {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(isAllowedToRegisterForRemoteNotifications)]) {
-        [_delegate isAllowedToRegisterForRemoteNotifications];
+- (void) delKWSSDKDoesAllowUserToRegisterForRemoteNotifications {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(kwsSDKDoesAllowUserToRegisterForRemoteNotifications)]) {
+        [_delegate kwsSDKDoesAllowUserToRegisterForRemoteNotifications];
     }
 }
 
-- (void) delIsAlreadyRegisteredForRemoteNotifications {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(isAlreadyRegisteredForRemoteNotifications)]) {
-        [_delegate isAlreadyRegisteredForRemoteNotifications];
+- (void) delKWSSDKDidRegisterUserForRemoteNotifications {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(kwsSDKDidRegisterUserForRemoteNotifications)]) {
+        [_delegate kwsSDKDidRegisterUserForRemoteNotifications];
     }
 }
 
-- (void) delDidRegisterForRemoteNotifications {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didRegisterForRemoteNotifications)]) {
-        [_delegate didRegisterForRemoteNotifications];
-    }
-}
-
-- (void) delDidFailBecauseKWSDoesNotAllowRemoteNotifications {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseKWSDoesNotAllowRemoteNotificaitons)]) {
-        [_delegate didFailBecauseKWSDoesNotAllowRemoteNotifications];
-    }
-}
-
-- (void) delDidFailBecauseKWSCouldNotFindParentEmail {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseKWSCouldNotFindParentEmail)]) {
-        [_delegate didFailBecauseKWSCouldNotFindParentEmail];
-    }
-}
-
-- (void) delDidFailBecauseRemoteNotificationsAreDisabled {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseRemoteNotificationsAreDisabled)]) {
-        [_delegate didFailBecauseRemoteNotificationsAreDisabled];
-    }
-}
-
-- (void) delDidFaileBecauseParentEmailIsInvalid {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseParentEmailIsInvalid)]) {
-        [_delegate didFailBecauseParentEmailIsInvalid];
-    }
-}
-
-- (void) delDidFailBecauseOfError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseOfError)]) {
-        [_delegate didFailBecauseOfError];
-    }
-}
-
-- (void) delDidFailBecauseFirebaseIsNotSetupCorrectly {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseFirebaseIsNotSetupCorrectly)]){
-        [_delegate didFailBecauseFirebaseIsNotSetupCorrectly];
+- (void) delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:)]) {
+        [_delegate kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:errorType];
     }
 }
 

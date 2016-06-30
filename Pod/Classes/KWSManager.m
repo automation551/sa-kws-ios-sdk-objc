@@ -10,9 +10,10 @@
 #import "KWSLogger.h"
 
 @interface KWSManager ()
-@property (nonatomic, strong) PushCheckPermission *pushCheck;
-@property (nonatomic, strong) KWSCheckPermission *kwsCheck;
-@property (nonatomic, strong) PushRegisterPermission *pushRegister;
+@property (nonatomic, strong) PushCheckAllowed *pushCheckAllowed;
+@property (nonatomic, strong) PushCheckRegistered *pushCheckRegistered;
+@property (nonatomic, strong) PushRegister *pushRegister;
+@property (nonatomic, strong) KWSCheckAllowed *kwsCheckAllowed;
 @property (nonatomic, strong) KWSRequestPermission *kwsRequest;
 @end
 
@@ -30,47 +31,49 @@
 
 - (instancetype) init {
     if (self = [super init]) {
-        _pushCheck = [[PushCheckPermission alloc] init];
-        _kwsCheck = [[KWSCheckPermission alloc] init];
-        _pushRegister = [[PushRegisterPermission alloc] init];
+        _pushCheckAllowed = [[PushCheckAllowed alloc] init];
+        _kwsCheckAllowed = [[KWSCheckAllowed alloc] init];
+        _pushRegister = [[PushRegister alloc] init];
+        _pushCheckRegistered = [[PushCheckRegistered alloc] init];
         _kwsRequest = [[KWSRequestPermission alloc] init];
     }
     return self;
 }
 
-// Public function
+// MARL: Public function
 
 - (void) checkIfNotificationsAreAllowed {
     [KWSLogger log:@"Checking to see if Push Notificactions are allowed"];
-    _pushCheck.delegate = self;
-    [_pushCheck check];
+    _pushCheckAllowed.delegate = self;
+    [_pushCheckAllowed check];
 }
 
-// <PushCheckPermisionProtocol>
+// MARK: PushCheckAllowedProtocol
 
-- (void) pushEnabledInSystem {
+- (void) pushAllowedInSystem {
     [KWSLogger log:@"Push Notifications enabled on user system"];
-    _kwsCheck.delegate = self;
-    [_kwsCheck check];
+    _kwsCheckAllowed.delegate = self;
+    [_kwsCheckAllowed check];
 }
 
-- (void) pushDisabledInSystem {
+- (void) pushNotAllowedInSystem {
     [KWSLogger err:@"Push Notifications disabled on user system"];
-    [self delPushDisabledInKWS];
+    [self delPushNotAllowedInSystem];
 }
 
-// <KWSCheckPermissionProtocol>
 
-- (void) pushEnabledInKWS {
+// MARK: KWSCheckAllowedProtocol
+
+- (void) pushAllowedInKWS {
     [KWSLogger log:@"Push Notifications enabled for user in KWS"];
-    _pushRegister.delegate = self;
-    [_pushRegister isRegistered];
+    _pushCheckRegistered.delegate = self;
+    [_pushCheckRegistered isRegistered];
 }
 
-- (void) pushDisabledInKWS {
+- (void) pushNotAllowedInKWS {
     [KWSLogger err:@"Push Notifications disabled for user in KWS"];
     [_pushRegister unregisterPush];
-    [self delPushDisabledInKWS];
+    [self delPushNotAllowedInKWS];
 }
 
 - (void) checkError {
@@ -78,7 +81,7 @@
     [self delNetworkError];
 }
 
-// <PushRegisterPermissionProtocol>
+// MARK: PushCheckRegisteredProtocol
 
 - (void) isRegisteredInSystem {
     [KWSLogger log:@"User has already registered for Push Notifications"];
@@ -91,7 +94,7 @@
     [_kwsRequest request];
 }
 
-// <KWSRequestPermissionProtocol>
+// MARK: KWSRequestPermissionProtocol
 
 - (void) pushPermissionRequestedInKWS {
     [KWSLogger log:@"Was able to request new Push Notification permissions in KWS"];
@@ -108,17 +111,17 @@
     [self delNetworkError];
 }
 
-// <Proto> quick functions
+// MARK: Delegate handler functions
 
-- (void) delPushDisabledInSystem {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushDisabledInSystem)]) {
-        [_delegate pushDisabledInSystem];
+- (void) delPushNotAllowedInSystem {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushNotAllowedInSystem)]) {
+        [_delegate pushNotAllowedInSystem];
     }
 }
 
-- (void) delPushDisabledInKWS {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushDisabledInKWS)]) {
-        [_delegate pushDisabledInKWS];
+- (void) delPushNotAllowedInKWS {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushNotAllowedInKWS)]) {
+        [_delegate pushNotAllowedInKWS];
     }
 }
 

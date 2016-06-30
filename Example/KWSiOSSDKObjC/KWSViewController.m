@@ -11,7 +11,7 @@
 #import "KWSMetadata.h"
 #import "KWSLogger.h"
 
-#define TOKEN @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjk5MiwiYXBwSWQiOjMxMywiY2xpZW50SWQiOiJzYS1tb2JpbGUtYXBwLXNkay1jbGllbnQtMCIsInNjb3BlIjoidXNlciIsImlhdCI6MTQ2NzExNDk1MCwiZXhwIjoxNDY3MjAxMzUwLCJpc3MiOiJzdXBlcmF3ZXNvbWUifQ.ZsHbFPpj7HX8c51tmtI5ktJyoaSEw00GT0fRuhsOxDE"
+#define TOKEN @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDIsImFwcElkIjozMTMsImNsaWVudElkIjoic2EtbW9iaWxlLWFwcC1zZGstY2xpZW50LTAiLCJzY29wZSI6InVzZXIiLCJpYXQiOjE0NjcyODQ4NjAsImV4cCI6MTQ2NzM3MTI2MCwiaXNzIjoic3VwZXJhd2Vzb21lIn0.wzlQgJ8LgfwztapSFSpVO_H1NLeK4vt1eUfXffdNEp0"
 #define API @"https://kwsapi.demo.superawesome.tv/v1/"
 
 @interface KWSViewController ()  <KWSProtocol>
@@ -34,41 +34,45 @@
 
 // <KWSProtocol>
 
-- (void) isAllowedToRegisterForRemoteNotifications {
-    [KWSLogger log:@"isAllowedToRegisterForRemoteNotifications"];
+- (void) kwsSDKDoesAllowUserToRegisterForRemoteNotifications {
     [[KWS sdk] registerForRemoteNotifications];
 }
 
-- (void) isAlreadyRegisteredForRemoteNotifications {
-    [KWSLogger log:@"isAlreadyRegisteredForRemoteNotifications"];
+- (void) kwsSDKDidRegisterUserForRemoteNotifications {
+    NSLog(@"User is registered for Remote Notifications");
 }
 
-- (void) didRegisterForRemoteNotifications {
-    [KWSLogger log:@"didRegisterForRemoteNotifications"];
-}
-
-- (void) didFailBecauseKWSDoesNotAllowRemoteNotifications {
-    [KWSLogger log:@"didFailBecauseKWSDoesNotAllowRemoteNotifications"];
-}
-
-- (void) didFailBecauseParentEmailIsInvalid {
-    [KWSLogger log:@"didFailBecauseParentEmailIsInvalid"];
-}
-
-- (void) didFailBecauseKWSCouldNotFindParentEmail {
-    [[KWS sdk] submitParentEmail:@"dev.gabriel.coman@gmail.com"];
-}
-
-- (void) didFailBecauseRemoteNotificationsAreDisabled {
-    [KWSLogger log:@"didFailBecauseRemoteNotificationsAreDisabled"];
-}
-
-- (void) didFailBecauseOfError {
-    [KWSLogger log:@"didFailBecauseOfError"];
-}
-
-- (void) didFailBecauseFirebaseIsNotSetupCorrectly {
-    [KWSLogger log:@"didFailBecauseFirebaseIsNotSetupCorrectly"];
+- (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType {
+    switch (errorType) {
+        case NoKWSPermission: {
+            NSLog(@"KWS does not allow this user to have Remote Notifications");
+            break;
+        }
+        case NoSystemPermission: {
+            NSLog(@"User has disabled Remote Notifications");
+            break;
+        }
+        case ParentEmailNotFound: {
+            [[KWS sdk] submitParentEmail:@"dev.gabriel.coman@gmail.com"];
+            break;
+        }
+        case ParentEmailInvalid: {
+            NSLog(@"Parent email is invalid");
+            break;
+        }
+        case FirebaseNotSetup: {
+            NSLog(@"Firebase is not setup");
+            break;
+        }
+        case FirebaseCouldNotGetToken: {
+            NSLog(@"Firebase was not able to obtain a token");
+            break;
+        }
+        case NetworkError: {
+            NSLog(@"Other network error");
+            break;
+        }
+    }
 }
 
 @end

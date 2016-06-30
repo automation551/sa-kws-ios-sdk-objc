@@ -16,28 +16,25 @@
 // forward declarations
 @class KWSMetadata;
 
-// Protocol
+/**
+ Descriptor for the potential types of KWS errors
+ */
+typedef enum KWSErrorType {
+    NoKWSPermission = 0,
+    NoSystemPermission = 1,
+    ParentEmailNotFound = 2,
+    ParentEmailInvalid = 3,
+    FirebaseNotSetup = 4,
+    FirebaseCouldNotGetToken = 5,
+    NetworkError = 6
+}KWSErrorType;
 
+// Protocol
 @protocol KWSProtocol <NSObject>
 
-// potential public protocols
-// kwsDidRegisterForRemoteNotification:(KWS*)sdk withToken:(NSString*)token
-// kwsIsAllowedToRegisterForRemoteNotifications:(KWS*)sdk;
-// kwsDidFailToRegisterForRemoteNotification:(KWS*)sdk;
-//  - sdk.isPushEnabled()?
-//  - sdk.isKWSAllowing()?
-//  - sdk.isParentEmail()?
-//  - sdk.isOtherError()?
-
-- (void) isAllowedToRegisterForRemoteNotifications;
-- (void) isAlreadyRegisteredForRemoteNotifications;
-- (void) didRegisterForRemoteNotifications;
-- (void) didFailBecauseKWSDoesNotAllowRemoteNotifications;
-- (void) didFailBecauseKWSCouldNotFindParentEmail;
-- (void) didFailBecauseRemoteNotificationsAreDisabled;
-- (void) didFailBecauseParentEmailIsInvalid;
-- (void) didFailBecauseOfError;
-- (void) didFailBecauseFirebaseIsNotSetupCorrectly;
+- (void) kwsSDKDoesAllowUserToRegisterForRemoteNotifications;
+- (void) kwsSDKDidRegisterUserForRemoteNotifications;
+- (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType;
 
 @end
 
@@ -60,6 +57,5 @@
 - (NSString*) getOAuthToken;
 - (NSString*) getKWSApiUrl;
 - (KWSMetadata*) getMetadata;
-- (KWSMetadata*) getMetadata:(NSString*)oauthToken;
 
 @end

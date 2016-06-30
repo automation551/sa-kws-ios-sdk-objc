@@ -4,7 +4,9 @@
 //
 //  Created by Gabriel Coman on 28/06/2016.
 //
-//
+//  @brief:
+//  This module handles ubsubscribing a user's token from KWS.
+//  
 
 #import <Foundation/Foundation.h>
 
