@@ -32,6 +32,12 @@
     [[KWS sdk] unregisterForRemoteNotifications];
 }
 
+- (IBAction)isRegistered {
+    UIUserNotificationSettings *settings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    BOOL isRegistered = (settings.types & UIRemoteNotificationTypeAlert);
+    NSLog(@"Is registered %d", isRegistered);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

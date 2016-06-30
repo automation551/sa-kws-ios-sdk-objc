@@ -58,7 +58,7 @@
 // MARK: Aux private functions
 
 - (BOOL) validateEmail:(NSString*)email withStricterFilter:(BOOL) stricterFilter {
-    if (!email) {
+    if (!email || email.length == 0) {
         return false;
     }
     

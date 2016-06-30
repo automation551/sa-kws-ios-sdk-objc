@@ -39,10 +39,23 @@
                                     <action selector="unregisterProcess:" destination="whP-gf-Uak" eventType="touchUpInside" id="1kV-Zo-eQF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhJ-s1-7UZ">
+                                <rect key="frame" x="258" y="40" width="85" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="BGf-vs-PAB"/>
+                                    <constraint firstAttribute="height" constant="30" id="lku-4m-bQa"/>
+                                </constraints>
+                                <state key="normal" title="Is registered"/>
+                                <connections>
+                                    <action selector="isRegistered" destination="whP-gf-Uak" eventType="touchUpInside" id="TNK-O3-i55"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dhJ-s1-7UZ" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="29u-BJ-ImJ"/>
                             <constraint firstAttribute="trailing" secondItem="P5c-Mm-bd9" secondAttribute="trailing" constant="20" id="DeW-rV-DGk"/>
+                            <constraint firstItem="dhJ-s1-7UZ" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="20" id="bgW-4U-37n"/>
                             <constraint firstItem="RI4-BG-naB" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="cJa-1A-D9A"/>
                             <constraint firstItem="P5c-Mm-bd9" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="20" id="ctC-g7-0HA"/>
                             <constraint firstItem="RI4-BG-naB" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="8" id="gL3-KX-jEd"/>

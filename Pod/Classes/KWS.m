@@ -40,17 +40,16 @@
 
 @implementation KWS
 
-+ (KWS*) sdk {
-    static KWS *sharedManager = nil;
-    @synchronized(self) {
-        if (sharedManager == nil){
-            sharedManager = [[self alloc] init];
-        }
-    }
-    return sharedManager;
++ (instancetype) sdk {
+    static KWS *sharedMyManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedMyManager = [[self alloc] init];
+    });
+    return sharedMyManager;
 }
 
-- (instancetype) init {
+- (id) init {
     if (self = [super init]) {
         [KWSManager sharedInstance].delegate = self;
         [PushManager sharedInstance].delegate = self;

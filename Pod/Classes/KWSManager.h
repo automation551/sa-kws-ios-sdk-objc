@@ -31,7 +31,7 @@
 @interface KWSManager : NSObject <KWSCheckAllowedProtocol, KWSRequestPermissionProtocol, PushCheckAllowedProtocol, PushCheckRegisteredProtocol>
 
 // singleton
-+ (KWSManager*) sharedInstance;
++ (instancetype) sharedInstance;
 
 // delegate
 @property (nonatomic, weak) id<KWSManagerProtocol> delegate;

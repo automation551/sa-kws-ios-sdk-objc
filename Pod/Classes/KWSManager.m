@@ -19,17 +19,16 @@
 
 @implementation KWSManager
 
-+ (KWSManager*) sharedInstance {
-    static KWSManager *sharedManager = nil;
-    @synchronized(self) {
-        if (sharedManager == nil){
-            sharedManager = [[self alloc] init];
-        }
-    }
-    return sharedManager;
++ (instancetype) sharedInstance {
+    static KWSManager *sharedMyManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedMyManager = [[self alloc] init];
+    });
+    return sharedMyManager;
 }
 
-- (instancetype) init {
+- (id) init {
     if (self = [super init]) {
         _pushCheckAllowed = [[PushCheckAllowed alloc] init];
         _kwsCheckAllowed = [[KWSCheckAllowed alloc] init];

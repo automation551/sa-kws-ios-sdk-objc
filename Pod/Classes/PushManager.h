@@ -25,7 +25,7 @@
 @interface PushManager : NSObject <UIApplicationDelegate, PushCheckAllowedProtocol>
 
 // singleton
-+ (PushManager*) sharedInstance;
++ (instancetype) sharedInstance;
 
 // delegate
 @property (nonatomic, weak) id<PushManagerProtocol> delegate;

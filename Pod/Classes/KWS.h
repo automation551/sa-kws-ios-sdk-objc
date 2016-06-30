@@ -45,7 +45,7 @@ typedef enum KWSErrorType {
 @interface KWS : NSObject
 
 // singleton func
-+ (KWS*) sdk;
++ (instancetype) sdk;
 
 // setup func
 - (void) setupWithOAuthToken:(NSString*)oauthToken
