@@ -26,4 +26,7 @@
 // setuo
 - (void) setup;
 
+// get token
+- (NSString*) getFirebaseToken;
+
 @end

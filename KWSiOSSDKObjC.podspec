@@ -14,4 +14,5 @@ The SuperAwesome Kids Web Services iOS SDK
   s.source_files = 'Pod/Classes/**/*'
   s.dependency 'SAJsonParser'
   s.dependency 'Firebase'
+  s.dependency 'SAUtils'
 end

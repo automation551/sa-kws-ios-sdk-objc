@@ -46,10 +46,14 @@ typedef enum KWSErrorType {
 + (KWS*) sdk;
 
 // setup func
-- (void) setupWithOAuthToken:(NSString*)oauthToken kwsApiUrl:(NSString*)kwsApiUrl delegate:(id<KWSProtocol>)delegate;
+- (void) setupWithOAuthToken:(NSString*)oauthToken
+                   kwsApiUrl:(NSString*)kwsApiUrl
+          andPermissionPopup:(BOOL)showPermissionPopup
+                    delegate:(id<KWSProtocol>)delegate;
 
 // public funcs
 - (void) checkIfNotificationsAreAllowed;
+- (void) showParentEmailPopup;
 - (void) submitParentEmail:(NSString*)email;
 - (void) registerForRemoteNotifications;
 

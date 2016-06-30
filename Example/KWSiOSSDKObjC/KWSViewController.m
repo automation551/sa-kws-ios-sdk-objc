@@ -11,7 +11,7 @@
 #import "KWSMetadata.h"
 #import "KWSLogger.h"
 
-#define TOKEN @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDIsImFwcElkIjozMTMsImNsaWVudElkIjoic2EtbW9iaWxlLWFwcC1zZGstY2xpZW50LTAiLCJzY29wZSI6InVzZXIiLCJpYXQiOjE0NjcyODQ4NjAsImV4cCI6MTQ2NzM3MTI2MCwiaXNzIjoic3VwZXJhd2Vzb21lIn0.wzlQgJ8LgfwztapSFSpVO_H1NLeK4vt1eUfXffdNEp0"
+#define TOKEN @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsImFwcElkIjozMTMsImNsaWVudElkIjoic2EtbW9iaWxlLWFwcC1zZGstY2xpZW50LTAiLCJzY29wZSI6InVzZXIiLCJpYXQiOjE0NjcyOTY2MDksImV4cCI6MTQ2NzM4MzAwOSwiaXNzIjoic3VwZXJhd2Vzb21lIn0.T0Gy_BrN0MKuiEbadSb7AjpTiRcJ6MlalXx9JDAE8EI"
 #define API @"https://kwsapi.demo.superawesome.tv/v1/"
 
 @interface KWSViewController ()  <KWSProtocol>
@@ -24,7 +24,7 @@
 }
 
 - (IBAction)startProcess:(id)sender {
-    [[KWS sdk] setupWithOAuthToken:TOKEN kwsApiUrl:API delegate:self];
+    [[KWS sdk] setupWithOAuthToken:TOKEN kwsApiUrl:API andPermissionPopup:YES delegate:self];
     [[KWS sdk] checkIfNotificationsAreAllowed];
 }
 
@@ -53,7 +53,7 @@
             break;
         }
         case ParentEmailNotFound: {
-            [[KWS sdk] submitParentEmail:@"dev.gabriel.coman@gmail.com"];
+            [[KWS sdk] showParentEmailPopup];
             break;
         }
         case ParentEmailInvalid: {

@@ -19,20 +19,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SAUtils.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4943560A0E2E519B8E9DBFDECD187DF1</key>
+		<key>8E59BCADF942E0E41E01185481F27226</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B1ABB56F020814C78628D999604E9726</key>
+		<key>9D9C82CBE573E169600FF30DFB8A1A52</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6AA29244367BC273AAB3C94B96BDE5E</key>
+		<key>DC4731DD2D69CBE722FD64021506A2DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9C71CF234E6034A2FA6877B93D6B0B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -19,7 +19,9 @@ PODS:
   - KWSiOSSDKObjC (1.1.9):
     - Firebase
     - SAJsonParser
+    - SAUtils
   - SAJsonParser (1.2.3)
+  - SAUtils (1.2.2)
 
 DEPENDENCIES:
   - KWSiOSSDKObjC (from `../`)
@@ -35,8 +37,9 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  KWSiOSSDKObjC: 753245d8e0add328cf42f56371973dc833e9488c
+  KWSiOSSDKObjC: db96d544f5502f50d9d22ae3c9522258b7608c19
   SAJsonParser: c0a5ace5d143bc50d5318a4981ebaf79858e4af8
+  SAUtils: a6d0ad03c8a25c03a6a2a7c153793f2c916ec869
 
 PODFILE CHECKSUM: 3c12e3474281f86540c28ed1a925a110ac3448e1
 

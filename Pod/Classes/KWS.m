@@ -12,6 +12,7 @@
 #import "KWSLogger.h"
 #import "KWSSubscribeToken.h"
 #import "FirebaseGetToken.h"
+#import "KWSPopup.h"
 
 @interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, KWSSubscribeTokenProtocol, FirebaseGetTokenProtocol>
 // the parent email object
@@ -21,12 +22,18 @@
 @property (nonatomic, strong) NSString *oauthToken;
 @property (nonatomic, strong) NSString *kwsApiUrl;
 @property (nonatomic, strong) KWSMetadata *metadata;
-@property (nonatomic, strong) FirebaseGetToken *firebaseGetToken;
-@property (nonatomic, strong) KWSSubscribeToken *subscribeToken;
+@property (nonatomic, assign) BOOL showPermissionPopup;
 @property (nonatomic, weak) id <KWSProtocol> delegate;
 
+// email popup
+@property (nonatomic, strong) KWSPopup *permissionPopup;
+@property (nonatomic, strong) KWSPopup *emailPopup;
+
+// internal vars
 @property (nonatomic, strong) NSString *systemToken;
 @property (nonatomic, strong) NSString *firebaseToken;
+@property (nonatomic, strong) FirebaseGetToken *firebaseGetToken;
+@property (nonatomic, strong) KWSSubscribeToken *subscribeToken;
 
 @end
 
@@ -44,26 +51,64 @@
 
 - (instancetype) init {
     if (self = [super init]) {
-        
+        _subscribeToken = [[KWSSubscribeToken alloc] init];
+        _subscribeToken.delegate = self;
+        _firebaseGetToken = [[FirebaseGetToken alloc] init];
+        _firebaseGetToken.delegate = self;
     }
     return self;
 }
 
-// <Setup> function
+// MARK: Setup function
 
-- (void) setupWithOAuthToken:(NSString*)oauthToken kwsApiUrl:(NSString*)kwsApiUrl delegate:(id<KWSProtocol>)delegate {
-    self.oauthToken = oauthToken;
-    self.kwsApiUrl = kwsApiUrl;
-    self.delegate = delegate;
-    self.metadata = [self getMetadata:oauthToken];
+- (void) setupWithOAuthToken:(NSString*)oauthToken
+                   kwsApiUrl:(NSString*)kwsApiUrl
+          andPermissionPopup:(BOOL)showPermissionPopup
+                    delegate:(id<KWSProtocol>)delegate {
+    _showPermissionPopup = showPermissionPopup;
+    _oauthToken = oauthToken;
+    _kwsApiUrl = kwsApiUrl;
+    _delegate = delegate;
+    _metadata = [self getMetadata:oauthToken];
     [KWSLogger log:[self.metadata jsonPreetyStringRepresentation]];
 }
 
-// <Public> functions
+// MARK: Public functions
 
 - (void) checkIfNotificationsAreAllowed {
     [KWSManager sharedInstance].delegate = self;
-    [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
+    
+    if (_showPermissionPopup) {
+        _permissionPopup = [[KWSPopup alloc] init];
+        [_permissionPopup showWithTitle:@"Hey!"
+                             andMessage:@"Do you want to allow Push Notifications?"
+                             andOKTitle:@"Yes"
+                            andNOKTitle:@"No"
+                           andTextField:NO
+                             andOKBlock:^(NSString *popupMessage) {
+                                 [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
+                             }
+                            andNOKBlock:^ {
+                                // do nothing
+                            }];
+    }
+    else {
+        [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
+    }
+}
+
+- (void) showParentEmailPopup {
+    _emailPopup = [[KWSPopup alloc] init];
+    [_emailPopup showWithTitle:@"Hey!"
+                    andMessage:@"To enable Push Notifications in KWS you'll need to provide a parent's email."
+                    andOKTitle:@"Submut"
+                   andNOKTitle:@"Cancel"
+                  andTextField:YES
+                    andOKBlock:^(NSString *popupMessage) {
+                        [self submitParentEmail:popupMessage];
+                    } andNOKBlock:^{
+                        // nothing
+                    }];
 }
 
 - (void) submitParentEmail:(NSString*)email {
@@ -77,7 +122,7 @@
     [[PushManager sharedInstance] registerForPushNotifications];
 }
 
-// <KWSManagerProtocol> delegate
+// MARK: KWSManagerProtocol delegate
 
 - (void) pushNotAllowedInSystem {
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NoSystemPermission];
@@ -100,10 +145,17 @@
 }
 
 - (void) isAlreadyRegistered {
-    [self delKWSSDKDidRegisterUserForRemoteNotifications];
+    // case when all is OK
+    if ([_firebaseGetToken getFirebaseToken]) {
+        [self delKWSSDKDidRegisterUserForRemoteNotifications];
+    }
+    // case when somehow the Firebase token hasn't been properly saved
+    else {
+        [self didRegisterWithSystem:nil];
+    }
 }
 
-// <KWSParentEmailProtocol> delegate
+// MARK: KWSParentEmailProtocol delegate
 
 - (void) emailSubmittedInKWS {
     [self delKWSSDKDoesAllowUserToRegisterForRemoteNotifications];
@@ -113,24 +165,20 @@
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailInvalid];
 }
 
-// <PushManagerProtocol> delegate
+// MARK: PushManagerProtocol delegate
 
 - (void) didRegisterWithSystem:(NSString *)token {
-    _firebaseGetToken = [[FirebaseGetToken alloc] init];
-    _firebaseGetToken.delegate = self;
     _systemToken = token;
     [_firebaseGetToken setup];
 }
 
 - (void) didNotRegister {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NoSystemPermission];
 }
 
-// <FirebaseGetTokenProtocol> delegate
+// MARK: FirebaseGetTokenProtocol delegate
 
 - (void) didGetFirebaseToken: (NSString*) token {
-    _subscribeToken = [[KWSSubscribeToken alloc] init];
-    _subscribeToken.delegate = self;
     _firebaseToken = token;
     [_subscribeToken request:token];
 }
@@ -143,7 +191,7 @@
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseNotSetup];
 }
 
-// <KWSSubscribeTokenProtocol> delegate
+// MARK: KWSSubscribeTokenProtocol delegate
 
 - (void) tokenWasSubscribed {
     [KWSLogger log:[NSString stringWithFormat:@"Did register with\n - System Token: %@\n - Firebase Token: %@", _systemToken, _firebaseToken]];
@@ -154,7 +202,7 @@
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
 }
 
-// getters
+// MARK: getters
 
 - (NSString*) getOAuthToken {
     return _oauthToken;
@@ -168,7 +216,7 @@
     return _metadata;
 }
 
-// <Private> function
+// MARL: Private function
 
 - (KWSMetadata*) getMetadata:(NSString*)oauthToken {
     NSArray *subtokens = [oauthToken componentsSeparatedByString:@"."];
@@ -193,7 +241,7 @@
     return [[KWSMetadata alloc] initWithJsonString:decodedJson];
 }
 
-// <Del> functions
+// MARK: Delegate handler functions
 
 - (void) delKWSSDKDoesAllowUserToRegisterForRemoteNotifications {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(kwsSDKDoesAllowUserToRegisterForRemoteNotifications)]) {
