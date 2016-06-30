@@ -68,6 +68,12 @@
     }
 }
 
+- (void) unregisterForPushNotifications {
+    [KWSLogger log:@"Starting unregistering for Push Notificaitons"];
+    [_pushRegister unregisterPush];
+    [self delDidUnregisterWithSystem];
+}
+
 // MARK: UIApplicationDelegate
 
 - (void) application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
@@ -152,6 +158,12 @@
 - (void) delDidNotRegister {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(didNotRegister)] ) {
         [_delegate didNotRegister];
+    }
+}
+
+- (void) delDidUnregisterWithSystem {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didUnregisterWithSystem)]) {
+        [_delegate didUnregisterWithSystem];
     }
 }
 

@@ -26,7 +26,8 @@ typedef enum KWSErrorType {
     ParentEmailInvalid = 3,
     FirebaseNotSetup = 4,
     FirebaseCouldNotGetToken = 5,
-    NetworkError = 6
+    NetworkError = 6,
+    CouldNotUnsubscribeInKWS = 7
 }KWSErrorType;
 
 // Protocol
@@ -34,6 +35,7 @@ typedef enum KWSErrorType {
 
 - (void) kwsSDKDoesAllowUserToRegisterForRemoteNotifications;
 - (void) kwsSDKDidRegisterUserForRemoteNotifications;
+- (void) kwsSDKDidUnregisterUserForRemoteNotifications;
 - (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType;
 
 @end
@@ -56,6 +58,7 @@ typedef enum KWSErrorType {
 - (void) showParentEmailPopup;
 - (void) submitParentEmail:(NSString*)email;
 - (void) registerForRemoteNotifications;
+- (void) unregisterForRemoteNotifications;
 
 // getters
 - (NSString*) getOAuthToken;

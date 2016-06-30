@@ -17,6 +17,7 @@
 
 - (void) didRegisterWithSystem:(NSString*)token;
 - (void) didNotRegister;
+- (void) didUnregisterWithSystem;
 
 @end
 
@@ -29,7 +30,8 @@
 // delegate
 @property (nonatomic, weak) id<PushManagerProtocol> delegate;
 
-// main public funciton
+// main public functions
 - (void) registerForPushNotifications;
+- (void) unregisterForPushNotifications;
 
 @end

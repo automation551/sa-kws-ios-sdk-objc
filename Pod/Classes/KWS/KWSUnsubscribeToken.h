@@ -14,7 +14,7 @@
 @protocol KWSUnsubscribeTokenProtocol <NSObject>
 
 - (void) tokenWasUnsubscribed;
-- (void) tokenError;
+- (void) tokenUnsubscribeError;
 
 @end
 

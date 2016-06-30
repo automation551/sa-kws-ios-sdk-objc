@@ -28,6 +28,10 @@
     [[KWS sdk] checkIfNotificationsAreAllowed];
 }
 
+- (IBAction)unregisterProcess:(id)sender {
+    [[KWS sdk] unregisterForRemoteNotifications];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -40,6 +44,10 @@
 
 - (void) kwsSDKDidRegisterUserForRemoteNotifications {
     NSLog(@"User is registered for Remote Notifications");
+}
+
+- (void) kwsSDKDidUnregisterUserForRemoteNotifications {
+    NSLog(@"User unregistered for Remote Notifications");
 }
 
 - (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType {
@@ -70,6 +78,10 @@
         }
         case NetworkError: {
             NSLog(@"Other network error");
+            break;
+        }
+        case CouldNotUnsubscribeInKWS: {
+            NSLog(@"Could not unsubscribe in KWS");
             break;
         }
     }

@@ -39,12 +39,12 @@
                 NSLog(@"Payload ==> %@", json);
                 [self delTokenWasSubscribed];
             } else {
-                [self delTokenError];
+                [self delTokenSubscribeError];
             }
         }];
     }
     else {
-        [self delTokenError];
+        [self delTokenSubscribeError];
     }
     
 }
@@ -55,9 +55,9 @@
     }
 }
 
-- (void) delTokenError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenError)]) {
-        [_delegate tokenError];
+- (void) delTokenSubscribeError {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenSubscribeError)]) {
+        [_delegate tokenSubscribeError];
     }
 }
 

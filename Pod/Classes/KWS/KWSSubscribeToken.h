@@ -16,7 +16,7 @@
 @protocol KWSSubscribeTokenProtocol <NSObject>
 
 - (void) tokenWasSubscribed;
-- (void) tokenError;
+- (void) tokenSubscribeError;
 
 @end
 
