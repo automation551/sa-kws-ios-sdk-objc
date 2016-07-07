@@ -8,19 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-//#import "PushCheckAllowed.h"
-//#import "PushCheckRegistered.h"
-//#import "PushRegister.h"
 #import "FirebaseGetToken.h"
 #import "KWSSubscribeToken.h"
 #import "KWSUnsubscribeToken.h"
 
 // protocol
 @protocol PushManagerProtocol <NSObject>
-
-//- (void) didRegisterWithSystem:(NSString*)token;
-//- (void) didNotRegister;
-//- (void) didUnregisterWithSystem;
 
 - (void) didRegister:(NSString*)token;
 - (void) didNotRegister;
@@ -30,7 +23,7 @@
 @end
 
 // class
-@interface PushManager : NSObject </*UIApplicationDelegate, PushCheckAllowedProtocol, */FirebaseGetTokenProtocol, KWSSubscribeTokenProtocol, KWSUnsubscribeTokenProtocol>
+@interface PushManager : NSObject <FirebaseGetTokenProtocol, KWSSubscribeTokenProtocol, KWSUnsubscribeTokenProtocol>
 
 // singleton
 + (instancetype) sharedInstance;

@@ -23,11 +23,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        _defaults = [NSUserDefaults standardUserDefaults];
-        _appRef = [UIApplication sharedApplication];
-        if ([_defaults objectForKey:kUserHasSeenDialog] != NULL) {
-            _hasUserSeenDialog = [_defaults boolForKey:kUserHasSeenDialog];
-        }
+        
     }
     return self;
 }
@@ -35,6 +31,12 @@
 // MARK: Main class function
 
 - (void) check {
+    
+    _defaults = [NSUserDefaults standardUserDefaults];
+    _appRef = [UIApplication sharedApplication];
+    if ([_defaults objectForKey:kUserHasSeenDialog] != NULL) {
+        _hasUserSeenDialog = [_defaults boolForKey:kUserHasSeenDialog];
+    }
     
     if (!_hasUserSeenDialog) {
         [self delPushAllowedInSystem];

@@ -12,8 +12,6 @@
 #import "KWSCheckAllowed.h"
 #import "KWSRequestPermission.h"
 #import "PushCheckAllowed.h"
-#import "PushCheckRegistered.h"
-#import "PushRegister.h"
 
 // protocol
 @protocol KWSManagerProtocol <NSObject>

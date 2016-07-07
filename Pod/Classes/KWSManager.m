@@ -11,8 +11,6 @@
 
 @interface KWSManager ()
 @property (nonatomic, strong) PushCheckAllowed *pushCheckAllowed;
-//@property (nonatomic, strong) PushCheckRegistered *pushCheckRegistered;
-//@property (nonatomic, strong) PushRegister *pushRegister;
 @property (nonatomic, strong) KWSCheckAllowed *kwsCheckAllowed;
 @property (nonatomic, strong) KWSRequestPermission *kwsRequestPermission;
 @end
@@ -31,10 +29,11 @@
 - (id) init {
     if (self = [super init]) {
         _pushCheckAllowed = [[PushCheckAllowed alloc] init];
-        _kwsCheckAllowed = [[KWSCheckAllowed alloc] init];
-//        _pushRegister = [[PushRegister alloc] init];
-//        _pushCheckRegistered = [[PushCheckRegistered alloc] init];
+        _pushCheckAllowed.delegate = self;
         _kwsRequestPermission = [[KWSRequestPermission alloc] init];
+        _kwsRequestPermission.delegate = self;
+        _kwsCheckAllowed = [[KWSCheckAllowed alloc] init];
+        _kwsCheckAllowed.delegate = self;
     }
     return self;
 }
@@ -43,7 +42,6 @@
 
 - (void) checkIfNotificationsAreAllowed {
     [SALogger log:@"Checking to see if Push Notificactions are allowed"];
-    _pushCheckAllowed.delegate = self;
     [_pushCheckAllowed check];
 }
 
@@ -51,7 +49,6 @@
 
 - (void) pushAllowedInSystem {
     [SALogger log:@"Push Notifications enabled on user system"];
-    _kwsCheckAllowed.delegate = self;
     [_kwsCheckAllowed check];
 }
 
@@ -66,36 +63,18 @@
 
 - (void) pushAllowedInKWS {
     [SALogger log:@"Push Notifications enabled for user in KWS"];
-    
-    _kwsRequestPermission.delegate = self;
     [_kwsRequestPermission request];
-//    
-//    _pushCheckRegistered.delegate = self;
-//    [_pushCheckRegistered isRegistered]; // THIS SHOULD NOT BE HERE
 }
 
 - (void) pushNotAllowedInKWS {
     [SALogger err:@"Push Notifications disabled for user in KWS"];
-//    [_pushRegister unregisterPush]; // nok here
-    [self delPushNotAllowedInKWS]; // nok here
+    [self delPushNotAllowedInKWS];
 }
 
 - (void) checkError {
     [SALogger err:@"An unknown network error occured"];
     [self delNetworkError];
 }
-
-//// MARK: PushCheckRegisteredProtocol
-//// THESE SHOULD BE DELETED
-//- (void) isRegisteredInSystem {
-//    [SALogger log:@"User has already registered for Push Notifications"];
-//    [self delIsAlreadyRegistered];
-//}
-//
-//- (void) isNotRegisteredInSystem {
-//    [SALogger log:@"User is not yet registered for Push Notificaitons, starting request"];
-//    
-//}
 
 // MARK: KWSRequestPermissionProtocol
 
@@ -145,11 +124,5 @@
         [_delegate isAllowedToRegister];
     }
 }
-
-//- (void) delIsAlreadyRegistered {
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(isAlreadyRegistered)]) {
-//        [_delegate isAlreadyRegistered];
-//    }
-//}
 
 @end

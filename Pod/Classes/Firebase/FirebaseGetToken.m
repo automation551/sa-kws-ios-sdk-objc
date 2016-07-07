@@ -6,17 +6,14 @@
 //
 //
 
+// header
 #import "FirebaseGetToken.h"
+
+// other imports
 #import "Firebase.h"
 #import "SALogger.h"
-#import "Firebase.h"
-
-#define MAXIMUM_NR_TIMES 30
-#define FIREBASE_TOKEN @"FIREBASE_TOKEN"
-
 
 @interface FirebaseGetToken ()
-@property (nonatomic, strong) NSUserDefaults *defaults;
 @end
 
 @implementation FirebaseGetToken
@@ -24,8 +21,6 @@
 // MARK: Setup & Public functions
 
 - (void) setup {
-    
-    _defaults = [NSUserDefaults standardUserDefaults];
     
     @try {
         [FIRApp configure];
@@ -71,18 +66,14 @@
     // time. So if you need to retrieve the token as soon as it is available this is where that
     // should be done.
     NSString *token = [[FIRInstanceID instanceID] token];
-    [_defaults setObject:token forKey:FIREBASE_TOKEN];
-    [_defaults synchronize];
     
     [SALogger log:[NSString stringWithFormat:@"Token is %@", token]];
     [self delDidGetFirebaseToken:token];
 }
 
 - (NSString*) getFirebaseToken {
-    if (_defaults == NULL) {
-        _defaults = [NSUserDefaults standardUserDefaults];
-    }
-    return [_defaults objectForKey:FIREBASE_TOKEN];
+    NSString *token = [[FIRInstanceID instanceID] token];
+    return token;
 }
 
 // MARK: Delegate handler functions
