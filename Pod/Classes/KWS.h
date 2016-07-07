@@ -57,6 +57,7 @@ typedef enum KWSErrorType {
 - (void) checkIfNotificationsAreAllowed;
 - (void) showParentEmailPopup;
 - (void) submitParentEmail:(NSString*)email;
+
 - (void) registerForRemoteNotifications;
 - (void) unregisterForRemoteNotifications;
 

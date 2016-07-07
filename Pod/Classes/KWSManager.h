@@ -23,12 +23,12 @@
 - (void) parentEmailIsMissingInKWS;
 - (void) networkError;
 - (void) isAllowedToRegister;
-- (void) isAlreadyRegistered;
+//- (void) isAlreadyRegistered;
 
 @end
 
 // class
-@interface KWSManager : NSObject <KWSCheckAllowedProtocol, KWSRequestPermissionProtocol, PushCheckAllowedProtocol, PushCheckRegisteredProtocol>
+@interface KWSManager : NSObject <KWSCheckAllowedProtocol, KWSRequestPermissionProtocol, PushCheckAllowedProtocol/*, PushCheckRegisteredProtocol*/>
 
 // singleton
 + (instancetype) sharedInstance;

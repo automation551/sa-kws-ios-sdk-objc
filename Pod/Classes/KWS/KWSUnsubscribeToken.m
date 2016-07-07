@@ -39,12 +39,8 @@
 
         SANetwork *network = [[SANetwork alloc] init];
         [network sendPOST:endpoint withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger code, NSString *json) {
-            if (code == 200 || code == 204) {
-                NSLog(@"Payload ==> %@", json);
-                [self delTokenWasUnsubscribed];
-            } else {
-                [self delTokenUnsubscribeError];
-            }
+            NSLog(@"Payload ==> %@", json);
+            [self delTokenWasUnsubscribed];
         } andFailure:^{
             [self delTokenUnsubscribeError];
         }];

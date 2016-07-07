@@ -9,7 +9,7 @@
 #import "KWSViewController.h"
 #import "KWS.h"
 #import "KWSMetadata.h"
-#import "KWSLogger.h"
+#import "SALogger.h"
 #import "SANetwork.h"
 #import "KWSModel.h"
 #import "SAUtils.h"
@@ -79,6 +79,7 @@
 // <KWSProtocol>
 
 - (void) kwsSDKDoesAllowUserToRegisterForRemoteNotifications {
+    NSLog(@"Got here from where I need to register!");
     [[KWS sdk] registerForRemoteNotifications];
 }
 

@@ -15,7 +15,7 @@
 #import "FirebaseGetToken.h"
 #import "SAPopup.h"
 
-@interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, KWSSubscribeTokenProtocol, KWSUnsubscribeTokenProtocol, FirebaseGetTokenProtocol>
+@interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol/*, KWSSubscribeTokenProtocol, KWSUnsubscribeTokenProtocol, FirebaseGetTokenProtocol*/>
 // the parent email object
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
 
@@ -31,11 +31,11 @@
 @property (nonatomic, strong) SAPopup *emailPopup;
 
 // internal vars
-@property (nonatomic, strong) NSString *systemToken;
-@property (nonatomic, strong) NSString *firebaseToken;
-@property (nonatomic, strong) FirebaseGetToken *firebaseGetToken;
-@property (nonatomic, strong) KWSSubscribeToken *subscribeToken;
-@property (nonatomic, strong) KWSUnsubscribeToken *unsubscribeToken;
+//@property (nonatomic, strong) NSString *systemToken;
+//@property (nonatomic, strong) NSString *firebaseToken;
+//@property (nonatomic, strong) FirebaseGetToken *firebaseGetToken;
+//@property (nonatomic, strong) KWSSubscribeToken *subscribeToken;
+//@property (nonatomic, strong) KWSUnsubscribeToken *unsubscribeToken;
 @end
 
 @implementation KWS
@@ -53,12 +53,12 @@
     if (self = [super init]) {
         [KWSManager sharedInstance].delegate = self;
         [PushManager sharedInstance].delegate = self;
-        _subscribeToken = [[KWSSubscribeToken alloc] init];
-        _subscribeToken.delegate = self;
-        _firebaseGetToken = [[FirebaseGetToken alloc] init];
-        _firebaseGetToken.delegate = self;
-        _unsubscribeToken = [[KWSUnsubscribeToken alloc] init];
-        _unsubscribeToken.delegate = self;
+//        _subscribeToken = [[KWSSubscribeToken alloc] init];
+//        _subscribeToken.delegate = self;
+//        _firebaseGetToken = [[FirebaseGetToken alloc] init];
+//        _firebaseGetToken.delegate = self;
+//        _unsubscribeToken = [[KWSUnsubscribeToken alloc] init];
+//        _unsubscribeToken.delegate = self;
     }
     return self;
 }
@@ -104,7 +104,7 @@
     _emailPopup = [[SAPopup alloc] init];
     [_emailPopup showWithTitle:@"Hey!"
                     andMessage:@"To enable Push Notifications in KWS you'll need to provide a parent's email."
-                    andOKTitle:@"Submut"
+                    andOKTitle:@"Submit"
                    andNOKTitle:@"Cancel"
                   andTextField:YES
                andKeyboardTyle:UIKeyboardTypeEmailAddress
@@ -151,16 +151,16 @@
     [self delKWSSDKDoesAllowUserToRegisterForRemoteNotifications];
 }
 
-- (void) isAlreadyRegistered {
-    // case when all is OK
-    if ([_firebaseGetToken getFirebaseToken]) {
-        [self delKWSSDKDidRegisterUserForRemoteNotifications];
-    }
-    // case when somehow the Firebase token hasn't been properly saved
-    else {
-        [self didRegisterWithSystem:nil];
-    }
-}
+//- (void) isAlreadyRegistered {
+//    // case when all is OK
+//    if ([_firebaseGetToken getFirebaseToken]) {
+//        [self delKWSSDKDidRegisterUserForRemoteNotifications];
+//    }
+//    // case when somehow the Firebase token hasn't been properly saved
+//    else {
+//        [self didRegisterWithSystem:nil];
+//    }
+//}
 
 // MARK: KWSParentEmailProtocol delegate
 
@@ -174,55 +174,72 @@
 
 // MARK: PushManagerProtocol delegate
 
-- (void) didRegisterWithSystem:(NSString *)token {
-    _systemToken = token;
-    [_firebaseGetToken setup];
-}
-
-- (void) didNotRegister {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NoSystemPermission];
-}
-
-- (void) didUnregisterWithSystem {
-    NSString *token = [_firebaseGetToken getFirebaseToken];
-    [_unsubscribeToken request:token];
-}
-
-// MARK: FirebaseGetTokenProtocol delegate
-
-- (void) didGetFirebaseToken: (NSString*) token {
-    _firebaseToken = token;
-    [_subscribeToken request:token];
-}
-
-- (void) didFailToGetFirebaseToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseCouldNotGetToken];
-}
-
-- (void) didFailBecauseFirebaseIsNotSetup {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseNotSetup];
-}
-
-// MARK: KWSSubscribeTokenProtocol delegate
-
-- (void) tokenWasSubscribed {
-    [SALogger log:[NSString stringWithFormat:@"Did register with\n - System Token: %@\n - Firebase Token: %@", _systemToken, _firebaseToken]];
+- (void) didRegister:(NSString *)token {
     [self delKWSSDKDidRegisterUserForRemoteNotifications];
 }
 
-- (void) tokenSubscribeError {
+- (void) didNotRegister {
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
 }
 
-// MARK: KWSUnsubscribeTokenProtocol delegate
-
-- (void) tokenWasUnsubscribed {
+- (void) didUnregister {
     [self delKWSSDKDidUnregisterUserForRemoteNotifications];
 }
 
-- (void) tokenUnsubscribeError {
+- (void) didNotUnregister {
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:CouldNotUnsubscribeInKWS];
 }
+
+//- (void) didRegisterWithSystem:(NSString *)token {
+//    _systemToken = token;
+//    [_firebaseGetToken setup];
+//}
+//
+//- (void) didNotRegister {
+//    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NoSystemPermission];
+//}
+//
+//- (void) didUnregisterWithSystem {
+//    NSString *token = [_firebaseGetToken getFirebaseToken];
+//    [_unsubscribeToken request:token];
+//}
+
+// MARK: FirebaseGetTokenProtocol delegate
+
+//- (void) didGetFirebaseToken: (NSString*) token {
+//    // _firebaseToken = token;
+////    NSString *token
+//    [_subscribeToken request:token];
+//}
+//
+//- (void) didFailToGetFirebaseToken {
+//    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseCouldNotGetToken];
+//}
+//
+//- (void) didFailBecauseFirebaseIsNotSetup {
+//    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseNotSetup];
+//}
+
+// MARK: KWSSubscribeTokenProtocol delegate
+
+//- (void) tokenWasSubscribed {
+//    [SALogger log:[NSString stringWithFormat:@"Did register with\n - System Token: %@\n - Firebase Token: %@", _systemToken, _firebaseToken]];
+//    [self delKWSSDKDidRegisterUserForRemoteNotifications];
+//}
+//
+//- (void) tokenSubscribeError {
+//    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
+//}
+
+// MARK: KWSUnsubscribeTokenProtocol delegate
+
+//- (void) tokenWasUnsubscribed {
+//    [self delKWSSDKDidUnregisterUserForRemoteNotifications];
+//}
+//
+//- (void) tokenUnsubscribeError {
+//    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:CouldNotUnsubscribeInKWS];
+//}
 
 // MARK: getters
 
