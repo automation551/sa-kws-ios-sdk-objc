@@ -8,7 +8,7 @@
 
 #import "FirebaseGetToken.h"
 #import "Firebase.h"
-#import "KWSLogger.h"
+#import "SALogger.h"
 #import "Firebase.h"
 
 #define MAXIMUM_NR_TIMES 30
@@ -35,7 +35,7 @@
         [FIRApp configure];
         [self request];
     } @catch (NSException *exception) {
-        [KWSLogger err:@"Could not configure Firebase"];
+        [SALogger err:@"Could not configure Firebase"];
         _setupOK = false;
         [self delDidFailBecauseFirebaseIsNotSetup];
     } @finally {
@@ -52,14 +52,14 @@
     NSString *token = [[FIRInstanceID instanceID] token];
     
     if (token != NULL) {
-        [KWSLogger log:[NSString stringWithFormat:@"Success in getting Firebase token after %ld tries", _times]];
+        [SALogger log:[NSString stringWithFormat:@"Success in getting Firebase token after %ld tries", _times]];
         [_timer invalidate];
         _timer = nil;
         [_defaults setObject:token forKey:FIREBASE_TOKEN];
         [_defaults synchronize];
         [self delDidGetFirebaseToken:token];
     } else if (_times > MAXIMUM_NR_TIMES) {
-        [KWSLogger err:[NSString stringWithFormat:@"Failed to get Firebase token after %ld tries", MAXIMUM_NR_TIMES]];
+        [SALogger err:[NSString stringWithFormat:@"Failed to get Firebase token after %ld tries", MAXIMUM_NR_TIMES]];
         [_timer invalidate];
         _timer = nil;
         [_defaults removeObjectForKey:FIREBASE_TOKEN];
@@ -67,7 +67,7 @@
         [self delFailToGetFirebaseToken];
     } else {
         _times++;
-        [KWSLogger log:[NSString stringWithFormat:@"Trying to get Firebase token try %ld / %ld", _times, MAXIMUM_NR_TIMES]];
+        [SALogger log:[NSString stringWithFormat:@"Trying to get Firebase token try %ld / %ld", _times, MAXIMUM_NR_TIMES]];
     }
 }
 

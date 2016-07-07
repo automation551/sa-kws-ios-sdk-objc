@@ -7,7 +7,7 @@
 //
 
 #import "PushRegister.h"
-#import "KWSSystemVersion.h"
+#import "SASystemVersion.h"
 
 @interface PushRegister ()
 @property (nonatomic, weak) UIApplication *appRef;

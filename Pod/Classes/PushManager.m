@@ -7,8 +7,8 @@
 //
 
 #import "PushManager.h"
-#import "KWSLogger.h"
-#import "KWSSystemVersion.h"
+#import "SALogger.h"
+#import "SASystemVersion.h"
 #import "Firebase.h"
 #import "KWSSubscribeToken.h"
 
@@ -54,7 +54,7 @@
 // MARK: Public functions
 
 - (void) registerForPushNotifications {
-    [KWSLogger log:@"Start registering for Push Notifications | becoming App Delegate"];
+    [SALogger log:@"Start registering for Push Notifications | becoming App Delegate"];
     [self takeAppDelegateControl];
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
@@ -68,7 +68,7 @@
 }
 
 - (void) unregisterForPushNotifications {
-    [KWSLogger log:@"Starting unregistering for Push Notificaitons"];
+    [SALogger log:@"Starting unregistering for Push Notificaitons"];
     [_pushRegister unregisterPush];
     [self delDidUnregisterWithSystem];
 }
@@ -92,18 +92,18 @@
     [self performFailureSelector:application withError:error];
     [self resumeAppDelegateControl];
     [self delDidNotRegister];
-    [KWSLogger err:@"Failed to register for Push Notification"];
+    [SALogger err:@"Failed to register for Push Notification"];
 }
 
 // MARK: PushCheckAllowed
 
 - (void) pushAllowedInSystem {
-    [KWSLogger log:@"Push Notificaitons are enabled on system - start registration"];
+    [SALogger log:@"Push Notificaitons are enabled on system - start registration"];
     [_pushRegister registerPush];
 }
 
 - (void) pushNotAllowedInSystem {
-    [KWSLogger err:@"Push Notifications are disabled on system - aborting registration"];
+    [SALogger err:@"Push Notifications are disabled on system - aborting registration"];
     [self resumeAppDelegateControl];
     [self delDidNotRegister];
 }

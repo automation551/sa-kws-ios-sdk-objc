@@ -1,19 +1,19 @@
 //
-//  KWSPopup.h
+//  SAPopup.h
 //  Pods
 //
-//  Created by Gabriel Coman on 30/06/2016.
+//  Created by Gabriel Coman on 07/07/2016.
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 // define a blocks used by UIAlertActions
 typedef void(^actionBlock) (UIAlertAction *action);
 typedef void(^okBlock) (NSString *popupMessage);
 typedef void(^nokBlock) ();
 
-@interface KWSPopup : NSObject
+@interface SAPopup : NSObject
 
 // show function
 - (void) showWithTitle:(NSString*)title
@@ -21,6 +21,7 @@ typedef void(^nokBlock) ();
             andOKTitle:(NSString*)ok
            andNOKTitle:(NSString*)nok
           andTextField:(BOOL)hasTextField
+       andKeyboardTyle:(UIKeyboardType)keyboardType
             andOKBlock:(okBlock)okBlock
            andNOKBlock:(nokBlock)nokBlock;
 

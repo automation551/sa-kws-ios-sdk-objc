@@ -2,13 +2,13 @@
 //  KWSLogger.h
 //  Pods
 //
-//  Created by Gabriel Coman on 24/05/2016.
+//  Created by Gabriel Coman on 07/07/2016.
 //
 //
 
 #import <UIKit/UIKit.h>
 
-@interface KWSLogger : NSObject
+@interface SALogger : NSObject
 
 + (void) log:(NSString*)message;
 + (void) err:(NSString*)message;

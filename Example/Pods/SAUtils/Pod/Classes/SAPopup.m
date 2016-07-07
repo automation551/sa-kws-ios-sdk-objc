@@ -1,20 +1,20 @@
 //
-//  KWSPopup.m
+//  SAPopup.m
 //  Pods
 //
-//  Created by Gabriel Coman on 30/06/2016.
+//  Created by Gabriel Coman on 07/07/2016.
 //
 //
 
 // header
-#import "KWSPopup.h"
+#import "SAPopup.h"
 
 // other imports
-#import "KWSSystemVersion.h"
+#import "SASystemVersion.h"
 #import "SAExtensions.h"
 
 // interface
-@interface KWSPopup ()
+@interface SAPopup ()
 @property (nonatomic, strong) UIAlertController *kwsPopupController;
 @property (nonatomic, strong) UIAlertView *kwsPopupAlertView;
 
@@ -23,11 +23,12 @@
 @property (nonatomic, strong) NSString *okTitle;
 @property (nonatomic, strong) NSString *nokTitle;
 @property (nonatomic, assign) BOOL hasTextField;
+@property (nonatomic, assign) UIKeyboardType keyboardType;
 @property (nonatomic, strong) okBlock okBlock;
 @property (nonatomic, strong) nokBlock nokBlock;
 @end
 
-@implementation KWSPopup
+@implementation SAPopup
 
 // MARK: Main class functions
 
@@ -36,6 +37,7 @@
             andOKTitle:(NSString*)ok
            andNOKTitle:(NSString*)nok
           andTextField:(BOOL)hasTextField
+       andKeyboardTyle:(UIKeyboardType)keyboardType
             andOKBlock:(okBlock)okBlock
            andNOKBlock:(nokBlock)nokBlock{
     
@@ -44,6 +46,7 @@
     _okTitle = ok;
     _nokTitle = nok;
     _hasTextField = hasTextField;
+    _keyboardType = keyboardType;
     _okBlock = okBlock;
     _nokBlock = nokBlock;
     
@@ -69,7 +72,7 @@
     
     actionBlock iOKBlock = ^(UIAlertAction *action) {
         if (_hasTextField) {
-        	UITextField *textField = [[_kwsPopupController textFields] firstObject];
+            UITextField *textField = [[_kwsPopupController textFields] firstObject];
             NSString *text = [textField text];
             _okBlock(text);
         } else {
@@ -92,7 +95,7 @@
         __block UITextField *localTextField;
         [_kwsPopupController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
             localTextField = textField;
-            localTextField.keyboardType = UIKeyboardTypeEmailAddress;
+            localTextField.keyboardType = _keyboardType;
         }];
     }
     
@@ -115,15 +118,15 @@
 
 - (void) willPresentAlertView:(UIAlertView *)alertView {
     if (_hasTextField) {
-    	UITextField *textField = [_kwsPopupAlertView textFieldAtIndex:0];
-        textField.keyboardType = UIKeyboardTypeNumberPad;
+        UITextField *textField = [_kwsPopupAlertView textFieldAtIndex:0];
+        textField.keyboardType = _keyboardType;
     }
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
         if (_hasTextField) {
-        	UITextField *textField = [_kwsPopupAlertView textFieldAtIndex:0];
+            UITextField *textField = [_kwsPopupAlertView textFieldAtIndex:0];
             NSString *text = [textField text];
             _okBlock(text);
         } else {

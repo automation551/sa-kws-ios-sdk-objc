@@ -9,11 +9,11 @@
 #import "KWS.h"
 #import "KWSMetadata.h"
 #import "Firebase.h"
-#import "KWSLogger.h"
+#import "SALogger.h"
 #import "KWSSubscribeToken.h"
 #import "KWSUnsubscribeToken.h"
 #import "FirebaseGetToken.h"
-#import "KWSPopup.h"
+#import "SAPopup.h"
 
 @interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, KWSSubscribeTokenProtocol, KWSUnsubscribeTokenProtocol, FirebaseGetTokenProtocol>
 // the parent email object
@@ -27,8 +27,8 @@
 @property (nonatomic, weak) id <KWSProtocol> delegate;
 
 // email popup
-@property (nonatomic, strong) KWSPopup *permissionPopup;
-@property (nonatomic, strong) KWSPopup *emailPopup;
+@property (nonatomic, strong) SAPopup *permissionPopup;
+@property (nonatomic, strong) SAPopup *emailPopup;
 
 // internal vars
 @property (nonatomic, strong) NSString *systemToken;
@@ -74,19 +74,20 @@
     _kwsApiUrl = kwsApiUrl;
     _delegate = delegate;
     _metadata = [self getMetadata:oauthToken];
-    [KWSLogger log:[self.metadata jsonPreetyStringRepresentation]];
+    [SALogger log:[self.metadata jsonPreetyStringRepresentation]];
 }
 
 // MARK: Public functions
 
 - (void) checkIfNotificationsAreAllowed {
     if (_showPermissionPopup) {
-        _permissionPopup = [[KWSPopup alloc] init];
+        _permissionPopup = [[SAPopup alloc] init];
         [_permissionPopup showWithTitle:@"Hey!"
                              andMessage:@"Do you want to allow Push Notifications?"
                              andOKTitle:@"Yes"
                             andNOKTitle:@"No"
                            andTextField:NO
+                        andKeyboardTyle:UIKeyboardTypeDefault
                              andOKBlock:^(NSString *popupMessage) {
                                  [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
                              }
@@ -100,12 +101,13 @@
 }
 
 - (void) showParentEmailPopup {
-    _emailPopup = [[KWSPopup alloc] init];
+    _emailPopup = [[SAPopup alloc] init];
     [_emailPopup showWithTitle:@"Hey!"
                     andMessage:@"To enable Push Notifications in KWS you'll need to provide a parent's email."
                     andOKTitle:@"Submut"
                    andNOKTitle:@"Cancel"
                   andTextField:YES
+               andKeyboardTyle:UIKeyboardTypeEmailAddress
                     andOKBlock:^(NSString *popupMessage) {
                         [self submitParentEmail:popupMessage];
                     } andNOKBlock:^{
@@ -204,7 +206,7 @@
 // MARK: KWSSubscribeTokenProtocol delegate
 
 - (void) tokenWasSubscribed {
-    [KWSLogger log:[NSString stringWithFormat:@"Did register with\n - System Token: %@\n - Firebase Token: %@", _systemToken, _firebaseToken]];
+    [SALogger log:[NSString stringWithFormat:@"Did register with\n - System Token: %@\n - Firebase Token: %@", _systemToken, _firebaseToken]];
     [self delKWSSDKDidRegisterUserForRemoteNotifications];
 }
 

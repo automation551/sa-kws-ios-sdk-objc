@@ -7,7 +7,7 @@
 //
 
 #import "PushCheckAllowed.h"
-#import "KWSSystemVersion.h"
+#import "SASystemVersion.h"
 
 #define kUserHasSeenDialog @"UserHasSeenDialog"
 

@@ -12,7 +12,7 @@
 // aux
 #import "KWS.h"
 #import "SANetwork.h"
-#import "KWSLogger.h"
+#import "SALogger.h"
 
 // models
 #import "KWSMetadata.h"
@@ -43,7 +43,7 @@
             if ((code == 200 || code == 204) && json != NULL) {
                 
                 KWSUser *user = [[KWSUser alloc] initWithJsonString:json];
-                [KWSLogger log:[user jsonPreetyStringRepresentation]];
+                [SALogger log:[user jsonPreetyStringRepresentation]];
                 
                 if (user) {
                     
