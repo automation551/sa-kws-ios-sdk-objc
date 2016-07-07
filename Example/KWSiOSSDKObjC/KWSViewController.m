@@ -10,25 +10,59 @@
 #import "KWS.h"
 #import "KWSMetadata.h"
 #import "KWSLogger.h"
+#import "SANetwork.h"
+#import "KWSModel.h"
+#import "SAUtils.h"
 
-#define TOKEN @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsImFwcElkIjozMTMsImNsaWVudElkIjoic2EtbW9iaWxlLWFwcC1zZGstY2xpZW50LTAiLCJzY29wZSI6InVzZXIiLCJpYXQiOjE0NjcyOTY2MDksImV4cCI6MTQ2NzM4MzAwOSwiaXNzIjoic3VwZXJhd2Vzb21lIn0.T0Gy_BrN0MKuiEbadSb7AjpTiRcJ6MlalXx9JDAE8EI"
 #define API @"https://kwsapi.demo.superawesome.tv/v1/"
 
 @interface KWSViewController ()  <KWSProtocol>
+@property (nonatomic, strong) NSString *token;
 @end
 
 @implementation KWSViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _token = NULL;
 }
 
-- (IBAction)startProcess:(id)sender {
-    [[KWS sdk] setupWithOAuthToken:TOKEN kwsApiUrl:API andPermissionPopup:YES delegate:self];
-    [[KWS sdk] checkIfNotificationsAreAllowed];
+- (IBAction) createNewUser:(id)sender {
+    
+    NSString *url = @"https://kwsdemobackend.herokuapp.com/create";
+    NSString *username = [NSString stringWithFormat:@"testuser_%d", [SAUtils randomNumberBetween:100 maxNumber:500]];
+    NSDictionary *header = @{@"Content-Type":@"application/json"};
+    NSDictionary *body = @{@"username":username,
+                           @"password":@"testtest",
+                           @"dateOfBirth":@"2011-03-02"};
+    
+    SANetwork *network = [[SANetwork alloc] init];
+    [network sendPOST:url withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger status, NSString *payload) {
+        
+        if (status == 200) {
+            KWSModel *model = [[KWSModel alloc] initWithJsonString:payload];
+            _token = model.token;
+            NSLog(@"Created user %@ with token %@", username, _token);
+        } else {
+            NSLog(@"Could not create user %@", username);
+        }
+        
+    } andFailure:^{
+        NSLog(@"Could not create user %@", username);
+    }];
 }
 
-- (IBAction)unregisterProcess:(id)sender {
+- (IBAction) registerToken:(id)sender {
+    if (_token == NULL) {
+        NSLog(@"Please create a valid user before sending tokens");
+    }
+    else{
+        [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API andPermissionPopup:YES delegate:self];
+        [[KWS sdk] checkIfNotificationsAreAllowed];
+    }
+}
+
+- (IBAction) unregisterToken:(id)sender {
     [[KWS sdk] unregisterForRemoteNotifications];
 }
 

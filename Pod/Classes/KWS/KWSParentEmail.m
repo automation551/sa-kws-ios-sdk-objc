@@ -11,7 +11,7 @@
 
 // aux
 #import "KWS.h"
-#import "KWSNetworking.h"
+#import "SANetwork.h"
 
 // models
 #import "KWSMetadata.h"
@@ -37,16 +37,25 @@
         
         NSInteger userId = metadata.userId;
         NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", kwsApiUrl, (long)userId];
-        NSDictionary *body = @{@"permissions":@[@"sendPushNotification"], @"parentEmail": email};
+        NSDictionary *body = @{
+                               @"permissions":@[@"sendPushNotification"],
+                               @"parentEmail": email
+                               };
         
-        [KWSNetworking sendPOST:endpoint token:oauthToken body:body callback:^(NSString *json, NSInteger code) {
-            
+        NSDictionary *header = @{@"Content-Type":@"application/json",
+                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken]
+                                 };
+        
+        SANetwork *network = [[SANetwork alloc] init];
+        [network sendPOST:endpoint withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger code, NSString *payload) {
             if (code == 200 || code == 204){
                 [self delEmailSubmittedInKWS];
             } else {
                 [self delEmailError];
             }
             
+        } andFailure:^{
+            [self delEmailError];
         }];
     }
     else {

@@ -11,7 +11,7 @@
 
 // aux
 #import "KWS.h"
-#import "KWSNetworking.h"
+#import "SANetwork.h"
 #import "KWSLogger.h"
 
 // models
@@ -34,8 +34,12 @@
         NSInteger userId = metadata.userId;
         NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld", kwsApiUrl, (long)userId];
         
-        [KWSNetworking sendGET:endpoint token:oauthToken callback:^(NSString *json, NSInteger code) {
-            
+        NSDictionary *header = @{@"Content-Type":@"application/json",
+                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken]
+                                 };
+        
+        SANetwork *network = [[SANetwork alloc] init];
+        [network sendGET:endpoint withQuery:@{} andHeader:header andSuccess:^(NSInteger code, NSString *json) {
             if ((code == 200 || code == 204) && json != NULL) {
                 
                 KWSUser *user = [[KWSUser alloc] initWithJsonString:json];
@@ -58,12 +62,10 @@
             else {
                 [self delCheckError];
             }
+        } andFailure:^{
+            [self delCheckError];
         }];
     }
-    else {
-        [self delCheckError];
-    }
-    
 }
 
 // MARK: Delegate handler functions

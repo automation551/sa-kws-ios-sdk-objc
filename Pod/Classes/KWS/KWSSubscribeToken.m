@@ -10,7 +10,7 @@
 
 // aux
 #import "KWS.h"
-#import "KWSNetworking.h"
+#import "SANetwork.h"
 
 // models
 #import "KWSMetadata.h"
@@ -32,15 +32,20 @@
         NSInteger appId = metadata.appId;
         NSString *endpoint = [NSString stringWithFormat:@"%@apps/%ld/users/%ld/subscribe-push-notifications", kwsApiUrl, appId, userId];
         NSDictionary *body = @{@"token":token, @"platform": @"ios"};
+        NSDictionary *header = @{@"Content-Type":@"application/json",
+                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken]
+                                 };
         
-        [KWSNetworking sendPOST:endpoint token:oauthToken body:body callback:^(NSString *json, NSInteger code) {
-            
+        SANetwork *network = [[SANetwork alloc] init];
+        [network sendPOST:endpoint withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger code, NSString *json) {
             if (code == 200 || code == 204) {
                 NSLog(@"Payload ==> %@", json);
                 [self delTokenWasSubscribed];
             } else {
                 [self delTokenSubscribeError];
             }
+        } andFailure:^{
+            [self delTokenSubscribeError];
         }];
     }
     else {

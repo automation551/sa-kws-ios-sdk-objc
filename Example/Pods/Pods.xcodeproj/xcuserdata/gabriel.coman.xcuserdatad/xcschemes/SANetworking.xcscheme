@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'ED3EB150FB8C2FBF9C0F7906FF4FE21C'
-               BlueprintName = 'Pods-KWSiOSSDKObjC_Example'
+               BlueprintIdentifier = '8E1ED544479A86CE23F0C0EE88CEDE15'
+               BlueprintName = 'SANetworking'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-KWSiOSSDKObjC_Example.a'>
+               BuildableName = 'libSANetworking.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
