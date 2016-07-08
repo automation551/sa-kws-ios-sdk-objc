@@ -82,11 +82,11 @@
 }
 
 - (void) didFailToGetFirebaseToken {
-    [self delDidNotRegister];
+    [self delDidFailToGetFirebaseToken];
 }
 
 - (void) didFailBecauseFirebaseIsNotSetup {
-    [self delDidNotRegister];
+    [self delDidFailBecauseFirebaseIsNotSetup];
 }
 
 // MARK: KWSSubscribeTokenProtocol
@@ -97,7 +97,7 @@
 }
 
 - (void) tokenSubscribeError {
-    [self delDidNotRegister];
+    [self delNetworkErrorTryingToSubscribeToken];
 }
 
 // MARK: KWSUnsubscribeTokenProtocol
@@ -107,7 +107,7 @@
 }
 
 - (void) tokenUnsubscribeError {
-    [self delDidNotUnregister];
+    [self delNetworkErrorTryingToUnsubscribeToken];
 }
 
 // MARK: Delegate handler functions
@@ -118,22 +118,33 @@
     }
 }
 
-- (void) delDidNotRegister {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didNotRegister)]) {
-        [_delegate didNotRegister];
-    }
-}
-
 - (void) delDidUnregister {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(didUnregister)]) {
         [_delegate didUnregister];
     }
 }
 
-- (void) delDidNotUnregister {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didNotUnregister)]) {
-        [_delegate didNotUnregister];
+- (void) delDidFailBecauseFirebaseIsNotSetup {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseFirebaseIsNotSetup)]) {
+        [_delegate didFailBecauseFirebaseIsNotSetup];
     }
 }
 
+- (void) delDidFailToGetFirebaseToken {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailToGetFirebaseToken)]) {
+        [_delegate didFailToGetFirebaseToken];
+    }
+}
+
+- (void) delNetworkErrorTryingToSubscribeToken {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(networkErrorTryingToSubscribeToken)]) {
+        [_delegate networkErrorTryingToSubscribeToken];
+    }
+}
+
+- (void) delNetworkErrorTryingToUnsubscribeToken {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(networkErrorTryingToUnsubscribeToken)]) {
+        [_delegate networkErrorTryingToUnsubscribeToken];
+    }
+}
 @end

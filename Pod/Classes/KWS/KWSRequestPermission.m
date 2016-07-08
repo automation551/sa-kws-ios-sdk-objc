@@ -51,21 +51,21 @@
                         [self delParentEmailIsMissingInKWS];
                     }
                     else {
-                        [self delRequestError];
+                        [self delPermissionErrorError];
                     }
                 }
                 else {
-                    [self delRequestError];
+                    [self delPermissionErrorError];
                 }
             } else {
-                [self delRequestError];
+                [self delPermissionErrorError];
             }
         } andFailure:^{
-            [self delRequestError];
+            [self delPermissionErrorError];
         }];
     }
     else {
-        [self delRequestError];
+        [self delPermissionErrorError];
     }
     
 }
@@ -82,9 +82,9 @@
     }
 }
 
-- (void) delRequestError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(requestError)]) {
-        [_delegate requestError];
+- (void) delPermissionErrorError {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(permissionError)]) {
+        [_delegate permissionError];
     }
 }
 

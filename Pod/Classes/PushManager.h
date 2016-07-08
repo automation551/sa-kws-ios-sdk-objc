@@ -16,9 +16,11 @@
 @protocol PushManagerProtocol <NSObject>
 
 - (void) didRegister:(NSString*)token;
-- (void) didNotRegister;
 - (void) didUnregister;
-- (void) didNotUnregister;
+- (void) didFailBecauseFirebaseIsNotSetup;
+- (void) didFailToGetFirebaseToken;
+- (void) networkErrorTryingToSubscribeToken;
+- (void) networkErrorTryingToUnsubscribeToken;
 
 @end
 

@@ -72,8 +72,8 @@
 }
 
 - (void) checkError {
-    [SALogger err:@"An unknown network error occured"];
-    [self delNetworkError];
+    [SALogger err:@"Network error checking if KWS allows notifications"];
+    [self delNetworkErrorCheckingInKWS];
 }
 
 // MARK: KWSRequestPermissionProtocol
@@ -88,9 +88,9 @@
     [self delParentEmailIsMissingInKWS];
 }
 
-- (void) requestError {
-    [SALogger err:@"An unknown network error occured"];
-    [self delNetworkError];
+- (void) permissionError {
+    [SALogger err:@"Network error requesting notification permission from KWS"];
+    [self delNetworkErrorRequestingPermissionFromKWS];
 }
 
 // MARK: Delegate handler functions
@@ -113,15 +113,21 @@
     }
 }
 
-- (void) delNetworkError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(networkError)]) {
-        [_delegate networkError];
-    }
-}
-
 - (void) delIsAllowedToRegister {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(isAllowedToRegister)]) {
         [_delegate isAllowedToRegister];
+    }
+}
+
+- (void) delNetworkErrorCheckingInKWS {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(networkErrorCheckingInKWS)]) {
+        [_delegate networkErrorCheckingInKWS];
+    }
+}
+
+- (void) delNetworkErrorRequestingPermissionFromKWS {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(networkErrorRequestingPermissionFromKWS)]) {
+        [_delegate networkErrorRequestingPermissionFromKWS];
     }
 }
 

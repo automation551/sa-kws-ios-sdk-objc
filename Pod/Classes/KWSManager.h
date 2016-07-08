@@ -19,9 +19,9 @@
 - (void) pushNotAllowedInSystem;
 - (void) pushNotAllowedInKWS;
 - (void) parentEmailIsMissingInKWS;
-- (void) networkError;
 - (void) isAllowedToRegister;
-//- (void) isAlreadyRegistered;
+- (void) networkErrorCheckingInKWS;
+- (void) networkErrorRequestingPermissionFromKWS;
 
 @end
 

@@ -58,7 +58,7 @@
     }
     else{
         [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API andPermissionPopup:YES delegate:self];
-        [[KWS sdk] checkIfNotificationsAreAllowed];
+        [[KWS sdk] registerForRemoteNotifications];
     }
 }
 
@@ -77,11 +77,6 @@
 }
 
 // <KWSProtocol>
-
-- (void) kwsSDKDoesAllowUserToRegisterForRemoteNotifications {
-    NSLog(@"Got here from where I need to register!");
-    [[KWS sdk] registerForRemoteNotifications];
-}
 
 - (void) kwsSDKDidRegisterUserForRemoteNotifications {
     NSLog(@"User is registered for Remote Notifications");
@@ -117,12 +112,19 @@
             NSLog(@"Firebase was not able to obtain a token");
             break;
         }
-        case NetworkError: {
-            NSLog(@"Other network error");
+        case NetworkError_CheckKWSAllowsNotifications: {
             break;
         }
-        case CouldNotUnsubscribeInKWS: {
-            NSLog(@"Could not unsubscribe in KWS");
+        case NetworkError_RequestPermissionFromKWS: {
+            break;
+        }
+        case NetworkError_SubmitEmail: {
+            break;
+        }
+        case NetworkError_SubscribeTokenToKWS: {
+            break;
+        }
+        case NetworkError_UnsubscribeTokenToKWS: {
             break;
         }
     }

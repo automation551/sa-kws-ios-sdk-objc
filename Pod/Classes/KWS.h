@@ -26,14 +26,16 @@ typedef enum KWSErrorType {
     ParentEmailInvalid = 3,
     FirebaseNotSetup = 4,
     FirebaseCouldNotGetToken = 5,
-    NetworkError = 6,
-    CouldNotUnsubscribeInKWS = 7
+    NetworkError_CheckKWSAllowsNotifications = 6,
+    NetworkError_RequestPermissionFromKWS = 7,
+    NetworkError_SubmitEmail = 8,
+    NetworkError_SubscribeTokenToKWS = 9,
+    NetworkError_UnsubscribeTokenToKWS = 10
 }KWSErrorType;
 
 // Protocol
 @protocol KWSProtocol <NSObject>
 
-- (void) kwsSDKDoesAllowUserToRegisterForRemoteNotifications;
 - (void) kwsSDKDidRegisterUserForRemoteNotifications;
 - (void) kwsSDKDidUnregisterUserForRemoteNotifications;
 - (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType;
@@ -54,12 +56,10 @@ typedef enum KWSErrorType {
                     delegate:(id<KWSProtocol>)delegate;
 
 // public funcs
-- (void) checkIfNotificationsAreAllowed;
-- (void) showParentEmailPopup;
-- (void) submitParentEmail:(NSString*)email;
-
 - (void) registerForRemoteNotifications;
 - (void) unregisterForRemoteNotifications;
+- (void) showParentEmailPopup;
+- (void) submitParentEmail:(NSString*)email;
 
 // getters
 - (NSString*) getOAuthToken;

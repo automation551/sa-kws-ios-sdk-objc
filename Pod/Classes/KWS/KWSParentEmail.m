@@ -59,7 +59,7 @@
         }];
     }
     else {
-        [self delEmailError];
+        [self delInvalidEmail];
     }
     
 }
@@ -89,6 +89,12 @@
 - (void) delEmailError {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailError)]) {
         [_delegate emailError];
+    }
+}
+
+- (void) delInvalidEmail {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(invalidEmail)]) {
+        [_delegate invalidEmail];
     }
 }
 

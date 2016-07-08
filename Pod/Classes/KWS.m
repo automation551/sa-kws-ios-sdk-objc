@@ -47,6 +47,8 @@
     if (self = [super init]) {
         [KWSManager sharedInstance].delegate = self;
         [PushManager sharedInstance].delegate = self;
+        _parentEmail = [[KWSParentEmail alloc] init];
+        _parentEmail.delegate = self;
     }
     return self;
 }
@@ -67,7 +69,7 @@
 
 // MARK: Public functions
 
-- (void) checkIfNotificationsAreAllowed {
+- (void) registerForRemoteNotifications {
     if (_showPermissionPopup) {
         _permissionPopup = [[SAPopup alloc] init];
         [_permissionPopup showWithTitle:@"Hey!"
@@ -88,6 +90,10 @@
     }
 }
 
+- (void) unregisterForRemoteNotifications {
+    [[PushManager sharedInstance] unregisterForPushNotifications];
+}
+
 - (void) showParentEmailPopup {
     _emailPopup = [[SAPopup alloc] init];
     [_emailPopup showWithTitle:@"Hey!"
@@ -104,18 +110,9 @@
 }
 
 - (void) submitParentEmail:(NSString*)email {
-    _parentEmail = [[KWSParentEmail alloc] init];
-    _parentEmail.delegate = self;
     [_parentEmail submit:email];
 }
 
-- (void) registerForRemoteNotifications {
-    [[PushManager sharedInstance] registerForPushNotifications];
-}
-
-- (void) unregisterForRemoteNotifications {
-    [[PushManager sharedInstance] unregisterForPushNotifications];
-}
 
 // MARK: KWSManagerProtocol delegate
 
@@ -131,40 +128,56 @@
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailNotFound];
 }
 
-- (void) networkError {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
+- (void) networkErrorCheckingInKWS {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_CheckKWSAllowsNotifications];
+}
+
+- (void) networkErrorRequestingPermissionFromKWS {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_RequestPermissionFromKWS];
 }
 
 - (void) isAllowedToRegister {
-    [self delKWSSDKDoesAllowUserToRegisterForRemoteNotifications];
+    [[PushManager sharedInstance] registerForPushNotifications];
 }
 
 // MARK: KWSParentEmailProtocol delegate
 
 - (void) emailSubmittedInKWS {
-    [self delKWSSDKDoesAllowUserToRegisterForRemoteNotifications];
+    [[PushManager sharedInstance] registerForPushNotifications];
 }
 
 - (void) emailError {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_SubmitEmail];
+}
+
+- (void) invalidEmail {
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailInvalid];
 }
 
 // MARK: PushManagerProtocol delegate
 
-- (void) didRegister:(NSString *)token {
+- (void) didRegister:(NSString*)token {
     [self delKWSSDKDidRegisterUserForRemoteNotifications];
-}
-
-- (void) didNotRegister {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError];
 }
 
 - (void) didUnregister {
     [self delKWSSDKDidUnregisterUserForRemoteNotifications];
 }
 
-- (void) didNotUnregister {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:CouldNotUnsubscribeInKWS];
+- (void) didFailBecauseFirebaseIsNotSetup {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseNotSetup];
+}
+
+- (void) didFailToGetFirebaseToken {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseCouldNotGetToken];
+}
+
+- (void) networkErrorTryingToSubscribeToken {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_SubscribeTokenToKWS];
+}
+
+- (void) networkErrorTryingToUnsubscribeToken {
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_UnsubscribeTokenToKWS];
 }
 
 // MARK: getters
@@ -207,12 +220,6 @@
 }
 
 // MARK: Delegate handler functions
-
-- (void) delKWSSDKDoesAllowUserToRegisterForRemoteNotifications {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(kwsSDKDoesAllowUserToRegisterForRemoteNotifications)]) {
-        [_delegate kwsSDKDoesAllowUserToRegisterForRemoteNotifications];
-    }
-}
 
 - (void) delKWSSDKDidRegisterUserForRemoteNotifications {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(kwsSDKDidRegisterUserForRemoteNotifications)]) {

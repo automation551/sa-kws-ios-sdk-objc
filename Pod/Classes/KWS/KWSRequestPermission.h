@@ -19,7 +19,7 @@
 
 - (void) pushPermissionRequestedInKWS;
 - (void) parentEmailIsMissingInKWS;
-- (void) requestError;
+- (void) permissionError;
 
 @end
 

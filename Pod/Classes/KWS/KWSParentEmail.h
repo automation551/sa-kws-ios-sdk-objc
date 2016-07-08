@@ -15,6 +15,7 @@
 
 - (void) emailSubmittedInKWS;
 - (void) emailError;
+- (void) invalidEmail;
 
 @end
 
