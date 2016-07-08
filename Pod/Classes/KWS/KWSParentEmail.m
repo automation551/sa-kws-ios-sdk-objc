@@ -26,7 +26,8 @@
     
     // validate
     if (![self validateEmail:email withStricterFilter:YES]){
-        [self delEmailError];
+        [self delInvalidEmail];
+        return;
     }
     
     NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
@@ -59,7 +60,7 @@
         }];
     }
     else {
-        [self delInvalidEmail];
+        [self delEmailError];
     }
     
 }

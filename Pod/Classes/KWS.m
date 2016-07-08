@@ -113,10 +113,10 @@
     [_parentEmail submit:email];
 }
 
-
 // MARK: KWSManagerProtocol delegate
 
 - (void) pushNotAllowedInSystem {
+    [[PushManager sharedInstance] unregisterForPushNotifications];
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:System_UserHasDisabledRemoteNotifications];
 }
 

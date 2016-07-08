@@ -72,6 +72,7 @@
 // MARK: Delegate handler functions
 
 - (void) markSystemDialogAsSeen {
+    _defaults = [NSUserDefaults standardUserDefaults];
     _hasUserSeenDialog = true;
     [_defaults setBool:_hasUserSeenDialog forKey:kUserHasSeenDialog];
     [_defaults synchronize];
