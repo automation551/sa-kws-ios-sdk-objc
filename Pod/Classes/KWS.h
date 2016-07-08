@@ -20,17 +20,17 @@
  Descriptor for the potential types of KWS errors
  */
 typedef enum KWSErrorType {
-    NoKWSPermission = 0,
-    NoSystemPermission = 1,
-    ParentEmailNotFound = 2,
-    ParentEmailInvalid = 3,
-    FirebaseNotSetup = 4,
-    FirebaseCouldNotGetToken = 5,
-    NetworkError_CheckKWSAllowsNotifications = 6,
-    NetworkError_RequestPermissionFromKWS = 7,
-    NetworkError_SubmitEmail = 8,
-    NetworkError_SubscribeTokenToKWS = 9,
-    NetworkError_UnsubscribeTokenToKWS = 10
+    KWS_ParentHasDisabledRemoteNotifications = 0,
+    System_UserHasDisabledRemoteNotifications = 1,
+    KWS_UserHasNoParentEmail = 2,
+    KWS_ParentEmailInvalid = 3,
+    System_FirebaseNotSetup = 4,
+    System_FirebaseCouldNotGetToken = 5,
+    Network_ErrorCheckingIfUserHasRemoteNotificationsEnabledInKWS = 6,
+    Network_ErrorRequestingRemoteNotificationsPermissionInKWS = 7,
+    Network_ErrorSubmittingParentEmail = 8,
+    Network_ErrorSubscribingTokenToKWS = 9,
+    Network_ErrorUnsubscribingTokenFromKWS = 10
 }KWSErrorType;
 
 // Protocol

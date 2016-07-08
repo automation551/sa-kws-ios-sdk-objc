@@ -117,23 +117,23 @@
 // MARK: KWSManagerProtocol delegate
 
 - (void) pushNotAllowedInSystem {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NoSystemPermission];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:System_UserHasDisabledRemoteNotifications];
 }
 
 - (void) pushNotAllowedInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NoKWSPermission];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:KWS_ParentHasDisabledRemoteNotifications];
 }
 
 - (void) parentEmailIsMissingInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailNotFound];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:KWS_UserHasNoParentEmail];
 }
 
 - (void) networkErrorCheckingInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_CheckKWSAllowsNotifications];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorCheckingIfUserHasRemoteNotificationsEnabledInKWS];
 }
 
 - (void) networkErrorRequestingPermissionFromKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_RequestPermissionFromKWS];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorRequestingRemoteNotificationsPermissionInKWS];
 }
 
 - (void) isAllowedToRegister {
@@ -147,11 +147,11 @@
 }
 
 - (void) emailError {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_SubmitEmail];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorSubmittingParentEmail];
 }
 
 - (void) invalidEmail {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailInvalid];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:KWS_ParentEmailInvalid];
 }
 
 // MARK: PushManagerProtocol delegate
@@ -165,19 +165,19 @@
 }
 
 - (void) didFailBecauseFirebaseIsNotSetup {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseNotSetup];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:System_FirebaseNotSetup];
 }
 
 - (void) didFailToGetFirebaseToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseCouldNotGetToken];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:System_FirebaseCouldNotGetToken];
 }
 
 - (void) networkErrorTryingToSubscribeToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_SubscribeTokenToKWS];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorSubscribingTokenToKWS];
 }
 
 - (void) networkErrorTryingToUnsubscribeToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:NetworkError_UnsubscribeTokenToKWS];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorUnsubscribingTokenFromKWS];
 }
 
 // MARK: getters

@@ -87,44 +87,51 @@
 }
 
 - (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType {
+    
     switch (errorType) {
-        case NoKWSPermission: {
-            NSLog(@"KWS does not allow this user to have Remote Notifications");
+        case KWS_ParentHasDisabledRemoteNotifications: {
+            NSLog(@"KWS Error: Parent has disabled Remote Notification permissions");
             break;
         }
-        case NoSystemPermission: {
-            NSLog(@"User has disabled Remote Notifications");
+        case System_UserHasDisabledRemoteNotifications: {
+            NSLog(@"System Error: User has disabled Remote Notification permissions");
             break;
         }
-        case ParentEmailNotFound: {
+        case KWS_UserHasNoParentEmail: {
+            NSLog(@"KWS Error: User has no parent email");
             [[KWS sdk] showParentEmailPopup];
             break;
         }
-        case ParentEmailInvalid: {
-            NSLog(@"Parent email is invalid");
+        case KWS_ParentEmailInvalid: {
+            NSLog(@"KWS Error: Parent email is invalid");
             break;
         }
-        case FirebaseNotSetup: {
-            NSLog(@"Firebase is not setup");
+        case System_FirebaseNotSetup: {
+            NSLog(@"System Error: Firebase is not setup");
             break;
         }
-        case FirebaseCouldNotGetToken: {
-            NSLog(@"Firebase was not able to obtain a token");
+        case System_FirebaseCouldNotGetToken: {
+            NSLog(@"System Error: Firebase could not get a token");
             break;
         }
-        case NetworkError_CheckKWSAllowsNotifications: {
+        case Network_ErrorCheckingIfUserHasRemoteNotificationsEnabledInKWS: {
+            NSLog(@"Network Error: Checking if user has Remote Notification enabled in KWS");
             break;
         }
-        case NetworkError_RequestPermissionFromKWS: {
+        case Network_ErrorRequestingRemoteNotificationsPermissionInKWS: {
+            NSLog(@"Network Error: Requesting Remote Notification permissions in KWS");
             break;
         }
-        case NetworkError_SubmitEmail: {
+        case Network_ErrorSubmittingParentEmail: {
+            NSLog(@"Network Error: Submiting parent email to KWS");
             break;
         }
-        case NetworkError_SubscribeTokenToKWS: {
+        case Network_ErrorSubscribingTokenToKWS: {
+            NSLog(@"Network Error: Subscribing token to KWS");
             break;
         }
-        case NetworkError_UnsubscribeTokenToKWS: {
+        case Network_ErrorUnsubscribingTokenFromKWS: {
+            NSLog(@"Network Error: Unsubscribing token from KWS");
             break;
         }
     }
