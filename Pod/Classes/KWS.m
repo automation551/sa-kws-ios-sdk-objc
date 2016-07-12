@@ -71,8 +71,7 @@
 
 - (void) registerForRemoteNotifications {
     if (_showPermissionPopup) {
-        _permissionPopup = [[SAPopup alloc] init];
-        [_permissionPopup showWithTitle:@"Hey!"
+        [[SAPopup sharedManager] showWithTitle:@"Hey!"
                              andMessage:@"Do you want to allow Push Notifications?"
                              andOKTitle:@"Yes"
                             andNOKTitle:@"No"
@@ -95,8 +94,7 @@
 }
 
 - (void) showParentEmailPopup {
-    _emailPopup = [[SAPopup alloc] init];
-    [_emailPopup showWithTitle:@"Hey!"
+    [[SAPopup sharedManager] showWithTitle:@"Hey!"
                     andMessage:@"To enable Push Notifications in KWS you'll need to provide a parent's email."
                     andOKTitle:@"Submit"
                    andNOKTitle:@"Cancel"
@@ -117,23 +115,23 @@
 
 - (void) pushNotAllowedInSystem {
     [[PushManager sharedInstance] unregisterForPushNotifications];
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:System_UserHasDisabledRemoteNotifications];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:UserHasDisabledRemoteNotifications];
 }
 
 - (void) pushNotAllowedInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:KWS_ParentHasDisabledRemoteNotifications];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentHasDisabledRemoteNotifications];
 }
 
 - (void) parentEmailIsMissingInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:KWS_UserHasNoParentEmail];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:UserHasNoParentEmail];
 }
 
 - (void) networkErrorCheckingInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorCheckingIfUserHasRemoteNotificationsEnabledInKWS];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToCheckIfUserHasNotificationsEnabledInKWS];
 }
 
 - (void) networkErrorRequestingPermissionFromKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorRequestingRemoteNotificationsPermissionInKWS];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToRequestNotificationsPermissionInKWS];
 }
 
 - (void) isAllowedToRegister {
@@ -147,11 +145,11 @@
 }
 
 - (void) emailError {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorSubmittingParentEmail];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToSubmitParentEmail];
 }
 
 - (void) invalidEmail {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:KWS_ParentEmailInvalid];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailInvalid];
 }
 
 // MARK: PushManagerProtocol delegate
@@ -165,19 +163,19 @@
 }
 
 - (void) didFailBecauseFirebaseIsNotSetup {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:System_FirebaseNotSetup];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseNotSetup];
 }
 
 - (void) didFailToGetFirebaseToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:System_FirebaseCouldNotGetToken];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseCouldNotGetToken];
 }
 
 - (void) networkErrorTryingToSubscribeToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorSubscribingTokenToKWS];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToSubscribeTokenToKWS];
 }
 
 - (void) networkErrorTryingToUnsubscribeToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:Network_ErrorUnsubscribingTokenFromKWS];
+    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToUbsubscribeTokenToKWS];
 }
 
 // MARK: getters

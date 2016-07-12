@@ -19,19 +19,19 @@
 /**
  Descriptor for the potential types of KWS errors
  */
-typedef enum KWSErrorType {
-    KWS_ParentHasDisabledRemoteNotifications = 0,
-    System_UserHasDisabledRemoteNotifications = 1,
-    KWS_UserHasNoParentEmail = 2,
-    KWS_ParentEmailInvalid = 3,
-    System_FirebaseNotSetup = 4,
-    System_FirebaseCouldNotGetToken = 5,
-    Network_ErrorCheckingIfUserHasRemoteNotificationsEnabledInKWS = 6,
-    Network_ErrorRequestingRemoteNotificationsPermissionInKWS = 7,
-    Network_ErrorSubmittingParentEmail = 8,
-    Network_ErrorSubscribingTokenToKWS = 9,
-    Network_ErrorUnsubscribingTokenFromKWS = 10
-}KWSErrorType;
+typedef NS_ENUM(NSInteger, KWSErrorType) {
+    ParentHasDisabledRemoteNotifications = 0,
+    UserHasDisabledRemoteNotifications = 1,
+    UserHasNoParentEmail = 2,
+    ParentEmailInvalid = 3,
+    FirebaseNotSetup = 4,
+    FirebaseCouldNotGetToken = 5,
+    FailedToCheckIfUserHasNotificationsEnabledInKWS = 6,
+    FailedToRequestNotificationsPermissionInKWS = 7,
+    FailedToSubmitParentEmail = 8,
+    FailedToSubscribeTokenToKWS = 9,
+    FailedToUbsubscribeTokenToKWS = 10
+};
 
 // Protocol
 @protocol KWSProtocol <NSObject>

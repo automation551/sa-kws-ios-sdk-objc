@@ -89,48 +89,48 @@
 - (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType {
     
     switch (errorType) {
-        case KWS_ParentHasDisabledRemoteNotifications: {
+        case ParentHasDisabledRemoteNotifications: {
             NSLog(@"KWS Error: Parent has disabled Remote Notification permissions");
             break;
         }
-        case System_UserHasDisabledRemoteNotifications: {
+        case UserHasDisabledRemoteNotifications: {
             NSLog(@"System Error: User has disabled Remote Notification permissions");
             break;
         }
-        case KWS_UserHasNoParentEmail: {
+        case UserHasNoParentEmail: {
             NSLog(@"KWS Error: User has no parent email");
             [[KWS sdk] showParentEmailPopup];
             break;
         }
-        case KWS_ParentEmailInvalid: {
+        case ParentEmailInvalid: {
             NSLog(@"KWS Error: Parent email is invalid");
             break;
         }
-        case System_FirebaseNotSetup: {
+        case FirebaseNotSetup: {
             NSLog(@"System Error: Firebase is not setup");
             break;
         }
-        case System_FirebaseCouldNotGetToken: {
+        case FirebaseCouldNotGetToken: {
             NSLog(@"System Error: Firebase could not get a token");
             break;
         }
-        case Network_ErrorCheckingIfUserHasRemoteNotificationsEnabledInKWS: {
+        case FailedToCheckIfUserHasNotificationsEnabledInKWS: {
             NSLog(@"Network Error: Checking if user has Remote Notification enabled in KWS");
             break;
         }
-        case Network_ErrorRequestingRemoteNotificationsPermissionInKWS: {
+        case FailedToRequestNotificationsPermissionInKWS: {
             NSLog(@"Network Error: Requesting Remote Notification permissions in KWS");
             break;
         }
-        case Network_ErrorSubmittingParentEmail: {
+        case FailedToSubmitParentEmail: {
             NSLog(@"Network Error: Submiting parent email to KWS");
             break;
         }
-        case Network_ErrorSubscribingTokenToKWS: {
+        case FailedToSubscribeTokenToKWS: {
             NSLog(@"Network Error: Subscribing token to KWS");
             break;
         }
-        case Network_ErrorUnsubscribingTokenFromKWS: {
+        case FailedToUbsubscribeTokenToKWS: {
             NSLog(@"Network Error: Unsubscribing token from KWS");
             break;
         }
