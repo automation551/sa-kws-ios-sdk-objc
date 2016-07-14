@@ -58,7 +58,6 @@
     // unsubscribe (optional, maybe?)
 }
 
-
 // MARK: KWSCheckAllowedProtocol
 
 - (void) pushAllowedInKWS {

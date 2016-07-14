@@ -28,6 +28,7 @@
     NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
     NSString *oauthToken = [[KWS sdk] getOAuthToken];
     KWSMetadata *metadata = [[KWS sdk] getMetadata];
+    NSString *version = [[KWS sdk] getVersion];
     
     if (kwsApiUrl && oauthToken && metadata != NULL) {
         
@@ -35,8 +36,8 @@
         NSInteger appId = metadata.appId;
         NSString *endpoint = [NSString stringWithFormat:@"%@apps/%ld/users/%ld/has-device-token", kwsApiUrl, appId, userId];
         NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken]
-                                 };
+                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
+                                 @"kws-sdk-version":version};
         
         SANetwork *network = [[SANetwork alloc] init];
         [network sendGET:endpoint withQuery:@{} andHeader:header andSuccess:^(NSInteger status, NSString *payload) {

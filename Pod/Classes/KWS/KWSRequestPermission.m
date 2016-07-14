@@ -26,6 +26,7 @@
     NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
     NSString *oauthToken = [[KWS sdk] getOAuthToken];
     KWSMetadata *metadata = [[KWS sdk] getMetadata];
+    NSString *version = [[KWS sdk] getVersion];
     
     if (kwsApiUrl && oauthToken && metadata) {
         
@@ -33,8 +34,8 @@
         NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", kwsApiUrl, (long)userId];
         NSDictionary *body = @{@"permissions":@[@"sendPushNotification"]};
         NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken]
-                                 };
+                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
+                                 @"kws-sdk-version":version};
         
         
         SANetwork *network = [[SANetwork alloc] init];

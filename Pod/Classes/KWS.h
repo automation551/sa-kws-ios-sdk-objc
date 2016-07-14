@@ -72,6 +72,7 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
 - (void) submitParentEmail:(NSString*)email;
 
 // getters
+- (NSString*) getVersion;
 - (NSString*) getOAuthToken;
 - (NSString*) getKWSApiUrl;
 - (KWSMetadata*) getMetadata;

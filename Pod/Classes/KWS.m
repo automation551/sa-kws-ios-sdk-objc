@@ -216,6 +216,10 @@
 
 // MARK: getters
 
+- (NSString*) getVersion {
+    return @"ios-1.2.6";
+}
+
 - (NSString*) getOAuthToken {
     return _oauthToken;
 }

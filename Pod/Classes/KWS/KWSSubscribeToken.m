@@ -25,6 +25,7 @@
     NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
     NSString *oauthToken = [[KWS sdk] getOAuthToken];
     KWSMetadata *metadata = [[KWS sdk] getMetadata];
+    NSString *version = [[KWS sdk] getVersion];
     
     if (kwsApiUrl && oauthToken && metadata && token) {
         
@@ -33,8 +34,8 @@
         NSString *endpoint = [NSString stringWithFormat:@"%@apps/%ld/users/%ld/subscribe-push-notifications", kwsApiUrl, appId, userId];
         NSDictionary *body = @{@"token":token, @"platform": @"ios"};
         NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken]
-                                 };
+                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
+                                 @"kws-sdk-version":version};
         
         SANetwork *network = [[SANetwork alloc] init];
         [network sendPOST:endpoint withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger code, NSString *json) {
