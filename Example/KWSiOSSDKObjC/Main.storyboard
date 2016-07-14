@@ -47,6 +47,16 @@
                                     <action selector="unregisterToken:" destination="whP-gf-Uak" eventType="touchUpInside" id="iBl-8n-U96"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-Yg-6dA">
+                                <rect key="frame" x="20" y="218" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hyJ-Zo-8Zc"/>
+                                </constraints>
+                                <state key="normal" title="Check if user is Allowed"/>
+                                <connections>
+                                    <action selector="isRegistered" destination="whP-gf-Uak" eventType="touchUpInside" id="Kww-TG-rh6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -56,9 +66,12 @@
                             <constraint firstItem="P5c-Mm-bd9" firstAttribute="top" secondItem="dhJ-s1-7UZ" secondAttribute="bottom" constant="8" id="RJM-JQ-jNN"/>
                             <constraint firstAttribute="trailing" secondItem="RI4-BG-naB" secondAttribute="trailing" constant="20" id="Ril-kb-lFl"/>
                             <constraint firstAttribute="trailing" secondItem="P5c-Mm-bd9" secondAttribute="trailing" constant="20" id="ZFu-0B-0HJ"/>
+                            <constraint firstItem="vIA-Yg-6dA" firstAttribute="top" secondItem="P5c-Mm-bd9" secondAttribute="bottom" constant="14" id="aHX-Yx-ecf"/>
+                            <constraint firstItem="vIA-Yg-6dA" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="boh-gQ-Mae"/>
                             <constraint firstItem="RI4-BG-naB" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="78" id="dO9-Vb-fIh"/>
                             <constraint firstItem="P5c-Mm-bd9" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="hGF-FV-NlN"/>
                             <constraint firstItem="RI4-BG-naB" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="jRJ-Ig-MUg"/>
+                            <constraint firstAttribute="trailing" secondItem="vIA-Yg-6dA" secondAttribute="trailing" constant="20" id="u1O-yt-ZGq"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -71,7 +71,7 @@
     [self delPushNotAllowedInKWS];
 }
 
-- (void) checkError {
+- (void) checkAllowedError {
     [SALogger err:@"Network error checking if KWS allows notifications"];
     [self delNetworkErrorCheckingInKWS];
 }

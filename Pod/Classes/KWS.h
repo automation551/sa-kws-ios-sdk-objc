@@ -11,6 +11,7 @@
 // imports
 #import "KWSManager.h"
 #import "PushManager.h"
+#import "CheckManager.h"
 #import "KWSParentEmail.h"
 
 // forward declarations
@@ -29,17 +30,24 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
     FailedToCheckIfUserHasNotificationsEnabledInKWS = 6,
     FailedToRequestNotificationsPermissionInKWS = 7,
     FailedToSubmitParentEmail = 8,
-    FailedToSubscribeTokenToKWS = 9,
-    FailedToUbsubscribeTokenToKWS = 10
+    FailedToSubscribeTokenToKWS = 9
 };
 
-// Protocol
-@protocol KWSProtocol <NSObject>
-
+// Protocols
+@protocol KWSRegisterProtocol <NSObject>
 - (void) kwsSDKDidRegisterUserForRemoteNotifications;
-- (void) kwsSDKDidUnregisterUserForRemoteNotifications;
 - (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType;
+@end
 
+@protocol KWSUnregisterProtocol <NSObject>
+- (void) kwsSDKDidUnregisterUserForRemoteNotifications;
+- (void) kwsSDKDidFailToUnregisterUserForRemoteNotifications;
+@end
+
+@protocol KWSCheckProtocol <NSObject>
+- (void) kwsSDKUserIsRegistered;
+- (void) kwsSDKUserIsNotRegistered;
+- (void) kwsSDKDidFailToCheckIfUserIsRegistered;
 @end
 
 // Class
@@ -52,12 +60,14 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
 // setup func
 - (void) setupWithOAuthToken:(NSString*)oauthToken
                    kwsApiUrl:(NSString*)kwsApiUrl
-          andPermissionPopup:(BOOL)showPermissionPopup
-                    delegate:(id<KWSProtocol>)delegate;
+          andPermissionPopup:(BOOL)showPermissionPopup;
 
-// public funcs
-- (void) registerForRemoteNotifications;
-- (void) unregisterForRemoteNotifications;
+// Main public functions
+- (void) registerForRemoteNotifications:(id<KWSRegisterProtocol>)delegate;
+- (void) unregisterForRemoteNotifications:(id<KWSUnregisterProtocol>)delegate;
+- (void) userIsRegistered:(id<KWSCheckProtocol>)delegate;
+
+// Main aux public functions
 - (void) showParentEmailPopup;
 - (void) submitParentEmail:(NSString*)email;
 

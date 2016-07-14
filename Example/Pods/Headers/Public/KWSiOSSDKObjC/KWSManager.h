@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/KWSManager.h
+../../../../../Pod/Classes/Managers/KWSManager.h

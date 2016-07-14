@@ -16,7 +16,7 @@
 
 #define API @"https://kwsapi.demo.superawesome.tv/v1/"
 
-@interface KWSViewController ()  <KWSProtocol>
+@interface KWSViewController ()  <KWSRegisterProtocol, KWSUnregisterProtocol, KWSCheckProtocol>
 @property (nonatomic, strong) NSString *token;
 @end
 
@@ -40,9 +40,13 @@
     [network sendPOST:url withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger status, NSString *payload) {
         
         if (status == 200) {
+            // get user
             KWSModel *model = [[KWSModel alloc] initWithJsonString:payload];
             _token = model.token;
-            NSLog(@"Created user %@ with token %@", username, _token);
+            NSLog(@"Created user %ld - %@ with token %@", (long)model.userId, username, _token);
+            
+            // setup KWS
+            [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API andPermissionPopup:YES];
         } else {
             NSLog(@"Could not create user %@", username);
         }
@@ -57,33 +61,26 @@
         NSLog(@"Please create a valid user before sending tokens");
     }
     else{
-        [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API andPermissionPopup:YES delegate:self];
-        [[KWS sdk] registerForRemoteNotifications];
+        [[KWS sdk] registerForRemoteNotifications:self];
     }
 }
 
 - (IBAction) unregisterToken:(id)sender {
-    [[KWS sdk] unregisterForRemoteNotifications];
+    [[KWS sdk] unregisterForRemoteNotifications:self];
 }
 
 - (IBAction)isRegistered {
-    UIUserNotificationSettings *settings = [[UIApplication sharedApplication] currentUserNotificationSettings];
-    BOOL isRegistered = (settings.types & UIRemoteNotificationTypeAlert);
-    NSLog(@"Is registered %d", isRegistered);
+    [[KWS sdk] userIsRegistered:self];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-// <KWSProtocol>
+// <KWSRegisterProtocol>
 
 - (void) kwsSDKDidRegisterUserForRemoteNotifications {
     NSLog(@"User is registered for Remote Notifications");
-}
-
-- (void) kwsSDKDidUnregisterUserForRemoteNotifications {
-    NSLog(@"User unregistered for Remote Notifications");
 }
 
 - (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType {
@@ -130,11 +127,31 @@
             NSLog(@"Network Error: Subscribing token to KWS");
             break;
         }
-        case FailedToUbsubscribeTokenToKWS: {
-            NSLog(@"Network Error: Unsubscribing token from KWS");
-            break;
-        }
     }
+}
+
+// <KWSUnregisterProtocol>
+
+- (void) kwsSDKDidUnregisterUserForRemoteNotifications {
+    NSLog(@"User unregistered for Remote Notifications");
+}
+
+- (void) kwsSDKDidFailToUnregisterUserForRemoteNotifications {
+    NSLog(@"Network Error: Unsubscribing token from KWS");
+}
+
+// <KWSCheckProtocol>
+
+- (void) kwsSDKUserIsRegistered {
+    NSLog(@"User is registered to KWS");
+}
+
+- (void) kwsSDKUserIsNotRegistered {
+    NSLog(@"User is not registered to KWS");
+}
+
+- (void) kwsSDKDidFailToCheckIfUserIsRegistered {
+    NSLog(@"Network Error: Checking if user is registered or not");
 }
 
 @end

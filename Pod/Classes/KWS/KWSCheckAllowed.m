@@ -56,23 +56,25 @@
                     }
                     
                 } else {
-                    [self delCheckError];
+                    [self delCheckAllowedError];
                 }
             }
             else {
-                [self delCheckError];
+                [self delCheckAllowedError];
             }
         } andFailure:^{
-            [self delCheckError];
+            [self delCheckAllowedError];
         }];
+    } else {
+        [self delCheckAllowedError];
     }
 }
 
 // MARK: Delegate handler functions
 
-- (void) delCheckError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkError)] ) {
-        [_delegate checkError];
+- (void) delCheckAllowedError {
+    if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkAllowedError)] ) {
+        [_delegate checkAllowedError];
     }
 }
 

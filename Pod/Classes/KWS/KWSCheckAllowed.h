@@ -20,7 +20,7 @@
 
 - (void) pushAllowedInKWS;
 - (void) pushNotAllowedInKWS;
-- (void) checkError;
+- (void) checkAllowedError;
 
 @end
 

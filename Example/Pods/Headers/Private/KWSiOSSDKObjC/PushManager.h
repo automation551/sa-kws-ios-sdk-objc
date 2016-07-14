@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/PushManager.h
+../../../../../Pod/Classes/Managers/PushManager.h
