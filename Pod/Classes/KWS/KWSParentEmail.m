@@ -25,8 +25,7 @@
 - (void) submit:(NSString *)email {
     
     // validate
-    NSString *validatedEmail = [self returnValidatedEmailString:email withStricterFilter:true];
-    if (validatedEmail == NULL) {
+    if (email == NULL || email.length == 0 || [self isEmailValid:email withStricterFilter:true] == NULL) {
         [self delInvalidEmail];
         return;
     }
@@ -42,7 +41,7 @@
         NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", kwsApiUrl, (long)userId];
         NSDictionary *body = @{
                                @"permissions":@[@"sendPushNotification"],
-                               @"parentEmail": validatedEmail};
+                               @"parentEmail": email};
         
         NSDictionary *header = @{@"Content-Type":@"application/json",
                                  @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
@@ -68,18 +67,13 @@
 
 // MARK: Aux private functions
 
-- (NSString*) returnValidatedEmailString:(NSString*)email withStricterFilter:(BOOL) stricterFilter {
-    if (!email || email.length == 0) {
-        return false;
-    }
-    
+- (BOOL) isEmailValid:(NSString*)email withStricterFilter:(BOOL) stricterFilter {
     NSString *stricterFilterString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSString *laxString = @".+@.+\\.[A-Za-z]{2}[A-Za-z]*";
     NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    NSString *finalEmail = [email stringByReplacingOccurrencesOfString:@" " withString:@""];
-    BOOL result = [emailTest evaluateWithObject:finalEmail];
-    return (result ? finalEmail : NULL);
+    BOOL result = [emailTest evaluateWithObject:email];
+    return result;
 }
 
 // MARK: Delegate handler functions
