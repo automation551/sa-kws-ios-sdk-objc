@@ -136,6 +136,7 @@
 // MARK: KWSManagerProtocol delegate
 
 - (void) pushNotAllowedInSystem {
+    _unregisterDelegate = nil;
     [[PushManager sharedInstance] unregisterForPushNotifications];
     [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:UserHasDisabledRemoteNotifications];
 }

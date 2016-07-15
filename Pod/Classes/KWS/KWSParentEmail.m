@@ -25,7 +25,7 @@
 - (void) submit:(NSString *)email {
     
     // validate
-    if (email == NULL || email.length == 0 || [self isEmailValid:email withStricterFilter:true] == NULL) {
+    if (email == NULL || email.length == 0 || [self isEmailValid:email] == NULL) {
         [self delInvalidEmail];
         return;
     }
@@ -67,10 +67,8 @@
 
 // MARK: Aux private functions
 
-- (BOOL) isEmailValid:(NSString*)email withStricterFilter:(BOOL) stricterFilter {
-    NSString *stricterFilterString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSString *laxString = @".+@.+\\.[A-Za-z]{2}[A-Za-z]*";
-    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+- (BOOL) isEmailValid:(NSString*)email {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     BOOL result = [emailTest evaluateWithObject:email];
     return result;

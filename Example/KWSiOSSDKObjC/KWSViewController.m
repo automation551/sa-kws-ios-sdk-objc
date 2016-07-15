@@ -30,7 +30,7 @@
 - (IBAction) createNewUser:(id)sender {
     
     NSString *url = @"https://kwsdemobackend.herokuapp.com/create";
-    NSString *username = [NSString stringWithFormat:@"testuser_%d", [SAUtils randomNumberBetween:100 maxNumber:500]];
+    NSString *username = [NSString stringWithFormat:@"testuser_%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
     NSDictionary *header = @{@"Content-Type":@"application/json"};
     NSDictionary *body = @{@"username":username,
                            @"password":@"testtest",
