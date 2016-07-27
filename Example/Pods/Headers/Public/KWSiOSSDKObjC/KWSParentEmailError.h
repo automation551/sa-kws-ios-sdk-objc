@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Models/KWSParentEmailError.h
+../../../../../Pod/Classes/Models/Error/KWSParentEmailError.h

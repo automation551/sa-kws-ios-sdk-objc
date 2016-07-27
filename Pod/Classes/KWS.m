@@ -13,6 +13,7 @@
 #import "KWSSubscribeToken.h"
 #import "KWSUnsubscribeToken.h"
 #import "FirebaseGetToken.h"
+#import "KWSGetUser.h"
 #import "SAPopup.h"
 
 @interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, CheckManagerProtocol>
@@ -113,6 +114,11 @@
     
     // perform action
     [[CheckManager sharedInstance] areNotificationsEnabled];
+}
+
+- (void) getUserProfile {
+    KWSGetUser *kwsGetUser = [[KWSGetUser alloc] init];
+    [kwsGetUser getUser];
 }
 
 - (void) showParentEmailPopup {

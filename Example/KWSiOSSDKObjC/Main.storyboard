@@ -57,17 +57,30 @@
                                     <action selector="isRegistered" destination="whP-gf-Uak" eventType="touchUpInside" id="Kww-TG-rh6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvK-P6-ivE">
+                                <rect key="frame" x="20" y="265" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xKg-zf-xmL"/>
+                                </constraints>
+                                <state key="normal" title="Get User Profile"/>
+                                <connections>
+                                    <action selector="getUserProfile:" destination="whP-gf-Uak" eventType="touchUpInside" id="1B4-hM-x0K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dhJ-s1-7UZ" secondAttribute="trailing" constant="20" id="FB0-Hg-SqA"/>
                             <constraint firstItem="dhJ-s1-7UZ" firstAttribute="top" secondItem="RI4-BG-naB" secondAttribute="bottom" constant="8" id="Jv6-T2-H02"/>
+                            <constraint firstItem="bvK-P6-ivE" firstAttribute="top" secondItem="vIA-Yg-6dA" secondAttribute="bottom" constant="17" id="P0l-X6-6Qg"/>
                             <constraint firstItem="dhJ-s1-7UZ" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="P5N-k9-XhX"/>
                             <constraint firstItem="P5c-Mm-bd9" firstAttribute="top" secondItem="dhJ-s1-7UZ" secondAttribute="bottom" constant="8" id="RJM-JQ-jNN"/>
                             <constraint firstAttribute="trailing" secondItem="RI4-BG-naB" secondAttribute="trailing" constant="20" id="Ril-kb-lFl"/>
                             <constraint firstAttribute="trailing" secondItem="P5c-Mm-bd9" secondAttribute="trailing" constant="20" id="ZFu-0B-0HJ"/>
                             <constraint firstItem="vIA-Yg-6dA" firstAttribute="top" secondItem="P5c-Mm-bd9" secondAttribute="bottom" constant="14" id="aHX-Yx-ecf"/>
+                            <constraint firstAttribute="trailing" secondItem="bvK-P6-ivE" secondAttribute="trailing" constant="20" id="aTl-Ww-8Vk"/>
                             <constraint firstItem="vIA-Yg-6dA" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="boh-gQ-Mae"/>
+                            <constraint firstItem="bvK-P6-ivE" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="cAt-Nn-aR6"/>
                             <constraint firstItem="RI4-BG-naB" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="78" id="dO9-Vb-fIh"/>
                             <constraint firstItem="P5c-Mm-bd9" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="hGF-FV-NlN"/>
                             <constraint firstItem="RI4-BG-naB" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="20" id="jRJ-Ig-MUg"/>

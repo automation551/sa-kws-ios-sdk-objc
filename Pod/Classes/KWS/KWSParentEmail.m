@@ -12,6 +12,7 @@
 // aux
 #import "KWS.h"
 #import "SANetwork.h"
+#import "SAUtils.h"
 
 // models
 #import "KWSMetadata.h"
@@ -25,7 +26,7 @@
 - (void) submit:(NSString *)email {
     
     // validate
-    if (email == NULL || email.length == 0 || [self isEmailValid:email] == NULL) {
+    if (email == NULL || email.length == 0 || [SAUtils isEmailValid:email] == NULL) {
         [self delInvalidEmail];
         return;
     }
@@ -63,15 +64,6 @@
         [self delEmailError];
     }
     
-}
-
-// MARK: Aux private functions
-
-- (BOOL) isEmailValid:(NSString*)email {
-    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    BOOL result = [emailTest evaluateWithObject:email];
-    return result;
 }
 
 // MARK: Delegate handler functions

@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Models/KWSUser.h
+../../../../../Pod/Classes/Models/User/KWSUser.h

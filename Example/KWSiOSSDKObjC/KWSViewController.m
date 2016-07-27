@@ -73,6 +73,10 @@
     [[KWS sdk] userIsRegistered:self];
 }
 
+- (IBAction)getUserProfile:(id)sender {
+    [[KWS sdk] getUserProfile];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

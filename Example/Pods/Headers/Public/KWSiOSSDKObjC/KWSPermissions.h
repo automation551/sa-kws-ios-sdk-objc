@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Models/KWSPermissions.h
+../../../../../Pod/Classes/Models/User/KWSPermissions.h

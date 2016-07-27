@@ -10,25 +10,27 @@
 #import "SAJsonParser.h"
 
 @class KWSPermissions;
+@class KWSAddress;
+@class KWSPoints;
+@class KWSApplicationProfile;
 
 /**
  *  Represents a basic user profile in KWS
  */
 @interface KWSUser : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
 
-// username (unique)
+@property (nonatomic, assign) NSInteger _id;
 @property (nonatomic, strong) NSString *username;
-
-// first name
 @property (nonatomic, strong) NSString *firstName;
-
-// last name
 @property (nonatomic, strong) NSString *lastName;
-
-// email address of user
+@property (nonatomic, strong) NSString *dateOfBirth;
+@property (nonatomic, strong) NSString *gender;
+@property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, strong) NSString *language;
 @property (nonatomic, strong) NSString *email;
-
-// permissions granted by KWS
+@property (nonatomic, strong) KWSAddress *address;
+@property (nonatomic, strong) KWSPoints *points;
 @property (nonatomic, strong) KWSPermissions *applicationPermissions;
+@property (nonatomic, strong) KWSApplicationProfile *applicationProfile;
 
 @end

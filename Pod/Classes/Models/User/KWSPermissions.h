@@ -19,6 +19,16 @@
 //  - NULL - means notifications are enabled (by default)
 //  - true - means notifications are enabled (explicitly)
 //  - false - means notifications are disabled (explicitly)
+@property (nonatomic, strong) NSNumber *accessAddress;
+@property (nonatomic, strong) NSNumber *accessPhoneNumber;
+@property (nonatomic, strong) NSNumber *accessFirstName;
+@property (nonatomic, strong) NSNumber *accessLastName;
+@property (nonatomic, strong) NSNumber *accessEmail;
+@property (nonatomic, strong) NSNumber *accessStreetAddress;
+@property (nonatomic, strong) NSNumber *accessCity;
+@property (nonatomic, strong) NSNumber *accessPostalCode;
+@property (nonatomic, strong) NSNumber *accessCountry;
 @property (nonatomic, strong) NSNumber *sendPushNotification;
+@property (nonatomic, strong) NSNumber *sendNewsletter;
 
 @end

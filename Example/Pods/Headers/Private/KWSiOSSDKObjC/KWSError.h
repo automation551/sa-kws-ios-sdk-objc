@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Models/KWSError.h
+../../../../../Pod/Classes/Models/Error/KWSError.h

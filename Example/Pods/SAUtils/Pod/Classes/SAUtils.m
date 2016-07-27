@@ -204,7 +204,7 @@
 }
 
 + (NSString*) decodeHTMLEntitiesFrom:(NSString*)string {
-    return [string stringByDecodingHTMLEntities];
+    return [[string stringByDecodingHTMLEntities] stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
 + (NSString*) findBaseURLFromResourceURL:(NSString*)resourceURL {
@@ -226,6 +226,13 @@
     NSURL *candidateURL = [NSURL URLWithString:(NSString*)urlObject];
     if (candidateURL && candidateURL.scheme && candidateURL.host) return true;
     return false;
+}
+
++ (BOOL) isEmailValid:(NSString*) email {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    BOOL result = [emailTest evaluateWithObject:email];
+    return result;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

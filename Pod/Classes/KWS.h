@@ -66,6 +66,7 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
 - (void) registerForRemoteNotifications:(id<KWSRegisterProtocol>)delegate;
 - (void) unregisterForRemoteNotifications:(id<KWSUnregisterProtocol>)delegate;
 - (void) userIsRegistered:(id<KWSCheckProtocol>)delegate;
+- (void) getUserProfile;
 
 // Main aux public functions
 - (void) showParentEmailPopup;
