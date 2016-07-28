@@ -72,13 +72,13 @@
 - (void) unregisterForPushNotifications {
     [SALogger log:@"Starting unregistering for Push Notificaitons"];
     NSString *token = [_firebaseGetToken getFirebaseToken];
-    [_kwsUnsubscribeToken request:token];
+    [_kwsUnsubscribeToken execute:token];
 }
 
 // MARK: Firebase Protocol
 
 - (void) didGetFirebaseToken: (NSString*) token {
-    [_kwsSubscribeToken request:token];
+    [_kwsSubscribeToken execute:token];
 }
 
 - (void) didFailToGetFirebaseToken {

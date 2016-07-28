@@ -55,7 +55,7 @@
 
 - (void) pushAllowedInSystem {
     [SALogger log:@"Checking | User has allowed Remote Notifications in system"];
-    [_kwsCheckAllowed check];
+    [_kwsCheckAllowed execute];
 }
 
 - (void) pushNotAllowedInSystem {
@@ -67,7 +67,7 @@
 
 - (void) pushAllowedInKWS {
     [SALogger log:@"Checking | User is allowed to have Remote Notifications in KWS"];
-    [_kwsCheckRegistered check];
+    [_kwsCheckRegistered execute];
 }
 
 - (void) pushNotAllowedInKWS {

@@ -14,6 +14,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KWSRequest.h"
 
 // protocol
 @protocol KWSCheckAllowedProtocol <NSObject>
@@ -25,14 +26,7 @@
 @end
 
 // class
-@interface KWSCheckAllowed : NSObject
-
+@interface KWSCheckAllowed : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSCheckAllowedProtocol> delegate;
-
-/**
- *  Main object fucntion
- */
-- (void) check;
-
 @end

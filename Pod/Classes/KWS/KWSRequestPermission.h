@@ -13,6 +13,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KWSRequest.h"
 
 // protocol
 @protocol KWSRequestPermissionProtocol <NSObject>
@@ -24,12 +25,7 @@
 @end
 
 // class
-@interface KWSRequestPermission : NSObject
-
+@interface KWSRequestPermission : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSRequestPermissionProtocol> delegate;
-
-// main function
-- (void) request;
-
 @end

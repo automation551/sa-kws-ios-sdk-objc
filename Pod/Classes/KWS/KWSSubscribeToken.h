@@ -11,6 +11,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KWSRequest.h"
 
 // subscribe token protocol
 @protocol KWSSubscribeTokenProtocol <NSObject>
@@ -21,12 +22,7 @@
 @end
 
 // subscribe token class
-@interface KWSSubscribeToken : NSObject
-
+@interface KWSSubscribeToken : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSSubscribeTokenProtocol> delegate;
-
-// standard function
-- (void) request:(NSString*)token;
-
 @end

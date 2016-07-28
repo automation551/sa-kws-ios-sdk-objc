@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KWSRequest.h"
 
-@interface KWSGetUser : NSObject
-
-- (void) getUser;
-
+@interface KWSGetUser : KWSRequest
 @end

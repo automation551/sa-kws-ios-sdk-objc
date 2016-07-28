@@ -19,51 +19,59 @@
 #import "KWSError.h"
 #import "KWSInvalid.h"
 
+@interface KWSParentEmail ()
+@property (nonatomic, strong) NSString *emailToSubmit;
+@end
+
 @implementation KWSParentEmail
 
 // MARK: Main class function
 
-- (void) submit:(NSString *)email {
+- (NSString*) getEndpoint {
+    return [NSString stringWithFormat:@"users/%ld/request-permissions", (long)metadata.userId];
+}
+
+- (KWS_HTTP_METHOD) getMethod {
+    return POST;
+}
+
+- (NSDictionary*) getBody {
+    return @{
+        @"permissions": @[@"sendPushNotification"],
+        @"parentEmail": _emailToSubmit
+    };
+}
+
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
+    if (status == 200 || status == 204){
+        [self delEmailSubmittedInKWS];
+    } else {
+        [self delEmailError];
+    }
+}
+
+- (void) failure {
+    [self delEmailError];
+}
+
+- (void) execute:(id)param {
     
-    // validate
-    if (email == NULL || email.length == 0 || [SAUtils isEmailValid:email] == NULL) {
+    // get parameter and check is correct type
+    if ([param isKindOfClass:[NSString class]]) {
+        _emailToSubmit = (NSString*)param;
+    } else {
         [self delInvalidEmail];
         return;
     }
     
-    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    NSString *oauthToken = [[KWS sdk] getOAuthToken];
-    KWSMetadata *metadata = [[KWS sdk] getMetadata];
-    NSString *version = [[KWS sdk] getVersion];
-    
-    if (kwsApiUrl && oauthToken && metadata) {
-        
-        NSInteger userId = metadata.userId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", kwsApiUrl, (long)userId];
-        NSDictionary *body = @{
-                               @"permissions":@[@"sendPushNotification"],
-                               @"parentEmail": email};
-        
-        NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
-                                 @"kws-sdk-version":version};
-        
-        SANetwork *network = [[SANetwork alloc] init];
-        [network sendPOST:endpoint withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger code, NSString *payload) {
-            if (code == 200 || code == 204){
-                [self delEmailSubmittedInKWS];
-            } else {
-                [self delEmailError];
-            }
-            
-        } andFailure:^{
-            [self delEmailError];
-        }];
-    }
-    else {
-        [self delEmailError];
+    // check parameter is actually valid
+    if (_emailToSubmit == NULL || _emailToSubmit.length == 0 || [SAUtils isEmailValid:_emailToSubmit] == NULL) {
+        [self delInvalidEmail];
+        return;
     }
     
+    // call to super
+    [super execute:param];
 }
 
 // MARK: Delegate handler functions

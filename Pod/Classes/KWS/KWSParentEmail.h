@@ -9,6 +9,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KWSRequest.h"
 
 // protocol
 @protocol KWSParentEmailProtocol <NSObject>
@@ -20,16 +21,7 @@
 @end
 
 // delegate
-@interface KWSParentEmail : NSObject
-
+@interface KWSParentEmail : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSParentEmailProtocol> delegate;
-
-/**
- *  Main class function
- *
- *  @param email a valid email string
- */
-- (void) submit:(NSString*)email;
-
 @end

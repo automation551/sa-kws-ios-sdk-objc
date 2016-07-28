@@ -49,7 +49,7 @@
 
 - (void) pushAllowedInSystem {
     [SALogger log:@"Push Notifications enabled on user system"];
-    [_kwsCheckAllowed check];
+    [_kwsCheckAllowed execute];
 }
 
 - (void) pushNotAllowedInSystem {
@@ -62,7 +62,7 @@
 
 - (void) pushAllowedInKWS {
     [SALogger log:@"Push Notifications enabled for user in KWS"];
-    [_kwsRequestPermission request];
+    [_kwsRequestPermission execute];
 }
 
 - (void) pushNotAllowedInKWS {

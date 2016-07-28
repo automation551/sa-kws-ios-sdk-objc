@@ -19,37 +19,28 @@
 
 @implementation KWSGetUser
 
-- (void) getUser {
-    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    NSString *oauthToken = [[KWS sdk] getOAuthToken];
-    KWSMetadata *metadata = [[KWS sdk] getMetadata];
-    NSString *version = [[KWS sdk] getVersion];
+- (NSString*) getEndpoint {
+    return [NSString stringWithFormat:@"users/%ld", (long)[metadata userId]];
+}
+
+- (KWS_HTTP_METHOD) getMethod {
+    return GET;
+}
+
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
     
-    if (kwsApiUrl && oauthToken && metadata != NULL) {
-        NSInteger userId = metadata.userId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld", kwsApiUrl, (long)userId];
-        
-        NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
-                                 @"kws-sdk-version":version};
-        
-        SANetwork *network = [[SANetwork alloc] init];
-        [network sendGET:endpoint withQuery:@{} andHeader:header andSuccess:^(NSInteger code, NSString *json) {
-            if ((code == 200 || code == 204) && json != NULL) {
-                
-                KWSUser *user = [[KWSUser alloc] initWithJsonString:json];
-                NSLog(@"%@", [user jsonPreetyStringRepresentation]);
-            }
-            else {
-                
-            }
-        } andFailure:^{
-            
-        }];
+    if ((status == 200 || status == 204) && payload != NULL) {
+        KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
+        [SALogger log:[user jsonPreetyStringRepresentation]];
     }
     else {
-        // fail
+        
     }
+    
+}
+
+- (void) failure {
+    
 }
 
 @end
