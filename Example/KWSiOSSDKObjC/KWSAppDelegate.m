@@ -7,11 +7,10 @@
 //
 
 #import "KWSAppDelegate.h"
-
+#import "Firebase.h"
 @implementation KWSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     // Override point for customization after application launch.
     return YES;
 }

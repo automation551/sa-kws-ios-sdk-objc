@@ -27,6 +27,9 @@
     "Firebase": [
 
     ],
+    "FirebaseMessaging": [
+
+    ],
     "SAUtils": [
       "1.2.7"
     ],

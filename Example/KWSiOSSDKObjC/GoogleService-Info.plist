@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>335316960677-o0a7bk2jc5o0g9n2d8vcimvj74rmd048.apps.googleusercontent.com</string>
+	<string>335316960677-d9bb99rcafoo2idurcd3753o6kag51pg.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.335316960677-o0a7bk2jc5o0g9n2d8vcimvj74rmd048</string>
+	<string>com.googleusercontent.apps.335316960677-d9bb99rcafoo2idurcd3753o6kag51pg</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDvF7ym-FJ6KHlGdUEWbKTt2kEQg1ug2h4</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.cocoapods.demo.KWSiOSSDKObjC-Example</string>
+	<string>org.cocoapods.demo.KWSiOSSDKObjC</string>
 	<key>PROJECT_ID</key>
 	<string>sa-kws-13936</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,8 +33,10 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:335316960677:ios:a46a7f53df4c617f</string>
+	<string>1:335316960677:ios:e1c89b8d57bd320a</string>
 	<key>DATABASE_URL</key>
 	<string>https://sa-kws-13936.firebaseio.com</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 </dict>
 </plist>
