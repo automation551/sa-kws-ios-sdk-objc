@@ -18,58 +18,57 @@
 #import "KWSError.h"
 #import "KWSParentEmailError.h"
 #import "KWSInvalid.h"
+#import "SALogger.h"
 
 @implementation KWSRequestPermission
 
-- (void) request {
-    
-    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    NSString *oauthToken = [[KWS sdk] getOAuthToken];
-    KWSMetadata *metadata = [[KWS sdk] getMetadata];
-    NSString *version = [[KWS sdk] getVersion];
-    
-    if (kwsApiUrl && oauthToken && metadata) {
+// MARK: Main functions
+
+- (NSString*) getEndpoint {
+    return [NSString stringWithFormat:@"users/%ld/request-permissions", (long)metadata.userId];
+}
+
+- (KWS_HTTP_METHOD) getMethod {
+    return POST;
+}
+
+- (NSDictionary*) getBody {
+    return @{
+        @"permissions": @[
+            @"sendPushNotification"
+        ]
+    };
+}
+
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
+    if (payload) {
+        KWSError *error = [[KWSError alloc] initWithJsonString:payload];
+        [SALogger log:[error jsonPreetyStringRepresentation]];
         
-        NSInteger userId = metadata.userId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld/request-permissions", kwsApiUrl, (long)userId];
-        NSDictionary *body = @{@"permissions":@[@"sendPushNotification"]};
-        NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
-                                 @"kws-sdk-version":version};
-        
-        
-        SANetwork *network = [[SANetwork alloc] init];
-        [network sendPOST:endpoint withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger code, NSString *json) {
-            if (json) {
-                KWSError *error = [[KWSError alloc] initWithJsonString:json];
-                NSLog(@"%@", [error jsonPreetyStringRepresentation]);
-                
-                if (code == 200 || code == 204) {
-                    [self delPushPermissionRequestedInKWS];
-                }
-                else if (code != 200 && error) {
-                    if (error.code == 5 && error.invalid.parentEmail.code == 6) {
-                        [self delParentEmailIsMissingInKWS];
-                    }
-                    else {
-                        [self delPermissionErrorError];
-                    }
-                }
-                else {
-                    [self delPermissionErrorError];
-                }
-            } else {
+        if (status == 200 || status == 204) {
+            [self delPushPermissionRequestedInKWS];
+        }
+        else if (status != 200 && error) {
+            if (error.code == 5 && error.invalid.parentEmail.code == 6) {
+                [self delParentEmailIsMissingInKWS];
+            }
+            else {
                 [self delPermissionErrorError];
             }
-        } andFailure:^{
+        }
+        else {
             [self delPermissionErrorError];
-        }];
-    }
-    else {
+        }
+    } else {
         [self delPermissionErrorError];
     }
-    
 }
+
+- (void) failure {
+    [self delPermissionErrorError];
+}
+
+// MARK Delegate functions
 
 - (void) delPushPermissionRequestedInKWS {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushPermissionRequestedInKWS)]) {

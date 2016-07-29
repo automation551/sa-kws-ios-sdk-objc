@@ -23,39 +23,26 @@
 
 // MARL: Main function
 
-- (void) check {
-    
-    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    NSString *oauthToken = [[KWS sdk] getOAuthToken];
-    KWSMetadata *metadata = [[KWS sdk] getMetadata];
-    NSString *version = [[KWS sdk] getVersion];
-    
-    if (kwsApiUrl && oauthToken && metadata != NULL) {
-        
-        NSInteger userId = metadata.userId;
-        NSInteger appId = metadata.appId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@apps/%ld/users/%ld/has-device-token", kwsApiUrl, appId, userId];
-        NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
-                                 @"kws-sdk-version":version};
-        
-        SANetwork *network = [[SANetwork alloc] init];
-        [network sendGET:endpoint withQuery:@{} andHeader:header andSuccess:^(NSInteger status, NSString *payload) {
-            
-            if ([payload isEqualToString:@"true"]) {
-                [self delUserIsRegistered];
-            } else if ([payload isEqualToString:@"false"]) {
-                [self delUserIsNotRegistered];
-            } else {
-                [self delCheckRegisteredError];
-            }
-        } andFailure:^{
-            [self delCheckRegisteredError];
-        }];
-        
+- (NSString*) getEndpoint {
+    return [NSString stringWithFormat:@"apps/%ld/users/%ld/has-device-token", metadata.appId, metadata.userId];
+}
+
+- (KWS_HTTP_METHOD) getMethod {
+    return GET;
+}
+
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
+    if ([payload isEqualToString:@"true"]) {
+        [self delUserIsRegistered];
+    } else if ([payload isEqualToString:@"false"]) {
+        [self delUserIsNotRegistered];
     } else {
         [self delCheckRegisteredError];
     }
+}
+
+- (void) failure {
+    [self delCheckRegisteredError];
 }
 
 // MARK: Delegates

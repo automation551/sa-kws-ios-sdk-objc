@@ -9,6 +9,7 @@
 //  
 
 #import <Foundation/Foundation.h>
+#import "KWSRequest.h"
 
 // unsubscribe toke protocol
 @protocol KWSUnsubscribeTokenProtocol <NSObject>
@@ -19,12 +20,7 @@
 @end
 
 // unsubscribe token object
-@interface KWSUnsubscribeToken : NSObject
-
+@interface KWSUnsubscribeToken : KWSRequest
 // protocol
 @property (nonatomic, weak) id<KWSUnsubscribeTokenProtocol> delegate;
-
-// function
-- (void) request: (NSString*)token;
-
 @end

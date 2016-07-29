@@ -77,6 +77,10 @@
     [[KWS sdk] getUserProfile];
 }
 
+- (IBAction)sendParentEmail:(id)sender {
+    [[KWS sdk] submitParentEmail:@"gabriel.coman@superawesome.tv"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

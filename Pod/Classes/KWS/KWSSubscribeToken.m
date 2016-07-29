@@ -17,39 +17,53 @@
 #import "KWSError.h"
 #import "KWSParentEmailError.h"
 #import "KWSInvalid.h"
+#import "SALogger.h"
+
+@interface KWSSubscribeToken ()
+@property (nonatomic, assign) NSString *token;
+@end
 
 @implementation KWSSubscribeToken
 
-- (void) request:(NSString*)token {
-    
-    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    NSString *oauthToken = [[KWS sdk] getOAuthToken];
-    KWSMetadata *metadata = [[KWS sdk] getMetadata];
-    NSString *version = [[KWS sdk] getVersion];
-    
-    if (kwsApiUrl && oauthToken && metadata && token) {
-        
-        NSInteger userId = metadata.userId;
-        NSInteger appId = metadata.appId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@apps/%ld/users/%ld/subscribe-push-notifications", kwsApiUrl, appId, userId];
-        NSDictionary *body = @{@"token":token, @"platform": @"ios"};
-        NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
-                                 @"kws-sdk-version":version};
-        
-        SANetwork *network = [[SANetwork alloc] init];
-        [network sendPOST:endpoint withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger code, NSString *json) {
-            NSLog(@"Payload ==> %@", json);
-            [self delTokenWasSubscribed];
-        } andFailure:^{
-            [self delTokenSubscribeError];
-        }];
-    }
-    else {
-        [self delTokenSubscribeError];
-    }
-    
+- (NSString*) getEndpoint {
+    return [NSString stringWithFormat:@"apps/%ld/users/%ld/subscribe-push-notifications", metadata.appId, metadata.userId];
 }
+
+- (KWS_HTTP_METHOD) getMethod {
+    return POST;
+}
+
+- (NSDictionary*) getBody {
+    return @{
+        @"token": _token,
+        @"platform": @"ios"
+    };
+}
+
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
+    [SALogger log:payload];
+    [self delTokenWasSubscribed];
+}
+
+- (void) failure {
+    [self delTokenSubscribeError];
+}
+
+- (void) execute:(id)param {
+    
+    // get correct param
+    if ([param isKindOfClass:[NSString class]]) {
+        _token = (NSString*)param;
+    } else {
+        [self delTokenSubscribeError];
+        return;
+    }
+    
+    // call super
+    [super execute:param];
+}
+
+// MARK: Del functions
 
 - (void) delTokenWasSubscribed {
     if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenWasSubscribed)]) {

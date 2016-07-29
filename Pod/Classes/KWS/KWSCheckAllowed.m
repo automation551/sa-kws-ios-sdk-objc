@@ -23,52 +23,42 @@
 
 // MARK: Main class function
 
-- (void) check {
+- (NSString*) getEndpoint {
+    return [NSString stringWithFormat:@"users/%ld", (long)[metadata userId]];
+}
+
+- (KWS_HTTP_METHOD) getMethod {
+    return GET;
+}
+
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
     
-    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    NSString *oauthToken = [[KWS sdk] getOAuthToken];
-    KWSMetadata *metadata = [[KWS sdk] getMetadata];
-    NSString *version = [[KWS sdk] getVersion];
-    
-    if (kwsApiUrl && oauthToken && metadata != NULL) {
+    if ((status == 200 || status == 204) && payload != NULL) {
         
-        NSInteger userId = metadata.userId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@users/%ld", kwsApiUrl, (long)userId];
+        KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
+        [SALogger log:[user jsonPreetyStringRepresentation]];
         
-        NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
-                                 @"kws-sdk-version":version};
-        
-        SANetwork *network = [[SANetwork alloc] init];
-        [network sendGET:endpoint withQuery:@{} andHeader:header andSuccess:^(NSInteger code, NSString *json) {
-            if ((code == 200 || code == 204) && json != NULL) {
-                
-                KWSUser *user = [[KWSUser alloc] initWithJsonString:json];
-                [SALogger log:[user jsonPreetyStringRepresentation]];
-                
-                if (user) {
-                    
-                    NSNumber *perm = user.applicationPermissions.sendPushNotification;
-                    
-                    if (perm == NULL || [perm boolValue] == true) {
-                        [self delPushAllowedInKWS];
-                    } else {
-                        [self delPushNotAllowedInKWS];
-                    }
-                    
-                } else {
-                    [self delCheckAllowedError];
-                }
+        if (user) {
+            
+            NSNumber *perm = user.applicationPermissions.sendPushNotification;
+            
+            if (perm == NULL || [perm boolValue] == true) {
+                [self delPushAllowedInKWS];
+            } else {
+                [self delPushNotAllowedInKWS];
             }
-            else {
-                [self delCheckAllowedError];
-            }
-        } andFailure:^{
+            
+        } else {
             [self delCheckAllowedError];
-        }];
-    } else {
+        }
+    }
+    else {
         [self delCheckAllowedError];
     }
+}
+
+- (void) failure {
+    [self delCheckAllowedError];
 }
 
 // MARK: Delegate handler functions

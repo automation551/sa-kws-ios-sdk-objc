@@ -17,38 +17,50 @@
 #import "KWSError.h"
 #import "KWSParentEmailError.h"
 #import "KWSInvalid.h"
+#import "SALogger.h"
+
+@interface KWSUnsubscribeToken ()
+@property (nonatomic, strong) NSString *token;
+@end
 
 @implementation KWSUnsubscribeToken
 
 // MARK: Main Functions
 
-- (void) request: (NSString*)token {
-    NSString *kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    NSString *oauthToken = [[KWS sdk] getOAuthToken];
-    KWSMetadata *metadata = [[KWS sdk] getMetadata];
-    NSString *version = [[KWS sdk] getVersion];
-    
-    if (kwsApiUrl && oauthToken && metadata && token) {
-        
-        NSInteger userId = metadata.userId;
-        NSInteger appId = metadata.appId;
-        NSString *endpoint = [NSString stringWithFormat:@"%@apps/%ld/users/%ld/unsubscribe-push-notifications", kwsApiUrl, appId, userId];
-        NSDictionary *body = @{@"token":token};
-        NSDictionary *header = @{@"Content-Type":@"application/json",
-                                 @"Authorization":[NSString stringWithFormat:@"Bearer %@", oauthToken],
-                                 @"kws-sdk-version":version};
+- (NSString*) getEndpoint {
+    return [NSString stringWithFormat:@"apps/%ld/users/%ld/unsubscribe-push-notifications", metadata.appId, metadata.userId];
+}
 
-        SANetwork *network = [[SANetwork alloc] init];
-        [network sendPOST:endpoint withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger code, NSString *json) {
-            NSLog(@"Payload ==> %@", json);
-            [self delTokenWasUnsubscribed];
-        } andFailure:^{
-            [self delTokenUnsubscribeError];
-        }];
-    }
-    else {
+- (KWS_HTTP_METHOD) getMethod {
+    return POST;
+}
+
+- (NSDictionary*) getBody {
+    return @{
+        @"token":_token
+    };
+}
+
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
+    [SALogger log:payload];
+    [self delTokenWasUnsubscribed];
+}
+
+- (void) failure {
+    [self delTokenUnsubscribeError];
+}
+
+- (void) execute:(id)param {
+    // check is valid param
+    if ([param isKindOfClass:[NSString class]] ){
+        _token = (NSString*)param;
+    } else {
         [self delTokenUnsubscribeError];
+        return;
     }
+    
+    // call to super
+    [super execute:param];
 }
 
 // MARK: Delegate handler functions

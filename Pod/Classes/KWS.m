@@ -118,7 +118,7 @@
 
 - (void) getUserProfile {
     KWSGetUser *kwsGetUser = [[KWSGetUser alloc] init];
-    [kwsGetUser getUser];
+    [kwsGetUser execute];
 }
 
 - (void) showParentEmailPopup {
@@ -136,7 +136,7 @@
 }
 
 - (void) submitParentEmail:(NSString*)email {
-    [_parentEmail submit:email];
+    [_parentEmail execute:email];
 }
 
 // MARK: KWSManagerProtocol delegate

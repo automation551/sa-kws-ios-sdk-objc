@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KWSRequest.h"
 
 // protocol
 @protocol KWSCheckRegisteredProtocol <NSObject>
@@ -18,12 +19,7 @@
 @end
 
 // class
-@interface KWSCheckRegistered : NSObject
-
+@interface KWSCheckRegistered : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSCheckRegisteredProtocol> delegate;
-
-// main function
-- (void) check;
-
 @end
