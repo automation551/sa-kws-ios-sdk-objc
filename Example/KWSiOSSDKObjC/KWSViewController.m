@@ -74,7 +74,7 @@
 }
 
 - (IBAction)getUserProfile:(id)sender {
-    [[KWS sdk] getUserProfile];
+//    [[KWS sdk] getUserProfile];
 }
 
 - (IBAction)sendParentEmail:(id)sender {
