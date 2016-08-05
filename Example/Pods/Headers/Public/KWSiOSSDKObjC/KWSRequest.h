@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/KWS/KWSRequest.h
+../../../../../Pod/Classes/Services/KWSRequest.h

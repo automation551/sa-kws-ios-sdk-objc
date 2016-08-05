@@ -21,8 +21,13 @@
 
 @end
 
+// callback
+typedef void (^registered)(BOOL success);
+
 // subscribe token class
 @interface KWSSubscribeToken : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSSubscribeTokenProtocol> delegate;
+
+- (void) execute:(id)param :(registered)registered;
 @end

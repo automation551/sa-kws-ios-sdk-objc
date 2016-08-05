@@ -15,6 +15,16 @@
 #import <UIKit/UIKit.h>
 #import "KWSRequest.h"
 
+typedef NS_ENUM(NSInteger, KWSPermissionType) {
+    accessEmail = 0,
+    accessAddress = 1,
+    accessFirstName = 2,
+    accessLastName = 3,
+    accessPhoneNumber = 4,
+    sendNewsletter = 5,
+    sendPushNotification = 6
+};
+
 // protocol
 @protocol KWSRequestPermissionProtocol <NSObject>
 
@@ -24,8 +34,13 @@
 
 @end
 
+// callback
+typedef void (^requested)(BOOL success, BOOL requested);
+
 // class
 @interface KWSRequestPermission : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSRequestPermissionProtocol> delegate;
+
+- (void) execute:(NSArray<NSNumber*>*)param :(requested)requested;
 @end

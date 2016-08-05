@@ -25,8 +25,15 @@
 
 @end
 
+// type block
+typedef void (^checkBlock)(BOOL success, BOOL allowed);
+
 // class
 @interface KWSCheckAllowed : KWSRequest
+
 // delegate
 @property (nonatomic, weak) id<KWSCheckAllowedProtocol> delegate;
+
+- (void) execute:(checkBlock)check;
+
 @end

@@ -15,22 +15,16 @@
 @property (nonatomic, strong) NSUserDefaults *defaults;
 @property (nonatomic, weak) UIApplication *appRef;
 @property (nonatomic, assign) Boolean hasUserSeenDialog;
+@property (nonatomic, assign) allowed allowed;
 @end
 
 @implementation PushCheckAllowed
 
-// MARK: Init function
-
-- (id) init {
-    if (self = [super init]) {
-        
-    }
-    return self;
-}
-
 // MARK: Main class function
 
-- (void) check {
+- (void) execute:(allowed)allowed {
+    // get callback
+    _allowed = allowed;
     
     _defaults = [NSUserDefaults standardUserDefaults];
     _appRef = [UIApplication sharedApplication];
@@ -67,9 +61,12 @@
             return;
         }
     }
+    
+    // don't call super
+    // [super execute];
 }
 
-// MARK: Delegate handler functions
+// MARK: aux functions
 
 - (void) markSystemDialogAsSeen {
     _defaults = [NSUserDefaults standardUserDefaults];
@@ -78,15 +75,23 @@
     [_defaults synchronize];
 }
 
+// MARK: Delegate handler functions
+
 - (void) delPushAllowedInSystem {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushAllowedInSystem)]) {
-        [_delegate pushAllowedInSystem];
+    if (_allowed) {
+        _allowed(true);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushAllowedInSystem)]) {
+//        [_delegate pushAllowedInSystem];
+//    }
 }
 
 - (void) delPushNotAllowedInSystem {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushNotAllowedInSystem)]) {
-        [_delegate pushNotAllowedInSystem];
+    if (_allowed) {
+        _allowed(false);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushNotAllowedInSystem)]) {
+//        [_delegate pushNotAllowedInSystem];
+//    }
 }
 @end

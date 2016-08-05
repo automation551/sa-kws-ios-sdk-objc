@@ -20,6 +20,7 @@
 #import "SALogger.h"
 
 @interface KWSUnsubscribeToken ()
+@property (nonatomic, assign) registered registered;
 @property (nonatomic, strong) NSString *token;
 @end
 
@@ -50,7 +51,7 @@
     [self delTokenUnsubscribeError];
 }
 
-- (void) execute:(id)param {
+- (void) execute:(id)param :(unregistered)registered {
     // check is valid param
     if ([param isKindOfClass:[NSString class]] ){
         _token = (NSString*)param;
@@ -59,22 +60,32 @@
         return;
     }
     
+    // save
+    _registered = registered;
+    
     // call to super
     [super execute:param];
 }
 
+
 // MARK: Delegate handler functions
 
 - (void) delTokenWasUnsubscribed {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenWasUnsubscribed)]){
-        [_delegate tokenWasUnsubscribed];
+    if (_registered) {
+        _registered(true);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenWasUnsubscribed)]){
+//        [_delegate tokenWasUnsubscribed];
+//    }
 }
 
 - (void) delTokenUnsubscribeError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenUnsubscribeError)]) {
-        [_delegate tokenUnsubscribeError];
+    if (_registered) {
+        _registered(false);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenUnsubscribeError)]) {
+//        [_delegate tokenUnsubscribeError];
+//    }
 }
 
 @end

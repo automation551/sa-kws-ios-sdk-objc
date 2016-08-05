@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/KWS/KWSSubscribeToken.h
+../../../../../Pod/Classes/Services/KWS/KWSSubscribeToken.h

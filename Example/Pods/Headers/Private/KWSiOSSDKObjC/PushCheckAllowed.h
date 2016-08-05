@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Push/PushCheckAllowed.h
+../../../../../Pod/Classes/Services/System/PushCheckAllowed.h

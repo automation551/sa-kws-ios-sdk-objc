@@ -20,13 +20,14 @@
 #import "SALogger.h"
 
 @interface KWSSubscribeToken ()
-@property (nonatomic, assign) NSString *token;
+@property (nonatomic, assign) registered registered;
+@property (nonatomic, strong) NSString *token;
 @end
 
 @implementation KWSSubscribeToken
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"apps/%ld/users/%ld/subscribe-push-notifications", metadata.appId, metadata.userId];
+    return [NSString stringWithFormat:@"apps/%ld/users/%ld/subscribe-push-notifications", (long)metadata.appId, (long)metadata.userId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
@@ -49,8 +50,7 @@
     [self delTokenSubscribeError];
 }
 
-- (void) execute:(id)param {
-    
+- (void) execute:(id)param :(registered)registered {
     // get correct param
     if ([param isKindOfClass:[NSString class]]) {
         _token = (NSString*)param;
@@ -59,6 +59,9 @@
         return;
     }
     
+    // save
+    _registered = registered;
+    
     // call super
     [super execute:param];
 }
@@ -66,15 +69,21 @@
 // MARK: Del functions
 
 - (void) delTokenWasSubscribed {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenWasSubscribed)]) {
-        [_delegate tokenWasSubscribed];
+    if (_registered) {
+        _registered(true);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenWasSubscribed)]) {
+//        [_delegate tokenWasSubscribed];
+//    }
 }
 
 - (void) delTokenSubscribeError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenSubscribeError)]) {
-        [_delegate tokenSubscribeError];
+    if (_registered) {
+        _registered(false);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(tokenSubscribeError)]) {
+//        [_delegate tokenSubscribeError];
+//    }
 }
 
 @end

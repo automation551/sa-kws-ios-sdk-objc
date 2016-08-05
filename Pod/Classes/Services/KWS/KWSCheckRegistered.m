@@ -19,6 +19,10 @@
 #import "KWSUser.h"
 #import "KWSPermissions.h"
 
+@interface KWSCheckRegistered ()
+@property (nonatomic, assign) checkBlock check;
+@end
+
 @implementation KWSCheckRegistered
 
 // MARL: Main function
@@ -45,24 +49,38 @@
     [self delCheckRegisteredError];
 }
 
+- (void) execute:(checkBlock)check {
+    _check = check;
+    [super execute];
+}
+
 // MARK: Delegates
 
 - (void) delUserIsRegistered {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(userIsRegistered)]) {
-        [_delegate userIsRegistered];
+    if (_check) {
+        _check(true, true);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(userIsRegistered)]) {
+//        [_delegate userIsRegistered];
+//    }
 }
 
 - (void) delUserIsNotRegistered {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(userIsNotRegistered)]) {
-        [_delegate userIsNotRegistered];
+    if (_check) {
+        _check(true, false);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(userIsNotRegistered)]) {
+//        [_delegate userIsNotRegistered];
+//    }
 }
 
 - (void) delCheckRegisteredError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkRegisteredError)]) {
-        [_delegate checkRegisteredError];
+    if (_check) {
+        _check(false, false);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkRegisteredError)]) {
+//        [_delegate checkRegisteredError];
+//    }
 }
 
 @end

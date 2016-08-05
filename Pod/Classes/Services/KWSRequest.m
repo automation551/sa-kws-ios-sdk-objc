@@ -77,23 +77,25 @@
         return;
     }
     
+    __block id blockSelf = self;
+    
     if ([self getMethod] == POST) {
         [_network sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
                  withQuery:[self getQuery]
                  andHeader:[self getHeader]
                    andBody:[self getBody] andSuccess:^(NSInteger status, NSString *payload) {
-                       [self successWithStatus:status andPayload:payload];
+                       [blockSelf successWithStatus:status andPayload:payload];
                    } andFailure:^{
-                       [self failure];
+                       [blockSelf failure];
                    }];
     } else {
         [_network sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
                 withQuery:[self getQuery]
                 andHeader:[self getHeader]
                andSuccess:^(NSInteger status, NSString *payload) {
-                   [self successWithStatus:status andPayload:payload];
+                   [blockSelf successWithStatus:status andPayload:payload];
                } andFailure:^{
-                   [self failure];
+                   [blockSelf failure];
                }];
     }
 }

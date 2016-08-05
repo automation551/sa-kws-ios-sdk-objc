@@ -14,13 +14,17 @@
 #import "SALogger.h"
 
 @interface FirebaseGetToken ()
+@property (nonatomic, assign) gotToken gottoken;
 @end
 
 @implementation FirebaseGetToken
 
 // MARK: Setup & Public functions
 
-- (void) setup {
+- (void) execute:(gotToken)gottoken {
+    
+    // call this
+    _gottoken = gottoken;
     
     @try {
         [FIRApp configure];
@@ -35,8 +39,8 @@
         // already configured, then there trully is an error!
         else {
             [SALogger err:[NSString stringWithFormat:@"Could not configure Firebase %@", exception]];
-            [self delDidFailBecauseFirebaseIsNotSetup];
-         }
+            [self delFailToGetFirebaseToken];
+        }
     } @finally {
         // do nothing
     }
@@ -58,6 +62,9 @@
         [SALogger log:[NSString stringWithFormat:@"Getting already existing token %@", token]];
         [self delDidGetFirebaseToken:token];
     }
+    
+    // don't call super!
+    // [super execute];
 }
 
 - (void) tokenRefreshNotification:(NSNotification *)notification {
@@ -71,29 +78,30 @@
     [self delDidGetFirebaseToken:token];
 }
 
-- (NSString*) getFirebaseToken {
-    NSString *token = [[FIRInstanceID instanceID] token];
-    return token;
+
+- (NSString*) getSavedToken {
+    return [[FIRInstanceID instanceID] token];
 }
 
 // MARK: Delegate handler functions
 
 - (void) delDidGetFirebaseToken:(NSString*) token {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didGetFirebaseToken:)]) {
-        [_delegate didGetFirebaseToken:token];
+    if (_gottoken) {
+        _gottoken(true, token);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didGetFirebaseToken:)]) {
+//        [_delegate didGetFirebaseToken:token];
+//    }
 }
 
 - (void) delFailToGetFirebaseToken {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailToGetFirebaseToken)]) {
-        [_delegate didFailToGetFirebaseToken];
+    if(_gottoken) {
+        _gottoken(false, NULL);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailToGetFirebaseToken)]) {
+//        [_delegate didFailToGetFirebaseToken];
+//    }
 }
 
-- (void) delDidFailBecauseFirebaseIsNotSetup {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailBecauseFirebaseIsNotSetup)]) {
-        [_delegate didFailBecauseFirebaseIsNotSetup];
-    }
-}
 
 @end

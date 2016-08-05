@@ -17,6 +17,10 @@
 #import "KWSMetadata.h"
 #import "KWSUser.h"
 
+@interface KWSGetUser ()
+@property (nonatomic, assign) gotUser gotuser;
+@end
+
 @implementation KWSGetUser
 
 - (NSString*) getEndpoint {
@@ -32,15 +36,33 @@
     if ((status == 200 || status == 204) && payload != NULL) {
         KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
         [SALogger log:[user jsonPreetyStringRepresentation]];
+        [self gotUserOK:user];
     }
     else {
-        
+        [self gotUserNOK];
     }
     
 }
 
 - (void) failure {
-    
+    [self gotUserNOK];
+}
+
+- (void) execute:(gotUser)gotuser {
+    _gotuser = gotuser;
+    [super execute];
+}
+
+- (void) gotUserOK:(KWSUser*)user {
+    if (_gotuser) {
+        _gotuser(user);
+    }
+}
+
+- (void) gotUserNOK {
+    if (_gotuser) {
+        _gotuser(NULL);
+    }
 }
 
 @end

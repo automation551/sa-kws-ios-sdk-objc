@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Firebase/FirebaseGetToken.h
+../../../../../Pod/Classes/Services/Firebase/FirebaseGetToken.h

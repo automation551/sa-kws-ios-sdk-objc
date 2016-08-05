@@ -15,6 +15,7 @@
 //  pushEnabledInSystem
 
 #import <UIKit/UIKit.h>
+#import "KWSRequest.h"
 
 // protocol
 @protocol PushCheckAllowedProtocol <NSObject>
@@ -24,11 +25,17 @@
 
 @end
 
+// callback
+typedef void (^allowed)(BOOL success);
+
 // class
-@interface PushCheckAllowed : NSObject
+@interface PushCheckAllowed : KWSRequest
 
 // delegate
 @property (nonatomic, weak) id<PushCheckAllowedProtocol> delegate;
+
+// function
+- (void) execute:(allowed)allowed;
 
 // main function
 - (void) check;

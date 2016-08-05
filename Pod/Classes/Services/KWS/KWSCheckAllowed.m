@@ -19,6 +19,10 @@
 #import "KWSUser.h"
 #import "KWSPermissions.h"
 
+@interface KWSCheckAllowed ()
+@property (nonatomic, assign) checkBlock check;
+@end
+
 @implementation KWSCheckAllowed
 
 // MARK: Main class function
@@ -61,24 +65,38 @@
     [self delCheckAllowedError];
 }
 
+- (void) execute:(checkBlock)check {
+    _check = check;
+    [super execute];
+}
+
 // MARK: Delegate handler functions
 
 - (void) delCheckAllowedError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkAllowedError)] ) {
-        [_delegate checkAllowedError];
+    if (_check) {
+        _check(false, false);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkAllowedError)] ) {
+//        [_delegate checkAllowedError];
+//    }
 }
 
 - (void) delPushNotAllowedInKWS {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushNotAllowedInKWS)]) {
-        [_delegate pushNotAllowedInKWS];
+    if (_check) {
+        _check(true, false);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushNotAllowedInKWS)]) {
+//        [_delegate pushNotAllowedInKWS];
+//    }
 }
 
 - (void) delPushAllowedInKWS {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushAllowedInKWS)]) {
-        [_delegate pushAllowedInKWS];
+    if (_check) {
+        _check(true, true);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushAllowedInKWS)]) {
+//        [_delegate pushAllowedInKWS];
+//    }
 }
 
 @end

@@ -18,8 +18,14 @@
 
 @end
 
+// type block
+typedef void (^checkBlock)(BOOL success, BOOL allowed);
+
 // class
 @interface KWSCheckRegistered : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSCheckRegisteredProtocol> delegate;
+
+- (void) execute: (checkBlock) check;
+
 @end

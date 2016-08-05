@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/KWS/KWSGetUser.h
+../../../../../Pod/Classes/Services/KWS/KWSGetUser.h

@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/KWS/KWSRequestPermission.h
+../../../../../Pod/Classes/Services/KWS/KWSRequestPermission.h

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KWSRequest.h"
 
 // protocol
 @protocol FirebaseGetTokenProtocol <NSObject>
@@ -17,16 +18,22 @@
 
 @end
 
+// callback
+typedef void (^gotToken)(BOOL sucess, NSString *token);
+
 // firebase class
-@interface FirebaseGetToken : NSObject
+@interface FirebaseGetToken : KWSRequest
 
 // delegate
 @property (nonatomic, weak) id<FirebaseGetTokenProtocol> delegate;
+
+// function
+- (void) execute:(gotToken)gottoken;
 
 // setuo
 - (void) setup;
 
 // get token
-- (NSString*) getFirebaseToken;
+- (NSString*) getSavedToken;
 
 @end

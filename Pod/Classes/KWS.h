@@ -13,25 +13,10 @@
 #import "PushManager.h"
 #import "CheckManager.h"
 #import "KWSParentEmail.h"
+#import "KWSErrorType.h"
 
 // forward declarations
 @class KWSMetadata;
-
-/**
- Descriptor for the potential types of KWS errors
- */
-typedef NS_ENUM(NSInteger, KWSErrorType) {
-    ParentHasDisabledRemoteNotifications = 0,
-    UserHasDisabledRemoteNotifications = 1,
-    UserHasNoParentEmail = 2,
-    ParentEmailInvalid = 3,
-    FirebaseNotSetup = 4,
-    FirebaseCouldNotGetToken = 5,
-    FailedToCheckIfUserHasNotificationsEnabledInKWS = 6,
-    FailedToRequestNotificationsPermissionInKWS = 7,
-    FailedToSubmitParentEmail = 8,
-    FailedToSubscribeTokenToKWS = 9
-};
 
 // Protocols
 @protocol KWSRegisterProtocol <NSObject>

@@ -20,8 +20,12 @@
 
 @end
 
-// delegate
+// callback
+typedef void (^submitted)(BOOL success);
+
 @interface KWSParentEmail : KWSRequest
 // delegate
 @property (nonatomic, weak) id<KWSParentEmailProtocol> delegate;
+
+- (void) execute:(id)param :(submitted)submitted;
 @end

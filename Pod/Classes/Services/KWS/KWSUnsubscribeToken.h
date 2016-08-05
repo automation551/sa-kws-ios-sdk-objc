@@ -19,8 +19,14 @@
 
 @end
 
+// callback
+typedef void (^unregistered)(BOOL success);
+
 // unsubscribe token object
 @interface KWSUnsubscribeToken : KWSRequest
 // protocol
 @property (nonatomic, weak) id<KWSUnsubscribeTokenProtocol> delegate;
+
+- (void) execute:(id)param :(unregistered)registered;
+
 @end

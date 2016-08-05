@@ -20,6 +20,7 @@
 #import "KWSInvalid.h"
 
 @interface KWSParentEmail ()
+@property (nonatomic, assign) submitted submitted;
 @property (nonatomic, strong) NSString *emailToSubmit;
 @end
 
@@ -54,19 +55,21 @@
     [self delEmailError];
 }
 
-- (void) execute:(id)param {
-    
+- (void) execute:(id)param :(submitted)submitted {
     // get parameter and check is correct type
     if ([param isKindOfClass:[NSString class]]) {
         _emailToSubmit = (NSString*)param;
     } else {
-        [self delInvalidEmail];
+        [self delEmailError];
         return;
     }
     
+    // get callback
+    _submitted = submitted;
+    
     // check parameter is actually valid
     if (_emailToSubmit == NULL || _emailToSubmit.length == 0 || [SAUtils isEmailValid:_emailToSubmit] == NULL) {
-        [self delInvalidEmail];
+        [self delEmailError];
         return;
     }
     
@@ -77,21 +80,21 @@
 // MARK: Delegate handler functions
 
 - (void) delEmailSubmittedInKWS {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailSubmittedInKWS)]) {
-        [_delegate emailSubmittedInKWS];
+    if (_submitted) {
+        _submitted(true);
     }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailSubmittedInKWS)]) {
+//        [_delegate emailSubmittedInKWS];
+//    }
 }
 
 - (void) delEmailError {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailError)]) {
-        [_delegate emailError];
+    if (_submitted) {
+        _submitted(false);
     }
-}
-
-- (void) delInvalidEmail {
-    if (_delegate != NULL && [_delegate respondsToSelector:@selector(invalidEmail)]) {
-        [_delegate invalidEmail];
-    }
+//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailError)]) {
+//        [_delegate emailError];
+//    }
 }
 
 @end
