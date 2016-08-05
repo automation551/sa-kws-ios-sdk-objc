@@ -9,7 +9,7 @@
 #import "KWSGetLeaderboard.h"
 
 @interface KWSGetLeaderboard ()
-@property (nonatomic, assign) gotLeaderboard gotleaderboard;
+@property (nonatomic, strong) gotLeaderboard gotleaderboard;
 @end
 
 @implementation KWSGetLeaderboard
@@ -26,31 +26,19 @@
     
     if ((status == 200 || status == 204) && payload) {
         KWSLeaderboard *leaderboard = [[KWSLeaderboard alloc] initWithJsonString:payload];
-        [self gotLeaderboardOK:leaderboard.results];
+        _gotleaderboard(leaderboard.results);
     } else {
-        [self gotLeaderboardNOK];
+        _gotleaderboard(@[]);
     }
 }
 
 - (void) failure {
-    [self gotLeaderboardNOK];
+    _gotleaderboard(@[]);
 }
 
 - (void) execute:(gotLeaderboard)gotleaderboard {
-    _gotleaderboard = gotleaderboard;
+    _gotleaderboard = (gotleaderboard  ? gotleaderboard : ^(NSArray*leaders){});
     [super execute];
-}
-
-- (void) gotLeaderboardOK: (NSArray<KWSLeader*> *)leaders {
-    if (_gotleaderboard) {
-        _gotleaderboard(leaders);
-    }
-}
-
-- (void) gotLeaderboardNOK {
-    if (_gotleaderboard) {
-        _gotleaderboard([[NSArray alloc] init]);
-    }
 }
 
 @end

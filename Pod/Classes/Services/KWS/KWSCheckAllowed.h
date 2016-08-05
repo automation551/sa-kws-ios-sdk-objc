@@ -13,27 +13,10 @@
 //  They are disabled if false
 //
 
-#import <UIKit/UIKit.h>
-#import "KWSRequest.h"
+#import "KWSService.h"
 
-// protocol
-@protocol KWSCheckAllowedProtocol <NSObject>
+typedef void (^checkAllowed)(BOOL success, BOOL allowed);
 
-- (void) pushAllowedInKWS;
-- (void) pushNotAllowedInKWS;
-- (void) checkAllowedError;
-
-@end
-
-// type block
-typedef void (^checkBlock)(BOOL success, BOOL allowed);
-
-// class
-@interface KWSCheckAllowed : KWSRequest
-
-// delegate
-@property (nonatomic, weak) id<KWSCheckAllowedProtocol> delegate;
-
-- (void) execute:(checkBlock)check;
-
+@interface KWSCheckAllowed : KWSService
+- (void) execute:(checkAllowed)checkAllowed;
 @end

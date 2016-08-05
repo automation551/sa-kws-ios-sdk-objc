@@ -6,34 +6,31 @@
 //
 //
 
-#import "PushCheckAllowed.h"
+#import "SystemCheckAllowed.h"
 #import "SASystemVersion.h"
 
 #define kUserHasSeenDialog @"UserHasSeenDialog"
 
-@interface PushCheckAllowed ()
+@interface SystemCheckAllowed ()
 @property (nonatomic, strong) NSUserDefaults *defaults;
 @property (nonatomic, weak) UIApplication *appRef;
 @property (nonatomic, assign) Boolean hasUserSeenDialog;
-@property (nonatomic, assign) allowed allowed;
+@property (nonatomic, strong) checkSystem checkSystem;
 @end
 
-@implementation PushCheckAllowed
+@implementation SystemCheckAllowed
 
-// MARK: Main class function
-
-- (void) execute:(allowed)allowed {
-    // get callback
-    _allowed = allowed;
-    
+- (void) execute:(checkSystem)checkSystem {
+    _checkSystem = checkSystem ? checkSystem : ^(BOOL success){};
     _defaults = [NSUserDefaults standardUserDefaults];
     _appRef = [UIApplication sharedApplication];
+    
     if ([_defaults objectForKey:kUserHasSeenDialog] != NULL) {
         _hasUserSeenDialog = [_defaults boolForKey:kUserHasSeenDialog];
     }
     
     if (!_hasUserSeenDialog) {
-        [self delPushAllowedInSystem];
+        _checkSystem(true);
         return;
     }
     
@@ -41,23 +38,23 @@
         UIUserNotificationSettings *settings = [_appRef currentUserNotificationSettings];
         if (settings != NULL) {
             if (settings.types != UIUserNotificationTypeNone) {
-                [self delPushAllowedInSystem];
+                _checkSystem(true);
                 return;
             }
-            [self delPushNotAllowedInSystem];
+            _checkSystem(false);
             return;
         }
-        [self delPushNotAllowedInSystem];
+        _checkSystem(false);
         return;
     }
     else {
         UIRemoteNotificationType types = [_appRef enabledRemoteNotificationTypes];
         
         if (types & UIRemoteNotificationTypeAlert) {
-            [self delPushAllowedInSystem];
+            _checkSystem(true);
             return;
         }else {
-            [self delPushNotAllowedInSystem];
+            _checkSystem(false);
             return;
         }
     }
@@ -75,23 +72,4 @@
     [_defaults synchronize];
 }
 
-// MARK: Delegate handler functions
-
-- (void) delPushAllowedInSystem {
-    if (_allowed) {
-        _allowed(true);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushAllowedInSystem)]) {
-//        [_delegate pushAllowedInSystem];
-//    }
-}
-
-- (void) delPushNotAllowedInSystem {
-    if (_allowed) {
-        _allowed(false);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushNotAllowedInSystem)]) {
-//        [_delegate pushNotAllowedInSystem];
-//    }
-}
 @end

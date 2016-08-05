@@ -7,17 +7,17 @@
 //
 
 // import header
-#import "KWSRequest.h"
+#import "KWSService.h"
 
 // import other important headers
 #import "KWS.h"
 #import "SANetwork.h"
 
-@interface KWSRequest ()
+@interface KWSService ()
 @property (nonatomic, strong) SANetwork *network;
 @end
 
-@implementation KWSRequest
+@implementation KWSService
 
 // MARK: Init functions
 

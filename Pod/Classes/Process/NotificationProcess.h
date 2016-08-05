@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KWSErrorType.h"
+
+typedef NS_ENUM(NSInteger, KWSErrorType) {
+    ParentHasDisabledRemoteNotifications = 0,
+    UserHasDisabledRemoteNotifications = 1,
+    UserHasNoParentEmail = 2,
+    FirebaseNotSetup = 3,
+    FirebaseCouldNotGetToken = 4,
+    FailedToCheckIfUserHasNotificationsEnabledInKWS = 5,
+    FailedToRequestNotificationsPermissionInKWS = 6,
+    FailedToSubmitParentEmail = 7,
+    FailedToSubscribeTokenToKWS = 8
+};
 
 // define blocks for the notification process
 typedef void (^isRegistered)(BOOL success);
@@ -15,5 +26,9 @@ typedef void (^registered)(BOOL success, KWSErrorType type);
 typedef void (^unregistered)(BOOL success);
 
 @interface NotificationProcess : NSObject
+
+- (void) register:(registered)registered;
+- (void) unregister:(unregistered)unregistered;
+- (void) isRegistered:(isRegistered)isRegistered;
 
 @end

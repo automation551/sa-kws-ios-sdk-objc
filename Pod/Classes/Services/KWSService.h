@@ -6,9 +6,7 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-
-// import metadata
+#import <UIKit/UIKit.h>
 #import "KWSMetadata.h"
 
 typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
@@ -16,7 +14,7 @@ typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
     POST
 };
 
-@protocol KWSRequestProtocol <NSObject>
+@protocol KWSServiceProtocol <NSObject>
 
 - (NSString*) getEndpoint;
 - (KWS_HTTP_METHOD) getMethod;
@@ -28,7 +26,7 @@ typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
 
 @end
 
-@interface KWSRequest : NSObject <KWSRequestProtocol> {
+@interface KWSService : NSObject <KWSServiceProtocol> {
     NSString *kwsApiUrl;
     NSString *oauthToken;
     NSString *version;

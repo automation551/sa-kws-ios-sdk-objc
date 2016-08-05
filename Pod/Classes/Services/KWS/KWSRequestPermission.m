@@ -21,13 +21,11 @@
 #import "SALogger.h"
 
 @interface KWSRequestPermission ()
-@property (nonatomic, assign) requested requested;
+@property (nonatomic, strong) requested requested;
 @property (nonatomic, strong) NSMutableArray<NSString*> *requestedPermissions;
 @end
 
 @implementation KWSRequestPermission
-
-// MARK: Main functions
 
 - (NSString*) getEndpoint {
     return [NSString stringWithFormat:@"users/%ld/request-permissions", (long)metadata.userId];
@@ -49,47 +47,40 @@
         [SALogger log:[error jsonPreetyStringRepresentation]];
         
         if (status == 200 || status == 204) {
-            [self delPushPermissionRequestedInKWS];
+            _requested(true, true);
         }
         else if (status != 200 && error) {
             if (error.code == 5 && error.invalid.parentEmail.code == 6) {
-                [self delParentEmailIsMissingInKWS];
+                _requested(true, false);
             }
             else {
-                [self delParentPermissionError];
+                _requested(false, false);
             }
         }
         else {
-            [self delParentPermissionError];
+            _requested(false, false);
         }
     } else {
-        [self delParentPermissionError];
+        _requested(false, false);
     }
 }
 
 - (void) failure {
-    [self delParentPermissionError];
+    _requested(false, false);
 }
 
-- (void) execute:(NSArray<NSNumber *> *)param :(requested)requested {
+- (void) execute:(NSArray<NSNumber *> *)requestPermissions :(requested)requested {
     
-    // get parameter and check is correct type
-    if ([param isKindOfClass:[NSArray class]]) {
-        _requestedPermissions = [[NSMutableArray alloc] init];
-        for (NSNumber *number in param) {
-            NSInteger typeAsInt = [number integerValue];
-            [_requestedPermissions addObject:[self typeToString:typeAsInt]];
-        }
-    } else {
-        [self delParentPermissionError];
-        return;
+    _requested = (requested ? requested : ^(BOOL success, BOOL requested){});
+    
+    _requestedPermissions = [[NSMutableArray alloc] init];
+    for (NSNumber *number in requestPermissions) {
+        NSInteger typeAsInt = [number integerValue];
+        [_requestedPermissions addObject:[self typeToString:typeAsInt]];
     }
     
-    // get callback
-    _requested = requested;
-    
     // call to super
-    [super execute:param];
+    [super execute:requestPermissions];
 }
 
 // MARK Aux functions
@@ -104,35 +95,6 @@
         case sendNewsletter: return @"sendNewsletter";
         case sendPushNotification: return @"sendPushNotification";
     }
-}
-
-// MARK Delegate functions
-
-- (void) delPushPermissionRequestedInKWS {
-    if (_requested) {
-        _requested(true, true);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushPermissionRequestedInKWS)]) {
-//        [_delegate pushPermissionRequestedInKWS];
-//    }
-}
-
-- (void) delParentEmailIsMissingInKWS {
-    if (_requested) {
-        _requested(true, false);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(parentEmailIsMissingInKWS)]) {
-//        [_delegate parentEmailIsMissingInKWS];
-//    }
-}
-
-- (void) delParentPermissionError {
-    if (_requested) {
-        _requested(false, false);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(permissionError)]) {
-//        [_delegate permissionError];
-//    }
 }
 
 @end

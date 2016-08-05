@@ -9,33 +9,15 @@
 #import <UIKit/UIKit.h>
 
 // imports
-#import "KWSManager.h"
-#import "PushManager.h"
-#import "CheckManager.h"
 #import "KWSParentEmail.h"
-#import "KWSErrorType.h"
+#import "NotificationProcess.h"
+#import "KWSGetUser.h"
+#import "KWSGetLeaderboard.h"
+#import "KWSRequestPermission.h"
+#import "KWSParentEmail.h"
 
 // forward declarations
 @class KWSMetadata;
-
-// Protocols
-@protocol KWSRegisterProtocol <NSObject>
-- (void) kwsSDKDidRegisterUserForRemoteNotifications;
-- (void) kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType;
-@end
-
-@protocol KWSUnregisterProtocol <NSObject>
-- (void) kwsSDKDidUnregisterUserForRemoteNotifications;
-- (void) kwsSDKDidFailToUnregisterUserForRemoteNotifications;
-@end
-
-@protocol KWSCheckProtocol <NSObject>
-- (void) kwsSDKUserIsRegistered;
-- (void) kwsSDKUserIsNotRegistered;
-- (void) kwsSDKDidFailToCheckIfUserIsRegistered;
-@end
-
-// Class
 
 @interface KWS : NSObject
 
@@ -44,18 +26,20 @@
 
 // setup func
 - (void) setupWithOAuthToken:(NSString*)oauthToken
-                   kwsApiUrl:(NSString*)kwsApiUrl
-          andPermissionPopup:(BOOL)showPermissionPopup;
+                   kwsApiUrl:(NSString*)kwsApiUrl;
 
 // Main public functions
-- (void) registerForRemoteNotifications:(id<KWSRegisterProtocol>)delegate;
-- (void) unregisterForRemoteNotifications:(id<KWSUnregisterProtocol>)delegate;
-- (void) userIsRegistered:(id<KWSCheckProtocol>)delegate;
-//- (void) getUserProfile;
+- (void) register:(registered)registered;
+- (void) unregister:(unregistered)unregistered;
+- (void) isRegistered:(isRegistered)isRegistered;
+- (void) submitParentEmail:(NSString*)email :(submitted)submitted;
+- (void) getUser:(gotUser)gotUser;
+- (void) getLeaderboard:(gotLeaderboard)gotLeaderboard;
+- (void) requestPermission:(NSArray<NSNumber*>*)requestedPermissions :(requested)requested;
 
 // Main aux public functions
-- (void) showParentEmailPopup;
-- (void) submitParentEmail:(NSString*)email;
+- (void) registerWithPopup:(registered)registered;
+- (void) submitParentEmailWithPopup:(submitted)submitted;
 
 // getters
 - (NSString*) getVersion;

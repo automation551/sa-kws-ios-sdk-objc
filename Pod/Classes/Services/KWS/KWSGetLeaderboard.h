@@ -6,13 +6,11 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import "KWSRequest.h"
+#import "KWSService.h"
 #import "KWSLeaderboard.h"
 
-// callback
 typedef void (^gotLeaderboard)(NSArray<KWSLeader*> *leaders);
 
-@interface KWSGetLeaderboard : KWSRequest
+@interface KWSGetLeaderboard : KWSService
 - (void) execute:(gotLeaderboard)gotleaderboard;
 @end

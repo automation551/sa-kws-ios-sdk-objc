@@ -8,17 +8,8 @@
 
 #import "KWSGetUser.h"
 
-// aux
-#import "KWS.h"
-#import "SANetwork.h"
-#import "SALogger.h"
-
-// models
-#import "KWSMetadata.h"
-#import "KWSUser.h"
-
 @interface KWSGetUser ()
-@property (nonatomic, assign) gotUser gotuser;
+@property (nonatomic, strong) gotUser gotuser;
 @end
 
 @implementation KWSGetUser
@@ -35,34 +26,21 @@
     
     if ((status == 200 || status == 204) && payload != NULL) {
         KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
-        [SALogger log:[user jsonPreetyStringRepresentation]];
-        [self gotUserOK:user];
+        _gotuser(user);
     }
     else {
-        [self gotUserNOK];
+        _gotuser(nil);
     }
     
 }
 
 - (void) failure {
-    [self gotUserNOK];
+    _gotuser(nil);
 }
 
 - (void) execute:(gotUser)gotuser {
-    _gotuser = gotuser;
+    _gotuser = (gotuser ? gotuser : ^(KWSUser*user){});
     [super execute];
-}
-
-- (void) gotUserOK:(KWSUser*)user {
-    if (_gotuser) {
-        _gotuser(user);
-    }
-}
-
-- (void) gotUserNOK {
-    if (_gotuser) {
-        _gotuser(NULL);
-    }
 }
 
 @end

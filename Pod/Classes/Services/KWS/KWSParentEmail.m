@@ -8,25 +8,14 @@
 
 // header
 #import "KWSParentEmail.h"
-
-// aux
-#import "KWS.h"
-#import "SANetwork.h"
 #import "SAUtils.h"
 
-// models
-#import "KWSMetadata.h"
-#import "KWSError.h"
-#import "KWSInvalid.h"
-
 @interface KWSParentEmail ()
-@property (nonatomic, assign) submitted submitted;
+@property (nonatomic, strong) submitted submitted;
 @property (nonatomic, strong) NSString *emailToSubmit;
 @end
 
 @implementation KWSParentEmail
-
-// MARK: Main class function
 
 - (NSString*) getEndpoint {
     return [NSString stringWithFormat:@"users/%ld/request-permissions", (long)metadata.userId];
@@ -45,56 +34,29 @@
 
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload {
     if (status == 200 || status == 204){
-        [self delEmailSubmittedInKWS];
+        _submitted(true);
     } else {
-        [self delEmailError];
+        _submitted(false);
     }
 }
 
 - (void) failure {
-    [self delEmailError];
+    _submitted(false);
 }
 
-- (void) execute:(id)param :(submitted)submitted {
-    // get parameter and check is correct type
-    if ([param isKindOfClass:[NSString class]]) {
-        _emailToSubmit = (NSString*)param;
-    } else {
-        [self delEmailError];
-        return;
-    }
-    
+- (void) execute:(NSString*)email :(submitted)submitted {
     // get callback
-    _submitted = submitted;
+    _submitted = (submitted ? submitted : ^(BOOL success){});
+    _emailToSubmit = email;
     
     // check parameter is actually valid
     if (_emailToSubmit == NULL || _emailToSubmit.length == 0 || [SAUtils isEmailValid:_emailToSubmit] == NULL) {
-        [self delEmailError];
+        _submitted(false);
         return;
     }
     
     // call to super
-    [super execute:param];
-}
-
-// MARK: Delegate handler functions
-
-- (void) delEmailSubmittedInKWS {
-    if (_submitted) {
-        _submitted(true);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailSubmittedInKWS)]) {
-//        [_delegate emailSubmittedInKWS];
-//    }
-}
-
-- (void) delEmailError {
-    if (_submitted) {
-        _submitted(false);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(emailError)]) {
-//        [_delegate emailError];
-//    }
+    [super execute:_emailToSubmit];
 }
 
 @end

@@ -14,17 +14,15 @@
 #import "SALogger.h"
 
 @interface FirebaseGetToken ()
-@property (nonatomic, assign) gotToken gottoken;
+@property (nonatomic, strong) gotToken gottoken;
 @end
 
 @implementation FirebaseGetToken
 
-// MARK: Setup & Public functions
-
 - (void) execute:(gotToken)gottoken {
     
     // call this
-    _gottoken = gottoken;
+    _gottoken = gottoken ? gottoken : ^(BOOL success, NSString* token){};
     
     @try {
         [FIRApp configure];
@@ -39,7 +37,7 @@
         // already configured, then there trully is an error!
         else {
             [SALogger err:[NSString stringWithFormat:@"Could not configure Firebase %@", exception]];
-            [self delFailToGetFirebaseToken];
+            _gottoken(false, nil);
         }
     } @finally {
         // do nothing
@@ -60,7 +58,7 @@
     // if it exists, use it
     else {
         [SALogger log:[NSString stringWithFormat:@"Getting already existing token %@", token]];
-        [self delDidGetFirebaseToken:token];
+        _gottoken(true, token);
     }
     
     // don't call super!
@@ -75,32 +73,12 @@
     NSString *token = [[FIRInstanceID instanceID] token];
     
     [SALogger log:[NSString stringWithFormat:@"Token is %@", token]];
-    [self delDidGetFirebaseToken:token];
+    _gottoken(true, token);
 }
 
 
 - (NSString*) getSavedToken {
     return [[FIRInstanceID instanceID] token];
-}
-
-// MARK: Delegate handler functions
-
-- (void) delDidGetFirebaseToken:(NSString*) token {
-    if (_gottoken) {
-        _gottoken(true, token);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didGetFirebaseToken:)]) {
-//        [_delegate didGetFirebaseToken:token];
-//    }
-}
-
-- (void) delFailToGetFirebaseToken {
-    if(_gottoken) {
-        _gottoken(false, NULL);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(didFailToGetFirebaseToken)]) {
-//        [_delegate didFailToGetFirebaseToken];
-//    }
 }
 
 

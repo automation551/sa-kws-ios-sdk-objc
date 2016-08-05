@@ -6,35 +6,28 @@
 //
 //
 
+// get header
 #import "KWS.h"
+
+// get private imports
 #import "KWSMetadata.h"
 #import "Firebase.h"
 #import "SALogger.h"
-#import "KWSSubscribeToken.h"
-#import "KWSUnsubscribeToken.h"
-#import "FirebaseGetToken.h"
-#import "KWSGetUser.h"
 #import "SAPopup.h"
 
-@interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, CheckManagerProtocol>
+@interface KWS ()
 
 // the parent email object
+@property (nonatomic, strong) NotificationProcess *notificationProcess;
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
+@property (nonatomic, strong) KWSGetUser *getUser;
+@property (nonatomic, strong) KWSGetLeaderboard *getLeaderboard;
+@property (nonatomic, strong) KWSRequestPermission *requestPermission;
 
 // KWS setup properties
 @property (nonatomic, strong) NSString *oauthToken;
 @property (nonatomic, strong) NSString *kwsApiUrl;
 @property (nonatomic, strong) KWSMetadata *metadata;
-@property (nonatomic, assign) BOOL showPermissionPopup;
-
-// email popup
-@property (nonatomic, strong) SAPopup *permissionPopup;
-@property (nonatomic, strong) SAPopup *emailPopup;
-
-// delegates
-@property (nonatomic, weak) id <KWSRegisterProtocol> registerDelegate;
-@property (nonatomic, weak) id <KWSUnregisterProtocol> unregisterDelegate;
-@property (nonatomic, weak) id <KWSCheckProtocol> checkDelegate;
 
 @end
 
@@ -51,11 +44,11 @@
 
 - (id) init {
     if (self = [super init]) {
-        [KWSManager sharedInstance].delegate = self;
-        [PushManager sharedInstance].delegate = self;
-        [CheckManager sharedInstance].delegate = self;
+        _notificationProcess = [[NotificationProcess alloc] init];
         _parentEmail = [[KWSParentEmail alloc] init];
-        _parentEmail.delegate = self;
+        _getUser = [[KWSGetUser alloc] init];
+        _getLeaderboard = [[KWSGetLeaderboard alloc] init];
+        _requestPermission = [[KWSRequestPermission alloc] init];
     }
     return self;
 }
@@ -63,162 +56,74 @@
 // MARK: Setup function
 
 - (void) setupWithOAuthToken:(NSString*)oauthToken
-                   kwsApiUrl:(NSString*)kwsApiUrl
-          andPermissionPopup:(BOOL)showPermissionPopup {
+                   kwsApiUrl:(NSString*)kwsApiUrl {
     
-    _showPermissionPopup = showPermissionPopup;
     _oauthToken = oauthToken;
     _kwsApiUrl = kwsApiUrl;
-    _metadata = [self getMetadata:oauthToken];
+    _metadata = [self processMetadata:oauthToken];
     [SALogger log:[self.metadata jsonPreetyStringRepresentation]];
 }
 
-// MARK: Public functions
+// MARK: public simple functions
 
-- (void) registerForRemoteNotifications:(id<KWSRegisterProtocol>)delegate {
-    
-    // assign delegate
-    _registerDelegate = delegate;
-    
-    // perform action
-    if (_showPermissionPopup) {
-        [[SAPopup sharedManager] showWithTitle:@"Hey!"
-                             andMessage:@"Do you want to allow Push Notifications?"
-                             andOKTitle:@"Yes"
-                            andNOKTitle:@"No"
-                           andTextField:NO
-                        andKeyboardTyle:UIKeyboardTypeDefault
-                             andOKBlock:^(NSString *popupMessage) {
-                                 [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
-                             }
-                            andNOKBlock:^ {
-                                // do nothing
-                            }];
-    }
-    else {
-        [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
-    }
+- (void) register:(registered)registered {
+    [_notificationProcess register:registered];
 }
 
-- (void) unregisterForRemoteNotifications:(id<KWSUnregisterProtocol>)delegate {
-    // set delegate
-    _unregisterDelegate = delegate;
-    
-    // perform action
-    [[PushManager sharedInstance] unregisterForPushNotifications];
+- (void) unregister:(unregistered)unregistered {
+    [_notificationProcess unregister:unregistered];
 }
 
-- (void) userIsRegistered:(id<KWSCheckProtocol>)delegate {
-    // set delegate
-    _checkDelegate = delegate;
-    
-    // perform action
-    [[CheckManager sharedInstance] areNotificationsEnabled];
+- (void) isRegistered:(isRegistered)isRegistered {
+    [_notificationProcess isRegistered:isRegistered];
 }
 
-- (void) getUserProfile {
-    KWSGetUser *kwsGetUser = [[KWSGetUser alloc] init];
-    [kwsGetUser execute];
+- (void) submitParentEmail:(NSString *)email :(submitted)submitted {
+    [_parentEmail execute:email :submitted];
 }
 
-- (void) showParentEmailPopup {
+- (void) getUser:(gotUser)gotUser {
+    [_getUser execute:gotUser];
+}
+
+- (void) getLeaderboard:(gotLeaderboard)gotLeaderboard {
+    [_getLeaderboard execute:gotLeaderboard];
+}
+
+- (void) requestPermission:(NSArray<NSNumber *> *)requestedPermissions :(requested)requested {
+    [_requestPermission execute:requestedPermissions :requested];
+}
+
+// MARK: public complex functions
+
+- (void) registerWithPopup:(registered)registered {
     [[SAPopup sharedManager] showWithTitle:@"Hey!"
-                    andMessage:@"To enable Push Notifications in KWS you'll need to provide a parent's email."
-                    andOKTitle:@"Submit"
-                   andNOKTitle:@"Cancel"
-                  andTextField:YES
-               andKeyboardTyle:UIKeyboardTypeEmailAddress
-                    andOKBlock:^(NSString *popupMessage) {
-                        [self submitParentEmail:popupMessage];
-                    } andNOKBlock:^{
-                        // nothing
-                    }];
+                                andMessage:@"Do you want to enable Remote Notifications?"
+                                andOKTitle:@"Yes"
+                               andNOKTitle:@"No"
+                              andTextField:false
+                           andKeyboardTyle:kNilOptions
+                                andPressed:^(int button, NSString *popupMessage) {
+                                    if (button == 0) {
+                                        [_notificationProcess register:registered];
+                                    } else {
+                                        // do nothing
+                                    }
+                                }];
 }
 
-- (void) submitParentEmail:(NSString*)email {
-    [_parentEmail execute:email];
-}
-
-// MARK: KWSManagerProtocol delegate
-
-- (void) pushNotAllowedInSystem {
-    _unregisterDelegate = nil;
-    [[PushManager sharedInstance] unregisterForPushNotifications];
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:UserHasDisabledRemoteNotifications];
-}
-
-- (void) pushNotAllowedInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentHasDisabledRemoteNotifications];
-}
-
-- (void) parentEmailIsMissingInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:UserHasNoParentEmail];
-}
-
-- (void) networkErrorCheckingInKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToCheckIfUserHasNotificationsEnabledInKWS];
-}
-
-- (void) networkErrorRequestingPermissionFromKWS {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToRequestNotificationsPermissionInKWS];
-}
-
-- (void) isAllowedToRegister {
-    [[PushManager sharedInstance] registerForPushNotifications];
-}
-
-// MARK: KWSParentEmailProtocol delegate
-
-- (void) emailSubmittedInKWS {
-    [[PushManager sharedInstance] registerForPushNotifications];
-}
-
-- (void) emailError {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToSubmitParentEmail];
-}
-
-- (void) invalidEmail {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:ParentEmailInvalid];
-}
-
-// MARK: PushManagerProtocol delegate
-
-- (void) didRegister:(NSString*)token {
-    [self delKWSSDKDidRegisterUserForRemoteNotifications];
-}
-
-- (void) didUnregister {
-    [self delKWSSDKDidUnregisterUserForRemoteNotifications];
-}
-
-- (void) didFailBecauseFirebaseIsNotSetup {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseNotSetup];
-}
-
-- (void) didFailToGetFirebaseToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FirebaseCouldNotGetToken];
-}
-
-- (void) networkErrorTryingToSubscribeToken {
-    [self delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:FailedToSubscribeTokenToKWS];
-}
-
-- (void) networkErrorTryingToUnsubscribeToken {
-    [self delKWSSDKDidFailToUnregisterUserForRemoteNotifications];
-}
-
-// MARK: CheckManagerProtocol
-
-- (void) pushAllowedOverall {
-    [self delKWSSDKUserIsRegistered];
-}
-
-- (void) pushDisabledOverall {
-    [self delKWSSDKUserIsNotRegistered];
-}
-
-- (void) networkErrorTryingToCheckUserStatus {
-    [self delKWSSDKDidFailToCheckIfUserIsRegistered];
+- (void) submitParentEmailWithPopup:(submitted)submitted {
+    [[SAPopup sharedManager] showWithTitle:@"Hey!"
+                                andMessage:@"To enable Remote Notifications in KWS you'll need to provide a parent email."
+                                andOKTitle:@"Submit"
+                               andNOKTitle:@"Cancel"
+                              andTextField:true
+                           andKeyboardTyle:UIKeyboardTypeEmailAddress
+                                andPressed:^(int button, NSString *popupMessage) {
+                                    if (button == 0) {
+                                        [self submitParentEmail:popupMessage :submitted];
+                                    }
+                                }];
 }
 
 // MARK: getters
@@ -241,7 +146,7 @@
 
 // MARK: Private function
 
-- (KWSMetadata*) getMetadata:(NSString*)oauthToken {
+- (KWSMetadata*) processMetadata:(NSString*)oauthToken {
     NSArray *subtokens = [oauthToken componentsSeparatedByString:@"."];
     NSString *token = nil;
     if (subtokens.count >= 2) token = subtokens[1];
@@ -262,50 +167,6 @@
     
     NSString *decodedJson = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
     return [[KWSMetadata alloc] initWithJsonString:decodedJson];
-}
-
-// MARK: Delegate handler functions
-
-- (void) delKWSSDKDidRegisterUserForRemoteNotifications {
-    if (_registerDelegate != NULL && [_registerDelegate respondsToSelector:@selector(kwsSDKDidRegisterUserForRemoteNotifications)]) {
-        [_registerDelegate kwsSDKDidRegisterUserForRemoteNotifications];
-    }
-}
-
-- (void) delKWSSDKDidFailToRegisterUserForRemoteNotificationsWithError:(KWSErrorType)errorType {
-    if (_registerDelegate != NULL && [_registerDelegate respondsToSelector:@selector(kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:)]) {
-        [_registerDelegate kwsSDKDidFailToRegisterUserForRemoteNotificationsWithError:errorType];
-    }
-}
-
-- (void) delKWSSDKDidUnregisterUserForRemoteNotifications {
-    if (_unregisterDelegate != NULL && [_unregisterDelegate respondsToSelector:@selector(kwsSDKDidUnregisterUserForRemoteNotifications)]) {
-        [_unregisterDelegate kwsSDKDidUnregisterUserForRemoteNotifications];
-    }
-}
-
-- (void) delKWSSDKDidFailToUnregisterUserForRemoteNotifications {
-    if (_unregisterDelegate != NULL && [_unregisterDelegate respondsToSelector:@selector(kwsSDKDidFailToUnregisterUserForRemoteNotifications)]) {
-        [_unregisterDelegate kwsSDKDidFailToUnregisterUserForRemoteNotifications];
-    }
-}
-
-- (void) delKWSSDKUserIsRegistered {
-    if (_checkDelegate != NULL && [_checkDelegate respondsToSelector:@selector(kwsSDKUserIsRegistered)]) {
-        [_checkDelegate kwsSDKUserIsRegistered];
-    }
-}
-
-- (void) delKWSSDKUserIsNotRegistered {
-    if (_checkDelegate != NULL && [_checkDelegate respondsToSelector:@selector(kwsSDKUserIsNotRegistered)]) {
-        [_checkDelegate kwsSDKUserIsNotRegistered];
-    }
-}
-
-- (void) delKWSSDKDidFailToCheckIfUserIsRegistered {
-    if (_checkDelegate != NULL && [_checkDelegate respondsToSelector:@selector(kwsSDKDidFailToCheckIfUserIsRegistered)]) {
-        [_checkDelegate kwsSDKDidFailToCheckIfUserIsRegistered];
-    }
 }
 
 @end

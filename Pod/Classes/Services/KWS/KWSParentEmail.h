@@ -9,23 +9,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KWSRequest.h"
+#import "KWSService.h"
 
-// protocol
-@protocol KWSParentEmailProtocol <NSObject>
-
-- (void) emailSubmittedInKWS;
-- (void) emailError;
-- (void) invalidEmail;
-
-@end
-
-// callback
 typedef void (^submitted)(BOOL success);
 
-@interface KWSParentEmail : KWSRequest
-// delegate
-@property (nonatomic, weak) id<KWSParentEmailProtocol> delegate;
-
-- (void) execute:(id)param :(submitted)submitted;
+@interface KWSParentEmail : KWSService
+- (void) execute:(NSString*)email :(submitted)submitted;
 @end

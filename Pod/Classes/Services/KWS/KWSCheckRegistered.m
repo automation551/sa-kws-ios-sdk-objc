@@ -9,23 +9,11 @@
 // header
 #import "KWSCheckRegistered.h"
 
-// aux
-#import "KWS.h"
-#import "SANetwork.h"
-#import "SALogger.h"
-
-// models
-#import "KWSMetadata.h"
-#import "KWSUser.h"
-#import "KWSPermissions.h"
-
 @interface KWSCheckRegistered ()
-@property (nonatomic, assign) checkBlock check;
+@property (nonatomic, strong) checkRegistered checkRegistered;
 @end
 
 @implementation KWSCheckRegistered
-
-// MARL: Main function
 
 - (NSString*) getEndpoint {
     return [NSString stringWithFormat:@"apps/%ld/users/%ld/has-device-token", metadata.appId, metadata.userId];
@@ -37,50 +25,21 @@
 
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload {
     if ([payload isEqualToString:@"true"]) {
-        [self delUserIsRegistered];
+        _checkRegistered(true, true);
     } else if ([payload isEqualToString:@"false"]) {
-        [self delUserIsNotRegistered];
+        _checkRegistered(true, false);
     } else {
-        [self delCheckRegisteredError];
+        _checkRegistered(false, false);
     }
 }
 
 - (void) failure {
-    [self delCheckRegisteredError];
+    _checkRegistered(false, false);
 }
 
-- (void) execute:(checkBlock)check {
-    _check = check;
+- (void) execute:(checkRegistered)checkRegistered {
+    _checkRegistered = (checkRegistered ? checkRegistered : ^(BOOL success, BOOL registered){});
     [super execute];
-}
-
-// MARK: Delegates
-
-- (void) delUserIsRegistered {
-    if (_check) {
-        _check(true, true);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(userIsRegistered)]) {
-//        [_delegate userIsRegistered];
-//    }
-}
-
-- (void) delUserIsNotRegistered {
-    if (_check) {
-        _check(true, false);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(userIsNotRegistered)]) {
-//        [_delegate userIsNotRegistered];
-//    }
-}
-
-- (void) delCheckRegisteredError {
-    if (_check) {
-        _check(false, false);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkRegisteredError)]) {
-//        [_delegate checkRegisteredError];
-//    }
 }
 
 @end

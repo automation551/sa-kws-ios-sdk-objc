@@ -6,13 +6,11 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import "KWSRequest.h"
+#import "KWSService.h"
 #import "KWSUser.h"
 
-// callback
 typedef void (^gotUser)(KWSUser* user);
 
-@interface KWSGetUser : KWSRequest
+@interface KWSGetUser : KWSService
 - (void) execute:(gotUser)gotuser;
 @end

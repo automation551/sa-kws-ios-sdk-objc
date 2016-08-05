@@ -6,26 +6,10 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import "KWSRequest.h"
+#import "KWSService.h"
 
-// protocol
-@protocol KWSCheckRegisteredProtocol <NSObject>
+typedef void (^checkRegistered)(BOOL success, BOOL registered);
 
-- (void) userIsRegistered;
-- (void) userIsNotRegistered;
-- (void) checkRegisteredError;
-
-@end
-
-// type block
-typedef void (^checkBlock)(BOOL success, BOOL allowed);
-
-// class
-@interface KWSCheckRegistered : KWSRequest
-// delegate
-@property (nonatomic, weak) id<KWSCheckRegisteredProtocol> delegate;
-
-- (void) execute: (checkBlock) check;
-
+@interface KWSCheckRegistered : KWSService
+- (void) execute: (checkRegistered) checkRegistered;
 @end

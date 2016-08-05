@@ -15,17 +15,14 @@
 #import "SALogger.h"
 
 // models
-#import "KWSMetadata.h"
 #import "KWSUser.h"
 #import "KWSPermissions.h"
 
 @interface KWSCheckAllowed ()
-@property (nonatomic, assign) checkBlock check;
+@property (nonatomic, strong) checkAllowed checkAllowed;
 @end
 
 @implementation KWSCheckAllowed
-
-// MARK: Main class function
 
 - (NSString*) getEndpoint {
     return [NSString stringWithFormat:@"users/%ld", (long)[metadata userId]];
@@ -47,56 +44,26 @@
             NSNumber *perm = user.applicationPermissions.sendPushNotification;
             
             if (perm == NULL || [perm boolValue] == true) {
-                [self delPushAllowedInKWS];
+                _checkAllowed(true, true);
             } else {
-                [self delPushNotAllowedInKWS];
+                _checkAllowed(true, false);
             }
-            
         } else {
-            [self delCheckAllowedError];
+            _checkAllowed(false, false);
         }
     }
     else {
-        [self delCheckAllowedError];
+        _checkAllowed(false, false);
     }
 }
 
 - (void) failure {
-    [self delCheckAllowedError];
+    _checkAllowed(false, false);
 }
 
-- (void) execute:(checkBlock)check {
-    _check = check;
+- (void) execute:(checkAllowed)checkAllowed {
+    _checkAllowed = (checkAllowed ? checkAllowed : ^(BOOL success, BOOL allowed){});
     [super execute];
-}
-
-// MARK: Delegate handler functions
-
-- (void) delCheckAllowedError {
-    if (_check) {
-        _check(false, false);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(checkAllowedError)] ) {
-//        [_delegate checkAllowedError];
-//    }
-}
-
-- (void) delPushNotAllowedInKWS {
-    if (_check) {
-        _check(true, false);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushNotAllowedInKWS)]) {
-//        [_delegate pushNotAllowedInKWS];
-//    }
-}
-
-- (void) delPushAllowedInKWS {
-    if (_check) {
-        _check(true, true);
-    }
-//    if (_delegate != NULL && [_delegate respondsToSelector:@selector(pushAllowedInKWS)]) {
-//        [_delegate pushAllowedInKWS];
-//    }
 }
 
 @end

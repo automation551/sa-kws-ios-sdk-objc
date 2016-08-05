@@ -13,7 +13,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KWSRequest.h"
+#import "KWSService.h"
 
 typedef NS_ENUM(NSInteger, KWSPermissionType) {
     accessEmail = 0,
@@ -25,22 +25,8 @@ typedef NS_ENUM(NSInteger, KWSPermissionType) {
     sendPushNotification = 6
 };
 
-// protocol
-@protocol KWSRequestPermissionProtocol <NSObject>
-
-- (void) pushPermissionRequestedInKWS;
-- (void) parentEmailIsMissingInKWS;
-- (void) permissionError;
-
-@end
-
-// callback
 typedef void (^requested)(BOOL success, BOOL requested);
 
-// class
-@interface KWSRequestPermission : KWSRequest
-// delegate
-@property (nonatomic, weak) id<KWSRequestPermissionProtocol> delegate;
-
-- (void) execute:(NSArray<NSNumber*>*)param :(requested)requested;
+@interface KWSRequestPermission : KWSService
+- (void) execute:(NSArray<NSNumber*>*)requestPermissions :(requested)requested;
 @end

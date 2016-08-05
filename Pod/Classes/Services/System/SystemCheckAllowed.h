@@ -15,30 +15,13 @@
 //  pushEnabledInSystem
 
 #import <UIKit/UIKit.h>
-#import "KWSRequest.h"
+#import "KWSService.h"
 
-// protocol
-@protocol PushCheckAllowedProtocol <NSObject>
+typedef void (^checkSystem)(BOOL allowed);
 
-- (void) pushAllowedInSystem;
-- (void) pushNotAllowedInSystem;
+@interface SystemCheckAllowed : KWSService
 
-@end
-
-// callback
-typedef void (^allowed)(BOOL success);
-
-// class
-@interface PushCheckAllowed : KWSRequest
-
-// delegate
-@property (nonatomic, weak) id<PushCheckAllowedProtocol> delegate;
-
-// function
-- (void) execute:(allowed)allowed;
-
-// main function
-- (void) check;
+- (void) execute:(checkSystem)checkSystem;
 - (void) markSystemDialogAsSeen;
 
 @end
