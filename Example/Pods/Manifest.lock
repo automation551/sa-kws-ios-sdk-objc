@@ -29,10 +29,10 @@ PODS:
     - Firebase
     - FirebaseMessaging
     - SAJsonParser (= 1.2.3)
-    - SANetworking (= 0.1.2)
+    - SANetworking (= 0.1.3)
     - SAUtils (= 1.3.0)
   - SAJsonParser (1.2.3)
-  - SANetworking (0.1.2)
+  - SANetworking (0.1.3)
   - SAUtils (1.3.0)
 
 DEPENDENCIES:
@@ -51,9 +51,9 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  KWSiOSSDKObjC: 3a461080b2b10106259ca65066f4fd45783c5d0b
+  KWSiOSSDKObjC: 04f4cb837baf9545716bbf993387142dc8bb8c13
   SAJsonParser: c0a5ace5d143bc50d5318a4981ebaf79858e4af8
-  SANetworking: 2e3d79a641857bab4e44d316a42b4725c3573e50
+  SANetworking: d9cf234db099b9000f578a73aa2053876e9c77ee
   SAUtils: 743af089cf5955ec0e2bf04b36416331d84de125
 
 PODFILE CHECKSUM: 3c12e3474281f86540c28ed1a925a110ac3448e1

@@ -54,11 +54,7 @@
     return @{};
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    // do nothing
-}
-
-- (void) failure {
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success{
     // do nothing
 }
 
@@ -71,32 +67,32 @@
     metadata = [[KWS sdk] getMetadata];
     version = [[KWS sdk] getVersion];
     
+    // safe block self
+    __block id blockSelf = self;
+    
     // check data
     if (!kwsApiUrl || !oauthToken || !metadata) {
-        [self failure];
+        [self successWithStatus:0 andPayload:NULL andSuccess:false];
         return;
     }
     
-    __block id blockSelf = self;
-    
     if ([self getMethod] == POST) {
+        
         [_network sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
                  withQuery:[self getQuery]
                  andHeader:[self getHeader]
-                   andBody:[self getBody] andSuccess:^(NSInteger status, NSString *payload) {
-                       [blockSelf successWithStatus:status andPayload:payload];
-                   } andFailure:^{
-                       [blockSelf failure];
-                   }];
+                   andBody:[self getBody]
+              withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                  [blockSelf successWithStatus:status andPayload:payload andSuccess:success];
+              }];
+        
     } else {
         [_network sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
                 withQuery:[self getQuery]
                 andHeader:[self getHeader]
-               andSuccess:^(NSInteger status, NSString *payload) {
-                   [blockSelf successWithStatus:status andPayload:payload];
-               } andFailure:^{
-                   [blockSelf failure];
-               }];
+             withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                 [blockSelf successWithStatus:status andPayload:payload andSuccess:success];
+             }];
     }
 }
 

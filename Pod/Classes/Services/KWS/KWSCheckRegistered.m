@@ -23,18 +23,18 @@
     return GET;
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    if ([payload isEqualToString:@"true"]) {
-        _checkRegistered(true, true);
-    } else if ([payload isEqualToString:@"false"]) {
-        _checkRegistered(true, false);
-    } else {
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+    if (!success) {
         _checkRegistered(false, false);
+    } else {
+        if ([payload isEqualToString:@"true"]) {
+            _checkRegistered(true, true);
+        } else if ([payload isEqualToString:@"false"]) {
+            _checkRegistered(true, false);
+        } else {
+            _checkRegistered(false, false);
+        }
     }
-}
-
-- (void) failure {
-    _checkRegistered(false, false);
 }
 
 - (void) execute:(checkRegistered)checkRegistered {

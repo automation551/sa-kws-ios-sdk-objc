@@ -38,22 +38,22 @@
                            @"dateOfBirth":@"2011-03-02"};
     
     SANetwork *network = [[SANetwork alloc] init];
-    [network sendPOST:url withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger status, NSString *payload) {
-        
-        if (status == 200) {
-            // get user
-            KWSModel *model = [[KWSModel alloc] initWithJsonString:payload];
-            _token = model.token;
-            NSLog(@"Created user %ld - %@ with token %@", (long)model.userId, username, _token);
-            
-            // setup KWS
-            [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API];
-        } else {
+    [network sendPOST:url withQuery:@{} andHeader:header andBody:body withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+        if (!success) {
             NSLog(@"Could not create user %@", username);
+        } else {
+            if (status == 200) {
+                // get user
+                KWSModel *model = [[KWSModel alloc] initWithJsonString:payload];
+                _token = model.token;
+                NSLog(@"Created user %ld - %@ with token %@", (long)model.userId, username, _token);
+                
+                // setup KWS
+                [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API];
+            } else {
+                NSLog(@"Could not create user %@", username);
+            }
         }
-        
-    } andFailure:^{
-        NSLog(@"Could not create user %@", username);
     }];
 }
 
@@ -69,9 +69,7 @@
 }
 
 - (IBAction) unregisterToken:(id)sender {
-    [[KWS sdk] unregister:^(BOOL success) {
-        NSLog(@"Unregistered %d", success);
-    }];
+    [[KWS sdk] unregister:NULL];
 }
 
 - (IBAction)isRegistered {

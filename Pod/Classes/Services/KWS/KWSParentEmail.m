@@ -32,16 +32,16 @@
     };
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    if (status == 200 || status == 204){
-        _submitted(true);
-    } else {
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+    if (!success) {
         _submitted(false);
+    } else {
+        if (status == 200 || status == 204){
+            _submitted(true);
+        } else {
+            _submitted(false);
+        }
     }
-}
-
-- (void) failure {
-    _submitted(false);
 }
 
 - (void) execute:(NSString*)email :(submitted)submitted {

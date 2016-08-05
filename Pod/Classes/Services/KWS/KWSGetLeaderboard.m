@@ -22,18 +22,17 @@
     return POST;
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    
-    if ((status == 200 || status == 204) && payload) {
-        KWSLeaderboard *leaderboard = [[KWSLeaderboard alloc] initWithJsonString:payload];
-        _gotleaderboard(leaderboard.results);
-    } else {
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+    if (!success) {
         _gotleaderboard(@[]);
+    } else {
+        if ((status == 200 || status == 204) && payload) {
+            KWSLeaderboard *leaderboard = [[KWSLeaderboard alloc] initWithJsonString:payload];
+            _gotleaderboard(leaderboard.results);
+        } else {
+            _gotleaderboard(@[]);
+        }
     }
-}
-
-- (void) failure {
-    _gotleaderboard(@[]);
 }
 
 - (void) execute:(gotLeaderboard)gotleaderboard {

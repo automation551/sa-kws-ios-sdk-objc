@@ -31,13 +31,13 @@
     };
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    [SALogger log:payload];
-    _registeredToken(true);
-}
-
-- (void) failure {
-    _registeredToken(false);
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+    if (!success) {
+        _registeredToken(false);
+    } else {
+        [SALogger log:payload];
+        _registeredToken(true);
+    }
 }
 
 - (void) execute:(NSString*)token :(registeredToken)registeredToken {

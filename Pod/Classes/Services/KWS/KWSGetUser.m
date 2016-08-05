@@ -22,20 +22,18 @@
     return GET;
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    
-    if ((status == 200 || status == 204) && payload != NULL) {
-        KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
-        _gotuser(user);
-    }
-    else {
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+    if (!success) {
         _gotuser(nil);
+    } else {
+        if ((status == 200 || status == 204) && payload != NULL) {
+            KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
+            _gotuser(user);
+        }
+        else {
+            _gotuser(nil);
+        }
     }
-    
-}
-
-- (void) failure {
-    _gotuser(nil);
 }
 
 - (void) execute:(gotUser)gotuser {

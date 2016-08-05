@@ -32,33 +32,32 @@
     return GET;
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    
-    if ((status == 200 || status == 204) && payload != NULL) {
-        
-        KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
-        [SALogger log:[user jsonPreetyStringRepresentation]];
-        
-        if (user) {
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+    if (!success) {
+        _checkAllowed(false, false);
+    } else {
+        if ((status == 200 || status == 204) && payload != NULL) {
             
-            NSNumber *perm = user.applicationPermissions.sendPushNotification;
+            KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
+            [SALogger log:[user jsonPreetyStringRepresentation]];
             
-            if (perm == NULL || [perm boolValue] == true) {
-                _checkAllowed(true, true);
+            if (user) {
+                
+                NSNumber *perm = user.applicationPermissions.sendPushNotification;
+                
+                if (perm == NULL || [perm boolValue] == true) {
+                    _checkAllowed(true, true);
+                } else {
+                    _checkAllowed(true, false);
+                }
             } else {
-                _checkAllowed(true, false);
+                _checkAllowed(false, false);
             }
-        } else {
+        }
+        else {
             _checkAllowed(false, false);
         }
     }
-    else {
-        _checkAllowed(false, false);
-    }
-}
-
-- (void) failure {
-    _checkAllowed(false, false);
 }
 
 - (void) execute:(checkAllowed)checkAllowed {

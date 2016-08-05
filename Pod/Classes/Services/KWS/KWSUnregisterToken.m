@@ -30,13 +30,13 @@
     };
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    [SALogger log:payload];
-    _unregisteredToken(true);
-}
-
-- (void) failure {
-    _unregisteredToken(false);
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+    if (!success) {
+        _unregisteredToken(false);
+    } else {
+        [SALogger log:payload];
+        _unregisteredToken(true);
+    }
 }
 
 - (void) execute:(NSString*)token :(unregisteredToken)unregisteredToken {

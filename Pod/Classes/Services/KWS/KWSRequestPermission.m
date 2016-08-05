@@ -41,35 +41,36 @@
     };
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    if (payload) {
-        KWSError *error = [[KWSError alloc] initWithJsonString:payload];
-        [SALogger log:[error jsonPreetyStringRepresentation]];
-        
-        if (status == 200 || status == 204) {
-            _requested(true, true);
-        }
-        else if (status != 200 && error) {
-            if (error.code == 5 && error.invalid.parentEmail.code == 6) {
-                _requested(true, false);
+- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+    if (!success) {
+        _requested(false, false);
+    } else {
+        if (payload) {
+            KWSError *error = [[KWSError alloc] initWithJsonString:payload];
+            [SALogger log:[error jsonPreetyStringRepresentation]];
+            
+            if (status == 200 || status == 204) {
+                _requested(true, true);
+            }
+            else if (status != 200 && error) {
+                if (error.code == 5 && error.invalid.parentEmail.code == 6) {
+                    _requested(true, false);
+                }
+                else {
+                    _requested(false, false);
+                }
             }
             else {
                 _requested(false, false);
             }
-        }
-        else {
+        } else {
             _requested(false, false);
         }
-    } else {
-        _requested(false, false);
     }
+    
 }
 
-- (void) failure {
-    _requested(false, false);
-}
-
-- (void) execute:(NSArray<NSNumber *> *)requestPermissions :(requested)requested {
+- (void) execute:(NSArray<NSNumber *> *)requestPermissions :(requested)requested{
     
     _requested = (requested ? requested : ^(BOOL success, BOOL requested){});
     
