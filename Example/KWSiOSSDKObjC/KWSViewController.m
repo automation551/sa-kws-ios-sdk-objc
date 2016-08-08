@@ -35,7 +35,8 @@
     NSDictionary *header = @{@"Content-Type":@"application/json"};
     NSDictionary *body = @{@"username":username,
                            @"password":@"testtest",
-                           @"dateOfBirth":@"2011-03-02"};
+                           @"dateOfBirth":@"2011-03-02",
+                           @"country":@"US"};
     
     SANetwork *network = [[SANetwork alloc] init];
     [network sendPOST:url withQuery:@{} andHeader:header andBody:body withResponse:^(NSInteger status, NSString *payload, BOOL success) {
@@ -58,11 +59,23 @@
 }
 
 - (IBAction) registerToken:(id)sender {
+    
     if (_token == NULL) {
         NSLog(@"Please create a valid user before sending tokens");
     }
     else{
         [[KWS sdk] register:^(BOOL success, KWSErrorType type) {
+            switch (type) {
+                case UserHasNoParentEmail: {
+                    [[KWS sdk] submitParentEmailWithPopup:^(BOOL success) {
+                        if (success) {
+                            [[KWS sdk] register:nil];
+                        }
+                    }];
+                    break;
+                }
+                default:break;
+            }
             NSLog(@"Registered %d ", success);
         }];
     }

@@ -73,7 +73,9 @@
     NSString *token = [[FIRInstanceID instanceID] token];
     
     [SALogger log:[NSString stringWithFormat:@"Token is %@", token]];
-    _gottoken(true, token);
+    if (token != NULL) {
+        _gottoken(true, token);
+    }
 }
 
 

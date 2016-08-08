@@ -80,7 +80,7 @@
                     return;
                 }
                 
-                if (!allowed) {
+                if (!requested) {
                     registered(false, UserHasNoParentEmail);
                     return;
                 }
