@@ -14,6 +14,7 @@
 #import "KWSGetUser.h"
 #import "KWSGetLeaderboard.h"
 #import "KWSRequestPermission.h"
+#import "KWSTriggerEvent.h"
 #import "KWSParentEmail.h"
 
 // forward declarations
@@ -36,6 +37,7 @@
 - (void) getUser:(gotUser)gotUser;
 - (void) getLeaderboard:(gotLeaderboard)gotLeaderboard;
 - (void) requestPermission:(NSArray<NSNumber*>*)requestedPermissions :(requested)requested;
+- (void) triggerEvent:(NSString*)event withPoints:(NSInteger)points andDescription:(NSString*)description :(triggered)triggered;
 
 // Main aux public functions
 - (void) registerWithPopup:(registered)registered;

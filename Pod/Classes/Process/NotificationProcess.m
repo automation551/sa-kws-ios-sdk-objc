@@ -31,7 +31,9 @@
 @property (nonatomic, strong) SystemCheckAllowed *checkSystem;
 @property (nonatomic, strong) FirebaseGetToken *getToken;
 
+// application reference
 @property (nonatomic, weak) UIApplication *appRef;
+
 @end
 
 @implementation NotificationProcess

@@ -23,11 +23,14 @@
 @property (nonatomic, strong) KWSGetUser *getUser;
 @property (nonatomic, strong) KWSGetLeaderboard *getLeaderboard;
 @property (nonatomic, strong) KWSRequestPermission *requestPermission;
+@property (nonatomic, strong) KWSTriggerEvent *triggerEvent;
 
 // KWS setup properties
 @property (nonatomic, strong) NSString *oauthToken;
 @property (nonatomic, strong) NSString *kwsApiUrl;
 @property (nonatomic, strong) KWSMetadata *metadata;
+
+// aux variables
 
 @end
 
@@ -49,6 +52,7 @@
         _getUser = [[KWSGetUser alloc] init];
         _getLeaderboard = [[KWSGetLeaderboard alloc] init];
         _requestPermission = [[KWSRequestPermission alloc] init];
+        _triggerEvent = [[KWSTriggerEvent alloc] init];
     }
     return self;
 }
@@ -92,6 +96,10 @@
 
 - (void) requestPermission:(NSArray<NSNumber *> *)requestedPermissions :(requested)requested {
     [_requestPermission execute:requestedPermissions :requested];
+}
+
+- (void) triggerEvent:(NSString *)event withPoints:(NSInteger)points andDescription:(NSString *)description :(triggered)triggered {
+    [_triggerEvent execute:event points:points description:description :triggered];
 }
 
 // MARK: public complex functions

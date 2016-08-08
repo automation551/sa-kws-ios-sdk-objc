@@ -64,12 +64,12 @@
         NSLog(@"Please create a valid user before sending tokens");
     }
     else{
-        [[KWS sdk] register:^(BOOL success, KWSErrorType type) {
+        registered R = ^(BOOL success, KWSErrorType type) {
             switch (type) {
                 case UserHasNoParentEmail: {
                     [[KWS sdk] submitParentEmailWithPopup:^(BOOL success) {
                         if (success) {
-                            [[KWS sdk] register:nil];
+                            [[KWS sdk] register:R];
                         }
                     }];
                     break;
@@ -77,7 +77,8 @@
                 default:break;
             }
             NSLog(@"Registered %d ", success);
-        }];
+        };
+        [[KWS sdk] register:R];
     }
 }
 
@@ -93,13 +94,22 @@
 
 - (IBAction)getUserProfile:(id)sender {
     [[KWS sdk] getUser:^(KWSUser *user) {
-        // OK
+        NSLog(@"User %@", [user jsonPreetyStringRepresentation]);
     }];
 }
 
-- (IBAction)sendParentEmail:(id)sender {
-    // do nothing
+- (IBAction)getLeaderboard:(id)sender {
+    [[KWS sdk] getLeaderboard:^(NSArray<KWSLeader *> *leaders) {
+        NSLog(@"Leaders %@", [leaders jsonPrettyStringRepresentation]);
+    }];
 }
+
+- (IBAction)triggerEvent:(id)sender {
+    [[KWS sdk] triggerEvent:@"a7tzV7QLhlR0rS8KK98QcZgrQk3ur260" withPoints:20 andDescription:@"" :^(BOOL success) {
+        NSLog(@"Triggered event %d", success);
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

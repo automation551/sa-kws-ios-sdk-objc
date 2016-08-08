@@ -19,7 +19,7 @@
 }
 
 - (KWS_HTTP_METHOD) getMethod {
-    return POST;
+    return GET;
 }
 
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
