@@ -28,6 +28,7 @@
 // setup func
 - (void) setupWithOAuthToken:(NSString*)oauthToken
                    kwsApiUrl:(NSString*)kwsApiUrl;
+- (void) desetup;
 
 // Main public functions
 - (void) register:(registered)registered;

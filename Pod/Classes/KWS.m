@@ -64,8 +64,18 @@
     
     _oauthToken = oauthToken;
     _kwsApiUrl = kwsApiUrl;
-    _metadata = [self processMetadata:oauthToken];
-    [SALogger log:[self.metadata jsonPreetyStringRepresentation]];
+    if (_oauthToken != NULL) {
+        _metadata = [self processMetadata:_oauthToken];
+    }
+    if (_metadata != NULL) {
+        [SALogger log:[self.metadata jsonPreetyStringRepresentation]];
+    }
+}
+
+- (void) desetup {
+    _oauthToken = NULL;
+    _kwsApiUrl = NULL;
+    _metadata = NULL;
 }
 
 // MARK: public simple functions
@@ -137,7 +147,7 @@
 // MARK: getters
 
 - (NSString*) getVersion {
-    return @"ios-1.2.9";
+    return @"ios-2.0.1";
 }
 
 - (NSString*) getOAuthToken {
