@@ -80,6 +80,11 @@
 
 
 - (NSString*) getSavedToken {
+    @try {
+        [FIRApp configure];
+    } @catch (NSException* ignored) {
+        // do nothing
+    }
     return [[FIRInstanceID instanceID] token];
 }
 

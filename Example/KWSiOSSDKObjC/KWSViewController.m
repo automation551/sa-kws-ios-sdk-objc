@@ -14,6 +14,7 @@
 #import "KWSModel.h"
 #import "SAUtils.h"
 #import "NotificationProcess.h"
+#import "FirebaseGetToken.h"
 
 #define API @"https://kwsapi.demo.superawesome.tv/v1/"
 
@@ -26,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _token = NULL;
+    FirebaseGetToken *gt = [[FirebaseGetToken alloc] init];
+    NSLog(@"At startup token is %@", [gt getSavedToken]);
 }
 
 - (IBAction) createNewUser:(id)sender {
