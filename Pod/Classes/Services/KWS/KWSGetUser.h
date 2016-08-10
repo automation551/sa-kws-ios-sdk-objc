@@ -8,6 +8,10 @@
 
 #import "KWSService.h"
 #import "KWSUser.h"
+#import "KWSAddress.h"
+#import "KWSApplicationProfile.h"
+#import "KWSPermissions.h"
+#import "KWSPoints.h"
 
 typedef void (^gotUser)(KWSUser* user);
 

@@ -65,18 +65,21 @@
     }
     else{
         registered R = ^(BOOL success, KWSErrorType type) {
-            switch (type) {
-                case UserHasNoParentEmail: {
-                    [[KWS sdk] submitParentEmailWithPopup:^(BOOL success) {
-                        if (success) {
-                            [[KWS sdk] register:R];
-                        }
-                    }];
-                    break;
+            if (success) {
+                NSLog(@"Success registering!");
+            } else {
+                switch (type) {
+                    case UserHasNoParentEmail: {
+                        [[KWS sdk] submitParentEmailWithPopup:^(BOOL success) {
+                            if (success) {
+                                [[KWS sdk] register:R];
+                            }
+                        }];
+                        break;
+                    }
+                    default:break;
                 }
-                default:break;
             }
-            NSLog(@"Registered %d ", success);
         };
         [[KWS sdk] register:R];
     }
