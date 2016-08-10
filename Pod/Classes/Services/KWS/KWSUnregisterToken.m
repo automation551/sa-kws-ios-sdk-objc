@@ -26,7 +26,7 @@
 
 - (NSDictionary*) getBody {
     return @{
-        @"token":_token
+        @"token":nullSafe(_token)
     };
 }
 

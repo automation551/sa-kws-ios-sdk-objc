@@ -28,7 +28,7 @@
 - (NSDictionary*) getBody {
     return @{
         @"permissions": @[@"sendPushNotification"],
-        @"parentEmail": _emailToSubmit
+        @"parentEmail": nullSafe(_emailToSubmit)
     };
 }
 

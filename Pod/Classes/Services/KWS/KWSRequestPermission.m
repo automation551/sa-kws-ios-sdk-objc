@@ -37,7 +37,7 @@
 
 - (NSDictionary*) getBody {
     return @{
-        @"permissions": [_requestedPermissions dictionaryRepresentation]
+        @"permissions": nullSafe([_requestedPermissions dictionaryRepresentation])
     };
 }
 
