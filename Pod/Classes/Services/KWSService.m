@@ -83,7 +83,7 @@
                  andHeader:[self getHeader]
                    andBody:[self getBody]
               withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-                  [blockSelf successWithStatus:status andPayload:payload andSuccess:success];
+                  [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
               }];
         
     } else {
@@ -91,7 +91,7 @@
                 withQuery:[self getQuery]
                 andHeader:[self getHeader]
              withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-                 [blockSelf successWithStatus:status andPayload:payload andSuccess:success];
+                 [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
              }];
     }
 }
