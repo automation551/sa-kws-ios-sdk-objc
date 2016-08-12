@@ -25,15 +25,15 @@ PODS:
   - GoogleSymbolUtilities (1.1.1)
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
-  - KWSiOSSDKObjC (2.0.0):
+  - KWSiOSSDKObjC (2.0.5):
     - Firebase
     - FirebaseMessaging
-    - SAJsonParser (= 1.2.3)
-    - SANetworking (= 0.1.3)
-    - SAUtils (= 1.3.0)
-  - SAJsonParser (1.2.3)
-  - SANetworking (0.1.3)
-  - SAUtils (1.3.0)
+    - SAJsonParser (= 1.2.5)
+    - SANetworking (= 0.1.4)
+    - SAUtils (= 1.3.2)
+  - SAJsonParser (1.2.5)
+  - SANetworking (0.1.4)
+  - SAUtils (1.3.2)
 
 DEPENDENCIES:
   - KWSiOSSDKObjC (from `../`)
@@ -51,10 +51,10 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  KWSiOSSDKObjC: 9d7b093a7ad62a99760d9d085dae8a4dc025dab7
-  SAJsonParser: c0a5ace5d143bc50d5318a4981ebaf79858e4af8
-  SANetworking: d9cf234db099b9000f578a73aa2053876e9c77ee
-  SAUtils: 743af089cf5955ec0e2bf04b36416331d84de125
+  KWSiOSSDKObjC: fa636aedc0e25ae2e885b84d6d61eda1810f6f63
+  SAJsonParser: c933541162c2977992bdf866cfc66c14375645c0
+  SANetworking: 73b0ce5eb53d846c9faae6662073efad6910b4e8
+  SAUtils: 25e5ebb737ea0bb9c829e0a0e8b664ce3c810a2a
 
 PODFILE CHECKSUM: 3c12e3474281f86540c28ed1a925a110ac3448e1
 

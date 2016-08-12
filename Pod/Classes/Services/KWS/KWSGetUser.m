@@ -37,7 +37,7 @@
 }
 
 - (void) execute:(gotUser)gotuser {
-    _gotuser = (gotuser ? gotuser : ^(KWSUser*user){});
+    _gotuser = (gotuser ? gotuser : ^(KWSUser*user){});
     [super execute];
 }
 

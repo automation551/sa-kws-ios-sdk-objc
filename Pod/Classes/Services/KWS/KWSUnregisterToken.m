@@ -17,7 +17,7 @@
 @implementation KWSUnregisterToken
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"apps/%ld/users/%ld/unsubscribe-push-notifications", metadata.appId, metadata.userId];
+    return [NSString stringWithFormat:@"apps/%ld/users/%ld/unsubscribe-push-notifications", (long)metadata.appId, (long)metadata.userId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {

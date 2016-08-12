@@ -46,11 +46,11 @@
 
 - (void) execute:(NSString*)email :(submitted)submitted {
     // get callback
-    _submitted = (submitted ? submitted : ^(BOOL success){});
+    _submitted = (submitted ? submitted : ^(BOOL success){});
     _emailToSubmit = email;
     
     // check parameter is actually valid
-    if (_emailToSubmit == NULL || _emailToSubmit.length == 0 || [SAUtils isEmailValid:_emailToSubmit] == NULL) {
+    if (_emailToSubmit == NULL || _emailToSubmit.length == 0 || [SAUtils isEmailValid:_emailToSubmit] == false) {
         _submitted(false);
         return;
     }

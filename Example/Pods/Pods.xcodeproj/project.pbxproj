@@ -1119,16 +1119,16 @@
 			};
 			name = Debug;
 		};
-		1852902E3F3E1A25BFC1A806B107F41F /* Debug */ = {
+		1CE4EE20983C08DE7C921360029F011C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */;
+			baseConfigurationReference = 978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "Target Support Files/SANetworking/SANetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -1182,28 +1182,7 @@
 			};
 			name = Debug;
 		};
-		477FC6BE0EAEBE4205B40E8808606105 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		680DDDB19E791C924EE2380ABCD0F4A2 /* Debug */ = {
+		875D2E9D902C0E0BEB304A109E6AAB4E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 94FB506E282103E09380ADFC05A8887F /* SAJsonParser.xcconfig */;
 			buildSettings = {
@@ -1212,7 +1191,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/SAJsonParser/SAJsonParser-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -1223,27 +1202,6 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
-		};
-		7BBDE1CC50BB6F0362E368A5FD75F199 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94FB506E282103E09380ADFC05A8887F /* SAJsonParser.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SAJsonParser/SAJsonParser-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
 		};
 		890CC5D290657AE4E7D6D68BFCBAE02C /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1266,16 +1224,37 @@
 			};
 			name = Release;
 		};
-		E3B48A6282ACDF7F29055BD11B43CECE /* Debug */ = {
+		9EDAE8FBF0987949D9861DBF478E6A89 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */;
+			baseConfigurationReference = 95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		AD647A176099106615C570E0121089EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SANetworking/SANetworking-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -1286,6 +1265,48 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
+		};
+		BFC9EEB1FD3E99573F4F9F5DE1D52C64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94FB506E282103E09380ADFC05A8887F /* SAJsonParser.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SAJsonParser/SAJsonParser-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D08D5C2D629AF30E3E3F0C1FA0FF35F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SANetworking/SANetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
 		};
 		E83B4A027FFD5E28B8CEC44DC2723FEC /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1367,35 +1388,14 @@
 			};
 			name = Release;
 		};
-		F96E0FEA3B22A45453BC740155209D87 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SANetworking/SANetworking-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		09F9BB15824ED07431EF333F6577536C /* Build configuration list for PBXNativeTarget "SAJsonParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				680DDDB19E791C924EE2380ABCD0F4A2 /* Debug */,
-				7BBDE1CC50BB6F0362E368A5FD75F199 /* Release */,
+				875D2E9D902C0E0BEB304A109E6AAB4E /* Debug */,
+				BFC9EEB1FD3E99573F4F9F5DE1D52C64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1430,8 +1430,8 @@
 		C3E90785C229ECD1A171E1FDE296BA24 /* Build configuration list for PBXNativeTarget "SANetworking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3B48A6282ACDF7F29055BD11B43CECE /* Debug */,
-				F96E0FEA3B22A45453BC740155209D87 /* Release */,
+				1CE4EE20983C08DE7C921360029F011C /* Debug */,
+				D08D5C2D629AF30E3E3F0C1FA0FF35F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1439,8 +1439,8 @@
 		EC75C0A33CF71F822A717BFBBE5DF2DC /* Build configuration list for PBXNativeTarget "SAUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1852902E3F3E1A25BFC1A806B107F41F /* Debug */,
-				477FC6BE0EAEBE4205B40E8808606105 /* Release */,
+				AD647A176099106615C570E0121089EA /* Debug */,
+				9EDAE8FBF0987949D9861DBF478E6A89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

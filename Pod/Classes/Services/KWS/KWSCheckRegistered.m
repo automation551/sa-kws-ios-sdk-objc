@@ -16,7 +16,7 @@
 @implementation KWSCheckRegistered
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"apps/%ld/users/%ld/has-device-token", metadata.appId, metadata.userId];
+    return [NSString stringWithFormat:@"apps/%ld/users/%ld/has-device-token", (long)metadata.appId, (long)metadata.userId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
