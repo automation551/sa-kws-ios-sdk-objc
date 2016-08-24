@@ -18,6 +18,16 @@
 		128D878C3BA96104AF2AC5A8D225BD42 /* KWSUnregisterToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F27FD81BB87CD40047D85570D34B943 /* KWSUnregisterToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12C0DB03C4DD04A1D5C1EA7CA7E248CF /* SAJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCAAC8E80162E33C062F4C9998F7E76 /* SAJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17E1B0246E7A54DBDFEBF2294A2C4F81 /* KWSPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5795B151DC7EA53A8E950AF4CFC9EA /* KWSPoints.m */; };
+		1B7FF15D1D6DF74C002C8F0C /* KWSGetScore.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B7FF15B1D6DF74C002C8F0C /* KWSGetScore.h */; };
+		1B7FF15E1D6DF74C002C8F0C /* KWSGetScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7FF15C1D6DF74C002C8F0C /* KWSGetScore.m */; };
+		1B7FF1611D6DF75F002C8F0C /* KWSScore.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B7FF15F1D6DF75F002C8F0C /* KWSScore.h */; };
+		1B7FF1621D6DF75F002C8F0C /* KWSScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7FF1601D6DF75F002C8F0C /* KWSScore.m */; };
+		1B7FF1651D6DF98D002C8F0C /* KWSHasTriggeredEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B7FF1631D6DF98D002C8F0C /* KWSHasTriggeredEvent.h */; };
+		1B7FF1661D6DF98D002C8F0C /* KWSHasTriggeredEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7FF1641D6DF98D002C8F0C /* KWSHasTriggeredEvent.m */; };
+		1B7FF16A1D6DFC20002C8F0C /* KWSEventStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B7FF1681D6DFC20002C8F0C /* KWSEventStatus.h */; };
+		1B7FF16B1D6DFC20002C8F0C /* KWSEventStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7FF1691D6DFC20002C8F0C /* KWSEventStatus.m */; };
+		1B7FF16E1D6DFF90002C8F0C /* KWSInviteUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B7FF16C1D6DFF90002C8F0C /* KWSInviteUser.h */; };
+		1B7FF16F1D6DFF90002C8F0C /* KWSInviteUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7FF16D1D6DFF90002C8F0C /* KWSInviteUser.m */; };
 		1E78CC786FA14D3C2BFBCB78B781BD69 /* SANetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7EC1B3D94E8040C932BC1D078CDF86 /* SANetworking-dummy.m */; };
 		1F71F42042659C65F771905F80E298BB /* KWSGetUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C458967B5AB8D0DB199EB2BB1F7F3A6 /* KWSGetUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2504A79D3A4FDD8977654FF93FA992B1 /* NSArray+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A047B3650418662D4EABDAF5097CFA4 /* NSArray+SAJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -166,6 +176,16 @@
 		1396042724D595CFD2F15E50C9C2A189 /* KWSError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSError.m; sourceTree = "<group>"; };
 		170BD1B41A574704C82F01C763037F55 /* SAFileDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAFileDownloader.h; path = Pod/Classes/SAFileDownloader.h; sourceTree = "<group>"; };
 		1905683609C5E0A4C871902F721712E4 /* KWSInvalid.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSInvalid.h; sourceTree = "<group>"; };
+		1B7FF15B1D6DF74C002C8F0C /* KWSGetScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSGetScore.h; sourceTree = "<group>"; };
+		1B7FF15C1D6DF74C002C8F0C /* KWSGetScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSGetScore.m; sourceTree = "<group>"; };
+		1B7FF15F1D6DF75F002C8F0C /* KWSScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSScore.h; sourceTree = "<group>"; };
+		1B7FF1601D6DF75F002C8F0C /* KWSScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSScore.m; sourceTree = "<group>"; };
+		1B7FF1631D6DF98D002C8F0C /* KWSHasTriggeredEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSHasTriggeredEvent.h; sourceTree = "<group>"; };
+		1B7FF1641D6DF98D002C8F0C /* KWSHasTriggeredEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSHasTriggeredEvent.m; sourceTree = "<group>"; };
+		1B7FF1681D6DFC20002C8F0C /* KWSEventStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSEventStatus.h; sourceTree = "<group>"; };
+		1B7FF1691D6DFC20002C8F0C /* KWSEventStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSEventStatus.m; sourceTree = "<group>"; };
+		1B7FF16C1D6DFF90002C8F0C /* KWSInviteUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSInviteUser.h; sourceTree = "<group>"; };
+		1B7FF16D1D6DFF90002C8F0C /* KWSInviteUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSInviteUser.m; sourceTree = "<group>"; };
 		1BA4F6019A8FF37011FA17589C3B467F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
 		1C1818553E4462DF440FA6AA04E67394 /* SAJsonParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAJsonParser-dummy.m"; sourceTree = "<group>"; };
 		1E415DCD54AE490309AAEEDF542A4474 /* SANetwork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SANetwork.h; path = Pod/Classes/SANetwork.h; sourceTree = "<group>"; };
@@ -384,6 +404,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1B7FF1671D6DFC11002C8F0C /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				1B7FF1681D6DFC20002C8F0C /* KWSEventStatus.h */,
+				1B7FF1691D6DFC20002C8F0C /* KWSEventStatus.m */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
 		2AA9EC85436D7946E545B2D95A4AE7D7 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +610,8 @@
 				2E5795B151DC7EA53A8E950AF4CFC9EA /* KWSPoints.m */,
 				2A0F18DC227F565E7F2101D8966B69D6 /* KWSUser.h */,
 				E315CBCF3F8297AB58A15516233F22AE /* KWSUser.m */,
+				1B7FF15F1D6DF75F002C8F0C /* KWSScore.h */,
+				1B7FF1601D6DF75F002C8F0C /* KWSScore.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -674,6 +705,7 @@
 			children = (
 				320612963A5B80AA308AE9020C67C2B1 /* KWSMetadata.h */,
 				75EDB55052EBCE9534E4D24F033D5D51 /* KWSMetadata.m */,
+				1B7FF1671D6DFC11002C8F0C /* Event */,
 				F1ABDA72DB449B2E7E01E398375C9A43 /* Error */,
 				732C535A8C960261C507654074D40DCD /* Leaderboard */,
 				A93A8A3198E9252A92C720B592302144 /* User */,
@@ -710,6 +742,8 @@
 				D5C3CCF1ADAA828E5E28A4FFCC4B1889 /* KWSCheckRegistered.m */,
 				271BB639A86690DDCDB27C3F7D83ED4D /* KWSGetLeaderboard.h */,
 				E5A79649180F62A5E0080607F5CAC261 /* KWSGetLeaderboard.m */,
+				1B7FF15B1D6DF74C002C8F0C /* KWSGetScore.h */,
+				1B7FF15C1D6DF74C002C8F0C /* KWSGetScore.m */,
 				6C458967B5AB8D0DB199EB2BB1F7F3A6 /* KWSGetUser.h */,
 				FEFE95BBF2862EC00829206ABE20CB35 /* KWSGetUser.m */,
 				771D95C2616729B146E2440D25037217 /* KWSParentEmail.h */,
@@ -720,8 +754,12 @@
 				A1F277ACC60B0B952918C0DE0B94360D /* KWSRequestPermission.m */,
 				59AEE8C74C121C990A3A7D22F95ABD66 /* KWSTriggerEvent.h */,
 				AB31E093730FCE37885F486696123691 /* KWSTriggerEvent.m */,
+				1B7FF1631D6DF98D002C8F0C /* KWSHasTriggeredEvent.h */,
+				1B7FF1641D6DF98D002C8F0C /* KWSHasTriggeredEvent.m */,
 				9F27FD81BB87CD40047D85570D34B943 /* KWSUnregisterToken.h */,
 				2D44F0BC450DBE78EC9C58CFDCE517C6 /* KWSUnregisterToken.m */,
+				1B7FF16C1D6DFF90002C8F0C /* KWSInviteUser.h */,
+				1B7FF16D1D6DFF90002C8F0C /* KWSInviteUser.m */,
 			);
 			path = KWS;
 			sourceTree = "<group>";
@@ -802,6 +840,7 @@
 				6F2B288B57C6BDB661FE7AC5017EB29E /* KWSAddress.h in Headers */,
 				2A98A27C583C89567986AE65EF5BE257 /* KWSApplicationProfile.h in Headers */,
 				AEA8270983466B68C2BE484D2163162C /* KWSCheckAllowed.h in Headers */,
+				1B7FF16A1D6DFC20002C8F0C /* KWSEventStatus.h in Headers */,
 				B4792E8931A14750BCDBBA7E14A80596 /* KWSCheckRegistered.h in Headers */,
 				3F55A2D453B52EE14BC07F854A2380FA /* KWSError.h in Headers */,
 				DB975E7BCA08C960AD36A74A03D2EE04 /* KWSGetLeaderboard.h in Headers */,
@@ -809,6 +848,8 @@
 				62EA5E3E313D53F3970358134BF4AB63 /* KWSInvalid.h in Headers */,
 				BD8A40A82A576FB868532D8EF5FC2C58 /* KWSLeader.h in Headers */,
 				576A30927C09F36E13CA7643C9155FB1 /* KWSLeaderboard.h in Headers */,
+				1B7FF15D1D6DF74C002C8F0C /* KWSGetScore.h in Headers */,
+				1B7FF1611D6DF75F002C8F0C /* KWSScore.h in Headers */,
 				A73384CAB1982DA5241CFABC7F99ED70 /* KWSMetadata.h in Headers */,
 				7482D2CCA62AF91C1C20E930ED147892 /* KWSParentEmail.h in Headers */,
 				614AADD6305A41802DD923B43FCE4C1F /* KWSParentEmailError.h in Headers */,
@@ -819,8 +860,10 @@
 				0B8A06AA0C102A643EBBCF78036B1C9A /* KWSService.h in Headers */,
 				E86436D524AD543A5FA8ED0F216A0E7E /* KWSTriggerEvent.h in Headers */,
 				128D878C3BA96104AF2AC5A8D225BD42 /* KWSUnregisterToken.h in Headers */,
+				1B7FF1651D6DF98D002C8F0C /* KWSHasTriggeredEvent.h in Headers */,
 				F7F46361F8B8CC98584A5CC90DC054E9 /* KWSUser.h in Headers */,
 				0869F4F723CA068010F18406CD838D10 /* NotificationProcess.h in Headers */,
+				1B7FF16E1D6DFF90002C8F0C /* KWSInviteUser.h in Headers */,
 				800E22D9904BA3191F5C476EEA3A6AD3 /* SystemCheckAllowed.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1014,6 +1057,7 @@
 				4AA3706F4D501F9B79A38A1CB83473CD /* KWSCheckAllowed.m in Sources */,
 				CAB82A945769A2B31C69EFA6E20F6B1B /* KWSCheckRegistered.m in Sources */,
 				F17B02DEA428AED177E15EB647F4869C /* KWSError.m in Sources */,
+				1B7FF1661D6DF98D002C8F0C /* KWSHasTriggeredEvent.m in Sources */,
 				34152DFD1ADED75D28D662C9C6B8CB77 /* KWSGetLeaderboard.m in Sources */,
 				4BEDCA731AA1F34666B05D35CD574A4B /* KWSGetUser.m in Sources */,
 				F0C863D42731CB0B47B4D403FA55F7D3 /* KWSInvalid.m in Sources */,
@@ -1024,6 +1068,7 @@
 				E0E81F966D7F22DD5FE20FCA3A7F6F6B /* KWSParentEmail.m in Sources */,
 				7B7C683E09A3A24C12EB88DFD9E58469 /* KWSParentEmailError.m in Sources */,
 				8BB4154FA76813D7DF5781C8E69769DA /* KWSPermissions.m in Sources */,
+				1B7FF15E1D6DF74C002C8F0C /* KWSGetScore.m in Sources */,
 				17E1B0246E7A54DBDFEBF2294A2C4F81 /* KWSPoints.m in Sources */,
 				C549F2B25E603C929CE838728932E089 /* KWSRegisterToken.m in Sources */,
 				8367CDE868D54A329A5E4AF45F8AB22E /* KWSRequestPermission.m in Sources */,
@@ -1032,6 +1077,9 @@
 				50EA338C098139AF5ECB73C4C74629DD /* KWSUnregisterToken.m in Sources */,
 				5BD8CCBFBD8EC718F1C539469B043035 /* KWSUser.m in Sources */,
 				0E5BAF6E3732F81EBD4BCD8978F09172 /* NotificationProcess.m in Sources */,
+				1B7FF1621D6DF75F002C8F0C /* KWSScore.m in Sources */,
+				1B7FF16F1D6DFF90002C8F0C /* KWSInviteUser.m in Sources */,
+				1B7FF16B1D6DFC20002C8F0C /* KWSEventStatus.m in Sources */,
 				05DCEE7398097A8153F48E5F98C31A7C /* SystemCheckAllowed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
