@@ -76,23 +76,36 @@
         return;
     }
     
-    if ([self getMethod] == POST) {
-        
-        [_network sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
-                 withQuery:[self getQuery]
-                 andHeader:[self getHeader]
-                   andBody:[self getBody]
-              withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-                  [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
-              }];
-        
-    } else {
-        [_network sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
-                withQuery:[self getQuery]
-                andHeader:[self getHeader]
-             withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-                 [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
-             }];
+    switch ([self getMethod]) {
+        case GET: {
+            [_network sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                    withQuery:[self getQuery]
+                    andHeader:[self getHeader]
+                 withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                     [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
+                 }];
+            break;
+        }
+        case POST: {
+            [_network sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                     withQuery:[self getQuery]
+                     andHeader:[self getHeader]
+                       andBody:[self getBody]
+                  withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                      [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
+                  }];
+            break;
+        }
+        case PUT: {
+            [_network sendPUT:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                    withQuery:[self getQuery]
+                    andHeader:[self getHeader]
+                      andBody:[self getBody]
+                 withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                     [blockSelf successWithStatus:status andPayload:payload andSuccess:success];
+                 }];
+            break;
+        }
     }
 }
 

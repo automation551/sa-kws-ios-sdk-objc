@@ -11,7 +11,8 @@
 
 typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
     GET,
-    POST
+    POST,
+    PUT
 };
 
 @protocol KWSServiceProtocol <NSObject>

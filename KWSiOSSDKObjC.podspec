@@ -16,5 +16,5 @@ The SuperAwesome Kids Web Services iOS SDK
   s.dependency 'FirebaseMessaging'
   s.dependency 'SAJsonParser', '1.2.5'
   s.dependency 'SAUtils', '1.3.4'
-  s.dependency 'SANetworking',  '0.1.4'
+  s.dependency 'SANetworking',  '0.1.5'
 end

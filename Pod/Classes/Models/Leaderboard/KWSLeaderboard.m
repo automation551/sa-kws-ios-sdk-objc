@@ -28,7 +28,7 @@
         @"count": @(_count),
         @"offset": @(_offset),
         @"limit": @(_limit),
-        @"results": [_results dictionaryRepresentation]
+        @"results": nullSafe([_results dictionaryRepresentation])
     };
 }
 
