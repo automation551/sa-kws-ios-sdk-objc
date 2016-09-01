@@ -11,5 +11,5 @@
 typedef void (^hasTriggered)(BOOL triggered);
 
 @interface KWSHasTriggeredEvent : KWSService
-- (void) execute:(NSInteger*)eventId :(hasTriggered)triggered;
+- (void) execute:(NSInteger)eventId :(hasTriggered)triggered;
 @end

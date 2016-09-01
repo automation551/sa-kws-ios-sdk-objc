@@ -43,7 +43,7 @@
     }
 }
 
-- (void) execute:(NSInteger *)eventId :(hasTriggered)triggered {
+- (void) execute:(NSInteger)eventId :(hasTriggered)triggered {
     _eventId = eventId;
     _hastriggered = triggered ? triggered : ^(BOOL success) {};
     [super execute];
