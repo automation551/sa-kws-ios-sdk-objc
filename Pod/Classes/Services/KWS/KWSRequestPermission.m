@@ -71,8 +71,8 @@
 }
 
 - (void) execute:(NSArray<NSNumber *> *)requestPermissions :(requested)requested{
-    
-    _requested = (requested ? requested : ^(BOOL success, BOOL requested){});
+
+    _requested = requested ? requested : ^(BOOL success, BOOL requested){};
     
     _requestedPermissions = [[NSMutableArray alloc] init];
     for (NSNumber *number in requestPermissions) {

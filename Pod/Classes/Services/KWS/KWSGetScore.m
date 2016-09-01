@@ -36,7 +36,7 @@
 }
 
 - (void) execute:(gotScore)gotscore {
-    _gotscore = (_gotscore  ? _gotscore : ^(KWSScore *score){});
+    _gotscore = gotscore  ? gotscore : ^(KWSScore *score){};
     [super execute];
 }
 

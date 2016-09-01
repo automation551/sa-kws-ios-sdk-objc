@@ -42,15 +42,10 @@
 }
 
 - (void) execute:(NSString *)token points:(NSInteger)points description:(NSString *)description :(triggered)triggered {
-    // get vars
     _evtToken = token;
     _evtPoints = points;
     _evtDescription = description;
-    
-    // get callback
-    _triggered = (triggered ? triggered : ^(BOOL success){});
-    
-    // call to super
+    _triggered = triggered ? triggered : ^(BOOL success){};
     [super execute];
 }
 

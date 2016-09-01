@@ -38,7 +38,7 @@
 }
 
 - (void) execute:(checkRegistered)checkRegistered {
-    _checkRegistered = (checkRegistered ? checkRegistered : ^(BOOL success, BOOL registered){});
+    _checkRegistered = checkRegistered ? checkRegistered : ^(BOOL success, BOOL registered){};
     [super execute];
 }
 

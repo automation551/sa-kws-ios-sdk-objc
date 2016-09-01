@@ -38,7 +38,7 @@
 
 - (void) execute:(NSString*)email :(submitted)submitted {
     // get callback
-    _submitted = (submitted ? submitted : ^(BOOL success){});
+    _submitted = submitted ? submitted : ^(BOOL success){};
     _emailToSubmit = email;
     
     // check parameter is actually valid

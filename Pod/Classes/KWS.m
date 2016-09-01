@@ -183,7 +183,7 @@
 // MARK: getters
 
 - (NSString*) getVersion {
-    return @"ios-2.0.8";
+    return @"ios-2.0.9";
 }
 
 - (NSString*) getOAuthToken {

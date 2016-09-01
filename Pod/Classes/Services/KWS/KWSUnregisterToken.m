@@ -35,7 +35,7 @@
 }
 
 - (void) execute:(NSString*)token :(unregisteredToken)unregisteredToken {
-    _unregisteredToken = (unregisteredToken ? unregisteredToken : ^(BOOL success){});
+    _unregisteredToken = unregisteredToken ? unregisteredToken : ^(BOOL success){};
     _token = token;
     [super execute:_token];
 }

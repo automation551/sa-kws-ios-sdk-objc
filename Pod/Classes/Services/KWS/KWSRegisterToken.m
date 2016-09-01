@@ -36,7 +36,7 @@
 }
 
 - (void) execute:(NSString*)token :(registeredToken)registeredToken {
-    _registeredToken = (registeredToken ? registeredToken : ^(BOOL success){});
+    _registeredToken = registeredToken ? registeredToken : ^(BOOL success){};
     _token = token;
     [super execute:_token];
 }

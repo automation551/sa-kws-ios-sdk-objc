@@ -61,7 +61,7 @@
 }
 
 - (void) execute:(checkAllowed)checkAllowed {
-    _checkAllowed = (checkAllowed ? checkAllowed : ^(BOOL success, BOOL allowed){});
+    _checkAllowed = checkAllowed ? checkAllowed : ^(BOOL success, BOOL allowed){};
     [super execute];
 }
 

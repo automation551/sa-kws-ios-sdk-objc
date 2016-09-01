@@ -36,7 +36,7 @@
 }
 
 - (void) execute:(gotLeaderboard)gotleaderboard {
-    _gotleaderboard = (gotleaderboard  ? gotleaderboard : ^(NSArray*leaders){});
+    _gotleaderboard = gotleaderboard  ? gotleaderboard : ^(NSArray*leaders){};
     [super execute];
 }
 
