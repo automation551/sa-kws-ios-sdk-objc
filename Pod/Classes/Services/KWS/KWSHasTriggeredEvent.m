@@ -30,7 +30,7 @@
     };
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+- (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     if (!success) {
         _hastriggered(false);
     } else {

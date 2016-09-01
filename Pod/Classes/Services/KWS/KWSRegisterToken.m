@@ -31,7 +31,7 @@
     };
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
+- (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     _registeredToken(success && (status == 200 || status == 204));
 }
 
