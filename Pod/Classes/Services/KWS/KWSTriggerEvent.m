@@ -38,15 +38,7 @@
 }
 
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
-    if (!success) {
-        _triggered (false);
-    } else {
-        if (status == 200 || status == 204) {
-            _triggered (true);
-        } else {
-            _triggered (false);
-        }
-    }
+    _triggered (success && (status == 200 || status == 204));
 }
 
 - (void) execute:(NSString *)token points:(NSInteger)points description:(NSString *)description :(triggered)triggered {

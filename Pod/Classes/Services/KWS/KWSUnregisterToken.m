@@ -31,12 +31,7 @@
 }
 
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
-    if (!success) {
-        _unregisteredToken(false);
-    } else {
-        [SALogger log:payload];
-        _unregisteredToken(true);
-    }
+    _unregisteredToken (success && (status == 200 || status == 204));
 }
 
 - (void) execute:(NSString*)token :(unregisteredToken)unregisteredToken {

@@ -25,20 +25,12 @@
 
 - (NSDictionary*) getBody {
     return @{
-        @"emailAddress": nullSafe(_emailAddress)
+        @"email": nullSafe(_emailAddress)
     };
 }
 
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
-    if (!success) {
-        _invited (false);
-    } else {
-        if (status == 200 || status == 204) {
-            _invited (true);
-        } else {
-            _invited (false);
-        }
-    }
+    _invited (success && (status == 200 || status == 204));
 }
 
 - (void) execute:(NSString *)email :(invited)invited {

@@ -32,11 +32,7 @@
 }
 
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
-    if (!success) {
-        _setappdata (false);
-    } else {
-        _setappdata (true);
-    }
+    _setappdata (success && (status == 200 || status == 204));
 }
 
 - (void) execute:(NSString *)name withValue:(NSInteger)value :(setAppData)setappdata {
