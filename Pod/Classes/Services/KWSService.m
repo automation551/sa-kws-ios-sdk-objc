@@ -54,7 +54,7 @@
     return @{};
 }
 
-- (void) successWithStatus:(int)status andPayload:(NSString *)payload andSuccess:(BOOL)success{
+- (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success{
     // do nothing
 }
 
