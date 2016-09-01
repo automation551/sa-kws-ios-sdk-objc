@@ -16,6 +16,12 @@
 #import "KWSRequestPermission.h"
 #import "KWSTriggerEvent.h"
 #import "KWSParentEmail.h"
+#import "KWSGetScore.h"
+#import "KWSGetAppData.h"
+#import "KWSSetAppData.h"
+#import "KWSHasTriggeredEvent.h"
+#import "KWSUpdateUser.h"
+#import "KWSInviteUser.h"
 
 // forward declarations
 @class KWSMetadata;
@@ -39,6 +45,12 @@
 - (void) getLeaderboard:(gotLeaderboard)gotLeaderboard;
 - (void) requestPermission:(NSArray<NSNumber*>*)requestedPermissions :(requested)requested;
 - (void) triggerEvent:(NSString*)event withPoints:(NSInteger)points andDescription:(NSString*)description :(triggered)triggered;
+- (void) getScore:(gotScore)gotscore;
+- (void) inviteUser:(NSString*)email :(invited)invited;
+- (void) hasTriggeredEvent:(NSInteger) eventId : (hasTriggered)triggered;
+- (void) getAppData:(gotAppData)gotappdata;
+- (void) setAppData:(NSString*)name withValue:(NSInteger)value :(setAppData)setappdata;
+- (void) updateUser:(KWSUser*)updatedUser :(updated)updated;
 
 // Main aux public functions
 - (void) registerWithPopup:(registered)registered;

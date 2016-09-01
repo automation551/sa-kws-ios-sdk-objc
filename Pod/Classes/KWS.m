@@ -24,6 +24,12 @@
 @property (nonatomic, strong) KWSGetLeaderboard *getLeaderboard;
 @property (nonatomic, strong) KWSRequestPermission *requestPermission;
 @property (nonatomic, strong) KWSTriggerEvent *triggerEvent;
+@property (nonatomic, strong) KWSGetScore *getScore;
+@property (nonatomic, strong) KWSInviteUser *inviteUser;
+@property (nonatomic, strong) KWSHasTriggeredEvent *hasTriggeredEvent;
+@property (nonatomic, strong) KWSGetAppData *getAppData;
+@property (nonatomic, strong) KWSSetAppData *setAppData;
+@property (nonatomic, strong) KWSUpdateUser *updateUser;
 
 // KWS setup properties
 @property (nonatomic, strong) NSString *oauthToken;
@@ -53,6 +59,12 @@
         _getLeaderboard = [[KWSGetLeaderboard alloc] init];
         _requestPermission = [[KWSRequestPermission alloc] init];
         _triggerEvent = [[KWSTriggerEvent alloc] init];
+        _getScore = [[KWSGetScore alloc] init];
+        _inviteUser = [[KWSInviteUser alloc] init];
+        _hasTriggeredEvent = [[KWSHasTriggeredEvent alloc] init];
+        _getAppData = [[KWSGetAppData alloc] init];
+        _setAppData = [[KWSSetAppData alloc] init];
+        _updateUser = [[KWSUpdateUser alloc] init];
     }
     return self;
 }
@@ -144,10 +156,34 @@
                                 }];
 }
 
+- (void) getScore:(gotScore)gotscore {
+    [_getScore execute:gotscore];
+}
+
+- (void) inviteUser:(NSString*)email :(invited)invited {
+    [_inviteUser execute:email :invited];
+}
+
+- (void) hasTriggeredEvent:(NSInteger) eventId : (hasTriggered)triggered {
+    [_hasTriggeredEvent execute:eventId :triggered];
+}
+
+- (void) getAppData:(gotAppData)gotappdata {
+    [_getAppData execute:gotappdata];
+}
+
+- (void) setAppData:(NSString*)name withValue:(NSInteger)value :(setAppData)setappdata {
+    [_setAppData execute:name withValue:value :setappdata];
+}
+
+- (void) updateUser:(KWSUser*)updatedUser :(updated)updated {
+    [_updateUser execute:updatedUser :updated];
+}
+
 // MARK: getters
 
 - (NSString*) getVersion {
-    return @"ios-2.0.1";
+    return @"ios-2.0.8";
 }
 
 - (NSString*) getOAuthToken {
