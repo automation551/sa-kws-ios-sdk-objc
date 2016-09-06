@@ -31,6 +31,7 @@
     
     if (_updatedUser.firstName) [body setObject:_updatedUser.firstName forKey:@"firstName"];
     if (_updatedUser.lastName) [body setObject:_updatedUser.lastName forKey:@"lastName"];
+    if (_updatedUser.dateOfBirth) [body setObject:_updatedUser.dateOfBirth forKey:@"dateOfBirth"];
     if (_updatedUser.email) [body setObject:_updatedUser.email forKey:@"email"];
     if (_updatedUser.phoneNumber) [body setObject:_updatedUser.phoneNumber forKey:@"phoneNumber"];
     if (_updatedUser.gender) [body setObject:_updatedUser.gender forKey:@"gender"];

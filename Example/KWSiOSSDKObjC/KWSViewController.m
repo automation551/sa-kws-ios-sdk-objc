@@ -99,10 +99,13 @@
 }
 
 - (IBAction)getUserProfile:(id)sender {
+    
     [[KWS sdk] getUser:^(KWSUser *user) {
-        NSLog(@"User %@", [user jsonPreetyStringRepresentation]);
+        // user data
     }];
+    
 }
+
 
 - (IBAction)getLeaderboard:(id)sender {
     [[KWS sdk] getLeaderboard:^(NSArray<KWSLeader *> *leaders) {
