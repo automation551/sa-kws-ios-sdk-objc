@@ -7,115 +7,115 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00199654C9CDD422E1BE1FCA7D8BE9E8 /* KWSAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D17F4CABEDD658A275957840B18E4C /* KWSAddress.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		07FFFE9DBF77C0CE9A66E6C36A93844F /* KWSInviteUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 725A36F0FA92C644EF0CAEE8B47A5981 /* KWSInviteUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0939E03678C28D2F2BC08867FEE02311 /* SAJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCAAC8E80162E33C062F4C9998F7E76 /* SAJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0EEFBC9A3496EFA4E08C123BEF786EEB /* SABaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CC358A18D00F2D3014385C4BCA3AB /* SABaseObject.m */; };
-		133F2C63EC225539B892EEEF4F0860FD /* KWSScore.h in Headers */ = {isa = PBXBuildFile; fileRef = DD441C8096012CB8D46FFEEE965D4291 /* KWSScore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		14C4B2E799B5D196EE2B1981AEBB83A4 /* KWSUpdateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 986054C52FA3347E6B8051E3D76916F3 /* KWSUpdateUser.m */; };
-		158FF264DE5EA85A2F218BAA2E1DD174 /* KWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F683CBA4B51F4ED41A77E2660AF6AFB /* KWS.m */; };
-		17723CB1641034381E5DFB211E19D09C /* SAActivityView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C409BFED7AD0628C44EE76FF2493D01 /* SAActivityView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1906753023A0E62DF5CC83B468101E48 /* KWSGetAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = 1224216E8B9CC6C797D9166C15701D3B /* KWSGetAppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1A935DAF5BEF0E2AB707E47FBE6191D9 /* SABaseObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE2061A176EF846E33CF47D4E61941B /* SABaseObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1B7FF1831D6EFEC8002C8F0C /* KWSSetAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B7FF1811D6EFEC8002C8F0C /* KWSSetAppData.h */; };
-		1B7FF1841D6EFEC8002C8F0C /* KWSSetAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7FF1821D6EFEC8002C8F0C /* KWSSetAppData.m */; };
-		1CA7FFB5D057402F1D821783227F66A8 /* KWS.h in Headers */ = {isa = PBXBuildFile; fileRef = 098841FF58FE72EE11ABBF7F139B1C56 /* KWS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1D063E0CB4A812C186DBBC1B346DD92A /* SANetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7EC1B3D94E8040C932BC1D078CDF86 /* SANetworking-dummy.m */; };
-		1F5BA523A2449C74EC478185E0961352 /* SAPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = F4FF6B026171255B5035F138E2FBD296 /* SAPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23853BB3A9B964047E6FCD7E9CE3F1C0 /* SAExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98F181CA670E9BA31D14F426D6728D9C /* SAExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24341C31D86F7522A14DFAE24B1F6951 /* SANetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E415DCD54AE490309AAEEDF542A4474 /* SANetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00C01041630102EF4B5813E2A67B7986 /* KWSParentEmailError.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCB6693626DE2F66D47D8CFDE95A92B /* KWSParentEmailError.m */; };
+		04DFD0BC0BCC8FCCD9197FB59CDB4CE4 /* KWSGetScore.m in Sources */ = {isa = PBXBuildFile; fileRef = EF84D2CF2FED8BA6D5A375E0995E87D2 /* KWSGetScore.m */; };
+		06CC861F5B317E6E6CC5DCDA1C215F70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
+		074DA9BC2F1F3358ED640531C17E06B4 /* KWSUnregisterToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 14C1FC3035F098FDFBE42AA161AE14CB /* KWSUnregisterToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D1B8A40DE35D9DA05BD97BE34E0D7A1 /* NSDictionary+SAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 003D16F20CA918CA600320DD948E4573 /* NSDictionary+SAJson.m */; };
+		0EAFE39EF55C3288391BDA5B48F71572 /* KWSAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0437B16A88D1693B5C90510E5DD0F0 /* KWSAppData.m */; };
+		1034B3DBB7BD80ED97D7041FA61C885D /* KWSEventStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = C13D63D1CF314D492C80B23B2424BA06 /* KWSEventStatus.m */; };
+		115B93F358036777AD14BB73C055F293 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
+		1293D9D8E7988EFA711514B9CCEBF00D /* KWSLeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2906009D3E711818B9515F24309AF142 /* KWSLeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15695C7D37E9EAEF40584CE57B52AC37 /* SAFileDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 170BD1B41A574704C82F01C763037F55 /* SAFileDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		164FBA048ED4AFB69A38DFDFC01FB2A0 /* SANetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E415DCD54AE490309AAEEDF542A4474 /* SANetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B3C9D7D41A114C54F994E0520F6FD2D /* KWSAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D17F4CABEDD658A275957840B18E4C /* KWSAddress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BB98215A36E98517217B74EF37AD1A6 /* KWSUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DDC4BB6EB4612755B87A4389D5D1507 /* KWSUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EE6D838D4D5772FD797FD7C3AA126B2 /* KWSInviteUser.h in Headers */ = {isa = PBXBuildFile; fileRef = EBDFB95BD30E02011A3A9F8EC95780C4 /* KWSInviteUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F962751384690C278CD7450CCD15E9E /* SAUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FA0346E234BA5D06A29955A5CA01770 /* SAUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2061E59B624B3D1DD63EBF7477DF840E /* KWSGetAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = D181007F0213B2DFE3F370FC5F066C50 /* KWSGetAppData.m */; };
+		230B5BAFDD1C4A748F18F684224F86BF /* NSArray+SAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C961688CF6568A232042B1BEF8F0E7 /* NSArray+SAJson.m */; };
+		23F40EF3A6B31F6452495333A222CE50 /* KWSRequestPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF89CE25B0FC9D0827694454B031D0 /* KWSRequestPermission.m */; };
+		25E3BD43C6FFA933676DA8C9BEFD89F9 /* SAExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C532ABDCE8CD7AE602549066A3924244 /* SAExtensions.m */; };
 		2644796A8D48B0B456BA3C5ABF3EA96C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
-		26775B678F1E3A58770B064739F5995D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
-		2737F9DA9D888AF1F9DCA95889E3E98D /* KWSEventStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = C13D63D1CF314D492C80B23B2424BA06 /* KWSEventStatus.m */; };
-		279976505D73F98D2A437B4B6B2F28D6 /* KWSPoints.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE4C01B93396A3B785ECF0A4D220DB0 /* KWSPoints.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		28B1916A31B3EAF80ADD254BDA447753 /* KWSApplicationProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6F23A2A7C44165047C346D7EBF69FA /* KWSApplicationProfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		301E758B7CF6A5421B7049AE6E8EC96E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7219921F39E1CD4FF9E45687961DA8 /* SystemConfiguration.framework */; };
-		305EC04D7060BDFE4D2CAB6A317BC67B /* KWSLeaderboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E9245DCC4FB5C63F4E4F261AE682D267 /* KWSLeaderboard.m */; };
-		30E4158CFBEAE2DED69B5DB876B9D86B /* SAActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A887516FBC4153682142B791FE48F7 /* SAActivityView.m */; };
-		37E3FAD8D4090817FFB27A46E1622C1F /* KWSParentEmailError.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCB6693626DE2F66D47D8CFDE95A92B /* KWSParentEmailError.m */; };
-		38D43507447F4730FD7F70DC886E3CF7 /* SADeserializationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DECE8DA139E0F59B1BE0B3733FF4FAB0 /* SADeserializationProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3BDD969B144BE6DAE9B100BEF4B00023 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F86370B0F99B4F901A3E4BC1ABF4326D /* NSString+HTML.m */; };
-		3D0CFDA90314D955DE7967507F9F3ADF /* KWSScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 918783F1D802E41B794551C40C6CED9E /* KWSScore.m */; };
-		41C08851B469B9B8F6804C66E7E02E56 /* SANetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB3C7B1D975B6007ACCDA2B93548E85 /* SANetwork.m */; };
-		444ED954B5341CEA4252B77AA4109DF0 /* KWSAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = EC782F4E85176B0C6AF3D13F7495BC54 /* KWSAppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4A98068FE0B4FBFBE9B3CA20F5393DA3 /* SystemCheckAllowed.m in Sources */ = {isa = PBXBuildFile; fileRef = C75281016F3FB3F18AA972E9D5A98804 /* SystemCheckAllowed.m */; };
-		4BEB16DE3E555D37CDB3A4AB20C63160 /* KWSService.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE5DB9F340AB686203527A01CBCEF24 /* KWSService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4FB2B47A7A7A9A0C280FF66452BB30B1 /* KWSLeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C735FFDAAAA83FB3433885A589A90F /* KWSLeader.m */; };
-		505642486235280E65F9B6A9666313FF /* KWSRequestPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E9CF4481A1B94795172120F2FBA96 /* KWSRequestPermission.m */; };
-		58D3711F1B76A630735D3F3853506CD9 /* SALogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D13A2AA8FDDA49BD8479306E535A180 /* SALogger.m */; };
-		5962E94F831C03A1EFCC9C94DB70B8F6 /* NotificationProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F23B58AB1C419AD826CF7C2E42E79 /* NotificationProcess.m */; };
-		5E29FD9D8037794777FB20EFB6E0AA35 /* KWSEventStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = D89F8606BB5B2FF50804BAC3CCA550AA /* KWSEventStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5F8EEE9C7F22DA2D9AA35B798E370EDF /* KWSMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 50C938D8F46E1B2A80736C4FCACEDB83 /* KWSMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60DA1AF0814841D20EFE89F2F61BB847 /* SASerializationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E3B2F7663F51A878320A0EE8273200AD /* SASerializationProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29F584E02AAA161CA38A431460DDDEC8 /* KWSMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A878D82CCBF37FC34CE4DE631E76EFEA /* KWSMetadata.m */; };
+		2A5802EAB445D23F4017C4AD6F142BA5 /* KWSPermissions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9169606F87A6015A9C830F1B14516032 /* KWSPermissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A7155EF3C32DDCBAC2C19209994DF7F /* KWSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 081D0EBEC1666578D9D07CBFF38096AD /* KWSService.m */; };
+		2A94E8F4CDBA416186D1FEFCC7768BC6 /* NSDictionary+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 92F74B3547F7F15826DDFA7EE30A9DF8 /* NSDictionary+SAJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AC8F69335CA9468A70EE4C848651B6E /* SAExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98F181CA670E9BA31D14F426D6728D9C /* SAExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D1370CB2D839FA0047377AD039AD626 /* NotificationProcess.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D1052DC43DE60BDB300B5463F1F762 /* NotificationProcess.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E5891A2E8CF87F146DDB171D863FE97 /* SAActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A887516FBC4153682142B791FE48F7 /* SAActivityView.m */; };
+		2F67201378E4293EB2426FE6FBCEB29A /* KWSPoints.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE4C01B93396A3B785ECF0A4D220DB0 /* KWSPoints.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31CF93ADC4AD1CF66F344D81CAEC5511 /* SAPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 006F8CB4B0C3DDC7893E8AEB73208AA1 /* SAPopup.m */; };
+		31E69226CD6A6B0110A4D5DE3C31729D /* KWSSetAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0252B71921896F50353AAE9712D52 /* KWSSetAppData.m */; };
+		339F1A7DDA0C8C3D4A3FBD2EE7E41E16 /* SABaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CC358A18D00F2D3014385C4BCA3AB /* SABaseObject.m */; };
+		33FEFAC22068C3D9CC53F8FEE6D31EDD /* KWSRequestPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 404AF27EF3C63112154F3D65CCE76BBE /* KWSRequestPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35D0E5899C926488747994F48A4CAA8C /* KWSAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 865FE438F022A9360982A13DBEA46F28 /* KWSAddress.m */; };
+		39D0FBD6E11074E89B6B1AC1DD32EF84 /* KWS.h in Headers */ = {isa = PBXBuildFile; fileRef = 098841FF58FE72EE11ABBF7F139B1C56 /* KWS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A3D4BF69EE6A3DBE286ACF571501DBB /* KWSGetLeaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 7545C96B1295F17C2454B9A6372C19E4 /* KWSGetLeaderboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A5AFAA3D896FA540D81ABE239C24472 /* SAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1939A8B372B5584285FC4AE4563526 /* SAUtils.m */; };
+		3CD62DB8452063E365C7ACD16A349EFD /* SANetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7EC1B3D94E8040C932BC1D078CDF86 /* SANetworking-dummy.m */; };
+		3D0659BC390E788D682E3098C5C8AF73 /* KWSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CE518968930A726E43AADD688F5979 /* KWSUser.m */; };
+		40E482CE2090DF83C2A433352AB3CA55 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7219921F39E1CD4FF9E45687961DA8 /* SystemConfiguration.framework */; };
+		42D68DDD55D2078632DB7EBD808062AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
+		44D2A94431C78ACA4E1AA11E3B36D69B /* KWSInviteUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2520D742B6CE4D363AB69BF16C250 /* KWSInviteUser.m */; };
+		46F92258B3BFFFCE3D1B0C694F1B340E /* NSDictionary+SafeHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B576F1561F31C2ADB2C57A9676472E5 /* NSDictionary+SafeHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47E0382075D7EA007445491C5A6FF1D5 /* SADeserializationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DECE8DA139E0F59B1BE0B3733FF4FAB0 /* SADeserializationProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A168AD0BACB3B4213AF103955813542 /* SAPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = F4FF6B026171255B5035F138E2FBD296 /* SAPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F7D9FA6A70866FAD9141E6AE0BF9EFE /* KWSParentEmail.h in Headers */ = {isa = PBXBuildFile; fileRef = A8E93ABF7F4F209C34ACBF463BB389F9 /* KWSParentEmail.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50C2C82756BD25EC7F24E187D1EF897E /* KWSPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CB423282D92F6A156B10575B5C9B5F /* KWSPermissions.m */; };
+		5154DFBB42D4CF4A3E73AC5FDD520145 /* KWSInvalid.h in Headers */ = {isa = PBXBuildFile; fileRef = C6AD4122B5B7E64678C94CB2B7D4BE19 /* KWSInvalid.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5284469FBEC7894BF2499350FE45BFB1 /* KWSRegisterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 8194FD45B73F0FA3900FE508AA0288D6 /* KWSRegisterToken.m */; };
+		5441636E1E86954B83C06402654882C2 /* KWSGetScore.h in Headers */ = {isa = PBXBuildFile; fileRef = A6C9FEFFAD71CBF08177644F973416A1 /* KWSGetScore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		54AB2C5095A1E92B55F5342B9B35DFB4 /* SAActivityView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C409BFED7AD0628C44EE76FF2493D01 /* SAActivityView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		56BA68D076C09C31706ABAC08B1FD212 /* KWSParentEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 487F116292918097E657FC76D5ADEF08 /* KWSParentEmail.m */; };
+		59AA9D598F2D6B8C2504516A1F96C5EE /* SASystemVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = FD26E64897F7BECCDCED1D43702A7127 /* SASystemVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A587DF8BE17C6FC5DABCF4482E6D06C /* KWSRegisterToken.h in Headers */ = {isa = PBXBuildFile; fileRef = B2775C46DB9846AE95627CA400171577 /* KWSRegisterToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EFFF829A6DA19F0620422626EBBF0EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
 		61753650DB0A186D21605047BA7CE428 /* Pods-KWSiOSSDKObjC_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B55B4D25F4BC55EABEF4AA63BB53DD /* Pods-KWSiOSSDKObjC_Example-dummy.m */; };
-		68ECD84A64F9AA4B5FCFD197B86D3DC5 /* NSArray+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A047B3650418662D4EABDAF5097CFA4 /* NSArray+SAJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C461C0F5B46F3C6B6C3C26C194D6761 /* KWSGetLeaderboard.m in Sources */ = {isa = PBXBuildFile; fileRef = B454EC1413F62EB9186131BAFA073720 /* KWSGetLeaderboard.m */; };
-		6ED000BCF324E061EB61A73585A095CF /* FirebaseGetToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FD04F639B914F565E4AE7C0AFC8154BC /* FirebaseGetToken.m */; };
-		73DC03BE9968B0FC7DD85C26E02E86FD /* KWSCheckRegistered.m in Sources */ = {isa = PBXBuildFile; fileRef = A143D26FEE8A221C19F3B75565983E48 /* KWSCheckRegistered.m */; };
-		7403D09892D3AF89A3E6F47AF7CD25F0 /* KWSCheckAllowed.m in Sources */ = {isa = PBXBuildFile; fileRef = D690770A84C20A3F50E2A0E7F665E83F /* KWSCheckAllowed.m */; };
-		7562C51DF5E1219FE5F79B8D1135DCED /* KWSParentEmailError.h in Headers */ = {isa = PBXBuildFile; fileRef = EDAC003186470D0F73AC082EA38E0C4B /* KWSParentEmailError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75C4051D48B899A2D1B3C55C75953B97 /* KWSError.m in Sources */ = {isa = PBXBuildFile; fileRef = 62F86E66CE5FECF91E2CDC9FEF40F37D /* KWSError.m */; };
-		772A87FE32277DFDBA940ECED874F010 /* KWSLeaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 66AB3860F4B635067C1BE94F81749C2A /* KWSLeaderboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7A73C8285452DAE90903BF48A6B1625E /* SAExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C532ABDCE8CD7AE602549066A3924244 /* SAExtensions.m */; };
-		7C89EC9711FFB199A03F3806B6769676 /* KWSMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A878D82CCBF37FC34CE4DE631E76EFEA /* KWSMetadata.m */; };
-		7D31CD2616F1EC94380A770E87E8C999 /* SAJsonParser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1818553E4462DF440FA6AA04E67394 /* SAJsonParser-dummy.m */; };
-		7F99363395E41648989B62A7BB750A2E /* SASystemVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = FD26E64897F7BECCDCED1D43702A7127 /* SASystemVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FCC04199D6CFE09106F2A0CB4210606 /* NotificationProcess.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D1052DC43DE60BDB300B5463F1F762 /* NotificationProcess.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8559BDD684607BEA8B0D3E8765861F1D /* KWSPermissions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9169606F87A6015A9C830F1B14516032 /* KWSPermissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		85D3E653E7BF03DA4E790E4BE775C6C0 /* KWSGetUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7BF487B23AE6A0F23EDB228AFC069 /* KWSGetUser.m */; };
-		8877FDA15801DDE3AD168A94F01A5545 /* NSArray+SAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C961688CF6568A232042B1BEF8F0E7 /* NSArray+SAJson.m */; };
-		8890BBF58E0AB8161D893AEE5F854AF9 /* KWSPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B763ED1918C8A31A2E39A80A03305CD /* KWSPoints.m */; };
-		88E06450794F32CC84239D095A1951D7 /* KWSInvalid.h in Headers */ = {isa = PBXBuildFile; fileRef = C6AD4122B5B7E64678C94CB2B7D4BE19 /* KWSInvalid.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88FB76F1CE8275727AB09B33EA5D2A39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
-		89752140351126608E0AAAFE30A7BB6C /* KWSiOSSDKObjC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 480CA14C56D1B777651F479665692C4F /* KWSiOSSDKObjC-dummy.m */; };
-		96E8569BF757A9840BB6A4F69DB1008A /* NSDictionary+SafeHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EECB74A58C2062801AE6DFE8EABE25 /* NSDictionary+SafeHandling.m */; };
-		971AF9CD94994AE6D82A9E5B56F9A8C8 /* NSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 461A09AD4FE269F4D60FE2AED8E6FC18 /* NSString+HTML.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		988167EAF2E7B611F275638FF9B59D5F /* KWSAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 865FE438F022A9360982A13DBEA46F28 /* KWSAddress.m */; };
-		9ACE653BEFC7C32F2B772D58054BFA1F /* KWSGetScore.m in Sources */ = {isa = PBXBuildFile; fileRef = A68EEFCF8DB958A5910F0CAE01A4CC17 /* KWSGetScore.m */; };
-		9CD8F1123E2DA11D528E894554D780ED /* KWSLeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2906009D3E711818B9515F24309AF142 /* KWSLeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9DFB56D4F3D2228B82FB54FB0A6FF8D9 /* KWSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CE518968930A726E43AADD688F5979 /* KWSUser.m */; };
-		A3E104E6D9F721E32BF2E33A9923690B /* KWSAppDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13FDDAC86D8917731E35EC48B76E45 /* KWSAppDataResponse.m */; };
-		AAC213DEF478CC5716AC845F7A8B0DBB /* SAUtils-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FC2FB76327537BC2A338F12A37A712 /* SAUtils-dummy.m */; };
-		AB691D55528962A9CE766896F434CE7C /* KWSUnregisterToken.h in Headers */ = {isa = PBXBuildFile; fileRef = A1FE8E4027CC3DBFB8DA49EF624C45A6 /* KWSUnregisterToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ABDF953E4876D968F3A05457EE82C389 /* KWSHasTriggeredEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7847E8DC467D17A341C265FA2E3CE4 /* KWSHasTriggeredEvent.m */; };
-		AEB4BE23EE0D6B4D1C70CAC110DE9046 /* SAUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FA0346E234BA5D06A29955A5CA01770 /* SAUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B06402214087BA371809809DFDC80C4B /* SAFileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A24526CACCFE0C5A67186FEA12E16B /* SAFileDownloader.m */; };
-		B16AC2F835FB75171D242BD32380AC0C /* FirebaseGetToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE0EBFDF434491F1E6993EC333F9BBD /* FirebaseGetToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B49287E15B81911733353A7EC9D9F26A /* KWSGetAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A66E5485F6F90F5C6E70FB39070A74 /* KWSGetAppData.m */; };
-		B604D48378A6BE859CCC653A6A1A5DB6 /* KWSGetUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 551DA030785BB6FF34282A1BC4C62530 /* KWSGetUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B7CF88DF93C2066F31CCB00AA389C91B /* NSDictionary+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 92F74B3547F7F15826DDFA7EE30A9DF8 /* NSDictionary+SAJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B9A1FE9578E673B5458DC42EB58344E9 /* KWSRegisterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FD5171A0FD4C3D58EF02B91B468488 /* KWSRegisterToken.m */; };
-		BAB3AB0D697A941C98BFC8227477D0C7 /* KWSInvalid.m in Sources */ = {isa = PBXBuildFile; fileRef = 60221817BCCA0A7AF167A01BFCB73C6C /* KWSInvalid.m */; };
-		BB9E60D30ED7E82AA719DCD3E49BD075 /* KWSCheckRegistered.h in Headers */ = {isa = PBXBuildFile; fileRef = 7918D1775AD018473C93039C965A2008 /* KWSCheckRegistered.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BC8233B0F4AC1BDC24DFA1977C21E76E /* KWSAppDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 613BE898EDBC39A3569E115F62009102 /* KWSAppDataResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCEBE6FC5700D76DEC67E97E66095400 /* KWSParentEmail.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D93DE51F6C028173B14762A2FDB480 /* KWSParentEmail.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDE064A9F2FEF66B70B132AA8183064A /* KWSParentEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 890C85B8E956B37F3770FB25351E6E6E /* KWSParentEmail.m */; };
-		BF809F789CF005A8000A29BEA2C6ABF6 /* NSDictionary+SafeHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B576F1561F31C2ADB2C57A9676472E5 /* NSDictionary+SafeHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFD720CEFC676E4DD6F259D2FE12155B /* KWSPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = 35CB423282D92F6A156B10575B5C9B5F /* KWSPermissions.m */; };
-		C262F19908A489A35A2AD785A6499FAE /* SAFileDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 170BD1B41A574704C82F01C763037F55 /* SAFileDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C30C672EB6BD6FE73AB08824FA51F996 /* KWSHasTriggeredEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C97F9380EE706AC619023E9DFA739CC3 /* KWSHasTriggeredEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C58F86DA2DFE56E5FB024F1EBF07A745 /* KWSRequestPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = F6143B8893A0D34FDB4665EBE7911CB0 /* KWSRequestPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C85D75766A374E29BA811D71F95835D2 /* KWSRegisterToken.h in Headers */ = {isa = PBXBuildFile; fileRef = C2ACFC0B3E2DCD6403C10B002E0A6A05 /* KWSRegisterToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC58073A66062AE6FCF0F26407794C82 /* KWSUpdateUser.h in Headers */ = {isa = PBXBuildFile; fileRef = AA134722960E17FF66CE653C2DCFF52C /* KWSUpdateUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE12A7DB1251D5A8B1CF48379E04BE94 /* KWSError.h in Headers */ = {isa = PBXBuildFile; fileRef = 09418E5929FE4BD4FAE65BD0E4EAD37B /* KWSError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D75E82FD8211B113B597DEB6AEA0E1B1 /* KWSCheckAllowed.h in Headers */ = {isa = PBXBuildFile; fileRef = B369F2F93CD8B774D114AF77068A08C6 /* KWSCheckAllowed.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9B1D570F4D76F47ACA6DEC43584622D /* KWSAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0437B16A88D1693B5C90510E5DD0F0 /* KWSAppData.m */; };
-		DBD4A112486079D2E96CFB8278FA3856 /* SAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1939A8B372B5584285FC4AE4563526 /* SAUtils.m */; };
-		DD6D7819E94386563A0D0DEB3C659C6A /* KWSTriggerEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FB0CE2EDD13897C3614E0089473BD4 /* KWSTriggerEvent.m */; };
-		DD86C1241FD24B02D242C0F68CA093E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
-		DDE2682EA82304FE3A12C96FE5666EB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */; };
-		DEC073D0BFB79C41C4B2F82ED8A82BCD /* SystemCheckAllowed.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ED7A8644CAF1032B7E79C012583362D /* SystemCheckAllowed.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E533B237E9558F9B5DF9800A9AF9DB12 /* NSDictionary+SAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 003D16F20CA918CA600320DD948E4573 /* NSDictionary+SAJson.m */; };
-		E56170262BAA7CB528FDCCA9E960631C /* SAPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 006F8CB4B0C3DDC7893E8AEB73208AA1 /* SAPopup.m */; };
-		E5CA29E72332353949F2D6B84A9CEAF1 /* KWSInviteUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 059D9D9279ECA26075E09B55D89500D4 /* KWSInviteUser.m */; };
-		E926CEB8C8E008D457AA0B64AEB82262 /* KWSApplicationProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54E1E3D9B482ACC536748EBCD4C53E /* KWSApplicationProfile.m */; };
-		E96055744953C09D1530B7A740C4BAC4 /* SALogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D6FA6BB434A77F7E82159953F15684 /* SALogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA8F74AC735D3F667516134EF47BB514 /* KWSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D7E0C66DF367420AA20F2987A68B1 /* KWSService.m */; };
-		F31411A58A9AE5B4D6A3CC28A0E972CD /* KWSUnregisterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75F600353019253F7625F4E5DAED4B /* KWSUnregisterToken.m */; };
-		F42A4CCF34365DC03C4A58289A6993DC /* KWSGetLeaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 15724F1B4789888BAE281F934B516CDC /* KWSGetLeaderboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F850954F83F4EFD6D478DBDDB1A28193 /* KWSGetScore.h in Headers */ = {isa = PBXBuildFile; fileRef = 933C27B1BA42B86DC947FC113E853BB1 /* KWSGetScore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FC886B90CF1217CC03A1C8AA54F6D582 /* KWSTriggerEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = ECAD766A95A8BD2A9908FE421C6C73ED /* KWSTriggerEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FE203765DDD5D695028C57C8ABD58A40 /* KWSUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DDC4BB6EB4612755B87A4389D5D1507 /* KWSUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		67A85B5B0294BF4EDB328878244F9E89 /* SALogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D13A2AA8FDDA49BD8479306E535A180 /* SALogger.m */; };
+		68CA0A2A83F99D7A208F0D75A03BD3C7 /* FirebaseGetToken.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F64A30F188CE3DFC40B2C4E2C6FFA0 /* FirebaseGetToken.m */; };
+		6ED2246A8B3768915318A17EADBE243B /* NotificationProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F23B58AB1C419AD826CF7C2E42E79 /* NotificationProcess.m */; };
+		75F6E50A6143847C0E7D7407E3681782 /* KWSUnregisterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C9C055782A16BEB875E1D28DB8A4A /* KWSUnregisterToken.m */; };
+		799796D19A4CC5940839EFD1525DC9C0 /* KWSAppDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 613BE898EDBC39A3569E115F62009102 /* KWSAppDataResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A3E7622FA44FD3DBE645E1B8A96467 /* SANetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB3C7B1D975B6007ACCDA2B93548E85 /* SANetwork.m */; };
+		7F8CCBD965799A58647F9DB53DA51A14 /* KWSLeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C735FFDAAAA83FB3433885A589A90F /* KWSLeader.m */; };
+		8083840FF9B06F2F6871B163200A0B94 /* KWSSetAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = D8D68A0EB697E12CF37C21B5619A30F9 /* KWSSetAppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		80D1E73079AB2E264BAF8D6701F749E2 /* KWSService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C4DC218D15264FED5CD59F473554BF1 /* KWSService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81676124F533A74D2557868628E086EA /* SystemCheckAllowed.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFCA5934763AE79828EB3F9C1F8997D /* SystemCheckAllowed.m */; };
+		819F076858563F164CACD04D9CBA5120 /* SAFileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A24526CACCFE0C5A67186FEA12E16B /* SAFileDownloader.m */; };
+		82DEDF7B1ABB94109A6212D6865DC9BE /* KWSError.m in Sources */ = {isa = PBXBuildFile; fileRef = 62F86E66CE5FECF91E2CDC9FEF40F37D /* KWSError.m */; };
+		8E15312B58B321F9B7EE089408B987E8 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F86370B0F99B4F901A3E4BC1ABF4326D /* NSString+HTML.m */; };
+		93F0BD6AC04DFC67CD0E076697102CA5 /* FirebaseGetToken.h in Headers */ = {isa = PBXBuildFile; fileRef = C8EF93499AB231B0867036ED4917D5B8 /* FirebaseGetToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94CB0172DFA6114691517F8B30B8595A /* KWSAppDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13FDDAC86D8917731E35EC48B76E45 /* KWSAppDataResponse.m */; };
+		97C111714D711B67DEF0980D08C3582D /* KWSUpdateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E7188ECD2B35F4F9FEBCB4F3BDB3DC /* KWSUpdateUser.m */; };
+		986926983C6CC5D1916906E2E1E37A65 /* KWSUpdateUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CDE56B4A39F651FA29FE9FA811ECED0 /* KWSUpdateUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BBA3CC1E2BEB1D5797681814285AE04 /* KWSGetUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 76C7BAE88E00D87CF7B6EC326FD2D889 /* KWSGetUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F540C6AB575B7B572C6A4AF9A82F4B6 /* KWSAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = EC782F4E85176B0C6AF3D13F7495BC54 /* KWSAppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A479B420E2C71343F2496C7290E81EEF /* SAJsonParser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1818553E4462DF440FA6AA04E67394 /* SAJsonParser-dummy.m */; };
+		A603BBAFB9BE7663135630CC1138093A /* KWSApplicationProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54E1E3D9B482ACC536748EBCD4C53E /* KWSApplicationProfile.m */; };
+		A6FD5E56C9AED461A57391020C50E7AF /* KWSApplicationProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6F23A2A7C44165047C346D7EBF69FA /* KWSApplicationProfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A76E1FF5E3CAF2FB08570353A309C354 /* NSDictionary+SafeHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EECB74A58C2062801AE6DFE8EABE25 /* NSDictionary+SafeHandling.m */; };
+		A78C9704C724CF7DEAB76C69C3AD08E8 /* SystemCheckAllowed.h in Headers */ = {isa = PBXBuildFile; fileRef = 93036493950CDE8FA7D17B18E66A0413 /* SystemCheckAllowed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7CD356AD568328194AF5793F49FBB48 /* SAUtils-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FC2FB76327537BC2A338F12A37A712 /* SAUtils-dummy.m */; };
+		A8C528B31BDBB231B00B8E9B1CB8974C /* KWSScore.h in Headers */ = {isa = PBXBuildFile; fileRef = DD441C8096012CB8D46FFEEE965D4291 /* KWSScore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A90F9B828E2F8234802BCA83C3A47064 /* SASerializationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E3B2F7663F51A878320A0EE8273200AD /* SASerializationProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAD1DC91D50B966D67B11C4E5CDC857C /* KWSEventStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = D89F8606BB5B2FF50804BAC3CCA550AA /* KWSEventStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B01A25288F73E21BB9DE8B5E72FA1ED2 /* KWSTriggerEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CE2708075F50C1E0D9EF239D14604 /* KWSTriggerEvent.m */; };
+		B61BABFD1B5C8331AD6D41E4E40F61BF /* KWSLeaderboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E9245DCC4FB5C63F4E4F261AE682D267 /* KWSLeaderboard.m */; };
+		B81D2A1B86494FB605D474DF998E094B /* KWSGetUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F96BDE9C30B16CAFE533FCC709CA3 /* KWSGetUser.m */; };
+		BE27C140A0F86F506EBA5807FABF5F61 /* KWSGetAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = A7AAE6988331AABD41C481774C6C9AEA /* KWSGetAppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C1A58E1A982BEA592F6605B3A7D12AA7 /* KWSCheckRegistered.h in Headers */ = {isa = PBXBuildFile; fileRef = 083653F2DF6D8EE8B6216232AB77B07C /* KWSCheckRegistered.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3634D4F060D09E9D6348D3DDA343D92 /* KWSParentEmailError.h in Headers */ = {isa = PBXBuildFile; fileRef = EDAC003186470D0F73AC082EA38E0C4B /* KWSParentEmailError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCF7C02A6CC8F42EE77EAD88B05BE929 /* KWSLeaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 66AB3860F4B635067C1BE94F81749C2A /* KWSLeaderboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE0CC3DE9FF5974CE26D1EEE4373EC78 /* KWSTriggerEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = B17680271D4DC64D131EA5DCC3DEC4B9 /* KWSTriggerEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3DA3EE389C4F1A47EC55DC6CEAE553C /* KWSCheckAllowed.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF3C570DC2205BB2C53A74A0228966A /* KWSCheckAllowed.m */; };
+		D5C04EFF12584A53B9C686197A0E5463 /* KWSHasTriggeredEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5677304C4EB35499953914275597D7A5 /* KWSHasTriggeredEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D65DB9A23C9F4BC679D819F8019B4B52 /* SAJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCAAC8E80162E33C062F4C9998F7E76 /* SAJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAC7E466DE0CE19702FE3E2581420000 /* SALogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D6FA6BB434A77F7E82159953F15684 /* SALogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD1E928722B1770DCAB641B1351E5C08 /* KWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F683CBA4B51F4ED41A77E2660AF6AFB /* KWS.m */; };
+		E200D75B15AD763E8C25E3FC1F6253DA /* KWSHasTriggeredEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6318AC0F6C1B8C7FDF9248E0CF469DEE /* KWSHasTriggeredEvent.m */; };
+		E2BC85504B55B2DEE44E0102984C072D /* SABaseObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE2061A176EF846E33CF47D4E61941B /* SABaseObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E57827FCAE07C8BD529F383675ACD603 /* KWSiOSSDKObjC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 480CA14C56D1B777651F479665692C4F /* KWSiOSSDKObjC-dummy.m */; };
+		E69E1F1872690503DBAF1CD7CF69B266 /* NSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 461A09AD4FE269F4D60FE2AED8E6FC18 /* NSString+HTML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E70E6105FC716D1B1A837A426D990D44 /* KWSCheckRegistered.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CABDBA52A99290FF5BE29C76A84C559 /* KWSCheckRegistered.m */; };
+		E7B570EE24257E8545DA3B6493D308C9 /* KWSMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 50C938D8F46E1B2A80736C4FCACEDB83 /* KWSMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F02A70731D2F70EAD086B2A06EB28468 /* KWSError.h in Headers */ = {isa = PBXBuildFile; fileRef = 09418E5929FE4BD4FAE65BD0E4EAD37B /* KWSError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F03889CE14DB60078AD4A44386F67F7A /* KWSCheckAllowed.h in Headers */ = {isa = PBXBuildFile; fileRef = 73171699988BC0DC2584DF987B1DE6BE /* KWSCheckAllowed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F23DFC32B629AA3751E23EE72C4CB7CE /* KWSPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B763ED1918C8A31A2E39A80A03305CD /* KWSPoints.m */; };
+		F534BF1B0D323E61BC16244E314ECA94 /* KWSGetLeaderboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CF088C189CB97F8E8258DF4F0FA3CF /* KWSGetLeaderboard.m */; };
+		F599E1F8E1F15B379238136049509A17 /* NSArray+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A047B3650418662D4EABDAF5097CFA4 /* NSArray+SAJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F65AC5FFDA8EEAADD0461B37C177B9A0 /* KWSScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 918783F1D802E41B794551C40C6CED9E /* KWSScore.m */; };
+		FCA82D7F8FB294ABA52B577279282CE0 /* KWSInvalid.m in Sources */ = {isa = PBXBuildFile; fileRef = 60221817BCCA0A7AF167A01BFCB73C6C /* KWSInvalid.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,58 +123,58 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7309BFEC846A1B16BB7FAA43D6FE3D23;
+			remoteGlobalIDString = 06353F7EA972E6B023DC1476AA2EF885;
 			remoteInfo = SANetworking;
 		};
 		2CE82127D5B297AA2CC47AD889418EFE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0AB092A41110D51C14138B75DE3D3DCD;
+			remoteGlobalIDString = 999AB555EFFCCA7CD2D04B4595BD10AB;
 			remoteInfo = SAJsonParser;
-		};
-		34175B0ECB622688B8FF9703F7A3E13B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C06DC2D1B98242F70DF28C980D506887;
-			remoteInfo = SAUtils;
-		};
-		40E7FC30F9C06E8C2D01134F6906152A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0AB092A41110D51C14138B75DE3D3DCD;
-			remoteInfo = SAJsonParser;
-		};
-		4482F8AB55C84796FDA16E9AEFD20BB8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7309BFEC846A1B16BB7FAA43D6FE3D23;
-			remoteInfo = SANetworking;
 		};
 		A5B5D98DF2450DF40D4DDE3590DDA93F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EF69F0412E75410E5704A4EF030B77C7;
+			remoteGlobalIDString = E2B69F893B5285BCF546254B7FCAA1FC;
 			remoteInfo = KWSiOSSDKObjC;
 		};
 		C64B956DEEEBBFFE0462CD9A82E9851A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C06DC2D1B98242F70DF28C980D506887;
+			remoteGlobalIDString = 9F6E39081289C50BF60F36F03EE5A935;
 			remoteInfo = SAUtils;
+		};
+		CA7AEAD490CE1FD229CD2AB84A454E2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F6E39081289C50BF60F36F03EE5A935;
+			remoteInfo = SAUtils;
+		};
+		CCBF69CE3BE5D725326B77CFAB6B6633 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 999AB555EFFCCA7CD2D04B4595BD10AB;
+			remoteInfo = SAJsonParser;
+		};
+		F56755717904760B4BF89A3E12BD03AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06353F7EA972E6B023DC1476AA2EF885;
+			remoteInfo = SANetworking;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		003D16F20CA918CA600320DD948E4573 /* NSDictionary+SAJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+SAJson.m"; path = "Pod/Classes/NSDictionary+SAJson.m"; sourceTree = "<group>"; };
 		006F8CB4B0C3DDC7893E8AEB73208AA1 /* SAPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAPopup.m; path = Pod/Classes/SAPopup.m; sourceTree = "<group>"; };
-		00FB0CE2EDD13897C3614E0089473BD4 /* KWSTriggerEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSTriggerEvent.m; sourceTree = "<group>"; };
-		059D9D9279ECA26075E09B55D89500D4 /* KWSInviteUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSInviteUser.m; sourceTree = "<group>"; };
+		081D0EBEC1666578D9D07CBFF38096AD /* KWSService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSService.m; sourceTree = "<group>"; };
+		083653F2DF6D8EE8B6216232AB77B07C /* KWSCheckRegistered.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSCheckRegistered.h; sourceTree = "<group>"; };
 		08FC2FB76327537BC2A338F12A37A712 /* SAUtils-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAUtils-dummy.m"; sourceTree = "<group>"; };
 		09418E5929FE4BD4FAE65BD0E4EAD37B /* KWSError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSError.h; sourceTree = "<group>"; };
 		098841FF58FE72EE11ABBF7F139B1C56 /* KWS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWS.h; sourceTree = "<group>"; };
@@ -183,32 +183,29 @@
 		0B07FBBB29C53DB87FBCD5B25FD46E1F /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
 		0B576F1561F31C2ADB2C57A9676472E5 /* NSDictionary+SafeHandling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+SafeHandling.h"; path = "Pod/Classes/NSDictionary+SafeHandling.h"; sourceTree = "<group>"; };
 		0B8DB4C5AB74025EB26A4D4D91CFA5FA /* SAJsonParser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAJsonParser-prefix.pch"; sourceTree = "<group>"; };
+		0B9CE2708075F50C1E0D9EF239D14604 /* KWSTriggerEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSTriggerEvent.m; sourceTree = "<group>"; };
+		0CDE56B4A39F651FA29FE9FA811ECED0 /* KWSUpdateUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSUpdateUser.h; sourceTree = "<group>"; };
 		0D7219921F39E1CD4FF9E45687961DA8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		0D7D7E0C66DF367420AA20F2987A68B1 /* KWSService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSService.m; sourceTree = "<group>"; };
-		0DE0EBFDF434491F1E6993EC333F9BBD /* FirebaseGetToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseGetToken.h; sourceTree = "<group>"; };
-		0F9E9CF4481A1B94795172120F2FBA96 /* KWSRequestPermission.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSRequestPermission.m; sourceTree = "<group>"; };
-		1224216E8B9CC6C797D9166C15701D3B /* KWSGetAppData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetAppData.h; sourceTree = "<group>"; };
+		0DBF89CE25B0FC9D0827694454B031D0 /* KWSRequestPermission.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSRequestPermission.m; sourceTree = "<group>"; };
 		12D6FA6BB434A77F7E82159953F15684 /* SALogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SALogger.h; path = Pod/Classes/SALogger.h; sourceTree = "<group>"; };
-		15724F1B4789888BAE281F934B516CDC /* KWSGetLeaderboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetLeaderboard.h; sourceTree = "<group>"; };
+		14C1FC3035F098FDFBE42AA161AE14CB /* KWSUnregisterToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSUnregisterToken.h; sourceTree = "<group>"; };
 		170BD1B41A574704C82F01C763037F55 /* SAFileDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAFileDownloader.h; path = Pod/Classes/SAFileDownloader.h; sourceTree = "<group>"; };
-		1B7FF1811D6EFEC8002C8F0C /* KWSSetAppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSSetAppData.h; sourceTree = "<group>"; };
-		1B7FF1821D6EFEC8002C8F0C /* KWSSetAppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSSetAppData.m; sourceTree = "<group>"; };
 		1BA4F6019A8FF37011FA17589C3B467F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
 		1C1818553E4462DF440FA6AA04E67394 /* SAJsonParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAJsonParser-dummy.m"; sourceTree = "<group>"; };
-		1CE7BF487B23AE6A0F23EDB228AFC069 /* KWSGetUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSGetUser.m; sourceTree = "<group>"; };
-		1D7847E8DC467D17A341C265FA2E3CE4 /* KWSHasTriggeredEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSHasTriggeredEvent.m; sourceTree = "<group>"; };
 		1E415DCD54AE490309AAEEDF542A4474 /* SANetwork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SANetwork.h; path = Pod/Classes/SANetwork.h; sourceTree = "<group>"; };
 		1FCAAC8E80162E33C062F4C9998F7E76 /* SAJsonParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAJsonParser.h; path = Pod/Classes/SAJsonParser.h; sourceTree = "<group>"; };
 		26B55B4D25F4BC55EABEF4AA63BB53DD /* Pods-KWSiOSSDKObjC_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KWSiOSSDKObjC_Example-dummy.m"; sourceTree = "<group>"; };
 		289197FD9B128BE967A2F7A3AB9D7536 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		2906009D3E711818B9515F24309AF142 /* KWSLeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSLeader.h; sourceTree = "<group>"; };
-		2EE5DB9F340AB686203527A01CBCEF24 /* KWSService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSService.h; sourceTree = "<group>"; };
 		35CB423282D92F6A156B10575B5C9B5F /* KWSPermissions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSPermissions.m; sourceTree = "<group>"; };
+		404AF27EF3C63112154F3D65CCE76BBE /* KWSRequestPermission.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSRequestPermission.h; sourceTree = "<group>"; };
 		41AC0C85C9BD3E4A047CEE1409C055F2 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		44A24526CACCFE0C5A67186FEA12E16B /* SAFileDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAFileDownloader.m; path = Pod/Classes/SAFileDownloader.m; sourceTree = "<group>"; };
+		44CF088C189CB97F8E8258DF4F0FA3CF /* KWSGetLeaderboard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSGetLeaderboard.m; sourceTree = "<group>"; };
 		45C735FFDAAAA83FB3433885A589A90F /* KWSLeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSLeader.m; sourceTree = "<group>"; };
 		461A09AD4FE269F4D60FE2AED8E6FC18 /* NSString+HTML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+HTML.h"; path = "Pod/Classes/NSString+HTML.h"; sourceTree = "<group>"; };
 		480CA14C56D1B777651F479665692C4F /* KWSiOSSDKObjC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KWSiOSSDKObjC-dummy.m"; sourceTree = "<group>"; };
+		487F116292918097E657FC76D5ADEF08 /* KWSParentEmail.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSParentEmail.m; sourceTree = "<group>"; };
 		4A047B3650418662D4EABDAF5097CFA4 /* NSArray+SAJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+SAJson.h"; path = "Pod/Classes/NSArray+SAJson.h"; sourceTree = "<group>"; };
 		4BFE9299A6CC72E77E787C42D3C10730 /* Pods-KWSiOSSDKObjC_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KWSiOSSDKObjC_Example-resources.sh"; sourceTree = "<group>"; };
 		4C409BFED7AD0628C44EE76FF2493D01 /* SAActivityView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAActivityView.h; path = Pod/Classes/SAActivityView.h; sourceTree = "<group>"; };
@@ -216,8 +213,8 @@
 		4FA0346E234BA5D06A29955A5CA01770 /* SAUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAUtils.h; path = Pod/Classes/SAUtils.h; sourceTree = "<group>"; };
 		50C938D8F46E1B2A80736C4FCACEDB83 /* KWSMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSMetadata.h; sourceTree = "<group>"; };
 		529F23B58AB1C419AD826CF7C2E42E79 /* NotificationProcess.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NotificationProcess.m; sourceTree = "<group>"; };
-		551DA030785BB6FF34282A1BC4C62530 /* KWSGetUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetUser.h; sourceTree = "<group>"; };
 		55F744A0F52587C52EDAB6C61C1FE826 /* SANetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SANetworking-prefix.pch"; sourceTree = "<group>"; };
+		5677304C4EB35499953914275597D7A5 /* KWSHasTriggeredEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSHasTriggeredEvent.h; sourceTree = "<group>"; };
 		577B8E281BBFD92B2A769A8389E79738 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
 		5C6F23A2A7C44165047C346D7EBF69FA /* KWSApplicationProfile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSApplicationProfile.h; sourceTree = "<group>"; };
 		60221817BCCA0A7AF167A01BFCB73C6C /* KWSInvalid.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSInvalid.m; sourceTree = "<group>"; };
@@ -225,90 +222,102 @@
 		613BE898EDBC39A3569E115F62009102 /* KWSAppDataResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSAppDataResponse.h; sourceTree = "<group>"; };
 		61CE518968930A726E43AADD688F5979 /* KWSUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSUser.m; sourceTree = "<group>"; };
 		62F86E66CE5FECF91E2CDC9FEF40F37D /* KWSError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSError.m; sourceTree = "<group>"; };
+		6318AC0F6C1B8C7FDF9248E0CF469DEE /* KWSHasTriggeredEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSHasTriggeredEvent.m; sourceTree = "<group>"; };
 		66AB3860F4B635067C1BE94F81749C2A /* KWSLeaderboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSLeaderboard.h; sourceTree = "<group>"; };
 		6DE2061A176EF846E33CF47D4E61941B /* SABaseObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SABaseObject.h; path = Pod/Classes/SABaseObject.h; sourceTree = "<group>"; };
-		6ED7A8644CAF1032B7E79C012583362D /* SystemCheckAllowed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SystemCheckAllowed.h; sourceTree = "<group>"; };
-		725A36F0FA92C644EF0CAEE8B47A5981 /* KWSInviteUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSInviteUser.h; sourceTree = "<group>"; };
 		730CC358A18D00F2D3014385C4BCA3AB /* SABaseObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SABaseObject.m; path = Pod/Classes/SABaseObject.m; sourceTree = "<group>"; };
-		7918D1775AD018473C93039C965A2008 /* KWSCheckRegistered.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSCheckRegistered.h; sourceTree = "<group>"; };
+		73171699988BC0DC2584DF987B1DE6BE /* KWSCheckAllowed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSCheckAllowed.h; sourceTree = "<group>"; };
+		7545C96B1295F17C2454B9A6372C19E4 /* KWSGetLeaderboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetLeaderboard.h; sourceTree = "<group>"; };
+		76C7BAE88E00D87CF7B6EC326FD2D889 /* KWSGetUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetUser.h; sourceTree = "<group>"; };
 		7B763ED1918C8A31A2E39A80A03305CD /* KWSPoints.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSPoints.m; sourceTree = "<group>"; };
 		7C2415A6ADCC274A00B1BBE884348158 /* libSANetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSANetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9BA9A04C5FA6F7B30F28C3F3415B55 /* Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		7F683CBA4B51F4ED41A77E2660AF6AFB /* KWS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWS.m; sourceTree = "<group>"; };
+		7FFCA5934763AE79828EB3F9C1F8997D /* SystemCheckAllowed.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SystemCheckAllowed.m; sourceTree = "<group>"; };
+		8194FD45B73F0FA3900FE508AA0288D6 /* KWSRegisterToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSRegisterToken.m; sourceTree = "<group>"; };
 		8300F47EEB39E49255907D5DFC5B2A48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		85A66E5485F6F90F5C6E70FB39070A74 /* KWSGetAppData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSGetAppData.m; sourceTree = "<group>"; };
 		865FE438F022A9360982A13DBEA46F28 /* KWSAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSAddress.m; sourceTree = "<group>"; };
-		890C85B8E956B37F3770FB25351E6E6E /* KWSParentEmail.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSParentEmail.m; sourceTree = "<group>"; };
 		8A955B8EEADAFBC16EAA4E8361748607 /* Pods-KWSiOSSDKObjC_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KWSiOSSDKObjC_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		8CB0252B71921896F50353AAE9712D52 /* KWSSetAppData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSSetAppData.m; sourceTree = "<group>"; };
 		8D13A2AA8FDDA49BD8479306E535A180 /* SALogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SALogger.m; path = Pod/Classes/SALogger.m; sourceTree = "<group>"; };
 		8FD06825FAA9D2A8A206E3290269B0A8 /* KWSiOSSDKObjC-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KWSiOSSDKObjC-prefix.pch"; sourceTree = "<group>"; };
 		9169606F87A6015A9C830F1B14516032 /* KWSPermissions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSPermissions.h; sourceTree = "<group>"; };
 		918783F1D802E41B794551C40C6CED9E /* KWSScore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSScore.m; sourceTree = "<group>"; };
-		92D93DE51F6C028173B14762A2FDB480 /* KWSParentEmail.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSParentEmail.h; sourceTree = "<group>"; };
 		92E4CA393314D183D8C15DC3D0824737 /* libKWSiOSSDKObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKWSiOSSDKObjC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F74B3547F7F15826DDFA7EE30A9DF8 /* NSDictionary+SAJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+SAJson.h"; path = "Pod/Classes/NSDictionary+SAJson.h"; sourceTree = "<group>"; };
-		933C27B1BA42B86DC947FC113E853BB1 /* KWSGetScore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetScore.h; sourceTree = "<group>"; };
+		93036493950CDE8FA7D17B18E66A0413 /* SystemCheckAllowed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SystemCheckAllowed.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94FB506E282103E09380ADFC05A8887F /* SAJsonParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAJsonParser.xcconfig; sourceTree = "<group>"; };
 		95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAUtils.xcconfig; sourceTree = "<group>"; };
 		978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SANetworking.xcconfig; sourceTree = "<group>"; };
-		986054C52FA3347E6B8051E3D76916F3 /* KWSUpdateUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSUpdateUser.m; sourceTree = "<group>"; };
 		98F181CA670E9BA31D14F426D6728D9C /* SAExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAExtensions.h; path = Pod/Classes/SAExtensions.h; sourceTree = "<group>"; };
+		9C4DC218D15264FED5CD59F473554BF1 /* KWSService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSService.h; sourceTree = "<group>"; };
+		9CABDBA52A99290FF5BE29C76A84C559 /* KWSCheckRegistered.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSCheckRegistered.m; sourceTree = "<group>"; };
+		9DA2520D742B6CE4D363AB69BF16C250 /* KWSInviteUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSInviteUser.m; sourceTree = "<group>"; };
 		9F0437B16A88D1693B5C90510E5DD0F0 /* KWSAppData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSAppData.m; sourceTree = "<group>"; };
+		9FF3C570DC2205BB2C53A74A0228966A /* KWSCheckAllowed.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSCheckAllowed.m; sourceTree = "<group>"; };
 		A0F405E33F0B46CB6DA297174C1471D2 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		A143D26FEE8A221C19F3B75565983E48 /* KWSCheckRegistered.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSCheckRegistered.m; sourceTree = "<group>"; };
-		A1FE8E4027CC3DBFB8DA49EF624C45A6 /* KWSUnregisterToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSUnregisterToken.h; sourceTree = "<group>"; };
-		A68EEFCF8DB958A5910F0CAE01A4CC17 /* KWSGetScore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSGetScore.m; sourceTree = "<group>"; };
+		A6C9FEFFAD71CBF08177644F973416A1 /* KWSGetScore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetScore.h; sourceTree = "<group>"; };
+		A7AAE6988331AABD41C481774C6C9AEA /* KWSGetAppData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetAppData.h; sourceTree = "<group>"; };
 		A7D17F4CABEDD658A275957840B18E4C /* KWSAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSAddress.h; sourceTree = "<group>"; };
+		A7F64A30F188CE3DFC40B2C4E2C6FFA0 /* FirebaseGetToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FirebaseGetToken.m; sourceTree = "<group>"; };
 		A878D82CCBF37FC34CE4DE631E76EFEA /* KWSMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSMetadata.m; sourceTree = "<group>"; };
-		AA134722960E17FF66CE653C2DCFF52C /* KWSUpdateUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSUpdateUser.h; sourceTree = "<group>"; };
+		A8E93ABF7F4F209C34ACBF463BB389F9 /* KWSParentEmail.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSParentEmail.h; sourceTree = "<group>"; };
 		AC1939A8B372B5584285FC4AE4563526 /* SAUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAUtils.m; path = Pod/Classes/SAUtils.m; sourceTree = "<group>"; };
 		ACCB6693626DE2F66D47D8CFDE95A92B /* KWSParentEmailError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSParentEmailError.m; sourceTree = "<group>"; };
-		B369F2F93CD8B774D114AF77068A08C6 /* KWSCheckAllowed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSCheckAllowed.h; sourceTree = "<group>"; };
+		B17680271D4DC64D131EA5DCC3DEC4B9 /* KWSTriggerEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSTriggerEvent.h; sourceTree = "<group>"; };
+		B2775C46DB9846AE95627CA400171577 /* KWSRegisterToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSRegisterToken.h; sourceTree = "<group>"; };
 		B3C961688CF6568A232042B1BEF8F0E7 /* NSArray+SAJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+SAJson.m"; path = "Pod/Classes/NSArray+SAJson.m"; sourceTree = "<group>"; };
-		B454EC1413F62EB9186131BAFA073720 /* KWSGetLeaderboard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSGetLeaderboard.m; sourceTree = "<group>"; };
 		B5B091B6CE20CEB9E793690DCC804514 /* FIRMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRMessaging.h; path = Sources/FIRMessaging.h; sourceTree = "<group>"; };
-		B7FD5171A0FD4C3D58EF02B91B468488 /* KWSRegisterToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSRegisterToken.m; sourceTree = "<group>"; };
 		BC13FDDAC86D8917731E35EC48B76E45 /* KWSAppDataResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSAppDataResponse.m; sourceTree = "<group>"; };
 		C0D197C896E0DBD7DCF178E10275E68F /* SAUtils-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAUtils-prefix.pch"; sourceTree = "<group>"; };
 		C13D63D1CF314D492C80B23B2424BA06 /* KWSEventStatus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSEventStatus.m; sourceTree = "<group>"; };
 		C1A66C38BC1E31F83BB3DD4B598AE824 /* libSAJsonParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSAJsonParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2ACFC0B3E2DCD6403C10B002E0A6A05 /* KWSRegisterToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSRegisterToken.h; sourceTree = "<group>"; };
 		C532ABDCE8CD7AE602549066A3924244 /* SAExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAExtensions.m; path = Pod/Classes/SAExtensions.m; sourceTree = "<group>"; };
 		C6AD4122B5B7E64678C94CB2B7D4BE19 /* KWSInvalid.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSInvalid.h; sourceTree = "<group>"; };
-		C75281016F3FB3F18AA972E9D5A98804 /* SystemCheckAllowed.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SystemCheckAllowed.m; sourceTree = "<group>"; };
-		C97F9380EE706AC619023E9DFA739CC3 /* KWSHasTriggeredEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSHasTriggeredEvent.h; sourceTree = "<group>"; };
+		C8EF93499AB231B0867036ED4917D5B8 /* FirebaseGetToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseGetToken.h; sourceTree = "<group>"; };
 		C9D1052DC43DE60BDB300B5463F1F762 /* NotificationProcess.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NotificationProcess.h; sourceTree = "<group>"; };
 		CBB3C7B1D975B6007ACCDA2B93548E85 /* SANetwork.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SANetwork.m; path = Pod/Classes/SANetwork.m; sourceTree = "<group>"; };
 		CC7EC1B3D94E8040C932BC1D078CDF86 /* SANetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SANetworking-dummy.m"; sourceTree = "<group>"; };
 		CEC6CC44DC2FD029F07E4633CC6544E9 /* Pods-KWSiOSSDKObjC_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KWSiOSSDKObjC_Example-frameworks.sh"; sourceTree = "<group>"; };
 		CF54E1E3D9B482ACC536748EBCD4C53E /* KWSApplicationProfile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSApplicationProfile.m; sourceTree = "<group>"; };
 		D0C34EC74A3E9E35C23AAAAC89E64132 /* KWSiOSSDKObjC.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KWSiOSSDKObjC.xcconfig; sourceTree = "<group>"; };
-		D690770A84C20A3F50E2A0E7F665E83F /* KWSCheckAllowed.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSCheckAllowed.m; sourceTree = "<group>"; };
+		D181007F0213B2DFE3F370FC5F066C50 /* KWSGetAppData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSGetAppData.m; sourceTree = "<group>"; };
 		D89F8606BB5B2FF50804BAC3CCA550AA /* KWSEventStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSEventStatus.h; sourceTree = "<group>"; };
+		D8D68A0EB697E12CF37C21B5619A30F9 /* KWSSetAppData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSSetAppData.h; sourceTree = "<group>"; };
+		D8E7188ECD2B35F4F9FEBCB4F3BDB3DC /* KWSUpdateUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSUpdateUser.m; sourceTree = "<group>"; };
 		DD441C8096012CB8D46FFEEE965D4291 /* KWSScore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSScore.h; sourceTree = "<group>"; };
 		DD4ECAD4311688A2249C63D854EDCDC4 /* libSAUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSAUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECE8DA139E0F59B1BE0B3733FF4FAB0 /* SADeserializationProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SADeserializationProtocol.h; path = Pod/Classes/SADeserializationProtocol.h; sourceTree = "<group>"; };
 		E3B2F7663F51A878320A0EE8273200AD /* SASerializationProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SASerializationProtocol.h; path = Pod/Classes/SASerializationProtocol.h; sourceTree = "<group>"; };
 		E6EECB74A58C2062801AE6DFE8EABE25 /* NSDictionary+SafeHandling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+SafeHandling.m"; path = "Pod/Classes/NSDictionary+SafeHandling.m"; sourceTree = "<group>"; };
 		E6F6AA79D903B7D8341FF4F352E837B1 /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Example.release.xcconfig"; sourceTree = "<group>"; };
+		E75C9C055782A16BEB875E1D28DB8A4A /* KWSUnregisterToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSUnregisterToken.m; sourceTree = "<group>"; };
 		E8D7B517D3917A98C2ABB7322AC1602F /* libPods-KWSiOSSDKObjC_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KWSiOSSDKObjC_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9245DCC4FB5C63F4E4F261AE682D267 /* KWSLeaderboard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSLeaderboard.m; sourceTree = "<group>"; };
+		EBDFB95BD30E02011A3A9F8EC95780C4 /* KWSInviteUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSInviteUser.h; sourceTree = "<group>"; };
 		EC782F4E85176B0C6AF3D13F7495BC54 /* KWSAppData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSAppData.h; sourceTree = "<group>"; };
-		ECAD766A95A8BD2A9908FE421C6C73ED /* KWSTriggerEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSTriggerEvent.h; sourceTree = "<group>"; };
 		EDAC003186470D0F73AC082EA38E0C4B /* KWSParentEmailError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSParentEmailError.h; sourceTree = "<group>"; };
 		EEE4C01B93396A3B785ECF0A4D220DB0 /* KWSPoints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSPoints.h; sourceTree = "<group>"; };
+		EF84D2CF2FED8BA6D5A375E0995E87D2 /* KWSGetScore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSGetScore.m; sourceTree = "<group>"; };
 		F4FF6B026171255B5035F138E2FBD296 /* SAPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAPopup.h; path = Pod/Classes/SAPopup.h; sourceTree = "<group>"; };
-		F6143B8893A0D34FDB4665EBE7911CB0 /* KWSRequestPermission.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSRequestPermission.h; sourceTree = "<group>"; };
 		F86370B0F99B4F901A3E4BC1ABF4326D /* NSString+HTML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTML.m"; path = "Pod/Classes/NSString+HTML.m"; sourceTree = "<group>"; };
 		F946BAFA5AE7F94B5DF2AAAC44BDE009 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
 		FB36F3864DE371136E043FB807DF7D47 /* GoogleIPhoneUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleIPhoneUtilities.framework; path = Frameworks/GoogleIPhoneUtilities.framework; sourceTree = "<group>"; };
-		FD04F639B914F565E4AE7C0AFC8154BC /* FirebaseGetToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FirebaseGetToken.m; sourceTree = "<group>"; };
+		FC8F96BDE9C30B16CAFE533FCC709CA3 /* KWSGetUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSGetUser.m; sourceTree = "<group>"; };
 		FD26E64897F7BECCDCED1D43702A7127 /* SASystemVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SASystemVersion.h; path = Pod/Classes/SASystemVersion.h; sourceTree = "<group>"; };
-		FD75F600353019253F7625F4E5DAED4B /* KWSUnregisterToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSUnregisterToken.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		195C7D503C3B01FFDB445543BD7B3FB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06CC861F5B317E6E6CC5DCDA1C215F70 /* Foundation.framework in Frameworks */,
+				40E482CE2090DF83C2A433352AB3CA55 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25E606BF4888BDC2A77A537246497F0E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,36 +326,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7833B2A01B2C52A0A8712F6501837F99 /* Frameworks */ = {
+		721309169C03296E5C161070E1FAA24F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD86C1241FD24B02D242C0F68CA093E8 /* Foundation.framework in Frameworks */,
-				301E758B7CF6A5421B7049AE6E8EC96E /* SystemConfiguration.framework in Frameworks */,
+				5EFFF829A6DA19F0620422626EBBF0EF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A4AFDC9DFF6ED54B5A62330CC540374D /* Frameworks */ = {
+		BE38A1D19C5297DE81BABF0DF35850AE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88FB76F1CE8275727AB09B33EA5D2A39 /* Foundation.framework in Frameworks */,
+				115B93F358036777AD14BB73C055F293 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B45D0CC24BBD2A1CAD3C6D4D02FC2479 /* Frameworks */ = {
+		FF7BB0966E8FC0983DA1E323F23292B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDE2682EA82304FE3A12C96FE5666EB5 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB6047720ACDFDF182021CE95C24EC61 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				26775B678F1E3A58770B064739F5995D /* Foundation.framework in Frameworks */,
+				42D68DDD55D2078632DB7EBD808062AC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +453,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1D35F1029BFB9241FC4BD4B877E95870 /* KWS */ = {
+			isa = PBXGroup;
+			children = (
+				73171699988BC0DC2584DF987B1DE6BE /* KWSCheckAllowed.h */,
+				9FF3C570DC2205BB2C53A74A0228966A /* KWSCheckAllowed.m */,
+				083653F2DF6D8EE8B6216232AB77B07C /* KWSCheckRegistered.h */,
+				9CABDBA52A99290FF5BE29C76A84C559 /* KWSCheckRegistered.m */,
+				A7AAE6988331AABD41C481774C6C9AEA /* KWSGetAppData.h */,
+				D181007F0213B2DFE3F370FC5F066C50 /* KWSGetAppData.m */,
+				7545C96B1295F17C2454B9A6372C19E4 /* KWSGetLeaderboard.h */,
+				44CF088C189CB97F8E8258DF4F0FA3CF /* KWSGetLeaderboard.m */,
+				A6C9FEFFAD71CBF08177644F973416A1 /* KWSGetScore.h */,
+				EF84D2CF2FED8BA6D5A375E0995E87D2 /* KWSGetScore.m */,
+				76C7BAE88E00D87CF7B6EC326FD2D889 /* KWSGetUser.h */,
+				FC8F96BDE9C30B16CAFE533FCC709CA3 /* KWSGetUser.m */,
+				5677304C4EB35499953914275597D7A5 /* KWSHasTriggeredEvent.h */,
+				6318AC0F6C1B8C7FDF9248E0CF469DEE /* KWSHasTriggeredEvent.m */,
+				EBDFB95BD30E02011A3A9F8EC95780C4 /* KWSInviteUser.h */,
+				9DA2520D742B6CE4D363AB69BF16C250 /* KWSInviteUser.m */,
+				A8E93ABF7F4F209C34ACBF463BB389F9 /* KWSParentEmail.h */,
+				487F116292918097E657FC76D5ADEF08 /* KWSParentEmail.m */,
+				B2775C46DB9846AE95627CA400171577 /* KWSRegisterToken.h */,
+				8194FD45B73F0FA3900FE508AA0288D6 /* KWSRegisterToken.m */,
+				404AF27EF3C63112154F3D65CCE76BBE /* KWSRequestPermission.h */,
+				0DBF89CE25B0FC9D0827694454B031D0 /* KWSRequestPermission.m */,
+				D8D68A0EB697E12CF37C21B5619A30F9 /* KWSSetAppData.h */,
+				8CB0252B71921896F50353AAE9712D52 /* KWSSetAppData.m */,
+				B17680271D4DC64D131EA5DCC3DEC4B9 /* KWSTriggerEvent.h */,
+				0B9CE2708075F50C1E0D9EF239D14604 /* KWSTriggerEvent.m */,
+				14C1FC3035F098FDFBE42AA161AE14CB /* KWSUnregisterToken.h */,
+				E75C9C055782A16BEB875E1D28DB8A4A /* KWSUnregisterToken.m */,
+				0CDE56B4A39F651FA29FE9FA811ECED0 /* KWSUpdateUser.h */,
+				D8E7188ECD2B35F4F9FEBCB4F3BDB3DC /* KWSUpdateUser.m */,
+			);
+			path = KWS;
+			sourceTree = "<group>";
+		};
 		2AA9EC85436D7946E545B2D95A4AE7D7 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,15 +530,6 @@
 				B1D77D531BDDEEE979D1705B7870C1FA /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4386F2AB55E3136BFCC41B0B588ABBE3 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				0DE0EBFDF434491F1E6993EC333F9BBD /* FirebaseGetToken.h */,
-				FD04F639B914F565E4AE7C0AFC8154BC /* FirebaseGetToken.m */,
-			);
-			path = Firebase;
 			sourceTree = "<group>";
 		};
 		4453474B3CCE604208B612238543CA01 /* GoogleInterchangeUtilities */ = {
@@ -591,6 +619,27 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		6FEC922CF47AB7B5D305DEEC4829B5CA /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				C8EF93499AB231B0867036ED4917D5B8 /* FirebaseGetToken.h */,
+				A7F64A30F188CE3DFC40B2C4E2C6FFA0 /* FirebaseGetToken.m */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		7ACB45C59982B54C186F256B1DE6011A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9C4DC218D15264FED5CD59F473554BF1 /* KWSService.h */,
+				081D0EBEC1666578D9D07CBFF38096AD /* KWSService.m */,
+				6FEC922CF47AB7B5D305DEEC4829B5CA /* Firebase */,
+				1D35F1029BFB9241FC4BD4B877E95870 /* KWS */,
+				C84B08D3E9B57FE7A063BE63858D8B6F /* System */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -635,18 +684,6 @@
 				C84E17E37FBDB524EF9ABE3960DB9176 /* Frameworks */,
 			);
 			path = FirebaseInstanceID;
-			sourceTree = "<group>";
-		};
-		AD7591AB30E1F1BAB21595CA731B593C /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				2EE5DB9F340AB686203527A01CBCEF24 /* KWSService.h */,
-				0D7D7E0C66DF367420AA20F2987A68B1 /* KWSService.m */,
-				4386F2AB55E3136BFCC41B0B588ABBE3 /* Firebase */,
-				D7F5522AA9817449605D8A63D73ED24D /* KWS */,
-				F57137142FBEEDC969EEB594A0F6C826 /* System */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		B0F265E2B8CB001417EAB607CDA48169 /* Firebase */ = {
@@ -704,7 +741,7 @@
 				7F683CBA4B51F4ED41A77E2660AF6AFB /* KWS.m */,
 				1779C795C1DDD8FD8D5F32606087A0CB /* Models */,
 				E9B30C3BCC4168542D8B03804B822E52 /* Process */,
-				AD7591AB30E1F1BAB21595CA731B593C /* Services */,
+				7ACB45C59982B54C186F256B1DE6011A /* Services */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -728,6 +765,15 @@
 			path = "../Target Support Files/SAJsonParser";
 			sourceTree = "<group>";
 		};
+		C84B08D3E9B57FE7A063BE63858D8B6F /* System */ = {
+			isa = PBXGroup;
+			children = (
+				93036493950CDE8FA7D17B18E66A0413 /* SystemCheckAllowed.h */,
+				7FFCA5934763AE79828EB3F9C1F8997D /* SystemCheckAllowed.m */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
 		C84E17E37FBDB524EF9ABE3960DB9176 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,43 +788,6 @@
 				49DFD005C4A495F61E8C76049B2A5004 /* KWSiOSSDKObjC */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		D7F5522AA9817449605D8A63D73ED24D /* KWS */ = {
-			isa = PBXGroup;
-			children = (
-				B369F2F93CD8B774D114AF77068A08C6 /* KWSCheckAllowed.h */,
-				D690770A84C20A3F50E2A0E7F665E83F /* KWSCheckAllowed.m */,
-				7918D1775AD018473C93039C965A2008 /* KWSCheckRegistered.h */,
-				A143D26FEE8A221C19F3B75565983E48 /* KWSCheckRegistered.m */,
-				1224216E8B9CC6C797D9166C15701D3B /* KWSGetAppData.h */,
-				85A66E5485F6F90F5C6E70FB39070A74 /* KWSGetAppData.m */,
-				15724F1B4789888BAE281F934B516CDC /* KWSGetLeaderboard.h */,
-				B454EC1413F62EB9186131BAFA073720 /* KWSGetLeaderboard.m */,
-				933C27B1BA42B86DC947FC113E853BB1 /* KWSGetScore.h */,
-				A68EEFCF8DB958A5910F0CAE01A4CC17 /* KWSGetScore.m */,
-				551DA030785BB6FF34282A1BC4C62530 /* KWSGetUser.h */,
-				1CE7BF487B23AE6A0F23EDB228AFC069 /* KWSGetUser.m */,
-				C97F9380EE706AC619023E9DFA739CC3 /* KWSHasTriggeredEvent.h */,
-				1D7847E8DC467D17A341C265FA2E3CE4 /* KWSHasTriggeredEvent.m */,
-				725A36F0FA92C644EF0CAEE8B47A5981 /* KWSInviteUser.h */,
-				059D9D9279ECA26075E09B55D89500D4 /* KWSInviteUser.m */,
-				92D93DE51F6C028173B14762A2FDB480 /* KWSParentEmail.h */,
-				890C85B8E956B37F3770FB25351E6E6E /* KWSParentEmail.m */,
-				C2ACFC0B3E2DCD6403C10B002E0A6A05 /* KWSRegisterToken.h */,
-				B7FD5171A0FD4C3D58EF02B91B468488 /* KWSRegisterToken.m */,
-				F6143B8893A0D34FDB4665EBE7911CB0 /* KWSRequestPermission.h */,
-				0F9E9CF4481A1B94795172120F2FBA96 /* KWSRequestPermission.m */,
-				ECAD766A95A8BD2A9908FE421C6C73ED /* KWSTriggerEvent.h */,
-				00FB0CE2EDD13897C3614E0089473BD4 /* KWSTriggerEvent.m */,
-				A1FE8E4027CC3DBFB8DA49EF624C45A6 /* KWSUnregisterToken.h */,
-				FD75F600353019253F7625F4E5DAED4B /* KWSUnregisterToken.m */,
-				AA134722960E17FF66CE653C2DCFF52C /* KWSUpdateUser.h */,
-				986054C52FA3347E6B8051E3D76916F3 /* KWSUpdateUser.m */,
-				1B7FF1811D6EFEC8002C8F0C /* KWSSetAppData.h */,
-				1B7FF1821D6EFEC8002C8F0C /* KWSSetAppData.m */,
-			);
-			path = KWS;
 			sourceTree = "<group>";
 		};
 		DA8857A05A6AE771D09D9A9046AABFE8 /* GoogleSymbolUtilities */ = {
@@ -827,124 +836,98 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F57137142FBEEDC969EEB594A0F6C826 /* System */ = {
-			isa = PBXGroup;
-			children = (
-				6ED7A8644CAF1032B7E79C012583362D /* SystemCheckAllowed.h */,
-				C75281016F3FB3F18AA972E9D5A98804 /* SystemCheckAllowed.m */,
-			);
-			path = System;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3CA9AF0660963B52A22212389034BB30 /* Headers */ = {
+		34F880B808F20B749C6DC6B8E721B538 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				971AF9CD94994AE6D82A9E5B56F9A8C8 /* NSString+HTML.h in Headers */,
-				17723CB1641034381E5DFB211E19D09C /* SAActivityView.h in Headers */,
-				23853BB3A9B964047E6FCD7E9CE3F1C0 /* SAExtensions.h in Headers */,
-				E96055744953C09D1530B7A740C4BAC4 /* SALogger.h in Headers */,
-				1F5BA523A2449C74EC478185E0961352 /* SAPopup.h in Headers */,
-				7F99363395E41648989B62A7BB750A2E /* SASystemVersion.h in Headers */,
-				AEB4BE23EE0D6B4D1C70CAC110DE9046 /* SAUtils.h in Headers */,
+				93F0BD6AC04DFC67CD0E076697102CA5 /* FirebaseGetToken.h in Headers */,
+				39D0FBD6E11074E89B6B1AC1DD32EF84 /* KWS.h in Headers */,
+				1B3C9D7D41A114C54F994E0520F6FD2D /* KWSAddress.h in Headers */,
+				9F540C6AB575B7B572C6A4AF9A82F4B6 /* KWSAppData.h in Headers */,
+				799796D19A4CC5940839EFD1525DC9C0 /* KWSAppDataResponse.h in Headers */,
+				A6FD5E56C9AED461A57391020C50E7AF /* KWSApplicationProfile.h in Headers */,
+				F03889CE14DB60078AD4A44386F67F7A /* KWSCheckAllowed.h in Headers */,
+				C1A58E1A982BEA592F6605B3A7D12AA7 /* KWSCheckRegistered.h in Headers */,
+				F02A70731D2F70EAD086B2A06EB28468 /* KWSError.h in Headers */,
+				AAD1DC91D50B966D67B11C4E5CDC857C /* KWSEventStatus.h in Headers */,
+				BE27C140A0F86F506EBA5807FABF5F61 /* KWSGetAppData.h in Headers */,
+				3A3D4BF69EE6A3DBE286ACF571501DBB /* KWSGetLeaderboard.h in Headers */,
+				5441636E1E86954B83C06402654882C2 /* KWSGetScore.h in Headers */,
+				9BBA3CC1E2BEB1D5797681814285AE04 /* KWSGetUser.h in Headers */,
+				D5C04EFF12584A53B9C686197A0E5463 /* KWSHasTriggeredEvent.h in Headers */,
+				5154DFBB42D4CF4A3E73AC5FDD520145 /* KWSInvalid.h in Headers */,
+				1EE6D838D4D5772FD797FD7C3AA126B2 /* KWSInviteUser.h in Headers */,
+				1293D9D8E7988EFA711514B9CCEBF00D /* KWSLeader.h in Headers */,
+				CCF7C02A6CC8F42EE77EAD88B05BE929 /* KWSLeaderboard.h in Headers */,
+				E7B570EE24257E8545DA3B6493D308C9 /* KWSMetadata.h in Headers */,
+				4F7D9FA6A70866FAD9141E6AE0BF9EFE /* KWSParentEmail.h in Headers */,
+				C3634D4F060D09E9D6348D3DDA343D92 /* KWSParentEmailError.h in Headers */,
+				2A5802EAB445D23F4017C4AD6F142BA5 /* KWSPermissions.h in Headers */,
+				2F67201378E4293EB2426FE6FBCEB29A /* KWSPoints.h in Headers */,
+				5A587DF8BE17C6FC5DABCF4482E6D06C /* KWSRegisterToken.h in Headers */,
+				33FEFAC22068C3D9CC53F8FEE6D31EDD /* KWSRequestPermission.h in Headers */,
+				A8C528B31BDBB231B00B8E9B1CB8974C /* KWSScore.h in Headers */,
+				80D1E73079AB2E264BAF8D6701F749E2 /* KWSService.h in Headers */,
+				8083840FF9B06F2F6871B163200A0B94 /* KWSSetAppData.h in Headers */,
+				CE0CC3DE9FF5974CE26D1EEE4373EC78 /* KWSTriggerEvent.h in Headers */,
+				074DA9BC2F1F3358ED640531C17E06B4 /* KWSUnregisterToken.h in Headers */,
+				986926983C6CC5D1916906E2E1E37A65 /* KWSUpdateUser.h in Headers */,
+				1BB98215A36E98517217B74EF37AD1A6 /* KWSUser.h in Headers */,
+				2D1370CB2D839FA0047377AD039AD626 /* NotificationProcess.h in Headers */,
+				A78C9704C724CF7DEAB76C69C3AD08E8 /* SystemCheckAllowed.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C26F2B0ED9E013D4EAE2E815664C17D /* Headers */ = {
+		5BDA55C9DECA82CC9577C37245B73DCA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68ECD84A64F9AA4B5FCFD197B86D3DC5 /* NSArray+SAJson.h in Headers */,
-				BF809F789CF005A8000A29BEA2C6ABF6 /* NSDictionary+SafeHandling.h in Headers */,
-				B7CF88DF93C2066F31CCB00AA389C91B /* NSDictionary+SAJson.h in Headers */,
-				1A935DAF5BEF0E2AB707E47FBE6191D9 /* SABaseObject.h in Headers */,
-				38D43507447F4730FD7F70DC886E3CF7 /* SADeserializationProtocol.h in Headers */,
-				0939E03678C28D2F2BC08867FEE02311 /* SAJsonParser.h in Headers */,
-				60DA1AF0814841D20EFE89F2F61BB847 /* SASerializationProtocol.h in Headers */,
+				F599E1F8E1F15B379238136049509A17 /* NSArray+SAJson.h in Headers */,
+				46F92258B3BFFFCE3D1B0C694F1B340E /* NSDictionary+SafeHandling.h in Headers */,
+				2A94E8F4CDBA416186D1FEFCC7768BC6 /* NSDictionary+SAJson.h in Headers */,
+				E2BC85504B55B2DEE44E0102984C072D /* SABaseObject.h in Headers */,
+				47E0382075D7EA007445491C5A6FF1D5 /* SADeserializationProtocol.h in Headers */,
+				D65DB9A23C9F4BC679D819F8019B4B52 /* SAJsonParser.h in Headers */,
+				A90F9B828E2F8234802BCA83C3A47064 /* SASerializationProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB6B8BEF31C863838C51FBE2AAF2FF4C /* Headers */ = {
+		949765F0808C7875B0C6D65AA778B45E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C262F19908A489A35A2AD785A6499FAE /* SAFileDownloader.h in Headers */,
-				24341C31D86F7522A14DFAE24B1F6951 /* SANetwork.h in Headers */,
+				15695C7D37E9EAEF40584CE57B52AC37 /* SAFileDownloader.h in Headers */,
+				164FBA048ED4AFB69A38DFDFC01FB2A0 /* SANetwork.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ACC0154F6B5AEFEDC480E2F607231EF1 /* Headers */ = {
+		ED2D3D798C4A15F18BA64AC57739E1C0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B16AC2F835FB75171D242BD32380AC0C /* FirebaseGetToken.h in Headers */,
-				1CA7FFB5D057402F1D821783227F66A8 /* KWS.h in Headers */,
-				00199654C9CDD422E1BE1FCA7D8BE9E8 /* KWSAddress.h in Headers */,
-				444ED954B5341CEA4252B77AA4109DF0 /* KWSAppData.h in Headers */,
-				BC8233B0F4AC1BDC24DFA1977C21E76E /* KWSAppDataResponse.h in Headers */,
-				28B1916A31B3EAF80ADD254BDA447753 /* KWSApplicationProfile.h in Headers */,
-				D75E82FD8211B113B597DEB6AEA0E1B1 /* KWSCheckAllowed.h in Headers */,
-				BB9E60D30ED7E82AA719DCD3E49BD075 /* KWSCheckRegistered.h in Headers */,
-				CE12A7DB1251D5A8B1CF48379E04BE94 /* KWSError.h in Headers */,
-				5E29FD9D8037794777FB20EFB6E0AA35 /* KWSEventStatus.h in Headers */,
-				1906753023A0E62DF5CC83B468101E48 /* KWSGetAppData.h in Headers */,
-				F42A4CCF34365DC03C4A58289A6993DC /* KWSGetLeaderboard.h in Headers */,
-				F850954F83F4EFD6D478DBDDB1A28193 /* KWSGetScore.h in Headers */,
-				B604D48378A6BE859CCC653A6A1A5DB6 /* KWSGetUser.h in Headers */,
-				C30C672EB6BD6FE73AB08824FA51F996 /* KWSHasTriggeredEvent.h in Headers */,
-				88E06450794F32CC84239D095A1951D7 /* KWSInvalid.h in Headers */,
-				07FFFE9DBF77C0CE9A66E6C36A93844F /* KWSInviteUser.h in Headers */,
-				9CD8F1123E2DA11D528E894554D780ED /* KWSLeader.h in Headers */,
-				772A87FE32277DFDBA940ECED874F010 /* KWSLeaderboard.h in Headers */,
-				5F8EEE9C7F22DA2D9AA35B798E370EDF /* KWSMetadata.h in Headers */,
-				BCEBE6FC5700D76DEC67E97E66095400 /* KWSParentEmail.h in Headers */,
-				7562C51DF5E1219FE5F79B8D1135DCED /* KWSParentEmailError.h in Headers */,
-				8559BDD684607BEA8B0D3E8765861F1D /* KWSPermissions.h in Headers */,
-				279976505D73F98D2A437B4B6B2F28D6 /* KWSPoints.h in Headers */,
-				1B7FF1831D6EFEC8002C8F0C /* KWSSetAppData.h in Headers */,
-				C85D75766A374E29BA811D71F95835D2 /* KWSRegisterToken.h in Headers */,
-				C58F86DA2DFE56E5FB024F1EBF07A745 /* KWSRequestPermission.h in Headers */,
-				133F2C63EC225539B892EEEF4F0860FD /* KWSScore.h in Headers */,
-				4BEB16DE3E555D37CDB3A4AB20C63160 /* KWSService.h in Headers */,
-				FC886B90CF1217CC03A1C8AA54F6D582 /* KWSTriggerEvent.h in Headers */,
-				AB691D55528962A9CE766896F434CE7C /* KWSUnregisterToken.h in Headers */,
-				CC58073A66062AE6FCF0F26407794C82 /* KWSUpdateUser.h in Headers */,
-				FE203765DDD5D695028C57C8ABD58A40 /* KWSUser.h in Headers */,
-				7FCC04199D6CFE09106F2A0CB4210606 /* NotificationProcess.h in Headers */,
-				DEC073D0BFB79C41C4B2F82ED8A82BCD /* SystemCheckAllowed.h in Headers */,
+				E69E1F1872690503DBAF1CD7CF69B266 /* NSString+HTML.h in Headers */,
+				54AB2C5095A1E92B55F5342B9B35DFB4 /* SAActivityView.h in Headers */,
+				2AC8F69335CA9468A70EE4C848651B6E /* SAExtensions.h in Headers */,
+				DAC7E466DE0CE19702FE3E2581420000 /* SALogger.h in Headers */,
+				4A168AD0BACB3B4213AF103955813542 /* SAPopup.h in Headers */,
+				59AA9D598F2D6B8C2504516A1F96C5EE /* SASystemVersion.h in Headers */,
+				1F962751384690C278CD7450CCD15E9E /* SAUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0AB092A41110D51C14138B75DE3D3DCD /* SAJsonParser */ = {
+		06353F7EA972E6B023DC1476AA2EF885 /* SANetworking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1BEAA713253E412DA00A9BC85E438286 /* Build configuration list for PBXNativeTarget "SAJsonParser" */;
+			buildConfigurationList = A17C12E3DDA2EB9990FD1E23806E124D /* Build configuration list for PBXNativeTarget "SANetworking" */;
 			buildPhases = (
-				FB855D67C7DFA3ABE618DB783D7BB937 /* Sources */,
-				A4AFDC9DFF6ED54B5A62330CC540374D /* Frameworks */,
-				5C26F2B0ED9E013D4EAE2E815664C17D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SAJsonParser;
-			productName = SAJsonParser;
-			productReference = C1A66C38BC1E31F83BB3DD4B598AE824 /* libSAJsonParser.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		7309BFEC846A1B16BB7FAA43D6FE3D23 /* SANetworking */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0ADC9919607DFB3B1B33742E40CB0ECF /* Build configuration list for PBXNativeTarget "SANetworking" */;
-			buildPhases = (
-				F021F38A80F2A9D9F35991B3B2E0D41C /* Sources */,
-				B45D0CC24BBD2A1CAD3C6D4D02FC2479 /* Frameworks */,
-				AB6B8BEF31C863838C51FBE2AAF2FF4C /* Headers */,
+				60246E8E4CD7AA2F79AFD747F7A79F4F /* Sources */,
+				FF7BB0966E8FC0983DA1E323F23292B3 /* Frameworks */,
+				949765F0808C7875B0C6D65AA778B45E /* Headers */,
 			);
 			buildRules = (
 			);
@@ -955,13 +938,30 @@
 			productReference = 7C2415A6ADCC274A00B1BBE884348158 /* libSANetworking.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		C06DC2D1B98242F70DF28C980D506887 /* SAUtils */ = {
+		999AB555EFFCCA7CD2D04B4595BD10AB /* SAJsonParser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D23603853A596B342E1127C5EC2FC81F /* Build configuration list for PBXNativeTarget "SAUtils" */;
+			buildConfigurationList = 0828FC1A2DE54C0CC006148D1B802F6D /* Build configuration list for PBXNativeTarget "SAJsonParser" */;
 			buildPhases = (
-				77FFDAC5D0280213CEC95814EF1377E0 /* Sources */,
-				7833B2A01B2C52A0A8712F6501837F99 /* Frameworks */,
-				3CA9AF0660963B52A22212389034BB30 /* Headers */,
+				9CE23F99130DE8BF31F36F3EC605AF5A /* Sources */,
+				721309169C03296E5C161070E1FAA24F /* Frameworks */,
+				5BDA55C9DECA82CC9577C37245B73DCA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SAJsonParser;
+			productName = SAJsonParser;
+			productReference = C1A66C38BC1E31F83BB3DD4B598AE824 /* libSAJsonParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9F6E39081289C50BF60F36F03EE5A935 /* SAUtils */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F938BD7793FD5B7448045D09AAFBDE5 /* Build configuration list for PBXNativeTarget "SAUtils" */;
+			buildPhases = (
+				C9857F2C279CF303B786E6DBB354E623 /* Sources */,
+				195C7D503C3B01FFDB445543BD7B3FB2 /* Frameworks */,
+				ED2D3D798C4A15F18BA64AC57739E1C0 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -970,6 +970,26 @@
 			name = SAUtils;
 			productName = SAUtils;
 			productReference = DD4ECAD4311688A2249C63D854EDCDC4 /* libSAUtils.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E2B69F893B5285BCF546254B7FCAA1FC /* KWSiOSSDKObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E96C9D3CC0088B9DA4DEB4F103946A8 /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC" */;
+			buildPhases = (
+				01CED77CDC9C636D0A7CF36CA8CDE24C /* Sources */,
+				BE38A1D19C5297DE81BABF0DF35850AE /* Frameworks */,
+				34F880B808F20B749C6DC6B8E721B538 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				675E2B8BBA7612B2DF33F6B6FB4533B1 /* PBXTargetDependency */,
+				C5326A8CF1B1763E265063771E04E651 /* PBXTargetDependency */,
+				95BC109B98D2F25A92D81F0B68A28B06 /* PBXTargetDependency */,
+			);
+			name = KWSiOSSDKObjC;
+			productName = KWSiOSSDKObjC;
+			productReference = 92E4CA393314D183D8C15DC3D0824737 /* libKWSiOSSDKObjC.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		ED3EB150FB8C2FBF9C0F7906FF4FE21C /* Pods-KWSiOSSDKObjC_Example */ = {
@@ -990,26 +1010,6 @@
 			name = "Pods-KWSiOSSDKObjC_Example";
 			productName = "Pods-KWSiOSSDKObjC_Example";
 			productReference = E8D7B517D3917A98C2ABB7322AC1602F /* libPods-KWSiOSSDKObjC_Example.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		EF69F0412E75410E5704A4EF030B77C7 /* KWSiOSSDKObjC */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 652688131C500C50302FF43814A4BC15 /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC" */;
-			buildPhases = (
-				D20AE77A5CCC3D013D5259C15F255858 /* Sources */,
-				DB6047720ACDFDF182021CE95C24EC61 /* Frameworks */,
-				ACC0154F6B5AEFEDC480E2F607231EF1 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2E2C49FCB6ED3EE5BF210CAC8AD7753A /* PBXTargetDependency */,
-				FED2FB4714A12B68AFA040EF6CDCDF2F /* PBXTargetDependency */,
-				F7AF8CF483A7EF29B483227D28616E75 /* PBXTargetDependency */,
-			);
-			name = KWSiOSSDKObjC;
-			productName = KWSiOSSDKObjC;
-			productReference = 92E4CA393314D183D8C15DC3D0824737 /* libKWSiOSSDKObjC.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -1033,16 +1033,59 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EF69F0412E75410E5704A4EF030B77C7 /* KWSiOSSDKObjC */,
+				E2B69F893B5285BCF546254B7FCAA1FC /* KWSiOSSDKObjC */,
 				ED3EB150FB8C2FBF9C0F7906FF4FE21C /* Pods-KWSiOSSDKObjC_Example */,
-				0AB092A41110D51C14138B75DE3D3DCD /* SAJsonParser */,
-				7309BFEC846A1B16BB7FAA43D6FE3D23 /* SANetworking */,
-				C06DC2D1B98242F70DF28C980D506887 /* SAUtils */,
+				999AB555EFFCCA7CD2D04B4595BD10AB /* SAJsonParser */,
+				06353F7EA972E6B023DC1476AA2EF885 /* SANetworking */,
+				9F6E39081289C50BF60F36F03EE5A935 /* SAUtils */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		01CED77CDC9C636D0A7CF36CA8CDE24C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68CA0A2A83F99D7A208F0D75A03BD3C7 /* FirebaseGetToken.m in Sources */,
+				DD1E928722B1770DCAB641B1351E5C08 /* KWS.m in Sources */,
+				35D0E5899C926488747994F48A4CAA8C /* KWSAddress.m in Sources */,
+				0EAFE39EF55C3288391BDA5B48F71572 /* KWSAppData.m in Sources */,
+				94CB0172DFA6114691517F8B30B8595A /* KWSAppDataResponse.m in Sources */,
+				A603BBAFB9BE7663135630CC1138093A /* KWSApplicationProfile.m in Sources */,
+				D3DA3EE389C4F1A47EC55DC6CEAE553C /* KWSCheckAllowed.m in Sources */,
+				E70E6105FC716D1B1A837A426D990D44 /* KWSCheckRegistered.m in Sources */,
+				82DEDF7B1ABB94109A6212D6865DC9BE /* KWSError.m in Sources */,
+				1034B3DBB7BD80ED97D7041FA61C885D /* KWSEventStatus.m in Sources */,
+				2061E59B624B3D1DD63EBF7477DF840E /* KWSGetAppData.m in Sources */,
+				F534BF1B0D323E61BC16244E314ECA94 /* KWSGetLeaderboard.m in Sources */,
+				04DFD0BC0BCC8FCCD9197FB59CDB4CE4 /* KWSGetScore.m in Sources */,
+				B81D2A1B86494FB605D474DF998E094B /* KWSGetUser.m in Sources */,
+				E200D75B15AD763E8C25E3FC1F6253DA /* KWSHasTriggeredEvent.m in Sources */,
+				FCA82D7F8FB294ABA52B577279282CE0 /* KWSInvalid.m in Sources */,
+				44D2A94431C78ACA4E1AA11E3B36D69B /* KWSInviteUser.m in Sources */,
+				E57827FCAE07C8BD529F383675ACD603 /* KWSiOSSDKObjC-dummy.m in Sources */,
+				7F8CCBD965799A58647F9DB53DA51A14 /* KWSLeader.m in Sources */,
+				B61BABFD1B5C8331AD6D41E4E40F61BF /* KWSLeaderboard.m in Sources */,
+				29F584E02AAA161CA38A431460DDDEC8 /* KWSMetadata.m in Sources */,
+				56BA68D076C09C31706ABAC08B1FD212 /* KWSParentEmail.m in Sources */,
+				00C01041630102EF4B5813E2A67B7986 /* KWSParentEmailError.m in Sources */,
+				50C2C82756BD25EC7F24E187D1EF897E /* KWSPermissions.m in Sources */,
+				F23DFC32B629AA3751E23EE72C4CB7CE /* KWSPoints.m in Sources */,
+				5284469FBEC7894BF2499350FE45BFB1 /* KWSRegisterToken.m in Sources */,
+				23F40EF3A6B31F6452495333A222CE50 /* KWSRequestPermission.m in Sources */,
+				F65AC5FFDA8EEAADD0461B37C177B9A0 /* KWSScore.m in Sources */,
+				2A7155EF3C32DDCBAC2C19209994DF7F /* KWSService.m in Sources */,
+				31E69226CD6A6B0110A4D5DE3C31729D /* KWSSetAppData.m in Sources */,
+				B01A25288F73E21BB9DE8B5E72FA1ED2 /* KWSTriggerEvent.m in Sources */,
+				75F6E50A6143847C0E7D7407E3681782 /* KWSUnregisterToken.m in Sources */,
+				97C111714D711B67DEF0980D08C3582D /* KWSUpdateUser.m in Sources */,
+				3D0659BC390E788D682E3098C5C8AF73 /* KWSUser.m in Sources */,
+				6ED2246A8B3768915318A17EADBE243B /* NotificationProcess.m in Sources */,
+				81676124F533A74D2557868628E086EA /* SystemCheckAllowed.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		260B1D3D798C14D3F8AD8B0ECB687D37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1051,155 +1094,91 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		77FFDAC5D0280213CEC95814EF1377E0 /* Sources */ = {
+		60246E8E4CD7AA2F79AFD747F7A79F4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BDD969B144BE6DAE9B100BEF4B00023 /* NSString+HTML.m in Sources */,
-				30E4158CFBEAE2DED69B5DB876B9D86B /* SAActivityView.m in Sources */,
-				7A73C8285452DAE90903BF48A6B1625E /* SAExtensions.m in Sources */,
-				58D3711F1B76A630735D3F3853506CD9 /* SALogger.m in Sources */,
-				E56170262BAA7CB528FDCCA9E960631C /* SAPopup.m in Sources */,
-				AAC213DEF478CC5716AC845F7A8B0DBB /* SAUtils-dummy.m in Sources */,
-				DBD4A112486079D2E96CFB8278FA3856 /* SAUtils.m in Sources */,
+				819F076858563F164CACD04D9CBA5120 /* SAFileDownloader.m in Sources */,
+				79A3E7622FA44FD3DBE645E1B8A96467 /* SANetwork.m in Sources */,
+				3CD62DB8452063E365C7ACD16A349EFD /* SANetworking-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D20AE77A5CCC3D013D5259C15F255858 /* Sources */ = {
+		9CE23F99130DE8BF31F36F3EC605AF5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ED000BCF324E061EB61A73585A095CF /* FirebaseGetToken.m in Sources */,
-				158FF264DE5EA85A2F218BAA2E1DD174 /* KWS.m in Sources */,
-				988167EAF2E7B611F275638FF9B59D5F /* KWSAddress.m in Sources */,
-				D9B1D570F4D76F47ACA6DEC43584622D /* KWSAppData.m in Sources */,
-				A3E104E6D9F721E32BF2E33A9923690B /* KWSAppDataResponse.m in Sources */,
-				E926CEB8C8E008D457AA0B64AEB82262 /* KWSApplicationProfile.m in Sources */,
-				1B7FF1841D6EFEC8002C8F0C /* KWSSetAppData.m in Sources */,
-				7403D09892D3AF89A3E6F47AF7CD25F0 /* KWSCheckAllowed.m in Sources */,
-				73DC03BE9968B0FC7DD85C26E02E86FD /* KWSCheckRegistered.m in Sources */,
-				75C4051D48B899A2D1B3C55C75953B97 /* KWSError.m in Sources */,
-				2737F9DA9D888AF1F9DCA95889E3E98D /* KWSEventStatus.m in Sources */,
-				B49287E15B81911733353A7EC9D9F26A /* KWSGetAppData.m in Sources */,
-				6C461C0F5B46F3C6B6C3C26C194D6761 /* KWSGetLeaderboard.m in Sources */,
-				9ACE653BEFC7C32F2B772D58054BFA1F /* KWSGetScore.m in Sources */,
-				85D3E653E7BF03DA4E790E4BE775C6C0 /* KWSGetUser.m in Sources */,
-				ABDF953E4876D968F3A05457EE82C389 /* KWSHasTriggeredEvent.m in Sources */,
-				BAB3AB0D697A941C98BFC8227477D0C7 /* KWSInvalid.m in Sources */,
-				E5CA29E72332353949F2D6B84A9CEAF1 /* KWSInviteUser.m in Sources */,
-				89752140351126608E0AAAFE30A7BB6C /* KWSiOSSDKObjC-dummy.m in Sources */,
-				4FB2B47A7A7A9A0C280FF66452BB30B1 /* KWSLeader.m in Sources */,
-				305EC04D7060BDFE4D2CAB6A317BC67B /* KWSLeaderboard.m in Sources */,
-				7C89EC9711FFB199A03F3806B6769676 /* KWSMetadata.m in Sources */,
-				BDE064A9F2FEF66B70B132AA8183064A /* KWSParentEmail.m in Sources */,
-				37E3FAD8D4090817FFB27A46E1622C1F /* KWSParentEmailError.m in Sources */,
-				BFD720CEFC676E4DD6F259D2FE12155B /* KWSPermissions.m in Sources */,
-				8890BBF58E0AB8161D893AEE5F854AF9 /* KWSPoints.m in Sources */,
-				B9A1FE9578E673B5458DC42EB58344E9 /* KWSRegisterToken.m in Sources */,
-				505642486235280E65F9B6A9666313FF /* KWSRequestPermission.m in Sources */,
-				3D0CFDA90314D955DE7967507F9F3ADF /* KWSScore.m in Sources */,
-				EA8F74AC735D3F667516134EF47BB514 /* KWSService.m in Sources */,
-				DD6D7819E94386563A0D0DEB3C659C6A /* KWSTriggerEvent.m in Sources */,
-				F31411A58A9AE5B4D6A3CC28A0E972CD /* KWSUnregisterToken.m in Sources */,
-				14C4B2E799B5D196EE2B1981AEBB83A4 /* KWSUpdateUser.m in Sources */,
-				9DFB56D4F3D2228B82FB54FB0A6FF8D9 /* KWSUser.m in Sources */,
-				5962E94F831C03A1EFCC9C94DB70B8F6 /* NotificationProcess.m in Sources */,
-				4A98068FE0B4FBFBE9B3CA20F5393DA3 /* SystemCheckAllowed.m in Sources */,
+				230B5BAFDD1C4A748F18F684224F86BF /* NSArray+SAJson.m in Sources */,
+				A76E1FF5E3CAF2FB08570353A309C354 /* NSDictionary+SafeHandling.m in Sources */,
+				0D1B8A40DE35D9DA05BD97BE34E0D7A1 /* NSDictionary+SAJson.m in Sources */,
+				339F1A7DDA0C8C3D4A3FBD2EE7E41E16 /* SABaseObject.m in Sources */,
+				A479B420E2C71343F2496C7290E81EEF /* SAJsonParser-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F021F38A80F2A9D9F35991B3B2E0D41C /* Sources */ = {
+		C9857F2C279CF303B786E6DBB354E623 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B06402214087BA371809809DFDC80C4B /* SAFileDownloader.m in Sources */,
-				41C08851B469B9B8F6804C66E7E02E56 /* SANetwork.m in Sources */,
-				1D063E0CB4A812C186DBBC1B346DD92A /* SANetworking-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FB855D67C7DFA3ABE618DB783D7BB937 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8877FDA15801DDE3AD168A94F01A5545 /* NSArray+SAJson.m in Sources */,
-				96E8569BF757A9840BB6A4F69DB1008A /* NSDictionary+SafeHandling.m in Sources */,
-				E533B237E9558F9B5DF9800A9AF9DB12 /* NSDictionary+SAJson.m in Sources */,
-				0EEFBC9A3496EFA4E08C123BEF786EEB /* SABaseObject.m in Sources */,
-				7D31CD2616F1EC94380A770E87E8C999 /* SAJsonParser-dummy.m in Sources */,
+				8E15312B58B321F9B7EE089408B987E8 /* NSString+HTML.m in Sources */,
+				2E5891A2E8CF87F146DDB171D863FE97 /* SAActivityView.m in Sources */,
+				25E3BD43C6FFA933676DA8C9BEFD89F9 /* SAExtensions.m in Sources */,
+				67A85B5B0294BF4EDB328878244F9E89 /* SALogger.m in Sources */,
+				31CF93ADC4AD1CF66F344D81CAEC5511 /* SAPopup.m in Sources */,
+				A7CD356AD568328194AF5793F49FBB48 /* SAUtils-dummy.m in Sources */,
+				3A5AFAA3D896FA540D81ABE239C24472 /* SAUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2E2C49FCB6ED3EE5BF210CAC8AD7753A /* PBXTargetDependency */ = {
+		675E2B8BBA7612B2DF33F6B6FB4533B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SAJsonParser;
-			target = 0AB092A41110D51C14138B75DE3D3DCD /* SAJsonParser */;
-			targetProxy = 40E7FC30F9C06E8C2D01134F6906152A /* PBXContainerItemProxy */;
+			target = 999AB555EFFCCA7CD2D04B4595BD10AB /* SAJsonParser */;
+			targetProxy = CCBF69CE3BE5D725326B77CFAB6B6633 /* PBXContainerItemProxy */;
 		};
 		93844838239C84E25A3BA599DBA15D96 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = KWSiOSSDKObjC;
-			target = EF69F0412E75410E5704A4EF030B77C7 /* KWSiOSSDKObjC */;
+			target = E2B69F893B5285BCF546254B7FCAA1FC /* KWSiOSSDKObjC */;
 			targetProxy = A5B5D98DF2450DF40D4DDE3590DDA93F /* PBXContainerItemProxy */;
+		};
+		95BC109B98D2F25A92D81F0B68A28B06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SAUtils;
+			target = 9F6E39081289C50BF60F36F03EE5A935 /* SAUtils */;
+			targetProxy = CA7AEAD490CE1FD229CD2AB84A454E2F /* PBXContainerItemProxy */;
+		};
+		C5326A8CF1B1763E265063771E04E651 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SANetworking;
+			target = 06353F7EA972E6B023DC1476AA2EF885 /* SANetworking */;
+			targetProxy = F56755717904760B4BF89A3E12BD03AC /* PBXContainerItemProxy */;
 		};
 		C7D68B6E2A981C9073C348E5BFC9F93F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SAJsonParser;
-			target = 0AB092A41110D51C14138B75DE3D3DCD /* SAJsonParser */;
+			target = 999AB555EFFCCA7CD2D04B4595BD10AB /* SAJsonParser */;
 			targetProxy = 2CE82127D5B297AA2CC47AD889418EFE /* PBXContainerItemProxy */;
 		};
 		E51826B8B6596437860CA991AE5ED0F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SAUtils;
-			target = C06DC2D1B98242F70DF28C980D506887 /* SAUtils */;
+			target = 9F6E39081289C50BF60F36F03EE5A935 /* SAUtils */;
 			targetProxy = C64B956DEEEBBFFE0462CD9A82E9851A /* PBXContainerItemProxy */;
 		};
 		EE8D724832C62E9D95B8551F90318F61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SANetworking;
-			target = 7309BFEC846A1B16BB7FAA43D6FE3D23 /* SANetworking */;
+			target = 06353F7EA972E6B023DC1476AA2EF885 /* SANetworking */;
 			targetProxy = 21AB95108C789B688F2C60DB293AF5F9 /* PBXContainerItemProxy */;
-		};
-		F7AF8CF483A7EF29B483227D28616E75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SAUtils;
-			target = C06DC2D1B98242F70DF28C980D506887 /* SAUtils */;
-			targetProxy = 34175B0ECB622688B8FF9703F7A3E13B /* PBXContainerItemProxy */;
-		};
-		FED2FB4714A12B68AFA040EF6CDCDF2F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SANetworking;
-			target = 7309BFEC846A1B16BB7FAA43D6FE3D23 /* SANetworking */;
-			targetProxy = 4482F8AB55C84796FDA16E9AEFD20BB8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		23272ADA11F882A0650644B9DF392AD5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		2F5202C19E240905603F0C005EA4513A /* Release */ = {
+		208DE54D9F173E9E701D684288155F4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 94FB506E282103E09380ADFC05A8887F /* SAJsonParser.xcconfig */;
 			buildSettings = {
@@ -1208,6 +1187,27 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/SAJsonParser/SAJsonParser-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		27554183AB02332C4B708690E4FC2236 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0C34EC74A3E9E35C23AAAAC89E64132 /* KWSiOSSDKObjC.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -1262,36 +1262,15 @@
 			};
 			name = Debug;
 		};
-		4211EBF03AD3221D084184F54237562E /* Release */ = {
+		4040635E9E79F45B03AF49340A2D573A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		5B13B53054D0B830CFBF6C3FDBEA61D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */;
+			baseConfigurationReference = D0C34EC74A3E9E35C23AAAAC89E64132 /* KWSiOSSDKObjC.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SANetworking/SANetworking-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -1304,15 +1283,57 @@
 			};
 			name = Debug;
 		};
-		7250B4140E0D139C8884B9DAE74ADDE8 /* Release */ = {
+		6BDBB588B0646039D8F7EC2FC4D46B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */;
+			baseConfigurationReference = 95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6E0722D1A1120B92F44086FB2CB18663 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94FB506E282103E09380ADFC05A8887F /* SAJsonParser.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SAJsonParser/SAJsonParser-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		78F4633456F671996A88070536EAC970 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95EFB42D033CC5BD8392316EC7CD153E /* SAUtils.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SANetworking/SANetworking-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -1346,15 +1367,15 @@
 			};
 			name = Release;
 		};
-		CA20206A9DACFA7BC62BF2AEA08C76B3 /* Debug */ = {
+		94319E89C9EAE95E4CF8A2EAB9F64C93 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0C34EC74A3E9E35C23AAAAC89E64132 /* KWSiOSSDKObjC.xcconfig */;
+			baseConfigurationReference = 978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/SANetworking/SANetworking-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -1367,17 +1388,17 @@
 			};
 			name = Debug;
 		};
-		DCB8709D2ECD356C965D2C927C6553FF /* Debug */ = {
+		E29C15FEEEC6BAB52D9FEB81B739C989 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94FB506E282103E09380ADFC05A8887F /* SAJsonParser.xcconfig */;
+			baseConfigurationReference = 978590165AE572D223327C0EEDED47E5 /* SANetworking.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SAJsonParser/SAJsonParser-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/SANetworking/SANetworking-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -1386,7 +1407,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		E88F0186CCB64027DC25005AAA9177A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1447,44 +1468,14 @@
 			};
 			name = Release;
 		};
-		FDC715B9962FB4A74A132329A98A6AC5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0C34EC74A3E9E35C23AAAAC89E64132 /* KWSiOSSDKObjC.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0ADC9919607DFB3B1B33742E40CB0ECF /* Build configuration list for PBXNativeTarget "SANetworking" */ = {
+		0828FC1A2DE54C0CC006148D1B802F6D /* Build configuration list for PBXNativeTarget "SAJsonParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5B13B53054D0B830CFBF6C3FDBEA61D7 /* Debug */,
-				7250B4140E0D139C8884B9DAE74ADDE8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1BEAA713253E412DA00A9BC85E438286 /* Build configuration list for PBXNativeTarget "SAJsonParser" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DCB8709D2ECD356C965D2C927C6553FF /* Debug */,
-				2F5202C19E240905603F0C005EA4513A /* Release */,
+				6E0722D1A1120B92F44086FB2CB18663 /* Debug */,
+				208DE54D9F173E9E701D684288155F4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1507,20 +1498,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		652688131C500C50302FF43814A4BC15 /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC" */ = {
+		4F938BD7793FD5B7448045D09AAFBDE5 /* Build configuration list for PBXNativeTarget "SAUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CA20206A9DACFA7BC62BF2AEA08C76B3 /* Debug */,
-				FDC715B9962FB4A74A132329A98A6AC5 /* Release */,
+				6BDBB588B0646039D8F7EC2FC4D46B29 /* Debug */,
+				78F4633456F671996A88070536EAC970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D23603853A596B342E1127C5EC2FC81F /* Build configuration list for PBXNativeTarget "SAUtils" */ = {
+		8E96C9D3CC0088B9DA4DEB4F103946A8 /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				23272ADA11F882A0650644B9DF392AD5 /* Debug */,
-				4211EBF03AD3221D084184F54237562E /* Release */,
+				4040635E9E79F45B03AF49340A2D573A /* Debug */,
+				27554183AB02332C4B708690E4FC2236 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A17C12E3DDA2EB9990FD1E23806E124D /* Build configuration list for PBXNativeTarget "SANetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94319E89C9EAE95E4CF8A2EAB9F64C93 /* Debug */,
+				E29C15FEEEC6BAB52D9FEB81B739C989 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

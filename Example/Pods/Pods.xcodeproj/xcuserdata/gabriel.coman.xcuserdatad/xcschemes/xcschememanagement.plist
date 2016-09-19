@@ -4,70 +4,55 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>KWSiOSSDKObjC 2.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
 		<key>KWSiOSSDKObjC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-KWSiOSSDKObjC_Example.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>SAJsonParser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>SANetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>SAUtils.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0AB092A41110D51C14138B75DE3D3DCD</key>
+		<key>06353F7EA972E6B023DC1476AA2EF885</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7309BFEC846A1B16BB7FAA43D6FE3D23</key>
+		<key>999AB555EFFCCA7CD2D04B4595BD10AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C06DC2D1B98242F70DF28C980D506887</key>
+		<key>9F6E39081289C50BF60F36F03EE5A935</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2B69F893B5285BCF546254B7FCAA1FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>ED3EB150FB8C2FBF9C0F7906FF4FE21C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EF69F0412E75410E5704A4EF030B77C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
