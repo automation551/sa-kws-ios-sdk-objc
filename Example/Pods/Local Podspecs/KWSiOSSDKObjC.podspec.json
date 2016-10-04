@@ -22,10 +22,10 @@
   "source_files": "Pod/Classes/**/*",
   "dependencies": {
     "Firebase": [
-
+      "3.3.0"
     ],
     "FirebaseMessaging": [
-
+      "1.1.0"
     ],
     "SAJsonParser": [
       "1.2.3"

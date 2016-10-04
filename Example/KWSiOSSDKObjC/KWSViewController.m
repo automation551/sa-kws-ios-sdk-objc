@@ -66,19 +66,19 @@
 }
 
 - (IBAction) unregisterToken:(id)sender {
-    [[KWS sdk] unregisterForRemoteNotifications:self];
+//    [[KWS sdk] unregisterForRemoteNotifications:self];
 }
 
 - (IBAction)isRegistered {
-    [[KWS sdk] userIsRegistered:self];
+//    [[KWS sdk] userIsRegistered:self];
 }
 
 - (IBAction)getUserProfile:(id)sender {
-    [[KWS sdk] getUserProfile];
+//    [[KWS sdk] getUserProfile];
 }
 
 - (IBAction)sendParentEmail:(id)sender {
-    [[KWS sdk] submitParentEmail:@"gabriel.coman@superawesome.tv"];
+//    [[KWS sdk] submitParentEmail:@"gabriel.coman@superawesome.tv"];
 }
 
 - (void)didReceiveMemoryWarning {
