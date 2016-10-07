@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E2B69F893B5285BCF546254B7FCAA1FC'
+               BlueprintIdentifier = 'F5279D8E72DD3A59A3F13FF1CDDD46AE'
                BlueprintName = 'KWSiOSSDKObjC'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libKWSiOSSDKObjC.a'>

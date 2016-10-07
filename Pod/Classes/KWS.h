@@ -22,6 +22,7 @@
 #import "KWSHasTriggeredEvent.h"
 #import "KWSUpdateUser.h"
 #import "KWSInviteUser.h"
+#import "KWSCreateUser.h"
 
 // forward declarations
 @class KWSMetadata;
@@ -41,6 +42,7 @@
 - (void) unregister:(unregistered)unregistered;
 - (void) isRegistered:(isRegistered)isRegistered;
 - (void) submitParentEmail:(NSString*)email :(submitted)submitted;
+- (void) createUser:(NSString*)username withPassword:(NSString*)password andDateOfBirth:(NSString*)dateOfBirth andCountry:(NSString*)country :(created) created;
 - (void) getUser:(gotUser)gotUser;
 - (void) getLeaderboard:(gotLeaderboard)gotLeaderboard;
 - (void) requestPermission:(NSArray<NSNumber*>*)requestedPermissions :(requested)requested;

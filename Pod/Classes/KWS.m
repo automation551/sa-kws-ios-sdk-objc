@@ -30,6 +30,7 @@
 @property (nonatomic, strong) KWSGetAppData *getAppData;
 @property (nonatomic, strong) KWSSetAppData *setAppData;
 @property (nonatomic, strong) KWSUpdateUser *updateUser;
+@property (nonatomic, strong) KWSCreateUser *createUser;
 
 // KWS setup properties
 @property (nonatomic, strong) NSString *oauthToken;
@@ -65,6 +66,7 @@
         _getAppData = [[KWSGetAppData alloc] init];
         _setAppData = [[KWSSetAppData alloc] init];
         _updateUser = [[KWSUpdateUser alloc] init];
+        _createUser = [[KWSCreateUser alloc] init];
     }
     return self;
 }
@@ -102,6 +104,10 @@
 
 - (void) isRegistered:(isRegistered)isRegistered {
     [_notificationProcess isRegistered:isRegistered];
+}
+
+- (void) createUser:(NSString *)username withPassword:(NSString *)password andDateOfBirth:(NSString *)dateOfBirth andCountry:(NSString *)country :(created)created {
+    [_createUser execute:username andPassword:password andDateOfBirth:dateOfBirth andCountry:country :created];
 }
 
 - (void) submitParentEmail:(NSString *)email :(submitted)submitted {
