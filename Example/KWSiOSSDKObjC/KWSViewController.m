@@ -38,38 +38,12 @@
     [[KWS sdk] createUser:username withPassword:@"testtest" andDateOfBirth:@"2011-03-02" andCountry:@"US" :^(BOOL success, NSString *token) {
         
         if (success && token) {
-            [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API];
-            
-            NSLog(@"Created user %@ with token %@", username, _token);
+            [[KWS sdk] setupWithOAuthToken:token kwsApiUrl:API];
+            _token = token;
+            NSLog(@"Created user %@ with token %@", username, token);
         }
         
     }];
-    
-//    NSString *url = @"https://kwsdemobackend.herokuapp.com/create";
-//    NSDictionary *header = @{@"Content-Type":@"application/json"};
-//    NSDictionary *body = @{@"username":username,
-//                           @"password":@"testtest",
-//                           @"dateOfBirth":@"2011-03-02",
-//                           @"country":@"US"};
-//    
-//    SANetwork *network = [[SANetwork alloc] init];
-//    [network sendPOST:url withQuery:@{} andHeader:header andBody:body withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-//        if (!success) {
-//            NSLog(@"Could not create user %@", username);
-//        } else {
-//            if (status == 200) {
-//                // get user
-//                KWSModel *model = [[KWSModel alloc] initWithJsonString:payload];
-//                _token = model.token;
-//                NSLog(@"Created user %ld - %@ with token %@", (long)model.userId, username, _token);
-//                
-//                // setup KWS
-//                [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API];
-//            } else {
-//                NSLog(@"Could not create user %@", username);
-//            }
-//        }
-//    }];
 }
 
 - (IBAction) registerToken:(id)sender {

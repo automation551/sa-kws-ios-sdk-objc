@@ -7,7 +7,6 @@
 //
 
 #import "KWSAppDelegate.h"
-#import "Firebase.h"
 @implementation KWSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

@@ -8,6 +8,7 @@
 
 #import "KWSCreateUser.h"
 #import "KWSUserCreateDetail.h"
+#import "SANetwork.h"
 
 @interface KWSCreateUser ()
 @property (nonatomic, strong) created created;
@@ -15,6 +16,7 @@
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *dateOfBirth;
 @property (nonatomic, strong) NSString *country;
+@property (nonatomic, strong) SANetwork *network;
 @end
 
 @implementation KWSCreateUser
@@ -25,6 +27,12 @@
 
 - (KWS_HTTP_METHOD) getMethod {
     return POST;
+}
+
+- (NSDictionary*) getHeader {
+    return @{
+        @"Content-Type":@"application/json"
+    };
 }
 
 - (NSDictionary*) getBody {
@@ -61,7 +69,19 @@
     _password = password;
     _dateOfBirth = dateOfBirth;
     _country = country;
-    [super execute];
+    // [super execute];
+    
+    // safe block self
+    __block id blockSelf = self;
+    
+    _network = [[SANetwork alloc] init];
+    [_network sendPOST:[NSString stringWithFormat:@"%@", [self getEndpoint]]
+             withQuery:[self getQuery]
+             andHeader:[self getHeader]
+               andBody:[self getBody]
+          withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+              [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
+          }];
 }
 
 

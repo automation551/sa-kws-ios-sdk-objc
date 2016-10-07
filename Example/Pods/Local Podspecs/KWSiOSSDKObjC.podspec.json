@@ -21,12 +21,6 @@
   },
   "source_files": "Pod/Classes/**/*",
   "dependencies": {
-    "Firebase": [
-
-    ],
-    "FirebaseMessaging": [
-
-    ],
     "SAJsonParser": [
       "1.2.5"
     ],

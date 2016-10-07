@@ -11,7 +11,6 @@
 
 // get private imports
 #import "KWSMetadata.h"
-#import "Firebase.h"
 #import "SALogger.h"
 #import "SAPopup.h"
 
