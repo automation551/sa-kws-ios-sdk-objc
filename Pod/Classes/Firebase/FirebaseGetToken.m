@@ -10,8 +10,14 @@
 #import "FirebaseGetToken.h"
 
 // other imports
+#if defined(__has_include)
+#if __has_include("Firebase.h")
 #import "Firebase.h"
+#endif
+#endif
+
 #import "SALogger.h"
+#import "SAUtils.h"
 
 @interface FirebaseGetToken ()
 @end
@@ -22,57 +28,83 @@
 
 - (void) setup {
     
-    @try {
-        [FIRApp configure];
-    } @catch (NSException *exception) {
-        // when trying to configure an already configured app, it will throw
-        // an exception, but it's not fatal - it's mostly a "warning", so
-        // app execution should continue
-        if ([FIRApp defaultApp] != NULL) {
-            [SALogger log:@"Firebase app already exists"];
+    
+    Class firebaseClass = NSClassFromString(@"FIRApp");
+    
+    if (firebaseClass != NULL) {
+        
+        @try {
+            if ([firebaseClass respondsToSelector:@selector(configure)]) {
+                [firebaseClass performSelector:@selector(configure)];
+            }
+        } @catch (NSException *exception) {
+            // when trying to configure an already configured app, it will throw
+            // an exception, but it's not fatal - it's mostly a "warning", so
+            // app execution should continue
+            id defaultApp = NULL;
+            if ([firebaseClass respondsToSelector:@selector(defaultApp)]) {
+                defaultApp = [firebaseClass performSelector:@selector(defaultApp)];
+            }
+            
+            if (defaultApp != NULL) {
+                [SALogger log:@"Firebase app already exists"];
+            }
+            // when the configure function failed and there's no default app
+            // already configured, then there trully is an error!
+            else {
+                [SALogger err:[NSString stringWithFormat:@"Could not configure Firebase %@", exception]];
+                [self delDidFailBecauseFirebaseIsNotSetup];
+            }
+        } @finally {
+            // do nothing
         }
-        // when the configure function failed and there's no default app
-        // already configured, then there trully is an error!
+        
+        // get the token, if it exists
+        NSString *token = [self tryAndGetToken];
+        
+        // if it does not, start the observer
+        if (token == NULL) {
+            [SALogger log:@"Starting observer for Firebase Token"];
+            // Add observer for InstanceID token refresh callback.
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(tokenRefreshNotification:)
+                                                         name:@"com.firebase.iid.notif.refresh-token" // kFIRInstanceIDTokenRefreshNotification
+                                                       object:nil];
+        }
+        // if it exists, use it
         else {
-            [SALogger err:[NSString stringWithFormat:@"Could not configure Firebase %@", exception]];
-            [self delDidFailBecauseFirebaseIsNotSetup];
-         }
-    } @finally {
-        // do nothing
+            [SALogger log:[NSString stringWithFormat:@"Getting already existing token %@", token]];
+            [self delDidGetFirebaseToken:token];
+        }
+        
+    } else {
+        NSLog(@"Please make sure that Firebase is installed correctly!");
     }
     
-    // get the token, if it exists
-    NSString *token = [[FIRInstanceID instanceID] token];
-    
-    // if it does not, start the observer
-    if (token == NULL) {
-        [SALogger log:@"Starting observer for Firebase Token"];
-        // Add observer for InstanceID token refresh callback.
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(tokenRefreshNotification:)
-                                                     name:kFIRInstanceIDTokenRefreshNotification
-                                                   object:nil];
-    }
-    // if it exists, use it
-    else {
-        [SALogger log:[NSString stringWithFormat:@"Getting already existing token %@", token]];
-        [self delDidGetFirebaseToken:token];
-    }
 }
 
 - (void) tokenRefreshNotification:(NSNotification *)notification {
-    
-    // Note that this callback will be fired everytime a new token is generated, including the first
-    // time. So if you need to retrieve the token as soon as it is available this is where that
-    // should be done.
-    NSString *token = [[FIRInstanceID instanceID] token];
-    
-    [SALogger log:[NSString stringWithFormat:@"Token is %@", token]];
-    [self delDidGetFirebaseToken:token];
+    NSString *token = [self tryAndGetToken];
+     [SALogger log:[NSString stringWithFormat:@"Token is %@", token]];
+     [self delDidGetFirebaseToken:token];
 }
 
 - (NSString*) getFirebaseToken {
-    NSString *token = [[FIRInstanceID instanceID] token];
+    return [self tryAndGetToken];
+}
+
+- (NSString*) tryAndGetToken {
+    Class FIRInstanceIDClass = NSClassFromString(@"FIRInstanceID");
+    id instance = NULL;
+    if ([FIRInstanceIDClass respondsToSelector:@selector(instanceID)]) {
+        instance = [FIRInstanceIDClass performSelector:@selector(instanceID)];
+    }
+    
+    NSString *token = NULL;
+    if ([instance respondsToSelector:@selector(token)]) {
+        token = [instance performSelector:@selector(token)];
+    }
+    
     return token;
 }
 

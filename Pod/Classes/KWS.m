@@ -8,7 +8,6 @@
 
 #import "KWS.h"
 #import "KWSMetadata.h"
-#import "Firebase.h"
 #import "SALogger.h"
 #import "KWSSubscribeToken.h"
 #import "KWSUnsubscribeToken.h"

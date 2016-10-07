@@ -24,9 +24,7 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - KWSiOSSDKObjC (1.3.0):
-    - Firebase (= 3.3.0)
-    - FirebaseMessaging (= 1.1.0)
+  - KWSiOSSDKObjC (1.3.0.0):
     - SAJsonParser (= 1.2.3)
     - SANetworking (= 0.1.2)
     - SAUtils (= 1.2.7)
@@ -35,6 +33,8 @@ PODS:
   - SAUtils (1.2.7)
 
 DEPENDENCIES:
+  - Firebase (= 3.3.0)
+  - FirebaseMessaging (= 1.1.0)
   - KWSiOSSDKObjC (from `../`)
 
 EXTERNAL SOURCES:
@@ -50,11 +50,11 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  KWSiOSSDKObjC: e181550531392df6aac87ce1cfe6357bf225ab89
+  KWSiOSSDKObjC: 38a32df5c3261b17990d033067089876a9dff9f5
   SAJsonParser: c0a5ace5d143bc50d5318a4981ebaf79858e4af8
   SANetworking: 2e3d79a641857bab4e44d316a42b4725c3573e50
   SAUtils: e14d697d73f244cccc509bdd6a72bf2ae5fc6492
 
-PODFILE CHECKSUM: 3c12e3474281f86540c28ed1a925a110ac3448e1
+PODFILE CHECKSUM: d41f87f9fcbd14e69d64643f8c04077fd1e62fd2
 
 COCOAPODS: 1.0.1
