@@ -11,7 +11,6 @@
 #import "KWSMetadata.h"
 #import "SALogger.h"
 #import "SANetwork.h"
-#import "KWSModel.h"
 #import "SAUtils.h"
 #import "NotificationProcess.h"
 #import "FirebaseGetToken.h"
@@ -38,7 +37,7 @@
     [[KWS sdk] createUser:username withPassword:@"testtest" andDateOfBirth:@"2011-03-02" andCountry:@"US" :^(BOOL success, NSString *token) {
         
         if (success && token) {
-            [[KWS sdk] setupWithOAuthToken:token kwsApiUrl:API];
+            [[KWS sdk] startSessionWithToken:token andAPIUrl:API];
             _token = token;
             NSLog(@"Created user %@ with token %@", username, token);
         }

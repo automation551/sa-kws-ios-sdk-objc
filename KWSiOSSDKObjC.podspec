@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KWSiOSSDKObjC"
-  s.version          = "2.0.15"
+  s.version          = "2.0.16"
   s.summary          = "The SuperAwesome Kids Web Services SDK"
   s.description      = <<-DESC
 The SuperAwesome Kids Web Services iOS SDK
@@ -13,6 +13,6 @@ The SuperAwesome Kids Web Services iOS SDK
   s.ios.deployment_target = '7.0'
   s.source_files = 'Pod/Classes/**/*'
   s.dependency 'SAJsonParser', '1.2.5'
-  s.dependency 'SAUtils', '1.3.6'
-  s.dependency 'SANetworking',  '0.1.6'
+  s.dependency 'SAUtils', '1.3.9'
+  s.dependency 'SANetworking',  '0.2.1'
 end

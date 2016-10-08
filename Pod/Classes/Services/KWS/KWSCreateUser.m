@@ -51,7 +51,11 @@
     } else {
         if (status == 200 && payload != nil) {
             KWSUserCreateDetail *details = [[KWSUserCreateDetail alloc] initWithJsonString:payload];
-            _created(true, details.token);
+            if (details.token) {
+                _created(true, details.token);
+            } else {
+                _created(false, nil);
+            }
         } else {
             _created(false, nil);
         }

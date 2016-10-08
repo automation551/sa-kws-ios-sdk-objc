@@ -16,8 +16,7 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
     FirebaseCouldNotGetToken = 4,
     FailedToCheckIfUserHasNotificationsEnabledInKWS = 5,
     FailedToRequestNotificationsPermissionInKWS = 6,
-    FailedToSubmitParentEmail = 7,
-    FailedToSubscribeTokenToKWS = 8
+    FailedToSubscribeTokenToKWS = 7
 };
 
 // define blocks for the notification process

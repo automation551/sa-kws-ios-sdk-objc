@@ -33,9 +33,9 @@
 + (instancetype) sdk;
 
 // setup func
-- (void) setupWithOAuthToken:(NSString*)oauthToken
-                   kwsApiUrl:(NSString*)kwsApiUrl;
-- (void) desetup;
+- (void) startSessionWithToken:(NSString*) token
+                     andAPIUrl:(NSString*) url;
+- (void) stopSession;
 
 // Main public functions
 - (void) register:(registered)registered;

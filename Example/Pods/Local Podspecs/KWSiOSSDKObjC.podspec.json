@@ -1,6 +1,6 @@
 {
   "name": "KWSiOSSDKObjC",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "summary": "The SuperAwesome Kids Web Services SDK",
   "description": "The SuperAwesome Kids Web Services iOS SDK",
   "homepage": "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc",
@@ -25,10 +25,10 @@
       "1.2.5"
     ],
     "SAUtils": [
-      "1.3.6"
+      "1.3.9"
     ],
     "SANetworking": [
-      "0.1.6"
+      "0.2.1"
     ]
   }
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B35C9AA1D2E5DCF003C603F /* KWSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B35C9A91D2E5DCF003C603F /* KWSModel.m */; };
 		1B467E671CF45A0000362A1A /* README.rst in Resources */ = {isa = PBXBuildFile; fileRef = 1B467E661CF45A0000362A1A /* README.rst */; };
 		1B87E4A41CF89E400053FD8F /* KWSTokenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B87E4A31CF89E400053FD8F /* KWSTokenTests.m */; };
 		1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B87E4A51CF89E590053FD8F /* KWSCheckPermissionTests.m */; };
@@ -42,8 +41,6 @@
 
 /* Begin PBXFileReference section */
 		1B035366FCCE920D5E86BD26 /* libPods-KWSiOSSDKObjC_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KWSiOSSDKObjC_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B35C9A81D2E5DCF003C603F /* KWSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWSModel.h; sourceTree = "<group>"; };
-		1B35C9A91D2E5DCF003C603F /* KWSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSModel.m; sourceTree = "<group>"; };
 		1B467E661CF45A0000362A1A /* README.rst */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.rst; sourceTree = "<group>"; };
 		1B87E4A31CF89E400053FD8F /* KWSTokenTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSTokenTests.m; sourceTree = "<group>"; };
 		1B87E4A51CF89E590053FD8F /* KWSCheckPermissionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWSCheckPermissionTests.m; sourceTree = "<group>"; };
@@ -151,8 +148,6 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* KWSViewController.h */,
 				6003F5A6195388D20070C39A /* KWSViewController.m */,
-				1B35C9A81D2E5DCF003C603F /* KWSModel.h */,
-				1B35C9A91D2E5DCF003C603F /* KWSModel.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -368,7 +363,6 @@
 				6003F59E195388D20070C39A /* KWSAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* KWSViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				1B35C9AA1D2E5DCF003C603F /* KWSModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

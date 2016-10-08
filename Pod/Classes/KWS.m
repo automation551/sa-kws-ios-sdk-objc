@@ -72,11 +72,11 @@
 
 // MARK: Setup function
 
-- (void) setupWithOAuthToken:(NSString*)oauthToken
-                   kwsApiUrl:(NSString*)kwsApiUrl {
+- (void) startSessionWithToken:(NSString*) token
+                     andAPIUrl:(NSString*) url {
     
-    _oauthToken = oauthToken;
-    _kwsApiUrl = kwsApiUrl;
+    _oauthToken = token;
+    _kwsApiUrl = url;
     if (_oauthToken != NULL) {
         _metadata = [self processMetadata:_oauthToken];
     }
@@ -85,7 +85,7 @@
     }
 }
 
-- (void) desetup {
+- (void) stopSession {
     _oauthToken = NULL;
     _kwsApiUrl = NULL;
     _metadata = NULL;
