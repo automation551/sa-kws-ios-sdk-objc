@@ -8,12 +8,13 @@
 
 #import "KWSService.h"
 
-typedef void (^created)(BOOL success, NSString* token);
+// forward decl
+@class KWSLoggedUser;
+
+typedef void (^created)(BOOL success, NSInteger status, KWSLoggedUser *loggedUser);
 
 @interface KWSCreateUser : KWSService
-- (void) execute:(NSString*) username
-     andPassword:(NSString*) password
-  andDateOfBirth:(NSString*) dateOfBirth
-      andCountry:(NSString*) country
-                :(created) created;
+
+- (void) executeWithCreatedUser:(KWSLoggedUser*)loggedUser
+                               : (created) created;
 @end

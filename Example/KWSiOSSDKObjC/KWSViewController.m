@@ -8,68 +8,69 @@
 
 #import "KWSViewController.h"
 #import "KWS.h"
-#import "KWSMetadata.h"
 #import "SALogger.h"
-#import "SANetwork.h"
 #import "SAUtils.h"
-#import "NotificationProcess.h"
-#import "FirebaseGetToken.h"
 
-#define API @"https://kwsapi.demo.superawesome.tv/v1/"
+
+#define API @"https://kwsapi.demo.superawesome.tv/"
+#define CLIENT_ID @"sa-mobile-app-sdk-client-0"
+#define CLIENT_SECRET @"_apikey_5cofe4ppp9xav2t9"
 
 @interface KWSViewController ()
-@property (nonatomic, strong) NSString *token;
 @end
 
 @implementation KWSViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _token = NULL;
-    FirebaseGetToken *gt = [[FirebaseGetToken alloc] init];
-    NSLog(@"At startup token is %@", [gt getSavedToken]);
+    
+    [[KWS sdk] startSessionWithClientId:CLIENT_ID
+                        andClientSecret:CLIENT_SECRET
+                              andAPIUrl:API];
+    
 }
 
 - (IBAction) createNewUser:(id)sender {
     
-    __block NSString *username = [NSString stringWithFormat:@"testuser_%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
+    __block NSString *username = [NSString stringWithFormat:@"testusr_%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
     
-    [[KWS sdk] createUser:username withPassword:@"testtest" andDateOfBirth:@"2011-03-02" andCountry:@"US" :^(BOOL success, NSString *token) {
-        
-        if (success && token) {
-            [[KWS sdk] startSessionWithToken:token andAPIUrl:API];
-            _token = token;
-            NSLog(@"Created user %@ with token %@", username, token);
+    [[KWS sdk] createUser:username
+             withPassword:@"testtest"
+           andDateOfBirth:@"2011-03-02"
+               andCountry:@"US"
+           andParentEmail:@"dev.gabriel.coman@gmail.com"
+                         :^(BOOL success, KWSCreateUserError error) {
+                             
+        if (success) {
+            NSLog(@"Created user %@ - %@",
+                  [[KWS sdk] getLoggedUser].username,
+                  [[KWS sdk] getLoggedUser].token);
+        } else {
+            NSLog(@"Failed to create & auth user");
         }
-        
     }];
 }
 
 - (IBAction) registerToken:(id)sender {
     
-    if (_token == NULL) {
-        NSLog(@"Please create a valid user before sending tokens");
-    }
-    else{
-        registered R = ^(BOOL success, KWSErrorType type) {
-            if (success) {
-                NSLog(@"Success registering!");
-            } else {
-                switch (type) {
-                    case UserHasNoParentEmail: {
-                        [[KWS sdk] submitParentEmailWithPopup:^(BOOL success) {
-                            if (success) {
-                                [[KWS sdk] register:R];
-                            }
-                        }];
-                        break;
-                    }
-                    default:break;
+    registered R = ^(BOOL success, KWSErrorType type) {
+        if (success) {
+            NSLog(@"Success registering!");
+        } else {
+            switch (type) {
+                case UserHasNoParentEmail: {
+                    [[KWS sdk] submitParentEmailWithPopup:^(BOOL success) {
+                        if (success) {
+                            [[KWS sdk] register:R];
+                        }
+                    }];
+                    break;
                 }
+                default:break;
             }
-        };
-        [[KWS sdk] register:R];
-    }
+        }
+    };
+    [[KWS sdk] register:R];
 }
 
 - (IBAction) unregisterToken:(id)sender {

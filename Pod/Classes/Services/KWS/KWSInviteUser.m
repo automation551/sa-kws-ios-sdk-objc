@@ -16,7 +16,7 @@
 @implementation KWSInviteUser
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"users/%ld/invite-user", (long)metadata.userId];
+    return [NSString stringWithFormat:@"v1/users/%ld/invite-user", (long)loggedUser.metadata.userId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {

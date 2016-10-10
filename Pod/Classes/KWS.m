@@ -13,11 +13,13 @@
 #import "KWSMetadata.h"
 #import "SALogger.h"
 #import "SAPopup.h"
+#import "KWSLoggedUser.h"
 
 @interface KWS ()
 
 // the parent email object
 @property (nonatomic, strong) NotificationProcess *notificationProcess;
+@property (nonatomic, strong) CreateUserProcess *createUserProcess;
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
 @property (nonatomic, strong) KWSGetUser *getUser;
 @property (nonatomic, strong) KWSGetLeaderboard *getLeaderboard;
@@ -31,12 +33,11 @@
 @property (nonatomic, strong) KWSUpdateUser *updateUser;
 @property (nonatomic, strong) KWSCreateUser *createUser;
 
-// KWS setup properties
-@property (nonatomic, strong) NSString *oauthToken;
+// state properties
+@property (nonatomic, strong) NSString *clientId;
+@property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *kwsApiUrl;
-@property (nonatomic, strong) KWSMetadata *metadata;
-
-// aux variables
+@property (nonatomic, strong) KWSLoggedUser *loggedUser;
 
 @end
 
@@ -54,6 +55,7 @@
 - (id) init {
     if (self = [super init]) {
         _notificationProcess = [[NotificationProcess alloc] init];
+        _createUserProcess = [[CreateUserProcess alloc] init];
         _parentEmail = [[KWSParentEmail alloc] init];
         _getUser = [[KWSGetUser alloc] init];
         _getLeaderboard = [[KWSGetLeaderboard alloc] init];
@@ -72,23 +74,19 @@
 
 // MARK: Setup function
 
-- (void) startSessionWithToken:(NSString*) token
-                     andAPIUrl:(NSString*) url {
-    
-    _oauthToken = token;
-    _kwsApiUrl = url;
-    if (_oauthToken != NULL) {
-        _metadata = [self processMetadata:_oauthToken];
-    }
-    if (_metadata != NULL) {
-        [SALogger log:[self.metadata jsonPreetyStringRepresentation]];
-    }
+- (void) startSessionWithClientId:(NSString *)clientId
+                  andClientSecret:(NSString *)clientSecret
+                        andAPIUrl:(NSString *)apiUrl {
+    _clientId = clientId;
+    _clientSecret = clientSecret;
+    _kwsApiUrl = apiUrl;
 }
 
 - (void) stopSession {
-    _oauthToken = NULL;
-    _kwsApiUrl = NULL;
-    _metadata = NULL;
+    _loggedUser = nil;
+    _kwsApiUrl = nil;
+    _clientId = nil;
+    _clientSecret = nil;
 }
 
 // MARK: public simple functions
@@ -105,8 +103,8 @@
     [_notificationProcess isRegistered:isRegistered];
 }
 
-- (void) createUser:(NSString *)username withPassword:(NSString *)password andDateOfBirth:(NSString *)dateOfBirth andCountry:(NSString *)country :(created)created {
-    [_createUser execute:username andPassword:password andDateOfBirth:dateOfBirth andCountry:country :created];
+- (void) createUser:(NSString*)username withPassword:(NSString*)password andDateOfBirth:(NSString*)dateOfBirth andCountry:(NSString*)country andParentEmail:(NSString*)parentEmail :(userCreated) userCreated {
+    [_createUserProcess createWithUsername:username andPassword:password andDateOfBirth:dateOfBirth andCountry:country andParentEmail:parentEmail :userCreated];
 }
 
 - (void) submitParentEmail:(NSString *)email :(submitted)submitted {
@@ -185,47 +183,32 @@
     [_updateUser execute:updatedUser :updated];
 }
 
-// MARK: getters
+// MARK: version
 
 - (NSString*) getVersion {
-    return @"ios-2.0.12";
+    return @"ios-2.0.16";
 }
 
-- (NSString*) getOAuthToken {
-    return _oauthToken;
+// MARK: setters & getters
+
+- (void) setLoggedUser: (KWSLoggedUser*) loggedUser {
+    _loggedUser = loggedUser;
+}
+
+- (KWSLoggedUser *) getLoggedUser {
+    return _loggedUser;
+}
+
+- (NSString*) getClientId {
+    return _clientId;
+}
+
+- (NSString*) getClientSecret {
+    return _clientSecret;
 }
 
 - (NSString*) getKWSApiUrl {
     return _kwsApiUrl;
-}
-
-- (KWSMetadata*) getMetadata {
-    return _metadata;
-}
-
-// MARK: Private function
-
-- (KWSMetadata*) processMetadata:(NSString*)oauthToken {
-    NSArray *subtokens = [oauthToken componentsSeparatedByString:@"."];
-    NSString *token = nil;
-    if (subtokens.count >= 2) token = subtokens[1];
-    if (token == nil) return nil;
-    
-    NSString *token0 = token;
-    NSString *token1 = [token0 stringByAppendingString:@"="];
-    NSString *token2 = [token1 stringByAppendingString:@"="];
-    
-    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:token0 options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    if (decodedData == nil) {
-        decodedData = [[NSData alloc] initWithBase64EncodedString:token1 options:NSDataBase64DecodingIgnoreUnknownCharacters];
-        if (decodedData == nil) {
-            decodedData = [[NSData alloc] initWithBase64EncodedString:token2 options:NSDataBase64DecodingIgnoreUnknownCharacters];
-            if (decodedData == nil) return nil;
-        }
-    }
-    
-    NSString *decodedJson = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
-    return [[KWSMetadata alloc] initWithJsonString:decodedJson];
 }
 
 @end

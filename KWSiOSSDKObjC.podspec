@@ -9,7 +9,7 @@ The SuperAwesome Kids Web Services iOS SDK
   s.homepage         = "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc"
   s.license          = { :type => "GNU GENERAL PUBLIC LICENSE Version 3", :file => "LICENSE" }
   s.author           = { "Gabriel Coman" => "gabriel.coman@superawesome.tv" }
-  s.source           = { :git => "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git", :branch => "master", :tag => "2.0.15" }
+  s.source           = { :git => "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git", :branch => "master", :tag => "2.0.16" }
   s.ios.deployment_target = '7.0'
   s.source_files = 'Pod/Classes/**/*'
   s.dependency 'SAJsonParser', '1.2.5'

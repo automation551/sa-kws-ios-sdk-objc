@@ -7,22 +7,26 @@
 //
 
 #import "KWSCreateUser.h"
-#import "KWSUserCreateDetail.h"
-#import "SANetwork.h"
+
+// created user model
+#import "KWSLoggedUser.h"
 
 @interface KWSCreateUser ()
 @property (nonatomic, strong) created created;
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *dateOfBirth;
-@property (nonatomic, strong) NSString *country;
-@property (nonatomic, strong) SANetwork *network;
+@property (nonatomic, strong) KWSLoggedUser *loggedUser;
 @end
 
 @implementation KWSCreateUser
 
+- (id) init {
+    if (self = [super init]) {
+        _created = ^(BOOL success, NSInteger status, KWSLoggedUser* loggedUser) {};
+    }
+    return self;
+}
+
 - (NSString*) getEndpoint {
-    return @"https://kwsdemobackend.herokuapp.com/create";
+    return [NSString stringWithFormat:@"v1/apps/%ld/users?access_token=%@", _loggedUser.metadata.appId, _loggedUser.accessToken];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
@@ -37,56 +41,48 @@
 
 - (NSDictionary*) getBody {
     return @{
-        @"username": nullSafe(_username),
-        @"password": nullSafe(_password),
-        @"dateOfBirth": nullSafe(_dateOfBirth),
-        @"country": nullSafe(_country)
+        @"username": nullSafe(_loggedUser.username),
+        @"password": nullSafe(_loggedUser.password),
+        @"dateOfBirth": nullSafe(_loggedUser.dateOfBirth),
+        @"country": nullSafe(_loggedUser.country),
+        @"parentEmail": nullSafe(_loggedUser.parentEmail),
+        @"authenticate": [NSNumber numberWithBool:true]
     };
 }
 
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     
     if (!success) {
-        _created(false, nil);
+        _created(false, status, nil);
     } else {
-        if (status == 200 && payload != nil) {
-            KWSUserCreateDetail *details = [[KWSUserCreateDetail alloc] initWithJsonString:payload];
-            if (details.token) {
-                _created(true, details.token);
+        if (status == 201 && payload != nil) {
+            
+            // create a new logged user that will have a proper OAuth token
+            KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc] initWithJsonString:payload];
+            
+            // if all is OK go forward
+            if (loggedUser && loggedUser.token) {
+                _created(true, status, loggedUser);
             } else {
-                _created(false, nil);
+                _created(false, status, nil);
             }
         } else {
-            _created(false, nil);
+            _created(false, status, nil);
         }
     }
-    
 }
 
-- (void) execute:(NSString *)username
-     andPassword:(NSString *)password
-  andDateOfBirth:(NSString *)dateOfBirth
-      andCountry:(NSString *)country
-                :(created)created {
-    _created = created ? created : ^(BOOL success, NSString* token) {};
-    _username = username;
-    _password = password;
-    _dateOfBirth = dateOfBirth;
-    _country = country;
-    // [super execute];
+- (void) executeWithCreatedUser:(KWSLoggedUser*)loggedUser
+                               : (created) created {
     
-    // safe block self
-    __block id blockSelf = self;
+    // get variables
+    _created = created ? created : _created;
+    _loggedUser = loggedUser;
     
-    _network = [[SANetwork alloc] init];
-    [_network sendPOST:[NSString stringWithFormat:@"%@", [self getEndpoint]]
-             withQuery:[self getQuery]
-             andHeader:[self getHeader]
-               andBody:[self getBody]
-          withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-              [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
-          }];
+    // do some validation
+    
+    [super execute];
+    
 }
-
 
 @end

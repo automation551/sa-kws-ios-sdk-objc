@@ -15,7 +15,7 @@
 @implementation KWSGetScore
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"apps/%ld/score", (long)metadata.appId];
+    return [NSString stringWithFormat:@"v1/apps/%ld/score", (long)loggedUser.metadata.appId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KWSMetadata.h"
+#import "KWSLoggedUser.h"
 
 typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
     GET,
@@ -30,7 +31,7 @@ typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
     NSString *kwsApiUrl;
     NSString *oauthToken;
     NSString *version;
-    KWSMetadata *metadata;
+    KWSLoggedUser *loggedUser;
 }
 
 // request basic functions

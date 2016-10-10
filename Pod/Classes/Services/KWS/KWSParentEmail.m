@@ -18,7 +18,7 @@
 @implementation KWSParentEmail
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"users/%ld/request-permissions", (long)metadata.userId];
+    return [NSString stringWithFormat:@"v1/users/%ld/request-permissions", (long)loggedUser.metadata.userId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {

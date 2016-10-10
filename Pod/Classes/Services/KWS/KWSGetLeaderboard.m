@@ -15,7 +15,7 @@
 @implementation KWSGetLeaderboard
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"apps/%ld/leaders", (long)metadata.appId];
+    return [NSString stringWithFormat:@"v1/apps/%ld/leaders", (long)loggedUser.metadata.appId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {

@@ -18,7 +18,7 @@
 @implementation KWSTriggerEvent
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"users/%ld/trigger-event", (long)metadata.userId];
+    return [NSString stringWithFormat:@"v1/users/%ld/trigger-event", (long)loggedUser.metadata.userId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {

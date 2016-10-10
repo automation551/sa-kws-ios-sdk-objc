@@ -10,7 +10,6 @@
 
 // imports
 #import "KWSParentEmail.h"
-#import "NotificationProcess.h"
 #import "KWSGetUser.h"
 #import "KWSGetLeaderboard.h"
 #import "KWSRequestPermission.h"
@@ -23,6 +22,9 @@
 #import "KWSUpdateUser.h"
 #import "KWSInviteUser.h"
 #import "KWSCreateUser.h"
+#import "KWSLoggedUser.h"
+#import "CreateUserProcess.h"
+#import "NotificationProcess.h"
 
 // forward declarations
 @class KWSMetadata;
@@ -33,8 +35,9 @@
 + (instancetype) sdk;
 
 // setup func
-- (void) startSessionWithToken:(NSString*) token
-                     andAPIUrl:(NSString*) url;
+- (void) startSessionWithClientId:(NSString*)clientId
+                  andClientSecret:(NSString*)clientSecret
+                        andAPIUrl:(NSString*)apiUrl;
 - (void) stopSession;
 
 // Main public functions
@@ -42,7 +45,7 @@
 - (void) unregister:(unregistered)unregistered;
 - (void) isRegistered:(isRegistered)isRegistered;
 - (void) submitParentEmail:(NSString*)email :(submitted)submitted;
-- (void) createUser:(NSString*)username withPassword:(NSString*)password andDateOfBirth:(NSString*)dateOfBirth andCountry:(NSString*)country :(created) created;
+- (void) createUser:(NSString*)username withPassword:(NSString*)password andDateOfBirth:(NSString*)dateOfBirth andCountry:(NSString*)country andParentEmail:(NSString*)parentEmail :(userCreated) userCreated;
 - (void) getUser:(gotUser)gotUser;
 - (void) getLeaderboard:(gotLeaderboard)gotLeaderboard;
 - (void) requestPermission:(NSArray<NSNumber*>*)requestedPermissions :(requested)requested;
@@ -58,10 +61,14 @@
 - (void) registerWithPopup:(registered)registered;
 - (void) submitParentEmailWithPopup:(submitted)submitted;
 
-// getters
+// version
 - (NSString*) getVersion;
-- (NSString*) getOAuthToken;
+
+// other setters & getters
+- (NSString*) getClientId;
+- (NSString*) getClientSecret;
 - (NSString*) getKWSApiUrl;
-- (KWSMetadata*) getMetadata;
+- (void) setLoggedUser: (KWSLoggedUser*) loggedUser;
+- (KWSLoggedUser*) getLoggedUser;
 
 @end

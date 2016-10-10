@@ -63,18 +63,12 @@
 - (void) execute {
     
     kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    oauthToken = [[KWS sdk] getOAuthToken];
-    metadata = [[KWS sdk] getMetadata];
+    oauthToken = [[KWS sdk] getLoggedUser].token;
+    loggedUser = [[KWS sdk] getLoggedUser];
     version = [[KWS sdk] getVersion];
     
     // safe block self
     __block id blockSelf = self;
-    
-    // check data
-    if (!kwsApiUrl || !oauthToken || !metadata) {
-        [self successWithStatus:0 andPayload:NULL andSuccess:false];
-        return;
-    }
     
     switch ([self getMethod]) {
         case GET: {
