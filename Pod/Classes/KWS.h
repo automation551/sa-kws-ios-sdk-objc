@@ -23,8 +23,8 @@
 #import "KWSInviteUser.h"
 #import "KWSCreateUser.h"
 #import "KWSLoggedUser.h"
-#import "CreateUserProcess.h"
-#import "NotificationProcess.h"
+#import "KWSCreateUserProcess.h"
+#import "KWSNotificationProcess.h"
 
 // forward declarations
 @class KWSMetadata;

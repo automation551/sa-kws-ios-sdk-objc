@@ -8,7 +8,10 @@
 
 // header
 #import "KWSParentEmail.h"
+
+// import aux & utils
 #import "SAUtils.h"
+#import "KWSAux.h"
 
 @interface KWSParentEmail ()
 @property (nonatomic, strong) submitted submitted;
@@ -16,6 +19,14 @@
 @end
 
 @implementation KWSParentEmail
+
+- (id) init {
+    if (self = [super init]) {
+        _submitted = ^(KWSParentEmailStatus type) {};
+    }
+    
+    return self;
+}
 
 - (NSString*) getEndpoint {
     return [NSString stringWithFormat:@"v1/users/%ld/request-permissions", (long)loggedUser.metadata.userId];
@@ -33,22 +44,35 @@
 }
 
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
-    _submitted (success && (status == 204 || status == 200));
+    
+    if (!success) {
+        _submitted (KWSParentEmail_NetworkError);
+    } else {
+        if (status == 200 || status == 204) {
+            _submitted (KWSParentEmail_Success);
+        } else {
+            _submitted (KWSParentEmail_NetworkError);
+        }
+    }
 }
 
 - (void) execute:(NSString*)email :(submitted)submitted {
-    // get callback
-    _submitted = submitted ? submitted : ^(BOOL success){};
+    _submitted = submitted ? submitted : _submitted;
     _emailToSubmit = email;
+    BOOL emailValid = [self validateEmail:_emailToSubmit];
     
-    // check parameter is actually valid
-    if (_emailToSubmit == NULL || _emailToSubmit.length == 0 || [SAUtils isEmailValid:_emailToSubmit] == false) {
-        _submitted(false);
+    // check email to be valid
+    if (!emailValid) {
+        _submitted (KWSParentEmail_Invalid);
         return;
     }
-    
     // call to super
     [super execute:_emailToSubmit];
 }
+
+- (BOOL) validateEmail: (NSString *) email {
+    return email && [KWSAux validate:email withRegex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
+}
+
 
 @end

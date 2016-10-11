@@ -18,8 +18,8 @@
 @interface KWS ()
 
 // the parent email object
-@property (nonatomic, strong) NotificationProcess *notificationProcess;
-@property (nonatomic, strong) CreateUserProcess *createUserProcess;
+@property (nonatomic, strong) KWSNotificationProcess *notificationProcess;
+@property (nonatomic, strong) KWSCreateUserProcess *createUserProcess;
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
 @property (nonatomic, strong) KWSGetUser *getUser;
 @property (nonatomic, strong) KWSGetLeaderboard *getLeaderboard;
@@ -54,8 +54,8 @@
 
 - (id) init {
     if (self = [super init]) {
-        _notificationProcess = [[NotificationProcess alloc] init];
-        _createUserProcess = [[CreateUserProcess alloc] init];
+        _notificationProcess = [[KWSNotificationProcess alloc] init];
+        _createUserProcess = [[KWSCreateUserProcess alloc] init];
         _parentEmail = [[KWSParentEmail alloc] init];
         _getUser = [[KWSGetUser alloc] init];
         _getLeaderboard = [[KWSGetLeaderboard alloc] init];

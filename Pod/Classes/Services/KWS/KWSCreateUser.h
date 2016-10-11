@@ -11,7 +11,7 @@
 // forward decl
 @class KWSLoggedUser;
 
-typedef void (^created)(BOOL success, NSInteger status, KWSLoggedUser *loggedUser);
+typedef void (^created)(NSInteger status, KWSLoggedUser *loggedUser);
 
 @interface KWSCreateUser : KWSService
 

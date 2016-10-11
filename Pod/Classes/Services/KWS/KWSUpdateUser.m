@@ -18,6 +18,14 @@
 
 @implementation KWSUpdateUser
 
+- (id) init {
+    if (self = [super init]) {
+        _updated = ^(BOOL updated) {};
+    }
+    
+    return self;
+}
+
 - (NSString*) getEndpoint {
     return [NSString stringWithFormat:@"v1/users/%ld", (long)[loggedUser.metadata userId]];
 }
@@ -64,21 +72,21 @@
 
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     if (!success) {
-        _updated (false, false);
+        _updated (false);
     } else {
         if (status == 200 || status == 204) {
-            _updated (true, true);
+            _updated (true);
         } else {
             KWSError *error = [[KWSError alloc] initWithJsonString:payload];
             if (error.code == 1 || error.code == 5) {
-                _updated (true, false);
+                _updated (false);
             }
         }
     }
 }
 
 - (void) execute:(KWSUser *)updatedUser :(updated)updated {
-    _updated = updated ? updated : ^(BOOL success, BOOL updated) {};
+    _updated = updated ? updated : _updated;
     _updatedUser = updatedUser;
     [super execute];
 }

@@ -32,42 +32,55 @@
 
 - (IBAction) createNewUser:(id)sender {
     
-    __block NSString *username = [NSString stringWithFormat:@"testusr_%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
+    __block NSString *username = [NSString stringWithFormat:@"testusr%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
     
     [[KWS sdk] createUser:username
              withPassword:@"testtest"
            andDateOfBirth:@"2011-03-02"
                andCountry:@"US"
            andParentEmail:@"dev.gabriel.coman@gmail.com"
-                         :^(BOOL success, KWSCreateUserError error) {
+                         :^(KWSCreateUserStatus status) {
                              
-        if (success) {
-            NSLog(@"Created user %@ - %@",
-                  [[KWS sdk] getLoggedUser].username,
-                  [[KWS sdk] getLoggedUser].token);
-        } else {
-            NSLog(@"Failed to create & auth user");
-        }
+                             switch (status) {
+                                 case KWSCreateUser_Success: {
+                                     NSLog(@"Created user %@ - %@",
+                                           [[KWS sdk] getLoggedUser].username,
+                                           [[KWS sdk] getLoggedUser].token);
+                                     break;
+                                 }
+                                 default:
+                                     break;
+                             }
     }];
 }
 
 - (IBAction) registerToken:(id)sender {
     
-    registered R = ^(BOOL success, KWSErrorType type) {
-        if (success) {
-            NSLog(@"Success registering!");
-        } else {
-            switch (type) {
-                case UserHasNoParentEmail: {
-                    [[KWS sdk] submitParentEmailWithPopup:^(BOOL success) {
-                        if (success) {
-                            [[KWS sdk] register:R];
-                        }
-                    }];
-                    break;
-                }
-                default:break;
+    registered R = ^(KWSNotificationStatus status) {
+        switch (status) {
+            case KWSNotification_Success: {
+                break;
             }
+            case KWSNotification_NoParentEmail: {
+                [[KWS sdk] submitParentEmailWithPopup:^(KWSParentEmailStatus status) {
+                    switch (status) {
+                        case KWSParentEmail_Success: {
+                            [[KWS sdk] register:R];
+                            break;
+                        }
+                        case KWSParentEmail_Invalid: {
+                            break;
+                        }
+                        case KWSParentEmail_NetworkError: {
+                            break;
+                        }
+                    }
+                }];
+
+                break;
+            }
+            default:
+                break;
         }
     };
     [[KWS sdk] register:R];
@@ -92,13 +105,13 @@
 }
 
 
-- (IBAction)getLeaderboard:(id)sender {
+- (IBAction) getLeaderboard:(id)sender {
     [[KWS sdk] getLeaderboard:^(NSArray<KWSLeader *> *leaders) {
         NSLog(@"Leaders %@", [leaders jsonPrettyStringRepresentation]);
     }];
 }
 
-- (IBAction)triggerEvent:(id)sender {
+- (IBAction) triggerEvent:(id)sender {
     [[KWS sdk] triggerEvent:@"a7tzV7QLhlR0rS8KK98QcZgrQk3ur260" withPoints:20 andDescription:@"" :^(BOOL success) {
         NSLog(@"Triggered event %d", success);
     }];

@@ -34,5 +34,9 @@
     return [[KWSMetadata alloc] initWithJsonString:decodedJson];
 }
 
++ (BOOL) validate: (NSString*) item withRegex: (NSString*) regex {
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [test evaluateWithObject:item];
+}
 
 @end

@@ -24,6 +24,15 @@
 
 @implementation KWSCheckAllowed
 
+- (id) init {
+    if (self = [super init]) {
+        _checkAllowed = ^(BOOL allowed){};
+        
+    }
+    
+    return self;
+}
+
 - (NSString*) getEndpoint {
     return [NSString stringWithFormat:@"v1/users/%ld", (long)[loggedUser.metadata userId]];
 }
@@ -34,7 +43,7 @@
 
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     if (!success) {
-        _checkAllowed(false, false);
+        _checkAllowed(false);
     } else {
         if ((status == 200 || status == 204) && payload != NULL) {
             
@@ -46,22 +55,22 @@
                 NSNumber *perm = user.applicationPermissions.sendPushNotification;
                 
                 if (perm == NULL || [perm boolValue] == true) {
-                    _checkAllowed(true, true);
+                    _checkAllowed(true);
                 } else {
-                    _checkAllowed(true, false);
+                    _checkAllowed(false);
                 }
             } else {
-                _checkAllowed(false, false);
+                _checkAllowed(false);
             }
         }
         else {
-            _checkAllowed(false, false);
+            _checkAllowed(false);
         }
     }
 }
 
 - (void) execute:(checkAllowed)checkAllowed {
-    _checkAllowed = checkAllowed ? checkAllowed : ^(BOOL success, BOOL allowed){};
+    _checkAllowed = checkAllowed ? checkAllowed : _checkAllowed;
     [super execute];
 }
 

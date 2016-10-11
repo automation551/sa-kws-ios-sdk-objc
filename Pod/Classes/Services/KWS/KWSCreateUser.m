@@ -20,7 +20,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        _created = ^(BOOL success, NSInteger status, KWSLoggedUser* loggedUser) {};
+        _created = ^(NSInteger status, KWSLoggedUser* loggedUser) {};
     }
     return self;
 }
@@ -53,7 +53,7 @@
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     
     if (!success) {
-        _created(false, status, nil);
+        _created(status, nil);
     } else {
         if (status == 201 && payload != nil) {
             
@@ -62,12 +62,12 @@
             
             // if all is OK go forward
             if (loggedUser && loggedUser.token) {
-                _created(true, status, loggedUser);
+                _created(status, loggedUser);
             } else {
-                _created(false, status, nil);
+                _created(status, nil);
             }
         } else {
-            _created(false, status, nil);
+            _created(status, nil);
         }
     }
 }

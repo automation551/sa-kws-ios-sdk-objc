@@ -19,7 +19,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        _gotAccessToken = ^(BOOL success, NSString *token) {};
+        _gotAccessToken = ^(NSString *token) {};
     }
     return self;
 }
@@ -49,13 +49,13 @@
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     
     if (!success) {
-        _gotAccessToken (false, nil);
+        _gotAccessToken (nil);
     } else {
         if (status == 200 && payload != nil) {
             KWSAccessToken *accessToken = [[KWSAccessToken alloc] initWithJsonString:payload];
-            _gotAccessToken (true, accessToken.access_token);
+            _gotAccessToken (accessToken.access_token);
         } else {
-            _gotAccessToken (false, nil);
+            _gotAccessToken (nil);
         }
     }
 }

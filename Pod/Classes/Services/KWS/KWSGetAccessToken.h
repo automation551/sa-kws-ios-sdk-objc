@@ -8,7 +8,7 @@
 
 #import "KWSService.h"
 
-typedef void (^gotAccessToken)(BOOL success, NSString* token);
+typedef void (^gotAccessToken)(NSString* token);
 
 @interface KWSGetAccessToken : KWSService
 - (void) execute:(gotAccessToken) gotAccessToken;

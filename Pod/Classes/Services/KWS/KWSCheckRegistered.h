@@ -8,7 +8,7 @@
 
 #import "KWSService.h"
 
-typedef void (^checkRegistered)(BOOL success, BOOL registered);
+typedef void (^checkRegistered)(BOOL registered);
 
 @interface KWSCheckRegistered : KWSService
 - (void) execute: (checkRegistered) checkRegistered;

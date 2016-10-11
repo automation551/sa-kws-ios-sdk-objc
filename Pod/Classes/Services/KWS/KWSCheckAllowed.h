@@ -15,7 +15,7 @@
 
 #import "KWSService.h"
 
-typedef void (^checkAllowed)(BOOL success, BOOL allowed);
+typedef void (^checkAllowed)(BOOL allowed);
 
 @interface KWSCheckAllowed : KWSService
 - (void) execute:(checkAllowed)checkAllowed;

@@ -15,17 +15,25 @@
 #import <UIKit/UIKit.h>
 #import "KWSService.h"
 
+// enum to define permissions
 typedef NS_ENUM(NSInteger, KWSPermissionType) {
-    accessEmail = 0,
-    accessAddress = 1,
-    accessFirstName = 2,
-    accessLastName = 3,
-    accessPhoneNumber = 4,
-    sendNewsletter = 5,
-    sendPushNotification = 6
+    KWSPermission_AccessEmail             = 0,
+    KWSPermission_AccessAddress           = 1,
+    KWSPermission_AccessFirstName         = 2,
+    KWSPermission_AccessLastName          = 3,
+    KWSPermission_AccessPhoneNumber       = 4,
+    KWSPermission_SendNewsletter          = 5,
+    KWSPermission_SendPushNotification    = 6
 };
 
-typedef void (^requested)(BOOL success, BOOL requested);
+// enum to define status
+typedef NS_ENUM (NSInteger, KWSPermissionStatus) {
+    KWSPermission_Success = 0,
+    KWSPermission_NoParentEmail = 1,
+    KWSPermission_NetworkError = 2
+};
+
+typedef void (^requested)(KWSPermissionStatus status);
 
 @interface KWSRequestPermission : KWSService
 - (void) execute:(NSArray<NSNumber*>*)requestPermissions :(requested)requested;

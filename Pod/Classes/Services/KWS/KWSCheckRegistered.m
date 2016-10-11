@@ -15,6 +15,14 @@
 
 @implementation KWSCheckRegistered
 
+- (id) init {
+    if (self = [super init]) {
+        _checkRegistered = ^(BOOL registered) {};
+    }
+    
+    return self;
+}
+
 - (NSString*) getEndpoint {
     return [NSString stringWithFormat:@"v1/apps/%ld/users/%ld/has-device-token", (long)loggedUser.metadata.appId, (long)loggedUser.metadata.userId];
 }
@@ -25,20 +33,20 @@
 
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     if (!success) {
-        _checkRegistered(false, false);
+        _checkRegistered(false);
     } else {
         if ([payload isEqualToString:@"true"]) {
-            _checkRegistered(true, true);
+            _checkRegistered(true);
         } else if ([payload isEqualToString:@"false"]) {
-            _checkRegistered(true, false);
+            _checkRegistered(false);
         } else {
-            _checkRegistered(false, false);
+            _checkRegistered(false);
         }
     }
 }
 
 - (void) execute:(checkRegistered)checkRegistered {
-    _checkRegistered = checkRegistered ? checkRegistered : ^(BOOL success, BOOL registered){};
+    _checkRegistered = checkRegistered ? checkRegistered : _checkRegistered;
     [super execute];
 }
 

@@ -13,5 +13,6 @@
 @interface KWSAux : NSObject
 
 + (KWSMetadata*) processMetadata:(NSString*)oauthToken;
++ (BOOL) validate: (NSString*) item withRegex: (NSString*) regex;
 
 @end
