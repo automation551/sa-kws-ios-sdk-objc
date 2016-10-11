@@ -11,7 +11,6 @@
 @interface KWSTriggerEvent ()
 @property (nonatomic, strong) NSString *evtToken;
 @property (nonatomic, assign) NSInteger evtPoints;
-@property (nonatomic, strong) NSString *evtDescription;
 @property (nonatomic, strong) triggered triggered;
 @end
 
@@ -30,9 +29,6 @@
     if (_evtToken != NULL) {
         [evtDict setObject:_evtToken forKey:@"token"];
     }
-    if (_evtDescription != NULL && _evtDescription.length > 0) {
-        [evtDict setObject:_evtDescription forKey:@"description"];
-    }
     [evtDict setValue:@(_evtPoints) forKey:@"points"];
     return evtDict;
 }
@@ -41,10 +37,9 @@
     _triggered (success && (status == 200 || status == 204));
 }
 
-- (void) execute:(NSString *)token points:(NSInteger)points description:(NSString *)description :(triggered)triggered {
+- (void) execute:(NSString *)token points:(NSInteger)points :(triggered)triggered {
     _evtToken = token;
     _evtPoints = points;
-    _evtDescription = description;
     _triggered = triggered ? triggered : ^(BOOL success){};
     [super execute];
 }

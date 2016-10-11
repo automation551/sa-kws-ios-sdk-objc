@@ -89,7 +89,95 @@
     _clientSecret = nil;
 }
 
-// MARK: public simple functions
+// Create, auth user
+
+- (void) createUser:(NSString*)username
+       withPassword:(NSString*)password
+     andDateOfBirth:(NSString*)dateOfBirth
+         andCountry:(NSString*)country
+     andParentEmail:(NSString*)parentEmail
+        andResponse:(userCreated)userCreated {
+    [_createUserProcess createWithUsername:username
+                               andPassword:password
+                            andDateOfBirth:dateOfBirth
+                                andCountry:country
+                            andParentEmail:parentEmail
+                                          :userCreated];
+}
+
+// get user & update user details
+
+- (void) getUser:(gotUser)gotUser {
+    [_getUser execute:gotUser];
+}
+
+- (void) updateUser:(KWSUser*)updatedUser
+        andResponse:(updated)updated {
+    [_updateUser execute:updatedUser
+                        :updated];
+}
+
+// request permissions & submit parent email, if not already submitted
+
+- (void) submitParentEmail:(NSString *)email
+               andResponse:(submitted)submitted {
+    [_parentEmail execute:email
+                         :submitted];
+}
+
+- (void) requestPermission:(NSArray<NSNumber *> *)requestedPermissions
+               andResponse:(requested)requested {
+    [_requestPermission execute:requestedPermissions
+                               :requested];
+}
+
+// invite another user
+
+- (void) inviteUser:(NSString*)email
+        andResponse:(invited)invited {
+    [_inviteUser execute:email
+                        :invited];
+}
+
+// events, points, leaderboards
+
+- (void) triggerEvent:(NSString *)event
+           withPoints:(NSInteger)points
+          andResponse:(triggered)triggered {
+    [_triggerEvent execute:event
+                    points:points
+                          :triggered];
+}
+
+- (void) hasTriggeredEvent:(NSInteger) eventId
+               andResponse: (hasTriggered)triggered {
+    [_hasTriggeredEvent execute:eventId
+                               :triggered];
+}
+
+- (void) getScore:(gotScore)gotscore {
+    [_getScore execute:gotscore];
+}
+
+- (void) getLeaderboard:(gotLeaderboard)gotLeaderboard {
+    [_getLeaderboard execute:gotLeaderboard];
+}
+
+// app data
+
+- (void) getAppData:(gotAppData)gotappdata {
+    [_getAppData execute:gotappdata];
+}
+
+- (void) setAppData:(NSString*)name
+          withValue:(NSInteger)value
+        andResponse:(setAppData)setappdata {
+    [_setAppData execute:name
+               withValue:value
+                        :setappdata];
+}
+
+// register for notifications
 
 - (void) register:(registered)registered {
     [_notificationProcess register:registered];
@@ -101,30 +189,6 @@
 
 - (void) isRegistered:(isRegistered)isRegistered {
     [_notificationProcess isRegistered:isRegistered];
-}
-
-- (void) createUser:(NSString*)username withPassword:(NSString*)password andDateOfBirth:(NSString*)dateOfBirth andCountry:(NSString*)country andParentEmail:(NSString*)parentEmail :(userCreated) userCreated {
-    [_createUserProcess createWithUsername:username andPassword:password andDateOfBirth:dateOfBirth andCountry:country andParentEmail:parentEmail :userCreated];
-}
-
-- (void) submitParentEmail:(NSString *)email :(submitted)submitted {
-    [_parentEmail execute:email :submitted];
-}
-
-- (void) getUser:(gotUser)gotUser {
-    [_getUser execute:gotUser];
-}
-
-- (void) getLeaderboard:(gotLeaderboard)gotLeaderboard {
-    [_getLeaderboard execute:gotLeaderboard];
-}
-
-- (void) requestPermission:(NSArray<NSNumber *> *)requestedPermissions :(requested)requested {
-    [_requestPermission execute:requestedPermissions :requested];
-}
-
-- (void) triggerEvent:(NSString *)event withPoints:(NSInteger)points andDescription:(NSString *)description :(triggered)triggered {
-    [_triggerEvent execute:event points:points description:description :triggered];
 }
 
 // MARK: public complex functions
@@ -154,33 +218,9 @@
                            andKeyboardTyle:UIKeyboardTypeEmailAddress
                                 andPressed:^(int button, NSString *popupMessage) {
                                     if (button == 0) {
-                                        [self submitParentEmail:popupMessage :submitted];
+                                        [self submitParentEmail:popupMessage andResponse:submitted];
                                     }
                                 }];
-}
-
-- (void) getScore:(gotScore)gotscore {
-    [_getScore execute:gotscore];
-}
-
-- (void) inviteUser:(NSString*)email :(invited)invited {
-    [_inviteUser execute:email :invited];
-}
-
-- (void) hasTriggeredEvent:(NSInteger) eventId : (hasTriggered)triggered {
-    [_hasTriggeredEvent execute:eventId :triggered];
-}
-
-- (void) getAppData:(gotAppData)gotappdata {
-    [_getAppData execute:gotappdata];
-}
-
-- (void) setAppData:(NSString*)name withValue:(NSInteger)value :(setAppData)setappdata {
-    [_setAppData execute:name withValue:value :setappdata];
-}
-
-- (void) updateUser:(KWSUser*)updatedUser :(updated)updated {
-    [_updateUser execute:updatedUser :updated];
 }
 
 // MARK: version

@@ -40,22 +40,48 @@
                         andAPIUrl:(NSString*)apiUrl;
 - (void) stopSession;
 
-// Main public functions
+// Create, auth user
+- (void) createUser:(NSString*)username
+       withPassword:(NSString*)password
+     andDateOfBirth:(NSString*)dateOfBirth
+         andCountry:(NSString*)country
+     andParentEmail:(NSString*)parentEmail
+        andResponse:(userCreated) userCreated;
+
+// get user & update user details
+- (void) getUser:(gotUser)gotUser;
+- (void) updateUser:(KWSUser*)updatedUser
+        andResponse:(updated)updated;
+
+// request permissions & submit parent email, if not already submitted
+- (void) submitParentEmail:(NSString*)email
+               andResponse:(submitted)submitted;
+- (void) requestPermission:(NSArray<NSNumber*>*)requestedPermissions
+               andResponse:(requested)requested;
+
+// invite another user
+- (void) inviteUser:(NSString*)email
+        andResponse:(invited)invited;
+
+// events, points, leaderboards
+- (void) triggerEvent:(NSString*)event
+           withPoints:(NSInteger)points
+          andResponse:(triggered)triggered;
+- (void) hasTriggeredEvent:(NSInteger) eventId
+               andResponse: (hasTriggered)triggered;
+- (void) getScore:(gotScore)gotscore;
+- (void) getLeaderboard:(gotLeaderboard)gotLeaderboard;
+
+// app data
+- (void) getAppData:(gotAppData)gotappdata;
+- (void) setAppData:(NSString*)name
+          withValue:(NSInteger)value
+        andResponse:(setAppData)setappdata;
+
+// register for notifications
 - (void) register:(registered)registered;
 - (void) unregister:(unregistered)unregistered;
 - (void) isRegistered:(isRegistered)isRegistered;
-- (void) submitParentEmail:(NSString*)email :(submitted)submitted;
-- (void) createUser:(NSString*)username withPassword:(NSString*)password andDateOfBirth:(NSString*)dateOfBirth andCountry:(NSString*)country andParentEmail:(NSString*)parentEmail :(userCreated) userCreated;
-- (void) getUser:(gotUser)gotUser;
-- (void) getLeaderboard:(gotLeaderboard)gotLeaderboard;
-- (void) requestPermission:(NSArray<NSNumber*>*)requestedPermissions :(requested)requested;
-- (void) triggerEvent:(NSString*)event withPoints:(NSInteger)points andDescription:(NSString*)description :(triggered)triggered;
-- (void) getScore:(gotScore)gotscore;
-- (void) inviteUser:(NSString*)email :(invited)invited;
-- (void) hasTriggeredEvent:(NSInteger) eventId : (hasTriggered)triggered;
-- (void) getAppData:(gotAppData)gotappdata;
-- (void) setAppData:(NSString*)name withValue:(NSInteger)value :(setAppData)setappdata;
-- (void) updateUser:(KWSUser*)updatedUser :(updated)updated;
 
 // Main aux public functions
 - (void) registerWithPopup:(registered)registered;
