@@ -13,7 +13,6 @@
 @interface KWSLoggedUser : SABaseObject <SASerializationProtocol, SADeserializationProtocol, NSCoding>
 @property (nonatomic, assign) NSInteger _id;
 @property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *dateOfBirth;
 @property (nonatomic, strong) NSString *country;
 @property (nonatomic, strong) NSString *parentEmail;

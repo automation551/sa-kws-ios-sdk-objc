@@ -65,7 +65,6 @@
             // create a user w/ the necessary details
             KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc] init];
             loggedUser.username = username;
-            loggedUser.password = password;
             loggedUser.accessToken = accessToken.access_token;
             loggedUser.expiresIn = accessToken.expires_in;
             loggedUser.metadata = [KWSAux processMetadata:accessToken.access_token];
@@ -79,7 +78,6 @@
                     finalUser._id = tmpUser._id;
                     finalUser.token = tmpUser.token;
                     finalUser.username = username;
-                    finalUser.password = password;
                     finalUser.accessToken = accessToken.access_token;
                     finalUser.expiresIn = accessToken.expires_in;
                     finalUser.loginDate = [[NSDate date] timeIntervalSince1970];

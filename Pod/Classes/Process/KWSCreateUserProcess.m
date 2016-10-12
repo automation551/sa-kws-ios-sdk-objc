@@ -91,7 +91,6 @@
             // create a user w/ the necessary details
             KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc] init];
             loggedUser.username = username;
-            loggedUser.password = password;
             loggedUser.parentEmail = parentEmail;
             loggedUser.country = country;
             loggedUser.dateOfBirth = dateOfBirth;
@@ -100,7 +99,7 @@
             loggedUser.metadata = [KWSAux processMetadata:accessToken.access_token];
             
             // finally create the user on the back-end
-            [_createUser executeWithUser:loggedUser :^(NSInteger status, KWSLoggedUser *tmpUser) {
+            [_createUser executeWithUser:loggedUser andPassword:password :^(NSInteger status, KWSLoggedUser *tmpUser) {
                 
                 // if all is OK
                 if (tmpUser) {
@@ -110,7 +109,6 @@
                     finalUser._id = tmpUser._id;
                     finalUser.token = tmpUser.token;
                     finalUser.username = username;
-                    finalUser.password = password;
                     finalUser.parentEmail = parentEmail;
                     finalUser.country = country;
                     finalUser.dateOfBirth = dateOfBirth;

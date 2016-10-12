@@ -14,6 +14,7 @@
 @interface KWSCreateUser ()
 @property (nonatomic, strong) created created;
 @property (nonatomic, strong) KWSLoggedUser *loggedUser;
+@property (nonatomic, strong) NSString *password;
 @end
 
 @implementation KWSCreateUser
@@ -42,7 +43,7 @@
 - (NSDictionary*) getBody {
     return @{
         @"username": nullSafe(_loggedUser.username),
-        @"password": nullSafe(_loggedUser.password),
+        @"password": nullSafe(_password),
         @"dateOfBirth": nullSafe(_loggedUser.dateOfBirth),
         @"country": nullSafe(_loggedUser.country),
         @"parentEmail": nullSafe(_loggedUser.parentEmail),
@@ -72,10 +73,9 @@
     }
 }
 
-- (void) executeWithUser:(KWSLoggedUser*)loggedUser :(created) created {
-    
-    // get variables
+- (void) executeWithUser:(KWSLoggedUser*)loggedUser andPassword:(NSString*)password :(created) created {
     _created = created ? created : _created;
+    _password = password;
     _loggedUser = loggedUser;
     [super execute];
     

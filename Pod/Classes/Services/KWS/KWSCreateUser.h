@@ -15,6 +15,5 @@ typedef void (^created)(NSInteger status, KWSLoggedUser *loggedUser);
 
 @interface KWSCreateUser : KWSService
 
-- (void) executeWithUser:(KWSLoggedUser*)loggedUser
-                        : (created) created;
+- (void) executeWithUser:(KWSLoggedUser*)loggedUser andPassword:(NSString*)password :(created) created;
 @end

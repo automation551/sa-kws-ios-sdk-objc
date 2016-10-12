@@ -20,7 +20,6 @@
         
         __id = [[jsonDictionary safeObjectForKey:@"id"] integerValue];
         _username = [jsonDictionary safeObjectForKey:@"username"];
-        _password = [jsonDictionary safeObjectForKey:@"password"];
         _parentEmail = [jsonDictionary safeObjectForKey:@"parentEmail"];
         _country = [jsonDictionary safeObjectForKey:@"country"];
         _accessToken = [jsonDictionary safeObjectForKey:@"access_token"];
@@ -38,7 +37,6 @@
     if (self = [super init]) {
         __id = [aDecoder decodeIntegerForKey:@"_id"];
         _username = [aDecoder decodeObjectForKey:@"username"];
-        _password = [aDecoder decodeObjectForKey:@"password"];
         _parentEmail = [aDecoder decodeObjectForKey:@"parentEmail"];
         _country = [aDecoder decodeObjectForKey:@"country"];
         _accessToken = [aDecoder decodeObjectForKey:@"access_token"];
@@ -55,7 +53,6 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeInteger:__id forKey:@"_id"];
     [aCoder encodeObject:_username forKey:@"username"];
-    [aCoder encodeObject:_password forKey:@"password"];
     [aCoder encodeObject:_parentEmail forKey:@"parentEmail"];
     [aCoder encodeObject:_country forKey:@"country"];
     [aCoder encodeObject:_accessToken forKey:@"access_token"];
@@ -70,7 +67,6 @@
     return @{
         @"id": @(__id),
         @"username": nullSafe(_username),
-        @"password": nullSafe(_password),
         @"parentEmail": nullSafe(_parentEmail),
         @"country": nullSafe(_country),
         @"access_token": nullSafe(_accessToken),
