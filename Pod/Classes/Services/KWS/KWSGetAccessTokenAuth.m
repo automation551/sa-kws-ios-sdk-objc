@@ -20,7 +20,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        _gotAccessTokenAuth = ^(NSString* token) {};
+        _gotAccessTokenAuth = ^(KWSAccessToken* accessToken) {};
     }
     return self;
 }
@@ -54,7 +54,13 @@
     } else {
         if (status == 200 && payload != nil) {
             KWSAccessToken *accessToken = [[KWSAccessToken alloc] initWithJsonString:payload];
-            _gotAccessTokenAuth (accessToken.access_token);
+            
+            if (accessToken.access_token) {
+                _gotAccessTokenAuth (accessToken);
+            } else {
+                _gotAccessTokenAuth (nil);
+            }
+            
         } else {
             _gotAccessTokenAuth (nil);
         }

@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, KWSParentEmailStatus) {
     KWSParentEmail_NetworkError = 2,
 };
 
-typedef void (^submitted)(KWSParentEmailStatus type);
+typedef void (^submitted)(KWSParentEmailStatus status);
 
 @interface KWSParentEmail : KWSService
 - (void) execute:(NSString*)email :(submitted)submitted;

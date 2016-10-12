@@ -12,7 +12,7 @@
 /**
  *  Object containing KWS metadata like current user id, app id, etc
  */
-@interface KWSMetadata : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
+@interface KWSMetadata : SABaseObject <SASerializationProtocol, SADeserializationProtocol, NSCoding>
 
 // current userId (used in forming endpoints)
 @property (nonatomic, assign) NSInteger userId;
@@ -21,7 +21,7 @@
 @property (nonatomic, assign) NSInteger appId;
 
 // client Id
-@property (nonatomic, assign) NSInteger clientId;
+@property (nonatomic, strong) NSString* clientId;
 
 // scope
 @property (nonatomic, strong) NSString *scope;

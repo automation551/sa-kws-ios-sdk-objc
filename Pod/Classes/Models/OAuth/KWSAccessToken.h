@@ -8,7 +8,7 @@
 
 #import <SAJsonParser/SAJsonParser.h>
 
-@interface KWSAccessToken : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
+@interface KWSAccessToken : SABaseObject <SASerializationProtocol, SADeserializationProtocol, NSCoding>
 @property (nonatomic, strong) NSString *token_type;
 @property (nonatomic, strong) NSString *access_token;
 @property (nonatomic, assign) NSInteger expires_in;

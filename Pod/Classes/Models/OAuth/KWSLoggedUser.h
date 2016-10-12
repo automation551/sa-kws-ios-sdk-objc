@@ -10,7 +10,7 @@
 
 @class KWSMetadata;
 
-@interface KWSLoggedUser : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
+@interface KWSLoggedUser : SABaseObject <SASerializationProtocol, SADeserializationProtocol, NSCoding>
 @property (nonatomic, assign) NSInteger _id;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
@@ -19,5 +19,8 @@
 @property (nonatomic, strong) NSString *parentEmail;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *token;
+@property (nonatomic, assign) NSInteger expiresIn;
+@property (nonatomic, assign) NSInteger loginDate;
 @property (nonatomic, strong) KWSMetadata *metadata;
+
 @end

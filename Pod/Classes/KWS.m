@@ -15,6 +15,8 @@
 #import "SAPopup.h"
 #import "KWSLoggedUser.h"
 
+#define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
+
 @interface KWS ()
 
 // the parent email object
@@ -41,6 +43,9 @@
 
 // instance of the logged user
 @property (nonatomic, strong) KWSLoggedUser *loggedUser;
+
+// user defaults
+@property (nonatomic, strong) NSUserDefaults *defs;
 
 @end
 
@@ -81,9 +86,29 @@
 - (void) startSessionWithClientId:(NSString *)clientId
                   andClientSecret:(NSString *)clientSecret
                         andAPIUrl:(NSString *)apiUrl {
+    
+    // set values
     _clientId = clientId;
     _clientSecret = clientSecret;
     _kwsApiUrl = apiUrl;
+    
+    // get user defaults
+    _defs = [NSUserDefaults standardUserDefaults];
+    
+    // try to see if there is a valid user in there
+    if ([_defs objectForKey:LOGGED_USER_KEY]) {
+        NSData *loggedIserData = [[NSUserDefaults standardUserDefaults] objectForKey:LOGGED_USER_KEY];
+        KWSLoggedUser *tmpUser = [NSKeyedUnarchiver unarchiveObjectWithData:loggedIserData];
+        if ([tmpUser isValid]) {
+            _loggedUser = tmpUser;
+            NSLog(@"KWS started with logged user %ld", (long)_loggedUser.metadata.userId);
+        } else {
+            NSLog(@"KWS started with a logged user that had an expired OAuth token. Clearning cache!");
+            [_defs removeObjectForKey:LOGGED_USER_KEY];
+        }
+    } else {
+        NSLog(@"KWS started without a logged user since none was found");
+    }
 }
 
 - (void) stopSession {
@@ -244,7 +269,13 @@
 // MARK: setters & getters
 
 - (void) setLoggedUser: (KWSLoggedUser*) loggedUser {
+    // assign new logged user
     _loggedUser = loggedUser;
+    
+    // save logged user to defaults
+    NSData *loggedUserData = [NSKeyedArchiver archivedDataWithRootObject:_loggedUser];
+    [_defs setObject:loggedUserData forKey:LOGGED_USER_KEY];
+    [_defs synchronize];
 }
 
 - (KWSLoggedUser *) getLoggedUser {

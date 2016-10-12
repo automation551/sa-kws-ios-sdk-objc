@@ -14,6 +14,7 @@
 #import "KWSCreateUser.h"
 
 // get temporary models
+#import "KWSAccessToken.h"
 #import "KWSLoggedUser.h"
 
 // import main SDK
@@ -83,7 +84,7 @@
     }
     
     // get access token
-    [_getAccessToken execute:^(NSString *accessToken) {
+    [_getAccessToken execute:^(KWSAccessToken *accessToken) {
         
         if (accessToken) {
             
@@ -94,8 +95,9 @@
             loggedUser.parentEmail = parentEmail;
             loggedUser.country = country;
             loggedUser.dateOfBirth = dateOfBirth;
-            loggedUser.accessToken = accessToken;
-            loggedUser.metadata = [KWSAux processMetadata:accessToken];
+            loggedUser.accessToken = accessToken.access_token;
+            loggedUser.expiresIn = accessToken.expires_in;
+            loggedUser.metadata = [KWSAux processMetadata:accessToken.access_token];
             
             // finally create the user on the back-end
             [_createUser executeWithUser:loggedUser :^(NSInteger status, KWSLoggedUser *tmpUser) {
@@ -112,7 +114,9 @@
                     finalUser.parentEmail = parentEmail;
                     finalUser.country = country;
                     finalUser.dateOfBirth = dateOfBirth;
-                    finalUser.accessToken = accessToken;
+                    finalUser.expiresIn = accessToken.expires_in;
+                    finalUser.accessToken = accessToken.access_token;
+                    finalUser.loginDate = [[NSDate date] timeIntervalSince1970];
                     finalUser.metadata = [KWSAux processMetadata:tmpUser.token];
 
                     // set final user
@@ -124,7 +128,7 @@
                     if (status == 409) {
                         _userCreated (KWSCreateUser_DuplicateUsername);
                     }
-                    else if (status == 400) {
+                    else {
                         _userCreated (KWSCreateUser_InvalidOperation);
                     }
                 }
@@ -137,9 +141,6 @@
     
 }
 
-- (BOOL) validateEmail: (NSString *) email {
-    return email && [KWSAux validate:email withRegex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
-}
 
 - (BOOL) validateUsername: (NSString*) username {
     return username && [KWSAux validate:username withRegex:@"^[a-zA-Z0-9]*$"] && [username length] >= 3;
@@ -147,6 +148,10 @@
 
 - (BOOL) validatePassword: (NSString*) password {
     return password && [password length] >= 8;
+}
+
+- (BOOL) validateEmail: (NSString *) email {
+    return email && [KWSAux validate:email withRegex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
 }
 
 - (BOOL) validateDate: (NSString*) dateOfBirth {

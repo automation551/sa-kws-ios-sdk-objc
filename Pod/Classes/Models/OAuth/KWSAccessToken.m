@@ -21,6 +21,22 @@
     return self;
 }
 
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        _token_type = [aDecoder decodeObjectForKey:@"token_type"];
+        _access_token = [aDecoder decodeObjectForKey:@"access_token"];
+        _expires_in = [aDecoder decodeIntegerForKey:@"expires_in"];
+    }
+    
+    return self;
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_token_type forKey:@"token_type"];
+    [aCoder encodeObject:_access_token forKey:@"access_token"];
+    [aCoder encodeInteger:_expires_in forKey:@"expires_in"];
+}
+
 - (BOOL) isValid {
     return true;
 }

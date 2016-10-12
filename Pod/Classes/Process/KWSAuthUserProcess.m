@@ -11,6 +11,8 @@
 // get the two systems needed
 #import "KWSGetAccessTokenAuth.h"
 #import "KWSAuthUser.h"
+#import "KWSAccessToken.h"
+#import "KWSLoggedUser.h"
 
 // get aux
 #import "KWSAux.h"
@@ -56,7 +58,7 @@
         return;
     }
     
-    [_getAccessToken execute:username andPassword:password :^(NSString *accessToken) {
+    [_getAccessToken execute:username andPassword:password :^(KWSAccessToken *accessToken) {
         
         if (accessToken) {
             
@@ -64,8 +66,9 @@
             KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc] init];
             loggedUser.username = username;
             loggedUser.password = password;
-            loggedUser.accessToken = accessToken;
-            loggedUser.metadata = [KWSAux processMetadata:accessToken];
+            loggedUser.accessToken = accessToken.access_token;
+            loggedUser.expiresIn = accessToken.expires_in;
+            loggedUser.metadata = [KWSAux processMetadata:accessToken.access_token];
             
             [_authUser executeWithUser:loggedUser :^(NSInteger status, KWSLoggedUser *tmpUser) {
                 
@@ -77,7 +80,9 @@
                     finalUser.token = tmpUser.token;
                     finalUser.username = username;
                     finalUser.password = password;
-                    finalUser.accessToken = accessToken;
+                    finalUser.accessToken = accessToken.access_token;
+                    finalUser.expiresIn = accessToken.expires_in;
+                    finalUser.loginDate = [[NSDate date] timeIntervalSince1970];
                     finalUser.metadata = [KWSAux processMetadata:tmpUser.token];
                     
                     // set final user
