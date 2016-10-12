@@ -20,6 +20,7 @@
 // the parent email object
 @property (nonatomic, strong) KWSNotificationProcess *notificationProcess;
 @property (nonatomic, strong) KWSCreateUserProcess *createUserProcess;
+@property (nonatomic, strong) KWSAuthUserProcess *authUserProcess;
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
 @property (nonatomic, strong) KWSGetUser *getUser;
 @property (nonatomic, strong) KWSGetLeaderboard *getLeaderboard;
@@ -37,6 +38,8 @@
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *kwsApiUrl;
+
+// instance of the logged user
 @property (nonatomic, strong) KWSLoggedUser *loggedUser;
 
 @end
@@ -56,6 +59,7 @@
     if (self = [super init]) {
         _notificationProcess = [[KWSNotificationProcess alloc] init];
         _createUserProcess = [[KWSCreateUserProcess alloc] init];
+        _authUserProcess = [[KWSAuthUserProcess alloc] init];
         _parentEmail = [[KWSParentEmail alloc] init];
         _getUser = [[KWSGetUser alloc] init];
         _getLeaderboard = [[KWSGetLeaderboard alloc] init];
@@ -103,6 +107,14 @@
                                 andCountry:country
                             andParentEmail:parentEmail
                                           :userCreated];
+}
+
+- (void) authenticateUser:(NSString *)username
+             withPassword:(NSString *)password
+              andResponse:(userAuthenticated)userAuthenticated {
+    [_authUserProcess authWithUsername:username
+                           andPassword:password
+                                      :userAuthenticated];
 }
 
 // get user & update user details

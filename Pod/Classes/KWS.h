@@ -25,6 +25,7 @@
 #import "KWSLoggedUser.h"
 #import "KWSCreateUserProcess.h"
 #import "KWSNotificationProcess.h"
+#import "KWSAuthUserProcess.h"
 
 // forward declarations
 @class KWSMetadata;
@@ -47,6 +48,10 @@
          andCountry:(NSString*)country
      andParentEmail:(NSString*)parentEmail
         andResponse:(userCreated) userCreated;
+
+- (void) authenticateUser:(NSString*)username
+             withPassword:(NSString*)password
+              andResponse:(userAuthenticated)userAuthenticated;
 
 // get user & update user details
 - (void) getUser:(gotUser)gotUser;
@@ -94,6 +99,7 @@
 - (NSString*) getClientId;
 - (NSString*) getClientSecret;
 - (NSString*) getKWSApiUrl;
+- (NSString*) getClubUrl;
 - (void) setLoggedUser: (KWSLoggedUser*) loggedUser;
 - (KWSLoggedUser*) getLoggedUser;
 

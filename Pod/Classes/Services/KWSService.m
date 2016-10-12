@@ -45,7 +45,7 @@
 - (NSDictionary*) getHeader {
     return @{
         @"Content-Type": @"application/json",
-        @"Authorization": [NSString stringWithFormat:@"Bearer %@", oauthToken],
+        @"Authorization": [NSString stringWithFormat:@"Bearer %@", loggedUser.token],
         @"kws-sdk-version": version
     };
 }
@@ -63,7 +63,6 @@
 - (void) execute {
     
     kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    oauthToken = [[KWS sdk] getLoggedUser].token;
     loggedUser = [[KWS sdk] getLoggedUser];
     version = [[KWS sdk] getVersion];
     

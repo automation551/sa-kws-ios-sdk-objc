@@ -68,6 +68,24 @@
     }];
 }
 
+- (IBAction)authUser:(id)sender {
+    [[KWS sdk] authenticateUser:@"testusr455" withPassword:@"testtest" andResponse:^(KWSAuthUserStatus status) {
+        switch (status) {
+            case KWSAuthUser_Success:
+                NSLog(@"Logged in as testusr455");
+                break;
+            case KWSAuthUser_InvalidCredentials:
+                NSLog(@"Invalid credentials");
+                break;
+            case KWSAuthUser_NetworkError:
+                NSLog(@"Network error");
+                break;
+            default:
+                break;
+        }
+    }];
+}
+
 - (IBAction) getUserProfile:(id)sender {
     
     [[KWS sdk] getUser:^(KWSUser *user) {

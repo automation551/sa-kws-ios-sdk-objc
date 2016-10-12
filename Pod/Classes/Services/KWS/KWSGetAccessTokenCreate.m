@@ -6,20 +6,20 @@
 //
 //
 
-#import "KWSGetAccessToken.h"
+#import "KWSGetAccessTokenCreate.h"
 #import "KWS.h"
 #import "SAUtils.h"
 #import "KWSAccessToken.h"
 
-@interface KWSGetAccessToken ()
-@property (nonatomic, strong) gotAccessToken gotAccessToken;
+@interface KWSGetAccessTokenCreate ()
+@property (nonatomic, strong) gotAccessTokenCreate gotAccessTokenCreate;
 @end
 
-@implementation KWSGetAccessToken
+@implementation KWSGetAccessTokenCreate
 
 - (id) init {
     if (self = [super init]) {
-        _gotAccessToken = ^(NSString *token) {};
+        _gotAccessTokenCreate = ^(NSString *token) {};
     }
     return self;
 }
@@ -49,21 +49,21 @@
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     
     if (!success) {
-        _gotAccessToken (nil);
+        _gotAccessTokenCreate (nil);
     } else {
         if (status == 200 && payload != nil) {
             KWSAccessToken *accessToken = [[KWSAccessToken alloc] initWithJsonString:payload];
-            _gotAccessToken (accessToken.access_token);
+            _gotAccessTokenCreate (accessToken.access_token);
         } else {
-            _gotAccessToken (nil);
+            _gotAccessTokenCreate (nil);
         }
     }
 }
 
-- (void) execute:(gotAccessToken)gotAccessToken {
+- (void) execute:(gotAccessTokenCreate)gotAccessTokenCreate {
     
     // get the access token callback if it's not null
-    _gotAccessToken = gotAccessToken ? gotAccessToken : _gotAccessToken;
+    _gotAccessTokenCreate = gotAccessTokenCreate ? gotAccessTokenCreate : _gotAccessTokenCreate;
     
     // create endpoint
     NSString *endpoint = [NSString stringWithFormat:@"%@%@", [[KWS sdk] getKWSApiUrl], [self getEndpoint]];

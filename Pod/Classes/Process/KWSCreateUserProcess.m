@@ -10,7 +10,7 @@
 #import "KWSCreateUserProcess.h"
 
 // import headers to create a user
-#import "KWSGetAccessToken.h"
+#import "KWSGetAccessTokenCreate.h"
 #import "KWSCreateUser.h"
 
 // get temporary models
@@ -24,7 +24,7 @@
 
 @interface KWSCreateUserProcess ()
 @property (nonatomic, strong) userCreated userCreated;
-@property (nonatomic, strong) KWSGetAccessToken *getAccessToken;
+@property (nonatomic, strong) KWSGetAccessTokenCreate *getAccessToken;
 @property (nonatomic, strong) KWSCreateUser *createUser;
 @end
 
@@ -32,7 +32,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        _getAccessToken = [[KWSGetAccessToken alloc] init];
+        _getAccessToken = [[KWSGetAccessTokenCreate alloc] init];
         _createUser = [[KWSCreateUser alloc] init];
         _userCreated = ^(KWSCreateUserStatus error) {};
     }
@@ -98,7 +98,7 @@
             loggedUser.metadata = [KWSAux processMetadata:accessToken];
             
             // finally create the user on the back-end
-            [_createUser executeWithCreatedUser:loggedUser :^(NSInteger status, KWSLoggedUser *tmpUser) {
+            [_createUser executeWithUser:loggedUser :^(NSInteger status, KWSLoggedUser *tmpUser) {
                 
                 // if all is OK
                 if (tmpUser) {

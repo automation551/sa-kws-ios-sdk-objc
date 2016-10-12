@@ -29,7 +29,6 @@ typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
 
 @interface KWSService : NSObject <KWSServiceProtocol> {
     NSString *kwsApiUrl;
-    NSString *oauthToken;
     NSString *version;
     KWSLoggedUser *loggedUser;
 }

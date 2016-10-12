@@ -72,15 +72,11 @@
     }
 }
 
-- (void) executeWithCreatedUser:(KWSLoggedUser*)loggedUser
-                               : (created) created {
+- (void) executeWithUser:(KWSLoggedUser*)loggedUser :(created) created {
     
     // get variables
     _created = created ? created : _created;
     _loggedUser = loggedUser;
-    
-    // do some validation
-    
     [super execute];
     
 }

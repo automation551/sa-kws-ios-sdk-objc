@@ -152,11 +152,7 @@
             }
             
             [_checkRegistered execute:^(BOOL registered) {
-                if (!registered) {
-                    isRegistered(false);
-                } else {
-                    isRegistered(registered);
-                }
+                isRegistered (registered);
             }];
         }];
     }];
