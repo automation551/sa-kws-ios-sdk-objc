@@ -263,7 +263,7 @@
 // MARK: version
 
 - (NSString*) getVersion {
-    return @"ios-2.0.16";
+    return @"ios-2.1.1";
 }
 
 // MARK: setters & getters

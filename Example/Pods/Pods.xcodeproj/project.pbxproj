@@ -638,7 +638,7 @@
 			<key>productName</key>
 			<string>SAUtils</string>
 			<key>productReference</key>
-			<string>DD4ECAD4311688A2249C63D854EDCDC4</string>
+			<string>B3916AA153B6F3150A37435A00311E14</string>
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
 		</dict>
@@ -652,6 +652,27 @@
 			<string>sourcecode.c.objc</string>
 			<key>path</key>
 			<string>KWSAuthUserProcess.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>256E7BD128EFECFE305B23751750CE2A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D84103C072C31A00FC31939103DE040D</string>
+				<string>3B6243176FFA595EF705CAC9F15B1CDD</string>
+				<string>BDB688A4B136393B8CD4F548528540A2</string>
+				<string>D3851DC1186341C05156D95BC0C75AAF</string>
+				<string>BCDDE59BED5A1BB2425EA9B54DC3D445</string>
+				<string>CB7BDA7B0F9FF65DF516BE76B40161D1</string>
+				<string>9D3B202F0EBF1C89B722E03B81CAB0A3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-KWSiOSSDKObjC_Example</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-KWSiOSSDKObjC_Example</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -703,19 +724,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>26B55B4D25F4BC55EABEF4AA63BB53DD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>275A1D4D72E06C6DA67192454BFCB7D5</key>
 		<dict>
 			<key>fileRef</key>
@@ -729,6 +737,19 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>288A346A3B8673EB0200D5817E75DC32</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Tests-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>28F598A43FC0CC724004B27214366090</key>
 		<dict>
@@ -763,6 +784,13 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>2A32C7208C0190AB028F21ADD553EFDD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8300F47EEB39E49255907D5DFC5B2A48</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>2A5E78F13011AAB06F452CBACCADFED3</key>
 		<dict>
@@ -1088,6 +1116,19 @@
 				</array>
 			</dict>
 		</dict>
+		<key>3B6243176FFA595EF705CAC9F15B1CDD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Example-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>3B6FC2F9037FEA603147A2D377D8C667</key>
 		<dict>
 			<key>baseConfigurationReference</key>
@@ -1128,6 +1169,32 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
+		<key>3B711EE4238794B8986E1268811D50F9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>A9EA334AC4F19D78BD3EF0F6CBBFDC88</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>3B7F429C720CDDE9131D32C016F0C508</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Tests-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>3BF7D0D85135BCAA7F559B0AF32C07DC</key>
 		<dict>
 			<key>buildConfigurationList</key>
@@ -1153,7 +1220,7 @@
 			<key>productName</key>
 			<string>KWSiOSSDKObjC</string>
 			<key>productReference</key>
-			<string>92E4CA393314D183D8C15DC3D0824737</string>
+			<string>8F5FEE521141E54E575A254117E43FCB</string>
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
 		</dict>
@@ -1361,6 +1428,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>4075EBD9CA0E7B4ECF47C2433CE1DFFF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Tests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>40982F16C44A32E0C1AE31494238DFB0</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1387,19 +1467,6 @@
 			<string>PBXFrameworksBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
-		</dict>
-		<key>41AC0C85C9BD3E4A047CEE1409C055F2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>41DD607C29BB1F11978E0CCD3DE3CC51</key>
 		<dict>
@@ -1563,7 +1630,7 @@
 			<key>productName</key>
 			<string>SANetworking</string>
 			<key>productReference</key>
-			<string>7C2415A6ADCC274A00B1BBE884348158</string>
+			<string>AE51D3B1B3EA79A9C1E4CD1D9C9D1F61</string>
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
 		</dict>
@@ -1593,6 +1660,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>49A11180F439D7255B8537933CCC29DB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Tests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>49DFD005C4A495F61E8C76049B2A5004</key>
 		<dict>
 			<key>children</key>
@@ -1609,19 +1689,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4BFE9299A6CC72E77E787C42D3C10730</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>4C03F8F6DBDC80482DBAEC83B9349D19</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1632,6 +1699,19 @@
 			<string>sourcecode.c.objc</string>
 			<key>path</key>
 			<string>SANetworking-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4EBD3D5573B7706EDC495C7600232F9F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Tests-frameworks.sh</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1822,6 +1902,20 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>555CF1EBF4B934A894BAA8C65A97530C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>256E7BD128EFECFE305B23751750CE2A</string>
+				<string>9E4647C48EBFB0C11DDC772FC301C930</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>573C3B4494C9029FF7E9E7441863AD0C</key>
 		<dict>
 			<key>children</key>
@@ -1943,27 +2037,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>5DD622B072C731A36AD179FB86284C8C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7D9BA9A04C5FA6F7B30F28C3F3415B55</string>
-				<string>8A955B8EEADAFBC16EAA4E8361748607</string>
-				<string>26B55B4D25F4BC55EABEF4AA63BB53DD</string>
-				<string>CEC6CC44DC2FD029F07E4633CC6544E9</string>
-				<string>4BFE9299A6CC72E77E787C42D3C10730</string>
-				<string>41AC0C85C9BD3E4A047CEE1409C055F2</string>
-				<string>E6F6AA79D903B7D8341FF4F352E837B1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-KWSiOSSDKObjC_Example</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-KWSiOSSDKObjC_Example</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>5F45B97BFD36036DA79A711393395C41</key>
 		<dict>
 			<key>fileRef</key>
@@ -2029,7 +2102,7 @@
 		<key>61753650DB0A186D21605047BA7CE428</key>
 		<dict>
 			<key>fileRef</key>
-			<string>26B55B4D25F4BC55EABEF4AA63BB53DD</string>
+			<string>BDB688A4B136393B8CD4F548528540A2</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -2127,6 +2200,21 @@
 			<string>8DC41970073F14FAFC63B3F102EC280A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>6A3A444ED6F08CC49E26CC08E7D7F91D</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libPods-KWSiOSSDKObjC_Example.a</string>
+			<key>path</key>
+			<string>libPods-KWSiOSSDKObjC_Example.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>6A4599F62421D2C97DCFC712206D6242</key>
 		<dict>
@@ -2314,6 +2402,19 @@
 				</array>
 			</dict>
 		</dict>
+		<key>798DD649A324D6F0BD6AC4DD21CB9B8F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Tests-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>79A024A6D330EDA1B594B84DC651E593</key>
 		<dict>
 			<key>baseConfigurationReference</key>
@@ -2354,6 +2455,20 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
+		<key>7A0D97CC36AFEBC8445D33CDA15C7884</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>C1F7300DEB520EE22BEF5FF36666E9E0</string>
+				<string>AC3B2F49FA1442AE2222A41ECF7EB117</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
 		<key>7AECDE0B265A418C7425D84A8D1AEA76</key>
 		<dict>
 			<key>fileRef</key>
@@ -2388,40 +2503,12 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>7C2415A6ADCC274A00B1BBE884348158</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libSANetworking.a</string>
-			<key>path</key>
-			<string>libSANetworking.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
 		<key>7C25F91D86F23A9E162991635F345CCB</key>
 		<dict>
 			<key>fileRef</key>
 			<string>C6903CF4DC2333CDC81328CC60CA3843</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>7D9BA9A04C5FA6F7B30F28C3F3415B55</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>7DB346D0F39D3F0E887471402A8071AB</key>
 		<dict>
@@ -2431,28 +2518,11 @@
 				<string>C8E251598F110F5A50511A811BBA1BBF</string>
 				<string>433CD3331B6C3787F473C941B61FC68F</string>
 				<string>898976D3A8B25B9395C3DD140A865C11</string>
-				<string>7DF954D617E96FC11F47CF00FF83D5FD</string>
-				<string>C37C73E51A9DE7F0F310B531B982CE1A</string>
+				<string>F0A8146595AAB4D4ACB35A195832EF1D</string>
+				<string>555CF1EBF4B934A894BAA8C65A97530C</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7DF954D617E96FC11F47CF00FF83D5FD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>92E4CA393314D183D8C15DC3D0824737</string>
-				<string>E8D7B517D3917A98C2ABB7322AC1602F</string>
-				<string>C1A66C38BC1E31F83BB3DD4B598AE824</string>
-				<string>7C2415A6ADCC274A00B1BBE884348158</string>
-				<string>DD4ECAD4311688A2249C63D854EDCDC4</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2599,6 +2669,21 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>8570EA2E42CAB9E09DF1A13E0974BBCC</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libPods-KWSiOSSDKObjC_Tests.a</string>
+			<key>path</key>
+			<string>libPods-KWSiOSSDKObjC_Tests.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
 		<key>85D44A346A002CF944512439F7C4A380</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -2696,7 +2781,7 @@
 		<key>890CC5D290657AE4E7D6D68BFCBAE02C</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>E6F6AA79D903B7D8341FF4F352E837B1</string>
+			<string>9D3B202F0EBF1C89B722E03B81CAB0A3</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2813,19 +2898,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>8A955B8EEADAFBC16EAA4E8361748607</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>8B057782C78D228A9FD14D9BC652B0EF</key>
 		<dict>
 			<key>children</key>
@@ -2906,6 +2978,21 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>8F5FEE521141E54E575A254117E43FCB</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libKWSiOSSDKObjC.a</string>
+			<key>path</key>
+			<string>libKWSiOSSDKObjC.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
 		<key>8FB9DFC2C56BE30ADEBF8B263F37B89D</key>
 		<dict>
 			<key>fileRef</key>
@@ -2938,21 +3025,6 @@
 			<string>KWSRequestPermission.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>92E4CA393314D183D8C15DC3D0824737</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libKWSiOSSDKObjC.a</string>
-			<key>path</key>
-			<string>libKWSiOSSDKObjC.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>931189D3F72F60B0D1FC6A751DF30F59</key>
 		<dict>
@@ -3144,6 +3216,40 @@
 			<string>809DE39F0F0B491B1EE5D892D8BDD50E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>9D3B202F0EBF1C89B722E03B81CAB0A3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Example.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9E4647C48EBFB0C11DDC772FC301C930</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CF0B8DC7B187FF6FB15544B80C95B98B</string>
+				<string>798DD649A324D6F0BD6AC4DD21CB9B8F</string>
+				<string>288A346A3B8673EB0200D5817E75DC32</string>
+				<string>4EBD3D5573B7706EDC495C7600232F9F</string>
+				<string>3B7F429C720CDDE9131D32C016F0C508</string>
+				<string>4075EBD9CA0E7B4ECF47C2433CE1DFFF</string>
+				<string>49A11180F439D7255B8537933CCC29DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-KWSiOSSDKObjC_Tests</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-KWSiOSSDKObjC_Tests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>9F589921D43E20E28745DA660718203D</key>
 		<dict>
@@ -3532,6 +3638,13 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>A9EA334AC4F19D78BD3EF0F6CBBFDC88</key>
+		<dict>
+			<key>fileRef</key>
+			<string>288A346A3B8673EB0200D5817E75DC32</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>AA5127DA8D05707920F61D49A545BD49</key>
 		<dict>
 			<key>fileRef</key>
@@ -3582,6 +3695,46 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>AC3B2F49FA1442AE2222A41ECF7EB117</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>49A11180F439D7255B8537933CCC29DB</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
 		<key>AC4223819635180017A90DD6FD2FE9AF</key>
 		<dict>
 			<key>fileRef</key>
@@ -3623,6 +3776,21 @@
 			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AE51D3B1B3EA79A9C1E4CD1D9C9D1F61</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libSANetworking.a</string>
+			<key>path</key>
+			<string>libSANetworking.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>AE9A2A382ED5EA84EFC380C8E15C4BD6</key>
 		<dict>
@@ -3762,6 +3930,21 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>B3916AA153B6F3150A37435A00311E14</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libSAUtils.a</string>
+			<key>path</key>
+			<string>libSAUtils.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
 		<key>B49A09091338F810595623844FE66735</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -3858,6 +4041,30 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>B741BB94F9F60E42BFA7BA74212339F6</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>7A0D97CC36AFEBC8445D33CDA15C7884</string>
+			<key>buildPhases</key>
+			<array>
+				<string>3B711EE4238794B8986E1268811D50F9</string>
+				<string>DE38F9D3F5C90816A85A7F6F76301A20</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-KWSiOSSDKObjC_Tests</string>
+			<key>productName</key>
+			<string>Pods-KWSiOSSDKObjC_Tests</string>
+			<key>productReference</key>
+			<string>8570EA2E42CAB9E09DF1A13E0974BBCC</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
 		</dict>
 		<key>B766D3CE5F5D60DAFD0D8252980DAB30</key>
 		<dict>
@@ -3989,6 +4196,32 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>BCDDE59BED5A1BB2425EA9B54DC3D445</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Example-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDB688A4B136393B8CD4F548528540A2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Example-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>BE01FF6D4558D9024A9D612589C5FC04</key>
 		<dict>
 			<key>isa</key>
@@ -4076,20 +4309,45 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>C1A66C38BC1E31F83BB3DD4B598AE824</key>
+		<key>C1F7300DEB520EE22BEF5FF36666E9E0</key>
 		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
+			<key>baseConfigurationReference</key>
+			<string>4075EBD9CA0E7B4ECF47C2433CE1DFFF</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
 			<key>isa</key>
-			<string>PBXFileReference</string>
+			<string>XCBuildConfiguration</string>
 			<key>name</key>
-			<string>libSAJsonParser.a</string>
-			<key>path</key>
-			<string>libSAJsonParser.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
+			<string>Debug</string>
 		</dict>
 		<key>C212DFB7E8B270D9847EE5CFA4040980</key>
 		<dict>
@@ -4189,19 +4447,6 @@
 			<string>sourcecode.c.objc</string>
 			<key>path</key>
 			<string>KWSAddress.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C37C73E51A9DE7F0F310B531B982CE1A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>5DD622B072C731A36AD179FB86284C8C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -4433,6 +4678,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>CB7BDA7B0F9FF65DF516BE76B40161D1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Example.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>CB88CAC492C45CE914152BFEB385919F</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -4495,16 +4753,16 @@
 				</array>
 			</dict>
 		</dict>
-		<key>CEC6CC44DC2FD029F07E4633CC6544E9</key>
+		<key>CF0B8DC7B187FF6FB15544B80C95B98B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
+			<string>text</string>
 			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example-frameworks.sh</string>
+			<string>Pods-KWSiOSSDKObjC_Tests-acknowledgements.markdown</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -4688,6 +4946,19 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>D3851DC1186341C05156D95BC0C75AAF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Example-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>D41D8CD98F00B204E9800998ECF8427E</key>
 		<dict>
 			<key>attributes</key>
@@ -4714,7 +4985,7 @@
 			<key>mainGroup</key>
 			<string>7DB346D0F39D3F0E887471402A8071AB</string>
 			<key>productRefGroup</key>
-			<string>7DF954D617E96FC11F47CF00FF83D5FD</string>
+			<string>F0A8146595AAB4D4ACB35A195832EF1D</string>
 			<key>projectDirPath</key>
 			<string></string>
 			<key>projectReferences</key>
@@ -4725,10 +4996,26 @@
 			<array>
 				<string>3BF7D0D85135BCAA7F559B0AF32C07DC</string>
 				<string>ED3EB150FB8C2FBF9C0F7906FF4FE21C</string>
+				<string>B741BB94F9F60E42BFA7BA74212339F6</string>
 				<string>EDA266B0C7C1ABDBA0945F64DCC1267B</string>
 				<string>4920CE3C6329275200EE362578425E88</string>
 				<string>22D980932D6C74CA47D05C5A6A790BA9</string>
 			</array>
+		</dict>
+		<key>D43BADC33963EA9C49DEA449CCBA2E34</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libSAJsonParser.a</string>
+			<key>path</key>
+			<string>libSAJsonParser.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>D4E3DE73B7F82ED0F56EB67BE81CBC26</key>
 		<dict>
@@ -4769,6 +5056,19 @@
 			<string>PBXSourcesBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
+		</dict>
+		<key>D84103C072C31A00FC31939103DE040D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>D8837989E1FD942A2A776B7B56687646</key>
 		<dict>
@@ -4894,21 +5194,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>DD4ECAD4311688A2249C63D854EDCDC4</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libSAUtils.a</string>
-			<key>path</key>
-			<string>libSAUtils.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
 		<key>DDEEA2D5A3D73D657400E01FB2EC5879</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -4923,6 +5208,19 @@
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE38F9D3F5C90816A85A7F6F76301A20</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2A32C7208C0190AB028F21ADD553EFDD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
@@ -5026,23 +5324,10 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>E6F6AA79D903B7D8341FF4F352E837B1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-KWSiOSSDKObjC_Example.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>E88F0186CCB64027DC25005AAA9177A9</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>41AC0C85C9BD3E4A047CEE1409C055F2</string>
+			<string>CB7BDA7B0F9FF65DF516BE76B40161D1</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -5078,21 +5363,6 @@
 			<string>XCBuildConfiguration</string>
 			<key>name</key>
 			<string>Debug</string>
-		</dict>
-		<key>E8D7B517D3917A98C2ABB7322AC1602F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libPods-KWSiOSSDKObjC_Example.a</string>
-			<key>path</key>
-			<string>libPods-KWSiOSSDKObjC_Example.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>E95A24AB25FDF934A106567802A8B5A7</key>
 		<dict>
@@ -5179,7 +5449,7 @@
 			<key>productName</key>
 			<string>Pods-KWSiOSSDKObjC_Example</string>
 			<key>productReference</key>
-			<string>E8D7B517D3917A98C2ABB7322AC1602F</string>
+			<string>6A3A444ED6F08CC49E26CC08E7D7F91D</string>
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
 		</dict>
@@ -5204,7 +5474,7 @@
 			<key>productName</key>
 			<string>SAJsonParser</string>
 			<key>productReference</key>
-			<string>C1A66C38BC1E31F83BB3DD4B598AE824</string>
+			<string>D43BADC33963EA9C49DEA449CCBA2E34</string>
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
 		</dict>
@@ -5258,6 +5528,24 @@
 			<string>4920CE3C6329275200EE362578425E88</string>
 			<key>targetProxy</key>
 			<string>21AB95108C789B688F2C60DB293AF5F9</string>
+		</dict>
+		<key>F0A8146595AAB4D4ACB35A195832EF1D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8F5FEE521141E54E575A254117E43FCB</string>
+				<string>6A3A444ED6F08CC49E26CC08E7D7F91D</string>
+				<string>8570EA2E42CAB9E09DF1A13E0974BBCC</string>
+				<string>D43BADC33963EA9C49DEA449CCBA2E34</string>
+				<string>AE51D3B1B3EA79A9C1E4CD1D9C9D1F61</string>
+				<string>B3916AA153B6F3150A37435A00311E14</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F0F2D8CFDD08F98DED04B0F1A9AF9EDA</key>
 		<dict>
