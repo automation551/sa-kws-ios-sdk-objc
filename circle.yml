@@ -1,3 +1,6 @@
+dependencies:
+  pre:
+    - xcrun instruments -w 'DFB14113-4697-4E2D-AD3F-B4FBA4B62969' || true
 machine:
   xcode:
     version: "8.0"
