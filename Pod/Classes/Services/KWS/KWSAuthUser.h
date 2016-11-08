@@ -9,7 +9,7 @@
 #import "KWSService.h"
 @class KWSLoggedUser;
 
-typedef void (^authenticated)(NSInteger status, KWSLoggedUser *loggedUser);
+typedef void (^authenticated)(NSInteger status, KWSLoggedUser *user);
 
 @interface KWSAuthUser : KWSService
 

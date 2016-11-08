@@ -99,7 +99,6 @@
 - (NSString*) getClientId;
 - (NSString*) getClientSecret;
 - (NSString*) getKWSApiUrl;
-- (NSString*) getClubUrl;
 - (void) setLoggedUser: (KWSLoggedUser*) loggedUser;
 - (KWSLoggedUser*) getLoggedUser;
 

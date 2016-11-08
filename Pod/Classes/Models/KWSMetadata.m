@@ -42,7 +42,7 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeInteger:_userId forKey:@"userId"];
     [aCoder encodeInteger:_appId forKey:@"appId"];
-    [aCoder encodeInteger:_clientId forKey:@"clientId"];
+    [aCoder encodeObject:_clientId forKey:@"clientId"];
     [aCoder encodeObject:_scope forKey:@"scope"];
     [aCoder encodeInteger:_iat forKey:@"iat"];
     [aCoder encodeObject:_iss forKey:@"iss"];

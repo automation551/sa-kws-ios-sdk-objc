@@ -83,8 +83,11 @@
                             [_appRef registerUserNotificationSettings:settings];
                             [_appRef registerForRemoteNotifications];
                         } else {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                             UIRemoteNotificationType allNotificationTypes = (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge);
                             [_appRef registerForRemoteNotificationTypes:allNotificationTypes];
+#pragma GCC diagnostic pop
                         }
                         
                         // mark this
@@ -109,12 +112,12 @@
                     }
                     // No parent email available
                     case KWSPermission_NoParentEmail: {
-                        registered(KWSPermission_NoParentEmail);
+                        registered(KWSNotification_NoParentEmail);
                         break;
                     }
                     // A network error occurred
                     case KWSPermission_NetworkError: {
-                        registered(KWSPermission_NetworkError);
+                        registered(KWSNotification_NetworkError);
                         break;
                     }
                 }

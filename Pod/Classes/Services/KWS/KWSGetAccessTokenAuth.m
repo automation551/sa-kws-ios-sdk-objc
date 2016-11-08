@@ -99,7 +99,7 @@
         }
         NSString *bodyStr = [bodyParams componentsJoinedByString:@"&"];
         NSData *bodyData = [bodyStr dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        NSDictionary *postLength = [NSString stringWithFormat:@"%d", [bodyData length]];
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[bodyData length]];
         [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:bodyData];
     }

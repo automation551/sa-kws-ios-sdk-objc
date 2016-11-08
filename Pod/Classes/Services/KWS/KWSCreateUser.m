@@ -13,7 +13,7 @@
 
 @interface KWSCreateUser ()
 @property (nonatomic, strong) created created;
-@property (nonatomic, strong) KWSLoggedUser *loggedUser;
+@property (nonatomic, strong) KWSLoggedUser *userTryingToLogin;
 @property (nonatomic, strong) NSString *password;
 @end
 
@@ -21,13 +21,13 @@
 
 - (id) init {
     if (self = [super init]) {
-        _created = ^(NSInteger status, KWSLoggedUser* loggedUser) {};
+        _created = ^(NSInteger status, KWSLoggedUser* user) {};
     }
     return self;
 }
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"v1/apps/%ld/users?access_token=%@", _loggedUser.metadata.appId, _loggedUser.accessToken];
+    return [NSString stringWithFormat:@"v1/apps/%ld/users?access_token=%@", (unsigned long)_userTryingToLogin.metadata.appId, _userTryingToLogin.accessToken];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
@@ -42,11 +42,11 @@
 
 - (NSDictionary*) getBody {
     return @{
-        @"username": nullSafe(_loggedUser.username),
+        @"username": nullSafe(_userTryingToLogin.username),
         @"password": nullSafe(_password),
-        @"dateOfBirth": nullSafe(_loggedUser.dateOfBirth),
-        @"country": nullSafe(_loggedUser.country),
-        @"parentEmail": nullSafe(_loggedUser.parentEmail),
+        @"dateOfBirth": nullSafe(_userTryingToLogin.dateOfBirth),
+        @"country": nullSafe(_userTryingToLogin.country),
+        @"parentEmail": nullSafe(_userTryingToLogin.parentEmail),
         @"authenticate": [NSNumber numberWithBool:true]
     };
 }
@@ -59,11 +59,11 @@
         if (status == 201 && payload != nil) {
             
             // create a new logged user that will have a proper OAuth token
-            KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc] initWithJsonString:payload];
+            KWSLoggedUser *finalUser = [[KWSLoggedUser alloc] initWithJsonString:payload];
             
             // if all is OK go forward
-            if (loggedUser && loggedUser.token) {
-                _created(status, loggedUser);
+            if (finalUser && finalUser.token) {
+                _created(status, finalUser);
             } else {
                 _created(status, nil);
             }
@@ -73,10 +73,10 @@
     }
 }
 
-- (void) executeWithUser:(KWSLoggedUser*)loggedUser andPassword:(NSString*)password :(created) created {
+- (void) executeWithUser:(KWSLoggedUser*)user andPassword:(NSString*)password :(created) created {
     _created = created ? created : _created;
     _password = password;
-    _loggedUser = loggedUser;
+    _userTryingToLogin = user;
     [super execute];
     
 }

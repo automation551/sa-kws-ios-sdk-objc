@@ -38,8 +38,13 @@
     
         @try {
             // try and call the "configure" method on "FIRApp"
-            if ([firebaseClass respondsToSelector:@selector(configure)]) {
-                [firebaseClass performSelector:@selector(configure)];
+            SEL confSel = NSSelectorFromString(@"configure");
+            if ([firebaseClass respondsToSelector:confSel]) {
+                
+                IMP imp = [firebaseClass methodForSelector:confSel];
+                void (*func)(id, SEL) = (void *)imp;
+                func(firebaseClass, confSel);
+                
             }
         } @catch (NSException *exception) {
             
@@ -47,8 +52,13 @@
             // an exception, but it's not fatal - it's mostly a "warning", so
             // app execution should continue
             id defaultApp = NULL;
-            if ([firebaseClass respondsToSelector:@selector(defaultApp)]) {
-                defaultApp = [firebaseClass performSelector:@selector(defaultApp)];
+            SEL defAppSel = NSSelectorFromString(@"defaultApp");
+            if ([firebaseClass respondsToSelector:defAppSel]) {
+                
+                IMP imp = [firebaseClass methodForSelector:defAppSel];
+                id (*func)(id, SEL) = (void *)imp;
+                defaultApp = func(firebaseClass, defAppSel);
+            
             }
             
             // when trying to configure an already configured app, it will throw
@@ -114,8 +124,13 @@
         
         @try {
             // try and call the "configure" method on "FIRApp"
-            if ([firebaseClass respondsToSelector:@selector(configure)]) {
-                [firebaseClass performSelector:@selector(configure)];
+            SEL confSel = NSSelectorFromString(@"configure");
+            if ([firebaseClass respondsToSelector:confSel]) {
+                
+                IMP imp = [firebaseClass methodForSelector:confSel];
+                void (*func)(id, SEL) = (void *)imp;
+                func(firebaseClass, confSel);
+                
             }
         } @catch (NSException* ignored) {
             // do nothing
@@ -135,14 +150,22 @@
     
     // get an actual instance, since FIRInstanceID is a singleton
     id instance = NULL;
-    if ([FIRInstanceIDClass respondsToSelector:@selector(instanceID)]) {
-        instance = [FIRInstanceIDClass performSelector:@selector(instanceID)];
+    SEL instanceIDSel = NSSelectorFromString(@"instanceID");
+    if ([FIRInstanceIDClass respondsToSelector:instanceIDSel]) {
+        
+        IMP imp = [FIRInstanceIDClass methodForSelector:instanceIDSel];
+        id (*func)(id, SEL) = (void *)imp;
+        instance = func(FIRInstanceIDClass, instanceIDSel);
     }
     
     // finally try to get the Token
     NSString *token = NULL;
-    if ([instance respondsToSelector:@selector(token)]) {
-        token = [instance performSelector:@selector(token)];
+    SEL tokenSel = NSSelectorFromString(@"token");
+    if ([instance respondsToSelector:tokenSel]) {
+        
+        IMP imp = [instance methodForSelector:tokenSel];
+        NSString* (*func)(id, SEL) = (void *)imp;
+        token = func(instance, tokenSel);
     }
     
     return token;

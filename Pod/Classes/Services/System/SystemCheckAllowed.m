@@ -10,6 +10,7 @@
 #import "SASystemVersion.h"
 
 #define kUserHasSeenDialog @"UserHasSeenDialog"
+#define SYS_VERSION SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")
 
 @interface SystemCheckAllowed ()
 @property (nonatomic, strong) NSUserDefaults *defaults;
@@ -48,6 +49,8 @@
         return;
     }
     else {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         UIRemoteNotificationType types = [_appRef enabledRemoteNotificationTypes];
         
         if (types & UIRemoteNotificationTypeAlert) {
@@ -57,6 +60,7 @@
             _checkSystem(false);
             return;
         }
+#pragma GCC diagnostic pop
     }
     
     // don't call super
