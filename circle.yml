@@ -9,7 +9,7 @@ test:
         CODE_SIGN_IDENTITY=
         PROVISIONING_PROFILE=
         -sdk iphonesimulator
-        -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+        -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest,id=33D34EBA-703E-4A82-8838-BE75171492E1'
         -workspace 'Example/KWSiOSSDKObjC.xcworkspace'
         -scheme "KWSiOSSDKObjC-Example"
         clean build test |
