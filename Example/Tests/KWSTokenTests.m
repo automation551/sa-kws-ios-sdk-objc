@@ -24,23 +24,5 @@
     [super tearDown];
 }
 
-- (void) testIncompleteToken {
-    // given
-    NSString *token = @"020-10-21021kjjksajklas";
-    
-    // when
-    
-    // then
-}
-
-- (void) testValidToken {
-    
-}
-
-- (void) testInvalidToken {
-    
-}
-
-
 
 @end
