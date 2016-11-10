@@ -6,7 +6,7 @@
 //
 //
 
-#import <SAJsonParser/SAJsonParser.h>
+#import "SAJsonParser.h"
 
 @interface KWSAppData : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
 @property (nonatomic, strong) NSString *name;

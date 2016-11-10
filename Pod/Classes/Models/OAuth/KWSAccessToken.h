@@ -6,7 +6,7 @@
 //
 //
 
-#import <SAJsonParser/SAJsonParser.h>
+#import "SAJsonParser.h"
 
 @interface KWSAccessToken : SABaseObject <SASerializationProtocol, SADeserializationProtocol, NSCoding>
 @property (nonatomic, strong) NSString *token_type;

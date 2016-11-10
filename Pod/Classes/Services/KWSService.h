@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
 - (NSDictionary*) getQuery;
 - (NSDictionary*) getHeader;
 - (NSDictionary*) getBody;
+- (BOOL) needsLoggedUser;
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString*)payload andSuccess:(BOOL) success;
 
 @end

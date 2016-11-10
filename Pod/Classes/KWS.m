@@ -134,12 +134,21 @@
                                           :userCreated];
 }
 
-- (void) authenticateUser:(NSString *)username
-             withPassword:(NSString *)password
-              andResponse:(userAuthenticated)userAuthenticated {
+- (void) loginUser:(NSString *)username
+      withPassword:(NSString *)password
+       andResponse:(userAuthenticated)userAuthenticated {
     [_authUserProcess authWithUsername:username
                            andPassword:password
                                       :userAuthenticated];
+}
+
+- (void) logoutUser {
+    _loggedUser = nil;
+    _defs = [NSUserDefaults standardUserDefaults];
+    if ([_defs objectForKey:LOGGED_USER_KEY]) {
+        [_defs removeObjectForKey:LOGGED_USER_KEY];
+        [_defs synchronize];
+    }
 }
 
 // get user & update user details
@@ -263,7 +272,7 @@
 // MARK: version
 
 - (NSString*) getVersion {
-    return @"ios-2.1.2";
+    return @"ios-2.1.3";
 }
 
 // MARK: setters & getters

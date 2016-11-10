@@ -6,7 +6,7 @@
 //
 //
 
-#import <SAJsonParser/SAJsonParser.h>
+#import "SAJsonParser.h"
 
 @class KWSMetadata;
 

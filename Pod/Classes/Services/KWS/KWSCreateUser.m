@@ -34,6 +34,10 @@
     return POST;
 }
 
+- (BOOL) needsLoggedUser {
+    return false;
+}
+
 - (NSDictionary*) getHeader {
     return @{
         @"Content-Type":@"application/json"

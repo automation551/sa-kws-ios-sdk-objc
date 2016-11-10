@@ -20,12 +20,22 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kln-YV-epr">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="Bfo-r0-UHp"/>
-                                    <constraint firstAttribute="height" constant="30" id="jji-Ek-wAV"/>
+                                    <constraint firstAttribute="width" constant="82" id="22G-XB-RMv"/>
+                                    <constraint firstAttribute="height" constant="30" id="2NK-c7-FC9"/>
                                 </constraints>
                                 <state key="normal" title="Create User"/>
                                 <connections>
                                     <action selector="createNewUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="bd9-Lo-F7P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CM9-xa-pYT">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="m9Z-8F-K5j"/>
+                                    <constraint firstAttribute="height" constant="30" id="qxr-Qz-ipg"/>
+                                </constraints>
+                                <state key="normal" title="Auth User"/>
+                                <connections>
+                                    <action selector="authUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="bys-fx-Got"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfR-Vd-kMU">
@@ -112,14 +122,14 @@
                                     <action selector="getUserProfile:" destination="whP-gf-Uak" eventType="touchUpInside" id="kjN-jS-z5N"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNg-ep-zGB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dx-ox-8hv">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="ckT-h4-gBX"/>
-                                    <constraint firstAttribute="height" constant="30" id="n0h-i1-gRi"/>
+                                    <constraint firstAttribute="width" constant="48" id="aPy-J5-294"/>
+                                    <constraint firstAttribute="height" constant="30" id="s10-Yg-dgS"/>
                                 </constraints>
-                                <state key="normal" title="Auth User"/>
+                                <state key="normal" title="Logout"/>
                                 <connections>
-                                    <action selector="authUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="kcH-gs-gfX"/>
+                                    <action selector="logoutUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="vWz-LN-CCB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -133,30 +143,31 @@
                             <constraint firstItem="0r7-Fz-cEa" firstAttribute="top" secondItem="yJW-L0-uTM" secondAttribute="bottom" constant="8" id="CRb-TB-Ape"/>
                             <constraint firstItem="J6z-w3-HoG" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Cww-tT-iUo"/>
                             <constraint firstItem="nfR-Vd-kMU" firstAttribute="top" secondItem="m05-rE-jQ7" secondAttribute="bottom" constant="3" id="D7a-Vm-W4E"/>
+                            <constraint firstItem="CM9-xa-pYT" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="DBx-AT-f5e"/>
                             <constraint firstItem="m05-rE-jQ7" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Eit-iP-CjP"/>
                             <constraint firstItem="6bb-uf-43c" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="EtB-dc-rcY"/>
                             <constraint firstItem="i3X-1E-Pcr" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="JGF-Jz-SVr"/>
                             <constraint firstItem="raF-Kj-R8n" firstAttribute="top" secondItem="nI7-HY-O5K" secondAttribute="bottom" constant="8" id="KCd-no-ZTr"/>
-                            <constraint firstItem="ZNg-ep-zGB" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="Lnw-9n-osG"/>
                             <constraint firstItem="Xvv-yb-1cC" firstAttribute="top" secondItem="qAm-rg-UZg" secondAttribute="bottom" constant="8" id="O6b-vF-OOn"/>
+                            <constraint firstItem="CM9-xa-pYT" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="PM6-5d-ApE"/>
                             <constraint firstItem="ZXL-hm-hYW" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Pky-ej-RwD"/>
                             <constraint firstItem="J6z-w3-HoG" firstAttribute="top" secondItem="Xvv-yb-1cC" secondAttribute="bottom" constant="1" id="QDY-5r-Gl5"/>
-                            <constraint firstItem="Kln-YV-epr" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="TUX-55-teD"/>
                             <constraint firstItem="raF-Kj-R8n" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="YGC-ld-udm"/>
                             <constraint firstItem="qAm-rg-UZg" firstAttribute="top" secondItem="raF-Kj-R8n" secondAttribute="bottom" constant="8" id="Ztl-qA-tA3"/>
                             <constraint firstItem="8yo-vY-skX" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="a1j-g2-Uvq"/>
-                            <constraint firstItem="ZNg-ep-zGB" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="aHx-Rp-kga"/>
                             <constraint firstItem="qAm-rg-UZg" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="c1v-je-ztj"/>
                             <constraint firstItem="Xvv-yb-1cC" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="eoi-9b-zqi"/>
                             <constraint firstItem="m05-rE-jQ7" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="38" id="gHO-6p-Z00"/>
-                            <constraint firstItem="Kln-YV-epr" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="44" id="hXo-dO-Twc"/>
+                            <constraint firstAttribute="trailing" secondItem="5Dx-ox-8hv" secondAttribute="trailing" constant="17" id="ipQ-2z-Fff"/>
                             <constraint firstItem="HYP-v9-xXI" firstAttribute="top" secondItem="0r7-Fz-cEa" secondAttribute="bottom" constant="8" id="k2r-NV-VB3"/>
+                            <constraint firstItem="Kln-YV-epr" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="24" id="kic-h6-8Gh"/>
                             <constraint firstItem="yJW-L0-uTM" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="mGM-Lp-qKM"/>
                             <constraint firstItem="6bb-uf-43c" firstAttribute="top" secondItem="J6z-w3-HoG" secondAttribute="bottom" constant="8" id="nQ8-qN-Cdv"/>
-                            <constraint firstAttribute="trailing" secondItem="ZNg-ep-zGB" secondAttribute="trailing" constant="56" id="rLR-z7-Aqv"/>
                             <constraint firstItem="HYP-v9-xXI" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="rfp-0O-9lN"/>
                             <constraint firstItem="i3X-1E-Pcr" firstAttribute="top" secondItem="6bb-uf-43c" secondAttribute="bottom" constant="8" id="rzs-zH-RJD"/>
                             <constraint firstItem="nI7-HY-O5K" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="uTE-hX-7tk"/>
+                            <constraint firstItem="5Dx-ox-8hv" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="vCO-jA-hBq"/>
+                            <constraint firstItem="Kln-YV-epr" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="wWP-cb-ZD4"/>
                             <constraint firstItem="0r7-Fz-cEa" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="wwU-u6-UQE"/>
                         </constraints>
                     </view>

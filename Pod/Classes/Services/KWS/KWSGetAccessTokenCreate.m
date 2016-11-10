@@ -32,6 +32,10 @@
     return POST;
 }
 
+- (BOOL) needsLoggedUser {
+    return false;
+}
+
 - (NSDictionary*) getHeader {
     return @{
         @"Content-Type" : @"application/x-www-form-urlencoded"

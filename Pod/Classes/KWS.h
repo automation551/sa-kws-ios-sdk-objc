@@ -49,9 +49,11 @@
      andParentEmail:(NSString*)parentEmail
         andResponse:(userCreated) userCreated;
 
-- (void) authenticateUser:(NSString*)username
+- (void) loginUser:(NSString*)username
              withPassword:(NSString*)password
               andResponse:(userAuthenticated)userAuthenticated;
+
+- (void) logoutUser;
 
 // get user & update user details
 - (void) getUser:(gotUser)gotUser;

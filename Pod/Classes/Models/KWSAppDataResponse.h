@@ -6,7 +6,7 @@
 //
 //
 
-#import <SAJsonParser/SAJsonParser.h>
+#import "SAJsonParser.h"
 #import "KWSAppData.h"
 
 @interface KWSAppDataResponse : SABaseObject <SADeserializationProtocol, SASerializationProtocol>

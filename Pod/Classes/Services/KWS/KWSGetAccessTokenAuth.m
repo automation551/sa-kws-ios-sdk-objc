@@ -33,6 +33,10 @@
     return POST;
 }
 
+- (BOOL) needsLoggedUser {
+    return false;
+}
+
 - (NSDictionary*) getBody {
     return @{
         @"grant_type": @"password",

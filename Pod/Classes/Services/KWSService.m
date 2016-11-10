@@ -38,6 +38,10 @@
     return GET;
 }
 
+- (BOOL) needsLoggedUser {
+    return true;
+}
+
 - (NSDictionary*) getQuery {
     return @{};
 }
@@ -66,38 +70,46 @@
     loggedUser = [[KWS sdk] getLoggedUser];
     version = [[KWS sdk] getVersion];
     
-    // safe block self
-    __block id blockSelf = self;
-    
-    switch ([self getMethod]) {
-        case GET: {
-            [_network sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
-                    withQuery:[self getQuery]
-                    andHeader:[self getHeader]
-                 withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-                     [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
-                 }];
-            break;
-        }
-        case POST: {
-            [_network sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
-                     withQuery:[self getQuery]
-                     andHeader:[self getHeader]
-                       andBody:[self getBody]
-                  withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-                      [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
-                  }];
-            break;
-        }
-        case PUT: {
-            [_network sendPUT:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
-                    withQuery:[self getQuery]
-                    andHeader:[self getHeader]
-                      andBody:[self getBody]
-                 withResponse:^(NSInteger status, NSString *payload, BOOL success) {
-                     [blockSelf successWithStatus:status andPayload:payload andSuccess:success];
-                 }];
-            break;
+    // case when the Network request actually needs the SDK to have a logged user,
+    // but there is no logged user whatsoever
+    if ([self needsLoggedUser] && loggedUser == nil) {
+        [self successWithStatus:0 andPayload:nil andSuccess:false];
+    }
+    // case where either the user is logged or we don't need a logged user
+    else {
+        // safe block self
+        __block id blockSelf = self;
+        
+        switch ([self getMethod]) {
+            case GET: {
+                [_network sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                        withQuery:[self getQuery]
+                        andHeader:[self getHeader]
+                     withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                         [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
+                     }];
+                break;
+            }
+            case POST: {
+                [_network sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                         withQuery:[self getQuery]
+                         andHeader:[self getHeader]
+                           andBody:[self getBody]
+                      withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                          [blockSelf successWithStatus:(int)status andPayload:payload andSuccess:success];
+                      }];
+                break;
+            }
+            case PUT: {
+                [_network sendPUT:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                        withQuery:[self getQuery]
+                        andHeader:[self getHeader]
+                          andBody:[self getBody]
+                     withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                         [blockSelf successWithStatus:status andPayload:payload andSuccess:success];
+                     }];
+                break;
+            }
         }
     }
 }

@@ -6,7 +6,7 @@
 //
 //
 
-#import <SAJsonParser/SAJsonParser.h>
+#import "SAJsonParser.h"
 
 @interface KWSEventStatus : SABaseObject <SADeserializationProtocol, SASerializationProtocol>
 @property (nonatomic, assign) BOOL hasTriggeredEvent;

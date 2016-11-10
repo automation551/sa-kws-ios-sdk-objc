@@ -69,7 +69,7 @@
 }
 
 - (IBAction)authUser:(id)sender {
-    [[KWS sdk] authenticateUser:@"testusr455" withPassword:@"testtest" andResponse:^(KWSAuthUserStatus status) {
+    [[KWS sdk] loginUser:@"testusr455" withPassword:@"testtest" andResponse:^(KWSAuthUserStatus status) {
         switch (status) {
             case KWSAuthUser_Success:
                 NSLog(@"Logged in as testusr455");
@@ -84,6 +84,10 @@
                 break;
         }
     }];
+}
+
+- (IBAction)logoutUser:(id)sender {
+    [[KWS sdk] logoutUser];
 }
 
 - (IBAction) getUserProfile:(id)sender {

@@ -6,7 +6,7 @@
 //
 //
 
-#import <SAJsonParser/SAJsonParser.h>
+#import "SAJsonParser.h"
 
 @interface KWSScore : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
 @property (nonatomic, assign) NSInteger rank;
