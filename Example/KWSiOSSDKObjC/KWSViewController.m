@@ -11,13 +11,17 @@
 #import "SALogger.h"
 #import "SAUtils.h"
 
+#define DATA_TITLE @"title"
+#define DATA_SEC @"section"
 
 #define API @"https://kwsapi.demo.superawesome.tv/"
 #define CLIENT_ID @"sa-mobile-app-sdk-client-0"
 #define CLIENT_SECRET @"_apikey_5cofe4ppp9xav2t9"
 
-@interface KWSViewController ()
+@interface KWSViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic, strong) KWSUser *user;
+@property (nonatomic, strong) NSMutableArray *data;
 @end
 
 @implementation KWSViewController
@@ -25,6 +29,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // setup data
+    _data = [@[@{DATA_TITLE: @"User",
+                 DATA_SEC: @[@"Create user", @"Login user", @"Logoff user", @"Get user", @"Update user"]},
+               @{DATA_TITLE: @"Permissions",
+                 DATA_SEC: @[@"Submit parent email", @"Request permissions"]},
+               @{DATA_TITLE: @"Invite",
+                 DATA_SEC: @[@"Invite another user"]},
+               @{DATA_TITLE: @"Events",
+                 DATA_SEC: @[@"Trigger event", @"Is triggered", @"Get score", @"Get leaderboard"]},
+               @{DATA_TITLE: @"App data",
+                 DATA_SEC: @[@"Set app data", @"Get app data"]},
+               @{DATA_TITLE: @"Notifications",
+                 DATA_SEC: @[@"Enable notifications", @"Disable notifications", @"Check if registered"]}] mutableCopy];
+    
+    // start KWS session
     [[KWS sdk] startSessionWithClientId:CLIENT_ID
                         andClientSecret:CLIENT_SECRET
                               andAPIUrl:API];
@@ -35,8 +54,105 @@
     [super didReceiveMemoryWarning];
 }
 
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    return [_data count];
+}
 
-- (IBAction) createNewUser:(id)sender {
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSDictionary *item = [_data objectAtIndex:section];
+    return [[item objectForKey:DATA_SEC] count];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 50;
+}
+
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSDictionary *item = [_data objectAtIndex:section];
+    return [item objectForKey:DATA_TITLE];
+}
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyCell"];
+    }
+    
+    NSDictionary *item = [_data objectAtIndex:[indexPath section]];
+    NSArray *sections = [item objectForKey:DATA_SEC];
+    NSString *title = [sections objectAtIndex:[indexPath row]];
+    
+    cell.textLabel.text = title;
+    
+    return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = [indexPath section];
+    NSInteger row = [indexPath row];
+    
+    switch (section) {
+        // user
+        case 0: {
+            switch (row) {
+                case 0: [self createNewUser]; break;
+                case 1: [self authUser]; break;
+                case 2: [self logoutUser]; break;
+                case 3: [self getUserProfile]; break;
+                case 4: [self updateUser]; break;
+            }
+            break;
+        }
+        // permissions
+        case 1: {
+            switch (row) {
+                case 0: [self submitParentEmail]; break;
+                case 1: [self requestPermissions]; break;
+            }
+            break;
+        }
+        // invite
+        case 2: {
+            switch (row) {
+                case 0: [self inviteUser]; break;
+            }
+            break;
+        }
+        // events
+        case 3: {
+            switch (row) {
+                case 0: [self triggerEvent]; break;
+                case 1: [self isTriggered]; break;
+                case 2: [self getScore]; break;
+                case 3: [self getLeadrboard]; break;
+            }
+            break;
+        }
+        // app data
+        case 4: {
+            switch (row) {
+                case 0: [self setAppData]; break;
+                case 1: [self getAppData]; break;
+            }
+            break;
+        }
+        // notifications
+        case 5:{
+            switch (row) {
+                case 0: [self enablePN]; break;
+                case 1: [self disablePN]; break;
+                case 2: [self arePNEnabled]; break;
+            }
+            break;
+        }
+    }
+}
+
+- (void) createNewUser {
     
     __block NSString *username = [NSString stringWithFormat:@"testusr%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
     
@@ -68,7 +184,7 @@
     }];
 }
 
-- (IBAction)authUser:(id)sender {
+- (void) authUser {
     [[KWS sdk] loginUser:@"testusr455" withPassword:@"testtest" andResponse:^(KWSAuthUserStatus status) {
         switch (status) {
             case KWSAuthUser_Success:
@@ -86,11 +202,11 @@
     }];
 }
 
-- (IBAction)logoutUser:(id)sender {
+- (void) logoutUser {
     [[KWS sdk] logoutUser];
 }
 
-- (IBAction) getUserProfile:(id)sender {
+- (void) getUserProfile {
     
     [[KWS sdk] getUser:^(KWSUser *user) {
         _user = user;
@@ -103,7 +219,7 @@
     
 }
 
-- (IBAction)updateUser:(id)sender {
+- (void) updateUser {
     
     if (_user) {
         
@@ -117,7 +233,7 @@
     }
 }
 
-- (IBAction)submitParentEmail:(id)sender {
+- (void) submitParentEmail {
     [[KWS sdk] submitParentEmail:@"dev.gabriel.coman@gmail.com" andResponse:^(KWSParentEmailStatus type) {
         switch (type) {
             case KWSParentEmail_Success:{
@@ -138,7 +254,7 @@
     }];
 }
 
-- (IBAction)requestPermissions:(id)sender {
+- (void) requestPermissions {
     [[KWS sdk] requestPermission:@[@(KWSPermission_AccessLastName)] andResponse:^(KWSPermissionStatus status) {
         switch (status) {
             case KWSPermission_Success: {
@@ -159,47 +275,47 @@
     }];
 }
 
-- (IBAction)inviteUser:(id)sender {
+- (void) inviteUser {
     [[KWS sdk] inviteUser:@"gabriel.coman@superawesome.tv" andResponse:^(BOOL invited) {
         NSLog(@"Invited user %d", invited);
     }];
 }
 
-- (IBAction)triggerEvent:(id)sender {
+- (void) triggerEvent {
     [[KWS sdk] triggerEvent:@"a7tzV7QLhlR0rS8KK98QcZgrQk3ur260" withPoints:20 andResponse:^(BOOL success) {
         NSLog(@"Triggered event %d", success);
     }];
 }
 
-- (IBAction)isTriggered:(id)sender {
+- (void) isTriggered {
     
 }
 
-- (IBAction)getScore:(id)sender {
+- (void) getScore {
     [[KWS sdk] getScore:^(KWSScore *score) {
         NSLog(@"Current score %ld | %ld", (long)score.rank, (long)score.score);
     }];
 }
 
-- (IBAction)getLeadrboard:(id)sender {
+- (void) getLeadrboard {
     [[KWS sdk] getLeaderboard:^(NSArray<KWSLeader *> *leaders) {
         NSLog(@"Leaders %@", [leaders jsonPrettyStringRepresentation]);
     }];
 }
 
-- (IBAction)setAppData:(id)sender {
+- (void) setAppData {
     [[KWS sdk] setAppData:@"app-data-1" withValue:20 andResponse:^(BOOL success) {
         NSLog(@"Set app data %d", success);
     }];
 }
 
-- (IBAction)getAppData:(id)sender {
+- (void) getAppData {
     [[KWS sdk] getAppData:^(NSArray<KWSAppData *> *appData) {
         NSLog(@"Get app data %@", appData);
     }];
 }
 
-- (IBAction)enablePN:(id)sender {
+- (void) enablePN {
     registered R = ^(KWSNotificationStatus status) {
         switch (status) {
             case KWSNotification_Success: {
@@ -230,11 +346,11 @@
     [[KWS sdk] register:R];
 }
 
-- (IBAction)disablePN:(id)sender {
+- (void) disablePN {
      [[KWS sdk] unregister:NULL];
 }
 
-- (IBAction)arePNEnabled:(id)sender {
+- (void) arePNEnabled {
     [[KWS sdk] isRegistered:^(BOOL success) {
         NSLog(@"Is registered %d", success);
     }];

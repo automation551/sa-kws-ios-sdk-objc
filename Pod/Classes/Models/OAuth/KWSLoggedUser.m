@@ -10,6 +10,10 @@
 #import "KWSMetadata.h"
 #import "KWSAux.h"
 
+@interface KWSLoggedUser ()
+@property (nonatomic, assign) BOOL isRegisteredForRM;
+@end
+
 @implementation KWSLoggedUser
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
@@ -27,6 +31,7 @@
         _dateOfBirth = [jsonDictionary safeObjectForKey:@"dateOfBirth"];
         _expiresIn = [[jsonDictionary safeObjectForKey:@"expires_in"] integerValue];
         _loginDate = [[jsonDictionary safeObjectForKey:@"loginDate"] integerValue];
+        _isRegisteredForRM = [jsonDictionary safeBoolForKey:@"isRegisteredForRM"];
         _metadata = [KWSAux processMetadata:_accessToken];
     }
     
@@ -44,6 +49,7 @@
         _dateOfBirth = [aDecoder decodeObjectForKey:@"dateOfBirth"];
         _expiresIn = [aDecoder decodeIntegerForKey:@"expires_in"];
         _loginDate = [aDecoder decodeIntegerForKey:@"loginDate"];
+        _isRegisteredForRM = [aDecoder decodeBoolForKey:@"isRegisteredForRM"];
         _metadata = [aDecoder decodeObjectForKey:@"metadata"];
     }
     
@@ -60,6 +66,7 @@
     [aCoder encodeObject:_dateOfBirth forKey:@"dateOfBirth"];
     [aCoder encodeInteger:_expiresIn forKey:@"expires_in"];
     [aCoder encodeInteger:_loginDate forKey:@"loginDate"];
+    [aCoder encodeBool:_isRegisteredForRM forKey:@"isRegisteredForRM"];
     [aCoder encodeObject:_metadata forKey:@"metadata"];
 }
 
@@ -74,6 +81,7 @@
         @"dateOfBirth": nullSafe(_dateOfBirth),
         @"expires_in": @(_expiresIn),
         @"loginDate": @(_loginDate),
+        @"isRegisteredForRM": @(_isRegisteredForRM),
         @"metadata": nullSafe([_metadata dictionaryRepresentation])
     };
 }
@@ -83,6 +91,15 @@
     NSInteger now = [[NSDate date] timeIntervalSince1970];
     NSInteger nowMinusExp = now - _expiresIn;
     return nowMinusExp <= _loginDate;
+}
+
+
+- (void) setIsRegisteredForNotifications:(BOOL) value {
+    _isRegisteredForRM = value;
+}
+
+- (BOOL) isRegisteredForNotifications {
+    return _isRegisteredForRM;
 }
 
 @end

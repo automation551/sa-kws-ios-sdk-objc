@@ -226,15 +226,36 @@
 // register for notifications
 
 - (void) register:(registered)registered {
-    [_notificationProcess register:registered];
+    [_notificationProcess register:^(KWSNotificationStatus status) {
+        if (status == KWSNotification_Success && _loggedUser) {
+            [_loggedUser setIsRegisteredForNotifications:true];
+        }
+        if (registered != nil) {
+            registered(status);
+        }
+    }];
 }
 
 - (void) unregister:(unregistered)unregistered {
-    [_notificationProcess unregister:unregistered];
+    [_notificationProcess unregister:^(BOOL success) {
+        if (success && _loggedUser != nil && [_loggedUser isRegisteredForNotifications]) {
+            [_loggedUser setIsRegisteredForNotifications:false];
+        }
+        if (unregistered != nil) {
+            unregistered (success);
+        }
+    }];
 }
 
 - (void) isRegistered:(isRegistered)isRegistered {
-    [_notificationProcess isRegistered:isRegistered];
+    [_notificationProcess isRegistered:^(BOOL success) {
+        if (_loggedUser) {
+            [_loggedUser setIsRegisteredForNotifications:success];
+        }
+        if (isRegistered) {
+            isRegistered(success);
+        }
+    }];
 }
 
 // MARK: public complex functions
@@ -272,7 +293,7 @@
 // MARK: version
 
 - (NSString*) getVersion {
-    return @"ios-2.1.3";
+    return @"ios-2.1.4";
 }
 
 // MARK: setters & getters

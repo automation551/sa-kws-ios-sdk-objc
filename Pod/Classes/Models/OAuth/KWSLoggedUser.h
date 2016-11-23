@@ -22,4 +22,7 @@
 @property (nonatomic, assign) NSInteger loginDate;
 @property (nonatomic, strong) KWSMetadata *metadata;
 
+- (void) setIsRegisteredForNotifications:(BOOL) value;
+- (BOOL) isRegisteredForNotifications;
+
 @end

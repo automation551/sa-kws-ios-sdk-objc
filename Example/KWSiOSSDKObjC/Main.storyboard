@@ -18,163 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kln-YV-epr">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="22G-XB-RMv"/>
-                                    <constraint firstAttribute="height" constant="30" id="2NK-c7-FC9"/>
-                                </constraints>
-                                <state key="normal" title="Create User"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fcR-Lx-Y0w">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
-                                    <action selector="createNewUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="bd9-Lo-F7P"/>
+                                    <outlet property="dataSource" destination="whP-gf-Uak" id="Mth-Rk-NA5"/>
+                                    <outlet property="delegate" destination="whP-gf-Uak" id="chU-ra-n90"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CM9-xa-pYT">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="m9Z-8F-K5j"/>
-                                    <constraint firstAttribute="height" constant="30" id="qxr-Qz-ipg"/>
-                                </constraints>
-                                <state key="normal" title="Auth User"/>
-                                <connections>
-                                    <action selector="authUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="bys-fx-Got"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfR-Vd-kMU">
-                                <state key="normal" title="Update User"/>
-                                <connections>
-                                    <action selector="updateUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="F47-Uh-zML"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nI7-HY-O5K">
-                                <state key="normal" title="Submit parent email"/>
-                                <connections>
-                                    <action selector="submitParentEmail:" destination="whP-gf-Uak" eventType="touchUpInside" id="Il2-tc-1hE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raF-Kj-R8n">
-                                <state key="normal" title="Request permissions"/>
-                                <connections>
-                                    <action selector="requestPermissions:" destination="whP-gf-Uak" eventType="touchUpInside" id="jlh-ZQ-QMf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAm-rg-UZg">
-                                <state key="normal" title="Invite user"/>
-                                <connections>
-                                    <action selector="inviteUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="8kg-7g-PGk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvv-yb-1cC">
-                                <state key="normal" title="Trigger event"/>
-                                <connections>
-                                    <action selector="triggerEvent:" destination="whP-gf-Uak" eventType="touchUpInside" id="4It-wX-KB0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6z-w3-HoG">
-                                <state key="normal" title="Is triggered"/>
-                                <connections>
-                                    <action selector="isTriggered:" destination="whP-gf-Uak" eventType="touchUpInside" id="Yhp-BX-fVW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bb-uf-43c">
-                                <state key="normal" title="Get Score"/>
-                                <connections>
-                                    <action selector="getScore:" destination="whP-gf-Uak" eventType="touchUpInside" id="1Hf-B2-uSh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3X-1E-Pcr">
-                                <state key="normal" title="Get Leaders"/>
-                                <connections>
-                                    <action selector="getLeadrboard:" destination="whP-gf-Uak" eventType="touchUpInside" id="6UG-N0-49Z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-hm-hYW">
-                                <state key="normal" title="Set app data"/>
-                                <connections>
-                                    <action selector="setAppData:" destination="whP-gf-Uak" eventType="touchUpInside" id="g9j-Q8-dhs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJW-L0-uTM">
-                                <state key="normal" title="Get app data"/>
-                                <connections>
-                                    <action selector="getAppData:" destination="whP-gf-Uak" eventType="touchUpInside" id="dV8-TX-LLx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0r7-Fz-cEa">
-                                <state key="normal" title="Enable Remote Notif"/>
-                                <connections>
-                                    <action selector="enablePN:" destination="whP-gf-Uak" eventType="touchUpInside" id="uTM-XH-Hsf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYP-v9-xXI">
-                                <state key="normal" title="Disable Remote Notifs"/>
-                                <connections>
-                                    <action selector="disablePN:" destination="whP-gf-Uak" eventType="touchUpInside" id="9L5-F2-mB1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yo-vY-skX">
-                                <state key="normal" title="Are Notis enabled"/>
-                                <connections>
-                                    <action selector="arePNEnabled:" destination="whP-gf-Uak" eventType="touchUpInside" id="cB0-4j-GgV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m05-rE-jQ7">
-                                <state key="normal" title="Get User"/>
-                                <connections>
-                                    <action selector="getUserProfile:" destination="whP-gf-Uak" eventType="touchUpInside" id="kjN-jS-z5N"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dx-ox-8hv">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="aPy-J5-294"/>
-                                    <constraint firstAttribute="height" constant="30" id="s10-Yg-dgS"/>
-                                </constraints>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutUser:" destination="whP-gf-Uak" eventType="touchUpInside" id="vWz-LN-CCB"/>
-                                </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="nfR-Vd-kMU" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="1dG-oG-15b"/>
-                            <constraint firstItem="nI7-HY-O5K" firstAttribute="top" secondItem="nfR-Vd-kMU" secondAttribute="bottom" id="37H-wg-CP2"/>
-                            <constraint firstItem="ZXL-hm-hYW" firstAttribute="top" secondItem="i3X-1E-Pcr" secondAttribute="bottom" constant="8" id="5eM-fp-0bS"/>
-                            <constraint firstItem="8yo-vY-skX" firstAttribute="top" secondItem="HYP-v9-xXI" secondAttribute="bottom" constant="8" id="5qS-Hi-IN4"/>
-                            <constraint firstItem="yJW-L0-uTM" firstAttribute="top" secondItem="ZXL-hm-hYW" secondAttribute="bottom" constant="2" id="Bec-G7-uA0"/>
-                            <constraint firstItem="0r7-Fz-cEa" firstAttribute="top" secondItem="yJW-L0-uTM" secondAttribute="bottom" constant="8" id="CRb-TB-Ape"/>
-                            <constraint firstItem="J6z-w3-HoG" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Cww-tT-iUo"/>
-                            <constraint firstItem="nfR-Vd-kMU" firstAttribute="top" secondItem="m05-rE-jQ7" secondAttribute="bottom" constant="3" id="D7a-Vm-W4E"/>
-                            <constraint firstItem="CM9-xa-pYT" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="DBx-AT-f5e"/>
-                            <constraint firstItem="m05-rE-jQ7" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Eit-iP-CjP"/>
-                            <constraint firstItem="6bb-uf-43c" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="EtB-dc-rcY"/>
-                            <constraint firstItem="i3X-1E-Pcr" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="JGF-Jz-SVr"/>
-                            <constraint firstItem="raF-Kj-R8n" firstAttribute="top" secondItem="nI7-HY-O5K" secondAttribute="bottom" constant="8" id="KCd-no-ZTr"/>
-                            <constraint firstItem="Xvv-yb-1cC" firstAttribute="top" secondItem="qAm-rg-UZg" secondAttribute="bottom" constant="8" id="O6b-vF-OOn"/>
-                            <constraint firstItem="CM9-xa-pYT" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="PM6-5d-ApE"/>
-                            <constraint firstItem="ZXL-hm-hYW" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Pky-ej-RwD"/>
-                            <constraint firstItem="J6z-w3-HoG" firstAttribute="top" secondItem="Xvv-yb-1cC" secondAttribute="bottom" constant="1" id="QDY-5r-Gl5"/>
-                            <constraint firstItem="raF-Kj-R8n" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="YGC-ld-udm"/>
-                            <constraint firstItem="qAm-rg-UZg" firstAttribute="top" secondItem="raF-Kj-R8n" secondAttribute="bottom" constant="8" id="Ztl-qA-tA3"/>
-                            <constraint firstItem="8yo-vY-skX" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="a1j-g2-Uvq"/>
-                            <constraint firstItem="qAm-rg-UZg" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="c1v-je-ztj"/>
-                            <constraint firstItem="Xvv-yb-1cC" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="eoi-9b-zqi"/>
-                            <constraint firstItem="m05-rE-jQ7" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="38" id="gHO-6p-Z00"/>
-                            <constraint firstAttribute="trailing" secondItem="5Dx-ox-8hv" secondAttribute="trailing" constant="17" id="ipQ-2z-Fff"/>
-                            <constraint firstItem="HYP-v9-xXI" firstAttribute="top" secondItem="0r7-Fz-cEa" secondAttribute="bottom" constant="8" id="k2r-NV-VB3"/>
-                            <constraint firstItem="Kln-YV-epr" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" constant="24" id="kic-h6-8Gh"/>
-                            <constraint firstItem="yJW-L0-uTM" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="mGM-Lp-qKM"/>
-                            <constraint firstItem="6bb-uf-43c" firstAttribute="top" secondItem="J6z-w3-HoG" secondAttribute="bottom" constant="8" id="nQ8-qN-Cdv"/>
-                            <constraint firstItem="HYP-v9-xXI" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="rfp-0O-9lN"/>
-                            <constraint firstItem="i3X-1E-Pcr" firstAttribute="top" secondItem="6bb-uf-43c" secondAttribute="bottom" constant="8" id="rzs-zH-RJD"/>
-                            <constraint firstItem="nI7-HY-O5K" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="uTE-hX-7tk"/>
-                            <constraint firstItem="5Dx-ox-8hv" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="vCO-jA-hBq"/>
-                            <constraint firstItem="Kln-YV-epr" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="wWP-cb-ZD4"/>
-                            <constraint firstItem="0r7-Fz-cEa" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="wwU-u6-UQE"/>
+                            <constraint firstItem="Mvr-aV-6Um" firstAttribute="top" secondItem="fcR-Lx-Y0w" secondAttribute="bottom" id="AS6-pa-OWn"/>
+                            <constraint firstAttribute="trailing" secondItem="fcR-Lx-Y0w" secondAttribute="trailing" id="E8s-we-xzC"/>
+                            <constraint firstItem="fcR-Lx-Y0w" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" id="Hyh-O0-YjC"/>
+                            <constraint firstItem="fcR-Lx-Y0w" firstAttribute="top" secondItem="TpU-gO-2f1" secondAttribute="top" id="uCi-ZM-87E"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="table" destination="fcR-Lx-Y0w" id="Q0o-Fy-Per"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.80000000000001" y="428.63568215892059"/>
+            <point key="canvasLocation" x="-39.130434782608695" y="366.84782608695656"/>
         </scene>
     </scenes>
 </document>
