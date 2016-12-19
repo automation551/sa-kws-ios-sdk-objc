@@ -154,7 +154,7 @@
 
 - (void) createNewUser {
     
-    __block NSString *username = [NSString stringWithFormat:@"testusr%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
+    __block NSString *username = [NSString stringWithFormat:@"testusr%ld", (long)[SAAux randomNumberBetween:100 maxNumber:500]];
     
     [[KWS sdk] createUser:username
              withPassword:@"testtest"
