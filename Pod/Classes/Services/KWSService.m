@@ -14,7 +14,7 @@
 #import "SANetwork.h"
 
 @interface KWSService ()
-@property (nonatomic, strong) SARequest *request;
+@property (nonatomic, strong) SANetwork *network;
 @end
 
 @implementation KWSService
@@ -23,7 +23,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        _request = [[SARequest alloc] init];
+        _network = [[SANetwork alloc] init];
     }
     return self;
 }
@@ -82,7 +82,7 @@
         
         switch ([self getMethod]) {
             case GET: {
-                [_request sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                [_network sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
                         withQuery:[self getQuery]
                         andHeader:[self getHeader]
                      withResponse:^(NSInteger status, NSString *payload, BOOL success) {
@@ -91,7 +91,7 @@
                 break;
             }
             case POST: {
-                [_request sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                [_network sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
                          withQuery:[self getQuery]
                          andHeader:[self getHeader]
                            andBody:[self getBody]
@@ -101,7 +101,7 @@
                 break;
             }
             case PUT: {
-                [_request sendPUT:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
+                [_network sendPUT:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
                         withQuery:[self getQuery]
                         andHeader:[self getHeader]
                           andBody:[self getBody]

@@ -8,6 +8,7 @@
 
 #import "KWSEventStatus.h"
 
+
 @implementation KWSEventStatus
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {

@@ -8,6 +8,8 @@
 
 #import "KWSAppDataResponse.h"
 
+#import "KWSAppData.h"
+
 @implementation KWSAppDataResponse
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
