@@ -54,6 +54,10 @@
     return @{};
 }
 
+- (BOOL) needsToBeLoggedIn {
+    return true;
+}
+
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload {
     // do nothing
 }
@@ -72,7 +76,7 @@
     version = [[KWS sdk] getVersion];
     
     // check data
-    if (!kwsApiUrl || !oauthToken || !metadata) {
+    if ((!kwsApiUrl || !oauthToken || !metadata) && [self needsToBeLoggedIn]) {
         [self failure];
         return;
     }

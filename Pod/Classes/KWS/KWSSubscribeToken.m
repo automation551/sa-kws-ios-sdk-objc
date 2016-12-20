@@ -26,7 +26,7 @@
 @implementation KWSSubscribeToken
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"apps/%ld/users/%ld/subscribe-push-notifications", metadata.appId, metadata.userId];
+    return [NSString stringWithFormat:@"v1/apps/%ld/users/%ld/subscribe-push-notifications", metadata.appId, metadata.userId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {

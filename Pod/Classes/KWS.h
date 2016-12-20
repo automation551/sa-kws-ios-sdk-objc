@@ -13,6 +13,7 @@
 #import "PushManager.h"
 #import "CheckManager.h"
 #import "KWSParentEmail.h"
+#import "KWSRandomName.h"
 
 // forward declarations
 @class KWSMetadata;
@@ -58,9 +59,9 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
 + (instancetype) sdk;
 
 // setup func
-- (void) setupWithOAuthToken:(NSString*)oauthToken
-                   kwsApiUrl:(NSString*)kwsApiUrl
-          andPermissionPopup:(BOOL)showPermissionPopup;
+- (void) initWithApiUrl:(NSString*)kwsApiUrl;
+- (void) registerOAuthToken:(NSString*)oauthToken
+         andPermissionPopup:(BOOL)showPermissionPopup;
 
 // Main public functions
 - (void) registerForRemoteNotifications:(id<KWSRegisterProtocol>)delegate;
@@ -71,6 +72,8 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
 // Main aux public functions
 - (void) showParentEmailPopup;
 - (void) submitParentEmail:(NSString*)email;
+
+- (void) getRandomNameForApp: (NSInteger)appId withDelegate:(id)delegate;
 
 // getters
 - (NSString*) getVersion;

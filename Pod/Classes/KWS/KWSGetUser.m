@@ -20,7 +20,7 @@
 @implementation KWSGetUser
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"users/%ld", (long)[metadata userId]];
+    return [NSString stringWithFormat:@"v1/users/%ld", (long)[metadata userId]];
 }
 
 - (KWS_HTTP_METHOD) getMethod {

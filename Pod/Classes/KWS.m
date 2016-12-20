@@ -19,6 +19,7 @@
 
 // the parent email object
 @property (nonatomic, strong) KWSParentEmail *parentEmail;
+@property (nonatomic, strong) KWSRandomName *randomName;
 
 // KWS setup properties
 @property (nonatomic, strong) NSString *oauthToken;
@@ -55,19 +56,22 @@
         [CheckManager sharedInstance].delegate = self;
         _parentEmail = [[KWSParentEmail alloc] init];
         _parentEmail.delegate = self;
+        _randomName = [[KWSRandomName alloc] init];
     }
     return self;
 }
 
 // MARK: Setup function
 
-- (void) setupWithOAuthToken:(NSString*)oauthToken
-                   kwsApiUrl:(NSString*)kwsApiUrl
-          andPermissionPopup:(BOOL)showPermissionPopup {
+- (void) initWithApiUrl:(NSString*)kwsApiUrl {
+    _kwsApiUrl = kwsApiUrl;
+}
+
+- (void) registerOAuthToken:(NSString*)oauthToken
+         andPermissionPopup:(BOOL)showPermissionPopup {
     
     _showPermissionPopup = showPermissionPopup;
     _oauthToken = oauthToken;
-    _kwsApiUrl = kwsApiUrl;
     _metadata = [self getMetadata:oauthToken];
     [SALogger log:[self.metadata jsonPreetyStringRepresentation]];
 }
@@ -220,10 +224,14 @@
     [self delKWSSDKDidFailToCheckIfUserIsRegistered];
 }
 
+- (void) getRandomNameForApp:(NSInteger)appId withDelegate:(id)delegate {
+    [_randomName execute:appId :delegate];
+}
+
 // MARK: getters
 
 - (NSString*) getVersion {
-    return @"ios-1.2.9";
+    return @"ios-1.3.0.2";
 }
 
 - (NSString*) getOAuthToken {

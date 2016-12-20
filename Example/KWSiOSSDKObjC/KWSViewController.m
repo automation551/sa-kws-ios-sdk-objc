@@ -14,9 +14,9 @@
 #import "KWSModel.h"
 #import "SAUtils.h"
 
-#define API @"https://kwsapi.demo.superawesome.tv/v1/"
+#define API @"https://kwsapi.demo.superawesome.tv/"
 
-@interface KWSViewController ()  <KWSRegisterProtocol, KWSUnregisterProtocol, KWSCheckProtocol>
+@interface KWSViewController ()  <KWSRegisterProtocol, KWSUnregisterProtocol, KWSCheckProtocol, KWSRandomNameProtocol>
 @property (nonatomic, strong) NSString *token;
 @end
 
@@ -25,9 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _token = NULL;
+    // init
+    [[KWS sdk] initWithApiUrl:API];
 }
 
 - (IBAction) createNewUser:(id)sender {
+    
     
     NSString *url = @"https://kwsdemobackend.herokuapp.com/create";
     NSString *username = [NSString stringWithFormat:@"testuser_%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
@@ -46,7 +49,7 @@
             NSLog(@"Created user %ld - %@ with token %@", (long)model.userId, username, _token);
             
             // setup KWS
-            [[KWS sdk] setupWithOAuthToken:_token kwsApiUrl:API andPermissionPopup:YES];
+            [[KWS sdk] registerOAuthToken:_token andPermissionPopup:YES];
         } else {
             NSLog(@"Could not create user %@", username);
         }
@@ -66,6 +69,7 @@
 }
 
 - (IBAction) unregisterToken:(id)sender {
+    [[KWS sdk] getRandomNameForApp:313 withDelegate:self];
 //    [[KWS sdk] unregisterForRemoteNotifications:self];
 }
 
@@ -160,6 +164,10 @@
 
 - (void) kwsSDKDidFailToCheckIfUserIsRegistered {
     NSLog(@"Network Error: Checking if user is registered or not");
+}
+
+- (void) didGetRandomName: (NSString*) name {
+    NSLog(@"Did get random name %@", name);
 }
 
 @end
