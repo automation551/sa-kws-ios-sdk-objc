@@ -35,9 +35,11 @@
 @property (nonatomic, strong) KWSSetAppData *setAppData;
 @property (nonatomic, strong) KWSUpdateUser *updateUser;
 @property (nonatomic, strong) KWSCreateUser *createUser;
+@property (nonatomic, strong) KWSRandomName *randomName;
 
 // state properties
 @property (nonatomic, strong) NSString *clientId;
+@property (nonatomic, assign) NSInteger appId;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *kwsApiUrl;
 
@@ -77,6 +79,7 @@
         _setAppData = [[KWSSetAppData alloc] init];
         _updateUser = [[KWSUpdateUser alloc] init];
         _createUser = [[KWSCreateUser alloc] init];
+        _randomName = [[KWSRandomName alloc] init];
     }
     return self;
 }
@@ -84,11 +87,13 @@
 // MARK: Setup function
 
 - (void) startSessionWithClientId:(NSString *)clientId
+                         andAppId:(NSInteger)appId
                   andClientSecret:(NSString *)clientSecret
                         andAPIUrl:(NSString *)apiUrl {
     
     // set values
     _clientId = clientId;
+    _appId = appId;
     _clientSecret = clientSecret;
     _kwsApiUrl = apiUrl;
     
@@ -149,6 +154,12 @@
         [_defs removeObjectForKey:LOGGED_USER_KEY];
         [_defs synchronize];
     }
+}
+
+// Random name
+
+- (void) generateRandomName:(gotRandomName)randomName {
+    [_randomName execute:randomName];
 }
 
 // get user & update user details
@@ -293,7 +304,7 @@
 // MARK: version
 
 - (NSString*) getVersion {
-    return @"ios-2.1.6";
+    return @"ios-2.1.7";
 }
 
 // MARK: setters & getters
@@ -314,6 +325,10 @@
 
 - (NSString*) getClientId {
     return _clientId;
+}
+
+- (NSInteger) getAppId {
+    return _appId;
 }
 
 - (NSString*) getClientSecret {

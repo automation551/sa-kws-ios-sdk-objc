@@ -32,6 +32,7 @@ typedef NS_ENUM(NSInteger, KWS_HTTP_METHOD) {
     NSString *kwsApiUrl;
     NSString *version;
     KWSLoggedUser *loggedUser;
+    NSInteger appId;
 }
 
 // request basic functions

@@ -15,6 +15,7 @@
 #define DATA_SEC @"section"
 
 #define API @"https://kwsapi.demo.superawesome.tv/"
+#define APP_ID 313
 #define CLIENT_ID @"sa-mobile-app-sdk-client-0"
 #define CLIENT_SECRET @"_apikey_5cofe4ppp9xav2t9"
 
@@ -31,7 +32,7 @@
     
     // setup data
     _data = [@[@{DATA_TITLE: @"User",
-                 DATA_SEC: @[@"Create user", @"Login user", @"Logoff user", @"Get user", @"Update user"]},
+                 DATA_SEC: @[@"Random name", @"Create user", @"Login user", @"Logoff user", @"Get user", @"Update user"]},
                @{DATA_TITLE: @"Permissions",
                  DATA_SEC: @[@"Submit parent email", @"Request permissions"]},
                @{DATA_TITLE: @"Invite",
@@ -45,6 +46,7 @@
     
     // start KWS session
     [[KWS sdk] startSessionWithClientId:CLIENT_ID
+                               andAppId:313
                         andClientSecret:CLIENT_SECRET
                               andAPIUrl:API];
     
@@ -99,11 +101,12 @@
         // user
         case 0: {
             switch (row) {
-                case 0: [self createNewUser]; break;
-                case 1: [self authUser]; break;
-                case 2: [self logoutUser]; break;
-                case 3: [self getUserProfile]; break;
-                case 4: [self updateUser]; break;
+                case 0: [self generateRandomName]; break;
+                case 1: [self createNewUser]; break;
+                case 2: [self authUser]; break;
+                case 3: [self logoutUser]; break;
+                case 4: [self getUserProfile]; break;
+                case 5: [self updateUser]; break;
             }
             break;
         }
@@ -150,6 +153,12 @@
             break;
         }
     }
+}
+
+- (void) generateRandomName {
+    [[KWS sdk] generateRandomName:^(NSString *name) {
+        NSLog(@"Random name is %@", name);
+    }];
 }
 
 - (void) createNewUser {

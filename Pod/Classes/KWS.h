@@ -26,6 +26,7 @@
 #import "KWSCreateUserProcess.h"
 #import "KWSNotificationProcess.h"
 #import "KWSAuthUserProcess.h"
+#import "KWSRandomName.h"
 
 // forward declarations
 @class KWSMetadata;
@@ -37,6 +38,7 @@
 
 // setup func
 - (void) startSessionWithClientId:(NSString*)clientId
+                         andAppId:(NSInteger)appId
                   andClientSecret:(NSString*)clientSecret
                         andAPIUrl:(NSString*)apiUrl;
 - (void) stopSession;
@@ -54,6 +56,9 @@
               andResponse:(userAuthenticated)userAuthenticated;
 
 - (void) logoutUser;
+
+// random name
+- (void) generateRandomName:(gotRandomName)randomName;
 
 // get user & update user details
 - (void) getUser:(gotUser)gotUser;
@@ -99,6 +104,7 @@
 
 // other setters & getters
 - (NSString*) getClientId;
+- (NSInteger) getAppId;
 - (NSString*) getClientSecret;
 - (NSString*) getKWSApiUrl;
 - (void) setLoggedUser: (KWSLoggedUser*) loggedUser;
