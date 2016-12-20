@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+2.1.9
+ - Fixed a warning in KWSRandomName.m; Now when I push to Cocoapods I do so w/o any warnings;
+
 2.1.8
  - Repaired KWSLeader and KWSLeaderboard models to have proper framework / static lib handling headers
 

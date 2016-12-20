@@ -15,7 +15,7 @@
 @implementation KWSRandomName
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"v2/apps/%ld/random-display-name", appId];
+    return [NSString stringWithFormat:@"v2/apps/%ld/random-display-name", (long)appId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
