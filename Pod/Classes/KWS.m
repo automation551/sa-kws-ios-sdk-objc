@@ -110,6 +110,7 @@
         } else {
             NSLog(@"KWS started with a logged user that had an expired OAuth token. Clearning cache!");
             [_defs removeObjectForKey:LOGGED_USER_KEY];
+            [_defs synchronize];
         }
     } else {
         NSLog(@"KWS started without a logged user since none was found");
