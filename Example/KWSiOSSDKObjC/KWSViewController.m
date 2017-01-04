@@ -15,7 +15,6 @@
 #define DATA_SEC @"section"
 
 #define API @"https://kwsapi.demo.superawesome.tv/"
-#define APP_ID 313
 #define CLIENT_ID @"sa-mobile-app-sdk-client-0"
 #define CLIENT_SECRET @"_apikey_5cofe4ppp9xav2t9"
 
@@ -46,10 +45,8 @@
     
     // start KWS session
     [[KWS sdk] startSessionWithClientId:CLIENT_ID
-                               andAppId:313
                         andClientSecret:CLIENT_SECRET
                               andAPIUrl:API];
-    
 }
 
 - (void)didReceiveMemoryWarning {

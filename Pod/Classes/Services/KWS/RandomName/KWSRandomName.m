@@ -9,13 +9,14 @@
 #import "KWSRandomName.h"
 
 @interface KWSRandomName ()
+@property (nonatomic, assign) NSInteger appId;
 @property (nonatomic, strong) gotRandomName gotName;
 @end
 
 @implementation KWSRandomName
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"v2/apps/%ld/random-display-name", (long)appId];
+    return [NSString stringWithFormat:@"v2/apps/%ld/random-display-name", (long)_appId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
@@ -43,7 +44,8 @@
     }
 }
 
-- (void) execute:(gotRandomName)gotName {
+- (void) execute:(NSInteger)appId onResult:(gotRandomName)gotName {
+    _appId = appId;
     _gotName = gotName ? gotName : ^(NSString*name){};
     [super execute];
 }

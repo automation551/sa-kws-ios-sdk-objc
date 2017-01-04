@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSUpdateUser.h
+../../../../../Pod/Classes/Services/KWS/User/KWSUpdateUser.h

@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSParentEmail.h
+../../../../../Pod/Classes/Services/KWS/ParentEmail/KWSParentEmail.h

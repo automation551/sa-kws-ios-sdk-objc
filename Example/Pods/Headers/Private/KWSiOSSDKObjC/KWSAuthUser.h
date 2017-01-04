@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSAuthUser.h
+../../../../../Pod/Classes/Services/KWS/Auth/KWSAuthUser.h

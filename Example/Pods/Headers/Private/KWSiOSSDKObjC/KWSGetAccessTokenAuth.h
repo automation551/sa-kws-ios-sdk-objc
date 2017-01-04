@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSGetAccessTokenAuth.h
+../../../../../Pod/Classes/Services/KWS/Auth/KWSGetAccessTokenAuth.h

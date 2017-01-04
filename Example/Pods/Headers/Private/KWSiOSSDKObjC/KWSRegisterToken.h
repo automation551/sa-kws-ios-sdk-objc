@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSRegisterToken.h
+../../../../../Pod/Classes/Services/KWS/Notifications/KWSRegisterToken.h

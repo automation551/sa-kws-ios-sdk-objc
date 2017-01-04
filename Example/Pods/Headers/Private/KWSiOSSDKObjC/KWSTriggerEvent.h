@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSTriggerEvent.h
+../../../../../Pod/Classes/Services/KWS/Score/KWSTriggerEvent.h

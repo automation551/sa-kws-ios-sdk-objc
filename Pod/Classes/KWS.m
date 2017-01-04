@@ -35,11 +35,10 @@
 @property (nonatomic, strong) KWSSetAppData *setAppData;
 @property (nonatomic, strong) KWSUpdateUser *updateUser;
 @property (nonatomic, strong) KWSCreateUser *createUser;
-@property (nonatomic, strong) KWSRandomName *randomName;
+@property (nonatomic, strong) KWSRandomNameProcess *randomName;
 
 // state properties
 @property (nonatomic, strong) NSString *clientId;
-@property (nonatomic, assign) NSInteger appId;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *kwsApiUrl;
 
@@ -79,7 +78,7 @@
         _setAppData = [[KWSSetAppData alloc] init];
         _updateUser = [[KWSUpdateUser alloc] init];
         _createUser = [[KWSCreateUser alloc] init];
-        _randomName = [[KWSRandomName alloc] init];
+        _randomName = [[KWSRandomNameProcess alloc] init];
     }
     return self;
 }
@@ -87,13 +86,11 @@
 // MARK: Setup function
 
 - (void) startSessionWithClientId:(NSString *)clientId
-                         andAppId:(NSInteger)appId
                   andClientSecret:(NSString *)clientSecret
                         andAPIUrl:(NSString *)apiUrl {
     
     // set values
     _clientId = clientId;
-    _appId = appId;
     _clientSecret = clientSecret;
     _kwsApiUrl = apiUrl;
     
@@ -160,7 +157,7 @@
 // Random name
 
 - (void) generateRandomName:(gotRandomName)randomName {
-    [_randomName execute:randomName];
+    [_randomName getRandomName:randomName];
 }
 
 // get user & update user details
@@ -326,10 +323,6 @@
 
 - (NSString*) getClientId {
     return _clientId;
-}
-
-- (NSInteger) getAppId {
-    return _appId;
 }
 
 - (NSString*) getClientSecret {

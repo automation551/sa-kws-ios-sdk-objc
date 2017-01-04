@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSInviteUser.h
+../../../../../Pod/Classes/Services/KWS/User/KWSInviteUser.h

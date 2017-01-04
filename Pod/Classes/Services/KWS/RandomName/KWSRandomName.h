@@ -11,5 +11,5 @@
 typedef void (^gotRandomName)(NSString *name);
 
 @interface KWSRandomName : KWSService
-- (void) execute:(gotRandomName)gotName;
+- (void) execute:(NSInteger)appId onResult:(gotRandomName)gotName;
 @end

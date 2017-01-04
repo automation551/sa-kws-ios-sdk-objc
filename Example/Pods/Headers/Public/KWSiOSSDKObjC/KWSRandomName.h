@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSRandomName.h
+../../../../../Pod/Classes/Services/KWS/RandomName/KWSRandomName.h

@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSGetAppData.h
+../../../../../Pod/Classes/Services/KWS/AppData/KWSGetAppData.h

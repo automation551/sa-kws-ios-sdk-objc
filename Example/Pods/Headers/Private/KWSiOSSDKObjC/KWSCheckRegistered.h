@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSCheckRegistered.h
+../../../../../Pod/Classes/Services/KWS/Notifications/KWSCheckRegistered.h

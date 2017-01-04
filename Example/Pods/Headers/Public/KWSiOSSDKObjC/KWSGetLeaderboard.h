@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Services/KWS/KWSGetLeaderboard.h
+../../../../../Pod/Classes/Services/KWS/Score/KWSGetLeaderboard.h

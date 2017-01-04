@@ -69,7 +69,6 @@
     kwsApiUrl = [[KWS sdk] getKWSApiUrl];
     loggedUser = [[KWS sdk] getLoggedUser];
     version = [[KWS sdk] getVersion];
-    appId = [[KWS sdk] getAppId];
     
     // case when the Network request actually needs the SDK to have a logged user,
     // but there is no logged user whatsoever

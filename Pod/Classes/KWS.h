@@ -26,7 +26,7 @@
 #import "KWSCreateUserProcess.h"
 #import "KWSNotificationProcess.h"
 #import "KWSAuthUserProcess.h"
-#import "KWSRandomName.h"
+#import "KWSRandomNameProcess.h"
 
 // forward declarations
 @class KWSMetadata;
@@ -38,7 +38,6 @@
 
 // setup func
 - (void) startSessionWithClientId:(NSString*)clientId
-                         andAppId:(NSInteger)appId
                   andClientSecret:(NSString*)clientSecret
                         andAPIUrl:(NSString*)apiUrl;
 - (void) stopSession;
@@ -104,7 +103,6 @@
 
 // other setters & getters
 - (NSString*) getClientId;
-- (NSInteger) getAppId;
 - (NSString*) getClientSecret;
 - (NSString*) getKWSApiUrl;
 - (void) setLoggedUser: (KWSLoggedUser*) loggedUser;
