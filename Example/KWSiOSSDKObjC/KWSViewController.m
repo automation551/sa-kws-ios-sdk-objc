@@ -15,6 +15,7 @@
 #import "SAUtils.h"
 
 #define API @"https://kwsapi.demo.superawesome.tv/"
+#define CLIENTID @"sa-mobile-app-sdk-client-0"
 
 @interface KWSViewController ()  <KWSRegisterProtocol, KWSUnregisterProtocol, KWSCheckProtocol, KWSRandomNameProtocol>
 @property (nonatomic, strong) NSString *token;
@@ -26,7 +27,7 @@
     [super viewDidLoad];
     _token = NULL;
     // init
-    [[KWS sdk] initWithApiUrl:API];
+    [[KWS sdk] setupWithApiUrl:API andClientId:CLIENTID];
 }
 
 - (IBAction) createNewUser:(id)sender {

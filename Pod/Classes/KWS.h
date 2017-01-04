@@ -13,7 +13,7 @@
 #import "PushManager.h"
 #import "CheckManager.h"
 #import "KWSParentEmail.h"
-#import "KWSRandomName.h"
+#import "KWSRandomNameManager.h"
 
 // forward declarations
 @class KWSMetadata;
@@ -59,7 +59,8 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
 + (instancetype) sdk;
 
 // setup func
-- (void) initWithApiUrl:(NSString*)kwsApiUrl;
+- (void) setupWithApiUrl:(NSString*)kwsApiUrl
+             andClientId:(NSString*)clientId;
 - (void) registerOAuthToken:(NSString*)oauthToken
          andPermissionPopup:(BOOL)showPermissionPopup;
 
@@ -78,6 +79,7 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
 // getters
 - (NSString*) getVersion;
 - (NSString*) getOAuthToken;
+- (NSString*) getClientId;
 - (NSString*) getKWSApiUrl;
 - (KWSMetadata*) getMetadata;
 
