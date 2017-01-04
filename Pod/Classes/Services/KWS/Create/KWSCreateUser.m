@@ -12,9 +12,17 @@
 #import "KWSLoggedUser.h"
 
 @interface KWSCreateUser ()
+
 @property (nonatomic, strong) created created;
-@property (nonatomic, strong) KWSLoggedUser *userTryingToLogin;
+
+@property (nonatomic, assign) NSInteger appId;
+@property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *dateOfBirth;
+@property (nonatomic, strong) NSString *country;
+@property (nonatomic, strong) NSString* parentEmail;
+
 @end
 
 @implementation KWSCreateUser
@@ -27,7 +35,7 @@
 }
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"v1/apps/%ld/users?access_token=%@", (unsigned long)_userTryingToLogin.metadata.appId, _userTryingToLogin.accessToken];
+    return [NSString stringWithFormat:@"v1/apps/%ld/users?access_token=%@", (unsigned long)_appId, _token];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
@@ -46,11 +54,11 @@
 
 - (NSDictionary*) getBody {
     return @{
-        @"username": nullSafe(_userTryingToLogin.username),
+        @"username": nullSafe(_username),
         @"password": nullSafe(_password),
-        @"dateOfBirth": nullSafe(_userTryingToLogin.dateOfBirth),
-        @"country": nullSafe(_userTryingToLogin.country),
-        @"parentEmail": nullSafe(_userTryingToLogin.parentEmail),
+        @"dateOfBirth": nullSafe(_dateOfBirth),
+        @"country": nullSafe(_country),
+        @"parentEmail": nullSafe(_parentEmail),
         @"authenticate": [NSNumber numberWithBool:true]
     };
 }
@@ -65,22 +73,33 @@
             // create a new logged user that will have a proper OAuth token
             KWSLoggedUser *finalUser = [[KWSLoggedUser alloc] initWithJsonString:payload];
             
-            // if all is OK go forward
-            if (finalUser && finalUser.token) {
-                _created(status, finalUser);
-            } else {
-                _created(status, nil);
-            }
+            // send signal
+            _created (status, finalUser);
+            
         } else {
-            _created(status, nil);
+            _created (status, nil);
         }
     }
 }
 
-- (void) executeWithUser:(KWSLoggedUser*)user andPassword:(NSString*)password :(created) created {
-    _created = created ? created : _created;
+- (void) executeWith:(NSString*)token
+            andAppId:(NSInteger)appId
+         andUsername:(NSString*)username
+         andPassword:(NSString*)password
+      andDateOfBirth:(NSString*)dateOfBirth
+          andCountry:(NSString*)country
+      andParentEmail:(NSString*)parentEmail
+          onResponse:(created)created{
+    
+    _token = token;
+    _appId = appId;
+    _username = username;
     _password = password;
-    _userTryingToLogin = user;
+    _dateOfBirth = dateOfBirth;
+    _country = country;
+    _parentEmail = parentEmail;
+    _created = created ? created : _created;
+    
     [super execute];
     
 }

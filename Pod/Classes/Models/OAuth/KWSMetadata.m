@@ -8,18 +8,21 @@
 
 #import "KWSMetadata.h"
 
+#define KWS_ID_DEF_VALUE -1
+
 @implementation KWSMetadata
 
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]) {
         
-        _userId = [[jsonDictionary safeObjectForKey:@"userId"] integerValue];
-        _appId = [[jsonDictionary safeObjectForKey:@"appId"] integerValue];
-        _clientId = [jsonDictionary safeObjectForKey:@"clientId"];
-        _scope = [jsonDictionary safeObjectForKey:@"scope"];
-        _iat = [[jsonDictionary safeObjectForKey:@"iat"] integerValue];
-        _exp = [[jsonDictionary safeObjectForKey:@"exp"] integerValue];
-        _iss = [jsonDictionary safeObjectForKey:@"iss"];
+        _userId = [jsonDictionary safeIntForKey:@"userId" orDefault:KWS_ID_DEF_VALUE];
+        _appId = [jsonDictionary safeIntForKey:@"appId" orDefault:KWS_ID_DEF_VALUE];
+        _clientId = [jsonDictionary safeStringForKey:@"clientId"];
+        _scope = [jsonDictionary safeStringForKey:@"scope"];
+        _iat = [jsonDictionary safeIntForKey:@"iat" orDefault:KWS_ID_DEF_VALUE];
+        _exp = [jsonDictionary safeIntForKey:@"exp" orDefault:KWS_ID_DEF_VALUE];
+        _iss = [jsonDictionary safeStringForKey:@"iss"];
+        
     }
     
     return self;
@@ -44,12 +47,19 @@
     [aCoder encodeInteger:_appId forKey:@"appId"];
     [aCoder encodeObject:_clientId forKey:@"clientId"];
     [aCoder encodeObject:_scope forKey:@"scope"];
+    [aCoder encodeInteger:_exp forKey:@"exp"];
     [aCoder encodeInteger:_iat forKey:@"iat"];
     [aCoder encodeObject:_iss forKey:@"iss"];
 }
 
 - (BOOL) isValid {
-    return true;
+    if (_appId == KWS_ID_DEF_VALUE || _userId == KWS_ID_DEF_VALUE || _iat == KWS_ID_DEF_VALUE || _exp == KWS_ID_DEF_VALUE) {
+        return false;
+    } else {
+        NSInteger now = [[NSDate date] timeIntervalSince1970];
+        NSInteger diff = now - _exp;
+        return diff < 0;
+    }
 }
 
 - (NSDictionary*) dictionaryRepresentation {
@@ -62,6 +72,29 @@
         @"exp": @(_exp),
         @"iss": nullSafe(_iss)
     };
+}
+
++ (KWSMetadata*) processMetadata:(NSString*)oauthToken {
+    NSArray *subtokens = [oauthToken componentsSeparatedByString:@"."];
+    NSString *token = nil;
+    if (subtokens.count >= 2) token = subtokens[1];
+    if (token == nil) return nil;
+    
+    NSString *token0 = token;
+    NSString *token1 = [token0 stringByAppendingString:@"="];
+    NSString *token2 = [token1 stringByAppendingString:@"="];
+    
+    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:token0 options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    if (decodedData == nil) {
+        decodedData = [[NSData alloc] initWithBase64EncodedString:token1 options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        if (decodedData == nil) {
+            decodedData = [[NSData alloc] initWithBase64EncodedString:token2 options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            if (decodedData == nil) return nil;
+        }
+    }
+    
+    NSString *decodedJson = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
+    return [[KWSMetadata alloc] initWithJsonString:decodedJson];
 }
 
 @end

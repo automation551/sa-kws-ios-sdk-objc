@@ -62,31 +62,14 @@
         
         if (accessToken) {
             
-            // create a user w/ the necessary details
-            KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc] init];
-            loggedUser.username = username;
-            loggedUser.accessToken = accessToken.access_token;
-            loggedUser.expiresIn = accessToken.expires_in;
-            loggedUser.metadata = [KWSAux processMetadata:accessToken.access_token];
-            
-            [_authUser executeWithUser:loggedUser :^(NSInteger status, KWSLoggedUser *tmpUser) {
-                
-                if (tmpUser) {
+            [_authUser executeWithToken:accessToken.access_token :^(NSInteger status, KWSLoggedUser *user) {
+               
+                if (user != nil && [user isValid]) {
                     
-                    // process final user
-                    KWSLoggedUser *finalUser = [[KWSLoggedUser alloc] init];
-                    finalUser._id = tmpUser._id;
-                    finalUser.token = tmpUser.token;
-                    finalUser.username = username;
-                    finalUser.accessToken = accessToken.access_token;
-                    finalUser.expiresIn = accessToken.expires_in;
-                    finalUser.loginDate = [[NSDate date] timeIntervalSince1970];
-                    finalUser.metadata = [KWSAux processMetadata:tmpUser.token];
+                    // save to SDK
+                    [[KWS sdk] setLoggedUser:user];
                     
-                    // set final user
-                    [[KWS sdk] setLoggedUser:finalUser];
-                    
-                    // send callback
+                    // send success
                     _userAuthenticated (KWSAuthUser_Success);
                     
                 } else {

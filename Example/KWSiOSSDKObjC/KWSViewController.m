@@ -171,9 +171,8 @@
                              
                              switch (status) {
                                  case KWSCreateUser_Success: {
-                                     NSLog(@"Created user & logged as %ld - %@ ",
-                                           (long)[[KWS sdk] getLoggedUser]._id,
-                                           [[KWS sdk] getLoggedUser].username);
+                                     NSLog(@"Created user & logged as %ld",
+                                           (long)[[KWS sdk] getLoggedUser].metadata.userId);
                                      break;
                                  }
                                  case KWSCreateUser_NetworkError: {
@@ -191,10 +190,10 @@
 }
 
 - (void) authUser {
-    [[KWS sdk] loginUser:@"testusr455" withPassword:@"testtest" andResponse:^(KWSAuthUserStatus status) {
+    [[KWS sdk] loginUser:@"getmeout" withPassword:@"testtest" andResponse:^(KWSAuthUserStatus status) {
         switch (status) {
             case KWSAuthUser_Success:
-                NSLog(@"Logged in as testusr455");
+                NSLog(@"Logged in as 'getmeout'");
                 break;
             case KWSAuthUser_InvalidCredentials:
                 NSLog(@"Invalid credentials");

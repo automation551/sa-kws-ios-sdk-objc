@@ -12,7 +12,7 @@
 
 @interface KWSAuthUser ()
 @property (nonatomic, strong) authenticated authenticated;
-@property (nonatomic, strong) KWSLoggedUser *userTryingToLogin;
+@property (nonatomic, strong) NSString *token;
 @end
 
 @implementation KWSAuthUser
@@ -25,7 +25,7 @@
 }
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"oauth/authorise?access_token=%@", _userTryingToLogin.accessToken];
+    return [NSString stringWithFormat:@"oauth/authorise?access_token=%@", _token];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
@@ -59,21 +59,18 @@
             // create a new logged user that will have a proper OAuth token
             KWSLoggedUser *finalUser = [[KWSLoggedUser alloc] initWithJsonString:payload];
             
-            // if all is OK go forward
-            if (finalUser && finalUser.token) {
-                _authenticated(status, finalUser);
-            } else {
-                _authenticated(status, nil);
-            }
+            // send good user
+            _authenticated (status, finalUser);
+            
         } else {
-            _authenticated(status, nil);
+            _authenticated (status, nil);
         }
     }
 }
 
-- (void) executeWithUser:(KWSLoggedUser *)user :(authenticated)authenticated {
+- (void) executeWithToken: (NSString*)token :(authenticated)authenticated {
     _authenticated = authenticated ? authenticated : _authenticated;
-    _userTryingToLogin = user;
+    _token = token;
     [super execute];
 }
 

@@ -49,4 +49,7 @@
 // ?
 @property (nonatomic, strong) NSString *iss;
 
+// create from token
++ (KWSMetadata*) processMetadata:(NSString*)oauthToken;
+
 @end

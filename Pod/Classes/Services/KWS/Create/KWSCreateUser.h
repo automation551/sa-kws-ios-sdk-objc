@@ -15,5 +15,14 @@ typedef void (^created)(NSInteger status, KWSLoggedUser *user);
 
 @interface KWSCreateUser : KWSService
 
-- (void) executeWithUser:(KWSLoggedUser*)user andPassword:(NSString*)password :(created) created;
+- (void) executeWith:(NSString*)token
+            andAppId:(NSInteger)appId
+         andUsername:(NSString*)username
+         andPassword:(NSString*)password
+      andDateOfBirth:(NSString*)dateOfBirth
+          andCountry:(NSString*)country
+      andParentEmail:(NSString*)parentEmail
+          onResponse:(created)created;
+
+
 @end

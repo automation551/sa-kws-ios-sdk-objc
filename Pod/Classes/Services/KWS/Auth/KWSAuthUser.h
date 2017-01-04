@@ -13,6 +13,6 @@ typedef void (^authenticated)(NSInteger status, KWSLoggedUser *user);
 
 @interface KWSAuthUser : KWSService
 
-- (void) executeWithUser: (KWSLoggedUser*)user :(authenticated)authenticated;
+- (void) executeWithToken: (NSString*)token :(authenticated)authenticated;
 
 @end

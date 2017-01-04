@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Models/KWSMetadata.h
+../../../../../Pod/Classes/Models/OAuth/KWSMetadata.h

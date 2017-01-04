@@ -88,49 +88,35 @@
         
         if (accessToken) {
             
-            // create a user w/ the necessary details
-            KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc] init];
-            loggedUser.username = username;
-            loggedUser.parentEmail = parentEmail;
-            loggedUser.country = country;
-            loggedUser.dateOfBirth = dateOfBirth;
-            loggedUser.accessToken = accessToken.access_token;
-            loggedUser.expiresIn = accessToken.expires_in;
-            loggedUser.metadata = [KWSAux processMetadata:accessToken.access_token];
+            KWSMetadata *tmpMetadata = [KWSMetadata processMetadata:accessToken.access_token];
             
-            // finally create the user on the back-end
-            [_createUser executeWithUser:loggedUser andPassword:password :^(NSInteger status, KWSLoggedUser *tmpUser) {
-                
-                // if all is OK
-                if (tmpUser) {
-                    
-                    // process final user
-                    KWSLoggedUser *finalUser = [[KWSLoggedUser alloc] init];
-                    finalUser._id = tmpUser._id;
-                    finalUser.token = tmpUser.token;
-                    finalUser.username = username;
-                    finalUser.parentEmail = parentEmail;
-                    finalUser.country = country;
-                    finalUser.dateOfBirth = dateOfBirth;
-                    finalUser.expiresIn = accessToken.expires_in;
-                    finalUser.accessToken = accessToken.access_token;
-                    finalUser.loginDate = [[NSDate date] timeIntervalSince1970];
-                    finalUser.metadata = [KWSAux processMetadata:tmpUser.token];
-
-                    // set final user
-                    [[KWS sdk] setLoggedUser:finalUser];
-                    
-                    // send callback
-                    _userCreated (KWSCreateUser_Success);
-                } else {
-                    if (status == 409) {
-                        _userCreated (KWSCreateUser_DuplicateUsername);
-                    }
-                    else {
-                        _userCreated (KWSCreateUser_InvalidOperation);
-                    }
-                }
-            }];
+            [_createUser executeWith:accessToken.access_token
+                            andAppId:tmpMetadata.appId
+                         andUsername:username
+                         andPassword:password
+                      andDateOfBirth:dateOfBirth
+                          andCountry:country
+                      andParentEmail:parentEmail
+                          onResponse:^(NSInteger status, KWSLoggedUser *user) {
+                              
+                              if (user != nil && [user isValid]) {
+                                  
+                                  // set final user
+                                  [[KWS sdk] setLoggedUser:user];
+                                  
+                                  // send callback
+                                  _userCreated (KWSCreateUser_Success);
+                                  
+                              }
+                              else {
+                                  if (status == 409) {
+                                      _userCreated (KWSCreateUser_DuplicateUsername);
+                                  }
+                                  else {
+                                      _userCreated (KWSCreateUser_InvalidOperation);
+                                  }
+                              }
+                          }];
             
         } else {
             _userCreated (KWSCreateUser_NetworkError);
