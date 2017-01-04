@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, KWSErrorType) {
 - (void) showParentEmailPopup;
 - (void) submitParentEmail:(NSString*)email;
 
-- (void) getRandomNameForApp: (NSInteger)appId withDelegate:(id)delegate;
+- (void) getRandomName:(id)delegate;
 
 // getters
 - (NSString*) getVersion;

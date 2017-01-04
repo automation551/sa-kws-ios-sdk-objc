@@ -227,7 +227,7 @@
     [self delKWSSDKDidFailToCheckIfUserIsRegistered];
 }
 
-- (void) getRandomNameForApp:(NSInteger)appId withDelegate:(id)delegate {
+- (void) getRandomName:(id)delegate {
     _randomNameManager.delegate = delegate;
     [_randomNameManager getRandomName];
 }
@@ -235,7 +235,7 @@
 // MARK: getters
 
 - (NSString*) getVersion {
-    return @"ios-1.3.0.4";
+    return @"ios-1.3.0.5";
 }
 
 - (NSString*) getOAuthToken {

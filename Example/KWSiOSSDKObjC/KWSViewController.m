@@ -70,7 +70,7 @@
 }
 
 - (IBAction) unregisterToken:(id)sender {
-    [[KWS sdk] getRandomNameForApp:313 withDelegate:self];
+    [[KWS sdk] getRandomName:self];
 //    [[KWS sdk] unregisterForRemoteNotifications:self];
 }
 

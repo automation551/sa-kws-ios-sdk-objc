@@ -24,7 +24,7 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - KWSiOSSDKObjC (1.3.0.3):
+  - KWSiOSSDKObjC (1.3.0.4):
     - SAJsonParser (= 1.2.3)
     - SANetworking (= 0.1.2)
     - SAUtils (= 1.2.7)
@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  KWSiOSSDKObjC: 43170b76d9fe695d90338c2962bf1dc166d2ce27
+  KWSiOSSDKObjC: 6776c913697167c6434cf6484125d8852280ac90
   SAJsonParser: c0a5ace5d143bc50d5318a4981ebaf79858e4af8
   SANetworking: 2e3d79a641857bab4e44d316a42b4725c3573e50
   SAUtils: e14d697d73f244cccc509bdd6a72bf2ae5fc6492
