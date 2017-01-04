@@ -34,7 +34,7 @@
 }
 
 - (NSString*) getEndpoint {
-    return [NSString stringWithFormat:@"v1/users/%ld", (long)[loggedUser.metadata userId]];
+    return [NSString stringWithFormat:@"v1/users/%ld", (long)loggedUser.metadata.userId];
 }
 
 - (KWS_HTTP_METHOD) getMethod {
