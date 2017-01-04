@@ -11,7 +11,6 @@
 
 // import aux & utils
 #import "SAUtils.h"
-#import "KWSAux.h"
 
 @interface KWSParentEmail ()
 @property (nonatomic, strong) submitted submitted;
@@ -71,7 +70,10 @@
 }
 
 - (BOOL) validateEmail: (NSString *) email {
-    return email && [KWSAux validate:email withRegex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
+    return
+        email &&
+        [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"] evaluateWithObject:email];
+
 }
 
 

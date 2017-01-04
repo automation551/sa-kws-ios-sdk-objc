@@ -75,6 +75,7 @@
 }
 
 + (KWSMetadata*) processMetadata:(NSString*)oauthToken {
+    if (oauthToken == nil) return nil;
     NSArray *subtokens = [oauthToken componentsSeparatedByString:@"."];
     NSString *token = nil;
     if (subtokens.count >= 2) token = subtokens[1];

@@ -14,9 +14,6 @@
 #import "KWSAccessToken.h"
 #import "KWSLoggedUser.h"
 
-// get aux
-#import "KWSAux.h"
-
 // import KWS
 #import "KWS.h"
 
@@ -86,7 +83,9 @@
 }
 
 - (BOOL) validateUsername: (NSString*) username {
-    return username && [KWSAux validate:username withRegex:@"^[a-zA-Z0-9]*$"] && [username length] >= 3;
+    return username &&
+            [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[a-zA-Z0-9]*$"] evaluateWithObject:username] &&
+            [username length] >= 3;
 }
 
 - (BOOL) validatePassword: (NSString*) password {

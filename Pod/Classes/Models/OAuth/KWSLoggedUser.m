@@ -8,7 +8,6 @@
 
 #import "KWSLoggedUser.h"
 #import "KWSMetadata.h"
-#import "KWSAux.h"
 
 @interface KWSLoggedUser ()
 @property (nonatomic, assign) BOOL isRegisteredForRM;

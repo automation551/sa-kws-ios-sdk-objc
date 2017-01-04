@@ -20,9 +20,6 @@
 // import main SDK
 #import "KWS.h"
 
-// import aux
-#import "KWSAux.h"
-
 @interface KWSCreateUserProcess ()
 @property (nonatomic, strong) userCreated userCreated;
 @property (nonatomic, strong) KWSGetAccessTokenCreate *getAccessToken;
@@ -88,10 +85,18 @@
         
         if (accessToken) {
             
-            KWSMetadata *tmpMetadata = [KWSMetadata processMetadata:accessToken.access_token];
+            // get app id info mainly from the previous temporary access token
+            KWSMetadata *metadata = [KWSMetadata processMetadata:accessToken.access_token];
             
+            // handle error
+            if (metadata == nil) {
+                _userCreated (KWSCreateUser_NetworkError);
+                return ;
+            }
+            
+            // continue w/ success
             [_createUser executeWith:accessToken.access_token
-                            andAppId:tmpMetadata.appId
+                            andAppId:metadata.appId
                          andUsername:username
                          andPassword:password
                       andDateOfBirth:dateOfBirth
@@ -127,7 +132,9 @@
 
 
 - (BOOL) validateUsername: (NSString*) username {
-    return username && [KWSAux validate:username withRegex:@"^[a-zA-Z0-9]*$"] && [username length] >= 3;
+    return username &&
+            [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[a-zA-Z0-9]*$"] evaluateWithObject:username] &&
+            [username length] >= 3;
 }
 
 - (BOOL) validatePassword: (NSString*) password {
@@ -135,15 +142,21 @@
 }
 
 - (BOOL) validateEmail: (NSString *) email {
-    return email && [KWSAux validate:email withRegex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
+    return
+        email &&
+        [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"] evaluateWithObject:email];
 }
 
 - (BOOL) validateDate: (NSString*) dateOfBirth {
-    return dateOfBirth && [KWSAux validate:dateOfBirth withRegex:@"[0-9]{4}-[0-9]{2}-[0-9]{2}"];
+    return
+        dateOfBirth &&
+        [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9]{4}-[0-9]{2}-[0-9]{2}"] evaluateWithObject:dateOfBirth];
 }
 
 - (BOOL) validateCountry: (NSString*) country {
-    return country && [KWSAux validate:country withRegex:@"[A-Z]{2}"];
+    return
+        country &&
+        [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[A-Z]{2}"] evaluateWithObject:country];
 }
 
 @end
