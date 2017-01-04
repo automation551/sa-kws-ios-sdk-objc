@@ -70,10 +70,7 @@
 }
 
 - (BOOL) validateEmail: (NSString *) email {
-    return
-        email &&
-        [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"] evaluateWithObject:email];
-
+    return email && [SAUtils isEmailValid:email];
 }
 
 
