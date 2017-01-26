@@ -1,25 +1,19 @@
-//
-//  SADownloadQueue.m
-//  Pods
-//
-//  Created by Gabriel Coman on 30/09/2016.
-//
-//
+/**
+ * @Copyright:   SuperAwesome Trading Limited 2017
+ * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
+ */
 
-// file header
-#import "SADownloadQueue.h"
+#import "SAFileQueue.h"
+#import "SAFileItem.h"
 
-// other headers
-#import "SADownloadItem.h"
-
-@interface SADownloadQueue ()
+@interface SAFileQueue ()
 
 // the queue
 @property (nonatomic, strong) NSMutableArray *queue;
 
 @end
 
-@implementation SADownloadQueue
+@implementation SAFileQueue
 
 - (id) init {
     if (self = [super init]) {
@@ -31,19 +25,19 @@
     return self;
 }
 
-- (void) addToQueue:(SADownloadItem *)item {
-    if (item != nil && item != (SADownloadItem*)[NSNull null]) {
+- (void) addToQueue:(SAFileItem *)item {
+    if (item != nil && item != (SAFileItem*)[NSNull null]) {
         [_queue addObject:item];
     }
 }
 
-- (void) removeFromQueue:(SADownloadItem *)item {
-    if (item != nil && item != (SADownloadItem*)[NSNull null]) {
+- (void) removeFromQueue:(SAFileItem *)item {
+    if (item != nil && item != (SAFileItem*)[NSNull null]) {
         [_queue removeObject:item];
     }
 }
 
-- (void) moveToBackOfQueue:(SADownloadItem *)item {
+- (void) moveToBackOfQueue:(SAFileItem *)item {
     [self removeFromQueue:item];
     [self addToQueue:item];
 }
@@ -54,7 +48,7 @@
 
 - (BOOL) hasItemForURL:(NSString *)url {
     
-    for (SADownloadItem *item in _queue) {
+    for (SAFileItem *item in _queue) {
         if ([[item urlKey] isEqualToString:url]) {
             return true;
         }
@@ -63,9 +57,9 @@
     return false;
 }
 
-- (SADownloadItem*) itemForURL:(NSString *)url {
+- (SAFileItem*) itemForURL:(NSString *)url {
     
-    for (SADownloadItem *item in _queue) {
+    for (SAFileItem *item in _queue) {
         if ([[item urlKey] isEqualToString:url]) {
             return item;
         }
@@ -74,9 +68,9 @@
     return nil;
 }
 
-- (SADownloadItem*) getNext {
+- (SAFileItem*) getNext {
     
-    for (SADownloadItem *item in _queue) {
+    for (SAFileItem *item in _queue) {
         if (![item isOnDisk]) {
             return item;
         }

@@ -1,17 +1,13 @@
-//
-//  SADownloadItem.m
-//  Pods
-//
-//  Created by Gabriel Coman on 30/09/2016.
-//
-//
+/**
+ * @Copyright:   SuperAwesome Trading Limited 2017
+ * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
+ */
 
-// file header
-#import "SADownloadItem.h"
+#import "SAFileItem.h"
 
 #define MAX_RETRIES 3
 
-@implementation SADownloadItem
+@implementation SAFileItem
 
 - (id) init {
     if (self = [super init]) {

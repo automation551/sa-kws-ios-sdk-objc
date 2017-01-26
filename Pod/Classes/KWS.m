@@ -11,8 +11,7 @@
 
 // get private imports
 #import "KWSMetadata.h"
-#import "SALogger.h"
-#import "SAPopup.h"
+#import "SAAlert.h"
 #import "KWSLoggedUser.h"
 
 #define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
@@ -270,13 +269,13 @@
 // MARK: public complex functions
 
 - (void) registerWithPopup:(registered)registered {
-    [[SAPopup sharedManager] showWithTitle:@"Hey!"
-                                andMessage:@"Do you want to enable Remote Notifications?"
-                                andOKTitle:@"Yes"
-                               andNOKTitle:@"No"
-                              andTextField:false
-                           andKeyboardTyle:kNilOptions
-                                andPressed:^(int button, NSString *popupMessage) {
+    [[SAAlert getInstance] showWithTitle:@"Hey!"
+                              andMessage:@"Do you want to enable Remote Notifications?"
+                              andOKTitle:@"Yes"
+                             andNOKTitle:@"No"
+                            andTextField:false
+                         andKeyboardTyle:kNilOptions
+                              andPressed:^(int button, NSString *popupMessage) {
                                     if (button == 0) {
                                         [_notificationProcess register:registered];
                                     } else {
@@ -286,13 +285,13 @@
 }
 
 - (void) submitParentEmailWithPopup:(submitted)submitted {
-    [[SAPopup sharedManager] showWithTitle:@"Hey!"
-                                andMessage:@"To enable Remote Notifications in KWS you'll need to provide a parent email."
-                                andOKTitle:@"Submit"
-                               andNOKTitle:@"Cancel"
-                              andTextField:true
-                           andKeyboardTyle:UIKeyboardTypeEmailAddress
-                                andPressed:^(int button, NSString *popupMessage) {
+    [[SAAlert getInstance] showWithTitle:@"Hey!"
+                              andMessage:@"To enable Remote Notifications in KWS you'll need to provide a parent email."
+                              andOKTitle:@"Submit"
+                             andNOKTitle:@"Cancel"
+                            andTextField:true
+                         andKeyboardTyle:UIKeyboardTypeEmailAddress
+                              andPressed:^(int button, NSString *popupMessage) {
                                     if (button == 0) {
                                         [self submitParentEmail:popupMessage andResponse:submitted];
                                     }
@@ -302,7 +301,7 @@
 // MARK: version
 
 - (NSString*) getVersion {
-    return @"ios-2.1.10";
+    return @"ios-2.2.0";
 }
 
 // MARK: setters & getters

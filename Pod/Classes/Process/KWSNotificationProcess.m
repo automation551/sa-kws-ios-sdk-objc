@@ -19,7 +19,7 @@
 #import "FirebaseGetToken.h"
 
 // other utils
-#import "SASystemVersion.h"
+#import "SAUtils.h"
 
 @interface KWSNotificationProcess ()
 // objects

@@ -12,7 +12,6 @@
 // aux
 #import "KWS.h"
 #import "SANetwork.h"
-#import "SALogger.h"
 
 // models
 #import "KWSUser.h"
@@ -48,7 +47,7 @@
         if ((status == 200 || status == 204) && payload != NULL) {
             
             KWSUser *user = [[KWSUser alloc] initWithJsonString:payload];
-            [SALogger log:[user jsonPreetyStringRepresentation]];
+            NSLog(@"%@", [user jsonPreetyStringRepresentation]);
             
             if (user) {
                 

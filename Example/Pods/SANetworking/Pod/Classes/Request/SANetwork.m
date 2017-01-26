@@ -1,27 +1,42 @@
-//
-//  SANetwork.m
-//  Pods
-//
-//  Created by Gabriel Coman on 05/07/2016.
-//
-//
+/**
+ * @Copyright:   SuperAwesome Trading Limited 2017
+ * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
+ */
 
 // file header
 #import "SANetwork.h"
 
-// callback for iOS's own [NSURLConnection sendAsynchronousRequest:]
-typedef void (^netResponse)(NSData *data, NSURLResponse *response, NSError *error);
-
 @implementation SANetwork
 
+/**
+ * This is the generic request method.
+ * It abstracts away the standard iOS NSURLSession wraps it so that it just
+ * returns a callback.
+ * This method does not get exposed to the public; Rather, sister methods
+ * like sendPUT, sendGET, etc, will be presented as public.
+ *
+ * @param endpoint  URL to send the request to
+ * @param method    the HTTP method to be executed, as a string.
+ *                  Based on the methods possible in iOS
+ *                  (OPTIONS, GET, HEAD, POST, PUT, DELETE and TRACE)
+ * @param query     a NSDictionary object containing all the query parameters
+ *                  to be added to an URL (mostly for a GET type request)
+ * @param header    a NSDictionary object containing all the header
+ *                  parameters to be added to the request
+ * @param body      a NSDictionary object containing all the body
+ *                  parameters to be added to a PUT or POST request
+ * @param response  a method of type saDidGetResponse to be used as a
+ *                  callback mechanism when the network operation
+ *                  finally succeeds
+ */
 - (void) sendRequestTo:(NSString*)endpoint
             withMethod:(NSString*)method
               andQuery:(NSDictionary*)query
              andHeader:(NSDictionary*)header
                andBody:(NSDictionary*)body
-         withResponse:(response) response {
+          withResponse:(saDidGetResponse) response {
     
-    // check url
+    // check the URL for nullness
     if (endpoint == nil || endpoint == (NSString*)[NSNull null]) {
         response(0, nil, false);
         return;
@@ -56,7 +71,7 @@ typedef void (^netResponse)(NSData *data, NSURLResponse *response, NSError *erro
     }
     
     // get the response handler
-    netResponse resp = ^(NSData *data, NSURLResponse *httpresponse, NSError *error) {
+    id resp = ^(NSData *data, NSURLResponse *httpresponse, NSError *error) {
         
         // handle two failure cases
         if (error != nil || data == nil) {
@@ -84,14 +99,15 @@ typedef void (^netResponse)(NSData *data, NSURLResponse *response, NSError *erro
     
     // start the session
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:resp];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:resp];
     [task resume];
 }
 
 - (void) sendGET:(NSString*)endpoint
        withQuery:(NSDictionary*)query
        andHeader:(NSDictionary*)header
-    withResponse:(response)response {
+    withResponse:(saDidGetResponse)response {
     [self sendRequestTo:endpoint withMethod:@"GET" andQuery:query andHeader:header andBody:nil withResponse:response];
 }
 
@@ -99,7 +115,7 @@ typedef void (^netResponse)(NSData *data, NSURLResponse *response, NSError *erro
         withQuery:(NSDictionary*)query
         andHeader:(NSDictionary*)header
           andBody:(NSDictionary*)body
-     withResponse:(response)response {
+     withResponse:(saDidGetResponse)response {
     [self sendRequestTo:endpoint withMethod:@"POST" andQuery:query andHeader:header andBody:body withResponse:response];
 }
 
@@ -107,12 +123,20 @@ typedef void (^netResponse)(NSData *data, NSURLResponse *response, NSError *erro
        withQuery:(NSDictionary *)query
        andHeader:(NSDictionary *)header
          andBody:(NSDictionary *)body
-    withResponse:(response)response {
+    withResponse:(saDidGetResponse)response {
     [self sendRequestTo:endpoint withMethod:@"PUT" andQuery:query andHeader:header andBody:body withResponse:response];
 }
 
-// MARK: Private
 
+/**
+ * This method takes a NSDictionary paramter and returns it as a valid
+ * GET query string (e.g. a JSON { "name": "John", "age": 23 }
+ * would become "name=John&age=23"
+ *
+ * @param dict  a NSDictionary object to be transformed into a
+ *              GET query string
+ * @return      a valid GET query string
+ */
 - (NSString*) formGetQueryFromDict:(NSDictionary *)dict {
     NSMutableString *query = [[NSMutableString alloc] init];
     NSMutableArray *getParams = [[NSMutableArray alloc] init];

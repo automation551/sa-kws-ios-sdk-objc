@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Models/KWSEventStatus.h
+../../../../../Pod/Classes/Models/Event/KWSEventStatus.h

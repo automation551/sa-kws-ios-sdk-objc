@@ -18,7 +18,6 @@
 #import "KWSError.h"
 #import "KWSParentEmailError.h"
 #import "KWSInvalid.h"
-#import "SALogger.h"
 
 @interface KWSRequestPermission ()
 @property (nonatomic, strong) requested requested;
@@ -55,7 +54,7 @@
     } else {
         if (payload) {
             KWSError *error = [[KWSError alloc] initWithJsonString:payload];
-            [SALogger log:[error jsonPreetyStringRepresentation]];
+            NSLog(@"%@", [error jsonPreetyStringRepresentation]);
             
             if (status == 200 || status == 204) {
                 _requested(KWSPermission_Success);

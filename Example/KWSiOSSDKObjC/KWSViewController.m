@@ -8,7 +8,6 @@
 
 #import "KWSViewController.h"
 #import "KWS.h"
-#import "SALogger.h"
 #import "SAUtils.h"
 
 #define DATA_TITLE @"title"

@@ -1,25 +1,27 @@
-//
-//  SAActivityView.m
-//  Pods
-//
-//  Created by Gabriel Coman on 07/07/2016.
-//
-//
+/**
+ * @Copyright:   SuperAwesome Trading Limited 2017
+ * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
+ */
 
-#import "SAActivityView.h"
+#import "SALoadScreen.h"
 
-@interface SAActivityView ()
-@property (nonatomic, strong) UIWindow *win;
-@property (nonatomic, strong) UIView *backView;
-@property (nonatomic, strong) UIActivityIndicatorView *activityView;
+@interface SALoadScreen ()
+
+// reference to the window
+@property (nonatomic, strong) UIWindow                  *win;
+
+// a new back-window (basically the background)
+@property (nonatomic, strong) UIView                    *backView;
+
+// a new activity indicator view
+@property (nonatomic, strong) UIActivityIndicatorView   *activityView;
+
 @end
 
-@implementation SAActivityView
+@implementation SALoadScreen
 
-// MARK: Initializers
-
-+ (instancetype) sharedManager {
-    static SAActivityView *sharedMyManager = nil;
++ (instancetype) getInstance {
+    static SALoadScreen *sharedMyManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [[self alloc] init];
@@ -27,6 +29,9 @@
     return sharedMyManager;
 }
 
+/**
+ * Overridden init method that copies the window reference
+ */
 - (id) init {
     if (self = [super init]) {
         _win = [[[UIApplication sharedApplication] delegate] window];
@@ -35,9 +40,7 @@
     return self;
 }
 
-// MARK: Class methods
-
-- (void) showActivityView {
+- (void) show {
     CGRect frame = [UIScreen mainScreen].bounds;
     _backView = [[UIView alloc] initWithFrame:frame];
     _backView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.25];
@@ -50,7 +53,7 @@
     [_activityView startAnimating];
 }
 
-- (void) hideActivityView {
+- (void) hide {
     [_activityView stopAnimating];
     [_activityView removeFromSuperview];
     [_backView removeFromSuperview];

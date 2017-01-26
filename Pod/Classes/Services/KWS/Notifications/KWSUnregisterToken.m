@@ -7,7 +7,6 @@
 //
 
 #import "KWSUnregisterToken.h"
-#import "SALogger.h"
 
 @interface KWSUnregisterToken ()
 @property (nonatomic, strong) unregisteredToken unregisteredToken;

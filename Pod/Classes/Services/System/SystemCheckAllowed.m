@@ -7,7 +7,7 @@
 //
 
 #import "SystemCheckAllowed.h"
-#import "SASystemVersion.h"
+#import "SAUtils.h"
 
 #define kUserHasSeenDialog @"UserHasSeenDialog"
 #define SYS_VERSION SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")

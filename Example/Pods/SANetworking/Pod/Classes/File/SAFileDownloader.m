@@ -1,17 +1,11 @@
-//
-//  SASequentialFileDownloader.m
-//  Pods
-//
-//  Created by Gabriel Coman on 30/09/2016.
-//
-//
+/**
+ * @Copyright:   SuperAwesome Trading Limited 2017
+ * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
+ */
 
-// file header
 #import "SAFileDownloader.h"
-
-// other headers
-#import "SADownloadItem.h"
-#import "SADownloadQueue.h"
+#import "SAFileItem.h"
+#import "SAFileQueue.h"
 
 #define TIMEOUT_INTERVAL 10
 
@@ -19,8 +13,8 @@
 
 @property (nonatomic, strong) NSFileManager *fileManager;
 @property (nonatomic, strong) NSUserDefaults *defs;
-@property (nonatomic, strong) SADownloadQueue *queue;
-@property (nonatomic, strong) SADownloadItem *currentItem;
+@property (nonatomic, strong) SAFileQueue *queue;
+@property (nonatomic, strong) SAFileItem *currentItem;
 
 @property (nonatomic, strong) NSURLSessionConfiguration *defaultConfigObject;
 @property (nonatomic, strong) NSURLSession *session;
@@ -35,10 +29,6 @@
 
 @implementation SAFileDownloader
 
-////////////////////////////////////////////////////////////////////////////////
-// MARK: Singleton methods
-////////////////////////////////////////////////////////////////////////////////
-
 + (instancetype) getInstance {
     static SAFileDownloader *sharedMyManager = nil;
     static dispatch_once_t onceToken;
@@ -48,6 +38,12 @@
     return sharedMyManager;
 }
 
+/**
+ * Overridden "init" methid that initializes all the objects needed by the
+ * singleton. Only called once.
+ *
+ * @return a new instance of the object, just once
+ */
 - (id) init {
     if (self = [super init]) {
         
@@ -59,7 +55,7 @@
         [self cleanup];
         
         // start queue & current item
-        _queue = [[SADownloadQueue alloc] init];
+        _queue = [[SAFileQueue alloc] init];
         _currentItem = nil;
         
         // set downloader not busy
@@ -77,12 +73,8 @@
     return self;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// MARK: Public methods
-////////////////////////////////////////////////////////////////////////////////
-
-- (void) downloadFileFrom:(NSString*)url
-              andResponse:(seqDownloadResponse)response {
+- (void) downloadFileFrom:(NSString*) url
+              andResponse:(saDidDownloadFile) response {
     
     // if File is already in queue
     if ([_queue hasItemForURL:url]) {
@@ -90,7 +82,7 @@
         NSLog(@"File already exists for URL %@", url);
         
         // get item
-        SADownloadItem *item = [_queue itemForURL:url];
+        SAFileItem *item = [_queue itemForURL:url];
         
         // get status
         BOOL isOnDisk = [item isOnDisk];
@@ -112,8 +104,8 @@
         NSLog(@"Adding new URL to queue %@", url);
         
         // create a new item
-        SADownloadItem *newItem = [[SADownloadItem alloc] initWithUrl:url
-                                                   andInitialResponse:response];
+        SAFileItem *newItem = [[SAFileItem alloc] initWithUrl:url
+                                           andInitialResponse:response];
         
         // if the new item is valid (e.g. valid url, disk path, key, etc)
         // then proceed with the operation
@@ -134,6 +126,11 @@
     }
 }
 
+/**
+ * This is a private method that checks on the current queue and see
+ * if either the queue is ready to download something new or, if it's busy,
+ * to add the current item to be downloaded to the queue for later use.
+ */
 - (void) checkOnQueue {
     
     // start the downloader if not busy
@@ -174,7 +171,7 @@
             else {
                 
                 // send error responses
-                for (seqDownloadResponse response in [_currentItem responses]) {
+                for (saDidDownloadFile response in [_currentItem responses]) {
                     response (false, nil);
                 }
                 
@@ -191,11 +188,21 @@
     }
 }
 
-- (void)URLSession:(NSURLSession *)session
-      downloadTask:(NSURLSessionDownloadTask *)downloadTask
-      didWriteData:(int64_t)bytesWritten
- totalBytesWritten:(int64_t)totalBytesWritten
-totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+/**
+ * Overridden "NSURLSessionDataDelegate" method that gets called when a new
+ * piece of that has been downloaded.
+ *
+ * @param session                      the current URL session instance
+ * @param downloadTask                 the current download tesk instance
+ * @param bytesWritten                 the number of bytes written this time
+ * @param totalBytesWritten            the total number of bytes written
+ * @param totalBytesExpectedToWrite    the total file size
+ */
+- (void)URLSession:(NSURLSession*) session
+      downloadTask:(NSURLSessionDownloadTask*) downloadTask
+      didWriteData:(int64_t) bytesWritten
+ totalBytesWritten:(int64_t) totalBytesWritten
+totalBytesExpectedToWrite:(int64_t) totalBytesExpectedToWrite {
     
     // 1. get total
     int64_t totali = totalBytesExpectedToWrite;
@@ -223,6 +230,14 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     }
 }
 
+/**
+ * Overridden "NSURLSessionDataDelegate" method that gets called when a new
+ * file has been downloaded
+ *
+ * @param session      the current URL session instance
+ * @param downloadTask the current download tesk instance
+ * @param location     the final location that the file has been downloaded to
+ */
 - (void) URLSession:(NSURLSession*) session
        downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask
 didFinishDownloadingToURL:(nonnull NSURL *)location {
@@ -243,7 +258,7 @@ didFinishDownloadingToURL:(nonnull NSURL *)location {
     }
     
     // send responses
-    for (seqDownloadResponse response in [_currentItem responses]) {
+    for (saDidDownloadFile response in [_currentItem responses]) {
         response (true, [_currentItem diskName]);
     }
     
@@ -260,6 +275,14 @@ didFinishDownloadingToURL:(nonnull NSURL *)location {
     [self checkOnQueue];
 }
 
+/**
+ * Overridden "NSURLSessionDataDelegate" method that gets called when a file
+ * has encountered an error while trying to download
+ *
+ * @param session      the current URL session instance
+ * @param downloadTask the current session tesk instance
+ * @param error        error object describing what's happened
+ */
 - (void) URLSession:(NSURLSession *)session
                task:(NSURLSessionTask *)task
 didCompleteWithError:(NSError *)error {
@@ -280,11 +303,13 @@ didCompleteWithError:(NSError *)error {
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// MARK: Private methods to cleanup, etc
-////////////////////////////////////////////////////////////////////////////////
-
-
+/**
+ * Method that takes a file path (a simple name) and returns it's full path
+ * as it would be in the iOS Documents directory.
+ *
+ * @param fpath    the name of the file
+ * @return         the full file name with documents directory added
+ */
 - (NSString*) filePathInDocuments:(NSString*)fpath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = paths.firstObject;

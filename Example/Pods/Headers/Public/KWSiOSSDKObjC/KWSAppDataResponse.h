@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Models/KWSAppDataResponse.h
+../../../../../Pod/Classes/Models/AppData/KWSAppDataResponse.h

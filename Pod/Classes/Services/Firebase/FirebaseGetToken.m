@@ -16,9 +16,6 @@
 #endif
 #endif
 
-// other imports
-#import "SALogger.h"
-
 @interface FirebaseGetToken ()
 @property (nonatomic, strong) gotToken gottoken;
 @end
@@ -65,12 +62,12 @@
             // an exception, but it's not fatal - it's mostly a "warning", so
             // app execution should continue
             if (defaultApp != NULL) {
-                [SALogger log:@"Firebase app already exists"];
+                NSLog(@"Firebase app already exists");
             }
             // when the configure function failed and there's no default app
             // already configured, then there trully is an error!
             else {
-                [SALogger err:[NSString stringWithFormat:@"Could not configure Firebase %@", exception]];
+                NSLog(@"Could not configure Firebase %@", exception);
                 _gottoken(false, nil);
             }
         } @finally {
@@ -82,7 +79,7 @@
         
         // if it does not, start the observer
         if (token == NULL) {
-            [SALogger log:@"Starting observer for Firebase Token"];
+            NSLog(@"Starting observer for Firebase Token");
             // Add observer for InstanceID token refresh callback.
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector(tokenRefreshNotification:)
@@ -91,7 +88,7 @@
         }
         // if it exists, use it
         else {
-            [SALogger log:[NSString stringWithFormat:@"Getting already existing token %@", token]];
+            NSLog(@"Getting already existing token %@", token);
             _gottoken(true, token);
         }
         
@@ -110,7 +107,7 @@
     // should be done.
     NSString *token = [self tryAndGetToken];
     
-    [SALogger log:[NSString stringWithFormat:@"Token is %@", token]];
+    NSLog(@"Token is %@", token);
     if (token != NULL) {
         _gottoken(true, token);
     }

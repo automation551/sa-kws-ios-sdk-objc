@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+2.2.0
+ - Updated Networking, JSON & Utils dependencies to work with the latest versions (and benefit from all subsequent tests & improvements done)
+ - Moved some models around into their own folders 
+
 2.1.10
  - Removed the need to explicitly specify the App ID as an integer parameter when setting up the SDK
  - Right now the setup will be done by specifying just the KWS Url, the Client Id and the Client secret, all obtainable from the KWS Dashboard.

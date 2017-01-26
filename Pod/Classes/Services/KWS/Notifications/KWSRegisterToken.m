@@ -7,7 +7,6 @@
 //
 
 #import "KWSRegisterToken.h"
-#import "SALogger.h"
 
 @interface KWSRegisterToken ()
 @property (nonatomic, strong) registeredToken registeredToken;
