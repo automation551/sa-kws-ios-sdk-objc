@@ -7,7 +7,7 @@
 //
 
 #import "KWSViewController.h"
-#import "KWS.h"
+#import "KWSChildren.h"
 #import "SAUtils.h"
 
 #define DATA_TITLE @"title"
@@ -43,9 +43,9 @@
                  DATA_SEC: @[@"Enable notifications", @"Disable notifications", @"Check if registered"]}] mutableCopy];
     
     // start KWS session
-    [[KWS sdk] startSessionWithClientId:CLIENT_ID
-                        andClientSecret:CLIENT_SECRET
-                              andAPIUrl:API];
+    [[KWSChildren sdk] setupWithClientId:CLIENT_ID
+                         andClientSecret:CLIENT_SECRET
+                               andAPIUrl:API];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -152,7 +152,7 @@
 }
 
 - (void) generateRandomName {
-    [[KWS sdk] generateRandomName:^(NSString *name) {
+    [[KWSChildren sdk] getRandomUsername:^(NSString *name) {
         NSLog(@"Random name is %@", name);
     }];
 }
@@ -161,24 +161,24 @@
     
     __block NSString *username = [NSString stringWithFormat:@"testusr%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
     
-    [[KWS sdk] createUser:username
+    [[KWSChildren sdk] createUser:username
              withPassword:@"testtest"
            andDateOfBirth:@"2011-03-02"
                andCountry:@"US"
            andParentEmail:@"dev.gabriel.coman@gmail.com"
-              andResponse:^(KWSCreateUserStatus status) {
+              andResponse:^(KWSChildrenCreateUserStatus status) {
                              
                              switch (status) {
-                                 case KWSCreateUser_Success: {
+                                 case KWSChildren_CreateUser_Success: {
                                      NSLog(@"Created user & logged as %ld",
-                                           (long)[[KWS sdk] getLoggedUser].metadata.userId);
+                                           (long)[[KWSChildren sdk] getLoggedUser].metadata.userId);
                                      break;
                                  }
-                                 case KWSCreateUser_NetworkError: {
+                                 case KWSChildren_CreateUser_NetworkError: {
                                      NSLog(@"Network error Creating user %@", username);
                                      break;
                                  }
-                                 case KWSCreateUser_DuplicateUsername: {
+                                 case KWSChildren_CreateUser_DuplicateUsername: {
                                      NSLog(@"Duplicate user %@", username);
                                      break;
                                  }
@@ -189,15 +189,15 @@
 }
 
 - (void) authUser {
-    [[KWS sdk] loginUser:@"getmeout" withPassword:@"testtest" andResponse:^(KWSAuthUserStatus status) {
+    [[KWSChildren sdk] loginUser:@"getmeout" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
-            case KWSAuthUser_Success:
+            case KWSChildren_LoginUser_Success:
                 NSLog(@"Logged in as 'getmeout'");
                 break;
-            case KWSAuthUser_InvalidCredentials:
+            case KWSChildren_LoginUser_InvalidCredentials:
                 NSLog(@"Invalid credentials");
                 break;
-            case KWSAuthUser_NetworkError:
+            case KWSChildren_LoginUser_NetworkError:
                 NSLog(@"Network error");
                 break;
             default:
@@ -207,12 +207,12 @@
 }
 
 - (void) logoutUser {
-    [[KWS sdk] logoutUser];
+    [[KWSChildren sdk] logoutUser];
 }
 
 - (void) getUserProfile {
     
-    [[KWS sdk] getUser:^(KWSUser *user) {
+    [[KWSChildren sdk] getUser:^(KWSUser *user) {
         _user = user;
         if (user) {
             NSLog(@"User %@", [user jsonPreetyStringRepresentation]);
@@ -229,7 +229,7 @@
         
         _user.firstName = @"John";
         
-        [[KWS sdk] updateUser:_user andResponse:^(BOOL updated) {
+        [[KWSChildren sdk] updateUser:_user withResponse:^(BOOL updated) {
             NSLog(@"Updated user %d", updated);
         }];
     } else {
@@ -238,17 +238,18 @@
 }
 
 - (void) submitParentEmail {
-    [[KWS sdk] submitParentEmail:@"dev.gabriel.coman@gmail.com" andResponse:^(KWSParentEmailStatus type) {
+    [[KWSChildren sdk] updateParentEmail:@"dev.gabriel.coman@gmail.com"
+                            withResponse:^(KWSChildrenUpdateParentEmailStatus type) {
         switch (type) {
-            case KWSParentEmail_Success:{
+            case KWSChildren_UpdateParentEmail_Success:{
                 NSLog(@"Updated parent email");
                 break;
             }
-            case KWSParentEmail_Invalid: {
+            case KWSChildren_UpdateParentEmail_InvalidEmail: {
                 NSLog(@"Parent email invalid");
                 break;
             }
-            case KWSParentEmail_NetworkError:{
+            case KWSChildren_UpdateParentEmail_NetworkError:{
                 NSLog(@"Parent email error");
                 break;
             }
@@ -259,17 +260,17 @@
 }
 
 - (void) requestPermissions {
-    [[KWS sdk] requestPermission:@[@(KWSPermission_AccessLastName)] andResponse:^(KWSPermissionStatus status) {
+    [[KWSChildren sdk] requestPermission:@[@(KWSChildren_PermissionType_AccessLastName)] withResponse:^(KWSChildrenRequestPermissionStatus status) {
         switch (status) {
-            case KWSPermission_Success: {
+            case KWSChildren_RequestPermission_Success: {
                 NSLog(@"Requested permissions OK");
                 break;
             }
-            case KWSPermission_NoParentEmail: {
+            case KWSChildren_RequestPermission_NoParentEmail: {
                 NSLog(@"No parent email to request permissions");
                 break;
             }
-            case KWSPermission_NetworkError: {
+            case KWSChildren_RequestPermission_NetworkError: {
                 NSLog(@"Permission network error");
                 break;
             }
@@ -280,13 +281,13 @@
 }
 
 - (void) inviteUser {
-    [[KWS sdk] inviteUser:@"gabriel.coman@superawesome.tv" andResponse:^(BOOL invited) {
+    [[KWSChildren sdk] inviteUser:@"gabriel.coman@superawesome.tv" withResponse:^(BOOL invited) {
         NSLog(@"Invited user %d", invited);
     }];
 }
 
 - (void) triggerEvent {
-    [[KWS sdk] triggerEvent:@"a7tzV7QLhlR0rS8KK98QcZgrQk3ur260" withPoints:20 andResponse:^(BOOL success) {
+    [[KWSChildren sdk] triggerEvent:@"a7tzV7QLhlR0rS8KK98QcZgrQk3ur260" withPoints:20 andResponse:^(BOOL success) {
         NSLog(@"Triggered event %d", success);
     }];
 }
@@ -296,46 +297,46 @@
 }
 
 - (void) getScore {
-    [[KWS sdk] getScore:^(KWSScore *score) {
+    [[KWSChildren sdk] getScore:^(KWSScore *score) {
         NSLog(@"Current score %ld | %ld", (long)score.rank, (long)score.score);
     }];
 }
 
 - (void) getLeadrboard {
-    [[KWS sdk] getLeaderboard:^(NSArray<KWSLeader *> *leaders) {
+    [[KWSChildren sdk] getLeaderboard:^(NSArray<KWSLeader *> *leaders) {
         NSLog(@"Leaders %@", [leaders jsonPrettyStringRepresentation]);
     }];
 }
 
 - (void) setAppData {
-    [[KWS sdk] setAppData:@"app-data-1" withValue:20 andResponse:^(BOOL success) {
+    [[KWSChildren sdk] setAppData:20 forName:@"app-data-1" andResponse:^(BOOL success) {
         NSLog(@"Set app data %d", success);
     }];
 }
 
 - (void) getAppData {
-    [[KWS sdk] getAppData:^(NSArray<KWSAppData *> *appData) {
+    [[KWSChildren sdk] getAppData:^(NSArray<KWSAppData *> *appData) {
         NSLog(@"Get app data %@", appData);
     }];
 }
 
 - (void) enablePN {
-    registered R = ^(KWSNotificationStatus status) {
+    KWSChildrenRegisterForRemoteNotificationsBlock R = ^(KWSChildrenRegisterForRemoteNotificationsStatus status) {
         switch (status) {
-            case KWSNotification_Success: {
+            case KWSChildren_RegisterForRemoteNotifications_Success: {
                 break;
             }
-            case KWSNotification_NoParentEmail: {
-                [[KWS sdk] submitParentEmailWithPopup:^(KWSParentEmailStatus status) {
+            case KWSChildren_RegisterForRemoteNotifications_NoParentEmail: {
+                [[KWSChildren sdk] submitParentEmailWithPopup:^(KWSChildrenUpdateParentEmailStatus status) {
                     switch (status) {
-                        case KWSParentEmail_Success: {
-                            [[KWS sdk] register:R];
+                        case KWSChildren_UpdateParentEmail_Success: {
+                            [[KWSChildren sdk] registerForRemoteNotifications:R];
                             break;
                         }
-                        case KWSParentEmail_Invalid: {
+                        case KWSChildren_UpdateParentEmail_InvalidEmail: {
                             break;
                         }
-                        case KWSParentEmail_NetworkError: {
+                        case KWSChildren_UpdateParentEmail_NetworkError: {
                             break;
                         }
                     }
@@ -347,15 +348,15 @@
                 break;
         }
     };
-    [[KWS sdk] register:R];
+    [[KWSChildren sdk] registerForRemoteNotifications:R];
 }
 
 - (void) disablePN {
-     [[KWS sdk] unregister:NULL];
+     [[KWSChildren sdk] unregisterForRemoteNotifications:NULL];
 }
 
 - (void) arePNEnabled {
-    [[KWS sdk] isRegistered:^(BOOL success) {
+    [[KWSChildren sdk] isRegisteredForRemoteNotifications:^(BOOL success) {
         NSLog(@"Is registered %d", success);
     }];
 }

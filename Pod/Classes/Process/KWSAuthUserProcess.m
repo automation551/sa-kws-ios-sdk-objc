@@ -15,10 +15,10 @@
 #import "KWSLoggedUser.h"
 
 // import KWS
-#import "KWS.h"
+#import "KWSChildren.h"
 
 @interface KWSAuthUserProcess ()
-@property (nonatomic, strong) userAuthenticated userAuthenticated;
+@property (nonatomic, strong) KWSChildrenLoginUserBlock userAuthenticated;
 @property (nonatomic, strong) KWSGetAccessTokenAuth *getAccessToken;
 @property (nonatomic, strong) KWSAuthUser *authUser;
 @end
@@ -29,7 +29,7 @@
     if (self = [super init]) {
         _getAccessToken = [[KWSGetAccessTokenAuth alloc] init];
         _authUser = [[KWSAuthUser alloc] init];
-        _userAuthenticated = ^(KWSAuthUserStatus status) {};
+        _userAuthenticated = ^(KWSChildrenLoginUserStatus status) {};
     }
     
     return self;
@@ -38,7 +38,7 @@
 
 - (void) authWithUsername:(NSString*)username
               andPassword:(NSString*)password
-                         :(userAuthenticated)userAuthenticated {
+                         :(KWSChildrenLoginUserBlock)userAuthenticated {
     
     // form data
     _userAuthenticated = userAuthenticated ? userAuthenticated : _userAuthenticated;
@@ -46,12 +46,12 @@
     BOOL passwordValid = [self validatePassword:password];
     
     if (!usernameValid) {
-        _userAuthenticated (KWSAuthUser_InvalidCredentials);
+        _userAuthenticated (KWSChildren_LoginUser_InvalidCredentials);
         return;
     }
     
     if (!passwordValid) {
-        _userAuthenticated (KWSAuthUser_InvalidCredentials);
+        _userAuthenticated (KWSChildren_LoginUser_InvalidCredentials);
         return;
     }
     
@@ -64,19 +64,19 @@
                 if (user != nil && [user isValid]) {
                     
                     // save to SDK
-                    [[KWS sdk] setLoggedUser:user];
+                    [[KWSChildren sdk] setLoggedUser:user];
                     
                     // send success
-                    _userAuthenticated (KWSAuthUser_Success);
+                    _userAuthenticated (KWSChildren_LoginUser_Success);
                     
                 } else {
-                    _userAuthenticated (KWSAuthUser_InvalidCredentials);
+                    _userAuthenticated (KWSChildren_LoginUser_InvalidCredentials);
                 }
                 
             }];
             
         } else {
-            _userAuthenticated (KWSAuthUser_NetworkError);
+            _userAuthenticated (KWSChildren_LoginUser_NetworkError);
         }
         
     }];

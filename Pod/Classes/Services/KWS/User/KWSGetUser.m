@@ -9,7 +9,7 @@
 #import "KWSGetUser.h"
 
 @interface KWSGetUser ()
-@property (nonatomic, strong) gotUser gotuser;
+@property (nonatomic, strong) KWSChildrenGetUserBlock gotuser;
 @end
 
 @implementation KWSGetUser
@@ -36,7 +36,7 @@
     }
 }
 
-- (void) execute:(gotUser)gotuser {
+- (void) execute:(KWSChildrenGetUserBlock)gotuser {
     _gotuser = gotuser ? gotuser : ^(KWSUser*user){};
     [super execute];
 }

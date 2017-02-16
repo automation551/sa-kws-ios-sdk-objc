@@ -8,8 +8,9 @@
 
 #import "KWSService.h"
 
-typedef void (^setAppData)(BOOL success);
+typedef void (^KWSChildrenSetAppDataBlock)(BOOL success);
 
 @interface KWSSetAppData : KWSService
-- (void) execute:(NSString*)name withValue:(NSInteger)value :(setAppData)setappdata;
+- (void) execute:(NSString*)name withValue:(NSInteger)value
+                :(KWSChildrenSetAppDataBlock)setappdata;
 @end

@@ -18,11 +18,11 @@
 #import "KWSLoggedUser.h"
 
 // import main SDK
-#import "KWS.h"
+#import "KWSChildren.h"
 #import "SAUtils.h"
 
 @interface KWSCreateUserProcess ()
-@property (nonatomic, strong) userCreated userCreated;
+@property (nonatomic, strong) KWSChildrenCreateUserBlock response;
 @property (nonatomic, strong) KWSGetAccessTokenCreate *getAccessToken;
 @property (nonatomic, strong) KWSCreateUser *createUser;
 @end
@@ -33,7 +33,7 @@
     if (self = [super init]) {
         _getAccessToken = [[KWSGetAccessTokenCreate alloc] init];
         _createUser = [[KWSCreateUser alloc] init];
-        _userCreated = ^(KWSCreateUserStatus error) {};
+        _response = ^(KWSChildrenCreateUserStatus status) {};
     }
     
     return self;
@@ -44,10 +44,10 @@
              andDateOfBirth:(NSString*)dateOfBirth
                  andCountry:(NSString*)country
              andParentEmail:(NSString*)parentEmail
-                           :(userCreated)userCreated {
+                           :(KWSChildrenCreateUserBlock)response {
     
     // get a proper callback and make sure it's never nil
-    _userCreated = userCreated ? userCreated : _userCreated;
+    _response = response ? response : _response;
     
     // validate stuff
     BOOL validUsername = [self validateUsername:username];
@@ -57,27 +57,27 @@
     BOOL validCountry = [self validateCountry:country];
     
     if (!validUsername) {
-        _userCreated (KWSCreateUser_InvalidUsername);
+        _response (KWSChildren_CreateUser_InvalidUsername);
         return;
     }
     
     if (!validPassword) {
-        _userCreated (KWSCreateUser_InvalidPassword);
+        _response (KWSChildren_CreateUser_InvalidPassword);
         return;
     }
     
     if (!validDate) {
-        _userCreated (KWSCreateUser_InvalidDateOfBirth);
+        _response (KWSChildren_CreateUser_InvalidDateOfBirth);
         return;
     }
     
     if (!validEmail) {
-        _userCreated (KWSCreateUser_InvalidParentEmail);
+        _response (KWSChildren_CreateUser_InvalidParentEmail);
         return;
     }
     
     if (!validCountry) {
-        _userCreated (KWSCreateUser_InvalidCountry);
+        _response (KWSChildren_CreateUser_InvalidCountry);
         return;
     }
     
@@ -91,7 +91,7 @@
             
             // handle error
             if (metadata == nil) {
-                _userCreated (KWSCreateUser_NetworkError);
+                _response (KWSChildren_CreateUser_NetworkError);
                 return ;
             }
             
@@ -108,24 +108,24 @@
                               if (user != nil && [user isValid]) {
                                   
                                   // set final user
-                                  [[KWS sdk] setLoggedUser:user];
+                                  [[KWSChildren sdk] setLoggedUser:user];
                                   
                                   // send callback
-                                  _userCreated (KWSCreateUser_Success);
+                                  _response (KWSChildren_CreateUser_Success);
                                   
                               }
                               else {
                                   if (status == 409) {
-                                      _userCreated (KWSCreateUser_DuplicateUsername);
+                                      _response (KWSChildren_CreateUser_DuplicateUsername);
                                   }
                                   else {
-                                      _userCreated (KWSCreateUser_InvalidOperation);
+                                      _response (KWSChildren_CreateUser_InvalidOperation);
                                   }
                               }
                           }];
             
         } else {
-            _userCreated (KWSCreateUser_NetworkError);
+            _response (KWSChildren_CreateUser_NetworkError);
         }
     }];
 }

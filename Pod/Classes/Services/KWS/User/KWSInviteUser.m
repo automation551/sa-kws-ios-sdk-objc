@@ -10,7 +10,7 @@
 
 @interface KWSInviteUser ()
 @property (nonatomic, strong) NSString *emailAddress;
-@property (nonatomic, strong) invited invited;
+@property (nonatomic, strong) KWSChildrenInviteUserBlock invited;
 @end
 
 @implementation KWSInviteUser
@@ -33,7 +33,7 @@
     _invited (success && (status == 200 || status == 204));
 }
 
-- (void) execute:(NSString *)email :(invited)invited {
+- (void) execute:(NSString *)email :(KWSChildrenInviteUserBlock)invited {
     _emailAddress = email;
     _invited = invited ? invited : ^(BOOL success) {};
     [super execute];

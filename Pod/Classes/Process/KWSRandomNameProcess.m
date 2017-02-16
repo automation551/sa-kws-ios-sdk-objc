@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void) getRandomName: (gotRandomName) gotRandomName {
+- (void) getRandomName: (KWSChildrenGetRandomUsernameBlock) gotRandomName {
     
     [_getAppConfig execute:^(KWSAppConfig *config) {
        

@@ -8,7 +8,7 @@
 
 #import "KWSAuthUser.h"
 #import "KWSLoggedUser.h"
-#import "KWS.h"
+#import "KWSChildren.h"
 
 @interface KWSAuthUser ()
 @property (nonatomic, strong) authenticated authenticated;
@@ -45,7 +45,7 @@
 - (NSDictionary*) getBody {
     return @{
         @"response_type": @"token",
-        @"client_id": nullSafe([[KWS sdk] getClientId]),
+        @"client_id": nullSafe([[KWSChildren sdk] getClientId]),
         @"redirect_uri": nullSafe([NSString stringWithFormat:@"%@:/", [[NSBundle mainBundle] bundleIdentifier]])
     };
 }

@@ -9,8 +9,8 @@
 #import "KWSService.h"
 #import "KWSAppData.h"
 
-typedef void (^gotAppData)(NSArray<KWSAppData*> *appData);
+typedef void (^KWSChildrenGetAppDataBlock)(NSArray<KWSAppData*> *appData);
 
 @interface KWSGetAppData : KWSService
-- (void) execute:(gotAppData)gotappdata;
+- (void) execute:(KWSChildrenGetAppDataBlock)gotappdata;
 @end

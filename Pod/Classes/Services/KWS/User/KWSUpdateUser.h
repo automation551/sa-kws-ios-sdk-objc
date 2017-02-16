@@ -9,8 +9,9 @@
 #import "KWSService.h"
 #import "KWSUser.h"
 
-typedef void (^updated)(BOOL updated);
+typedef void (^KWSChildrenUpdateUserBlock)(BOOL updated);
 
 @interface KWSUpdateUser : KWSService
-- (void) execute:(KWSUser*)updatedUser :(updated)updated;
+- (void) execute:(KWSUser*)updatedUser
+                :(KWSChildrenUpdateUserBlock)updated;
 @end

@@ -8,8 +8,9 @@
 
 #import "KWSService.h"
 
-typedef void (^invited)(BOOL invited);
+typedef void (^KWSChildrenInviteUserBlock)(BOOL invited);
 
 @interface KWSInviteUser : KWSService
-- (void) execute:(NSString*) email :(invited)invited;
+- (void) execute:(NSString*) email
+                :(KWSChildrenInviteUserBlock)invited;
 @end

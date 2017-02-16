@@ -9,7 +9,7 @@
 #import "KWSGetLeaderboard.h"
 
 @interface KWSGetLeaderboard ()
-@property (nonatomic, strong) gotLeaderboard gotleaderboard;
+@property (nonatomic, strong) KWSChildrenGetLeaderboardBlock gotleaderboard;
 @end
 
 @implementation KWSGetLeaderboard
@@ -35,7 +35,7 @@
     }
 }
 
-- (void) execute:(gotLeaderboard)gotleaderboard {
+- (void) execute:(KWSChildrenGetLeaderboardBlock)gotleaderboard {
     _gotleaderboard = gotleaderboard  ? gotleaderboard : ^(NSArray*leaders){};
     [super execute];
 }

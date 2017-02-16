@@ -9,18 +9,18 @@
 #import <Foundation/Foundation.h>
 
 // create user status
-typedef NS_ENUM(NSInteger, KWSAuthUserStatus) {
-    KWSAuthUser_Success             = 0,
-    KWSAuthUser_NetworkError        = 1,
-    KWSAuthUser_InvalidCredentials  = 2
+typedef NS_ENUM(NSInteger, KWSChildrenLoginUserStatus) {
+    KWSChildren_LoginUser_Success             = 0,
+    KWSChildren_LoginUser_NetworkError        = 1,
+    KWSChildren_LoginUser_InvalidCredentials  = 2
 };
 
-typedef void (^userAuthenticated)(KWSAuthUserStatus status);
+typedef void (^KWSChildrenLoginUserBlock)(KWSChildrenLoginUserStatus status);
 
 @interface KWSAuthUserProcess : NSObject
 
 - (void) authWithUsername:(NSString*)username
               andPassword:(NSString*)password
-                         :(userAuthenticated)userAuthenticated;
+                         :(KWSChildrenLoginUserBlock)userAuthenticated;
 
 @end

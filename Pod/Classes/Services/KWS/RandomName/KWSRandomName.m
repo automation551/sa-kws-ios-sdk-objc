@@ -10,7 +10,7 @@
 
 @interface KWSRandomName ()
 @property (nonatomic, assign) NSInteger appId;
-@property (nonatomic, strong) gotRandomName gotName;
+@property (nonatomic, strong) KWSChildrenGetRandomUsernameBlock gotName;
 @end
 
 @implementation KWSRandomName
@@ -44,7 +44,7 @@
     }
 }
 
-- (void) execute:(NSInteger)appId onResult:(gotRandomName)gotName {
+- (void) execute:(NSInteger)appId onResult:(KWSChildrenGetRandomUsernameBlock)gotName {
     _appId = appId;
     _gotName = gotName ? gotName : ^(NSString*name){};
     [super execute];

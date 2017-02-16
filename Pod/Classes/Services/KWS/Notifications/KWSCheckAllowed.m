@@ -10,7 +10,7 @@
 #import "KWSCheckAllowed.h"
 
 // aux
-#import "KWS.h"
+#import "KWSChildren.h"
 #import "SANetwork.h"
 
 // models

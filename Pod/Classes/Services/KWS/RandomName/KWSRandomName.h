@@ -8,8 +8,9 @@
 
 #import "KWSService.h"
 
-typedef void (^gotRandomName)(NSString *name);
+typedef void (^KWSChildrenGetRandomUsernameBlock)(NSString *name);
 
 @interface KWSRandomName : KWSService
-- (void) execute:(NSInteger)appId onResult:(gotRandomName)gotName;
+- (void) execute:(NSInteger)appId
+        onResult:(KWSChildrenGetRandomUsernameBlock)gotName;
 @end

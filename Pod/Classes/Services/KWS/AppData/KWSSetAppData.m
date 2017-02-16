@@ -11,7 +11,7 @@
 @interface KWSSetAppData ()
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSInteger value;
-@property (nonatomic, strong) setAppData setappdata;
+@property (nonatomic, strong) KWSChildrenSetAppDataBlock setappdata;
 @end
 
 @implementation KWSSetAppData
@@ -35,7 +35,9 @@
     _setappdata (success && (status == 200 || status == 204));
 }
 
-- (void) execute:(NSString *)name withValue:(NSInteger)value :(setAppData)setappdata {
+- (void) execute:(NSString *)name
+       withValue:(NSInteger)value
+                :(KWSChildrenSetAppDataBlock)setappdata {
     _name = name;
     _value = value;
     _setappdata = setappdata ? setappdata : ^(BOOL success) {};

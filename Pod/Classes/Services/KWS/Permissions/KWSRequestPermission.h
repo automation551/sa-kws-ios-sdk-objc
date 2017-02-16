@@ -16,25 +16,26 @@
 #import "KWSService.h"
 
 // enum to define permissions
-typedef NS_ENUM(NSInteger, KWSPermissionType) {
-    KWSPermission_AccessEmail             = 0,
-    KWSPermission_AccessAddress           = 1,
-    KWSPermission_AccessFirstName         = 2,
-    KWSPermission_AccessLastName          = 3,
-    KWSPermission_AccessPhoneNumber       = 4,
-    KWSPermission_SendNewsletter          = 5,
-    KWSPermission_SendPushNotification    = 6
+typedef NS_ENUM(NSInteger, KWSChildrenPermissionType) {
+    KWSChildren_PermissionType_AccessEmail             = 0,
+    KWSChildren_PermissionType_AccessAddress           = 1,
+    KWSChildren_PermissionType_AccessFirstName         = 2,
+    KWSChildren_PermissionType_AccessLastName          = 3,
+    KWSChildren_PermissionType_AccessPhoneNumber       = 4,
+    KWSChildren_PermissionType_SendNewsletter          = 5,
+    KWSChildren_PermissionType_SendPushNotification    = 6
 };
 
 // enum to define status
-typedef NS_ENUM (NSInteger, KWSPermissionStatus) {
-    KWSPermission_Success = 0,
-    KWSPermission_NoParentEmail = 1,
-    KWSPermission_NetworkError = 2
+typedef NS_ENUM (NSInteger, KWSChildrenRequestPermissionStatus) {
+    KWSChildren_RequestPermission_Success       = 0,
+    KWSChildren_RequestPermission_NoParentEmail = 1,
+    KWSChildren_RequestPermission_NetworkError  = 2
 };
 
-typedef void (^requested)(KWSPermissionStatus status);
+typedef void (^KWSChildrenRequestPermissionBlock)(KWSChildrenRequestPermissionStatus status);
 
 @interface KWSRequestPermission : KWSService
-- (void) execute:(NSArray<NSNumber*>*)requestPermissions :(requested)requested;
+- (void) execute:(NSArray<NSNumber*>*)requestPermissions
+                :(KWSChildrenRequestPermissionBlock)requested;
 @end

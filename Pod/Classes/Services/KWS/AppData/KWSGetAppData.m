@@ -10,7 +10,7 @@
 #import "KWSAppDataResponse.h"
 
 @interface KWSGetAppData ()
-@property (nonatomic, strong) gotAppData gotappdata;
+@property (nonatomic, strong) KWSChildrenGetAppDataBlock gotappdata;
 @end
 
 @implementation KWSGetAppData
@@ -36,7 +36,7 @@
     }
 }
 
-- (void) execute:(gotAppData)gotappdata {
+- (void) execute:(KWSChildrenGetAppDataBlock)gotappdata {
     _gotappdata = gotappdata ? gotappdata : ^(NSArray *data) {};
     [super execute];
 }

@@ -8,8 +8,9 @@
 
 #import "KWSService.h"
 
-typedef void (^hasTriggered)(BOOL triggered);
+typedef void (^KWSChildrenHasTriggeredEventBlock)(BOOL triggered);
 
 @interface KWSHasTriggeredEvent : KWSService
-- (void) execute:(NSInteger)eventId :(hasTriggered)triggered;
+- (void) execute:(NSInteger)eventId
+                :(KWSChildrenHasTriggeredEventBlock)triggered;
 @end

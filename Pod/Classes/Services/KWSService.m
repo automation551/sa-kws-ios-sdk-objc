@@ -10,7 +10,7 @@
 #import "KWSService.h"
 
 // import other important headers
-#import "KWS.h"
+#import "KWSChildren.h"
 #import "SANetwork.h"
 
 @interface KWSService ()
@@ -66,9 +66,9 @@
 
 - (void) execute {
     
-    kwsApiUrl = [[KWS sdk] getKWSApiUrl];
-    loggedUser = [[KWS sdk] getLoggedUser];
-    version = [[KWS sdk] getVersion];
+    kwsApiUrl = [[KWSChildren sdk] getKWSApiUrl];
+    loggedUser = [[KWSChildren sdk] getLoggedUser];
+    version = [[KWSChildren sdk] getVersion];
     
     // case when the Network request actually needs the SDK to have a logged user,
     // but there is no logged user whatsoever

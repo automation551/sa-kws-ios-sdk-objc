@@ -7,7 +7,7 @@
 //
 
 #import "KWSGetAccessTokenAuth.h"
-#import "KWS.h"
+#import "KWSChildren.h"
 #import "KWSAccessToken.h"
 
 @interface KWSGetAccessTokenAuth ()
@@ -77,7 +77,7 @@
     _gotAccessTokenAuth = gotAccessTokenAuth ? gotAccessTokenAuth : _gotAccessTokenAuth;
     
     // create endpoint
-    NSString *endpoint = [NSString stringWithFormat:@"%@%@", [[KWS sdk] getKWSApiUrl], [self getEndpoint]];
+    NSString *endpoint = [NSString stringWithFormat:@"%@%@", [[KWSChildren sdk] getKWSApiUrl], [self getEndpoint]];
     // create url
     NSURL *url = [NSURL URLWithString:endpoint];
     

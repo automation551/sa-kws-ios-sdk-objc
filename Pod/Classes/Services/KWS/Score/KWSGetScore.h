@@ -9,8 +9,8 @@
 #import "KWSService.h"
 #import "KWSScore.h"
 
-typedef void (^gotScore)(KWSScore *score);
+typedef void (^KWSChildrenGetScoreBlock)(KWSScore *score);
 
 @interface KWSGetScore : KWSService
-- (void) execute:(gotScore)gotscore;
+- (void) execute:(KWSChildrenGetScoreBlock)gotscore;
 @end

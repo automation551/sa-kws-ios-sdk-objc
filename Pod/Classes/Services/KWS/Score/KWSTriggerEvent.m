@@ -11,7 +11,7 @@
 @interface KWSTriggerEvent ()
 @property (nonatomic, strong) NSString *evtToken;
 @property (nonatomic, assign) NSInteger evtPoints;
-@property (nonatomic, strong) triggered triggered;
+@property (nonatomic, strong) KWSChildrenTriggerEventBlock triggered;
 @end
 
 @implementation KWSTriggerEvent
@@ -37,7 +37,7 @@
     _triggered (success && (status == 200 || status == 204));
 }
 
-- (void) execute:(NSString *)token points:(NSInteger)points :(triggered)triggered {
+- (void) execute:(NSString *)token points:(NSInteger)points :(KWSChildrenTriggerEventBlock)triggered {
     _evtToken = token;
     _evtPoints = points;
     _triggered = triggered ? triggered : ^(BOOL success){};

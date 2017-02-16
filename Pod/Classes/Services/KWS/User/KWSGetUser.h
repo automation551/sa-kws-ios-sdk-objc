@@ -13,8 +13,8 @@
 #import "KWSPermissions.h"
 #import "KWSPoints.h"
 
-typedef void (^gotUser)(KWSUser* user);
+typedef void (^KWSChildrenGetUserBlock)(KWSUser* user);
 
 @interface KWSGetUser : KWSService
-- (void) execute:(gotUser)gotuser;
+- (void) execute:(KWSChildrenGetUserBlock)gotuser;
 @end

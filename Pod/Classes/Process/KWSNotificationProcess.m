@@ -54,28 +54,28 @@
     return self;
 }
 
-- (void) register:(registered)reg {
+- (void) register:(KWSChildrenRegisterForRemoteNotificationsBlock)reg {
     
     // make sure it won't cause any problems down the road
-    __block registered registered = reg ? reg : ^(KWSNotificationStatus status){};
+    __block KWSChildrenRegisterForRemoteNotificationsBlock registered = reg ? reg : ^(KWSChildrenRegisterForRemoteNotificationsStatus status){};
     
     [_checkSystem execute:^(BOOL allowed) {
         if (!allowed) {
-            registered(KWSNotification_UserDisabledNotifications);
+            registered(KWSChildren_RegisterForRemoteNotifications_UserDisabledNotifications);
             return;
         }
         
         [_checkAllowed execute:^(BOOL allowed) {
             if (!allowed) {
-                registered(KWSNotification_ParentDisabledNotifications);
+                registered(KWSChildren_RegisterForRemoteNotifications_ParentDisabledNotifications);
                 return;
             }
             
-            [_requestPermission execute:@[@(KWSPermission_SendPushNotification)] :^(KWSPermissionStatus status) {
+            [_requestPermission execute:@[@(KWSChildren_PermissionType_SendPushNotification)] :^(KWSChildrenRequestPermissionStatus status) {
                 
                 switch (status) {
                     // managed to request the Remote Notification permission
-                    case KWSPermission_Success: {
+                    case KWSChildren_RequestPermission_Success: {
                         
                         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
                             UIUserNotificationType allNotificationTypes = (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
@@ -95,15 +95,15 @@
                         
                         [_getToken execute:^(BOOL sucess, NSString *token) {
                             if (!sucess) {
-                                registered(KWSNotification_FirebaseCouldNotGetToken);
+                                registered(KWSChildren_RegisterForRemoteNotifications_FirebaseCouldNotGetToken);
                                 return;
                             }
                             
                             [_registerToken execute:token :^(BOOL success) {
                                 if (!success) {
-                                    registered(KWSNotification_NetworkError);
+                                    registered(KWSChildren_RegisterForRemoteNotifications_NetworkError);
                                 } else {
-                                    registered(KWSNotification_Success);
+                                    registered(KWSChildren_RegisterForRemoteNotifications_Success);
                                 }
                             }];
                         }];
@@ -111,13 +111,13 @@
                         break;
                     }
                     // No parent email available
-                    case KWSPermission_NoParentEmail: {
-                        registered(KWSNotification_NoParentEmail);
+                    case KWSChildren_RequestPermission_NoParentEmail: {
+                        registered(KWSChildren_RegisterForRemoteNotifications_NoParentEmail);
                         break;
                     }
                     // A network error occurred
-                    case KWSPermission_NetworkError: {
-                        registered(KWSNotification_NetworkError);
+                    case KWSChildren_RequestPermission_NetworkError: {
+                        registered(KWSChildren_RegisterForRemoteNotifications_NetworkError);
                         break;
                     }
                 }
@@ -126,9 +126,9 @@
     }];
 }
 
-- (void) unregister:(unregistered)unreg {
+- (void) unregister:(KWSChildrenUnregisterForRemoteNotificationsBlock)unreg {
     // make sure thare are no problems here
-    __block unregistered unregistered = unreg ? unreg : ^(BOOL success){};
+    __block KWSChildrenUnregisterForRemoteNotificationsBlock unregistered = unreg ? unreg : ^(BOOL success){};
     NSString *token = [_getToken getSavedToken];
     
     // call func
@@ -137,9 +137,9 @@
     }];
 }
 
-- (void) isRegistered:(isRegistered)isReg {
+- (void) isRegistered:(KWSChildrenIsRegisteredForRemoteNotificationsInterface)isReg {
     // make sure no problems will appear
-    __block isRegistered isRegistered = isReg ? isReg : ^(BOOL success){};
+    __block KWSChildrenIsRegisteredForRemoteNotificationsInterface isRegistered = isReg ? isReg : ^(BOOL success){};
     
     // check
     [_checkSystem execute:^(BOOL allowed) {

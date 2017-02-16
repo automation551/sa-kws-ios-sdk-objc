@@ -9,7 +9,7 @@
 #import "KWSGetScore.h"
 
 @interface KWSGetScore ()
-@property (nonatomic, strong) gotScore gotscore;
+@property (nonatomic, strong) KWSChildrenGetScoreBlock gotscore;
 @end
 
 @implementation KWSGetScore
@@ -35,7 +35,7 @@
     }
 }
 
-- (void) execute:(gotScore)gotscore {
+- (void) execute:(KWSChildrenGetScoreBlock)gotscore {
     _gotscore = gotscore  ? gotscore : ^(KWSScore *score){};
     [super execute];
 }

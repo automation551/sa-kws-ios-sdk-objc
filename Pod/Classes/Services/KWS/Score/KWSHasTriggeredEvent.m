@@ -10,7 +10,7 @@
 #import "KWSEventStatus.h"
 
 @interface KWSHasTriggeredEvent ()
-@property (nonatomic, strong) hasTriggered hastriggered;
+@property (nonatomic, strong) KWSChildrenHasTriggeredEventBlock hastriggered;
 @property (nonatomic, assign) NSInteger eventId;
 @end
 
@@ -43,7 +43,7 @@
     }
 }
 
-- (void) execute:(NSInteger)eventId :(hasTriggered)triggered {
+- (void) execute:(NSInteger)eventId :(KWSChildrenHasTriggeredEventBlock)triggered {
     _eventId = eventId;
     _hastriggered = triggered ? triggered : ^(BOOL success) {};
     [super execute];

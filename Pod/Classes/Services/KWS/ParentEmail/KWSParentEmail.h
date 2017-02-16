@@ -11,14 +11,15 @@
 #import <UIKit/UIKit.h>
 #import "KWSService.h"
 
-typedef NS_ENUM(NSInteger, KWSParentEmailStatus) {
-    KWSParentEmail_Success      = 0,
-    KWSParentEmail_Invalid      = 1,
-    KWSParentEmail_NetworkError = 2,
+typedef NS_ENUM(NSInteger, KWSChildrenUpdateParentEmailStatus) {
+    KWSChildren_UpdateParentEmail_Success      = 0,
+    KWSChildren_UpdateParentEmail_InvalidEmail = 1,
+    KWSChildren_UpdateParentEmail_NetworkError = 2,
 };
 
-typedef void (^submitted)(KWSParentEmailStatus status);
+typedef void (^KWSChildrenUpdateParentEmailBlock)(KWSChildrenUpdateParentEmailStatus status);
 
 @interface KWSParentEmail : KWSService
-- (void) execute:(NSString*)email :(submitted)submitted;
+- (void) execute:(NSString*)email
+                :(KWSChildrenUpdateParentEmailBlock)submitted;
 @end

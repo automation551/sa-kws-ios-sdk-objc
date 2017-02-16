@@ -9,7 +9,7 @@
 #import "KWSGetAppConfig.h"
 
 #import "KWSAppConfig.h"
-#import "KWS.h"
+#import "KWSChildren.h"
 
 @interface KWSGetAppConfig ()
 @property (nonatomic, strong) gotAppConfig gotAppConfig;
@@ -31,7 +31,7 @@
 
 - (NSDictionary*) getQuery {
     return @{
-        @"oauthClientId": nullSafe([[KWS sdk] getClientId])
+        @"oauthClientId": nullSafe([[KWSChildren sdk] getClientId])
     };
 }
 

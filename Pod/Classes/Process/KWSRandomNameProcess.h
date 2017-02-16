@@ -13,5 +13,5 @@
 #import "KWSAppConfig.h"
 
 @interface KWSRandomNameProcess : NSObject
-- (void) getRandomName: (gotRandomName) gotRandomName;
+- (void) getRandomName: (KWSChildrenGetRandomUsernameBlock) gotRandomName;
 @end

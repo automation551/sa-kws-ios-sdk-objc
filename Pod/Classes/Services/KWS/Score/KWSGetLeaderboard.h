@@ -9,8 +9,8 @@
 #import "KWSService.h"
 #import "KWSLeaderboard.h"
 
-typedef void (^gotLeaderboard)(NSArray<KWSLeader*> *leaders);
+typedef void (^KWSChildrenGetLeaderboardBlock)(NSArray<KWSLeader*> *leaders);
 
 @interface KWSGetLeaderboard : KWSService
-- (void) execute:(gotLeaderboard)gotleaderboard;
+- (void) execute:(KWSChildrenGetLeaderboardBlock)gotleaderboard;
 @end

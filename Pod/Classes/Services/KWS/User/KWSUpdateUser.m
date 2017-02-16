@@ -12,7 +12,7 @@
 #import "KWSError.h"
 
 @interface KWSUpdateUser ()
-@property (nonatomic, strong) updated updated;
+@property (nonatomic, strong) KWSChildrenUpdateUserBlock updated;
 @property (nonatomic, strong) KWSUser *updatedUser;
 @end
 
@@ -85,7 +85,7 @@
     }
 }
 
-- (void) execute:(KWSUser *)updatedUser :(updated)updated {
+- (void) execute:(KWSUser *)updatedUser :(KWSChildrenUpdateUserBlock)updated {
     _updated = updated ? updated : _updated;
     _updatedUser = updatedUser;
     [super execute];

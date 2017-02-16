@@ -7,7 +7,7 @@
 //
 
 #import "KWSGetAccessTokenCreate.h"
-#import "KWS.h"
+#import "KWSChildren.h"
 #import "SAUtils.h"
 #import "KWSAccessToken.h"
 
@@ -45,8 +45,8 @@
 - (NSDictionary*) getBody {
     return @{
         @"grant_type": @"client_credentials",
-        @"client_id": nullSafe([[KWS sdk] getClientId]),
-        @"client_secret": nullSafe([[KWS sdk] getClientSecret])
+        @"client_id": nullSafe([[KWSChildren sdk] getClientId]),
+        @"client_secret": nullSafe([[KWSChildren sdk] getClientSecret])
     };
 }
 
@@ -76,7 +76,7 @@
     _gotAccessTokenCreate = gotAccessTokenCreate ? gotAccessTokenCreate : _gotAccessTokenCreate;
     
     // create endpoint
-    NSString *endpoint = [NSString stringWithFormat:@"%@%@", [[KWS sdk] getKWSApiUrl], [self getEndpoint]];
+    NSString *endpoint = [NSString stringWithFormat:@"%@%@", [[KWSChildren sdk] getKWSApiUrl], [self getEndpoint]];
     // create url
     NSURL *url = [NSURL URLWithString:endpoint];
     

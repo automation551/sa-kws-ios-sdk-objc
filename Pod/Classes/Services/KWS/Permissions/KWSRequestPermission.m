@@ -10,7 +10,7 @@
 #import "KWSRequestPermission.h"
 
 // aux
-#import "KWS.h"
+#import "KWSChildren.h"
 #import "SANetwork.h"
 
 // models
@@ -20,7 +20,7 @@
 #import "KWSInvalid.h"
 
 @interface KWSRequestPermission ()
-@property (nonatomic, strong) requested requested;
+@property (nonatomic, strong) KWSChildrenRequestPermissionBlock requested;
 @property (nonatomic, strong) NSMutableArray<NSString*> *requestedPermissions;
 @end
 
@@ -28,7 +28,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        _requested = ^(KWSPermissionStatus status) {};
+        _requested = ^(KWSChildrenRequestPermissionStatus status) {};
     }
     
     return self;
@@ -50,34 +50,34 @@
 
 - (void) successWithStatus:(NSInteger)status andPayload:(NSString *)payload andSuccess:(BOOL)success {
     if (!success) {
-        _requested(KWSPermission_NetworkError);
+        _requested(KWSChildren_RequestPermission_NetworkError);
     } else {
         if (payload) {
             KWSError *error = [[KWSError alloc] initWithJsonString:payload];
             NSLog(@"%@", [error jsonPreetyStringRepresentation]);
             
             if (status == 200 || status == 204) {
-                _requested(KWSPermission_Success);
+                _requested(KWSChildren_RequestPermission_Success);
             }
             else if (status != 200 && error) {
                 if (error.code == 10 && error.invalid.parentEmail.code == 6) {
-                    _requested(KWSPermission_NoParentEmail);
+                    _requested(KWSChildren_RequestPermission_NoParentEmail);
                 }
                 else {
-                    _requested(KWSPermission_NetworkError);
+                    _requested(KWSChildren_RequestPermission_NetworkError);
                 }
             }
             else {
-                _requested(KWSPermission_NetworkError);
+                _requested(KWSChildren_RequestPermission_NetworkError);
             }
         } else {
-            _requested(KWSPermission_NetworkError);
+            _requested(KWSChildren_RequestPermission_NetworkError);
         }
     }
     
 }
 
-- (void) execute:(NSArray<NSNumber *> *)requestPermissions :(requested)requested{
+- (void) execute:(NSArray<NSNumber *> *)requestPermissions :(KWSChildrenRequestPermissionBlock)requested{
 
     _requested = requested ? requested : _requested;
     
@@ -93,15 +93,15 @@
 
 // MARK Aux functions
 
-- (NSString*) typeToString:(KWSPermissionType)type {
+- (NSString*) typeToString:(KWSChildrenPermissionType)type {
     switch (type) {
-        case KWSPermission_AccessEmail: return @"accessEmail";
-        case KWSPermission_AccessAddress: return @"accessAddress";
-        case KWSPermission_AccessFirstName: return @"accessFirstName";
-        case KWSPermission_AccessLastName: return @"accessLastName";
-        case KWSPermission_AccessPhoneNumber: return @"accessPhoneNumber";
-        case KWSPermission_SendNewsletter: return @"sendNewsletter";
-        case KWSPermission_SendPushNotification: return @"sendPushNotification";
+        case KWSChildren_PermissionType_AccessEmail: return @"accessEmail";
+        case KWSChildren_PermissionType_AccessAddress: return @"accessAddress";
+        case KWSChildren_PermissionType_AccessFirstName: return @"accessFirstName";
+        case KWSChildren_PermissionType_AccessLastName: return @"accessLastName";
+        case KWSChildren_PermissionType_AccessPhoneNumber: return @"accessPhoneNumber";
+        case KWSChildren_PermissionType_SendNewsletter: return @"sendNewsletter";
+        case KWSChildren_PermissionType_SendPushNotification: return @"sendPushNotification";
     }
 }
 
