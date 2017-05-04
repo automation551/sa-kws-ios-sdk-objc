@@ -17,6 +17,7 @@
 //#endif
 
 #import "SAJsonParser.h"
+#import "SABaseObject.h"
 
 /**
  *  Object containing KWS metadata like current user id, app id, etc

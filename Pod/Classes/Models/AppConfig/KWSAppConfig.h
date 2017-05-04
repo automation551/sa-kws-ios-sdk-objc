@@ -17,6 +17,7 @@
 //#endif
 
 #import "SAJsonParser.h"
+#import "SABaseObject.h"
 
 @interface KWSAppConfig : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
 @property (nonatomic, assign) NSInteger _id;

@@ -17,7 +17,6 @@
 #import "KWSError.h"
 #import "KWSParentEmailError.h"
 #import "KWSInvalid.h"
-#import "SALogger.h"
 
 @interface KWSUnsubscribeToken ()
 @property (nonatomic, strong) NSString *token;
@@ -42,7 +41,7 @@
 }
 
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload {
-    [SALogger log:payload];
+    NSLog(@"%@", payload);
     [self delTokenWasUnsubscribed];
 }
 

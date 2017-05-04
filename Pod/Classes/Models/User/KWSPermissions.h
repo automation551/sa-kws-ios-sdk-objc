@@ -17,6 +17,7 @@
 //#endif
 
 #import "SAJsonParser.h"
+#import "SABaseObject.h"
 
 /**
  *  Represents a very basic KWS permission object, that only handles push 

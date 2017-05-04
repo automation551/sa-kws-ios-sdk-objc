@@ -8,9 +8,6 @@
 
 #import "CheckManager.h"
 
-// import logger
-#import "SALogger.h"
-
 // import headers
 #import "PushCheckAllowed.h"
 #import "KWSCheckAllowed.h"
@@ -54,46 +51,46 @@
 // MARK: PushCheckAllowedProtocol
 
 - (void) pushAllowedInSystem {
-    [SALogger log:@"Checking | User has allowed Remote Notifications in system"];
+    NSLog(@"Checking | User has allowed Remote Notifications in system");
     [_kwsCheckAllowed execute];
 }
 
 - (void) pushNotAllowedInSystem {
-    [SALogger log:@"Checking | User has not allowed Remote Notifications in system"];
+    NSLog(@"Checking | User has not allowed Remote Notifications in system");
     [self delPushDisabledOverall];
 }
 
 // MARK: KWSCheckAllowedProtocol
 
 - (void) pushAllowedInKWS {
-    [SALogger log:@"Checking | User is allowed to have Remote Notifications in KWS"];
+    NSLog(@"Checking | User is allowed to have Remote Notifications in KWS");
     [_kwsCheckRegistered execute];
 }
 
 - (void) pushNotAllowedInKWS {
-    [SALogger log:@"Checking | User is not allowed to have Remote Notifications in KWS"];
+    NSLog(@"Checking | User is not allowed to have Remote Notifications in KWS");
     [self delPushDisabledOverall];
 }
 
 - (void) checkAllowedError {
-    [SALogger err:@"Error while checking if user is allowed to have Remote Notifications in KWS. Aborting."];
+    NSLog(@"Error while checking if user is allowed to have Remote Notifications in KWS. Aborting.");
     [self delNetworkErrorTryingToCheckUserStatus];
 }
 
 // MARK: KWSCheckRegisteredProtocol
 
 - (void) userIsRegistered {
-    [SALogger log:@"Checking | User is registered to receive Remote Notifications in KWS"];
+    NSLog(@"Checking | User is registered to receive Remote Notifications in KWS");
     [self delPushAllowedOverall];
 }
 
 - (void) userIsNotRegistered {
-    [SALogger log:@"Checking | User is not registered to receive Remote Notifications in KWS"];
+    NSLog(@"Checking | User is not registered to receive Remote Notifications in KWS");
     [self delPushDisabledOverall];
 }
 
 - (void) checkRegisteredError {
-    [SALogger err:@"Error while checking if user is registered for Remote Notifications in KWS"];
+    NSLog(@"Error while checking if user is registered for Remote Notifications in KWS");
     [self delNetworkErrorTryingToCheckUserStatus];
 }
 

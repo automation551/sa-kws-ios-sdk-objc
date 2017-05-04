@@ -7,7 +7,6 @@
 //
 
 #import "KWSManager.h"
-#import "SALogger.h"
 
 @interface KWSManager ()
 @property (nonatomic, strong) PushCheckAllowed *pushCheckAllowed;
@@ -41,19 +40,19 @@
 // MARL: Public function
 
 - (void) checkIfNotificationsAreAllowed {
-    [SALogger log:@"Checking to see if Push Notificactions are allowed"];
+    NSLog(@"Checking to see if Push Notificactions are allowed");
     [_pushCheckAllowed check];
 }
 
 // MARK: PushCheckAllowedProtocol
 
 - (void) pushAllowedInSystem {
-    [SALogger log:@"Push Notifications enabled on user system"];
+    NSLog(@"Push Notifications enabled on user system");
     [_kwsCheckAllowed execute];
 }
 
 - (void) pushNotAllowedInSystem {
-    [SALogger err:@"Push Notifications disabled on user system"];
+    NSLog(@"Push Notifications disabled on user system");
     [self delPushNotAllowedInSystem];
     // unsubscribe (optional, maybe?)
 }
@@ -61,34 +60,34 @@
 // MARK: KWSCheckAllowedProtocol
 
 - (void) pushAllowedInKWS {
-    [SALogger log:@"Push Notifications enabled for user in KWS"];
+    NSLog(@"Push Notifications enabled for user in KWS");
     [_kwsRequestPermission execute];
 }
 
 - (void) pushNotAllowedInKWS {
-    [SALogger err:@"Push Notifications disabled for user in KWS"];
+    NSLog(@"Push Notifications disabled for user in KWS");
     [self delPushNotAllowedInKWS];
 }
 
 - (void) checkAllowedError {
-    [SALogger err:@"Network error checking if KWS allows notifications"];
+    NSLog(@"Network error checking if KWS allows notifications");
     [self delNetworkErrorCheckingInKWS];
 }
 
 // MARK: KWSRequestPermissionProtocol
 
 - (void) pushPermissionRequestedInKWS {
-    [SALogger log:@"Was able to request new Push Notification permissions in KWS"];
+    NSLog(@"Was able to request new Push Notification permissions in KWS");
     [self delIsAllowedToRegister];
 }
 
 - (void) parentEmailIsMissingInKWS {
-    [SALogger err:@"Was not able to request new Push Notificaiton permissions in KWS (parent email missing)"];
+    NSLog(@"Was not able to request new Push Notificaiton permissions in KWS (parent email missing)");
     [self delParentEmailIsMissingInKWS];
 }
 
 - (void) permissionError {
-    [SALogger err:@"Network error requesting notification permission from KWS"];
+    NSLog(@"Network error requesting notification permission from KWS");
     [self delNetworkErrorRequestingPermissionFromKWS];
 }
 

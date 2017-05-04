@@ -17,6 +17,7 @@
 //#endif
 
 #import "SAJsonParser.h"
+#import "SABaseObject.h"
 
 /**
  *  Error object describing an invalid error; It has much in common with the

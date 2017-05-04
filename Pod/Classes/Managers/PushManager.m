@@ -7,8 +7,7 @@
 //
 
 #import "PushManager.h"
-#import "SALogger.h"
-#import "SASystemVersion.h"
+#import "SAUtils.h"
 #import "PushCheckAllowed.h"
 
 @interface PushManager ()
@@ -50,7 +49,7 @@
 // MARK: Public functions
 
 - (void) registerForPushNotifications {
-    [SALogger log:@"Start registering for Push Notifications"];
+    NSLog(@"Start registering for Push Notifications");
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
         UIUserNotificationType allNotificationTypes = (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
@@ -70,7 +69,7 @@
 }
 
 - (void) unregisterForPushNotifications {
-    [SALogger log:@"Starting unregistering for Push Notificaitons"];
+    NSLog(@"Starting unregistering for Push Notificaitons");
     NSString *token = [_firebaseGetToken getFirebaseToken];
     [_kwsUnsubscribeToken execute:token];
 }

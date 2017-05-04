@@ -18,7 +18,6 @@
 #import "KWSError.h"
 #import "KWSParentEmailError.h"
 #import "KWSInvalid.h"
-#import "SALogger.h"
 
 @implementation KWSRequestPermission
 
@@ -43,7 +42,7 @@
 - (void) successWithStatus:(int)status andPayload:(NSString *)payload {
     if (payload) {
         KWSError *error = [[KWSError alloc] initWithJsonString:payload];
-        [SALogger log:[error jsonPreetyStringRepresentation]];
+        NSLog(@"%@", [error jsonPreetyStringRepresentation]);
         
         if (status == 200 || status == 204) {
             [self delPushPermissionRequestedInKWS];

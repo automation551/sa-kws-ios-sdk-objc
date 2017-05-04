@@ -12,7 +12,6 @@
 // aux
 #import "KWS.h"
 #import "SANetwork.h"
-#import "SALogger.h"
 
 // models
 #import "KWSMetadata.h"

@@ -85,20 +85,26 @@
         [_network sendPOST:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
                  withQuery:[self getQuery]
                  andHeader:[self getHeader]
-                   andBody:[self getBody] andSuccess:^(NSInteger status, NSString *payload) {
-                       [self successWithStatus:status andPayload:payload];
-                   } andFailure:^{
-                       [self failure];
+                   andBody:[self getBody] withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                       if (success && payload != nil) {
+                           [self successWithStatus:(int)status andPayload:payload];
+                       }
+                       else {
+                           [self failure];
+                       }
                    }];
     } else {
         [_network sendGET:[NSString stringWithFormat:@"%@%@", kwsApiUrl, [self getEndpoint]]
-                withQuery:[self getQuery]
-                andHeader:[self getHeader]
-               andSuccess:^(NSInteger status, NSString *payload) {
-                   [self successWithStatus:status andPayload:payload];
-               } andFailure:^{
-                   [self failure];
-               }];
+                 withQuery:[self getQuery]
+                 andHeader:[self getHeader]
+              withResponse:^(NSInteger status, NSString *payload, BOOL success) {
+                       if (success && payload != nil) {
+                           [self successWithStatus:(int)status andPayload:payload];
+                       }
+                       else {
+                           [self failure];
+                       }
+                   }];
     }
 }
 

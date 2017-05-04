@@ -9,7 +9,6 @@
 #import "KWSViewController.h"
 #import "KWS.h"
 #import "KWSMetadata.h"
-#import "SALogger.h"
 #import "SANetwork.h"
 #import "KWSModel.h"
 #import "SAUtils.h"
@@ -41,7 +40,7 @@
                            @"dateOfBirth":@"2011-03-02"};
     
     SANetwork *network = [[SANetwork alloc] init];
-    [network sendPOST:url withQuery:@{} andHeader:header andBody:body andSuccess:^(NSInteger status, NSString *payload) {
+    [network sendPOST:url withQuery:@{} andHeader:header andBody:body withResponse:^(NSInteger status, NSString *payload, BOOL success) {
         
         if (status == 200) {
             // get user
@@ -55,8 +54,6 @@
             NSLog(@"Could not create user %@", username);
         }
         
-    } andFailure:^{
-        NSLog(@"Could not create user %@", username);
     }];
 }
 

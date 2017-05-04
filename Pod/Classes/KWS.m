@@ -8,12 +8,11 @@
 
 #import "KWS.h"
 #import "KWSMetadata.h"
-#import "SALogger.h"
 #import "KWSSubscribeToken.h"
 #import "KWSUnsubscribeToken.h"
 #import "FirebaseGetToken.h"
 #import "KWSGetUser.h"
-#import "SAPopup.h"
+#import "SAAlert.h"
 
 @interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, CheckManagerProtocol>
 
@@ -29,8 +28,8 @@
 @property (nonatomic, assign) BOOL showPermissionPopup;
 
 // email popup
-@property (nonatomic, strong) SAPopup *permissionPopup;
-@property (nonatomic, strong) SAPopup *emailPopup;
+@property (nonatomic, strong) SAAlert *permissionPopup;
+@property (nonatomic, strong) SAAlert *emailPopup;
 
 // delegates
 @property (nonatomic, weak) id <KWSRegisterProtocol> registerDelegate;
@@ -76,7 +75,7 @@
     _showPermissionPopup = showPermissionPopup;
     _oauthToken = oauthToken;
     _metadata = [self getMetadata:oauthToken];
-    [SALogger log:[self.metadata jsonPreetyStringRepresentation]];
+    NSLog(@"%@", [self.metadata jsonPreetyStringRepresentation]);
 }
 
 // MARK: Public functions
@@ -88,18 +87,17 @@
     
     // perform action
     if (_showPermissionPopup) {
-        [[SAPopup sharedManager] showWithTitle:@"Hey!"
-                             andMessage:@"Do you want to allow Push Notifications?"
-                             andOKTitle:@"Yes"
-                            andNOKTitle:@"No"
-                           andTextField:NO
-                        andKeyboardTyle:UIKeyboardTypeDefault
-                             andOKBlock:^(NSString *popupMessage) {
-                                 [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
-                             }
-                            andNOKBlock:^ {
-                                // do nothing
-                            }];
+        [[SAAlert getInstance] showWithTitle:@"Hey!"
+                                  andMessage:@"Do you want to allow Push Notifications?"
+                                  andOKTitle:@"Yes"
+                                 andNOKTitle:@"No"
+                                andTextField:NO
+                             andKeyboardTyle:UIKeyboardTypeDefault
+                                  andPressed:^(int button, NSString *popupMessage) {
+                                      if (button == 0) {
+                                          [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
+                                      }
+                                  }];
     }
     else {
         [[KWSManager sharedInstance] checkIfNotificationsAreAllowed];
@@ -128,17 +126,17 @@
 }
 
 - (void) showParentEmailPopup {
-    [[SAPopup sharedManager] showWithTitle:@"Hey!"
+    [[SAAlert getInstance] showWithTitle:@"Hey!"
                     andMessage:@"To enable Push Notifications in KWS you'll need to provide a parent's email."
                     andOKTitle:@"Submit"
                    andNOKTitle:@"Cancel"
                   andTextField:YES
                andKeyboardTyle:UIKeyboardTypeEmailAddress
-                    andOKBlock:^(NSString *popupMessage) {
-                        [self submitParentEmail:popupMessage];
-                    } andNOKBlock:^{
-                        // nothing
-                    }];
+                                andPressed:^(int button, NSString *popupMessage) {
+                                    if (button == 0) {
+                                        [self submitParentEmail:popupMessage];
+                                    }
+                                }];
 }
 
 - (void) submitParentEmail:(NSString*)email {
@@ -235,7 +233,7 @@
 // MARK: getters
 
 - (NSString*) getVersion {
-    return @"ios-1.3.0.5";
+    return @"ios-1.3.0.6";
 }
 
 - (NSString*) getOAuthToken {

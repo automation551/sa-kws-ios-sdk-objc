@@ -7,6 +7,7 @@
 //
 
 #import <SAJsonParser/SAJsonParser.h>
+#import "SABaseObject.h"
 
 @interface KWSModel : SABaseObject
 @property (nonatomic, assign) NSInteger status;

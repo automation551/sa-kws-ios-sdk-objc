@@ -17,6 +17,7 @@
 //#endif
 
 #import "SAJsonParser.h"
+#import "SABaseObject.h"
 
 @interface KWSApplicationProfile : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
 
