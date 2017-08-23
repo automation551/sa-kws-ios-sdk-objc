@@ -48,7 +48,7 @@
             [self delPushPermissionRequestedInKWS];
         }
         else if (status != 200 && error) {
-            if (error.code == 5 && error.invalid.parentEmail.code == 6) {
+            if (error.code == 10 && error.invalid.parentEmail.code == 6) {
                 [self delParentEmailIsMissingInKWS];
             }
             else {
