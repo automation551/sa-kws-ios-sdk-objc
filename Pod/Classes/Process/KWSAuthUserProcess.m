@@ -9,7 +9,6 @@
 #import "KWSAuthUserProcess.h"
 
 // get the two systems needed
-#import "KWSGetAccessTokenAuth.h"
 #import "KWSAuthUser.h"
 #import "KWSAccessToken.h"
 #import "KWSLoggedUser.h"
@@ -19,7 +18,6 @@
 
 @interface KWSAuthUserProcess ()
 @property (nonatomic, strong) KWSChildrenLoginUserBlock userAuthenticated;
-@property (nonatomic, strong) KWSGetAccessTokenAuth *getAccessToken;
 @property (nonatomic, strong) KWSAuthUser *authUser;
 @end
 
@@ -27,7 +25,6 @@
 
 - (id) init {
     if (self = [super init]) {
-        _getAccessToken = [[KWSGetAccessTokenAuth alloc] init];
         _authUser = [[KWSAuthUser alloc] init];
         _userAuthenticated = ^(KWSChildrenLoginUserStatus status) {};
     }
@@ -55,30 +52,19 @@
         return;
     }
     
-    [_getAccessToken execute:username andPassword:password :^(KWSAccessToken *accessToken) {
+    [_authUser execute:username andPassword:password :^(NSInteger status, KWSLoggedUser *user) {
         
-        if (accessToken) {
+        if (user != nil && [user isValid]) {
             
-            [_authUser executeWithToken:accessToken.access_token :^(NSInteger status, KWSLoggedUser *user) {
-               
-                if (user != nil && [user isValid]) {
-                    
-                    // save to SDK
-                    [[KWSChildren sdk] setLoggedUser:user];
-                    
-                    // send success
-                    _userAuthenticated (KWSChildren_LoginUser_Success);
-                    
-                } else {
-                    _userAuthenticated (KWSChildren_LoginUser_InvalidCredentials);
-                }
-                
-            }];
+            // save to SDK
+            [[KWSChildren sdk] setLoggedUser:user];
+            
+            // send success
+            _userAuthenticated (KWSChildren_LoginUser_Success);
             
         } else {
-            _userAuthenticated (KWSChildren_LoginUser_NetworkError);
+            _userAuthenticated (KWSChildren_LoginUser_InvalidCredentials);
         }
-        
     }];
 }
 
