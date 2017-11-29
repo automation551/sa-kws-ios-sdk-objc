@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+2.3.2
+ - Updated project dependencies
+
 2.3.1
  - Simplified user auth flow
  - Updated project dependencies
