@@ -12,7 +12,7 @@ The SuperAwesome Kids Web Services iOS SDK
   s.source           = { :git => "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git", :branch => "master", :tag => "2.3.1" }
   s.ios.deployment_target = '8.0'
   s.source_files = 'Pod/Classes/**/*'
-  s.dependency 'SAJsonParser', '1.3.2'
-  s.dependency 'SAUtils', '1.5.0'
-  s.dependency 'SANetworking',  '0.2.9'
+  s.dependency 'SAJsonParser', '1.3.3'
+  s.dependency 'SAUtils', '1.5.2'
+  s.dependency 'SANetworking',  '0.3.0'
 end
