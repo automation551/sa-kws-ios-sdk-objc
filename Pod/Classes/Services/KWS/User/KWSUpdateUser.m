@@ -55,7 +55,7 @@
             [body setObject:address forKey:@"address"];
         }
     }
-    
+
     if (_updatedUser.applicationProfile) {
         NSMutableDictionary *profile = [@{} mutableCopy];
         [profile setObject:@(_updatedUser.applicationProfile.avatarId) forKey:@"avatarId"];

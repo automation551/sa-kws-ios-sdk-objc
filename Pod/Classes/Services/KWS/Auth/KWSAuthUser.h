@@ -7,12 +7,11 @@
 //
 
 #import "KWSService.h"
-@class KWSLoggedUser;
+
+@class KWSAccessToken;
 
 typedef void (^authenticated)(NSInteger status, KWSLoggedUser *user);
 
 @interface KWSAuthUser : KWSService
-
-- (void) executeWithToken: (NSString*)token :(authenticated)authenticated;
-
+- (void) execute:(NSString*)username andPassword:(NSString*)password :(authenticated) authenticated;
 @end

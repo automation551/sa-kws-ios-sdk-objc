@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+2.3.1
+ - Simplified user auth flow
+
 2.2.0
  - Updated Networking, JSON & Utils dependencies to work with the latest versions (and benefit from all subsequent tests & improvements done)
  - Moved some models around into their own folders 

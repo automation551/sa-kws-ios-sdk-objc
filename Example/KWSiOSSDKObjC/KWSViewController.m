@@ -13,9 +13,14 @@
 #define DATA_TITLE @"title"
 #define DATA_SEC @"section"
 
-#define API @"https://kwsapi.demo.superawesome.tv/"
-#define CLIENT_ID @"sa-mobile-app-sdk-client-0"
-#define CLIENT_SECRET @"_apikey_5cofe4ppp9xav2t9"
+//#define API @"https://kwsapi.demo.superawesome.tv/"
+//#define CLIENT_ID @"sa-mobile-app-sdk-client-0"
+//#define CLIENT_SECRET @"_apikey_5cofe4ppp9xav2t9"
+
+#define API @"https://stan-test-cluster.api.kws.superawesome.tv/"
+#define CLIENT_ID  @"stan-test" // @"stan-test-2" // @"superawesomeclub"
+//#define CLIENT_SECRET  @"tqx3KWaei14Y7x30nlg6FZRi48RUdS97" // @"superawesomeclub"
+#define CLIENT_MOBILE_SECRET @"DRYNvSStuSvnaDg0d3f9t17QybbpQqX4" // @"tqx3KWaei14Y7x30nlg6FZRi48RUdS97"
 
 @interface KWSViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -44,7 +49,7 @@
     
     // start KWS session
     [[KWSChildren sdk] setupWithClientId:CLIENT_ID
-                         andClientSecret:CLIENT_SECRET
+                         andClientSecret:CLIENT_MOBILE_SECRET
                                andAPIUrl:API];
 }
 
@@ -165,7 +170,7 @@
              withPassword:@"testtest"
            andDateOfBirth:@"2011-03-02"
                andCountry:@"US"
-           andParentEmail:@"dev.gabriel.coman@gmail.com"
+           andParentEmail:@"gabriel.coman@superawesome.tv"
               andResponse:^(KWSChildrenCreateUserStatus status) {
                              
                              switch (status) {
@@ -189,10 +194,10 @@
 }
 
 - (void) authUser {
-    [[KWSChildren sdk] loginUser:@"getmeout" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
+    [[KWSChildren sdk] loginUser:@"testusr461" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
             case KWSChildren_LoginUser_Success:
-                NSLog(@"Logged in as 'getmeout'");
+                NSLog(@"Logged in as 'testusr461'");
                 break;
             case KWSChildren_LoginUser_InvalidCredentials:
                 NSLog(@"Invalid credentials");
@@ -204,6 +209,22 @@
                 break;
         }
     }];
+    
+//    [[KWSChildren sdk] loginUser:@"stanajdkfa" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
+//        switch (status) {
+//            case KWSChildren_LoginUser_Success:
+//                NSLog(@"Logged in as 'stanajdkfa'");
+//                break;
+//            case KWSChildren_LoginUser_InvalidCredentials:
+//                NSLog(@"Invalid credentials");
+//                break;
+//            case KWSChildren_LoginUser_NetworkError:
+//                NSLog(@"Network error");
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
 }
 
 - (void) logoutUser {
@@ -260,7 +281,10 @@
 }
 
 - (void) requestPermissions {
-    [[KWSChildren sdk] requestPermission:@[@(KWSChildren_PermissionType_AccessLastName)] withResponse:^(KWSChildrenRequestPermissionStatus status) {
+    [[KWSChildren sdk] requestPermission:@[
+                                           @(KWSChildren_PermissionType_AccessFirstName),
+                                           @(KWSChildren_PermissionType_AccessLastName),
+                                           @(KWSChildren_PermissionType_AccessAddress)] withResponse:^(KWSChildrenRequestPermissionStatus status) {
         switch (status) {
             case KWSChildren_RequestPermission_Success: {
                 NSLog(@"Requested permissions OK");
