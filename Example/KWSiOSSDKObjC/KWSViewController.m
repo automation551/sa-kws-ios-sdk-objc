@@ -18,9 +18,9 @@
 //#define CLIENT_SECRET @"_apikey_5cofe4ppp9xav2t9"
 
 #define API @"https://stan-test-cluster.api.kws.superawesome.tv/"
-#define CLIENT_ID  @"stan-test" // @"superawesomeclub"
-#define CLIENT_SECRET  @"7Hpx255pMfdJD2IgmqMbM9Sz9O1AcrOd" // @"superawesomeclub"
-#define CLIENT_MOBILE_SECRET @"DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
+#define CLIENT_ID  @"stan-test" // @"stan-test-2" // @"superawesomeclub"
+//#define CLIENT_SECRET  @"tqx3KWaei14Y7x30nlg6FZRi48RUdS97" // @"superawesomeclub"
+#define CLIENT_MOBILE_SECRET @"DRYNvSStuSvnaDg0d3f9t17QybbpQqX4" // @"tqx3KWaei14Y7x30nlg6FZRi48RUdS97"
 
 @interface KWSViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -170,7 +170,7 @@
              withPassword:@"testtest"
            andDateOfBirth:@"2011-03-02"
                andCountry:@"US"
-           andParentEmail:@"dev.gabriel.coman@gmail.com"
+           andParentEmail:@"gabriel.coman@superawesome.tv"
               andResponse:^(KWSChildrenCreateUserStatus status) {
                              
                              switch (status) {
@@ -194,10 +194,10 @@
 }
 
 - (void) authUser {
-    [[KWSChildren sdk] loginUser:@"testusr371" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
+    [[KWSChildren sdk] loginUser:@"testusr461" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
             case KWSChildren_LoginUser_Success:
-                NSLog(@"Logged in as 'stanajdkfa'");
+                NSLog(@"Logged in as 'testusr461'");
                 break;
             case KWSChildren_LoginUser_InvalidCredentials:
                 NSLog(@"Invalid credentials");
