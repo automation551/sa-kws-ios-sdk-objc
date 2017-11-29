@@ -103,6 +103,7 @@
         if ([tmpUser isValid]) {
             _loggedUser = tmpUser;
             NSLog(@"KWS started with logged user %ld", (long)_loggedUser.metadata.userId);
+            NSLog(@"Is user registered %d", _loggedUser.isRegisteredForNotifications);
         } else {
             NSLog(@"KWS started with a logged user that had an expired OAuth token. Clearning cache!");
             [_defs removeObjectForKey:LOGGED_USER_KEY];
@@ -233,6 +234,7 @@
     [_notificationProcess register:^(KWSChildrenRegisterForRemoteNotificationsStatus status) {
         if (status == KWSChildren_RegisterForRemoteNotifications_Success && _loggedUser) {
             [_loggedUser setIsRegisteredForNotifications:true];
+            // [self setLoggedUser:_loggedUser]; @todo: this acts buggy
         }
         if (response != nil) {
             response(status);
@@ -242,8 +244,9 @@
 
 - (void) unregisterForRemoteNotifications:(KWSChildrenUnregisterForRemoteNotificationsBlock)response {
     [_notificationProcess unregister:^(BOOL success) {
-        if (success && _loggedUser != nil && [_loggedUser isRegisteredForNotifications]) {
+        if (success && _loggedUser != nil) {
             [_loggedUser setIsRegisteredForNotifications:false];
+            // [self setLoggedUser:_loggedUser]; @todo: this acts buggy
         }
         if (response != nil) {
             response (success);
@@ -253,9 +256,6 @@
 
 - (void) isRegisteredForRemoteNotifications:(KWSChildrenIsRegisteredForRemoteNotificationsInterface)response {
     [_notificationProcess isRegistered:^(BOOL success) {
-        if (_loggedUser) {
-            [_loggedUser setIsRegisteredForNotifications:success];
-        }
         if (response) {
             response(success);
         }

@@ -17,6 +17,7 @@
 #import "KWSUnregisterToken.h"
 #import "SystemCheckAllowed.h"
 #import "FirebaseGetToken.h"
+#import "KWSChildren.h"
 
 // other utils
 #import "SAUtils.h"

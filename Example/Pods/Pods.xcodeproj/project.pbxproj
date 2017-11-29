@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		012DD720A84EE5FC3C02F3392A73DECE /* KWSScore.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FBD4FC77BAB548DBEA57C3A0A1CD62 /* KWSScore.m */; };
 		02E2020C8A228271A338A948ECA46846 /* KWSHasTriggeredEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D1E7104AE6B0DAA884B05CC2161CD0 /* KWSHasTriggeredEvent.m */; };
+		042163151FEF73C1D2D58741E47BA02B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
 		042F15754BA9B1EFDF6D6FB529F881FC /* SANetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E48660B7B554752DB396C634284F55 /* SANetwork.m */; };
 		04BC1A8F69B4B91E6A8F05936644263B /* KWSLeaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = CEAE0C1A0DC8A7C505EF6E5B17408076 /* KWSLeaderboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05AAA4EFCB40834C1B469B41A2D7FBCA /* KWSCreateUserProcess.h in Headers */ = {isa = PBXBuildFile; fileRef = 96FF6290B453CEF4E1661002B35EF5D5 /* KWSCreateUserProcess.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,7 +31,6 @@
 		241E6B80FDF1FA3B1C245BBE52572D24 /* KWSGetScore.h in Headers */ = {isa = PBXBuildFile; fileRef = F1C9D30742B305FDFA5707BD5A12E3A1 /* KWSGetScore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24AF00E22457A3CD39C6794D0319EEDE /* KWSRandomName.m in Sources */ = {isa = PBXBuildFile; fileRef = A98EDB13388E51BD5755A804613B865D /* KWSRandomName.m */; };
 		2BE3563BBEF8921E5EA0B99184533EE8 /* SANetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A18B4B92F81D1FE191ED6C700F4584 /* SANetworking-dummy.m */; };
-		2DF93771218E15431E23183E45CD2AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AA9769BAF0011C11306AF9A75742D8 /* Foundation.framework */; };
 		3061082F948B042AF707FD6B44DCB4C2 /* KWSInvalid.h in Headers */ = {isa = PBXBuildFile; fileRef = 28173A4DA613E49EA3CD6F7688FA62FA /* KWSInvalid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		308DED23D086D5B08E8087EC1D46CAAD /* KWSInviteUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F40894C87F306F5C2043923E544B2963 /* KWSInviteUser.m */; };
 		3185C4243FB33FC1536A487DE177AD9F /* KWSParentEmailError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9765ED4C6AAFDA472B0E7A96AC98FE44 /* KWSParentEmailError.m */; };
@@ -49,7 +49,6 @@
 		4BEB9BBB944F1EE495CE1F569BB3A777 /* KWSAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E361C9298476FFBBFF7FC652E8DB8D4 /* KWSAddress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA58CD2816EA3C8C20F3587B045C7EA /* KWSCheckRegistered.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D51EEBEB63C4EA666023F7F9CCA78 /* KWSCheckRegistered.m */; };
 		4CC1F4DF1B2A94572576056856701B0B /* SABaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D7A738C990D816C209A21EE239A57B /* SABaseObject.m */; };
-		4D5D5ECC46AC9FEB0FC779E6E545266D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AA9769BAF0011C11306AF9A75742D8 /* Foundation.framework */; };
 		513B49827DD2645E951595DD9154EA6B /* KWSGetAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 75375129D45F501CE77C28D7A32EEFB0 /* KWSGetAppConfig.m */; };
 		521D206AD473D32490A7D5B162986C3A /* SAFileItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D779325D54D04B6E0453246E694A616F /* SAFileItem.m */; };
 		52A690DACB37C91F6F3A211B3BC3519B /* KWSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E79E1F473C0CAE47B74C6286F4FC537 /* KWSService.m */; };
@@ -74,6 +73,7 @@
 		732A648C6D5385A6523671CA1F47729A /* NSDictionary+SAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BD263196E00C47D6FBA22DA2B3F2EF3D /* NSDictionary+SAJson.m */; };
 		75F7D4C06612F765E5DCC4F72CF6EACF /* SAFileDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 571808AE89D5979A20680E3505BA7DDE /* SAFileDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F93A8921A92667F40286D69233BDFE /* KWSAppDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = C961456756129C4DBA2C2152910B4D21 /* KWSAppDataResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A2AC50DC146E2278683DE42E7BE5101 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
 		7A525D959380A94D788E61B0232B0231 /* SALoadScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B4E091149D1F7CEA57DAA1743327D80 /* SALoadScreen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A806CBCB23DC0546EA923B0403B6A13 /* KWSLoggedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3E52077BE863B69C06218F98FEC1F3 /* KWSLoggedUser.m */; };
 		7AEE1658E953F9B5AECBBE98F8D4CEF5 /* KWSApplicationProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8EDBC2F684CCBB46F41310DBAF6C76 /* KWSApplicationProfile.m */; };
@@ -82,27 +82,28 @@
 		8032CB7CD8FC2C9C610475D008A97209 /* SAExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23509A3CF7C83A121C895FE48FD21C5D /* SAExtensions.m */; };
 		811FBBD58594518435220E6C160C32C6 /* KWSGetAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C55622D53E5007A3CCB628C0C2AC18 /* KWSGetAppData.m */; };
 		828F7FC944AFAD0EE386F392B40B1C40 /* KWSGetAccessTokenAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FAA24CBF858C02ED140EA95E81E7013 /* KWSGetAccessTokenAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		82A274AB6C8804C29140483361AC655C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AA9769BAF0011C11306AF9A75742D8 /* Foundation.framework */; };
 		84B2635475453BB6F03FE6DD7552FF2B /* KWSAuthUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 152F4457755D41E67CD9950E55E705CF /* KWSAuthUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8548AC99C7DC0FA5C718A6F2C057E922 /* KWSUpdateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CE02281F8A0EA382591264EDD295DE /* KWSUpdateUser.m */; };
 		875CDB53AC4967E6EC0B5CB32CCB487F /* KWSUnregisterToken.h in Headers */ = {isa = PBXBuildFile; fileRef = BC005AA1C5BB158C21C53A9D7840C1C3 /* KWSUnregisterToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		880BE3A5BBAF358946E4F99265653AAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
 		8F23C293505328699FCAE6E883F49F97 /* SystemCheckAllowed.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E9AD00F9CDBD966E373A957924FDDD /* SystemCheckAllowed.m */; };
 		936F50C085231CC710B8193FE232AE92 /* SANetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = D89113F38AE701FA2B0C5C82905F69C1 /* SANetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98FC0303794AE4FBCC536966A1ED1C53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
 		9A59C7CF307715678365066C81A0C04C /* KWSGetLeaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = A92F06F35CD3399F025A585F2E7B696C /* KWSGetLeaderboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B5A2268BCE17148D3AA247519D97543 /* SAUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B76D733D1FB43941B1404D6426108D6 /* SAUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9ECAE68330F1912B14B3985C64775AFD /* SAJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1721000A62A3C3139C84E2E4528C6741 /* SAJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A0528CA1F9A31B3DF303F4720FD12487 /* KWSCheckAllowed.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B02BF3504D8C63AEA1A28C21C9D595 /* KWSCheckAllowed.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A23541D94CC3E377AEBF29C3F52BAADF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092C124E24793E864CDCFFF2EE5ADE28 /* SystemConfiguration.framework */; };
 		A4B18AC7685D3861AFA02148CF25BC92 /* NSDictionary+SafeHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BC2E741EDACE79D8A9223D57109FC0 /* NSDictionary+SafeHandling.m */; };
-		A60D05975761BF0CA0C6B84FCD9D7073 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AA9769BAF0011C11306AF9A75742D8 /* Foundation.framework */; };
 		A8209B9CDF620A3DA7844E032FB77E79 /* KWSCheckAllowed.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC3045D2EDA690729FA907ED361E0A0 /* KWSCheckAllowed.m */; };
 		A8A2AF577702067725AE89DFC37B8FA0 /* SAUtils-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C6FF748ED68A7B19AC6E2280178EDC /* SAUtils-dummy.m */; };
 		AA95963C931F427A7C708CAF407E544C /* KWSSetAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2316A9A39A57F3CB96AAECD7F81DE84E /* KWSSetAppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC616E99E1E2B35717E696796325FB89 /* KWSGetAppConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 81F8DFF15985B20E69B9E6066C82F929 /* KWSGetAppConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2CB3F403556B925AAEDAC23CC801775 /* KWSGetUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4522D4CDF5E407B1D6C9A77DBF7AD861 /* KWSGetUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3216410C0B305D511C5A0CFCECA6E50 /* KWSUpdateUser.h in Headers */ = {isa = PBXBuildFile; fileRef = C54570DE86C7481377C59ACBA770DE56 /* KWSUpdateUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B45DD2CC65410B83DBD5061584F19FC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
 		B75D6E4DD12FE6199E666B91598FF43F /* KWSiOSSDKObjC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 480CA14C56D1B777651F479665692C4F /* KWSiOSSDKObjC-dummy.m */; };
 		BC782115D37010203AC5D92AF0F33647 /* KWSAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D018B22FEB6E318D9F48152A3C1CC57 /* KWSAppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCFD5157C1EECB4586EEABBEEBEB540E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */; };
 		C170D9705C3B47493B81FE85AABEC243 /* SAFileQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F87D61F0EE1BFDF1788F1ED4CD2F406 /* SAFileQueue.m */; };
 		C2D7CE3A653B7FB733982BD7D6008DB6 /* KWSMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 949DC929742E53079CA2C8A57BF65F2E /* KWSMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C58F1A4327E12E6A889454AB0250956A /* KWSError.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2ED305790393B8222943F4209DEA39 /* KWSError.m */; };
@@ -113,7 +114,6 @@
 		CDC5FC2651C3A274197E9896A3FBDF9A /* NSDictionary+SAJson.h in Headers */ = {isa = PBXBuildFile; fileRef = E602A5BBF440C12A91E213294E4D26EF /* NSDictionary+SAJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFE322C8007E504865BA24E67875AAE9 /* KWSGetUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D360BB8E90C23BCECBA7A5EFC15792F /* KWSGetUser.m */; };
 		D61ECC61F8A5EE565699434AE34AEDD9 /* KWSGetAppData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3C3648228E5712887909A081627E83 /* KWSGetAppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D70007CC186F4B77DE418FCBBEA7493E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AA9769BAF0011C11306AF9A75742D8 /* Foundation.framework */; };
 		D815286BE02DAF4038435B63BD40902B /* SAAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = DF74859E0B90F754D3592517F8CA6B70 /* SAAlert.m */; };
 		E10CA861BCF27E1A9C86B7A5D91CC6F8 /* KWSAuthUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2529944726438C5A1F7D03855C71CB /* KWSAuthUser.m */; };
 		E14D7735BF432DCBCFFB81B4FB781A23 /* FirebaseGetToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D94D6FA972D98EB3A0E10DCD76879BE5 /* FirebaseGetToken.m */; };
@@ -137,9 +137,9 @@
 		F6395F01227663455616A1EC2E92353B /* KWSLeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E32B575606D7B44A4FF07ED149ECA0B8 /* KWSLeader.m */; };
 		F64DEC00DF2629D38A6F42646A2559C4 /* KWSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8810EF2EF17A2F1A7FE8F8769CD4C01F /* KWSUser.m */; };
 		F6A650E28AB31F54B4C98E6AC14F7AD5 /* KWSAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC75C66C09851DCF4E2CAF291335AAD /* KWSAddress.m */; };
+		FBB815EBB94665DF65B347E852979D98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
 		FC7CC3CF23DA748272D7F7D01D4C8E98 /* KWSGetAccessTokenCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B60B167279270FB29EFC9FAD54F9F2 /* KWSGetAccessTokenCreate.m */; };
 		FD5BF91CDBFB20DB080A47C3354BC7C7 /* KWSAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1E46FA1694E08027F00CE77740CBB2 /* KWSAppData.m */; };
-		FE2EC407BE475B6EBD5872735BD02AA9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AA9769BAF0011C11306AF9A75742D8 /* Foundation.framework */; };
 		FEF3DFAD4B6111E46EB8A4684EA9954B /* NSDictionary+SafeHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 39756294CF3CB6C3A370A1CD2E059056 /* NSDictionary+SafeHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF1BE93A1C2DCB677D46B9557BCD5A27 /* KWSGetAccessTokenCreate.h in Headers */ = {isa = PBXBuildFile; fileRef = 19BE522DAB861FA12F428FDD5A048DD8 /* KWSGetAccessTokenCreate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF434AA86BFCBD1F7F011502AC476C23 /* KWSAuthUserProcess.h in Headers */ = {isa = PBXBuildFile; fileRef = CB4713648BAAD739C8D9C8594BE622F7 /* KWSAuthUserProcess.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -199,7 +199,6 @@
 
 /* Begin PBXFileReference section */
 		07E76A51D8C5717BABCCD4EA87941EF8 /* KWSScore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSScore.h; sourceTree = "<group>"; };
-		092C124E24793E864CDCFFF2EE5ADE28 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		09D4C8E6ED96DD5A0AE48438ED92B3CE /* KWSChildren.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSChildren.h; sourceTree = "<group>"; };
 		0A8EDBC2F684CCBB46F41310DBAF6C76 /* KWSApplicationProfile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSApplicationProfile.m; sourceTree = "<group>"; };
 		0C80F8F5587BD04CC5022AE806E78F4E /* SAJsonParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAJsonParser-dummy.m"; sourceTree = "<group>"; };
@@ -246,7 +245,6 @@
 		4075EBD9CA0E7B4ECF47C2433CE1DFFF /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4522D4CDF5E407B1D6C9A77DBF7AD861 /* KWSGetUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetUser.h; sourceTree = "<group>"; };
 		46D519D3730E5BC1B13B2FBDC69A89EA /* SAJsonParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAJsonParser.xcconfig; sourceTree = "<group>"; };
-		47AA9769BAF0011C11306AF9A75742D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		480CA14C56D1B777651F479665692C4F /* KWSiOSSDKObjC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KWSiOSSDKObjC-dummy.m"; sourceTree = "<group>"; };
 		49A11180F439D7255B8537933CCC29DB /* Pods-KWSiOSSDKObjC_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4AA59D11B9CEE66036B56E35F19B34C3 /* KWSAccessToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSAccessToken.h; sourceTree = "<group>"; };
@@ -293,6 +291,7 @@
 		970821901A865FC47D40302119AE6ACA /* SALoadScreen.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SALoadScreen.m; path = Pod/Classes/SALoadScreen.m; sourceTree = "<group>"; };
 		9765ED4C6AAFDA472B0E7A96AC98FE44 /* KWSParentEmailError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSParentEmailError.m; sourceTree = "<group>"; };
 		97729864EECCBCB3B510A4CB3FC61933 /* KWSPoints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSPoints.h; sourceTree = "<group>"; };
+		97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		99645710B227CF397E0B89A2AFD39CE4 /* KWSApplicationProfile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSApplicationProfile.h; sourceTree = "<group>"; };
 		9BFAB60C105513BF469E915CD5BA8211 /* KWSNotificationProcess.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSNotificationProcess.h; sourceTree = "<group>"; };
 		9D3B202F0EBF1C89B722E03B81CAB0A3 /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -358,6 +357,7 @@
 		EE5E2ADA97B704D99D51BE6DC4AFCE34 /* KWSParentEmail.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSParentEmail.h; sourceTree = "<group>"; };
 		F10DA8A3D4A5CBC5A6F019C4FC6A1AFE /* SAFileItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAFileItem.h; path = Pod/Classes/File/SAFileItem.h; sourceTree = "<group>"; };
 		F1C9D30742B305FDFA5707BD5A12E3A1 /* KWSGetScore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetScore.h; sourceTree = "<group>"; };
+		F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		F40894C87F306F5C2043923E544B2963 /* KWSInviteUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSInviteUser.m; sourceTree = "<group>"; };
 		F58660DD3B065092BA67D878222680A8 /* SystemCheckAllowed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SystemCheckAllowed.h; sourceTree = "<group>"; };
 		F74BBA21DD1AC2D965B93BBFC551E950 /* SAAlert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAAlert.h; path = Pod/Classes/SAAlert.h; sourceTree = "<group>"; };
@@ -373,8 +373,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A60D05975761BF0CA0C6B84FCD9D7073 /* Foundation.framework in Frameworks */,
-				A23541D94CC3E377AEBF29C3F52BAADF /* SystemConfiguration.framework in Frameworks */,
+				042163151FEF73C1D2D58741E47BA02B /* Foundation.framework in Frameworks */,
+				BCFD5157C1EECB4586EEABBEEBEB540E /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +382,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE2EC407BE475B6EBD5872735BD02AA9 /* Foundation.framework in Frameworks */,
+				98FC0303794AE4FBCC536966A1ED1C53 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +390,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DF93771218E15431E23183E45CD2AFA /* Foundation.framework in Frameworks */,
+				880BE3A5BBAF358946E4F99265653AAC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D5D5ECC46AC9FEB0FC779E6E545266D /* Foundation.framework in Frameworks */,
+				7A2AC50DC146E2278683DE42E7BE5101 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +406,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70007CC186F4B77DE418FCBBEA7493E /* Foundation.framework in Frameworks */,
+				B45DD2CC65410B83DBD5061584F19FC3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +414,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82A274AB6C8804C29140483361AC655C /* Foundation.framework in Frameworks */,
+				FBB815EBB94665DF65B347E852979D98 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +637,7 @@
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B7141F310DB616A7B8460CB145EFEC3A /* iOS */,
+				E7E283C74B7E79D37D9BAAFF277942F5 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -886,15 +886,6 @@
 			path = SAJsonParser;
 			sourceTree = "<group>";
 		};
-		B7141F310DB616A7B8460CB145EFEC3A /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				47AA9769BAF0011C11306AF9A75742D8 /* Foundation.framework */,
-				092C124E24793E864CDCFFF2EE5ADE28 /* SystemConfiguration.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		B8053EDB40FBD2BFF330095E4230E23E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1023,15 @@
 			);
 			name = GoogleSymbolUtilities;
 			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		E7E283C74B7E79D37D9BAAFF277942F5 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */,
+				F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		EEC51B06FF2F1E96966B8A2D7381480A /* AppData */ = {
@@ -1311,7 +1311,7 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -1494,19 +1494,19 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0E873D9E4A55E2A96A669D0F0B50DA94 /* Release */ = {
+		052458563AEC23F7E06EC0022469E71F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49A11180F439D7255B8537933CCC29DB /* Pods-KWSiOSSDKObjC_Tests.release.xcconfig */;
+			baseConfigurationReference = 4075EBD9CA0E7B4ECF47C2433CE1DFFF /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1515,7 +1515,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 		19570108A3977D0555C7C6C903C0C876 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1529,6 +1529,29 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/SAUtils/SAUtils-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1CF2C1C0A45CE72BC50F09742573FF9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0C34EC74A3E9E35C23AAAAC89E64132 /* KWSiOSSDKObjC.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -1563,6 +1586,50 @@
 			};
 			name = Release;
 		};
+		34FE9531DA9AF2820790339988D5FF41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		54DD7558DA5B350775DAE92907A3C573 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46D519D3730E5BC1B13B2FBDC69A89EA /* SAJsonParser.xcconfig */;
@@ -1586,47 +1653,30 @@
 			};
 			name = Release;
 		};
-		79B0C2E66EFA9917ED6EDDB8FC6A7684 /* Release */ = {
+		6BC98E32D9250AD33219496B967FAB9C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D3B202F0EBF1C89B722E03B81CAB0A3 /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		8C866A0F8BA2D0CBDC238723BC26BD41 /* Release */ = {
+		7EEB568FD007714D1F05BB9057762530 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0C34EC74A3E9E35C23AAAAC89E64132 /* KWSiOSSDKObjC.xcconfig */;
 			buildSettings = {
@@ -1637,36 +1687,13 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		9074F8C07379383C6F5EDFEDA63C3FE8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D3B202F0EBF1C89B722E03B81CAB0A3 /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -1741,7 +1768,7 @@
 			};
 			name = Debug;
 		};
-		A9BD2EF6E7BC2D77A1F83592C5447038 /* Debug */ = {
+		AB87F1A9B917C606608639B95CBF28F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CB7BDA7B0F9FF65DF516BE76B40161D1 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */;
 			buildSettings = {
@@ -1751,7 +1778,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -1764,11 +1791,12 @@
 			};
 			name = Debug;
 		};
-		CF7953F66E785E8876EB4D370D777D50 /* Debug */ = {
+		C104F7F091290C3D1E248192F07FE689 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1776,10 +1804,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
@@ -1800,7 +1831,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1808,42 +1839,19 @@
 			};
 			name = Debug;
 		};
-		E3184A28C0E5D007121BA5B52DAB7C17 /* Debug */ = {
+		C5DE05A5FCEDF40EAF0B8EBBFA27617A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0C34EC74A3E9E35C23AAAAC89E64132 /* KWSiOSSDKObjC.xcconfig */;
+			baseConfigurationReference = 49A11180F439D7255B8537933CCC29DB /* Pods-KWSiOSSDKObjC_Tests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/KWSiOSSDKObjC/KWSiOSSDKObjC-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		F0D87FC041DF8B945CA30473B82D1E90 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4075EBD9CA0E7B4ECF47C2433CE1DFFF /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1852,7 +1860,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1878,8 +1886,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF7953F66E785E8876EB4D370D777D50 /* Debug */,
-				79B0C2E66EFA9917ED6EDDB8FC6A7684 /* Release */,
+				C104F7F091290C3D1E248192F07FE689 /* Debug */,
+				34FE9531DA9AF2820790339988D5FF41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1896,8 +1904,8 @@
 		4BA60216FAE694BFD26E9BAF7B98EA8D /* Build configuration list for PBXNativeTarget "Pods-KWSiOSSDKObjC_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9BD2EF6E7BC2D77A1F83592C5447038 /* Debug */,
-				9074F8C07379383C6F5EDFEDA63C3FE8 /* Release */,
+				AB87F1A9B917C606608639B95CBF28F3 /* Debug */,
+				6BC98E32D9250AD33219496B967FAB9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1905,8 +1913,8 @@
 		63E9023CF566BA20719CCD8F308EA1FD /* Build configuration list for PBXNativeTarget "KWSiOSSDKObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3184A28C0E5D007121BA5B52DAB7C17 /* Debug */,
-				8C866A0F8BA2D0CBDC238723BC26BD41 /* Release */,
+				1CF2C1C0A45CE72BC50F09742573FF9A /* Debug */,
+				7EEB568FD007714D1F05BB9057762530 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1914,8 +1922,8 @@
 		AB40A3424C19E0269CAF40BD63012CB4 /* Build configuration list for PBXNativeTarget "Pods-KWSiOSSDKObjC_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F0D87FC041DF8B945CA30473B82D1E90 /* Debug */,
-				0E873D9E4A55E2A96A669D0F0B50DA94 /* Release */,
+				052458563AEC23F7E06EC0022469E71F /* Debug */,
+				C5DE05A5FCEDF40EAF0B8EBBFA27617A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

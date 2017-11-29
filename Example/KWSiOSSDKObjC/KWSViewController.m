@@ -327,20 +327,23 @@
                 break;
             }
             case KWSChildren_RegisterForRemoteNotifications_NoParentEmail: {
-                [[KWSChildren sdk] submitParentEmailWithPopup:^(KWSChildrenUpdateParentEmailStatus status) {
-                    switch (status) {
-                        case KWSChildren_UpdateParentEmail_Success: {
-                            [[KWSChildren sdk] registerForRemoteNotifications:R];
-                            break;
-                        }
-                        case KWSChildren_UpdateParentEmail_InvalidEmail: {
-                            break;
-                        }
-                        case KWSChildren_UpdateParentEmail_NetworkError: {
-                            break;
-                        }
-                    }
-                }];
+                
+               
+                
+//                [[KWSChildren sdk] submitParentEmailWithPopup:^(KWSChildrenUpdateParentEmailStatus status) {
+//                    switch (status) {
+//                        case KWSChildren_UpdateParentEmail_Success: {
+//                            [[KWSChildren sdk] registerForRemoteNotifications:R];
+//                            break;
+//                        }
+//                        case KWSChildren_UpdateParentEmail_InvalidEmail: {
+//                            break;
+//                        }
+//                        case KWSChildren_UpdateParentEmail_NetworkError: {
+//                            break;
+//                        }
+//                    }
+//                }];
                 
                 break;
             }
