@@ -1,1 +1,0 @@
-../../../../../Pod/Classes/Services/KWS/Notifications/KWSCheckRegistered.h

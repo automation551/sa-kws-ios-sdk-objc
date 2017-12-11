@@ -1,1 +1,0 @@
-../../../../../Pod/Classes/Services/KWS/Score/KWSHasTriggeredEvent.h

@@ -13,14 +13,9 @@
 #define DATA_TITLE @"title"
 #define DATA_SEC @"section"
 
-//#define API @"https://kwsapi.demo.superawesome.tv/"
-//#define CLIENT_ID @"sa-mobile-app-sdk-client-0"
-//#define CLIENT_SECRET @"_apikey_5cofe4ppp9xav2t9"
-
 #define API @"https://stan-test-cluster.api.kws.superawesome.tv/"
-#define CLIENT_ID  @"stan-test" // @"stan-test-2" // @"superawesomeclub"
-//#define CLIENT_SECRET  @"tqx3KWaei14Y7x30nlg6FZRi48RUdS97" // @"superawesomeclub"
-#define CLIENT_MOBILE_SECRET @"DRYNvSStuSvnaDg0d3f9t17QybbpQqX4" // @"tqx3KWaei14Y7x30nlg6FZRi48RUdS97"
+#define CLIENT_ID  @"stan-test"
+#define CLIENT_SECRET @"DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
 
 @interface KWSViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -49,7 +44,7 @@
     
     // start KWS session
     [[KWSChildren sdk] setupWithClientId:CLIENT_ID
-                         andClientSecret:CLIENT_MOBILE_SECRET
+                         andClientSecret:CLIENT_SECRET
                                andAPIUrl:API];
 }
 
@@ -194,7 +189,7 @@
 }
 
 - (void) authUser {
-    [[KWSChildren sdk] loginUser:@"testusr461" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
+    [[KWSChildren sdk] loginUser:@"testusr494" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
             case KWSChildren_LoginUser_Success:
                 NSLog(@"Logged in as 'testusr461'");
