@@ -19,7 +19,7 @@ The SuperAwesome Kids Web Services iOS SDK
 	:branch => "master", 
 	:tag => "2.3.2" 
   }
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.source_files = 'KWSiOSSDKObjC/Classes/**/*'
   s.dependency 'SAJsonParser', '1.3.3'
   s.dependency 'SAUtils', '1.5.2'

@@ -6,13 +6,14 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 // create user status
 typedef NS_ENUM(NSInteger, KWSChildrenLoginUserStatus) {
     KWSChildren_LoginUser_Success             = 0,
     KWSChildren_LoginUser_NetworkError        = 1,
-    KWSChildren_LoginUser_InvalidCredentials  = 2
+    KWSChildren_LoginUser_InvalidCredentials  = 2,
+    KWSChildren_LoginUser_Cancelled           = 3
 };
 
 typedef void (^KWSChildrenLoginUserBlock)(KWSChildrenLoginUserStatus status);
@@ -23,4 +24,9 @@ typedef void (^KWSChildrenLoginUserBlock)(KWSChildrenLoginUserStatus status);
               andPassword:(NSString*)password
                          :(KWSChildrenLoginUserBlock)userAuthenticated;
 
+- (void) authWithSingleSignOnUrl:(NSString*) url
+                      fromParent:(UIViewController*) parent
+                                :(KWSChildrenLoginUserBlock)userAuthenticated;
+- (void) openUrl: (NSURL*) url
+     withOptions: (NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 @end

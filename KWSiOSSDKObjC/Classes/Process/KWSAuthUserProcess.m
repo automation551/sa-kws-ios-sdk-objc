@@ -12,6 +12,7 @@
 #import "KWSAuthUser.h"
 #import "KWSAccessToken.h"
 #import "KWSLoggedUser.h"
+#import "KWSWebAuth.h"
 
 // import KWS
 #import "KWSChildren.h"
@@ -19,6 +20,7 @@
 @interface KWSAuthUserProcess ()
 @property (nonatomic, strong) KWSChildrenLoginUserBlock userAuthenticated;
 @property (nonatomic, strong) KWSAuthUser *authUser;
+@property (nonatomic, strong) KWSWebAuth *webAuth;
 @end
 
 @implementation KWSAuthUserProcess
@@ -26,6 +28,7 @@
 - (id) init {
     if (self = [super init]) {
         _authUser = [[KWSAuthUser alloc] init];
+        _webAuth = [[KWSWebAuth alloc] init];
         _userAuthenticated = ^(KWSChildrenLoginUserStatus status) {};
     }
     
@@ -66,6 +69,41 @@
             _userAuthenticated (KWSChildren_LoginUser_InvalidCredentials);
         }
     }];
+}
+
+- (void) authWithSingleSignOnUrl:(NSString *)url
+                      fromParent:(UIViewController *)parent
+                                :(KWSChildrenLoginUserBlock)userAuthenticated {
+    
+    // form data
+    _userAuthenticated = userAuthenticated ? userAuthenticated : _userAuthenticated;
+    
+    // execute the web auth request
+    [_webAuth execute:url withParent:parent :^(KWSLoggedUser *user, BOOL cancelled) {
+        
+        if (user != NULL && user.metadata != NULL && !cancelled) {
+            NSLog(@"Logged in with %@", user.token);
+            
+            // save to SDK
+            [[KWSChildren sdk] setLoggedUser:user];
+            
+            // send forward
+            _userAuthenticated (KWSChildren_LoginUser_Success);
+        }
+        else if (cancelled) {
+            NSLog(@"Cancelled auth process");
+            _userAuthenticated (KWSChildren_LoginUser_Cancelled);
+        }
+        else {
+            NSLog(@"Some other network error happened");
+            _userAuthenticated (KWSChildren_LoginUser_NetworkError);
+        }
+    }] ;
+}
+
+- (void) openUrl:(NSURL *)url
+     withOptions:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    [_webAuth openUrl:url withOptions:options];
 }
 
 - (BOOL) validateUsername: (NSString*) username {

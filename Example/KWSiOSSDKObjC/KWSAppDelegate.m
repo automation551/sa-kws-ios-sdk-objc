@@ -7,6 +7,8 @@
 //
 
 #import "KWSAppDelegate.h"
+#import "KWSChildren.h"
+
 @implementation KWSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -39,6 +41,13 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    
+    [[KWSChildren sdk] openUrl:url withOptions:options];
+    
+    return true;
 }
 
 @end

@@ -54,6 +54,13 @@
       withPassword:(NSString*)password
        andResponse:(KWSChildrenLoginUserBlock) response;
 
+- (void) authWithSingleSignOnUrl: (NSString*) url
+                      fromParent: (UIViewController*)parent
+                     andResponse:(KWSChildrenLoginUserBlock) response;
+
+- (void) openUrl: (NSURL*) url
+     withOptions: (NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
+
 - (void) logoutUser;
 
 // random name

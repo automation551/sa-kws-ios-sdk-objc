@@ -145,6 +145,20 @@
                                       :response];
 }
 
+- (void) authWithSingleSignOnUrl: (NSString*) url
+                      fromParent: (UIViewController*)parent
+                     andResponse:(KWSChildrenLoginUserBlock) response {
+    [_authUserProcess authWithSingleSignOnUrl:url
+                                   fromParent:parent
+                                             :response];
+    
+}
+
+- (void) openUrl: (NSURL*) url
+     withOptions: (NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    [_authUserProcess openUrl:url withOptions:options];
+}
+
 - (void) logoutUser {
     _loggedUser = nil;
     _defs = [NSUserDefaults standardUserDefaults];

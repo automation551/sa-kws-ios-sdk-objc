@@ -14,6 +14,7 @@
 #define DATA_SEC @"section"
 
 #define API @"https://stan-test-cluster.api.kws.superawesome.tv/"
+#define SINGLE_SIGN_ON @"https://stan-test-cluster.accounts.kws.superawesome.tv/"
 #define CLIENT_ID  @"stan-test"
 #define CLIENT_SECRET @"DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
 
@@ -30,7 +31,7 @@
     
     // setup data
     _data = [@[@{DATA_TITLE: @"User",
-                 DATA_SEC: @[@"Random name", @"Create user", @"Login user", @"Logoff user", @"Get user", @"Update user"]},
+                 DATA_SEC: @[@"Random name", @"Create user", @"Login user", @"Auth user", @"Logoff user", @"Get user", @"Update user"]},
                @{DATA_TITLE: @"Permissions",
                  DATA_SEC: @[@"Submit parent email", @"Request permissions"]},
                @{DATA_TITLE: @"Invite",
@@ -99,10 +100,11 @@
             switch (row) {
                 case 0: [self generateRandomName]; break;
                 case 1: [self createNewUser]; break;
-                case 2: [self authUser]; break;
-                case 3: [self logoutUser]; break;
-                case 4: [self getUserProfile]; break;
-                case 5: [self updateUser]; break;
+                case 2: [self loginUser]; break;
+                case 3: [self authUser]; break;
+                case 4: [self logoutUser]; break;
+                case 5: [self getUserProfile]; break;
+                case 6: [self updateUser]; break;
             }
             break;
         }
@@ -188,7 +190,7 @@
     }];
 }
 
-- (void) authUser {
+- (void) loginUser {
     [[KWSChildren sdk] loginUser:@"testusr494" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
             case KWSChildren_LoginUser_Success:
@@ -220,6 +222,14 @@
 //                break;
 //        }
 //    }];
+}
+
+- (void) authUser {
+    [[KWSChildren sdk] authWithSingleSignOnUrl:SINGLE_SIGN_ON
+                                    fromParent:self
+                                   andResponse:^(KWSChildrenLoginUserStatus status) {
+                                       NSLog(@"Status for login is %ld", (long)status);
+                                   }];
 }
 
 - (void) logoutUser {
