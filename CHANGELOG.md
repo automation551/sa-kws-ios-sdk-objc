@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+2.3.3
+ - Added authentication through WebViews
+
 2.3.2
  - Updated project dependencies
 
