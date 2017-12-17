@@ -94,18 +94,32 @@
                     NSString *token = [fragmentPieces lastObject];
                     
                     //
-                    // form the logged user
-                    KWSLoggedUser *user = [[KWSLoggedUser alloc] init];
-                    user.token = token;
-                    user.metadata = [KWSMetadata processMetadata:user.token];
+                    // process metadata
+                    KWSMetadata *metadata = [KWSMetadata processMetadata:token];
                     
                     //
-                    // stop the controller
-                    [_safariVC dismissViewControllerAnimated:true completion:^{
+                    // only go forward if the metadata is valid
+                    if (metadata != NULL && [metadata isValid]) {
+                        
                         //
-                        // call the callback!
-                        _wauthenticated (user, false);
-                    }];
+                        // form the logged user
+                        KWSLoggedUser *user = [[KWSLoggedUser alloc] init];
+                        user.token = token;
+                        user.metadata = metadata;
+                        
+                        //
+                        // stop the controller
+                        [_safariVC dismissViewControllerAnimated:true completion:^{
+                            //
+                            // call the callback!
+                            _wauthenticated (user, false);
+                        }];
+                    }
+                    //
+                    // error case
+                    else {
+                        _wauthenticated (NULL, false);
+                    }
                 }
             }
         }

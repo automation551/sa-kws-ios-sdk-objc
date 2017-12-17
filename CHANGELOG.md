@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+2.3.5
+ - More small tweaks to the WebAuth flow
+
 2.3.4
  - Small tweaks to the authentication through WebView process
 
