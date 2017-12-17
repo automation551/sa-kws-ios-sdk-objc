@@ -1,8 +1,11 @@
 CHANGELOG
 =========
 
+2.3.4
+ - Small tweaks to the authentication through WebView process
+
 2.3.3
- - Added authentication through WebViews
+ - Added authentication through WebView
 
 2.3.2
  - Updated project dependencies
