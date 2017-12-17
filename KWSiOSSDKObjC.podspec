@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KWSiOSSDKObjC"
-  s.version          = "2.3.5"
+  s.version          = "2.3.6"
   s.summary          = "The SuperAwesome Kids Web Services SDK"
   s.description      = <<-DESC
 The SuperAwesome Kids Web Services iOS SDK
@@ -17,7 +17,7 @@ The SuperAwesome Kids Web Services iOS SDK
   s.source           = { 
 	:git => "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git", 
 	:branch => "master", 
-	:tag => "2.3.5" 
+	:tag => "2.3.6" 
   }
   s.ios.deployment_target = '9.0'
   s.source_files = 'KWSiOSSDKObjC/Classes/**/*'

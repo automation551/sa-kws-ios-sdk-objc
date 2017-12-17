@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+2.3.6
+ - Updated version string in KWSChildren obj
+
 2.3.5
  - More small tweaks to the WebAuth flow
 
