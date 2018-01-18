@@ -4,7 +4,9 @@ target 'KWSiOSSDKObjC_Example' do
   pod 'KWSiOSSDKObjC', :path => '../'
   pod 'Firebase', '3.7.1'
   pod 'FirebaseMessaging', '1.2.0'
-  
+  pod 'SAMobileBase'
+  use_frameworks!
+ 
   target 'KWSiOSSDKObjC_Tests' do
       inherit! :search_paths
   end
