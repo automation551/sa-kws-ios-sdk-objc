@@ -13,6 +13,9 @@
 #import "KWSMetadata.h"
 #import "SAAlert.h"
 #import "KWSLoggedUser.h"
+// 1 create bridging file
+// 2 add your .h, header files, to the bridging file
+// 3 you can now access your swift file into ObjC code and viceversa
 
 #define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
 
