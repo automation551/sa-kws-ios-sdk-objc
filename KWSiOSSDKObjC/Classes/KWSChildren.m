@@ -15,7 +15,7 @@
 #import "KWSLoggedUser.h"
 
 #define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
-
+	
 @interface KWSChildren ()
 
 // the parent email object
