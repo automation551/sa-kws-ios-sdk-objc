@@ -590,6 +590,7 @@
 				CODE_SIGN_ENTITLEMENTS = KWSiOSSDKObjC_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriel Coman (AWY9H4HC9C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = K79XEZP48K;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -616,6 +617,7 @@
 				CODE_SIGN_ENTITLEMENTS = KWSiOSSDKObjC_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriel Coman (AWY9H4HC9C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = K79XEZP48K;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

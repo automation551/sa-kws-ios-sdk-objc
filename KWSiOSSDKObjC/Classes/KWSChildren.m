@@ -13,12 +13,12 @@
 #import "KWSMetadata.h"
 #import "SAAlert.h"
 #import "KWSLoggedUser.h"
-// 1 create bridging file
-// 2 add your .h, header files, to the bridging file
-// 3 you can now access your swift file into ObjC code and viceversa
+
+//to allow ObjC - Swift interoperability
+#import "KWSiOSSDKObjC/KWSiOSSDKObjC-Swift.h"
 
 #define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
-
+	
 @interface KWSChildren ()
 
 // the parent email object
@@ -174,7 +174,12 @@
 // Random name
 
 - (void) getRandomUsername:(KWSChildrenGetRandomUsernameBlock)response {
+    //this is the correct one
     [_randomName getRandomName:response];
+    
+    //this is a test
+//    [self getTestSingleton];
+    
 }
 
 // get user & update user details
@@ -343,6 +348,16 @@
 
 - (NSString*) getKWSApiUrl {
     return _kwsApiUrl;
+}
+
+
+
+-(void) getTestSingleton{
+
+    KWSSDK *sdk = [KWSSDK sharedInstance];
+    NSString *testing = [sdk testKWSSDK];
+    NSLog(@"Testing---> %@",testing);
+    
 }
 
 @end
