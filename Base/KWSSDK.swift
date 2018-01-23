@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SAMobileBase
 
 @objc public class KWSSDK : NSObject{
     
@@ -19,14 +20,26 @@ import Foundation
         return KWSSDK._singletonInstance
     }
     
-    // Some testing
-    public func testKWSSDK() -> String {
-        return "Hello KWSSDK"
+    
+    public func getService <T> (environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask(),type: T.Type) -> Any {
+        switch type {
+        case is LoginService.Type:
+            return LoginProvider(environment: environment, networkTask: networkTask)
+        default:
+            return KWSBaseError.ServiceError
+        }
     }
     
-    public func getPotato() -> String {
-        let potato = "potato"
-        return potato
+    public func getLoginProvider(){
+        
+    }
+    
+    public func getLoginProvider (environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) -> LoginProvider {
+          return LoginProvider(environment: environment, networkTask: networkTask)
+    }
+    
+    public func testKWSSDK() -> String {
+        return "Hello KWSSDK"
     }
     
     

@@ -8,39 +8,52 @@
 import Foundation
 import SAMobileBase
 
-public struct LoginProvider: LoginService {
+@objc public class LoginProvider: NSObject {
     
-    var environment: KWSNetworkEnvironment
+    //var environment: KWSNetworkEnvironment
+
     
-    public init(environment: KWSNetworkEnvironment) {
-        self.environment = environment
+    public init(withName name:String) {
+        print(name)
+        //self.environment = KWSNetworkEnvironment()
+        super.init()
     }
     
-    public func loginUser(username: String, password: String, callback: @escaping (Login?, Error?) -> ()) {
-        
-        let loginUserNetworkRequest = LoginRequest(environment: environment,
-                                                   username: username,
-                                                   password: password,
-                                                   clientID: environment.mobileKey,
-                                                   clientSecret: environment.appID)
-        
-        let loginUserNetworkTask = NetworkTask()
-        loginUserNetworkTask.execute(request: loginUserNetworkRequest) { loginUserNetworkResponse in
-            
-            //todo finish this and test it
-            if let json = loginUserNetworkResponse.response, loginUserNetworkResponse.error == nil{
-                
-                let jsonParserRequest = JsonParseRequest.init(withRawData: json)
-                
-                if loginUserNetworkResponse.success{
-                    let parseTask = JSONParseTask<Login>()
-                }
-                
-                
-            }
-            
-            
-            callback(nil, nil)
-        }
+    @objc public init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
+        //self.environment = environment
+        super.init()
     }
+    
+//    public func loginUser(username: String, password: String, callback: @escaping (Login?, Error?) -> ()) {
+//
+//        let loginUserNetworkRequest = LoginRequest(environment: self.environment,
+//                                                   username: username,
+//                                                   password: password,
+//                                                   clientID: self.environment.mobileKey,
+//                                                   clientSecret: self.environment.appID)
+//
+//        let loginUserNetworkTask = NetworkTask()
+//        loginUserNetworkTask.execute(request: loginUserNetworkRequest) { loginUserNetworkResponse in
+//
+//            if let json = loginUserNetworkResponse.response, loginUserNetworkResponse.error == nil{
+//
+//                let parseRequest = JsonParseRequest.init(withRawData: json)
+//
+//                if loginUserNetworkResponse.success{
+//                    let parseTask = JSONParseTask<Login>()
+//
+//                    if let loginResponseObject = parseTask.execute(request: parseRequest){
+//                        callback(loginResponseObject,nil)
+//                    }else{
+//                        callback(nil,KWSBaseError.JsonParsingError)
+//                    }
+//                }
+//
+//            }else{
+//                // pass the network error forward through the completionHandler to the user
+//                callback(nil, loginUserNetworkResponse.error)
+//                print("request \(loginUserNetworkRequest.environment.domain)\(loginUserNetworkRequest.endpoint), generated error:\(loginUserNetworkResponse.error ?? "unknown error" as! Error)")
+//            }
+//        }
+//    }
 }

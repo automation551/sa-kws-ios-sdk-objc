@@ -8,7 +8,7 @@
 import Foundation
 import SAMobileBase
 
-public protocol KWSNetworkEnvironment : NetworkEnvironment{
+@objc public protocol KWSNetworkEnvironment : NetworkEnvironment{
     
     var appID: String { get }
     var mobileKey: String { get }

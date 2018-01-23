@@ -18,7 +18,7 @@
 #import "KWSiOSSDKObjC/KWSiOSSDKObjC-Swift.h"
 
 #define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
-	
+
 @interface KWSChildren ()
 
 // the parent email object
@@ -49,6 +49,9 @@
 
 // user defaults
 @property (nonatomic, strong) NSUserDefaults *defs;
+
+//network environment
+@property (weak, nonatomic) id <KWSNetworkEnvironment> kwsNetworkEnvironment;
 
 @end
 
@@ -96,6 +99,10 @@
     _clientSecret = clientSecret;
     _kwsApiUrl = apiUrl;
     
+    //set network environment
+    
+    
+    
     // get user defaults
     _defs = [NSUserDefaults standardUserDefaults];
     
@@ -140,12 +147,31 @@
                                           :response];
 }
 
+
+//SA Test
 - (void) loginUser:(NSString *)username
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
-    [_authUserProcess authWithUsername:username
-                           andPassword:password
-                                      :response];
+    
+    //this is the real deal
+    //    [_authUserProcess authWithUsername:username
+    //                           andPassword:password
+    //                                      :response];
+    //end of real deal
+    //-------------------------------------//
+    
+    
+    
+    //this is a test
+    
+    KWSSDK *kwsSDK = [KWSSDK sharedInstance];
+    
+//    LoginService *logServ = [kwsSDK getLoginProviderWithEnvironment:(id<KWSNetworkEnvironment> _Nonnull) networkTask:(NetworkTask * _Nonnull)]
+    
+    
+    
+    //end of test
+    
 }
 
 - (void) authWithSingleSignOnUrl: (NSString*) url
@@ -178,7 +204,7 @@
     [_randomName getRandomName:response];
     
     //this is a test
-//    [self getTestSingleton];
+    //    [self getTestSingleton];
     
 }
 
@@ -294,12 +320,12 @@
                             andTextField:false
                          andKeyboardTyle:kNilOptions
                               andPressed:^(int button, NSString *popupMessage) {
-                                    if (button == 0) {
-                                        [_notificationProcess register:response];
-                                    } else {
-                                        // do nothing
-                                    }
-                                }];
+                                  if (button == 0) {
+                                      [_notificationProcess register:response];
+                                  } else {
+                                      // do nothing
+                                  }
+                              }];
 }
 
 - (void) updateParentEmailWithPopup:(KWSChildrenUpdateParentEmailBlock)response {
@@ -310,10 +336,10 @@
                             andTextField:true
                          andKeyboardTyle:UIKeyboardTypeEmailAddress
                               andPressed:^(int button, NSString *popupMessage) {
-                                    if (button == 0) {
-                                        [self updateParentEmail:popupMessage withResponse:response];
-                                    }
-                                }];
+                                  if (button == 0) {
+                                      [self updateParentEmail:popupMessage withResponse:response];
+                                  }
+                              }];
 }
 
 // MARK: version
@@ -353,10 +379,10 @@
 
 
 -(void) getTestSingleton{
-
-    KWSSDK *sdk = [KWSSDK sharedInstance];
-    NSString *testing = [sdk testKWSSDK];
-    NSLog(@"Testing---> %@",testing);
+    
+    //    KWSSDK *sdk = [KWSSDK sharedInstance];
+    //    NSString *testing = [sdk testKWSSDK];
+    //    NSLog(@"Testing---> %@",testing);
     
 }
 

@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol BaseService{
+@objc public protocol BaseService{
     
 }

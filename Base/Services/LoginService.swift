@@ -8,7 +8,7 @@
 import Foundation
 import SAMobileBase
 
-public protocol LoginService{
+@objc public protocol LoginService: BaseService {
     
     func loginUser(username: String,
                    password: String,
