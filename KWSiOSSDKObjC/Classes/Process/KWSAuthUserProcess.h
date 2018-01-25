@@ -27,6 +27,9 @@ typedef void (^KWSChildrenLoginUserBlock)(KWSChildrenLoginUserStatus status);
 - (void) authWithSingleSignOnUrl:(NSString*) url
                       fromParent:(UIViewController*) parent
                                 :(KWSChildrenLoginUserBlock)userAuthenticated;
+
 - (void) openUrl: (NSURL*) url
      withOptions: (NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
+
+
 @end
