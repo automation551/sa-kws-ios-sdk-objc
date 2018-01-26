@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11DA68A82F8C2F6702C4CDDC /* libPods-KWSiOSSDKObjC_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4DEA4EBF1016D562F9174A /* libPods-KWSiOSSDKObjC_Tests.a */; };
 		1B467E671CF45A0000362A1A /* README.rst in Resources */ = {isa = PBXBuildFile; fileRef = 1B467E661CF45A0000362A1A /* README.rst */; };
 		1B87E4A41CF89E400053FD8F /* KWSTokenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B87E4A31CF89E400053FD8F /* KWSTokenTests.m */; };
 		1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B87E4A51CF89E590053FD8F /* KWSCheckPermissionTests.m */; };
 		1B87E4A81CF89E690053FD8F /* KWSKWSRequestPermissionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B87E4A71CF89E690053FD8F /* KWSKWSRequestPermissionTests.m */; };
 		1B92FD131D229B2500B75617 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B92FD121D229B2500B75617 /* GoogleService-Info.plist */; };
-		35984CF272F0CE99211DD53A /* libPods-KWSiOSSDKObjC_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD9F4E38733A75DAB58D0C8 /* libPods-KWSiOSSDKObjC_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -27,6 +25,8 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		67CC8CCBD77F2BACCDB2A92B /* Pods_KWSiOSSDKObjC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEAA0EFD440288E0C4D9DCD /* Pods_KWSiOSSDKObjC_Example.framework */; };
+		744C32A39EB75813A8C450D3 /* Pods_KWSiOSSDKObjC_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8693B1350E6A2C3CC3D17287 /* Pods_KWSiOSSDKObjC_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -66,13 +66,13 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		6BEAA0EFD440288E0C4D9DCD /* Pods_KWSiOSSDKObjC_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KWSiOSSDKObjC_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B6985CE1BB06176F6EC130 /* Pods-KWSiOSSDKObjC_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7C100CCFD18D61668F985BB7 /* KWSiOSSDKObjC.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KWSiOSSDKObjC.podspec; path = ../KWSiOSSDKObjC.podspec; sourceTree = "<group>"; };
 		7C89D0DFADA2D4F61758CFEA /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8693B1350E6A2C3CC3D17287 /* Pods_KWSiOSSDKObjC_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KWSiOSSDKObjC_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		888816DE2D88B99539CA41FB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		CCD9F4E38733A75DAB58D0C8 /* libPods-KWSiOSSDKObjC_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KWSiOSSDKObjC_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD4DEA4EBF1016D562F9174A /* libPods-KWSiOSSDKObjC_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KWSiOSSDKObjC_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E719D8E2C0BD3DAF48D87E20 /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F4F3CBB8530E2280F7821818 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,7 +85,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				35984CF272F0CE99211DD53A /* libPods-KWSiOSSDKObjC_Example.a in Frameworks */,
+				67CC8CCBD77F2BACCDB2A92B /* Pods_KWSiOSSDKObjC_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +96,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				11DA68A82F8C2F6702C4CDDC /* libPods-KWSiOSSDKObjC_Tests.a in Frameworks */,
+				744C32A39EB75813A8C450D3 /* Pods_KWSiOSSDKObjC_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,8 +132,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				CCD9F4E38733A75DAB58D0C8 /* libPods-KWSiOSSDKObjC_Example.a */,
-				DD4DEA4EBF1016D562F9174A /* libPods-KWSiOSSDKObjC_Tests.a */,
+				6BEAA0EFD440288E0C4D9DCD /* Pods_KWSiOSSDKObjC_Example.framework */,
+				8693B1350E6A2C3CC3D17287 /* Pods_KWSiOSSDKObjC_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = KWS;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Gabriel Coman";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
@@ -376,9 +376,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Decodable/Decodable.framework",
+				"${BUILT_PRODUCTS_DIR}/KWSiOSSDKObjC/KWSiOSSDKObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/SAJsonParser/SAJsonParser.framework",
+				"${BUILT_PRODUCTS_DIR}/SAMobileBase/SAMobileBase.framework",
+				"${BUILT_PRODUCTS_DIR}/SANetworking/SANetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/SAUtils/SAUtils.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Decodable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KWSiOSSDKObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAJsonParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMobileBase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SANetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAUtils.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -480,19 +493,30 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -520,18 +544,29 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -549,6 +584,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F4F3CBB8530E2280F7821818 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = KWSiOSSDKObjC_Example.entitlements;
@@ -574,6 +610,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7C89D0DFADA2D4F61758CFEA /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = KWSiOSSDKObjC_Example.entitlements;
