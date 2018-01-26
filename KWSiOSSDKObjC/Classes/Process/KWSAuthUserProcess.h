@@ -31,5 +31,11 @@ typedef void (^KWSChildrenLoginUserBlock)(KWSChildrenLoginUserStatus status);
 - (void) openUrl: (NSURL*) url
      withOptions: (NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 
+- (void) authUser:(NSString *)authCode
+              url:(NSString *)url
+       fromParent:(UIViewController *)parent
+ withCodeVerifier:(NSString *)codeVerifier
+                 :(KWSChildrenLoginUserBlock)userAuthenticated;
+
 
 @end

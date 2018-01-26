@@ -12,30 +12,18 @@
 #endif /* OAuthHelper_h */
 
 #import <Foundation/Foundation.h>
+#import "OAuthData.h"
 
 @interface OAuthHelper : NSObject
 
 extern NSUInteger const numberBytesToEncode;
-extern NSString *const CODE_CHALLENGE_METHOD;
 
-+ (NSString*) generateCodeVerifier;
+// enum to define permissions
+typedef NS_ENUM(NSInteger, OAuthChallengeMethod) {
+    S256 = 0,
+    PLAIN = 1
+};
 
-+ (NSString*) generateCodeChallenge: (NSString*) verifier;
-
-/*! @brief Base64url without padding encodes the given data.
- @param data The data to input.
- @return The base64url encoded data as NSString.
- @discussion Base64url without padding is used in PKCE flow
- */
-+ (NSString *) encodeBase64WithoutPadding: (NSData *) data;
-
-/*! @brief Generates URL-safe string of random data.
- @param size The number of random bytes to encode - length of the output string will be
- greater than the number of random bytes, due to the URL-safe encoding.
- @return Random data encoded with base64url .
- */
-+ (nullable NSString *)randomURLSafeStringWithSize:(NSUInteger)size;
-
-
+- (OAuthData*) execute;
 
 @end

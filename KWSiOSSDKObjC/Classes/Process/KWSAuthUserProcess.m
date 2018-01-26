@@ -26,8 +26,6 @@
 @property (nonatomic, strong) KWSWebAuth *webAuth;
 @property (nonatomic, strong) KWSOAuthToken *oAuthToken;
 
-@property (nonatomic, strong) NSString *codeChallenge;
-@property (nonatomic, strong) NSString *codeVerifier;
 @end
 
 @implementation KWSAuthUserProcess
@@ -84,43 +82,45 @@
                                 :(KWSChildrenLoginUserBlock)userAuthenticated {
     
     //oauth start
-    _codeVerifier = [OAuthHelper generateCodeVerifier];
-    _codeChallenge = [OAuthHelper generateCodeChallenge:_codeVerifier];
+    
+    OAuthData *oAuthData = [[[OAuthHelper alloc]init]execute];
+
+    NSString *codeVerifier = [oAuthData codeVerifier];
+    NSString *codeChallenge = [oAuthData codeChallenge];
+    NSString *codeChallengeMethod = [oAuthData codeChallengeMethod];
+                            
     
     // execute the web auth request
-    [_webAuth execute:url
-   withParentAuthCode:parent
-     andCodeChallenge: _codeChallenge
+    [_webAuth execute:url withParentAuthCode:parent andCodeChallenge: codeChallenge andCodeChallengeMethod: codeChallengeMethod
                      :^(NSString *authCode, BOOL cancelled) {
-       
-        if(authCode != NULL && ![authCode isEqual: @""]){
-            
-            //call new API endpoint with auth code
-            [self authUser:authCode
-                       url: url
-                fromParent:parent
-                          :userAuthenticated];
-        }  else if (cancelled) {
-                NSLog(@"Cancelled auth process");
-                _userAuthenticated (KWSChildren_LoginUser_Cancelled);
-        }else{
-            NSLog(@"Some other network error happened");
-            _userAuthenticated (KWSChildren_LoginUser_NetworkError);
-        
-        }
-    }];
+                         
+                         if(authCode != NULL && ![authCode isEqual: @""]){
+                             
+                             //call new API endpoint with auth code
+                             [self authUser:authCode url:url fromParent:parent withCodeVerifier:codeVerifier :userAuthenticated];
+                             
+                         }  else if (cancelled) {
+                             NSLog(@"Cancelled auth process");
+                             _userAuthenticated (KWSChildren_LoginUser_Cancelled);
+                         }else{
+                             NSLog(@"Some other network error happened");
+                             _userAuthenticated (KWSChildren_LoginUser_NetworkError);
+                             
+                         }
+                     }];
      
 }
 
 - (void) authUser:(NSString *)authCode
               url:(NSString *)url
        fromParent:(UIViewController *)parent
-                 :(KWSChildrenLoginUserBlock)userAuthenticated{
+ withCodeVerifier:(NSString *)codeVerifier
+                 :(KWSChildrenLoginUserBlock)userAuthenticated {
     
     // form data
     _userAuthenticated = userAuthenticated ? userAuthenticated : _userAuthenticated;
 
-    [_oAuthToken execute:authCode withCodeVerifier:_codeVerifier :^(NSInteger status, KWSLoggedUser *user){
+    [_oAuthToken execute:authCode withCodeVerifier:codeVerifier :^(NSInteger status, KWSLoggedUser *user){
         
         //todo response handling
         if (user != nil && [user isValid]) {

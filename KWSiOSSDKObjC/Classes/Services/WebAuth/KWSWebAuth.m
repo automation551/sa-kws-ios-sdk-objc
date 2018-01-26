@@ -12,6 +12,7 @@
 @property (nonatomic, strong) authCode authCode ;
 
 @property (nonatomic, strong) NSString *codeChallenge;
+@property (nonatomic, strong) NSString *codeChallengeMethod;
 @end
 
 @implementation KWSWebAuth
@@ -24,7 +25,7 @@
     return @{
              @"clientId": nullSafe([[KWSChildren sdk] getClientId]),
              @"codeChallenge": nullSafe(_codeChallenge),
-             @"codeChallengeMethod": CODE_CHALLENGE_METHOD,
+             @"codeChallengeMethod": nullSafe(_codeChallengeMethod),
              @"redirectUri": [NSString stringWithFormat:@"%@://", [[NSBundle mainBundle] bundleIdentifier]]
              };
 }
@@ -61,10 +62,12 @@
 - (void) execute:(NSString*) singleSignOnUrl
 withParentAuthCode: (UIViewController*)parent
 andCodeChallenge: (NSString*) codeChallengeFromProcess
+andCodeChallengeMethod: (NSString*) codeChallengeMethodFromProcess
                 :(authCode) authCode{
     
     //oauth start
     _codeChallenge = codeChallengeFromProcess;
+    _codeChallengeMethod = codeChallengeMethodFromProcess;
     _authCode = authCode ? authCode: _authCode;
     
     NSString *endpoint = [self getEndpoint];

@@ -13,6 +13,7 @@ typedef void (^authCode)(NSString *authCode,BOOL cancelled);
 - (void) execute:(NSString*) singleSignOnUrl
 withParentAuthCode: (UIViewController*)parent
 andCodeChallenge: (NSString*) codeChallengeFromProcess
+andCodeChallengeMethod: (NSString*) codeChallengeMethodFromProcess
                 :(authCode) authCode;
 
 - (void) openUrl: (NSURL*) url

@@ -5,38 +5,27 @@
 //  Created by Guilherme Mota on 25/01/2018.
 //
 
-
 #import "OAuthHelper.h"
-
 #import <CommonCrypto/CommonDigest.h>
 
 @implementation OAuthHelper
 
 NSUInteger const numberBytesToEncode = 32;
-NSString *const CODE_CHALLENGE_METHOD = @"S256";
 
-+ (NSString*) generateCodeVerifier{
+- (NSString*) generateCodeVerifier{
     return [self randomURLSafeStringWithSize: numberBytesToEncode];
 }
 
 
-+ (NSString*) generateCodeChallenge: (NSString*) verifier {
+- (NSString*) generateCodeChallenge: (NSString*) verifier {
     
-    u_int8_t buffer[CC_SHA256_DIGEST_LENGTH * sizeof(u_int8_t)];
-    memset(buffer, 0x0, CC_SHA256_DIGEST_LENGTH);
-    NSData *data = [verifier dataUsingEncoding:NSUTF8StringEncoding];
-    CC_SHA256([data bytes], (CC_LONG)[data length], buffer);
-    NSData *hash = [NSData dataWithBytes:buffer length:CC_SHA256_DIGEST_LENGTH];
-    NSString *challenge = [[[[hash base64EncodedStringWithOptions:0]
-                             stringByReplacingOccurrencesOfString:@"+" withString:@"-"]
-                            stringByReplacingOccurrencesOfString:@"/" withString:@""]
-                           stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
-    
+    NSData *sha256Verifier = [self sha265:verifier];
+    NSString *challenge = [self encodeBase64WithoutPadding: sha256Verifier];
     return challenge;
 }
 
 
-+ (nullable NSString *)randomURLSafeStringWithSize:(NSUInteger)size {
+- (nullable NSString *)randomURLSafeStringWithSize:(NSUInteger)size {
     NSMutableData *randomData = [NSMutableData dataWithLength:size];
     int result = SecRandomCopyBytes(kSecRandomDefault, randomData.length, randomData.mutableBytes);
     if (result != 0) {
@@ -45,7 +34,7 @@ NSString *const CODE_CHALLENGE_METHOD = @"S256";
     return [self encodeBase64WithoutPadding:randomData];
 }
 
-+ (NSString *)encodeBase64WithoutPadding:(NSData *)data {
+- (NSString *)encodeBase64WithoutPadding:(NSData *)data {
     
     NSString *base64string = [data base64EncodedStringWithOptions:0];
     
@@ -57,6 +46,34 @@ NSString *const CODE_CHALLENGE_METHOD = @"S256";
     base64string = [base64string stringByReplacingOccurrencesOfString:@"=" withString:@""];
     
     return base64string;
+}
+
+- (NSString*) typeToString:(OAuthChallengeMethod)type {
+    switch (type) {
+        case S256: return @"S256";
+        case PLAIN: return @"plain";
+    }
+}
+
+- (NSData *)sha265:(NSString *)inputString {
+    NSData *verifierData = [inputString dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableData *sha256Verifier = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
+    CC_SHA256(verifierData.bytes, (CC_LONG)verifierData.length, sha256Verifier.mutableBytes);
+    return sha256Verifier;
+}
+
+-(OAuthData*) execute{
+    
+    NSString* codeVerifier = [self generateCodeVerifier];
+    NSString* codeChallenge = [self generateCodeChallenge:codeVerifier];
+    NSString* codeChallengeMethod = [self typeToString:S256];
+    
+    OAuthData* oAuthData = [[OAuthData alloc]initWithCodeVerifier:codeVerifier
+                                                 andCodeChallenge:codeChallenge
+                                           andCodeChallengeMethod:codeChallengeMethod];
+    
+    return oAuthData;
+    
 }
 
 

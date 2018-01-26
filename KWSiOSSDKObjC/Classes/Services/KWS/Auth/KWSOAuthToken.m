@@ -40,15 +40,6 @@
 }
 
 
-/**
- "grant_type" to "authorization_code",
- "client_id" to clientID,
- "code" to authCode,
- "client_secret" to clientSecret,
- "code_verifier" to codeVerifier
- )
- */
-
 - (NSDictionary*) getBody {
     return @{
              @"grant_type": @"authorization_code",
