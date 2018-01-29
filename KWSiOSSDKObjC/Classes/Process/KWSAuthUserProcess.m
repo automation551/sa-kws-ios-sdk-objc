@@ -17,10 +17,15 @@
 // import KWS
 #import "KWSChildren.h"
 
+#import "OAuthHelper.h"
+#import "KWSOAuthToken.h"
+
 @interface KWSAuthUserProcess ()
 @property (nonatomic, strong) KWSChildrenLoginUserBlock userAuthenticated;
 @property (nonatomic, strong) KWSAuthUser *authUser;
 @property (nonatomic, strong) KWSWebAuth *webAuth;
+@property (nonatomic, strong) KWSOAuthToken *oAuthToken;
+
 @end
 
 @implementation KWSAuthUserProcess
@@ -30,6 +35,7 @@
         _authUser = [[KWSAuthUser alloc] init];
         _webAuth = [[KWSWebAuth alloc] init];
         _userAuthenticated = ^(KWSChildrenLoginUserStatus status) {};
+        _oAuthToken = [[KWSOAuthToken alloc] init];
     }
     
     return self;
@@ -75,31 +81,66 @@
                       fromParent:(UIViewController *)parent
                                 :(KWSChildrenLoginUserBlock)userAuthenticated {
     
-    // form data
-    _userAuthenticated = userAuthenticated ? userAuthenticated : _userAuthenticated;
+    //oauth start
+    
+    OAuthData *oAuthData = [[[OAuthHelper alloc]init]execute];
+
+    NSString *codeVerifier = [oAuthData codeVerifier];
+    NSString *codeChallenge = [oAuthData codeChallenge];
+    NSString *codeChallengeMethod = [oAuthData codeChallengeMethod];
+                            
     
     // execute the web auth request
-    [_webAuth execute:url withParent:parent :^(KWSLoggedUser *user, BOOL cancelled) {
+    [_webAuth execute:url withParentAuthCode:parent andCodeChallenge: codeChallenge andCodeChallengeMethod: codeChallengeMethod
+                     :^(NSString *authCode, BOOL cancelled) {
+                         
+                         if(authCode != NULL && ![authCode isEqual: @""]){
+                             
+                             //call new API endpoint with auth code
+                             [self authUser:authCode url:url fromParent:parent withCodeVerifier:codeVerifier :userAuthenticated];
+                             
+                         }  else if (cancelled) {
+                             NSLog(@"Cancelled auth process");
+                             _userAuthenticated (KWSChildren_LoginUser_Cancelled);
+                         }else{
+                             NSLog(@"Some other network error happened");
+                             _userAuthenticated (KWSChildren_LoginUser_NetworkError);
+                             
+                         }
+                     }];
+     
+}
+
+- (void) authUser:(NSString *)authCode
+              url:(NSString *)url
+       fromParent:(UIViewController *)parent
+ withCodeVerifier:(NSString *)codeVerifier
+                 :(KWSChildrenLoginUserBlock)userAuthenticated {
+    
+    // form data
+    _userAuthenticated = userAuthenticated ? userAuthenticated : _userAuthenticated;
+
+    [_oAuthToken execute:authCode withCodeVerifier:codeVerifier :^(NSInteger status, KWSLoggedUser *user){
         
-        if (user != NULL && user.metadata != NULL && !cancelled) {
-            NSLog(@"Logged in with %@", user.token);
+        //todo response handling
+        if (user != nil && [user isValid]) {
             
             // save to SDK
             [[KWSChildren sdk] setLoggedUser:user];
             
-            // send forward
+            // send success
             _userAuthenticated (KWSChildren_LoginUser_Success);
+            
+        } else {
+            _userAuthenticated (KWSChildren_LoginUser_InvalidCredentials);
         }
-        else if (cancelled) {
-            NSLog(@"Cancelled auth process");
-            _userAuthenticated (KWSChildren_LoginUser_Cancelled);
-        }
-        else {
-            NSLog(@"Some other network error happened");
-            _userAuthenticated (KWSChildren_LoginUser_NetworkError);
-        }
-    }] ;
+        
+        
+    }];
+        
+    
 }
+
 
 - (void) openUrl:(NSURL *)url
      withOptions:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
@@ -108,8 +149,8 @@
 
 - (BOOL) validateUsername: (NSString*) username {
     return username &&
-            [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[a-zA-Z0-9]*$"] evaluateWithObject:username] &&
-            [username length] >= 3;
+    [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[a-zA-Z0-9]*$"] evaluateWithObject:username] &&
+    [username length] >= 3;
 }
 
 - (BOOL) validatePassword: (NSString*) password {

@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+2.4.0
+ - Imrpved WebView OAuth flow
+
 2.3.6
  - Updated version string in KWSChildren obj
 
