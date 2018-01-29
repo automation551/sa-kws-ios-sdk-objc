@@ -9,13 +9,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Process/KWSCreateUserProcess.m"
-            timestampString = "536167569.239804"
+            filePath = "../KWSiOSSDKObjC/Classes/Services/KWS/Auth/KWSOAuthToken.m"
+            timestampString = "538677267.722759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-createWithUsername:andPassword:andDateOfBirth:andCountry:andParentEmail::"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-successWithStatus:andPayload:andSuccess:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../KWSiOSSDKObjC/Classes/Services/KWS/Auth/KWSOAuthToken.m"
+            timestampString = "538677267.723171"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-successWithStatus:andPayload:andSuccess:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../KWSiOSSDKObjC/Classes/Services/WebAuth/OAuthHelper.m"
+            timestampString = "538677450.559319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-execute"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
