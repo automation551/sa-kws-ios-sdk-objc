@@ -147,14 +147,11 @@
                                           :response];
 }
 
-
-//SA Test
 - (void) loginUser:(NSString *)username
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
     
-    KWSSDK *kwsSDK = [KWSSDK sharedInstance];
-    LoginProvider* loginProvider = [kwsSDK getLoginProviderWithEnvironment:_userKWSNetworkEnvironment];
+    LoginProvider* loginProvider = [[KWSSDK sharedInstance] getLoginProviderWithEnvironment:_userKWSNetworkEnvironment];
     
     [loginProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
         
@@ -369,16 +366,6 @@
 
 - (NSString*) getKWSApiUrl {
     return _kwsApiUrl;
-}
-
-
-
--(void) getTestSingleton{
-    
-    //    KWSSDK *sdk = [KWSSDK sharedInstance];
-    //    NSString *testing = [sdk testKWSSDK];
-    //    NSLog(@"Testing---> %@",testing);
-    
 }
 
 @end

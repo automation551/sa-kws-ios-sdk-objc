@@ -52,7 +52,7 @@ import SAMobileBase
                 }
 
             }else{
-                // pass the network error forward through the completionHandler to the user
+                // pass the network error forward through the callback to the user
                 callback(nil, loginUserNetworkResponse.error)
                 print("request \(loginUserNetworkRequest.environment.domain)\(loginUserNetworkRequest.endpoint), generated error:\(loginUserNetworkResponse.error ?? "unknown error" as! Error)")
             }
