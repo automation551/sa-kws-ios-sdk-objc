@@ -28,6 +28,8 @@
 		67CC8CCBD77F2BACCDB2A92B /* Pods_KWSiOSSDKObjC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEAA0EFD440288E0C4D9DCD /* Pods_KWSiOSSDKObjC_Example.framework */; };
 		744C32A39EB75813A8C450D3 /* Pods_KWSiOSSDKObjC_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8693B1350E6A2C3CC3D17287 /* Pods_KWSiOSSDKObjC_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		9C63FAEF201F98AE00A5AE0C /* LoginRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C63FAEE201F98AE00A5AE0C /* LoginRequestTests.swift */; };
+		9C63FAF1201F9B9200A5AE0C /* BaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C63FAF0201F9B9200A5AE0C /* BaseTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,9 @@
 		8693B1350E6A2C3CC3D17287 /* Pods_KWSiOSSDKObjC_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KWSiOSSDKObjC_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		888816DE2D88B99539CA41FB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		9C63FAED201F98AE00A5AE0C /* KWSiOSSDKObjC_Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KWSiOSSDKObjC_Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		9C63FAEE201F98AE00A5AE0C /* LoginRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestTests.swift; sourceTree = "<group>"; };
+		9C63FAF0201F9B9200A5AE0C /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
 		E719D8E2C0BD3DAF48D87E20 /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F4F3CBB8530E2280F7821818 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,11 +173,14 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9C63FAF0201F9B9200A5AE0C /* BaseTest.swift */,
+				9C63FAEE201F98AE00A5AE0C /* LoginRequestTests.swift */,
 				6003F5BB195388D20070C39A /* Tests.m */,
 				1B87E4A31CF89E400053FD8F /* KWSTokenTests.m */,
 				1B87E4A51CF89E590053FD8F /* KWSCheckPermissionTests.m */,
 				1B87E4A71CF89E690053FD8F /* KWSKWSRequestPermissionTests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
+				9C63FAED201F98AE00A5AE0C /* KWSiOSSDKObjC_Tests-Bridging-Header.h */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -275,6 +283,7 @@
 						};
 					};
 					6003F5AD195388D20070C39A = {
+						LastSwiftMigration = 0920;
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
@@ -361,9 +370,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -451,6 +467,8 @@
 				1B87E4A81CF89E690053FD8F /* KWSKWSRequestPermissionTests.m in Sources */,
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 				1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */,
+				9C63FAEF201F98AE00A5AE0C /* LoginRequestTests.swift in Sources */,
+				9C63FAF1201F9B9200A5AE0C /* BaseTest.swift in Sources */,
 				1B87E4A41CF89E400053FD8F /* KWSTokenTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +595,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -641,6 +660,7 @@
 			baseConfigurationReference = E719D8E2C0BD3DAF48D87E20 /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -653,8 +673,12 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/KWSiOSSDKObjC_Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KWSiOSSDKObjC_Example.app/KWSiOSSDKObjC_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -665,6 +689,7 @@
 			baseConfigurationReference = 71B6985CE1BB06176F6EC130 /* Pods-KWSiOSSDKObjC_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -673,8 +698,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/KWSiOSSDKObjC_Tests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KWSiOSSDKObjC_Example.app/KWSiOSSDKObjC_Example";
 				WRAPPER_EXTENSION = xctest;
 			};

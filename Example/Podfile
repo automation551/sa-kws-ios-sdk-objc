@@ -10,6 +10,8 @@ target 'KWSiOSSDKObjC_Example' do
 
   target 'KWSiOSSDKObjC_Tests' do
       inherit! :search_paths
+      pod 'Nimble'     
+      pod 'Mockingjay'
   end
   
   post_install do |installer|
