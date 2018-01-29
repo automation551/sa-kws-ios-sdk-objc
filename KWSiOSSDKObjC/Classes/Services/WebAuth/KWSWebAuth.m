@@ -4,10 +4,15 @@
 #import "SAUtils.h"
 #import "KWSLoggedUser.h"
 #import "KWSMetadata.h"
+#import "OAuthHelper.h"
 
 @interface KWSWebAuth () <SFSafariViewControllerDelegate>
 @property (nonatomic, strong) SFSafariViewController *safariVC;
 @property (nonatomic, strong) wauthenticated wauthenticated;
+@property (nonatomic, strong) authCode authCode ;
+
+@property (nonatomic, strong) NSString *codeChallenge;
+@property (nonatomic, strong) NSString *codeChallengeMethod;
 @end
 
 @implementation KWSWebAuth
@@ -19,6 +24,8 @@
 - (NSDictionary*) getQuery {
     return @{
              @"clientId": nullSafe([[KWSChildren sdk] getClientId]),
+             @"codeChallenge": nullSafe(_codeChallenge),
+             @"codeChallengeMethod": nullSafe(_codeChallengeMethod),
              @"redirectUri": [NSString stringWithFormat:@"%@://", [[NSBundle mainBundle] bundleIdentifier]]
              };
 }
@@ -27,14 +34,16 @@
     
     if (self = [super init]) {
         _wauthenticated = ^(KWSLoggedUser* user, BOOL cancelled) {};
+        _authCode = ^(NSString* authCode, BOOL cancelled) {};
     }
+    
     
     return self;
 }
 
 - (void) execute:(NSString*) singleSignOnUrl
       withParent: (UIViewController*)parent
-                :(wauthenticated) wauthenticated {
+                :(wauthenticated) wauthenticated{
     
     //
     // save this!
@@ -50,6 +59,29 @@
     [parent presentViewController:_safariVC animated:true completion:nil];
 }
 
+- (void) execute:(NSString*) singleSignOnUrl
+withParentAuthCode: (UIViewController*)parent
+andCodeChallenge: (NSString*) codeChallengeFromProcess
+andCodeChallengeMethod: (NSString*) codeChallengeMethodFromProcess
+                :(authCode) authCode{
+    
+    //oauth start
+    _codeChallenge = codeChallengeFromProcess;
+    _codeChallengeMethod = codeChallengeMethodFromProcess;
+    _authCode = authCode ? authCode: _authCode;
+    
+    NSString *endpoint = [self getEndpoint];
+    NSString *query = [SAUtils formGetQueryFromDict:[self getQuery]];
+    NSString *webViewUrlString = [NSString stringWithFormat:@"%@%@?%@", singleSignOnUrl, endpoint, query];
+    NSURL *webViewUrl = [NSURL URLWithString:webViewUrlString];
+    
+    _safariVC = [[SFSafariViewController alloc] initWithURL:webViewUrl];
+    _safariVC.delegate = self;
+    [parent presentViewController:_safariVC animated:true completion:nil];
+    
+}
+
+
 - (void) openUrl:(NSURL *)url withOptions:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
     UIApplicationOpenURLOptionsKey key = UIApplicationOpenURLOptionsSourceApplicationKey;
@@ -57,33 +89,31 @@
     id value = options[key];
     
     if (value != NULL && [[value lowercaseString] isEqualToString:source]) {
-    
+        
         NSString *scheme = [url scheme];
         NSString *verfScheme = [[NSBundle mainBundle] bundleIdentifier];
         
         if (scheme != NULL && [[scheme lowercaseString] isEqualToString:[verfScheme lowercaseString]]) {
-            NSString *fragment = [url fragment];
             
-            if (fragment != NULL) {
-                NSArray *fragmentPieces = [fragment componentsSeparatedByString:@"="];
-                if (fragmentPieces != NULL && [fragmentPieces count] >= 2) {
-                    NSString *token = [fragmentPieces lastObject];
-                    KWSLoggedUser *user = [[KWSLoggedUser alloc] init];
-                    user.token = token;
-                    user.metadata = [KWSMetadata processMetadata:user.token];
-                    
-                    //
-                    // stop the controller
+            NSString* urlAbsString = [url absoluteString];
+            NSArray* arrayOfSubstrings = [urlAbsString componentsSeparatedByString:@"="];
+            
+            if(arrayOfSubstrings != nil && [arrayOfSubstrings count] >1){
+                NSString *authCodeFromArray = [arrayOfSubstrings objectAtIndex:1];
+                
+                // stop the controller
                     [_safariVC dismissViewControllerAnimated:true completion:^{
                         //
                         // call the callback!
-                        _wauthenticated (user, false);
+                        _authCode (authCodeFromArray,false);
                     }];
-                }
+                
+                
             }
         }
     }
 }
+
 
 //
 // SFSafariViewControllerDelegate
@@ -93,6 +123,12 @@
     //
     // call this
     _wauthenticated (nil, true);
+    
+    //
+    //no valid auth code
+    _authCode (nil,true);
+    
+    
     
     //
     // dismiss

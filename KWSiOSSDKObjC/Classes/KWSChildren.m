@@ -51,7 +51,7 @@
 @property (nonatomic, strong) NSUserDefaults *defs;
 
 //network environment
-@property (weak, nonatomic) id <KWSNetworkEnvironment> kwsNetworkEnvironment;
+@property (nonatomic, strong) UserKWSNetworkEnvironment* userKWSNetworkEnvironment;
 
 @end
 
@@ -100,7 +100,7 @@
     _kwsApiUrl = apiUrl;
     
     //set network environment
-    
+    _userKWSNetworkEnvironment = [[UserKWSNetworkEnvironment alloc] initWithDomain:apiUrl appID:clientSecret mobileKey:clientId];
     
     
     // get user defaults
@@ -153,24 +153,19 @@
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
     
-    //this is the real deal
-    //    [_authUserProcess authWithUsername:username
-    //                           andPassword:password
-    //                                      :response];
-    //end of real deal
-    //-------------------------------------//
-    
-    
-    
-    //this is a test
-    
     KWSSDK *kwsSDK = [KWSSDK sharedInstance];
+    LoginProvider* loginProvider = [kwsSDK getLoginProviderWithEnvironment:_userKWSNetworkEnvironment];
     
-//    LoginService *logServ = [kwsSDK getLoginProviderWithEnvironment:(id<KWSNetworkEnvironment> _Nonnull) networkTask:(NetworkTask * _Nonnull)]
-    
-    
-    
-    //end of test
+    [loginProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
+        
+        if(loginResponse != nil && [loginResponse token] != nil
+                && [[loginResponse token] length] != 0 && error == nil){
+            response (KWSChildren_LoginUser_Success);
+        }else{
+            response (KWSChildren_LoginUser_NetworkError);
+        }
+        
+    }];
     
 }
 

@@ -1,9 +1,8 @@
 //
-//  KWSAuthUser.h
-//  Pods
+//  KWSOAuthToken.h
+//  KWSiOSSDKObjC
 //
-//  Created by Gabriel Coman on 11/10/2016.
-//
+//  Created by Guilherme Mota on 25/01/2018.
 //
 
 #import "KWSService.h"
@@ -13,9 +12,10 @@
 
 typedef void (^authenticated)(NSInteger status, KWSLoggedUser *user);
 
-@interface KWSAuthUser : KWSService
-- (void) execute:(NSString*)username
-     andPassword:(NSString*)password
+@interface KWSOAuthToken : KWSService
+
+- (void) execute: (NSString*) authCode
+withCodeVerifier: (NSString*) codeVerifider
                 :(authenticated) authenticated;
 
 @end

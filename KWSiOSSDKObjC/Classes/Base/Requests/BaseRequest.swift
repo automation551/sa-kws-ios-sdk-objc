@@ -10,30 +10,18 @@ import SAMobileBase
 
 public class BaseRequest: NetworkRequest {
     
-    private var token: String?
-    
     public init (environment: KWSNetworkEnvironment, token: String? = nil) {
         self.environment = environment
-        self.token = token
-    }
-    
-    public var headers: [String:String]? {
-        get {
-            var defaultHeaders = [
-                "Content-Type" : "application/json"
-            ]
-            
-            if let token = token {
-                defaultHeaders["Authorization"] = "Bearer \(token)"
-            }
-            
-            return defaultHeaders
-        }
-        set(header) {
-            self.headers = header
+        
+        headers = ["Content-Type" : "application/json"]
+        
+        if let token = token {
+            headers?["Authorization"] = "Bearer \(token)"
         }
     }
-    
+
+    public var headers: [String:String]?
+
     public var query: [String : Any]?
     
     public var method: NetworkMethod = .GET
@@ -45,7 +33,4 @@ public class BaseRequest: NetworkRequest {
     public var endpoint: String = ""
     
     public var formEncodeUrls: Bool = false
-    
-  
-
 }

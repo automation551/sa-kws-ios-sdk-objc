@@ -21,25 +21,19 @@ import SAMobileBase
     }
     
     
+    // todo generic types are not supported in Obj C
     public func getService <T> (environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask(),type: T.Type) -> Any {
         switch type {
         case is LoginService.Type:
-            return LoginProvider(environment: environment, networkTask: networkTask)
+            return LoginProvider(environment: environment)
         default:
             return KWSBaseError.ServiceError
         }
     }
     
-    public func getLoginProvider(){
-        
-    }
-    
-    public func getLoginProvider (environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) -> LoginProvider {
-          return LoginProvider(environment: environment, networkTask: networkTask)
-    }
-    
-    public func testKWSSDK() -> String {
-        return "Hello KWSSDK"
+    //for the time being solution
+    public func getLoginProvider (environment: KWSNetworkEnvironment) -> LoginProvider {
+          return LoginProvider(environment: environment)
     }
     
     
