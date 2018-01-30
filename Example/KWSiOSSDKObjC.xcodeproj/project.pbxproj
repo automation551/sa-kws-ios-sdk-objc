@@ -33,6 +33,7 @@
 		9C1831312020861900DD4083 /* Login+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1831302020861900DD4083 /* Login+ObjectProviderTests.swift */; };
 		9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1831322020862800DD4083 /* Login+MappingTests.swift */; };
 		9C18313620208D6400DD4083 /* fixtures.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C18313520208D6400DD4083 /* fixtures.bundle */; };
+		9C18313820209F3E00DD4083 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C18313720209F3E00DD4083 /* TestUtils.swift */; };
 		9C63FAF1201F9B9200A5AE0C /* BaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C63FAF0201F9B9200A5AE0C /* BaseTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		9C1831302020861900DD4083 /* Login+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C1831322020862800DD4083 /* Login+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+MappingTests.swift"; sourceTree = "<group>"; };
 		9C18313520208D6400DD4083 /* fixtures.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = fixtures.bundle; sourceTree = "<group>"; };
+		9C18313720209F3E00DD4083 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		9C63FAED201F98AE00A5AE0C /* KWSiOSSDKObjC_Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KWSiOSSDKObjC_Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C63FAF0201F9B9200A5AE0C /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
 		E719D8E2C0BD3DAF48D87E20 /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				1B87E4A71CF89E690053FD8F /* KWSKWSRequestPermissionTests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 				9C63FAED201F98AE00A5AE0C /* KWSiOSSDKObjC_Tests-Bridging-Header.h */,
+				9C18313720209F3E00DD4083 /* TestUtils.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				1B87E4A81CF89E690053FD8F /* KWSKWSRequestPermissionTests.m in Sources */,
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 				9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */,
+				9C18313820209F3E00DD4083 /* TestUtils.swift in Sources */,
 				1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */,
 				9C18312F202085FC00DD4083 /* Login+RequestTests.swift in Sources */,
 				9C1831312020861900DD4083 /* Login+ObjectProviderTests.swift in Sources */,
