@@ -1,25 +1,25 @@
 //
-//  LoginRequestTests.swift
+//  LoginTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 29/01/2018.
+//  Created by Guilherme Mota on 30/01/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
 import XCTest
-import SAMobileBase
 import Nimble
 import KWSiOSSDKObjC
 
 
-class LoginRequestTests: BaseTest {
+class LoginTests: XCTestCase {
+  
     
-
+    let goodToken: String = "good_token"
+    let badToken: String = "bad_token"
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
     }
     
     override func tearDown() {
@@ -28,17 +28,16 @@ class LoginRequestTests: BaseTest {
     }
     
     
-    
     func testLoginEquality() {
-        let foo = Login(token: "good_token")
-        let bar = Login(token: "good_token")
+        let foo = Login(token: goodToken)
+        let bar = Login(token: goodToken)
         
         expect(foo).to(equal(bar))
     }
     
     func testLoginNotEquality() {
-        let foo = Login(token: "good_token")
-        let bar = Login(token: "bad_token")
+        let foo = Login(token: goodToken)
+        let bar = Login(token: badToken)
         
         expect(foo).toNot(equal(bar))
     }
@@ -46,8 +45,8 @@ class LoginRequestTests: BaseTest {
     // MARK: Objective-C
     
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = Login(token: "good_token")
-        let bar = Login(token: "bad_token")
+        let foo = Login(token: goodToken)
+        let bar = Login(token: badToken)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -56,11 +55,10 @@ class LoginRequestTests: BaseTest {
     }
     
     func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = Login(token: "good_token")
+        let foo = Login(token: goodToken)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())
     }
-    
     
 }
