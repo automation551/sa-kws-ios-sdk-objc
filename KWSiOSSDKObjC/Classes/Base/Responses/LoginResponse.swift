@@ -10,7 +10,7 @@ import UIKit
 
 //todo what is this?
 @objc(KWSLoginResponse)
-public final class Login: NSObject {
+public final class LoginResponse: NSObject {
     
     public let token: String?
     
@@ -23,7 +23,7 @@ public final class Login: NSObject {
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? Login else { return false }
+        guard let object = object as? LoginResponse else { return false }
         return self.token == object.token
     }
     
