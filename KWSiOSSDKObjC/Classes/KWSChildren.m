@@ -151,19 +151,24 @@
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
     
-    LoginProvider* loginProvider = [[KWSSDK sharedInstance] getLoginProviderWithEnvironment:_userKWSNetworkEnvironment];
     
-    [loginProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
-        
-        if(loginResponse != nil && [loginResponse token] != nil
-                && [[loginResponse token] length] != 0 && error == nil){
-            response (KWSChildren_LoginUser_Success);
-        }else{
-            response (KWSChildren_LoginUser_NetworkError);
-        }
-        
-    }];
-    
+    LoginProvider* loginProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
+                               type:NSStringFromClass([LoginProvider class])];
+
+    if([loginProvider isKindOfClass: [LoginProvider class]]){
+        [loginProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
+            
+            if(loginResponse != nil && [loginResponse token] != nil
+               && [[loginResponse token] length] != 0 && error == nil){
+                response (KWSChildren_LoginUser_Success);
+            }else{
+                response (KWSChildren_LoginUser_NetworkError);
+            }
+            
+        }];
+    }else{
+        NSLog(@"An error occured getting the provider!");
+    }
 }
 
 - (void) authWithSingleSignOnUrl: (NSString*) url

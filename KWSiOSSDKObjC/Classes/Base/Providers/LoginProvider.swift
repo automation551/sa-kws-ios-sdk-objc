@@ -11,12 +11,14 @@ import SAMobileBase
 @objc public class LoginProvider: NSObject {
     
     var environment: KWSNetworkEnvironment
+    var networkTask: NetworkTask
     
-    init(environment: KWSNetworkEnvironment) {
+    init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
         self.environment = environment
+        self.networkTask = networkTask
     }
     
-    public func loginUser(username: String, password: String, callback: @escaping (Login?, Error?) -> ()) {
+    public func loginUser(username: String, password: String, callback: @escaping (LoginResponse?, Error?) -> ()) {
 
         let loginUserNetworkRequest = LoginRequest(environment: self.environment,
                                                    username: username,
@@ -25,16 +27,14 @@ import SAMobileBase
                                                    clientSecret: self.environment.appID)
 
        
-        let loginUserNetworkTask = NetworkTask()
-        
-        loginUserNetworkTask.execute(request: loginUserNetworkRequest) { loginUserNetworkResponse in
+       networkTask.execute(request: loginUserNetworkRequest) { loginUserNetworkResponse in
 
             if let json = loginUserNetworkResponse.response, loginUserNetworkResponse.error == nil{
 
                 let parseRequest = JsonParseRequest.init(withRawData: json)
 
                 if loginUserNetworkResponse.success{
-                    let parseTask = JSONParseTask<Login>()
+                    let parseTask = JSONParseTask<LoginResponse>()
 
                     if let loginResponseObject = parseTask.execute(request: parseRequest){
                         callback(loginResponseObject,nil)
