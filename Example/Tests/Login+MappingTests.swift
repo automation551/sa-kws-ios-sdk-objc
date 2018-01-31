@@ -25,12 +25,27 @@ class Login_MappingTests: XCTestCase {
     }
     
     
-    func testLoginMapping(){
+    func testLoginResponseMapping() {
         
         var JSON: Any?
-        JSON = try? fixtureW
+        JSON = try? fixtureWithName(name:"login_response")
         
+        let loginResponse = try? LoginResponse.decode(JSON!)
         
+        expect(loginResponse).toNot(beNil())
+        expect(loginResponse?.token).to(equal("good_token"))
+        
+    }
+    
+    func testLoginResponseMappingEmptyResponse() {
+        
+        let JSON = [
+            "access_token": NSNull()
+            ] as [String : Any]
+        
+        let loginResponse = try? LoginResponse.decode(JSON)
+        
+        expect(loginResponse).toNot(beNil())
     }
    
     

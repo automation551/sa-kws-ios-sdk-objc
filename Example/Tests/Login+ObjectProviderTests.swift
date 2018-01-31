@@ -7,29 +7,97 @@
 //
 
 import XCTest
+import Mockingjay
+import Nimble
+import KWSiOSSDKObjC
+import SAMobileBase
 
 class Login_ObjectProviderTests: XCTestCase {
     
+    var loginResource: LoginProvider!
+    private var request: LoginRequest!
+    var environment: KWSNetworkEnvironment!
+    
+    var goodUsername: String = "good_username"
+    var badUsername: String = "bad_username"
+    
+    var goodPassword: String = "good_password"
+    var badPassword: String = "bad_password"
+    
+    var goodToken: String = "good_token"
+    var badToken: String = "bad_token"
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        //given
+        self.environment = GoodMockNetworkEnvironment()
+        
+        
+        //when
+        loginResource = LoginProvider.init(environment: self.environment)
+        
+        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testLoginValidRequestAndResponse(){
+        
+        let JSON: Any? = try? fixtureWithName(name:"login_response
+        
+        let req = LoginRequest(environment: self.environment,
+                               username: goodUsername,
+                               password: goodPassword,
+                               clientID: self.environment.mobileKey,
+                               clientSecret: self.environment.appID)
+        
+        //when
+        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON))
+        
+        waitUntil { done in
+            
+            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, errorResponse in
+                
+                //then
+                expect(loginResponse).toNot(beNil())
+                expect(loginResponse?.token).to(equal(self.goodToken))
+                expect(errorResponse).to(beNil())
+                done()
+                
+            })
+        }
+        
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testLoginBadHttpResponse(){
+        
+        let JSON: Any? = try? fixtureWithName(name:"generic_simpler_not_found_response")
+        
+        let req = LoginRequest(environment: self.environment,
+                               username: goodUsername,
+                               password: goodPassword,
+                               clientID: self.environment.mobileKey,
+                               clientSecret: self.environment.appID)
+        
+        //when
+        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 404))
+        
+        waitUntil { done in
+            
+            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, errorResponse in
+                
+                //then
+                expect(loginResponse).to(beNil())
+            
+                //todo here finish this
+                done()
+                
+            })
         }
+        
     }
     
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SAMobileBase
 
-public class BaseRequest: NetworkRequest {
+open class BaseRequest: NetworkRequest {
     
     public init (environment: KWSNetworkEnvironment, token: String? = nil) {
         self.environment = environment
@@ -20,17 +20,17 @@ public class BaseRequest: NetworkRequest {
         }
     }
 
-    public var headers: [String:String]?
+    open var headers: [String:String]?
 
-    public var query: [String : Any]?
+    open var query: [String : Any]?
     
-    public var method: NetworkMethod = .GET
+    open var method: NetworkMethod = .GET
   
-    public var body: [String : Any]? = nil
+    open var body: [String : Any]? = nil
     
-    public var environment: NetworkEnvironment
+    open var environment: NetworkEnvironment
     
-    public var endpoint: String = ""
+    open var endpoint: String = ""
     
-    public var formEncodeUrls: Bool = false
+    open var formEncodeUrls: Bool = false
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import SAMobileBase
+import KWSiOSSDKObjC
 
 
 class GoodMockNetworkEnvironment: KWSNetworkEnvironment {
@@ -21,7 +22,3 @@ class BadMockNetworkEnvironment: KWSNetworkEnvironment {
     var appID: String = "good_app_id"
     var mobileKey: String = "good_mobile_key"
 }
-
-
-
-//todo

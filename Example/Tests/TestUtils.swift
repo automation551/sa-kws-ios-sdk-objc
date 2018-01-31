@@ -21,7 +21,7 @@ enum FixtureError: Error {
 
 func fixtureWithName(name: String, ofType: String = "json") throws -> AnyObject {
     
-    guard let testBundle = Bundle(identifier: "ord.cocoapods.demo.KWSiOSSDKObjC-Tests") else {
+    guard let testBundle = Bundle(identifier: "org.cocoapods.demo.KWSiOSSDKObjC-Tests") else {
         print(FixtureError.CannotLoadMainBundle)
         throw FixtureError.CannotLoadMainBundle
     }
