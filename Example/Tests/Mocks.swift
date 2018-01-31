@@ -12,11 +12,16 @@ import SAMobileBase
 
 class GoodMockNetworkEnvironment: KWSNetworkEnvironment {
     var domain: String = "https://localhost:8080"
-    var appID: String = "appID"
-    var mobileKey: String = "mobileKey"
+    var appID: String = "good_app_id"
+    var mobileKey: String = "good_mobile_key"
 }
 
 class BadMockNetworkEnvironment: KWSNetworkEnvironment {
-    var domain: String = "jsaksa\\s\\asasaasa"
+    var domain: String = "bad_domain"
+    var appID: String = "good_app_id"
+    var mobileKey: String = "good_mobile_key"
 }
 
+
+
+//todo
