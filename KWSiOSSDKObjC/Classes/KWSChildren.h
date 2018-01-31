@@ -115,4 +115,7 @@
 - (void) setLoggedUser: (KWSLoggedUser*) loggedUser;
 - (KWSLoggedUser*) getLoggedUser;
 
+//test KWSSDK singleton
+-(void) getTestSingleton;
+
 @end

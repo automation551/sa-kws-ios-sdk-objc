@@ -25,6 +25,6 @@ The SuperAwesome Kids Web Services iOS SDK
   s.dependency 'SAJsonParser', '1.3.3'
   s.dependency 'SAUtils', '1.5.2'
   s.dependency 'SANetworking',  '0.3.0'
-  s.dependency 'SAMobileBase', '1.0.7'
+  s.dependency 'SAMobileBase', '1.0.8'
   
 end

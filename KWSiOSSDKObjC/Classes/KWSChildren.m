@@ -14,8 +14,11 @@
 #import "SAAlert.h"
 #import "KWSLoggedUser.h"
 
+//to allow ObjC - Swift interoperability
+#import "KWSiOSSDKObjC/KWSiOSSDKObjC-Swift.h"
+
 #define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
-	
+
 @interface KWSChildren ()
 
 // the parent email object
@@ -46,6 +49,9 @@
 
 // user defaults
 @property (nonatomic, strong) NSUserDefaults *defs;
+
+//network environment
+@property (nonatomic, strong) UserKWSNetworkEnvironment* userKWSNetworkEnvironment;
 
 @end
 
@@ -92,6 +98,10 @@
     _clientId = clientId;
     _clientSecret = clientSecret;
     _kwsApiUrl = apiUrl;
+    
+    //set network environment
+    _userKWSNetworkEnvironment = [[UserKWSNetworkEnvironment alloc] initWithDomain:apiUrl appID:clientSecret mobileKey:clientId];
+    
     
     // get user defaults
     _defs = [NSUserDefaults standardUserDefaults];
@@ -140,9 +150,25 @@
 - (void) loginUser:(NSString *)username
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
-    [_authUserProcess authWithUsername:username
-                           andPassword:password
-                                      :response];
+    
+    
+    LoginProvider* loginProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
+                               type:NSStringFromClass([LoginProvider class])];
+
+    if([loginProvider isKindOfClass: [LoginProvider class]]){
+        [loginProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
+            
+            if(loginResponse != nil && [loginResponse token] != nil
+               && [[loginResponse token] length] != 0 && error == nil){
+                response (KWSChildren_LoginUser_Success);
+            }else{
+                response (KWSChildren_LoginUser_NetworkError);
+            }
+            
+        }];
+    }else{
+        NSLog(@"An error occured getting the provider!");
+    }
 }
 
 - (void) authWithSingleSignOnUrl: (NSString*) url
@@ -171,7 +197,12 @@
 // Random name
 
 - (void) getRandomUsername:(KWSChildrenGetRandomUsernameBlock)response {
+    //this is the correct one
     [_randomName getRandomName:response];
+    
+    //this is a test
+    //    [self getTestSingleton];
+    
 }
 
 // get user & update user details
@@ -286,12 +317,12 @@
                             andTextField:false
                          andKeyboardTyle:kNilOptions
                               andPressed:^(int button, NSString *popupMessage) {
-                                    if (button == 0) {
-                                        [_notificationProcess register:response];
-                                    } else {
-                                        // do nothing
-                                    }
-                                }];
+                                  if (button == 0) {
+                                      [_notificationProcess register:response];
+                                  } else {
+                                      // do nothing
+                                  }
+                              }];
 }
 
 - (void) updateParentEmailWithPopup:(KWSChildrenUpdateParentEmailBlock)response {
@@ -302,10 +333,10 @@
                             andTextField:true
                          andKeyboardTyle:UIKeyboardTypeEmailAddress
                               andPressed:^(int button, NSString *popupMessage) {
-                                    if (button == 0) {
-                                        [self updateParentEmail:popupMessage withResponse:response];
-                                    }
-                                }];
+                                  if (button == 0) {
+                                      [self updateParentEmail:popupMessage withResponse:response];
+                                  }
+                              }];
 }
 
 // MARK: version
