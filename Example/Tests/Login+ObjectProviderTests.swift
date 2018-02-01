@@ -14,19 +14,24 @@ import SAMobileBase
 
 class Login_ObjectProviderTests: XCTestCase {
     
-    var loginResource: LoginProvider!
+    // class or data to test
+    private var loginResource: LoginProvider!
+    
     private var request: LoginRequest!
-    var environment: KWSNetworkEnvironment!
+    private var environment: KWSNetworkEnvironment!
     
-    var goodUsername: String = "good_username"
-    var badUsername: String = "bad_username"
+    private var goodUsername: String = "good_username"
+    private var badUsername: String = "bad_username"
     
-    var goodPassword: String = "good_password"
-    var badPassword: String = "bad_password"
+    private var goodPassword: String = "good_password"
+    private var badPassword: String = "bad_password"
     
-    var goodToken: String = "good_token"
-    var badToken: String = "bad_token"
+    private var goodToken: String = "good_token"
+    private var badToken: String = "bad_token"
     
+    private var badClientID: String = "bad_client_id"
+    private var badClientSecret: String = "bad_client_secret"
+ 
     override func setUp() {
         super.setUp()
         
@@ -46,7 +51,7 @@ class Login_ObjectProviderTests: XCTestCase {
     
     func testLoginValidRequestAndResponse(){
         
-        let JSON: Any? = try? fixtureWithName(name:"login_response
+        let JSON: Any? = try? fixtureWithName(name:"login_success_response")
         
         let req = LoginRequest(environment: self.environment,
                                username: goodUsername,
@@ -55,16 +60,20 @@ class Login_ObjectProviderTests: XCTestCase {
                                clientSecret: self.environment.appID)
         
         //when
-        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON))
+        stub(http(.post, uri: "\(req.environment.domain + req.endpoint)") , json(JSON!))
         
         waitUntil { done in
             
-            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, errorResponse in
+            self.loginResource.loginUser(username: self.goodUsername,
+                                         password: self.goodPassword,
+                                         callback: {  loginResponse, error in
                 
                 //then
                 expect(loginResponse).toNot(beNil())
                 expect(loginResponse?.token).to(equal(self.goodToken))
-                expect(errorResponse).to(beNil())
+                                            
+                expect(error).to(beNil())
+                                            
                 done()
                 
             })
@@ -87,17 +96,187 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, errorResponse in
+            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
-            
-                //todo here finish this
+                
+                expect(error).toNot(beNil())
+                let networkErrorMessage = (error as! NetworkError).message
+                expect(networkErrorMessage).toNot(beNil())
+                
+                //todo: there has to be a better way than this.
+                //The issue is that 'error' comes back as NetworkError. 'NotFoundResponse'
+                //has to be parsed from "NetworkError.message".
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseTask = JSONParseTask<NotFoundResponse>()
+                let errorResponse = parseTask.execute(request: parseRequest)
+                
+                expect(errorResponse?.code).to(equal(123))
+                expect(errorResponse?.codeMeaning).to(equal("notFound"))
+                
                 done()
                 
             })
         }
         
     }
+    
+    func testLoginBadUsername(){
+        
+        let JSON: Any? = try? fixtureWithName(name:"login_bad_user_credentials_response")
+        
+        let req = LoginRequest(environment: self.environment,
+                               username: badUsername,
+                               password: goodPassword,
+                               clientID: self.environment.mobileKey,
+                               clientSecret: self.environment.appID)
+        
+        //when
+        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 400))
+        
+        waitUntil { done in
+            
+            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
+                
+                //then
+                expect(loginResponse).to(beNil());
+        
+                expect(error).toNot(beNil());
+                let networkErrorMessage = (error as! NetworkError).message
+                expect(networkErrorMessage).toNot(beNil())
+                
+                
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseTask = JSONParseTask<ErrorResponse>()
+                let errorResponse = parseTask.execute(request: parseRequest)
+                
+                expect(errorResponse?.errorCode).to(equal("invalid_grant"))
+                expect(errorResponse?.error).to(equal("User credentials are invalid"))
+                
+                done()
+                
+            })
+        }
+        
+    }
+    
+    func testLoginBadPassword(){
+        
+        let JSON: Any? = try? fixtureWithName(name:"login_bad_user_credentials_response")
+        
+        let req = LoginRequest(environment: self.environment,
+                               username: goodUsername,
+                               password: badPassword,
+                               clientID: self.environment.mobileKey,
+                               clientSecret: self.environment.appID)
+        
+        //when
+        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 400))
+        
+        waitUntil { done in
+            
+            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword,callback: { loginResponse, error in
+                
+                //then
+                expect(loginResponse).to(beNil())
+                
+                expect(error).toNot(beNil());
+                let networkErrorMessage = (error as! NetworkError).message
+                expect(networkErrorMessage).toNot(beNil())
+                
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseTask = JSONParseTask<ErrorResponse>()
+                let errorResponse = parseTask.execute(request: parseRequest)
+                
+                expect(errorResponse?.errorCode).to(equal("invalid_grant"))
+                expect(errorResponse?.error).to(equal("User credentials are invalid"))
+                
+                done()
+                
+            })
+        }
+        
+    }
+    
+    func testLoginBadClientID(){
+        
+        let JSON: Any? = try? fixtureWithName(name:"login_bad_client_credentials_response")
+        
+        let req = LoginRequest(environment: self.environment,
+                               username: goodUsername,
+                               password: goodPassword,
+                               clientID: badClientID,
+                               clientSecret: self.environment.appID)
+        
+        //when
+        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 400))
+        
+        waitUntil { done in
+            
+            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
+                
+                //then
+                expect(loginResponse).to(beNil())
+                
+                expect(error).toNot(beNil())
+                
+                let networkErrorMessage = (error as! NetworkError).message
+                expect(networkErrorMessage).toNot(beNil())
+                
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseTask = JSONParseTask<ErrorResponse>()
+                let errorResponse = parseTask.execute(request: parseRequest)
+                
+                expect(errorResponse?.errorCode).to(equal("invalid_client"))
+                expect(errorResponse?.error).to(equal("Client credentials are invalid"))
+                
+                done()
+                
+            })
+        }
+        
+    }
+    
+    func testLoginBadClientSecret(){
+        
+        let JSON: Any? = try? fixtureWithName(name:"login_bad_client_credentials_response")
+        
+        let req = LoginRequest(environment: self.environment,
+                               username: goodUsername,
+                               password: goodPassword,
+                               clientID: self.environment.mobileKey,
+                               clientSecret: badClientSecret)
+        
+        //when
+        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 400))
+        
+        waitUntil { done in
+            
+            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
+                
+                //then
+                expect(loginResponse).to(beNil())
+                
+                expect(error).toNot(beNil())
+                
+                let networkErrorMessage = (error as! NetworkError).message
+                expect(networkErrorMessage).toNot(beNil())
+                
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseTask = JSONParseTask<ErrorResponse>()
+                let errorResponse = parseTask.execute(request: parseRequest)
+                
+                expect(errorResponse?.errorCode).to(equal("invalid_client"))
+                expect(errorResponse?.error).to(equal("Client credentials are invalid"))
+                
+                done()
+                
+            })
+        }
+        
+    }
+    
+    
     
 }
