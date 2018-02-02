@@ -28,7 +28,7 @@ class Login_MappingTests: XCTestCase {
     func testLoginResponseMapping() {
         
         var JSON: Any?
-        JSON = try? fixtureWithName(name:"login_response")
+        JSON = try? fixtureWithName(name:"login_success_response")
         
         let loginResponse = try? LoginResponse.decode(JSON!)
         

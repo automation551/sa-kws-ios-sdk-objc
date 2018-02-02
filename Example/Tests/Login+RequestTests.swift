@@ -105,7 +105,7 @@ class Login_RequestTests: XCTestCase {
         expect(self.clientSecret).to(equal((requestBody?["client_secret"] as! String)))
     }
     
-    public func testRequestHeaderToBeNull () {
+    public func testRequestHeader() {
         let requestHeaders = self.request.headers
         
         //then
@@ -120,7 +120,7 @@ class Login_RequestTests: XCTestCase {
         expect(self.request.query).to(beNil())
     }
     
-    func testRequestFormUrlEncodeToBeFals(){
+    func testRequestFormUrlEncodeToBeTrue(){
         //then
         expect(self.request.formEncodeUrls).to(beTrue())
     }

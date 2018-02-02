@@ -105,9 +105,6 @@ class Login_ObjectProviderTests: XCTestCase {
                 let networkErrorMessage = (error as! NetworkError).message
                 expect(networkErrorMessage).toNot(beNil())
                 
-                //todo: there has to be a better way than this.
-                //The issue is that 'error' comes back as NetworkError. 'NotFoundResponse'
-                //has to be parsed from "NetworkError.message".
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
                 let parseTask = JSONParseTask<NotFoundResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
@@ -145,8 +142,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(error).toNot(beNil());
                 let networkErrorMessage = (error as! NetworkError).message
                 expect(networkErrorMessage).toNot(beNil())
-                
-                
+                                
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
                 let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
