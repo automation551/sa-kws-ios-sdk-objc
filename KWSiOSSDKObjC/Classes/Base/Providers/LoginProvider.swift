@@ -8,8 +8,8 @@
 import Foundation
 import SAMobileBase
 
-@objc public class LoginProvider: NSObject {
-    
+@objc public class LoginProvider: NSObject, LoginService {
+
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask
     
@@ -18,7 +18,9 @@ import SAMobileBase
         self.networkTask = networkTask
     }
     
-    public func loginUser(username: String, password: String, callback: @escaping (LoginResponse?, Error?) -> ()) {
+
+    
+    public func loginUser(username: String, password: String, callback: @escaping (AuthResponse?, Error?) -> ()) {
 
         let loginUserNetworkRequest = LoginRequest(environment: self.environment,
                                                    username: username,
@@ -26,7 +28,7 @@ import SAMobileBase
                                                    clientID: self.environment.mobileKey,
                                                    clientSecret: self.environment.appID)
 
-       
+
        networkTask.execute(request: loginUserNetworkRequest) { loginUserNetworkResponse in
 
             if let json = loginUserNetworkResponse.response, loginUserNetworkResponse.error == nil{
@@ -34,7 +36,7 @@ import SAMobileBase
                 let parseRequest = JsonParseRequest.init(withRawData: json)
 
                 if loginUserNetworkResponse.success{
-                    let parseTask = JSONParseTask<LoginResponse>()
+                    let parseTask = JSONParseTask<AuthResponse>()
 
                     if let loginResponseObject = parseTask.execute(request: parseRequest){
                         callback(loginResponseObject,nil)
@@ -43,12 +45,12 @@ import SAMobileBase
                     }
                 }else{
                     let parseTask = JSONParseTask<ErrorResponse>()
-                    
+
                     if let mappedResponse = parseTask.execute(request: parseRequest) {
                         callback(nil, mappedResponse)
                     } else {
                         callback(nil, KWSBaseError.JsonParsingError)
-                    } 
+                    }
                 }
 
             }else{

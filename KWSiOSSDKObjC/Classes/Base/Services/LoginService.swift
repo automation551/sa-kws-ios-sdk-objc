@@ -12,6 +12,6 @@ import SAMobileBase
     
     func loginUser(username: String,
                    password: String,
-                   callback: @escaping(LoginResponse?,Error?) -> () )
+                   callback: @escaping(AuthResponse?,Error?) -> () )
     
 }

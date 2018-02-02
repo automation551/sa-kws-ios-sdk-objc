@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension LoginResponse: Decodable {
+extension AuthResponse: Decodable {
     
-    public static func decode(_ json: Any) throws -> LoginResponse {
+    public static func decode(_ json: Any) throws -> AuthResponse {
         
-        return try LoginResponse (
+        return try AuthResponse (
             token:           try json =>? "access_token"
         )
     }

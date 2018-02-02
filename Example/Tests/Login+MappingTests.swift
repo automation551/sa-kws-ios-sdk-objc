@@ -30,7 +30,7 @@ class Login_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"login_success_response")
         
-        let loginResponse = try? LoginResponse.decode(JSON!)
+        let loginResponse = try? AuthResponse.decode(JSON!)
         
         expect(loginResponse).toNot(beNil())
         expect(loginResponse?.token).to(equal("good_token"))
@@ -43,7 +43,7 @@ class Login_MappingTests: XCTestCase {
             "access_token": NSNull()
             ] as [String : Any]
         
-        let loginResponse = try? LoginResponse.decode(JSON)
+        let loginResponse = try? AuthResponse.decode(JSON)
         
         expect(loginResponse).toNot(beNil())
     }

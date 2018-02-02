@@ -21,14 +21,28 @@ import SAMobileBase
     }
     
     
+    //for obj c
     public func getProvider (environment: KWSNetworkEnvironment,type: String) -> AnyObject {
         var classFromParams = NSClassFromString(type)
         switch classFromParams {
-            case is LoginProvider.Type:
-                return LoginProvider(environment: environment)
-            //todo other providers
-            default:
-                return KWSBaseError.ServiceError as AnyObject
+        case is LoginProvider.Type:
+            return LoginProvider(environment: environment)
+        case is CreateUserProvider.Type:
+            return CreateUserProvider(environment: environment)
+        //todo other providers
+        default:
+            return KWSBaseError.ServiceError as AnyObject
+        }
+    }
+    
+    //for swift
+    func getService <T:BaseService> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
+        if (value == LoginService.self) {
+            return LoginProvider(environment: environment) as? T
+        } else if (value == CreateUserService.self){
+            return CreateUserProvider(environment: environment) as? T
+        } else {
+            return nil
         }
     }
     
