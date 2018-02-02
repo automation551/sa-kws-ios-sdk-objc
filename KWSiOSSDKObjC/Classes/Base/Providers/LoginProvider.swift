@@ -13,7 +13,7 @@ import SAMobileBase
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask
     
-    init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
+    public init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
         self.environment = environment
         self.networkTask = networkTask
     }
