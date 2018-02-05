@@ -1,0 +1,12 @@
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"country\" fails because [\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/]",
+    "invalid": {
+        "country": {
+            "code": 7,
+            "codeMeaning": "invalidValue",
+            "errorMessage": "\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"
+        }
+    }
+}

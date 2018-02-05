@@ -165,9 +165,9 @@
     
     [[KWSChildren sdk] createUser:username
              withPassword:@"testtest"
-           andDateOfBirth:@"2011-03-02"
+           andDateOfBirth:@"2012-03-02"
                andCountry:@"US"
-           andParentEmail:@"gabriel.coman@superawesome.tv"
+           andParentEmail:@"guilherme.mota@superawesome.tv"
               andResponse:^(KWSChildrenCreateUserStatus status) {
                              
                              switch (status) {

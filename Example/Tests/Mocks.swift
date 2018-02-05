@@ -12,7 +12,7 @@ import KWSiOSSDKObjC
 
 
 class GoodMockNetworkEnvironment: KWSNetworkEnvironment {
-    var domain: String = "https://localhost:8080"
+    var domain: String = "https://localhost:8080/"
     var appID: String = "good_app_id"
     var mobileKey: String = "good_mobile_key"
 }

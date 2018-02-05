@@ -1,0 +1,5 @@
+{
+    "token_type": "bearer",
+    "access_token": "good_token",
+    "expires_in": 123456
+}

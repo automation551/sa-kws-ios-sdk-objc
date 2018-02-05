@@ -1,0 +1,12 @@
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"dateOfBirth\" fails because [\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/]",
+    "invalid": {
+        "dateOfBirth": {
+            "code": 7,
+            "codeMeaning": "invalidValue",
+            "errorMessage": "\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"
+        }
+    }
+}

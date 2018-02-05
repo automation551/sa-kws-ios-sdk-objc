@@ -53,8 +53,8 @@ import SAMobileBase
         }
     }
     
-    
-    private func getTempAccessToken(environment: KWSNetworkEnvironment, callback: @escaping (AuthResponse?, Error?) -> ()) {
+    //TODO: Does it need to be public for tests? Is there a better way?
+    open func getTempAccessToken(environment: KWSNetworkEnvironment, callback: @escaping (AuthResponse?, Error?) -> ()) {
         
         
         let getTempAccessTokenNetworkRequest = TempAccessTokenRequest(environment: environment,
@@ -78,7 +78,7 @@ import SAMobileBase
                     }
                     
                 }else{
-                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let parseTask = JSONParseTask<SimpleErrorResponse>()
                     
                     if let mappedResponse = parseTask.execute(request: parseRequest) {
                         callback(nil, mappedResponse)
@@ -95,7 +95,8 @@ import SAMobileBase
         }
     }
     
-    private func doUserCreation(environment: KWSNetworkEnvironment,username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, callback: @escaping (CreateUserResponse?, Error?) -> ()) {
+    //TODO: Does it need to be public for tests? Is there a better way?
+    open func doUserCreation(environment: KWSNetworkEnvironment,username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, callback: @escaping (CreateUserResponse?, Error?) -> ()) {
         
         
         let createUserNetworkRequest = CreateUserRequest(environment: environment,
@@ -124,7 +125,7 @@ import SAMobileBase
                     }
                     
                 }else{
-                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let parseTask = JSONParseTask<SimpleErrorResponse>()
                     
                     if let mappedResponse = parseTask.execute(request: parseRequest) {
                         callback(nil, mappedResponse)

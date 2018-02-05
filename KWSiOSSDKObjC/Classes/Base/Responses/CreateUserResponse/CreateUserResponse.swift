@@ -22,4 +22,11 @@ public final class CreateUserResponse: NSObject {
         
     }    
     
+    // MARK: - Equatable
+    
+    public override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? CreateUserResponse else { return false }
+        return self.id == object.id
+    }
+    
 }

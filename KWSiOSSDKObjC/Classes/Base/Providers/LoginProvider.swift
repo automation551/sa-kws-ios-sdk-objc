@@ -44,7 +44,7 @@ import SAMobileBase
                         callback(nil,KWSBaseError.JsonParsingError)
                     }
                 }else{
-                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let parseTask = JSONParseTask<SimpleErrorResponse>()
 
                     if let mappedResponse = parseTask.execute(request: parseRequest) {
                         callback(nil, mappedResponse)

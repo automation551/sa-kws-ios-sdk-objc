@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 @objc(KWSErrorResponse)
-public final class ErrorResponse: NSObject, Error {
+public final class SimpleErrorResponse: NSObject, Error {
     
     public let errorCode: String
     public let error: String

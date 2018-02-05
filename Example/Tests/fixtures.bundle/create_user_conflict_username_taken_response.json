@@ -1,0 +1,12 @@
+{
+    "code": 10,
+    "codeMeaning": "conflict",
+    "errorMessage": "username already taken",
+    "invalid": {
+        "username": {
+            "code": 10,
+            "codeMeaning": "conflict",
+            "errorMessage": "username already taken"
+        }
+    }
+}
