@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539288802.934262"
+            timestampString = "539289370.754694"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -74,7 +74,7 @@
                   moduleName = "KWSiOSSDKObjC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-                  timestampString = "539288803.56291"
+                  timestampString = "539515947.581141"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "110"
@@ -89,7 +89,7 @@
                   moduleName = "KWSiOSSDKObjC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-                  timestampString = "539288803.564966"
+                  timestampString = "539515947.5836411"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539288802.9343311"
+            timestampString = "539289370.754833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539288802.934384"
+            timestampString = "539289370.754932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539288802.934433"
+            timestampString = "539289370.755008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539288802.93448"
+            timestampString = "539289370.755101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539288802.934526"
+            timestampString = "539289370.755179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
@@ -186,23 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/KWSChildren.m"
-            timestampString = "539288802.934574"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-createUser:withPassword:andDateOfBirth:andCountry:andParentEmail:andResponse:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/KWSChildren.m"
-            timestampString = "539288802.9346189"
+            timestampString = "539289370.755343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
@@ -218,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/KWSChildren.m"
-            timestampString = "539288802.934662"
+            timestampString = "539289370.755409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
@@ -233,173 +217,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/KWSChildren.m"
-            timestampString = "539288802.934703"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "-createUser:withPassword:andDateOfBirth:andCountry:andParentEmail:andResponse:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[KWSChildren createUser:withPassword:andDateOfBirth:andCountry:andParentEmail:andResponse:]"
-                  moduleName = "KWSiOSSDKObjC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/KWSChildren.m"
-                  timestampString = "539288803.597857"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "512">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__92-[KWSChildren createUser:withPassword:andDateOfBirth:andCountry:andParentEmail:andResponse:]_block_invoke"
-                  moduleName = "KWSiOSSDKObjC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/KWSChildren.m"
-                  timestampString = "539288803.602109"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "163"
-                  endingLineNumber = "163"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539288802.934744"
+            timestampString = "539289370.755573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
             landmarkName = "doUserCreation(environment:username:password:dateOfBirth:country:parentEmail:appId:token:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/SAMobileBase/SAMobileBase/Classes/Network/NetworkTask.swift"
-            timestampString = "539288802.934791"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "execute(request:completionHandler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SAMobileBase.NetworkTask.execute(request: SAMobileBase.NetworkRequest, completionHandler: (SAMobileBase.NetworkResponse) -&gt; ()) -&gt; ()"
-                  moduleName = "SAMobileBase"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/Example/Pods/SAMobileBase/SAMobileBase/Classes/Network/NetworkTask.swift"
-                  timestampString = "539288803.612955"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "261">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SAMobileBase.NetworkTask.execute(request: SAMobileBase.NetworkRequest, completionHandler: (SAMobileBase.NetworkResponse) -&gt; ()) -&gt; ()"
-                  moduleName = "SAMobileBase"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/Example/Pods/SAMobileBase/SAMobileBase/Classes/Network/NetworkTask.swift"
-                  timestampString = "539288803.615169"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "65">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/SAMobileBase/SAMobileBase/Classes/Network/NetworkTask.swift"
-            timestampString = "539288802.935115"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "execute(request:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/SAMobileBase/SAMobileBase/Classes/Network/NetworkTask.swift"
-            timestampString = "539288802.935307"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "execute(request:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/SAMobileBase/SAMobileBase/Classes/Network/NetworkTask.swift"
-            timestampString = "539288802.935487"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "execute(request:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/SAMobileBase/SAMobileBase/Classes/Network/NetworkTask.swift"
-            timestampString = "539288802.935667"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "execute(request:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -416,22 +240,6 @@
             startingLineNumber = "68"
             endingLineNumber = "68"
             landmarkName = "-sendRequestTo:withMethod:andQuery:andHeader:andBody:withResponse:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/SAMobileBase/SAMobileBase/Classes/Network/NetworkTask.swift"
-            timestampString = "539289155.369993"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "execute(request:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

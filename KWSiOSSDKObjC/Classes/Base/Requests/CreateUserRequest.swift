@@ -20,7 +20,7 @@ public class CreateUserRequest: BaseRequest{
                 appID: Int) {
         
         
-        super.init(environment: environment, token: token)
+        super.init(environment: environment)
         
         self.method = .POST
         self.endpoint = "v1/apps/\(appID)/users"
