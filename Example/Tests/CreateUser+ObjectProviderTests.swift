@@ -16,8 +16,6 @@ class CreateUser_ObjectProviderTests: XCTestCase {
     
     //class or data to test
     private var createUserResource: CreateUserProvider!
-    
-    private var request: CreateUserRequest!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUsername: String = "good_username"
@@ -49,7 +47,7 @@ class CreateUser_ObjectProviderTests: XCTestCase {
         super.setUp()
         
         //given
-        self.environment = GoodMockNetworkEnvironment()
+        environment = GoodMockNetworkEnvironment()
         
         //when
         createUserResource = CreateUserProvider.init(environment: self.environment)
@@ -59,29 +57,20 @@ class CreateUser_ObjectProviderTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-        createUserResource = nil
-        request = nil
-        environment = nil
     }
     
+    func testCreateUserValidRequestAndResponse(){
     
-    func testCreateUserRequestAndResponse(){
         
-        let JSON: Any? = try? fixtureWithName(name:"create_user_success_response")
+        //TODO Tear down is happening before the end? Why?
         
-        request = CreateUserRequest(environment: self.environment,
-                                    username: goodUsername,
-                                    password: goodPassword,
-                                    dateOfBirth: goodDOB,
-                                    country: goodCountry,
-                                    parentEmail: goodParentEmail,
-                                    token: goodToken,
-                                    appID: goodAppID)
+        let JSON: Any? = try? fixtureWithName(name: "login_success_response")
+        
+        let request = CreateUserRequest(environment: self.environment, username: self.goodUsername, password: self.goodPassword, dateOfBirth: self.goodDOB, country: self.goodCountry,parentEmail: self.goodParentEmail, token: self.goodToken, appID: self.goodAppID)
+        
         
         //when
-//        stub(http(.post, uri: request.environment.domain + request.endpoint + "?access_token=good_token") , json(JSON!))
-        
-        stub(http(.post, uri: "\(request.environment.domain + request.endpoint + "?access_token=good_token")") , json(JSON!))
+        stub(http(.post, uri: request.environment.domain + request.endpoint + "?access_token=good_token"), json(JSON!))
         
         waitUntil { done in
             
@@ -92,58 +81,14 @@ class CreateUser_ObjectProviderTests: XCTestCase {
                                                    country: self.goodCountry,
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
-                                                   token:self.goodToken,
-                                                   callback: {  createUserResponse, error in
+                                                   token: self.goodToken,
+                                                   callback: { response, error in
                                                     
-                                                    //then
-                                                    expect(createUserResponse).toNot(beNil())
-                                                    expect(createUserResponse?.id).to(equal(99))
-                                                    expect(createUserResponse?.token).to(equal(self.goodToken))
-                                                    
-                                                    expect(error).to(beNil())
-                                                    
-                                                    done()
+                                                    expect(response).toNot(beNil())
                                                     
             })
         }
+        
+        
     }
-    
-    
-    
-    func testCreateUserGetTempTokenRequestAndResponse(){
-        
-        let JSON: Any? = try? fixtureWithName(name:"temp_access_token_success_response")
-        
-        let requesty = TempAccessTokenRequest(environment: self.environment,
-                                         clientID: self.environment.mobileKey,
-                                         clientSecret: self.environment.appID)
-        
-        //when
-        stub(http(.post, uri: "\(requesty.environment.domain + requesty.endpoint)") , json(JSON!))
-        
-        waitUntil { done in
-            
-            self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                   callback: {  authResponse, error in
-                                                    
-                                                    //then
-                                                    expect(authResponse).toNot(beNil())
-                                                
-                                                    
-                                                    done()
-                                                    
-            })
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

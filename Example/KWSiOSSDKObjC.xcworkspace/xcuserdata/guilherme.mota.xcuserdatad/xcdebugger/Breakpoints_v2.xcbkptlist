@@ -73,24 +73,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tests/CreateUser+ObjectProviderTests.swift"
-            timestampString = "539544218.827163"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "testCreateUserRequestAndResponse()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539544218.827262"
+            timestampString = "539546531.177923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -106,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539544218.82818"
+            timestampString = "539546531.1782531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
@@ -122,7 +106,7 @@
                   moduleName = "KWSiOSSDKObjC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-                  timestampString = "539544219.04782"
+                  timestampString = "539548639.893749"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "111"
@@ -137,7 +121,7 @@
                   moduleName = "KWSiOSSDKObjC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-                  timestampString = "539544219.050252"
+                  timestampString = "539548639.896621"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "113"
@@ -153,40 +137,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tests/CreateUser+ObjectProviderTests.swift"
-            timestampString = "539544218.828952"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "testCreateUserGetTempTokenRequestAndResponse()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tests/CreateUser+ObjectProviderTests.swift"
-            timestampString = "539544218.829003"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "testCreateUserGetTempTokenRequestAndResponse()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-            timestampString = "539544218.829047"
+            timestampString = "539546531.179381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -202,7 +154,7 @@
                   moduleName = "KWSiOSSDKObjC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-                  timestampString = "539544219.054601"
+                  timestampString = "539548639.900003"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "64"
@@ -217,7 +169,7 @@
                   moduleName = "KWSiOSSDKObjC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
-                  timestampString = "539544219.061148"
+                  timestampString = "539548639.902052"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
@@ -225,6 +177,118 @@
                   offsetFromSymbolStart = "170">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
+            timestampString = "539546531.179841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getTempAccessToken(environment:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
+            timestampString = "539546531.180047"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "createUser(username:password:dateOfBirth:country:parentEmail:callback:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KWSiOSSDKObjC.CreateUserProvider.createUser(username: Swift.String, password: Swift.String, dateOfBirth: Swift.String, country: Swift.String, parentEmail: Swift.String, callback: (Swift.Optional&lt;KWSiOSSDKObjC.CreateUserResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "KWSiOSSDKObjC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
+                  timestampString = "539548639.909308"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KWSiOSSDKObjC.AuthResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in KWSiOSSDKObjC.CreateUserProvider.createUser(username: Swift.String, password: Swift.String, dateOfBirth: Swift.String, country: Swift.String, parentEmail: Swift.String, callback: (Swift.Optional&lt;KWSiOSSDKObjC.CreateUserResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "KWSiOSSDKObjC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/KWSiOSSDKObjC/Classes/Base/Providers/CreateUserProvider.swift"
+                  timestampString = "539548639.912225"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "274">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tests/Login+ObjectProviderTests.swift"
+            timestampString = "539548639.537835"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "testLoginValidRequestAndResponse()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tests/CreateUser+ObjectProviderTests.swift"
+            timestampString = "539548639.538197"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "testCreateUserValidRequestAndResponse()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tests/CreateUser+ObjectProviderTests.swift"
+            timestampString = "539548639.538415"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "tearDown()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
