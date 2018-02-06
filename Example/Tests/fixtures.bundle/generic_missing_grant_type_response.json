@@ -1,0 +1,4 @@
+{
+    "ErrorCode": "invalid_request",
+    "Error": "Invalid or missing grant_type parameter"
+}

@@ -51,7 +51,7 @@ class Login_ObjectProviderTests: XCTestCase {
         environment = nil
     }
     
-    func testLoginValidRequestAndResponse(){
+    func test_Login_ValidRequestAndResponse(){
         
         let JSON: Any? = try? fixtureWithName(name:"login_success_response")
         
@@ -62,7 +62,8 @@ class Login_ObjectProviderTests: XCTestCase {
                                clientSecret: self.environment.appID)
         
         //when
-        stub(http(.post, uri: "\(request.environment.domain + request.endpoint)") , json(JSON!))
+        let uri = "\(request.environment.domain + request.endpoint)"
+        stub(http(.post, uri: uri ) , json(JSON!))
         
         waitUntil { done in
             
@@ -72,7 +73,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 
                 //then
                 expect(loginResponse).toNot(beNil())
-                expect(loginResponse?.token).to(equal(self.goodToken))
+                expect(loginResponse?.token).to(equal("good_token"))
                                             
                 expect(error).to(beNil())
                                             
@@ -83,7 +84,7 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadHttpResponse(){
+    func test_Login_BadHttp_Response(){
         
         let JSON: Any? = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
@@ -107,9 +108,9 @@ class Login_ObjectProviderTests: XCTestCase {
                 let networkErrorMessage = (error as! NetworkError).message
                 expect(networkErrorMessage).toNot(beNil())
                 
-                let parserequestuest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
                 let parseTask = JSONParseTask<NotFoundResponse>()
-                let errorResponse = parseTask.execute(request: parserequestuest)
+                let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.code).to(equal(123))
                 expect(errorResponse?.codeMeaning).to(equal("notFound"))
@@ -121,7 +122,7 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadUsername(){
+    func test_Login_BadUsername_Request(){
         
         let JSON: Any? = try? fixtureWithName(name:"login_bad_user_credentials_response")
         
@@ -145,9 +146,9 @@ class Login_ObjectProviderTests: XCTestCase {
                 let networkErrorMessage = (error as! NetworkError).message
                 expect(networkErrorMessage).toNot(beNil())
                                 
-                let parserequestuest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
                 let parseTask = JSONParseTask<SimpleErrorResponse>()
-                let errorResponse = parseTask.execute(request: parserequestuest)
+                let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_grant"))
                 expect(errorResponse?.error).to(equal("User credentials are invalid"))
@@ -159,7 +160,7 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadPassword(){
+    func test_Login_BadPassword_Request(){
         
         let JSON: Any? = try? fixtureWithName(name:"login_bad_user_credentials_response")
         
@@ -183,9 +184,9 @@ class Login_ObjectProviderTests: XCTestCase {
                 let networkErrorMessage = (error as! NetworkError).message
                 expect(networkErrorMessage).toNot(beNil())
                 
-                let parserequestuest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
                 let parseTask = JSONParseTask<SimpleErrorResponse>()
-                let errorResponse = parseTask.execute(request: parserequestuest)
+                let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_grant"))
                 expect(errorResponse?.error).to(equal("User credentials are invalid"))
@@ -197,9 +198,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadClientID(){
+    func test_Login_BadClientID_Request(){
         
-        let JSON: Any? = try? fixtureWithName(name:"login_bad_client_credentials_response")
+        let JSON: Any? = try? fixtureWithName(name:"generic_bad_client_credentials_response")
         
         request = LoginRequest(environment: self.environment,
                                username: goodUsername,
@@ -222,9 +223,9 @@ class Login_ObjectProviderTests: XCTestCase {
                 let networkErrorMessage = (error as! NetworkError).message
                 expect(networkErrorMessage).toNot(beNil())
                 
-                let parserequestuest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
                 let parseTask = JSONParseTask<SimpleErrorResponse>()
-                let errorResponse = parseTask.execute(request: parserequestuest)
+                let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_client"))
                 expect(errorResponse?.error).to(equal("Client credentials are invalid"))
@@ -236,9 +237,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadClientSecret(){
+    func test_Login_BadClientSecret_Request(){
         
-        let JSON: Any? = try? fixtureWithName(name:"login_bad_client_credentials_response")
+        let JSON: Any? = try? fixtureWithName(name:"generic_bad_client_credentials_response")
         
         request = LoginRequest(environment: self.environment,
                                username: goodUsername,
@@ -261,9 +262,9 @@ class Login_ObjectProviderTests: XCTestCase {
                 let networkErrorMessage = (error as! NetworkError).message
                 expect(networkErrorMessage).toNot(beNil())
                 
-                let parserequestuest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
                 let parseTask = JSONParseTask<SimpleErrorResponse>()
-                let errorResponse = parseTask.execute(request: parserequestuest)
+                let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_client"))
                 expect(errorResponse?.error).to(equal("Client credentials are invalid"))

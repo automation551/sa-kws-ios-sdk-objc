@@ -25,7 +25,7 @@ class Login_MappingTests: XCTestCase {
     }
     
     
-    func testLoginResponseSuccess() {
+    func test_Login_Mapping_ResponseSuccess() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"login_success_response")
@@ -38,10 +38,10 @@ class Login_MappingTests: XCTestCase {
     }
     
    
-    func testErrorResponseBadClientCredentials(){
+    func test_Login_Mapping_ErrorResponse_BadClientCredentials(){
         
         var JSON: Any?
-        JSON = try? fixtureWithName(name:"login_bad_client_credentials_response")
+        JSON = try? fixtureWithName(name:"generic_bad_client_credentials_response")
         
         let errorResponse = try? SimpleErrorResponse.decode(JSON!)
         
@@ -51,7 +51,7 @@ class Login_MappingTests: XCTestCase {
         
     }
     
-    func testErrorResponseBadUserCredentials(){
+    func test_Login_Mapping_ErrorResponse_BadUserCredentials(){
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"login_bad_user_credentials_response")
@@ -65,7 +65,7 @@ class Login_MappingTests: XCTestCase {
     }
     
     
-    func testNotFoundResponse() {
+    func test_Login_Mapping_ErrorResponse_NotFound() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")

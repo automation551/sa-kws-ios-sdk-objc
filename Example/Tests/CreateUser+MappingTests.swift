@@ -23,8 +23,23 @@ class CreateUser_MappingTests: XCTestCase {
     }
     
     
+    //Temp access token mapping
+    func test_TempAccessToken_ResponseSuccess() {
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"temp_access_token_success_response")
+        
+        let authResponse = try? AuthResponse.decode(JSON!)
+        
+        expect(authResponse).toNot(beNil())
+        expect(authResponse?.token).to(equal("good_token"))
+        
+    }
     
-    func testCreateUserResponseSuccess() {
+    
+    
+    //User creation mapping
+    func test_CreateUser_ResponseSuccess() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_success_response")
@@ -37,7 +52,7 @@ class CreateUser_MappingTests: XCTestCase {
         
     }
     
-    func testCreateUserBadUsernameResponse(){
+    func test_CreateUser_BadUsername_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_username_response")
         
@@ -52,7 +67,7 @@ class CreateUser_MappingTests: XCTestCase {
         expect(complexErrorResponse?.invalid.username?.errorMessage).to(equal("\"username\" length must be at least 3 characters long"))
     }
     
-    func testCreateUserBadUsernameConflictResponse(){
+    func test_CreateUser_BadUsernameConflict_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_conflict_username_taken_response")
         
@@ -67,7 +82,7 @@ class CreateUser_MappingTests: XCTestCase {
         expect(complexErrorResponse?.invalid.username?.errorMessage).to(equal("username already taken"))
     }
     
-    func testCreateUserBadTokenResponse(){
+    func test_CreateUser_BadTokenResponse(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_token_response")
         
@@ -79,7 +94,7 @@ class CreateUser_MappingTests: XCTestCase {
         
     }
     
-    func testCreateUserBadPasswordResponse(){
+    func test_CreateUser_BadPassword_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_password_response")
         
@@ -94,23 +109,7 @@ class CreateUser_MappingTests: XCTestCase {
         expect(complexErrorResponse?.invalid.password?.errorMessage).to(equal("\"password\" length must be at least 8 characters long"))
     }
     
-    
-    func testCreateUserBadParentEmaildResponse(){
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"create_user_bad_email_response")
-        
-        let complexErrorResponse = try? ComplexErrorResponse.decode(JSON!)
-        
-        expect(complexErrorResponse).toNot(beNil())
-        expect(complexErrorResponse?.code).to(equal(5))
-        expect(complexErrorResponse?.codeMeaning).to(equal("validation"))
-        expect(complexErrorResponse?.errorMessage).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
-        expect(complexErrorResponse?.invalid.parentEmail?.code).to(equal(7))
-        expect(complexErrorResponse?.invalid.parentEmail?.codeMeaning).to(equal("invalidValue"))
-        expect(complexErrorResponse?.invalid.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
-    }
-    
-    func testCreateUserBadDateOfBirthResponse(){
+    func test_CreateUser_BadDateOfBirth_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_dob_response")
         
@@ -126,7 +125,7 @@ class CreateUser_MappingTests: XCTestCase {
     }
     
     
-    func testCreateUserBadCountryResponse(){
+    func test_CreateUser_BadCountry_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_country_response")
         
@@ -141,8 +140,25 @@ class CreateUser_MappingTests: XCTestCase {
         expect(complexErrorResponse?.invalid.country?.errorMessage).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
     }
     
+    func test_CreateUser_BadParentEmail_Response(){
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"create_user_bad_email_response")
+        
+        let complexErrorResponse = try? ComplexErrorResponse.decode(JSON!)
+        
+        expect(complexErrorResponse).toNot(beNil())
+        expect(complexErrorResponse?.code).to(equal(5))
+        expect(complexErrorResponse?.codeMeaning).to(equal("validation"))
+        expect(complexErrorResponse?.errorMessage).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
+        expect(complexErrorResponse?.invalid.parentEmail?.code).to(equal(7))
+        expect(complexErrorResponse?.invalid.parentEmail?.codeMeaning).to(equal("invalidValue"))
+        expect(complexErrorResponse?.invalid.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
+    }
     
-    func testNotFoundResponse() {
+   
+    
+    
+    func test_CreateUser_NotFound_Response() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
