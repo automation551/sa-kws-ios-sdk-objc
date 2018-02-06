@@ -140,16 +140,6 @@
      andParentEmail:(NSString*)parentEmail
         andResponse:(KWSChildrenCreateUserBlock)response {
     
-    //old code here
-    /**
-     [_createUserProcess createWithUsername:username
-     andPassword:password
-     andDateOfBirth:dateOfBirth
-     andCountry:country
-     andParentEmail:parentEmail
-     :response];
-     **/
-    
     
     CreateUserProvider* createUserProvider =[[KWSSDK sharedInstance]
                                              getProviderWithEnvironment:_userKWSNetworkEnvironment
