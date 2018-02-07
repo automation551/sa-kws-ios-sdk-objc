@@ -1,8 +1,8 @@
 //
-//  Login+RequestTests.swift
+//  CreateUser+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 30/01/2018.
+//  Created by Guilherme Mota on 05/02/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -11,16 +11,19 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class Login_RequestTests: XCTestCase {
+class CreateUser_RequestTests: XCTestCase {
     
-    // class or data to test
-    private var request: LoginRequest!
-    
+    //class or data to test
+    private var request: CreateUserRequest!
     private var env: KWSNetworkEnvironment!
+    
     private var username: String!
     private var password: String!
-    private var clientID: String!
-    private var clientSecret: String!
+    private var dateOfBirth: String!
+    private var country: String!
+    private var parentEmail: String!
+    private var token: String!
+    private var appID: Int = 0
     private var method: NetworkMethod!
     private var endpoint: String!
     
@@ -33,37 +36,46 @@ class Login_RequestTests: XCTestCase {
         
         username = "mock_username"
         password = "mock_password"
-        clientID = "mock_client_id"
-        clientSecret = "mock_client_secret"
+        dateOfBirth = "mock_dob"
+        country = "mock_country"
+        parentEmail = "mock_@_email"
+        token = "mock_token"
+        appID = 1
         method = .POST
-        endpoint = "oauth/token"
+        endpoint = "v1/apps/\(appID)/users"
         
         //when
-        request = LoginRequest.init(environment: env,
+        request = CreateUserRequest(environment: env,
                                     username: username,
-                                    password:password,
-                                    clientID:clientID,
-                                    clientSecret:clientSecret)
+                                    password: password,
+                                    dateOfBirth: dateOfBirth,
+                                    country:country,
+                                    parentEmail: parentEmail,
+                                    token: token,
+                                    appID: appID)
+        
+        
         
     }
     
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         request = nil
         env = nil
     }
     
-    
     func testConstantsToBeNotNil(){
         //then
         expect(self.username).toNot(beNil())
         expect(self.password).toNot(beNil())
-        expect(self.clientID).toNot(beNil())
-        expect(self.clientSecret).toNot(beNil())
+        expect(self.dateOfBirth).toNot(beNil())
+        expect(self.country).toNot(beNil())
+        expect(self.parentEmail).toNot(beNil())
+        expect(self.token).toNot(beNil())
+        expect(self.appID).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
-        
     }
     
     func testRequestToBeNotNil(){
@@ -91,19 +103,21 @@ class Login_RequestTests: XCTestCase {
         
         //then
         expect(requestBody).toNot(beNil())
-        expect(requestBody?.count).to(equal(5))
-       
-        expect(requestBody?.keys.contains("grant_type")).to(beTrue())
+        expect(requestBody?.count).to(equal(6))
+        
         expect(requestBody?.keys.contains("username")).to(beTrue())
         expect(requestBody?.keys.contains("password")).to(beTrue())
-        expect(requestBody?.keys.contains("client_id")).to(beTrue())
-        expect(requestBody?.keys.contains("client_secret")).to(beTrue())
+        expect(requestBody?.keys.contains("dateOfBirth")).to(beTrue())
+        expect(requestBody?.keys.contains("country")).to(beTrue())
+        expect(requestBody?.keys.contains("parentEmail")).to(beTrue())
+        expect(requestBody?.keys.contains("authenticate")).to(beTrue())
         
-        expect("password").to(equal((requestBody?["grant_type"] as! String)))
         expect(self.username).to(equal((requestBody?["username"] as! String)))
         expect(self.password).to(equal((requestBody?["password"] as! String)))
-        expect(self.clientID).to(equal((requestBody?["client_id"] as! String)))
-        expect(self.clientSecret).to(equal((requestBody?["client_secret"] as! String)))
+        expect(self.dateOfBirth).to(equal((requestBody?["dateOfBirth"] as! String)))
+        expect(self.country).to(equal((requestBody?["country"] as! String)))
+        expect(self.parentEmail).to(equal((requestBody?["parentEmail"] as! String)))
+        expect(true).to(equal((requestBody?["authenticate"] as! Bool)))
     }
     
     public func testRequestHeader() {
@@ -114,22 +128,27 @@ class Login_RequestTests: XCTestCase {
         expect(requestHeaders?.count).to(equal(1))
         
         expect(requestHeaders?.keys.contains("Content-Type")).to(beTrue())
-        expect("application/x-www-form-urlencoded").to(equal(requestHeaders?["Content-Type"]))
+        expect("application/json").to(equal(requestHeaders?["Content-Type"]))
         
         expect(requestHeaders?.keys.contains("Authorizarion")).to(beFalse())
     }
     
-    func testRequestQueryToBeNull () {
+    
+    func testRequestQuery() {
+        let requestQuery = self.request.query
+        
         //then
-        expect(self.request.query).to(beNil())
+        expect(requestQuery).toNot(beNil())
+        
+        expect(requestQuery?.keys.contains("access_token")).to(beTrue())
+        
+        expect(self.token).to(equal((requestQuery?["access_token"] as! String)))
     }
     
-    func testRequestFormUrlEncodeToBeTrue(){
+    func testRequestFormUrlEncodeToBeFalse(){
         //then
-        expect(self.request.formEncodeUrls).to(beTrue())
+        expect(self.request.formEncodeUrls).to(beFalse())
     }
-    
-    
     
     
     

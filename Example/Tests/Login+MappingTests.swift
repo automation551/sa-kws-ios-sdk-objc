@@ -25,28 +25,57 @@ class Login_MappingTests: XCTestCase {
     }
     
     
-    func testLoginResponseMapping() {
+    func test_Login_Mapping_ResponseSuccess() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"login_success_response")
         
-        let loginResponse = try? LoginResponse.decode(JSON!)
+        let loginResponse = try? AuthResponse.decode(JSON!)
         
         expect(loginResponse).toNot(beNil())
         expect(loginResponse?.token).to(equal("good_token"))
         
     }
     
-    func testLoginResponseMappingEmptyResponse() {
-        
-        let JSON = [
-            "access_token": NSNull()
-            ] as [String : Any]
-        
-        let loginResponse = try? LoginResponse.decode(JSON)
-        
-        expect(loginResponse).toNot(beNil())
-    }
    
+    func test_Login_Mapping_ErrorResponse_BadClientCredentials(){
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"generic_bad_client_credentials_response")
+        
+        let errorResponse = try? SimpleErrorResponse.decode(JSON!)
+        
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.errorCode).to(equal("invalid_client"))
+        expect(errorResponse?.error).to(equal("Client credentials are invalid"))
+        
+    }
+    
+    func test_Login_Mapping_ErrorResponse_BadUserCredentials(){
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"login_bad_user_credentials_response")
+        
+        let errorResponse = try? SimpleErrorResponse.decode(JSON!)
+        
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.errorCode).to(equal("invalid_grant"))
+        expect(errorResponse?.error).to(equal("User credentials are invalid"))
+        
+    }
+    
+    
+    func test_Login_Mapping_ErrorResponse_NotFound() {
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
+        
+        let notFoundResponse = try? NotFoundResponse.decode(JSON!)
+        
+        expect(notFoundResponse).toNot(beNil())
+        expect(notFoundResponse?.code).to(equal(123))
+        expect(notFoundResponse?.codeMeaning).to(equal("notFound"))
+        
+    }
     
 }

@@ -38,7 +38,6 @@ class Login_ObjectProviderTests: XCTestCase {
         //given
         self.environment = GoodMockNetworkEnvironment()
         
-        
         //when
         loginResource = LoginProvider.init(environment: self.environment)
         
@@ -47,20 +46,24 @@ class Login_ObjectProviderTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
+        loginResource = nil
+        request = nil
+        environment = nil
     }
     
-    func testLoginValidRequestAndResponse(){
+    func test_Login_ValidRequestAndResponse(){
         
         let JSON: Any? = try? fixtureWithName(name:"login_success_response")
         
-        let req = LoginRequest(environment: self.environment,
+        request = LoginRequest(environment: self.environment,
                                username: goodUsername,
                                password: goodPassword,
                                clientID: self.environment.mobileKey,
                                clientSecret: self.environment.appID)
         
         //when
-        stub(http(.post, uri: "\(req.environment.domain + req.endpoint)") , json(JSON!))
+        let uri = "\(request.environment.domain + request.endpoint)"
+        stub(http(.post, uri: uri ) , json(JSON!))
         
         waitUntil { done in
             
@@ -70,7 +73,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 
                 //then
                 expect(loginResponse).toNot(beNil())
-                expect(loginResponse?.token).to(equal(self.goodToken))
+                expect(loginResponse?.token).to(equal("good_token"))
                                             
                 expect(error).to(beNil())
                                             
@@ -81,18 +84,18 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadHttpResponse(){
+    func test_Login_BadHttp_Response(){
         
         let JSON: Any? = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let req = LoginRequest(environment: self.environment,
+        request = LoginRequest(environment: self.environment,
                                username: goodUsername,
                                password: goodPassword,
                                clientID: self.environment.mobileKey,
                                clientSecret: self.environment.appID)
         
         //when
-        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 404))
+        stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 404))
         
         waitUntil { done in
             
@@ -119,18 +122,18 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadUsername(){
+    func test_Login_BadUsername_Request(){
         
         let JSON: Any? = try? fixtureWithName(name:"login_bad_user_credentials_response")
         
-        let req = LoginRequest(environment: self.environment,
+        request = LoginRequest(environment: self.environment,
                                username: badUsername,
                                password: goodPassword,
                                clientID: self.environment.mobileKey,
                                clientSecret: self.environment.appID)
         
         //when
-        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 400))
+        stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
             
@@ -144,7 +147,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
+                let parseTask = JSONParseTask<SimpleErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_grant"))
@@ -157,18 +160,18 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadPassword(){
+    func test_Login_BadPassword_Request(){
         
         let JSON: Any? = try? fixtureWithName(name:"login_bad_user_credentials_response")
         
-        let req = LoginRequest(environment: self.environment,
+        request = LoginRequest(environment: self.environment,
                                username: goodUsername,
                                password: badPassword,
                                clientID: self.environment.mobileKey,
                                clientSecret: self.environment.appID)
         
         //when
-        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 400))
+        stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
             
@@ -182,7 +185,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
+                let parseTask = JSONParseTask<SimpleErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_grant"))
@@ -195,18 +198,18 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadClientID(){
+    func test_Login_BadClientID_Request(){
         
-        let JSON: Any? = try? fixtureWithName(name:"login_bad_client_credentials_response")
+        let JSON: Any? = try? fixtureWithName(name:"generic_bad_client_credentials_response")
         
-        let req = LoginRequest(environment: self.environment,
+        request = LoginRequest(environment: self.environment,
                                username: goodUsername,
                                password: goodPassword,
                                clientID: badClientID,
                                clientSecret: self.environment.appID)
         
         //when
-        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 400))
+        stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
             
@@ -221,7 +224,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
+                let parseTask = JSONParseTask<SimpleErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_client"))
@@ -234,18 +237,18 @@ class Login_ObjectProviderTests: XCTestCase {
         
     }
     
-    func testLoginBadClientSecret(){
+    func test_Login_BadClientSecret_Request(){
         
-        let JSON: Any? = try? fixtureWithName(name:"login_bad_client_credentials_response")
+        let JSON: Any? = try? fixtureWithName(name:"generic_bad_client_credentials_response")
         
-        let req = LoginRequest(environment: self.environment,
+        request = LoginRequest(environment: self.environment,
                                username: goodUsername,
                                password: goodPassword,
                                clientID: self.environment.mobileKey,
                                clientSecret: badClientSecret)
         
         //when
-        stub(http(.post, uri: req.environment.domain + req.endpoint), json(JSON!, status: 400))
+        stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
             
@@ -260,7 +263,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
+                let parseTask = JSONParseTask<SimpleErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_client"))

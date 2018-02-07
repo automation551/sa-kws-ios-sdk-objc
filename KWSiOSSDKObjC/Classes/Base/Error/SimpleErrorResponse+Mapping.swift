@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension ErrorResponse: Decodable {
+extension SimpleErrorResponse: Decodable {
     
-    public static func decode(_ json: Any) throws -> ErrorResponse {
+    public static func decode(_ json: Any) throws -> SimpleErrorResponse {
         
-        return try ErrorResponse (
+        return try SimpleErrorResponse (
             errorCode:  try json => "ErrorCode",
             error:      try json => "Error"
             

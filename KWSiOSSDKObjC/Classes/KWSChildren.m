@@ -139,12 +139,29 @@
          andCountry:(NSString*)country
      andParentEmail:(NSString*)parentEmail
         andResponse:(KWSChildrenCreateUserBlock)response {
-    [_createUserProcess createWithUsername:username
-                               andPassword:password
-                            andDateOfBirth:dateOfBirth
-                                andCountry:country
-                            andParentEmail:parentEmail
-                                          :response];
+    
+    
+    CreateUserProvider* createUserProvider =[[KWSSDK sharedInstance]
+                                             getProviderWithEnvironment:_userKWSNetworkEnvironment
+                                             type:NSStringFromClass([CreateUserProvider class])];
+    
+    
+    if ([createUserProvider isKindOfClass: [CreateUserProvider class]]){
+        
+        [createUserProvider createUserWithUsername:username password:password dateOfBirth:dateOfBirth country:country parentEmail:parentEmail callback:^(KWSCreateUserResponse * createUserResponse, NSError * error) {
+            
+            if(createUserResponse != nil && [createUserResponse token] != nil ){
+                response(KWSChildren_CreateUser_Success);
+            }else{
+                response(KWSChildren_CreateUser_InvalidOperation);
+            }
+        }];
+        
+    }else{
+        NSLog(@"An error occured getting the provider!");
+    }
+    
+    
 }
 
 - (void) loginUser:(NSString *)username
@@ -153,9 +170,9 @@
     
     
     LoginProvider* loginProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
-                               type:NSStringFromClass([LoginProvider class])];
-
-    if([loginProvider isKindOfClass: [LoginProvider class]]){
+                                                                                  type:NSStringFromClass([LoginProvider class])];
+    
+    if ([loginProvider isKindOfClass: [LoginProvider class]]){
         [loginProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
             
             if(loginResponse != nil && [loginResponse token] != nil
@@ -166,7 +183,7 @@
             }
             
         }];
-    }else{
+    } else {
         NSLog(@"An error occured getting the provider!");
     }
 }
