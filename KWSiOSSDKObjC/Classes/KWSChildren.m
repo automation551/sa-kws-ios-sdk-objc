@@ -53,6 +53,8 @@
 //network environment
 @property (nonatomic, strong) UserKWSNetworkEnvironment* userKWSNetworkEnvironment;
 
+#define kProviderErrorMessage @"An error occured getting the provider!"
+
 @end
 
 @implementation KWSChildren
@@ -120,7 +122,7 @@
             [_defs synchronize];
         }
     } else {
-        NSLog(@"KWS started without a logged user since none was found");
+        NSLog(kProviderErrorMessage);
     }
 }
 
@@ -158,7 +160,7 @@
         }];
         
     }else{
-        NSLog(@"An error occured getting the provider!");
+        NSLog(kProviderErrorMessage);
     }
     
     
@@ -184,7 +186,7 @@
             
         }];
     } else {
-        NSLog(@"An error occured getting the provider!");
+        NSLog(kProviderErrorMessage);
     }
 }
 
@@ -214,11 +216,30 @@
 // Random name
 
 - (void) getRandomUsername:(KWSChildrenGetRandomUsernameBlock)response {
-    //this is the correct one
-    [_randomName getRandomName:response];
+    //old version
+    //    [_randomName getRandomName:response];
     
-    //this is a test
-    //    [self getTestSingleton];
+    //new version
+    
+    RandomUsernameProvider* randomUsernameProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
+                                                                                                    type:NSStringFromClass([RandomUsernameProvider class])];
+    
+    if ([randomUsernameProvider isKindOfClass: [RandomUsernameProvider class]]){
+        
+        [randomUsernameProvider getRandomUsernameWithCallback:^(KWSRandomUsernameResponse *randomUsernameResponse, NSError * error) {
+            
+            if(randomUsernameResponse != nil && [randomUsernameResponse randomUsername] != nil && [[randomUsernameResponse randomUsername]length] != 0 && error == nil){
+                response ([randomUsernameResponse randomUsername]);
+            }else{
+                response (nil);
+            }
+            
+        }];
+    } else {
+        NSLog(kProviderErrorMessage);
+    }
+    
+    
     
 }
 
