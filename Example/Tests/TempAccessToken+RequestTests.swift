@@ -1,8 +1,8 @@
 //
-//  Login+RequestTests.swift
+//  TempAccessToken+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 30/01/2018.
+//  Created by Guilherme Mota on 07/02/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -11,19 +11,19 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class Login_RequestTests: XCTestCase {
+class TempAccessToken_RequestTests: XCTestCase {
     
-    // class or data to test
-    private var request: LoginRequest!
     
+    //class or data to test
+    private var request: TempAccessTokenRequest!
     private var env: KWSNetworkEnvironment!
-    private var username: String!
-    private var password: String!
+    
+    
     private var clientID: String!
     private var clientSecret: String!
+    
     private var method: NetworkMethod!
     private var endpoint: String!
-    
     
     override func setUp() {
         super.setUp()
@@ -31,39 +31,32 @@ class Login_RequestTests: XCTestCase {
         // given
         env = GoodMockNetworkEnvironment()
         
-        username = "mock_username"
-        password = "mock_password"
         clientID = "mock_client_id"
         clientSecret = "mock_client_secret"
+        
         method = .POST
         endpoint = "oauth/token"
         
         //when
-        request = LoginRequest.init(environment: env,
-                                    username: username,
-                                    password:password,
-                                    clientID:clientID,
-                                    clientSecret:clientSecret)
+        request = TempAccessTokenRequest(environment: env,
+                                         clientID:clientID,
+                                         clientSecret:clientSecret)
         
     }
     
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         request = nil
         env = nil
     }
     
-    
     func testConstantsToBeNotNil(){
         //then
-        expect(self.username).toNot(beNil())
-        expect(self.password).toNot(beNil())
         expect(self.clientID).toNot(beNil())
         expect(self.clientSecret).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
-        
     }
     
     func testRequestToBeNotNil(){
@@ -91,17 +84,13 @@ class Login_RequestTests: XCTestCase {
         
         //then
         expect(requestBody).toNot(beNil())
-        expect(requestBody?.count).to(equal(5))
-       
+        expect(requestBody?.count).to(equal(3))
+        
         expect(requestBody?.keys.contains("grant_type")).to(beTrue())
-        expect(requestBody?.keys.contains("username")).to(beTrue())
-        expect(requestBody?.keys.contains("password")).to(beTrue())
         expect(requestBody?.keys.contains("client_id")).to(beTrue())
         expect(requestBody?.keys.contains("client_secret")).to(beTrue())
         
-        expect("password").to(equal((requestBody?["grant_type"] as! String)))
-        expect(self.username).to(equal((requestBody?["username"] as! String)))
-        expect(self.password).to(equal((requestBody?["password"] as! String)))
+        expect("client_credentials").to(equal((requestBody?["grant_type"] as! String)))
         expect(self.clientID).to(equal((requestBody?["client_id"] as! String)))
         expect(self.clientSecret).to(equal((requestBody?["client_secret"] as! String)))
     }
@@ -119,7 +108,8 @@ class Login_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorizarion")).to(beFalse())
     }
     
-    func testRequestQueryToBeNil () {
+    
+    func testRequestQueryToBeNil() {
         //then
         expect(self.request.query).to(beNil())
     }
@@ -128,9 +118,5 @@ class Login_RequestTests: XCTestCase {
         //then
         expect(self.request.formEncodeUrls).to(beTrue())
     }
-    
-    
-    
-    
     
 }

@@ -1,8 +1,8 @@
 //
-//  LoginTests.swift
+//  RandomUsernameTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 30/01/2018.
+//  Created by Guilherme Mota on 07/02/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -11,10 +11,10 @@ import Nimble
 import KWSiOSSDKObjC
 
 
-class LoginTests: XCTestCase {
-  
-    let goodToken: String = "good_token"
-    let badToken: String = "bad_token"
+class RandomUsernameTests: XCTestCase {
+
+    let goodRandomUsername: String = "good_random_username"
+    let badRandomUsername: String = "bad_random_username"
     
     override func setUp() {
         super.setUp()
@@ -26,17 +26,16 @@ class LoginTests: XCTestCase {
         super.tearDown()
     }
     
-    
-    func testLoginEquality() {
-        let foo = AuthResponse(token: goodToken)
-        let bar = AuthResponse(token: goodToken)
+    func testRandomUsernameEquality() {
+        let foo = RandomUsernameResponse(randomUsername: goodRandomUsername)
+        let bar = RandomUsernameResponse(randomUsername: goodRandomUsername)
         
         expect(foo).to(equal(bar))
     }
     
     func testLoginNotEquality() {
-        let foo = AuthResponse(token: goodToken)
-        let bar = AuthResponse(token: badToken)
+        let foo = RandomUsernameResponse(randomUsername: goodRandomUsername)
+        let bar = RandomUsernameResponse(randomUsername: badRandomUsername)
         
         expect(foo).toNot(equal(bar))
     }
@@ -44,8 +43,8 @@ class LoginTests: XCTestCase {
     // MARK: Objective-C
     
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = AuthResponse(token: goodToken)
-        let bar = AuthResponse(token: badToken)
+        let foo = RandomUsernameResponse(randomUsername: goodRandomUsername)
+        let bar = RandomUsernameResponse(randomUsername: badRandomUsername)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -54,10 +53,10 @@ class LoginTests: XCTestCase {
     }
     
     func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = AuthResponse(token: goodToken)
+        let foo = RandomUsernameResponse(randomUsername: goodRandomUsername)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())
     }
-    
+
 }
