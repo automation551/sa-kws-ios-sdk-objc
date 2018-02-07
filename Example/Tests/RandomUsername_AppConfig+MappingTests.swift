@@ -15,6 +15,7 @@ import KWSiOSSDKObjC
 
 class RandomUsername_AppConfig_MappingTests : XCTest{
     
+  
     
     
 }

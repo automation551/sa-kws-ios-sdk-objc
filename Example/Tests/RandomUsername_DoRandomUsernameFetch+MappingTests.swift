@@ -15,6 +15,26 @@ import KWSiOSSDKObjC
 
 class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTest{
     
+    override func setUp() {
+        super.setUp()
+    }
     
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+    
+    //Random Username fetch mapping
+    func test_RandomUsername_DoRandomUsernameFetch_ResponseSuccess() {
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"random_username_success_response")
+        
+        let randomUsernameResponse = JSON.debugDescription
+        
+        expect(randomUsernameResponse).toNot(beNil())
+        expect(randomUsernameResponse).to(equal("coolrandomusername123"))
+        
+    }
     
 }
