@@ -70,7 +70,7 @@ class Login_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let notFoundResponse = try? NotFoundResponse.decode(JSON!)
+        let notFoundResponse = try? ComplexErrorResponse.decode(JSON!)
         
         expect(notFoundResponse).toNot(beNil())
         expect(notFoundResponse?.code).to(equal(123))

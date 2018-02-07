@@ -16,6 +16,8 @@ public final class InvalidError: NSObject, Error {
     public let parentEmail:     SpecificInvalidError?
     public let password:        SpecificInvalidError?
     public let username:        SpecificInvalidError?
+    public let oauthClientId:   SpecificInvalidError?
+    
     
     
     // MARK: - Initialization
@@ -26,7 +28,8 @@ public final class InvalidError: NSObject, Error {
         country:        SpecificInvalidError? = nil,
         parentEmail:    SpecificInvalidError? = nil,
         password:   SpecificInvalidError? = nil,
-        username:   SpecificInvalidError? = nil
+        username:   SpecificInvalidError? = nil,
+        oauthClientId:   SpecificInvalidError? = nil
         
         ) {
         
@@ -35,6 +38,7 @@ public final class InvalidError: NSObject, Error {
         self.parentEmail = parentEmail
         self.password = password
         self.username = username
+        self.oauthClientId = oauthClientId
         
         
     }

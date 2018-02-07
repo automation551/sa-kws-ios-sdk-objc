@@ -18,7 +18,9 @@ extension InvalidError: Decodable {
             country:                try json =>? "country",
             parentEmail:            try json =>? "parentEmail",
             password:               try json =>? "password",
-            username:               try json =>? "username"
+            username:               try json =>? "username",
+            oauthClientId:          try json =>? "oauthClientId"
+            
             
         )
     }

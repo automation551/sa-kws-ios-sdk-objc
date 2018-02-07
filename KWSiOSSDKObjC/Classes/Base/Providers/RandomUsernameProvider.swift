@@ -22,7 +22,7 @@ import SAMobileBase
     
     public func getRandomUsername(callback: @escaping (RandomUsernameResponse?, Error?) -> ()) {
         
-        getAppConfig(environment: environment){ appConfigResponse, error in
+        getAppConfigDetails(environment: environment){ appConfigResponse, error in
             
             if (appConfigResponse?.app != nil && error == nil) {
                 
@@ -39,7 +39,7 @@ import SAMobileBase
     }
     
     
-    public func getAppConfig(environment: KWSNetworkEnvironment,
+    public func getAppConfigDetails(environment: KWSNetworkEnvironment,
                              callback: @escaping (AppConfigResponse?, Error?) -> ()){
         
         let getAppConfigNetworkRequest = AppConfigRequest(environment: environment,
