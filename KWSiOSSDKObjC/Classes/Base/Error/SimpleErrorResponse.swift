@@ -11,15 +11,15 @@ import UIKit
 @objc(KWSErrorResponse)
 public final class SimpleErrorResponse: NSObject, Error {
     
-    public let errorCode: String
-    public let error: String
+    public let errorCode: String?
+    public let error: String?
     
     // MARK: - Initialization
     
     public required init(
         
-        errorCode: String       = "",
-        error: String           = ""
+        errorCode: String?       = "",
+        error: String?           = ""
         
         ) {
         

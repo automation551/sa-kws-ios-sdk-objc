@@ -29,6 +29,8 @@ import SAMobileBase
             return LoginProvider(environment: environment)
         case is CreateUserProvider.Type:
             return CreateUserProvider(environment: environment)
+        case is RandomUsernameProvider.Type:
+            return RandomUsernameProvider(environment: environment)
         //todo other providers
         default:
             return KWSBaseError.ServiceError as AnyObject
@@ -41,7 +43,10 @@ import SAMobileBase
             return LoginProvider(environment: environment) as? T
         } else if (value == CreateUserService.self){
             return CreateUserProvider(environment: environment) as? T
+        } else if (value == RandomUsernameService.self){
+            return RandomUsernameProvider(environment: environment) as? T
         } else {
+            
             return nil
         }
     }

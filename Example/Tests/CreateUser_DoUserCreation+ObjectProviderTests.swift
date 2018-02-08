@@ -12,7 +12,7 @@ import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
 
-class CreateUser_ObjectProviderTests: XCTestCase {
+class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
     
     //class or data to test
     private var createUserResource: CreateUserProvider!
@@ -54,111 +54,12 @@ class CreateUser_ObjectProviderTests: XCTestCase {
         
         
     }
-    
     override func tearDown() {
         super.tearDown()
+        createUserResource = nil
+        environment = nil
     }
-    
-    //Temp Access Token
-    func test_TempAccessToken_Valid_RequestAndResponse() {
-        
-        let JSON: Any? = try? fixtureWithName(name: "temp_access_token_success_response")
-        
-        let request = TempAccessTokenRequest(environment: self.environment,
-                                             clientID: self.environment.mobileKey,
-                                             clientSecret: self.environment.appID)
-        
-        let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.post, uri: uri), json(JSON!))
-        
-        waitUntil { done in
-            
-            self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       callback: { tempAccessTokenResponse, error in
-                                                        
-                                                        expect(tempAccessTokenResponse).toNot(beNil())
-                                                         expect(tempAccessTokenResponse?.token).to(equal("good_token"))
-                                                        expect(error).to(beNil())
-                                                        done()
-                                                        
-            })
-        }
-        
-    }
-    
-    func test_TempAccessToken_BadGrantType_Request() {
-        
-        let JSON: Any? = try? fixtureWithName(name: "generic_missing_grant_type_response")
-        
-        let request = TempAccessTokenRequest(environment: self.environment,
-                                             clientID: "123",
-                                             clientSecret: "321")
-        
-        let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.post, uri: uri), json(JSON!, status: 400))
-        
-        waitUntil { done in
-            
-            self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       callback: { tempAccessTokenResponse, error in
-                                                        
-                                                        expect(tempAccessTokenResponse).to(beNil())
-                                                        
-                                                        expect(error).toNot(beNil())
-                                                        let networkErrorMessage = (error as! NetworkError).message
-                                                        expect(networkErrorMessage).toNot(beNil())
-                                                        
-                                                        let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                        let parseTask = JSONParseTask<SimpleErrorResponse>()
-                                                        let errorResponse = parseTask.execute(request: parseRequest)
-                                                        
-                                                        expect(errorResponse).toNot(beNil())
-                                                        expect(errorResponse?.errorCode).to(equal("invalid_request"))
-                                                        expect(errorResponse?.error).to(equal("Invalid or missing grant_type parameter"))
-                                                        done()
-                                                        
-            })
-        }
-        
-    }
-    
-    
-    func test_TempAccessToken_BadClientCredentials_Request() {
-        
-        let JSON: Any? = try? fixtureWithName(name: "generic_bad_client_credentials_response")
-        
-        let request = TempAccessTokenRequest(environment: self.environment,
-                                             clientID: "123",
-                                             clientSecret: "321")
-        
-        let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.post, uri: uri), json(JSON!, status: 400))
-        
-        waitUntil { done in
-            
-            self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       callback: { tempAccessTokenResponse, error in
-                                                        
-                                                        expect(tempAccessTokenResponse).to(beNil())
-                                                        
-                                                        expect(error).toNot(beNil())
-                                                        let networkErrorMessage = (error as! NetworkError).message
-                                                        expect(networkErrorMessage).toNot(beNil())
-                                                        
-                                                        let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                        let parseTask = JSONParseTask<SimpleErrorResponse>()
-                                                        let errorResponse = parseTask.execute(request: parseRequest)
-                                                        
-                                                        expect(errorResponse).toNot(beNil())
-                                                        expect(errorResponse?.errorCode).to(equal("invalid_client"))
-                                                        expect(errorResponse?.error).to(equal("Client credentials are invalid"))
-                                                        done()
-                                                        
-            })
-        }
-        
-    }
-    
+
     
     //User Creation
     func test_CreateUser_ValidRequestAndResponse() {
@@ -287,7 +188,7 @@ class CreateUser_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<NotFoundResponse>()
+                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse?.code).to(equal(123))
@@ -343,9 +244,9 @@ class CreateUser_ObjectProviderTests: XCTestCase {
                                                     expect(errorResponse?.code).to(equal(10))
                                                     expect(errorResponse?.codeMeaning).to(equal("conflict"))
                                                     expect(errorResponse?.errorMessage).to(equal("username already taken"))
-                                                    expect(errorResponse?.invalid.username?.code).to(equal(10))
-                                                    expect(errorResponse?.invalid.username?.codeMeaning).to(equal("conflict"))
-                                                    expect(errorResponse?.invalid.username?.errorMessage).to(equal("username already taken"))
+                                                    expect(errorResponse?.invalid?.username?.code).to(equal(10))
+                                                    expect(errorResponse?.invalid?.username?.codeMeaning).to(equal("conflict"))
+                                                    expect(errorResponse?.invalid?.username?.errorMessage).to(equal("username already taken"))
                                                     
                                                     done()
                                                     
@@ -396,9 +297,9 @@ class CreateUser_ObjectProviderTests: XCTestCase {
                                                     expect(errorResponse?.code).to(equal(5))
                                                     expect(errorResponse?.codeMeaning).to(equal("validation"))
                                                     expect(errorResponse?.errorMessage).to(equal("child \"username\" fails because [\"username\" length must be at least 3 characters long]"))
-                                                    expect(errorResponse?.invalid.username?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid.username?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid.username?.errorMessage).to(equal("\"username\" length must be at least 3 characters long"))
+                                                    expect(errorResponse?.invalid?.username?.code).to(equal(7))
+                                                    expect(errorResponse?.invalid?.username?.codeMeaning).to(equal("invalidValue"))
+                                                    expect(errorResponse?.invalid?.username?.errorMessage).to(equal("\"username\" length must be at least 3 characters long"))
                                                     
                                                     done()
                                                     
@@ -449,9 +350,9 @@ class CreateUser_ObjectProviderTests: XCTestCase {
                                                     expect(errorResponse?.code).to(equal(5))
                                                     expect(errorResponse?.codeMeaning).to(equal("validation"))
                                                     expect(errorResponse?.errorMessage).to(equal("child \"password\" fails because [\"password\" length must be at least 8 characters long]"))
-                                                    expect(errorResponse?.invalid.password?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid.password?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid.password?.errorMessage).to(equal("\"password\" length must be at least 8 characters long"))
+                                                    expect(errorResponse?.invalid?.password?.code).to(equal(7))
+                                                    expect(errorResponse?.invalid?.password?.codeMeaning).to(equal("invalidValue"))
+                                                    expect(errorResponse?.invalid?.password?.errorMessage).to(equal("\"password\" length must be at least 8 characters long"))
                                                     
                                                     done()
                                                     
@@ -502,9 +403,9 @@ class CreateUser_ObjectProviderTests: XCTestCase {
                                                     expect(errorResponse?.code).to(equal(5))
                                                     expect(errorResponse?.codeMeaning).to(equal("validation"))
                                                     expect(errorResponse?.errorMessage).to(equal("child \"dateOfBirth\" fails because [\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/]"))
-                                                    expect(errorResponse?.invalid.dateOfBirth?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid.dateOfBirth?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid.dateOfBirth?.errorMessage).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
+                                                    expect(errorResponse?.invalid?.dateOfBirth?.code).to(equal(7))
+                                                    expect(errorResponse?.invalid?.dateOfBirth?.codeMeaning).to(equal("invalidValue"))
+                                                    expect(errorResponse?.invalid?.dateOfBirth?.errorMessage).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
                                                     
                                                     done()
                                                     
@@ -555,9 +456,9 @@ class CreateUser_ObjectProviderTests: XCTestCase {
                                                     expect(errorResponse?.code).to(equal(5))
                                                     expect(errorResponse?.codeMeaning).to(equal("validation"))
                                                     expect(errorResponse?.errorMessage).to(equal("child \"country\" fails because [\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/]"))
-                                                    expect(errorResponse?.invalid.country?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid.country?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid.country?.errorMessage).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
+                                                    expect(errorResponse?.invalid?.country?.code).to(equal(7))
+                                                    expect(errorResponse?.invalid?.country?.codeMeaning).to(equal("invalidValue"))
+                                                    expect(errorResponse?.invalid?.country?.errorMessage).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
                                                     
                                                     done()
                                                     
@@ -609,9 +510,9 @@ class CreateUser_ObjectProviderTests: XCTestCase {
                                                     expect(errorResponse?.code).to(equal(5))
                                                     expect(errorResponse?.codeMeaning).to(equal("validation"))
                                                     expect(errorResponse?.errorMessage).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
-                                                    expect(errorResponse?.invalid.parentEmail?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid.parentEmail?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
+                                                    expect(errorResponse?.invalid?.parentEmail?.code).to(equal(7))
+                                                    expect(errorResponse?.invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
+                                                    expect(errorResponse?.invalid?.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
                                                     
                                                     done()
                                                     

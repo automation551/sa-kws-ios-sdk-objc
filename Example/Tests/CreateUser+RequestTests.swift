@@ -139,6 +139,7 @@ class CreateUser_RequestTests: XCTestCase {
         
         //then
         expect(requestQuery).toNot(beNil())
+        expect(requestQuery?.count).to(equal(1))
         
         expect(requestQuery?.keys.contains("access_token")).to(beTrue())
         

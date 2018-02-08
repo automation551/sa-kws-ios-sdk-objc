@@ -1,0 +1,12 @@
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"oauthClientId\" fails because [\"oauthClientId\" is required]",
+    "invalid": {
+        "oauthClientId": {
+            "code": 6,
+            "codeMeaning": "missing",
+            "errorMessage": "\"oauthClientId\" is required"
+        }
+    }
+}

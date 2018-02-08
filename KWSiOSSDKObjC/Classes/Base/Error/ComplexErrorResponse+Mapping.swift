@@ -14,10 +14,10 @@ extension ComplexErrorResponse: Decodable {
     public static func decode(_ json: Any) throws -> ComplexErrorResponse {
         
         return try ComplexErrorResponse (
-            code:               try json => "code",
-            codeMeaning:        try json => "codeMeaning",
-            errorMessage:       try json => "errorMessage",
-            invalid:            try json => "invalid"
+            code:               try json =>? "code",
+            codeMeaning:        try json =>? "codeMeaning",
+            errorMessage:       try json =>? "errorMessage",
+            invalid:            try json =>? "invalid"
             
         )
     }
