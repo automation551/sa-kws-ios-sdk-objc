@@ -49,24 +49,65 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
         
         let uri = "\(request.environment.domain + request.endpoint)"
         
-        //TODO find a way of reading string in stub
-//        stub(http(.get, uri: uri), json(JSON!))
-//
-//        waitUntil { done in
-//
-//            self.resource.fetchRandomUsernameFromBackend(environment: self.environment,appID: self.goodAppID, callback: { response, error in
-//
-//                //then
-//                expect(response).toNot(beNil())
-//
-//
-//
-//                expect(error).to(beNil())
-//
-//                done()
-//            })
-//
-//        }
+        
+        stub(http(.get, uri: uri), json(JSON!))
+        
+        waitUntil { done in
+
+            self.resource.fetchRandomUsernameFromBackend(environment: self.environment,appID: self.goodAppID, callback: { response, error in
+
+                //then
+                expect(response).toNot(beNil())
+                
+                expect(response?.randomUsername).toNot(beNil())
+                expect(response?.randomUsername).to(equal("{randomUsername:coolrandomusername123}"))
+
+                expect(error).to(beNil())
+
+                done()
+            })
+
+        }
+        
+    }
+    
+    
+    func test_RandomUsername_DoRandomUsernameFetch_NotFound_Response(){
+        
+        let JSON: Any? = try? fixtureWithName(name: "generic_simpler_not_found_response")
+        
+        let request = RandomUsernameRequest(environment: self.environment,
+                                            appID: goodAppID)
+        
+        let uri = "\(request.environment.domain + request.endpoint)"
+        
+        
+        stub(http(.get, uri: uri), json(JSON!, status: 404))
+        
+        waitUntil { done in
+            
+            self.resource.fetchRandomUsernameFromBackend(environment: self.environment,appID: self.goodAppID, callback: { response, error in
+                
+                //then
+                expect(response).to(beNil())
+                
+                expect(error).toNot(beNil())
+                
+                let networkErrorMessage = (error as! NetworkError).message
+                expect(networkErrorMessage).toNot(beNil())
+                
+                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
+                let parseTask = JSONParseTask<ComplexErrorResponse>()
+                let errorResponse = parseTask.execute(request: parseRequest)
+                
+                expect(errorResponse).toNot(beNil())
+                expect(errorResponse?.code).to(equal(123))
+                expect(errorResponse?.codeMeaning).to(equal("notFound"))
+                
+                done()
+            })
+            
+        }
         
     }
     

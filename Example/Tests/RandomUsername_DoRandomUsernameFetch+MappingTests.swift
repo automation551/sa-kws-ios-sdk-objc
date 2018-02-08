@@ -13,6 +13,7 @@ import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 
+
 class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
     
     override func setUp() {
@@ -30,10 +31,13 @@ class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"random_username_success_response")
         
-        let randomUsernameResponse = JSON as! String
+        //note that the response for Random Username is a plain string
+        //a `fake` mocked response was added in a JSON format
         
-        expect(randomUsernameResponse).toNot(beNil())
-        expect(randomUsernameResponse).to(equal("coolrandomusername123"))
+        let randomUsernameFakeResponse = try? RandomUsernameFakeResponse.decode(JSON!)
+        
+        expect(randomUsernameFakeResponse).toNot(beNil())
+        expect(randomUsernameFakeResponse?.randomUsername).to(equal("coolrandomusername123"))
         
     }
     

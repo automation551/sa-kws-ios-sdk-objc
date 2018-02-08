@@ -49,6 +49,8 @@
 		9C80FD3720285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80FD3620285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift */; };
 		9C80FD3920285F46003BD328 /* CreateUser+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80FD3820285F46003BD328 /* CreateUser+RequestTests.swift */; };
 		9C80FD472028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80FD462028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift */; };
+		9CDBB3BE202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBB3BD202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift */; };
+		9CDBB3C0202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBB3BF202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,8 @@
 		9C80FD3620285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_DoUserCreation+MappingTests.swift"; sourceTree = "<group>"; };
 		9C80FD3820285F46003BD328 /* CreateUser+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser+RequestTests.swift"; sourceTree = "<group>"; };
 		9C80FD462028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_DoUserCreation+ObjectProviderTests.swift"; sourceTree = "<group>"; };
+		9CDBB3BD202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsernameFakeResponse.swift; sourceTree = "<group>"; };
+		9CDBB3BF202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandoUsernameFakeResponse+Mapping.swift"; sourceTree = "<group>"; };
 		E719D8E2C0BD3DAF48D87E20 /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F4F3CBB8530E2280F7821818 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -292,6 +296,7 @@
 		9C59C7B8202B18A100BE4E74 /* RandomUsername */ = {
 			isa = PBXGroup;
 			children = (
+				9CDBB3BC202C6F4D00D20FD4 /* FakeMockModels */,
 				9C59C7B9202B18B700BE4E74 /* RandomUsernameTests.swift */,
 				9C59C7BF202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift */,
 				9C59C7C1202B199B00BE4E74 /* RandomUsername_AppConfig+ObjectProviderTests.swift */,
@@ -311,6 +316,15 @@
 				9C59C7BD202B196900BE4E74 /* CreateUser_TempAccessToken+ObjectProviderTests.swift */,
 			);
 			name = CreateUser;
+			sourceTree = "<group>";
+		};
+		9CDBB3BC202C6F4D00D20FD4 /* FakeMockModels */ = {
+			isa = PBXGroup;
+			children = (
+				9CDBB3BD202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift */,
+				9CDBB3BF202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift */,
+			);
+			name = FakeMockModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,8 +579,10 @@
 				9C18313F2020F04F00DD4083 /* Mocks.swift in Sources */,
 				9C59C7BA202B18B700BE4E74 /* RandomUsernameTests.swift in Sources */,
 				9C59C7C4202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift in Sources */,
+				9CDBB3C0202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift in Sources */,
 				9C80FD3720285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift in Sources */,
 				9C59C7C0202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift in Sources */,
+				9CDBB3BE202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift in Sources */,
 				1B87E4A81CF89E690053FD8F /* KWSKWSRequestPermissionTests.m in Sources */,
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 				9C59C7C8202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift in Sources */,
