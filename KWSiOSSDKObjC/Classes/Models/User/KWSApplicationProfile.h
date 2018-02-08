@@ -34,4 +34,6 @@
 @property (nonatomic, assign) NSInteger customField4;
 @property (nonatomic, assign) NSInteger customField5;
 
+- (id) initWithUsername: (NSString*) username andCustomField1: (NSNumber*) customField1 andCustomField2: (NSNumber*) customField2 andAvatarId:(NSNumber*) avatarId;
+
 @end

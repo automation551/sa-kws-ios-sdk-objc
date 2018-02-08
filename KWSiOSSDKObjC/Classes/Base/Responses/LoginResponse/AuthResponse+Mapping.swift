@@ -1,5 +1,5 @@
 //
-//  Login+Mapping.swift
+//  AuthResponse+Mapping.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 23/01/2018.

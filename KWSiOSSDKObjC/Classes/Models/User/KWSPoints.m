@@ -9,7 +9,22 @@
 #import "KWSPoints.h"
 
 @implementation KWSPoints
-
+    
+    - (id) initWithTotalReceived: (NSInteger*) totalReceived andTotal: (NSInteger*) total andTotalPointsReceivedInCurrentApp: (NSInteger*) totalPointsReceivedInCurrentApp andAvailableBalance: (NSInteger*) availableBalance andPending: (NSInteger*) pending{
+        
+        self = [super init];
+        
+        _totalReceived = totalReceived;
+        _total = total;
+        _totalPointsReceivedInCurrentApp = totalPointsReceivedInCurrentApp;
+        _availableBalance = availableBalance;
+        _pending = pending;
+        
+        return self;
+        
+        
+    }
+    
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]){
         _totalReceived = [[jsonDictionary safeObjectForKey:@"totalReceived"] integerValue];
@@ -20,19 +35,19 @@
     }
     return self;
 }
-
+    
 - (BOOL) isValid {
     return true;
 }
-
+    
 - (NSDictionary*) dictionaryRepresentation {
     return @{
-        @"totalReceived": @(_totalReceived),
-        @"total": @(_total),
-        @"totalPointsReceivedInCurrentApp": @(_totalPointsReceivedInCurrentApp),
-        @"availableBalance": @(_availableBalance),
-        @"pending": @(_pending)
-    };
+             @"totalReceived": @(_totalReceived),
+             @"total": @(_total),
+             @"totalPointsReceivedInCurrentApp": @(_totalPointsReceivedInCurrentApp),
+             @"availableBalance": @(_availableBalance),
+             @"pending": @(_pending)
+             };
 }
-
-@end
+    
+    @end

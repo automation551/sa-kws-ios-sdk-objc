@@ -31,5 +31,8 @@
 @property (nonatomic, assign) NSInteger totalPointsReceivedInCurrentApp;
 @property (nonatomic, assign) NSInteger availableBalance;
 @property (nonatomic, assign) NSInteger pending;
+    
+    
+    - (id) initWithTotalReceived: (NSInteger*) totalReceived andTotal: (NSInteger*) total andTotalPointsReceivedInCurrentApp: (NSInteger*) totalPointsReceivedInCurrentApp andAvailableBalance: (NSInteger*) availableBalance andPending: (NSInteger*) pending;
 
 @end
