@@ -32,7 +32,7 @@ class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
         JSON = try? fixtureWithName(name:"random_username_success_response")
         
         //note that the response for Random Username is a plain string
-        //a `fake` mocked response was added in a JSON format
+        //To bypass that, a `fake` mocked response was added in a JSON format with name `RandomUsernameFakeResponse`
         
         let randomUsernameFakeResponse = try? RandomUsernameFakeResponse.decode(JSON!)
         
