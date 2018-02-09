@@ -10,6 +10,23 @@
 
 @implementation KWSApplicationProfile
 
+- (id) initWithUsername: (NSString*) username andCustomField1: (NSNumber*) customField1 andCustomField2: (NSNumber*) customField2 andAvatarId:(NSNumber*) avatarId {
+    
+    self = [self init];
+    
+    if(self != nil){
+        _username = username;
+        _customField1 = [customField1 integerValue];
+        _customField2 = [customField2 integerValue];
+        _avatarId = [avatarId integerValue];
+
+    }
+    
+    return self;
+    
+    
+}
+
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]){
         _username = [jsonDictionary safeObjectForKey:@"username"];

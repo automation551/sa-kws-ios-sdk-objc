@@ -11,20 +11,23 @@ import UIKit
 @objc(MetadataKWS)
 public final class MetadataKWS: NSObject {
     
-    public let appId: Int?
+    public let userId: NSNumber?
+    public let appId: NSNumber?
     public let clientId: String?
     public let scope: String?
-    public let iat: Int?
-    public let exp: Int?
+    public let iat: NSNumber?
+    public let exp: NSNumber?
     public let iss: String?
     
-    public required init(appId: Int? = -1,
+    public required init(userId: NSNumber? = nil,
+                         appId: NSNumber? = nil,
                          clientId: String? = "",
                          scope: String? = "",
-                         iat: Int? = -1,
-                         exp: Int? = -1,
+                         iat: NSNumber? = nil,
+                         exp: NSNumber? = nil,
                          iss: String? = "") {
         
+        self.userId = userId
         self.appId = appId
         self.clientId = clientId
         self.scope = scope

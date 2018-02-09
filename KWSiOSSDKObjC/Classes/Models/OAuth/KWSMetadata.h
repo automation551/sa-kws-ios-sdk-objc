@@ -52,4 +52,12 @@
 // create from token
 + (KWSMetadata*) processMetadata:(NSString*)oauthToken;
 
+- (id) initWithUserId:(NSNumber *)userId
+             andAppId: (NSNumber*) appId
+          andClientId: (NSString*) clientId
+             andScope: (NSString*) scope
+               andIat: (NSNumber*) iat
+               andExp:(NSNumber*) exp
+               andIss:(NSString*) iss ;
+
 @end

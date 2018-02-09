@@ -45,5 +45,8 @@
 @property (nonatomic, strong) NSNumber *accessCountry;
 @property (nonatomic, strong) NSNumber *sendPushNotification;
 @property (nonatomic, strong) NSNumber *sendNewsletter;
+@property (nonatomic, strong) NSNumber *enterCompetitions;
+
+- (id) initWithAccessAddress:(NSNumber *) accessAddress andAccessFirstName: (NSNumber *) accessFirstName andAccessLastName: (NSNumber *) accessLastName andAccessEmail: (NSNumber *) accessEmail andAccessStreetAddress: (NSNumber *) accessStreetAddress andAccessCity: (NSNumber *) accessCity andAccessPostalCode: (NSNumber *) accessPostalCode andAccessCountry: (NSNumber *) accessCountry andSendPushNotification: (NSNumber *) sendPushNotification andSendNewsletter: (NSNumber *) sendNewsletter andEnterCompetitions: (NSNumber *) enterCompetitions;
 
 @end

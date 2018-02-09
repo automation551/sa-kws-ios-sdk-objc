@@ -31,6 +31,8 @@ import SAMobileBase
             return CreateUserProvider(environment: environment)
         case is RandomUsernameProvider.Type:
             return RandomUsernameProvider(environment: environment)
+        case is UserProvider.Type:
+            return UserProvider(environment: environment)
         //todo other providers
         default:
             return KWSBaseError.ServiceError as AnyObject
@@ -45,10 +47,24 @@ import SAMobileBase
             return CreateUserProvider(environment: environment) as? T
         } else if (value == RandomUsernameService.self){
             return RandomUsernameProvider(environment: environment) as? T
+        } else if (value == UserService.self){
+            return UserProvider(environment: environment) as? T
         } else {
             
             return nil
         }
     }
     
+    public func  getKWSMetadata (token: String) -> MetadataKWS? {
+        
+        let base64req = ParseBase64Request(withBase64String: token)
+        let base64Task = ParseBase64Task()
+        let metadataJson = base64Task.execute(request: base64req)
+        
+        let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
+        let parseJsonTask = JSONParseTask<MetadataKWS>()
+        let metadata = parseJsonTask.execute(request: parseJsonReq)
+        
+        return metadata
+    }
 }

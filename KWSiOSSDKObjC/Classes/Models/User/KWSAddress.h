@@ -30,5 +30,8 @@
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *postCode;
 @property (nonatomic, strong) NSString *country;
+    
+- (id) initWithStreet:(NSString*)street andCity:(NSString*) city andPostCode:(NSString*) postCode
+           andCountry: (NSString*) country;
 
 @end

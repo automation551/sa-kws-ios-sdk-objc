@@ -10,6 +10,19 @@
 
 @implementation KWSAddress
 
+- (id) initWithStreet:(NSString*)street andCity:(NSString*) city andPostCode:(NSString*) postCode
+           andCountry: (NSString*) country{
+    
+    self = [super init];
+    if(self != nil){
+        _street = street;
+        _city = city;
+        _postCode = postCode;
+        _country = country;
+    }
+    return self;
+}
+
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]){
         _street = [jsonDictionary safeObjectForKey:@"street"];
@@ -26,11 +39,11 @@
 
 - (NSDictionary*) dictionaryRepresentation {
     return @{
-        @"street": nullSafe(_street),
-        @"city": nullSafe(_city),
-        @"postCode": nullSafe(_postCode),
-        @"country": nullSafe(_country)
-    };
+             @"street": nullSafe(_street),
+             @"city": nullSafe(_city),
+             @"postCode": nullSafe(_postCode),
+             @"country": nullSafe(_country)
+             };
 }
 
 @end

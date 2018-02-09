@@ -13,7 +13,30 @@
 #import "KWSApplicationProfile.h"
 
 @implementation KWSUser
-
+    
+- (id) initWithID:(NSNumber*) id andUsername:(NSString*) username andFirstName: (NSString*) firstName
+andLastName: (NSString*) lastName  andDateOfBirth: (NSString*) dateOfBirth andGender: (NSString*) gender andLanguage: (NSString*) language andEmail: (NSString*) email andAddress: (KWSAddress*)userAddress andPoints: (KWSPoints*) points andAppPermissions: (KWSPermissions*) permissions andAppProfile: (KWSApplicationProfile*) appProfile{
+    
+    self = [super init];
+    if (self != nil) {
+        __id = [id integerValue];
+        _username = username;
+        _firstName = firstName;
+        _lastName = lastName;
+        _dateOfBirth = dateOfBirth;
+        _gender = gender;
+        _phoneNumber = @"";
+        _language = language;
+        _email = email;
+        _applicationPermissions = permissions;
+        _points = points;
+        _address = userAddress;
+        _applicationProfile = appProfile;
+    }
+    return self;
+    
+}
+    
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]){
         
@@ -33,27 +56,27 @@
     }
     return self;
 }
-
+    
 - (BOOL) isValid {
     return true;
 }
-
+    
 - (NSDictionary*) dictionaryRepresentation {
     return @{
-        @"id": @(__id),
-        @"username": nullSafe(_username),
-        @"firstName": nullSafe(_firstName),
-        @"lastName": nullSafe(_lastName),
-        @"dateOfBirth": nullSafe(_dateOfBirth),
-        @"gender": nullSafe(_gender),
-        @"phoneNumber": nullSafe(_phoneNumber),
-        @"language": nullSafe(_language),
-        @"email": nullSafe(_email),
-        @"applicationPermissions": nullSafe([_applicationPermissions dictionaryRepresentation]),
-        @"points": nullSafe([_points dictionaryRepresentation]),
-        @"address": nullSafe([_address dictionaryRepresentation]),
-        @"applicationProfile": nullSafe([_applicationProfile dictionaryRepresentation])
-    };
+             @"id": @(__id),
+             @"username": nullSafe(_username),
+             @"firstName": nullSafe(_firstName),
+             @"lastName": nullSafe(_lastName),
+             @"dateOfBirth": nullSafe(_dateOfBirth),
+             @"gender": nullSafe(_gender),
+             @"phoneNumber": nullSafe(_phoneNumber),
+             @"language": nullSafe(_language),
+             @"email": nullSafe(_email),
+             @"applicationPermissions": nullSafe([_applicationPermissions dictionaryRepresentation]),
+             @"points": nullSafe([_points dictionaryRepresentation]),
+             @"address": nullSafe([_address dictionaryRepresentation]),
+             @"applicationProfile": nullSafe([_applicationProfile dictionaryRepresentation])
+             };
 }
-
-@end
+    
+    @end
