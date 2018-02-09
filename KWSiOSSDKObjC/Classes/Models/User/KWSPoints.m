@@ -10,16 +10,16 @@
 
 @implementation KWSPoints
     
-    - (id) initWithTotalReceived: (NSInteger*) totalReceived andTotal: (NSInteger*) total andTotalPointsReceivedInCurrentApp: (NSInteger*) totalPointsReceivedInCurrentApp andAvailableBalance: (NSInteger*) availableBalance andPending: (NSInteger*) pending{
+    - (id) initWithTotalReceived: (NSNumber*) totalReceived andTotal: (NSNumber*) total andTotalPointsReceivedInCurrentApp: (NSNumber*) totalPointsReceivedInCurrentApp andAvailableBalance: (NSNumber*) availableBalance andPending: (NSNumber*) pending{
         
         self = [super init];
-        
-        _totalReceived = totalReceived;
-        _total = total;
-        _totalPointsReceivedInCurrentApp = totalPointsReceivedInCurrentApp;
-        _availableBalance = availableBalance;
-        _pending = pending;
-        
+         if(self != nil){
+             _totalReceived = [totalReceived integerValue];
+             _total = [total integerValue];
+             _totalPointsReceivedInCurrentApp = [totalPointsReceivedInCurrentApp integerValue];
+             _availableBalance = [availableBalance integerValue];
+             _pending = [pending integerValue];
+         }
         return self;
         
         

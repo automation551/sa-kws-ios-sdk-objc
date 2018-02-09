@@ -19,8 +19,7 @@ import SAMobileBase
         self.networkTask = networkTask
     }
     
-    
-    public func getUserDetails(userId: Int, token: String, callback: @escaping (UserDetailsResponse?, Error?) -> ()) {
+    public func getUserDetails(userId: NSInteger, token: String, callback: @escaping (UserDetailsResponse?, Error?) -> ()) {
         
         let getUserDetailsNetworkRequest = UserDetailsRequest(environment: environment,
                                                               userId: userId,

@@ -12,6 +12,30 @@
 
 @implementation KWSMetadata
 
+- (id) initWithUserId:(NSNumber *)userId
+             andAppId: (NSNumber*) appId
+          andClientId: (NSString*) clientId
+             andScope: (NSString*) scope
+               andIat: (NSNumber*) iat
+               andExp:(NSNumber*) exp
+               andIss:(NSString*) iss {
+    
+    self = [self init];
+    
+    if(self != nil){
+        _userId = [userId integerValue];
+        _appId = [appId integerValue];
+        _clientId = clientId;
+        _scope = scope;
+        _iat = [iat integerValue];
+        _exp = [exp integerValue];
+        _iss = iss;
+    }
+    
+    return self;
+    
+}
+
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]) {
         

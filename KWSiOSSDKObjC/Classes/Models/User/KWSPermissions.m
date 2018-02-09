@@ -10,7 +10,17 @@
 
 @implementation KWSPermissions
 
-- (id) initWithAccessAddress:(NSNumber *) accessAddress andAccessFirstName: (NSNumber *) accessFirstName andAccessLastName: (NSNumber *) accessLastName andAccessEmail: (NSNumber *) accessEmail andAccessStreetAddress: (NSNumber *) accessStreetAddress andAccessCity: (NSNumber *) accessCity andAccessPostalCode: (NSNumber *) accessPostalCode andAccessCountry: (NSNumber *) accessCountry andSendPushNotification: (NSNumber *) sendPushNotification andSendNewsletter: (NSNumber *) sendNewsletter andEnterCompetitions: (NSNumber *) enterCompetitions {
+- (id) initWithAccessAddress: (NSNumber *) accessAddress
+          andAccessFirstName: (NSNumber *) accessFirstName
+           andAccessLastName: (NSNumber *) accessLastName
+              andAccessEmail: (NSNumber *) accessEmail
+      andAccessStreetAddress: (NSNumber *) accessStreetAddress
+               andAccessCity: (NSNumber *) accessCity
+         andAccessPostalCode: (NSNumber *) accessPostalCode
+            andAccessCountry: (NSNumber *) accessCountry
+     andSendPushNotification: (NSNumber *) sendPushNotification
+           andSendNewsletter: (NSNumber *) sendNewsletter
+        andEnterCompetitions: (NSNumber *) enterCompetitions {
     
     self = [self init];
     

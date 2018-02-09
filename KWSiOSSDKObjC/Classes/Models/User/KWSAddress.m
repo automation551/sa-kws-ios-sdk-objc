@@ -14,12 +14,12 @@
            andCountry: (NSString*) country{
     
     self = [super init];
-    
-    _street = street;
-    _city = city;
-    _postCode = postCode;
-    _country = country;
-    
+    if(self != nil){
+        _street = street;
+        _city = city;
+        _postCode = postCode;
+        _country = country;
+    }
     return self;
 }
 
@@ -39,11 +39,11 @@
 
 - (NSDictionary*) dictionaryRepresentation {
     return @{
-        @"street": nullSafe(_street),
-        @"city": nullSafe(_city),
-        @"postCode": nullSafe(_postCode),
-        @"country": nullSafe(_country)
-    };
+             @"street": nullSafe(_street),
+             @"city": nullSafe(_city),
+             @"postCode": nullSafe(_postCode),
+             @"country": nullSafe(_country)
+             };
 }
 
 @end

@@ -14,11 +14,11 @@ extension Points: Decodable {
     public static func decode(_ json: Any) throws -> Points {
         
         return try Points (
-            totalReceived:                      try json =>? "totalReceived" as! NSNumber,
-            total:                              try json =>? "total" as! NSNumber,
-            totalPointsReceivedInCurrentApp:    try json =>? "totalPointsReceivedInCurrentApp" as! NSNumber,
-            availableBalance:                   try json =>? "availableBalance" as! NSNumber,
-            pending:                            try json =>? "pending" as! NSNumber
+            totalReceived:                      try json =>? "totalReceived" as? NSNumber,
+            total:                              try json =>? "total" as? NSNumber,
+            totalPointsReceivedInCurrentApp:    try json =>? "totalPointsReceivedInCurrentApp" as? NSNumber,
+            availableBalance:                   try json =>? "availableBalance" as? NSNumber,
+            pending:                            try json =>? "pending" as? NSNumber
         )
     }
 }

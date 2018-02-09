@@ -31,4 +31,6 @@
 - (void) setIsRegisteredForNotifications:(BOOL) value;
 - (BOOL) isRegisteredForNotifications;
 
+- (id) initWithToken:(NSString*) token andMetadata:(KWSMetadata*) metadata;
+
 @end

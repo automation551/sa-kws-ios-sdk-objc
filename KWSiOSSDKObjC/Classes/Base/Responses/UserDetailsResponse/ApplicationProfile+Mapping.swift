@@ -15,9 +15,9 @@ extension ApplicationProfile: Decodable {
         
         return try ApplicationProfile (
             username:                 try json =>? "username",
-            customField1:             try json =>? "customField1" as! NSNumber,
-            customField2:             try json =>? "customField2" as! NSNumber,
-            avatarId:                 try json =>? "avatarId" as! NSNumber
+            customField1:             try json =>? "customField1" as? NSNumber,
+            customField2:             try json =>? "customField2" as? NSNumber,
+            avatarId:                 try json =>? "avatarId" as? NSNumber
             
         )
     }

@@ -15,6 +15,23 @@
 
 @implementation KWSLoggedUser
 
+- (id) initWithToken:(NSString*) token andMetadata:(KWSMetadata*) metadata {
+    
+    self = [self init];
+    
+    if ( self != nil ){
+        
+        _token = token;
+        _isRegisteredForRM = false;
+        _metadata = metadata;
+        
+    }
+    
+    return self;
+    
+}
+
+
 - (id) initWithJsonDictionary:(NSDictionary *)jsonDictionary {
     if (self = [super initWithJsonDictionary:jsonDictionary]) {
         _token = [jsonDictionary safeObjectForKey:@"token"];

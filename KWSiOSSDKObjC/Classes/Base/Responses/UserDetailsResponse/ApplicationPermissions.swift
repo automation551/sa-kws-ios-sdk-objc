@@ -11,32 +11,32 @@ import UIKit
 @objc(KWSSwiftApplicationPermissions)
 public final class ApplicationPermissions: NSObject {
     
-    public let accessAddress: NSNumber?
-    public let accessFirstName: NSNumber?
-    public let accessLastName: NSNumber?
-    public let accessEmail: NSNumber?
-    public let accessStreetAddress: NSNumber?
-    public let accessCity: NSNumber?
-    public let accessPostalCode: NSNumber?
-    public let accessCountry: NSNumber?
-    public let sendPushNotification: NSNumber?
-    public let sendNewsletter: NSNumber?
-    public let enterCompetitions: NSNumber?
+    public let accessAddress:           NSNumber?
+    public let accessFirstName:         NSNumber?
+    public let accessLastName:          NSNumber?
+    public let accessEmail:             NSNumber?
+    public let accessStreetAddress:     NSNumber?
+    public let accessCity:              NSNumber?
+    public let accessPostalCode:        NSNumber?
+    public let accessCountry:           NSNumber?
+    public let sendPushNotification:    NSNumber?
+    public let sendNewsletter:          NSNumber?
+    public let enterCompetitions:       NSNumber?
     
     
     
     
-    public required init(accessAddress: NSNumber? = nil,
-                         accessFirstName: NSNumber? = nil,
-                         accessLastName: NSNumber? = nil,
-                         accessEmail:NSNumber? = nil,
-                         accessStreetAddress: NSNumber? = nil,
-                         accessCity : NSNumber? = nil,
-                         accessPostalCode: NSNumber? = nil,
-                         accessCountry: NSNumber? = nil,
-                         sendPushNotification: NSNumber? = nil,
-                         sendNewsletter: NSNumber? = nil,
-                         enterCompetitions: NSNumber? = nil) {
+    public required init(accessAddress:             NSNumber? = nil,
+                         accessFirstName:           NSNumber? = nil,
+                         accessLastName:            NSNumber? = nil,
+                         accessEmail:               NSNumber? = nil,
+                         accessStreetAddress:       NSNumber? = nil,
+                         accessCity :               NSNumber? = nil,
+                         accessPostalCode:          NSNumber? = nil,
+                         accessCountry:             NSNumber? = nil,
+                         sendPushNotification:      NSNumber? = nil,
+                         sendNewsletter:            NSNumber? = nil,
+                         enterCompetitions:         NSNumber? = nil) {
         
         self.accessAddress = accessAddress
         self.accessFirstName = accessFirstName

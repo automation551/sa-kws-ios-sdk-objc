@@ -16,9 +16,9 @@
     
     if(self != nil){
         _username = username;
-        _customField1 = customField1;
-        _customField2 = customField2;
-        _avatarId = avatarId;
+        _customField1 = [customField1 integerValue];
+        _customField2 = [customField2 integerValue];
+        _avatarId = [avatarId integerValue];
 
     }
     

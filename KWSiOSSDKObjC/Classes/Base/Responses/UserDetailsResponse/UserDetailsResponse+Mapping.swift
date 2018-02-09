@@ -14,7 +14,7 @@ extension UserDetailsResponse: Decodable {
     public static func decode(_ json: Any) throws -> UserDetailsResponse {
         
         return try UserDetailsResponse (
-            id:                     try json =>? "id",
+            id:                     try json =>? "id" as? NSNumber,
             username:               try json =>? "username",
             firstName:              try json =>? "firstName",
             lastName:               try json =>? "lastName",
@@ -23,7 +23,7 @@ extension UserDetailsResponse: Decodable {
             gender:                 try json =>? "gender",
             language:               try json =>? "language",
             email:                  try json =>? "email",
-            hasSetParentEmail:      try json =>? "hasSetParentEmail",
+            hasSetParentEmail:      try json =>? "hasSetParentEmail" as? NSNumber,
             applicationProfile:     try json =>? "applicationProfile",
             applicationPermissions: try json =>? "applicationPermissions",
             points:                 try json =>? "points",

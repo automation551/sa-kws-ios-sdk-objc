@@ -11,7 +11,7 @@ import UIKit
 @objc(KWSUserDetailsResponse)
 public final class UserDetailsResponse: NSObject {
     
-    public let id: Int?
+    public let id: NSNumber?
     public let username: String?
     public let firstName: String?
     public let lastName: String?
@@ -20,17 +20,27 @@ public final class UserDetailsResponse: NSObject {
     public let gender: String?
     public let language: String?
     public let email: String?
-    public let hasSetParentEmail: Bool?
+    public let hasSetParentEmail: NSNumber?
     public let applicationProfile: ApplicationProfile?
     public let applicationPermissions: ApplicationPermissions?
     public let points: Points?
     public let createdAt: String?
     
     
-    public required init(id: Int?, username: String?, firstName: String?, lastName:String?,
-                         address: UserAddress?, dateOfBirth: String?, gender:String?,
-                         language: String?, email: String?, hasSetParentEmail: Bool?,
-                         applicationProfile: ApplicationProfile?, applicationPermissions: ApplicationPermissions?, points: Points?, createdAt: String?) {
+    public required init(id: NSNumber?,
+                         username: String?,
+                         firstName: String?,
+                         lastName:String?,
+                         address: UserAddress?,
+                         dateOfBirth: String?,
+                         gender:String?,
+                         language: String?,
+                         email: String?,
+                         hasSetParentEmail: NSNumber?,
+                         applicationProfile: ApplicationProfile?,
+                         applicationPermissions: ApplicationPermissions?,
+                         points: Points?,
+                         createdAt: String?) {
         
         self.id = id
         self.username = username

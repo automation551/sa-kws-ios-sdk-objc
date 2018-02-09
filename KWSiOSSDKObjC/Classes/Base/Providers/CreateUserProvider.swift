@@ -38,7 +38,7 @@ import SAMobileBase
                 let metadata = parseJsonTask.execute(request: parseJsonReq)
                 
                 if(metadata != nil){
-                    let appId = metadata?.appId
+                    let appId = metadata?.appId?.intValue
                     
                     //todo here Creation of user with temp access token
                     self.doUserCreation(environment: self.environment, username: username, password: password, dateOfBirth: dateOfBirth, country: country, parentEmail: parentEmail, appId: appId!, token: token!, callback: callback)

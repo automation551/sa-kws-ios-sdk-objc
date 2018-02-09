@@ -153,6 +153,14 @@
         [createUserProvider createUserWithUsername:username password:password dateOfBirth:dateOfBirth country:country parentEmail:parentEmail callback:^(KWSCreateUserResponse * createUserResponse, NSError * error) {
             
             if(createUserResponse != nil && [createUserResponse token] != nil ){
+                
+                NSString* token = [createUserResponse token];
+                KWSMetadata *kwsMetadata = [self getMetadataFromToken:token];
+                                
+                KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc]initWithToken:token andMetadata:kwsMetadata];
+                [self setLoggedUser:loggedUser];
+                
+                
                 response(KWSChildren_CreateUser_Success);
             }else{
                 response(KWSChildren_CreateUser_InvalidOperation);
@@ -179,6 +187,13 @@
             
             if(loginResponse != nil && [loginResponse token] != nil
                && [[loginResponse token] length] != 0 && error == nil){
+                
+                NSString* token = [loginResponse token];
+                KWSMetadata *kwsMetadata = [self getMetadataFromToken:token];
+                
+                KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc]initWithToken:token andMetadata:kwsMetadata];
+                [self setLoggedUser:loggedUser];
+                
                 response (KWSChildren_LoginUser_Success);
             }else{
                 response (KWSChildren_LoginUser_NetworkError);
@@ -189,7 +204,21 @@
         NSLog(kProviderErrorMessage);
     }
 }
+
+//------METADATA NEW LOGIC--------
+
+-(KWSMetadata*) getMetadataFromToken : (NSString*) token {
+    //todo here
+    MetadataKWS* metadataNewObject = [[KWSSDK sharedInstance] getKWSMetadataWithToken:token];
     
+    KWSMetadata* kwsMetadata = [[KWSMetadata alloc]initWithUserId:metadataNewObject.userId andAppId:metadataNewObject.appId andClientId:metadataNewObject.clientId andScope:metadataNewObject.scope andIat:metadataNewObject.iat andExp:metadataNewObject.exp andIss:metadataNewObject.iss];
+    
+    return kwsMetadata;
+    
+}
+
+//------END METADATA NEW LOGIC------
+
 - (void) authWithSingleSignOnUrl: (NSString*) url
                       fromParent: (UIViewController*)parent
                      andResponse:(KWSChildrenLoginUserBlock) response {
@@ -248,25 +277,26 @@
                                   type:NSStringFromClass([UserProvider class])];
     
     if ([userProvider isKindOfClass: [UserProvider class]]){
-        
+
         if(_loggedUser == nil || _loggedUser.metadata == nil){
             response(nil);
             return;
         }
-        
-        [userProvider getUserDetailsWithUserId: _loggedUser.metadata.userId
+
+        [userProvider getUserDetailsWithUserId: (long)_loggedUser.metadata.userId
                                          token: _loggedUser.token
                                       callback:^(KWSUserDetailsResponse * userDetailsResponse, NSError * error) {
-                                          
-                                          
+
+
                                           if(userDetailsResponse != nil){
                                               KWSUser *kwsUser = [self buildKWSUser:userDetailsResponse];
+                                              response(kwsUser);
                                           }else{
-                                              
+                                               response(nil);
                                           }
-                                          
-                                          
-                                          
+
+
+
                                       }];
     } else {
         NSLog(kProviderErrorMessage);
@@ -278,18 +308,22 @@
 
 - (KWSUser*) buildKWSUser:(KWSUserDetailsResponse*) kwsUserDetailsResponse {
     
+    NSNumber *id = [kwsUserDetailsResponse id];
+    NSString *username = [kwsUserDetailsResponse username];
+    NSString *firstName = [kwsUserDetailsResponse firstName];
+    NSString *lastName = [kwsUserDetailsResponse lastName];
+    NSString *dateOfBirth = [kwsUserDetailsResponse dateOfBirth];
+    NSString *gender = [kwsUserDetailsResponse gender];
+    NSString *language = [kwsUserDetailsResponse language];
+    NSString *email = [kwsUserDetailsResponse email];
     
     KWSAddress *address = [self buildKWSUserAddress: [kwsUserDetailsResponse address]];
     KWSPoints *points = [self buildKWSPoints: [kwsUserDetailsResponse points]];
     KWSPermissions *permissions = [self buildKWSPermissions: [kwsUserDetailsResponse applicationPermissions]];
-    KWSApplicationProfile *app = [self buildKWSApplicationProfile: [kwsUserDetailsResponse applicationPermissions]];
+    KWSApplicationProfile *appProfile = [self buildKWSApplicationProfile: [kwsUserDetailsResponse applicationProfile]];
     
-    KWSUser * user = [[KWSUser alloc]init];
-    
-    //todo finish this
-    
-    //        [user _id] = [kwsUserDetailsResponse address]
-    
+    KWSUser * user = [[KWSUser alloc]initWithID:id andUsername:username andFirstName:firstName andLastName:lastName andDateOfBirth:dateOfBirth andGender:gender andLanguage:language andEmail:email andAddress:address andPoints:points andAppPermissions:permissions andAppProfile:appProfile];
+
     return user;
     
 }
@@ -500,7 +534,8 @@
     [_defs setObject:loggedUserData forKey:LOGGED_USER_KEY];
     [_defs synchronize];
 }
-    
+
+
 - (KWSLoggedUser *) getLoggedUser {
     return _loggedUser;
 }
