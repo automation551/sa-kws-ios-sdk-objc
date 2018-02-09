@@ -130,8 +130,6 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 expect(response).to(beNil())
                 
                 expect(error).toNot(beNil())
-                
-                expect(error).toNot(beNil())
                 let networkErrorMessage = (error as! NetworkError).message
                 expect(networkErrorMessage).toNot(beNil())
                 
@@ -171,8 +169,6 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 
                 //then
                 expect(response).to(beNil())
-                
-                expect(error).toNot(beNil())
                 
                 expect(error).toNot(beNil())
                 let networkErrorMessage = (error as! NetworkError).message

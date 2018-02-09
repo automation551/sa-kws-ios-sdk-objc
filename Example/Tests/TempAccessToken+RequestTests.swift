@@ -105,7 +105,7 @@ class TempAccessToken_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Content-Type")).to(beTrue())
         expect("application/x-www-form-urlencoded").to(equal(requestHeaders?["Content-Type"]))
         
-        expect(requestHeaders?.keys.contains("Authorizarion")).to(beFalse())
+        expect(requestHeaders?.keys.contains("Authorization")).to(beFalse())
     }
     
     

@@ -11,36 +11,36 @@ import UIKit
 @objc(KWSUserDetailsResponse)
 public final class UserDetailsResponse: NSObject {
     
-    public let id: NSNumber?
-    public let username: String?
-    public let firstName: String?
-    public let lastName: String?
-    public let address: UserAddress?
-    public let dateOfBirth: String?
-    public let gender: String?
-    public let language: String?
-    public let email: String?
-    public let hasSetParentEmail: NSNumber?
-    public let applicationProfile: ApplicationProfile?
-    public let applicationPermissions: ApplicationPermissions?
-    public let points: Points?
-    public let createdAt: String?
+    public let id:                          NSNumber?
+    public let username:                    String?
+    public let firstName:                   String?
+    public let lastName:                    String?
+    public let address:                     UserAddress?
+    public let dateOfBirth:                 String?
+    public let gender:                      String?
+    public let language:                    String?
+    public let email:                       String?
+    public let hasSetParentEmail:           NSNumber?
+    public let applicationProfile:          ApplicationProfile?
+    public let applicationPermissions:      ApplicationPermissions?
+    public let points:                      Points?
+    public let createdAt:                   String?
     
     
-    public required init(id: NSNumber?,
-                         username: String?,
-                         firstName: String?,
-                         lastName:String?,
-                         address: UserAddress?,
-                         dateOfBirth: String?,
-                         gender:String?,
-                         language: String?,
-                         email: String?,
-                         hasSetParentEmail: NSNumber?,
-                         applicationProfile: ApplicationProfile?,
-                         applicationPermissions: ApplicationPermissions?,
-                         points: Points?,
-                         createdAt: String?) {
+    public required init(id:                        NSNumber? = nil,
+                         username:                  String? = nil,
+                         firstName:                 String? = nil,
+                         lastName:                  String? = nil,
+                         address:                   UserAddress? = nil,
+                         dateOfBirth:               String? = nil,
+                         gender:                    String? = nil,
+                         language:                  String? = nil,
+                         email:                     String? = nil,
+                         hasSetParentEmail:         NSNumber? = nil,
+                         applicationProfile:        ApplicationProfile? = nil,
+                         applicationPermissions:    ApplicationPermissions? = nil,
+                         points:                    Points? = nil,
+                         createdAt:                 String? = nil) {
         
         self.id = id
         self.username = username

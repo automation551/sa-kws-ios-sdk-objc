@@ -1,8 +1,8 @@
 //
-//  AppConfig+RequestTests.swift
+//  UserDetails+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 07/02/2018.
+//  Created by Guilherme Mota on 09/02/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -11,17 +11,17 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class AppConfig_RequestTests: XCTestCase {
-    
+class UserDetails_RequestTests: XCTestCase {
     
     //class or data to test
-    private var request: AppConfigRequest!
+    private var request: UserDetailsRequest!
+    
     private var env: KWSNetworkEnvironment!
-    
-    private var clientID: String!
-    
+    private var userId: Int = 123
+    private var token: String!
     private var method: NetworkMethod!
     private var endpoint: String!
+    
     
     override func setUp() {
         super.setUp()
@@ -29,17 +29,17 @@ class AppConfig_RequestTests: XCTestCase {
         // given
         env = GoodMockNetworkEnvironment()
         
-        clientID = "mock_client_id"
+        token = "mock_token"
         
         method = .GET
-        endpoint = "v1/apps/config"
+        endpoint = "v1/users/\(userId)"
         
         //when
-        request = AppConfigRequest(environment: env,
-                                         clientID:clientID)
+        request = UserDetailsRequest.init(environment: env,
+                                          userId: userId,
+                                          token:token)
         
     }
-    
     
     override func tearDown() {
         super.tearDown()
@@ -47,10 +47,10 @@ class AppConfig_RequestTests: XCTestCase {
         env = nil
     }
     
-    
     func testConstantsToBeNotNil(){
         //then
-        expect(self.clientID).toNot(beNil())
+        expect(self.userId).toNot(beNil())
+        expect(self.token).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
     }
@@ -75,9 +75,10 @@ class AppConfig_RequestTests: XCTestCase {
         expect(self.endpoint).to(equal(self.request.endpoint))
     }
     
-    func testRequestBody(){
+    func testRequestBodyToBeNil(){
         //then
         expect(self.request.body).to(beNil())
+      
     }
     
     public func testRequestHeader() {
@@ -85,26 +86,19 @@ class AppConfig_RequestTests: XCTestCase {
         
         //then
         expect(requestHeaders).toNot(beNil())
-        expect(requestHeaders?.count).to(equal(1))
+        expect(requestHeaders?.count).to(equal(2))
         
         expect(requestHeaders?.keys.contains("Content-Type")).to(beTrue())
         expect("application/json").to(equal(requestHeaders?["Content-Type"]))
         
-        expect(requestHeaders?.keys.contains("Authorization")).to(beFalse())
+        expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
     
     
-    func testRequestQuery() {
-        
-        let requestQuery = self.request.query
-        
+    func testRequestQueryToBeNil() {
         //then
-        expect(requestQuery).toNot(beNil())
-        expect(requestQuery?.count).to(equal(1))
-        
-        expect(requestQuery?.keys.contains("oauthClientId")).to(beTrue())
-        
-        expect(self.clientID).to(equal((requestQuery?["oauthClientId"] as! String)))
+        expect(self.request.query).to(beNil())
+       
     }
     
     func testRequestFormUrlEncodeToBeFalse(){
@@ -112,5 +106,5 @@ class AppConfig_RequestTests: XCTestCase {
         expect(self.request.formEncodeUrls).to(beFalse())
     }
     
+    
 }
-
