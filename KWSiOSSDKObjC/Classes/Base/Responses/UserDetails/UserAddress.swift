@@ -27,6 +27,16 @@ public final class UserAddress: NSObject {
         
     }
     
+    public enum CodingKeys: String, CodingKey {
+        
+        //to encode
+        case street
+        case city
+        case postCode
+        case country
+    }
+    
+    
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {

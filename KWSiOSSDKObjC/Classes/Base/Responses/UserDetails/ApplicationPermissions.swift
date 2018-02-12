@@ -7,6 +7,9 @@
 
 import Foundation
 import UIKit
+//
+//import Decodable
+//import protocol Decodable.Decodable
 
 @objc(KWSSwiftApplicationPermissions)
 public final class ApplicationPermissions: NSObject {
@@ -22,9 +25,7 @@ public final class ApplicationPermissions: NSObject {
     public let sendPushNotification:    NSNumber?
     public let sendNewsletter:          NSNumber?
     public let enterCompetitions:       NSNumber?
-    
-    
-    
+
     
     public required init(accessAddress:             NSNumber? = nil,
                          accessFirstName:           NSNumber? = nil,
@@ -51,6 +52,23 @@ public final class ApplicationPermissions: NSObject {
         self.enterCompetitions = enterCompetitions
         
     }
+    
+    public enum CodingKeys: String, CodingKey {
+        
+        //to encode
+        case accessAddress
+        case accessFirstName
+        case accessLastName
+        case accessEmail
+        case accessStreetAddress
+        case accessCity
+        case accessPostalCode
+        case accessCountry
+        case sendPushNotification
+        case sendNewsletter
+        case enterCompetitions
+    }
+    
     
     // MARK: - Equatable
     

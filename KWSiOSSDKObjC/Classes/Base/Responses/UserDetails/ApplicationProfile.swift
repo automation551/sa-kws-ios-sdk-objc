@@ -30,10 +30,18 @@ public final class ApplicationProfile: NSObject {
         
     }
     
+    public enum CodingKeys: String, CodingKey {
+        
+        //to encode
+        case customField1
+        case customField2
+        case avatarId
+    }
+    
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? UserDetailsResponse else { return false }
+        guard let object = object as? UserDetails else { return false }
         return self.username == object.username
     }
     

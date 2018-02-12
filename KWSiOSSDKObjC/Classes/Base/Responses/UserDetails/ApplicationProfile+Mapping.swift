@@ -22,3 +22,15 @@ extension ApplicationProfile: Decodable {
         )
     }
 }
+
+
+extension ApplicationProfile: Encodable {
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ApplicationProfile.CodingKeys.self)
+        
+        try container.encode(customField1?.intValue, forKey: .customField1)
+        try container.encode(customField2?.intValue, forKey: .customField2)
+        try container.encode(avatarId?.intValue, forKey: .avatarId)
+    }
+}

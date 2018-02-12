@@ -28,15 +28,15 @@ class UserDetailsTests: XCTestCase {
     
     
     func testLoginEquality() {
-        let foo = UserDetailsResponse(id: goodId)
-        let bar = UserDetailsResponse(id: goodId)
+        let foo = UserDetails(id: goodId)
+        let bar = UserDetails(id: goodId)
         
         expect(foo).to(equal(bar))
     }
     
     func testLoginNotEquality() {
-        let foo = UserDetailsResponse(id: goodId)
-        let bar = UserDetailsResponse(id: badId)
+        let foo = UserDetails(id: goodId)
+        let bar = UserDetails(id: badId)
         
         expect(foo).toNot(equal(bar))
     }
@@ -44,8 +44,8 @@ class UserDetailsTests: XCTestCase {
     // MARK: Objective-C
     
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = UserDetailsResponse(id: goodId)
-        let bar = UserDetailsResponse(id: badId)
+        let foo = UserDetails(id: goodId)
+        let bar = UserDetails(id: badId)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -54,7 +54,7 @@ class UserDetailsTests: XCTestCase {
     }
     
     func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = UserDetailsResponse(id: goodId)
+        let foo = UserDetails(id: goodId)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

@@ -20,45 +20,47 @@
 #define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
 
 @interface KWSChildren ()
-    
-    // the parent email object
-    @property (nonatomic, strong) KWSNotificationProcess *notificationProcess;
-    @property (nonatomic, strong) KWSCreateUserProcess *createUserProcess;
-    @property (nonatomic, strong) KWSAuthUserProcess *authUserProcess;
-    @property (nonatomic, strong) KWSParentEmail *parentEmail;
-    @property (nonatomic, strong) KWSGetUser *getUser;
-    @property (nonatomic, strong) KWSGetLeaderboard *getLeaderboard;
-    @property (nonatomic, strong) KWSRequestPermission *requestPermission;
-    @property (nonatomic, strong) KWSTriggerEvent *triggerEvent;
-    @property (nonatomic, strong) KWSGetScore *getScore;
-    @property (nonatomic, strong) KWSInviteUser *inviteUser;
-    @property (nonatomic, strong) KWSHasTriggeredEvent *hasTriggeredEvent;
-    @property (nonatomic, strong) KWSGetAppData *getAppData;
-    @property (nonatomic, strong) KWSSetAppData *setAppData;
-    @property (nonatomic, strong) KWSUpdateUser *updateUser;
-    @property (nonatomic, strong) KWSCreateUser *createUser;
-    @property (nonatomic, strong) KWSRandomNameProcess *randomName;
-    
-    // state properties
-    @property (nonatomic, strong) NSString *clientId;
-    @property (nonatomic, strong) NSString *clientSecret;
-    @property (nonatomic, strong) NSString *kwsApiUrl;
-    
-    // instance of the logged user
-    @property (nonatomic, strong) KWSLoggedUser *loggedUser;
-    
-    // user defaults
-    @property (nonatomic, strong) NSUserDefaults *defs;
-    
-    //network environment
-    @property (nonatomic, strong) UserKWSNetworkEnvironment* userKWSNetworkEnvironment;
-    
+
+// the parent email object
+@property (nonatomic, strong) KWSNotificationProcess *notificationProcess;
+@property (nonatomic, strong) KWSCreateUserProcess *createUserProcess;
+@property (nonatomic, strong) KWSAuthUserProcess *authUserProcess;
+@property (nonatomic, strong) KWSParentEmail *parentEmail;
+@property (nonatomic, strong) KWSGetUser *getUser;
+@property (nonatomic, strong) KWSGetLeaderboard *getLeaderboard;
+@property (nonatomic, strong) KWSRequestPermission *requestPermission;
+@property (nonatomic, strong) KWSTriggerEvent *triggerEvent;
+@property (nonatomic, strong) KWSGetScore *getScore;
+@property (nonatomic, strong) KWSInviteUser *inviteUser;
+@property (nonatomic, strong) KWSHasTriggeredEvent *hasTriggeredEvent;
+@property (nonatomic, strong) KWSGetAppData *getAppData;
+@property (nonatomic, strong) KWSSetAppData *setAppData;
+@property (nonatomic, strong) KWSUpdateUser *updateUser;
+@property (nonatomic, strong) KWSCreateUser *createUser;
+@property (nonatomic, strong) KWSRandomNameProcess *randomName;
+
+// state properties
+@property (nonatomic, strong) NSString *clientId;
+@property (nonatomic, strong) NSString *clientSecret;
+@property (nonatomic, strong) NSString *kwsApiUrl;
+
+// instance of the logged user
+@property (nonatomic, strong) KWSLoggedUser *loggedUser;
+
+// user defaults
+@property (nonatomic, strong) NSUserDefaults *defs;
+
+//network environment
+@property (nonatomic, strong) UserKWSNetworkEnvironment* userKWSNetworkEnvironment;
+
 #define kProviderErrorMessage @"An error occured getting the provider!"
-    
-    @end
+#define kNoValidLoggedInUserMessage @"No valid logged in user."
+
+
+@end
 
 @implementation KWSChildren
-    
+
 + (instancetype) sdk {
     static KWSChildren *sharedMyManager = nil;
     static dispatch_once_t onceToken;
@@ -67,7 +69,7 @@
     });
     return sharedMyManager;
 }
-    
+
 - (id) init {
     if (self = [super init]) {
         _notificationProcess = [[KWSNotificationProcess alloc] init];
@@ -89,9 +91,9 @@
     }
     return self;
 }
-    
-    // MARK: Setup function
-    
+
+// MARK: Setup function
+
 - (void) setupWithClientId:(NSString *)clientId
            andClientSecret:(NSString *)clientSecret
                  andAPIUrl:(NSString *)apiUrl {
@@ -125,16 +127,16 @@
         NSLog(kProviderErrorMessage);
     }
 }
-    
+
 - (void) reset {
     _loggedUser = nil;
     _kwsApiUrl = nil;
     _clientId = nil;
     _clientSecret = nil;
 }
-    
-    // Create, auth user
-    
+
+// Create, auth user
+
 - (void) createUser:(NSString*)username
        withPassword:(NSString*)password
      andDateOfBirth:(NSString*)dateOfBirth
@@ -156,7 +158,7 @@
                 
                 NSString* token = [createUserResponse token];
                 KWSMetadata *kwsMetadata = [self getMetadataFromToken:token];
-                                
+                
                 KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc]initWithToken:token andMetadata:kwsMetadata];
                 [self setLoggedUser:loggedUser];
                 
@@ -173,7 +175,7 @@
     
     
 }
-    
+
 - (void) loginUser:(NSString *)username
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
@@ -227,12 +229,12 @@
                                              :response];
     
 }
-    
+
 - (void) openUrl: (NSURL*) url
      withOptions: (NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     [_authUserProcess openUrl:url withOptions:options];
 }
-    
+
 - (void) logoutUser {
     _loggedUser = nil;
     _defs = [NSUserDefaults standardUserDefaults];
@@ -241,9 +243,9 @@
         [_defs synchronize];
     }
 }
-    
-    // Random name
-    
+
+// Random name
+
 - (void) getRandomUsername:(KWSChildrenGetRandomUsernameBlock)response {
     
     RandomUsernameProvider* randomUsernameProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
@@ -267,9 +269,9 @@
     
     
 }
-    
-    // get user & update user details
-    
+
+// get user & update user details
+
 - (void) getUser:(KWSChildrenGetUserBlock)response {
     
     UserProvider* userProvider = [[KWSSDK sharedInstance]
@@ -277,36 +279,37 @@
                                   type:NSStringFromClass([UserProvider class])];
     
     if ([userProvider isKindOfClass: [UserProvider class]]){
-
+        
         if(_loggedUser == nil || _loggedUser.metadata == nil){
             response(nil);
+              NSLog(kNoValidLoggedInUserMessage);
             return;
         }
-
+        
         [userProvider getUserDetailsWithUserId: (long)_loggedUser.metadata.userId
                                          token: _loggedUser.token
-                                      callback:^(KWSUserDetailsResponse * userDetailsResponse, NSError * error) {
-
-
-                                          if(userDetailsResponse != nil){
-                                              KWSUser *kwsUser = [self buildKWSUser:userDetailsResponse];
+                                      callback:^(KWSUserDetails * userDetails, NSError * error) {
+                                          
+                                          
+                                          if(userDetails != nil){
+                                              KWSUser *kwsUser = [self buildKWSUser:userDetails];
                                               response(kwsUser);
                                           }else{
-                                               response(nil);
+                                              response(nil);
                                           }
-
-
-
+                                          
+                                          
+                                          
                                       }];
     } else {
         NSLog(kProviderErrorMessage);
     }
     
 }
-    
+
 //---------------------Helper methods to build KWSUser---------------------//
 
-- (KWSUser*) buildKWSUser:(KWSUserDetailsResponse*) kwsUserDetailsResponse {
+- (KWSUser*) buildKWSUser:(KWSUserDetails*) kwsUserDetailsResponse {
     
     NSNumber *id = [kwsUserDetailsResponse id];
     NSString *username = [kwsUserDetailsResponse username];
@@ -323,7 +326,7 @@
     KWSApplicationProfile *appProfile = [self buildKWSApplicationProfile: [kwsUserDetailsResponse applicationProfile]];
     
     KWSUser * user = [[KWSUser alloc]initWithID:id andUsername:username andFirstName:firstName andLastName:lastName andDateOfBirth:dateOfBirth andGender:gender andLanguage:language andEmail:email andAddress:address andPoints:points andAppPermissions:permissions andAppProfile:appProfile];
-
+    
     return user;
     
 }
@@ -388,35 +391,125 @@
 
 
 
-    
+
 - (void) updateUser:(KWSUser*)updatedUser
        withResponse:(KWSChildrenUpdateUserBlock)response {
-    [_updateUser execute:updatedUser :response];
+    
+    UserProvider* userProvider = [[KWSSDK sharedInstance]
+                                  getProviderWithEnvironment:_userKWSNetworkEnvironment
+                                  type:NSStringFromClass([UserProvider class])];
+    
+    if ([userProvider isKindOfClass: [UserProvider class]]){
+        
+      
+        if(_loggedUser == nil || _loggedUser.metadata == nil ){
+            response(nil);
+            NSLog(kNoValidLoggedInUserMessage);
+            return;
+        }
+        
+        //todo KWSUser into UserDetails here
+        KWSUserDetails *userDetails = [self buildUserDetails: updatedUser];
+        if(userDetails == nil){
+            response(nil);
+            NSLog(@"No valid user details...");
+        }
+        
+        [userProvider updateUserDetailsWithUserId:(long)_loggedUser.metadata.userId
+                                            token: _loggedUser.token
+                                      userDetails:userDetails
+                                         callback:^(BOOL success, NSError * error) {
+                                             
+                                             if(!success && error != nil){
+                                                 NSLog(error.description);
+                                             }
+                                             //
+                                             //callback here
+                                             response(success);
+                                         }];
+    } else {
+        NSLog(kProviderErrorMessage);
+    }
+    
+    
 }
+
+//---------------------Helper methods for User Details---------------------//
+-(KWSUserDetails*) buildUserDetails: (KWSUser*) updateUser {
     
-    // request permissions & submit parent email, if not already submitted
+    KWSSwiftUserAddress * kwsSwiftUserAddress = [self buildSwiftUserAddress: [updateUser address] ];
+    KWSSwiftApplicationProfile * kwsSwiftAppProfile = [self buildSwiftAppProfile: [updateUser applicationProfile]];
     
+    
+    return [[KWSUserDetails alloc] initWithId:nil
+                                     username: nil
+                                    firstName:updateUser.firstName
+                                     lastName:updateUser.lastName
+                                      address:kwsSwiftUserAddress
+                                  dateOfBirth:updateUser.dateOfBirth
+                                       gender:updateUser.gender
+                                     language:updateUser.language
+                                        email:updateUser.email
+                                  phoneNumber:updateUser.phoneNumber
+                            hasSetParentEmail: nil
+                           applicationProfile:kwsSwiftAppProfile
+                       applicationPermissions:nil
+                                       points:nil
+                                    createdAt:nil];
+    
+}
+
+
+-(KWSSwiftUserAddress*) buildSwiftUserAddress:(KWSAddress*) address {
+    
+    return [[KWSSwiftUserAddress alloc] initWithStreet:address.street city:address.city postCode:address.postCode country:address.country];
+    
+}
+
+
+-(KWSSwiftApplicationProfile*) buildSwiftAppProfile:(KWSApplicationProfile*) profile {
+    
+    NSNumber* customField1 = [NSNumber numberWithInteger:profile.customField1];
+    NSNumber* customField2 = [NSNumber numberWithInteger:profile.customField2];
+    NSNumber* avatarId = [NSNumber numberWithInteger:profile.customField1];
+    
+    
+    return [[KWSSwiftApplicationProfile alloc] initWithUsername:nil
+                                                   customField1:customField1
+                                                   customField2:customField2
+                                                       avatarId:avatarId];
+    
+    
+}
+
+
+
+
+//---------------------end helper method for User details---------------------//
+
+// request permissions & submit parent email, if not already submitted
+
 - (void) updateParentEmail:(NSString *)email
               withResponse:(KWSChildrenUpdateParentEmailBlock)response {
     [_parentEmail execute:email :response];
 }
-    
+
 - (void) requestPermission:(NSArray<NSNumber *> *)requestedPermissions
               withResponse:(KWSChildrenRequestPermissionBlock)response {
     [_requestPermission execute:requestedPermissions
                                :response];
 }
-    
-    // invite another user
-    
+
+// invite another user
+
 - (void) inviteUser:(NSString*)email
        withResponse:(KWSChildrenInviteUserBlock)response {
     [_inviteUser execute:email
                         :response];
 }
-    
-    // events, points, leaderboards
-    
+
+// events, points, leaderboards
+
 - (void) triggerEvent:(NSString *)event
            withPoints:(NSInteger)points
           andResponse:(KWSChildrenTriggerEventBlock)response {
@@ -424,35 +517,35 @@
                     points:points
                           :response];
 }
-    
+
 - (void) hasTriggeredEvent:(NSInteger) eventId
               withResponse: (KWSChildrenHasTriggeredEventBlock)response {
     [_hasTriggeredEvent execute:eventId
                                :response];
 }
-    
+
 - (void) getScore:(KWSChildrenGetScoreBlock)response {
     [_getScore execute:response];
 }
-    
+
 - (void) getLeaderboard:(KWSChildrenGetLeaderboardBlock)response {
     [_getLeaderboard execute:response];
 }
-    
-    // app data
-    
+
+// app data
+
 - (void) getAppData:(KWSChildrenGetAppDataBlock)response {
     [_getAppData execute:response];
 }
-    
+
 - (void) setAppData:(NSInteger)value
             forName:(NSString*)name
         andResponse:(KWSChildrenSetAppDataBlock)response {
     [_setAppData execute:name withValue:value :response];
 }
-    
-    // register for notifications
-    
+
+// register for notifications
+
 - (void) registerForRemoteNotifications:(KWSChildrenRegisterForRemoteNotificationsBlock)response {
     [_notificationProcess register:^(KWSChildrenRegisterForRemoteNotificationsStatus status) {
         if (status == KWSChildren_RegisterForRemoteNotifications_Success && _loggedUser) {
@@ -464,7 +557,7 @@
         }
     }];
 }
-    
+
 - (void) unregisterForRemoteNotifications:(KWSChildrenUnregisterForRemoteNotificationsBlock)response {
     [_notificationProcess unregister:^(BOOL success) {
         if (success && _loggedUser != nil) {
@@ -476,7 +569,7 @@
         }
     }];
 }
-    
+
 - (void) isRegisteredForRemoteNotifications:(KWSChildrenIsRegisteredForRemoteNotificationsInterface)response {
     [_notificationProcess isRegistered:^(BOOL success) {
         if (response) {
@@ -484,9 +577,9 @@
         }
     }];
 }
-    
-    // MARK: public complex functions
-    
+
+// MARK: public complex functions
+
 - (void) registerForRemoteNotificationsWithPopup:(KWSChildrenRegisterForRemoteNotificationsBlock)response {
     [[SAAlert getInstance] showWithTitle:@"Hey!"
                               andMessage:@"Do you want to enable Remote Notifications?"
@@ -502,7 +595,7 @@
                                   }
                               }];
 }
-    
+
 - (void) updateParentEmailWithPopup:(KWSChildrenUpdateParentEmailBlock)response {
     [[SAAlert getInstance] showWithTitle:@"Hey!"
                               andMessage:@"To enable Remote Notifications in KWS you'll need to provide a parent email."
@@ -516,15 +609,15 @@
                                   }
                               }];
 }
-    
-    // MARK: version
-    
+
+// MARK: version
+
 - (NSString*) getVersion {
     return @"ios-2.3.2";
 }
-    
-    // MARK: setters & getters
-    
+
+// MARK: setters & getters
+
 - (void) setLoggedUser: (KWSLoggedUser*) loggedUser {
     // assign new logged user
     _loggedUser = loggedUser;
@@ -539,17 +632,17 @@
 - (KWSLoggedUser *) getLoggedUser {
     return _loggedUser;
 }
-    
+
 - (NSString*) getClientId {
     return _clientId;
 }
-    
+
 - (NSString*) getClientSecret {
     return _clientSecret;
 }
-    
+
 - (NSString*) getKWSApiUrl {
     return _kwsApiUrl;
 }
-    
-    @end
+
+@end

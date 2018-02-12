@@ -19,7 +19,7 @@ import SAMobileBase
         self.networkTask = networkTask
     }
     
-    public func getUserDetails(userId: NSInteger, token: String, callback: @escaping (UserDetailsResponse?, Error?) -> ()) {
+    public func getUserDetails(userId: NSInteger, token: String, callback: @escaping (UserDetails?, Error?) -> ()) {
         
         let getUserDetailsNetworkRequest = UserDetailsRequest(environment: environment,
                                                               userId: userId,
@@ -33,7 +33,7 @@ import SAMobileBase
                 
                 if getUserDetailsNetworkResponse.success{
                     
-                    let parseTask = JSONParseTask<UserDetailsResponse>()
+                    let parseTask = JSONParseTask<UserDetails>()
                     
                     if let getUserDetailsResponseObject = parseTask.execute(request: parseRequest){
                         callback(getUserDetailsResponseObject, nil)
@@ -55,6 +55,29 @@ import SAMobileBase
                 // pass the network error forward through the callback to the user
                 callback(nil, getUserDetailsNetworkResponse.error)
                 print("request \(getUserDetailsNetworkRequest.environment.domain)\(getUserDetailsNetworkRequest.endpoint), generated error:\(getUserDetailsNetworkResponse.error ?? "unknown error" as! Error)")
+            }
+            
+        }
+        
+    }
+    
+    
+    public func updateUserDetails(userId: Int, token: String, userDetails: UserDetails, callback: @escaping (Bool, Error?) -> ()) {
+        
+        let upddateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
+                                                                        userDetails: userDetails,
+                                                                        userId: userId,
+                                                                        token: token)
+        
+        networkTask.execute(request: upddateUserDetailsNetworkRequest){ upddateUserDetailsNetworkResponse in
+            
+            //todo finish here
+            if (upddateUserDetailsNetworkResponse.success && upddateUserDetailsNetworkResponse.error == nil) {
+                callback(true, nil)
+            } else {
+                // pass the network error forward through the callback to the user
+                callback(false, upddateUserDetailsNetworkResponse.error)
+                print("request \(upddateUserDetailsNetworkRequest.environment.domain)\(upddateUserDetailsNetworkRequest.endpoint), generated error:\(upddateUserDetailsNetworkResponse.error ?? "unknown error" as! Error)")
             }
             
         }

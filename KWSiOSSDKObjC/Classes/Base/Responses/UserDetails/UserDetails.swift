@@ -1,5 +1,5 @@
 //
-//  UserDetailsResponse.swift
+//  UserDetailsUserDetails.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 08/02/2018.
@@ -8,8 +8,11 @@
 import Foundation
 import UIKit
 
-@objc(KWSUserDetailsResponse)
-public final class UserDetailsResponse: NSObject {
+import Decodable
+import protocol Decodable.Decodable
+
+@objc(KWSUserDetails)
+public final class UserDetails: NSObject {
     
     public let id:                          NSNumber?
     public let username:                    String?
@@ -20,6 +23,7 @@ public final class UserDetailsResponse: NSObject {
     public let gender:                      String?
     public let language:                    String?
     public let email:                       String?
+    public let phoneNumber:                 String?
     public let hasSetParentEmail:           NSNumber?
     public let applicationProfile:          ApplicationProfile?
     public let applicationPermissions:      ApplicationPermissions?
@@ -36,6 +40,7 @@ public final class UserDetailsResponse: NSObject {
                          gender:                    String? = nil,
                          language:                  String? = nil,
                          email:                     String? = nil,
+                         phoneNumber:               String? = nil,
                          hasSetParentEmail:         NSNumber? = nil,
                          applicationProfile:        ApplicationProfile? = nil,
                          applicationPermissions:    ApplicationPermissions? = nil,
@@ -51,6 +56,7 @@ public final class UserDetailsResponse: NSObject {
         self.gender = gender
         self.language = language
         self.email = email
+        self.phoneNumber = phoneNumber
         self.hasSetParentEmail = hasSetParentEmail
         self.applicationProfile = applicationProfile
         self.applicationPermissions = applicationPermissions
@@ -58,10 +64,31 @@ public final class UserDetailsResponse: NSObject {
         self.createdAt = createdAt
     }
     
+    public enum CodingKeys: String, CodingKey {
+        
+        //to encode
+        case id
+        case username
+        case firstName
+        case lastName
+        case address
+        case dateOfBirth
+        case gender
+        case language
+        case email
+        case phoneNumber
+        case hasSetParentEmail
+        case applicationProfile
+        case applicationPermissions
+        case points
+        case createdAt
+    }
+    
+    
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? UserDetailsResponse else { return false }
+        guard let object = object as? UserDetails else { return false }
         return self.id == object.id
     }
     
