@@ -106,7 +106,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ComplexErrorResponse>()
+                let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.code).to(equal(123))
@@ -144,7 +144,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<SimpleErrorResponse>()
+                let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_grant"))
@@ -182,7 +182,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<SimpleErrorResponse>()
+                let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_grant"))
@@ -221,7 +221,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<SimpleErrorResponse>()
+                let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_client"))
@@ -260,7 +260,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<SimpleErrorResponse>()
+                let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse?.errorCode).to(equal("invalid_client"))

@@ -139,7 +139,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<SimpleErrorResponse>()
+                                                    let parseTask = JSONParseTask<ErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse).toNot(beNil())
@@ -188,7 +188,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
+                                                    let parseTask = JSONParseTask<ErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse?.code).to(equal(123))
@@ -237,7 +237,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
+                                                    let parseTask = JSONParseTask<ErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse).toNot(beNil())
@@ -290,7 +290,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
+                                                    let parseTask = JSONParseTask<ErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse).toNot(beNil())
@@ -343,7 +343,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
+                                                    let parseTask = JSONParseTask<ErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse).toNot(beNil())
@@ -396,7 +396,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
+                                                    let parseTask = JSONParseTask<ErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse).toNot(beNil())
@@ -449,7 +449,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
+                                                    let parseTask = JSONParseTask<ErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse).toNot(beNil())
@@ -503,7 +503,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(networkErrorMessage).toNot(beNil())
                                                     
                                                     let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
+                                                    let parseTask = JSONParseTask<ErrorResponse>()
                                                     let errorResponse = parseTask.execute(request: parseRequest)
                                                     
                                                     expect(errorResponse).toNot(beNil())

@@ -42,15 +42,15 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_null_oauthclientid_response")
         
-        let complexErrorResponse = try? ComplexErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorResponse.decode(JSON!)
         
-        expect(complexErrorResponse).toNot(beNil())
-        expect(complexErrorResponse?.code).to(equal(5))
-        expect(complexErrorResponse?.codeMeaning).to(equal("validation"))
-        expect(complexErrorResponse?.errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is required]"))
-        expect(complexErrorResponse?.invalid?.oauthClientId?.code).to(equal(6))
-        expect(complexErrorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("missing"))
-        expect(complexErrorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is required"))
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(5))
+        expect(errorResponse?.codeMeaning).to(equal("validation"))
+        expect(errorResponse?.errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is required]"))
+        expect(errorResponse?.invalid?.oauthClientId?.code).to(equal(6))
+        expect(errorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("missing"))
+        expect(errorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is required"))
         
     }
     
@@ -58,15 +58,15 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_empty_oauthclientid_response")
         
-        let complexErrorResponse = try? ComplexErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorResponse.decode(JSON!)
         
-        expect(complexErrorResponse).toNot(beNil())
-        expect(complexErrorResponse?.code).to(equal(5))
-        expect(complexErrorResponse?.codeMeaning).to(equal("validation"))
-        expect(complexErrorResponse?.errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is not allowed to be empty]"))
-        expect(complexErrorResponse?.invalid?.oauthClientId?.code).to(equal(7))
-        expect(complexErrorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("invalidValue"))
-        expect(complexErrorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(5))
+        expect(errorResponse?.codeMeaning).to(equal("validation"))
+        expect(errorResponse?.errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is not allowed to be empty]"))
+        expect(errorResponse?.invalid?.oauthClientId?.code).to(equal(7))
+        expect(errorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("invalidValue"))
+        expect(errorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
         
     }
     
@@ -74,12 +74,12 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_app_not_found_response")
         
-        let notFoundResponse = try? ComplexErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorResponse.decode(JSON!)
         
-        expect(notFoundResponse).toNot(beNil())
-        expect(notFoundResponse?.code).to(equal(2))
-        expect(notFoundResponse?.codeMeaning).to(equal("notFound"))
-        expect(notFoundResponse?.errorMessage).to(equal("app not found."))
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(2))
+        expect(errorResponse?.codeMeaning).to(equal("notFound"))
+        expect(errorResponse?.errorMessage).to(equal("app not found."))
         
     }
     
@@ -89,11 +89,11 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let notFoundResponse = try? ComplexErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorResponse.decode(JSON!)
         
-        expect(notFoundResponse).toNot(beNil())
-        expect(notFoundResponse?.code).to(equal(123))
-        expect(notFoundResponse?.codeMeaning).to(equal("notFound"))
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(123))
+        expect(errorResponse?.codeMeaning).to(equal("notFound"))
         
         
     }

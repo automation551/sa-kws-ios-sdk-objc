@@ -43,7 +43,7 @@ class Login_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_bad_client_credentials_response")
         
-        let errorResponse = try? SimpleErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorResponse.decode(JSON!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.errorCode).to(equal("invalid_client"))
@@ -56,7 +56,7 @@ class Login_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"login_bad_user_credentials_response")
         
-        let errorResponse = try? SimpleErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorResponse.decode(JSON!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.errorCode).to(equal("invalid_grant"))
@@ -70,11 +70,11 @@ class Login_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let notFoundResponse = try? ComplexErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorResponse.decode(JSON!)
         
-        expect(notFoundResponse).toNot(beNil())
-        expect(notFoundResponse?.code).to(equal(123))
-        expect(notFoundResponse?.codeMeaning).to(equal("notFound"))
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(123))
+        expect(errorResponse?.codeMeaning).to(equal("notFound"))
         
     }
     

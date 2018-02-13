@@ -92,7 +92,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ComplexErrorResponse>()
+                let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse).toNot(beNil())
@@ -134,7 +134,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ComplexErrorResponse>()
+                let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse).toNot(beNil())
@@ -175,7 +175,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 expect(networkErrorMessage).toNot(beNil())
                 
                 let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ComplexErrorResponse>()
+                let parseTask = JSONParseTask<ErrorResponse>()
                 let errorResponse = parseTask.execute(request: parseRequest)
                 
                 expect(errorResponse).toNot(beNil())

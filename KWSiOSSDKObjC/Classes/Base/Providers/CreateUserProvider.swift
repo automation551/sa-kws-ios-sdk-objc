@@ -78,7 +78,7 @@ import SAMobileBase
                     }
                     
                 }else{
-                    let parseTask = JSONParseTask<SimpleErrorResponse>()
+                    let parseTask = JSONParseTask<ErrorResponse>()
                     
                     if let mappedResponse = parseTask.execute(request: parseRequest) {
                         callback(nil, mappedResponse)
@@ -125,7 +125,7 @@ import SAMobileBase
                     }
                     
                 }else{
-                    let parseTask = JSONParseTask<SimpleErrorResponse>()
+                    let parseTask = JSONParseTask<ErrorResponse>()
                     
                     if let mappedResponse = parseTask.execute(request: parseRequest) {
                         callback(nil, mappedResponse)
