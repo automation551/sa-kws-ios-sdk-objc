@@ -30,9 +30,7 @@ public class UpdateUserDetailsRequest: BaseRequest {
         //validate adding to body
         addBodyUserDetailsFirstName()
         addBodyUserDetailsLastName()
-        addBodyUserDetailsDoB()
         addBodyUserDetailsEmail()
-        addBodyUserDetailsPhoneNumber()
         addBodyUserDetailsGender()
         addBodyUserDetailsLanguage()
         addBodyUserDetailsAddressJSONString()
@@ -52,21 +50,9 @@ public class UpdateUserDetailsRequest: BaseRequest {
         }
     }
     
-    private func addBodyUserDetailsDoB(){
-        if (userDetails.dateOfBirth != nil && !(userDetails.dateOfBirth?.isEmpty)!){
-            self.body!["dateOfBirth"] = userDetails.dateOfBirth
-        }
-    }
-    
     private func addBodyUserDetailsEmail(){
         if (userDetails.email != nil && !(userDetails.email?.isEmpty)!){
             self.body!["email"] = userDetails.email
-        }
-    }
-    
-    private func addBodyUserDetailsPhoneNumber(){
-        if (userDetails.phoneNumber != nil && !(userDetails.phoneNumber?.isEmpty)!){
-            self.body!["phoneNumber"] = userDetails.phoneNumber
         }
     }
     
@@ -99,7 +85,7 @@ public class UpdateUserDetailsRequest: BaseRequest {
                 print("Couldn't parse the user details address...something went wrong!")
             }
             
-            if(!userDetailsJSONString.isEmpty){
+            if(!userDetailsJSONString.isEmpty && userDetailsJSONString != "{}"){
                 self.body!["address"] = userDetailsJSONString
             }
         }
@@ -121,7 +107,7 @@ public class UpdateUserDetailsRequest: BaseRequest {
                 print("Couldn't parse the user details address...something went wrong!")
             }
             
-            if(!userDetailsAppProfileJSONString.isEmpty){
+            if(!userDetailsAppProfileJSONString.isEmpty && userDetailsAppProfileJSONString != "{}"){
                 self.body!["applicationProfile"] = userDetailsAppProfileJSONString
             }
         }

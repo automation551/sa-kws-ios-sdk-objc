@@ -20,7 +20,6 @@
 #define LOGGED_USER_KEY @"KWS_SA_LOGGED_USER"
 
 @interface KWSChildren ()
-
 // the parent email object
 @property (nonatomic, strong) KWSNotificationProcess *notificationProcess;
 @property (nonatomic, strong) KWSCreateUserProcess *createUserProcess;
@@ -55,6 +54,8 @@
 
 #define kProviderErrorMessage @"An error occured getting the provider!"
 #define kNoValidLoggedInUserMessage @"No valid logged in user."
+
+
 
 
 @end
@@ -179,7 +180,6 @@
 - (void) loginUser:(NSString *)username
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
-    
     
     LoginProvider* loginProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
                                                                                   type:NSStringFromClass([LoginProvider class])];
@@ -419,10 +419,6 @@
                                             token: _loggedUser.token
                                       userDetails:userDetails
                                          callback:^(BOOL success, NSError * error) {
-                                             
-                                             if(!success && error != nil){
-                                                 NSLog(error.description);
-                                             }
                                              //
                                              //callback here
                                              response(success);
@@ -462,7 +458,10 @@
 
 -(KWSSwiftUserAddress*) buildSwiftUserAddress:(KWSAddress*) address {
     
-    return [[KWSSwiftUserAddress alloc] initWithStreet:address.street city:address.city postCode:address.postCode country:address.country];
+    //parse country
+    NSString* parsedCountry = [[KWSSDK sharedInstance] getUserDetailsCountryCodeWithCountry:address.country];
+    
+    return [[KWSSwiftUserAddress alloc] initWithStreet:address.street city:address.city postCode:address.postCode country:parsedCountry ];
     
 }
 

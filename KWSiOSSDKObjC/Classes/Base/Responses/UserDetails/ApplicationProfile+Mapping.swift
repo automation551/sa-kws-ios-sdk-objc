@@ -29,8 +29,19 @@ extension ApplicationProfile: Encodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: ApplicationProfile.CodingKeys.self)
         
-        try container.encode(customField1?.intValue, forKey: .customField1)
-        try container.encode(customField2?.intValue, forKey: .customField2)
-        try container.encode(avatarId?.intValue, forKey: .avatarId)
+        let customField1Int: Int = (customField1?.intValue)!
+        if(customField1Int != nil && customField1Int > 0){
+            try container.encode(customField1Int, forKey: .customField1)
+        }
+        
+        let customField2Int: Int = (customField2?.intValue)!
+        if(customField2Int != nil && customField2Int > 0){
+            try container.encode(customField2, forKey: .customField2)
+        }
+        
+        let avatarIdInt: Int = (avatarId?.intValue)!
+        if(avatarIdInt != nil && avatarIdInt > 0){
+            try container.encode(avatarIdInt, forKey: .avatarId)
+        }
     }
 }

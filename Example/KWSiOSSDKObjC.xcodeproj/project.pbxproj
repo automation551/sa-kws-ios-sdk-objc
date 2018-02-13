@@ -117,7 +117,6 @@
 		9C59C7C7202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TempAccessToken+RequestTests.swift"; sourceTree = "<group>"; };
 		9C59C7C9202B1DF900BE4E74 /* AppConfig+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConfig+RequestTests.swift"; sourceTree = "<group>"; };
 		9C59C7CB202B1ED000BE4E74 /* RandomUsername+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername+RequestTests.swift"; sourceTree = "<group>"; };
-		9C63FAED201F98AE00A5AE0C /* KWSiOSSDKObjC_Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KWSiOSSDKObjC_Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C7F2FFA202DE2F0002795DD /* UserDetails+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDetails+RequestTests.swift"; sourceTree = "<group>"; };
 		9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTests.swift; sourceTree = "<group>"; };
 		9C7F2FFF202DEB92002795DD /* UserDetails+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDetails+MappingTests.swift"; sourceTree = "<group>"; };
@@ -231,7 +230,6 @@
 				1B87E4A51CF89E590053FD8F /* KWSCheckPermissionTests.m */,
 				1B87E4A71CF89E690053FD8F /* KWSKWSRequestPermissionTests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
-				9C63FAED201F98AE00A5AE0C /* KWSiOSSDKObjC_Tests-Bridging-Header.h */,
 				9C18313720209F3E00DD4083 /* TestUtils.swift */,
 				9C18313E2020F04F00DD4083 /* Mocks.swift */,
 			);
