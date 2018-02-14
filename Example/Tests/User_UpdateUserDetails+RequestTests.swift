@@ -1,8 +1,8 @@
 //
-//  UserDetails+RequestTests.swift
+//  User_UpdateUserDetails+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 09/02/2018.
+//  Created by Guilherme Mota on 14/02/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -11,17 +11,19 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class UserDetails_RequestTests: XCTestCase {
+class User_UpdateUserDetails_RequestTests: XCTestCase {
     
     //class or data to test
-    private var request: UserDetailsRequest!
+    private var request: UpdateUserDetailsRequest!
     
     private var env: KWSNetworkEnvironment!
     private var userId: Int = 123
     private var token: String!
+    private var userDetails: UserDetails!
     private var method: NetworkMethod!
     private var endpoint: String!
     
+    private var goodUsername = "good_username"
     
     override func setUp() {
         super.setUp()
@@ -31,13 +33,17 @@ class UserDetails_RequestTests: XCTestCase {
         
         token = "mock_token"
         
-        method = .GET
+        method = .PUT
         endpoint = "v1/users/\(userId)"
         
         //when
-        request = UserDetailsRequest.init(environment: env,
-                                          userId: userId,
-                                          token:token)
+        
+        userDetails = UserDetails(id: userId as NSNumber, username: goodUsername)
+        
+        request = UpdateUserDetailsRequest.init(environment: env,
+                                                userDetails: userDetails,
+                                                userId: userId,
+                                                token:token)
         
     }
     
@@ -51,6 +57,7 @@ class UserDetails_RequestTests: XCTestCase {
         //then
         expect(self.userId).toNot(beNil())
         expect(self.token).toNot(beNil())
+        expect(self.userDetails).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
     }
@@ -75,10 +82,10 @@ class UserDetails_RequestTests: XCTestCase {
         expect(self.endpoint).to(equal(self.request.endpoint))
     }
     
-    func testRequestBodyToBeNil(){
+    func testRequestBodyToNotBeNil(){
         //then
-        expect(self.request.body).to(beNil())
-      
+        expect(self.request.body).toNot(beNil())
+        
     }
     
     public func testRequestHeader() {
@@ -98,13 +105,12 @@ class UserDetails_RequestTests: XCTestCase {
     func testRequestQueryToBeNil() {
         //then
         expect(self.request.query).to(beNil())
-       
+        
     }
     
     func testRequestFormUrlEncodeToBeFalse(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }
-    
     
 }
