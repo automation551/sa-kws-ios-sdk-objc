@@ -1,12 +1,10 @@
 //
-//  UserDetails+MappingTests.swift
+//  User_GetUserDetails+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/02/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
-
-
 
 import XCTest
 import Nimble
@@ -14,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class UserDetails_MappingTests: XCTestCase {
+class User_GetUserDetails_MappingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -27,7 +25,7 @@ class UserDetails_MappingTests: XCTestCase {
     }
     
     
-    func test_UserDetails_Mapping_ResponseSuccess() {
+    func test_User_GetUserDetails_Mapping_ResponseSuccess() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"get_user_details_success_response")
@@ -80,7 +78,7 @@ class UserDetails_MappingTests: XCTestCase {
     }
     
     
-    func test_UserDetails_Mapping_ErrorResponse_NotFound() {
+    func test_User_GetUserDetails_Mapping_ErrorResponse_NotFound() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")

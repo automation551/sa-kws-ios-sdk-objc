@@ -192,7 +192,7 @@
 
 - (void) loginUser {
     
-    NSString* username = @"testusr198";
+    NSString* username = @"testusrgui123";
     NSString* pwd = @"testtest";
     [[KWSChildren sdk] loginUser:username withPassword:pwd andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {

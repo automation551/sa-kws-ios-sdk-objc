@@ -1,5 +1,5 @@
 //
-//  UserDetails+ObjectProviderTests.swift
+//  User_GetUserDetails+ObjectProviderTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/02/2018.
@@ -12,7 +12,7 @@ import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
 
-class UserDetails_ObjectProviderTests: XCTestCase {
+class User_GetUserDetails_ObjectProviderTests: XCTestCase {
     
     //class or data to test
     private var userService: UserService!
@@ -43,7 +43,7 @@ class UserDetails_ObjectProviderTests: XCTestCase {
         environment = nil
     }
     
-    func test_Login_ValidRequestAndResponse(){
+    func test_User_GetUserDetails_ValidRequestAndResponse(){
         
         let JSON: Any? = try? fixtureWithName(name:"get_user_details_success_response")
         
@@ -115,7 +115,7 @@ class UserDetails_ObjectProviderTests: XCTestCase {
         
     }
     
-    func test_UserDetails_BadHttp_Response(){
+    func test_User_GetUserDetails_BadHttp_Response(){
         
         let JSON: Any? = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
