@@ -13,6 +13,11 @@ import SAMobileBase
     
     func getUserDetails(userId:Int,
                         token: String,
-                        callback: @escaping(UserDetailsResponse?,Error?) -> () )
+                        callback: @escaping(UserDetails?,Error?) -> () )
     
+    
+    func updateUserDetails(userId:Int,
+                           token: String,
+                           userDetails: UserDetails,
+                           callback: @escaping(Bool, Error?) -> () )
 }

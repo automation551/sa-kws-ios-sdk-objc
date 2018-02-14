@@ -191,10 +191,13 @@
 }
 
 - (void) loginUser {
-    [[KWSChildren sdk] loginUser:@"testusr494" withPassword:@"testtest" andResponse:^(KWSChildrenLoginUserStatus status) {
+    
+    NSString* username = @"guithetest2";
+    NSString* pwd = @"testtest";
+    [[KWSChildren sdk] loginUser:username withPassword:pwd andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
             case KWSChildren_LoginUser_Success:
-                NSLog(@"Logged in as 'testusr461'");
+                NSLog(@"Logged in as ---> %@", username);
                 break;
             case KWSChildren_LoginUser_InvalidCredentials:
                 NSLog(@"Invalid credentials");
@@ -253,7 +256,7 @@
     
     if (_user) {
         
-        _user.firstName = @"John";
+        _user.firstName = @"Peter";
         
         [[KWSChildren sdk] updateUser:_user withResponse:^(BOOL updated) {
             NSLog(@"Updated user %d", updated);

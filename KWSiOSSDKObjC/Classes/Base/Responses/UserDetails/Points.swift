@@ -32,6 +32,16 @@ public final class Points: NSObject {
 
     }
     
+    public enum CodingKeys: String, CodingKey {
+        
+        //to encode
+        case totalReceived
+        case total
+        case totalPointsReceivedInCurrentApp
+        case availableBalance
+        case pending
+    }
+    
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {

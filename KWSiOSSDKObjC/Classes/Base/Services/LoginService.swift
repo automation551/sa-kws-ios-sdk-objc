@@ -8,9 +8,9 @@
 import Foundation
 import SAMobileBase
 
-@objc public protocol LoginService: BaseService {
+@objc public protocol LoginService: NSObjectProtocol, BaseService {
     
-    func loginUser(username: String,
+   @objc func loginUser(username: String,
                    password: String,
                    callback: @escaping(AuthResponse?,Error?) -> () )
     

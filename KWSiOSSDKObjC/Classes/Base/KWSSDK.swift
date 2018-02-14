@@ -38,7 +38,7 @@ import SAMobileBase
             return KWSBaseError.ServiceError as AnyObject
         }
     }
-    
+
     //for swift
     func getService <T:BaseService> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
         if (value == LoginService.self) {
@@ -55,16 +55,4 @@ import SAMobileBase
         }
     }
     
-    public func  getKWSMetadata (token: String) -> MetadataKWS? {
-        
-        let base64req = ParseBase64Request(withBase64String: token)
-        let base64Task = ParseBase64Task()
-        let metadataJson = base64Task.execute(request: base64req)
-        
-        let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-        let parseJsonTask = JSONParseTask<MetadataKWS>()
-        let metadata = parseJsonTask.execute(request: parseJsonReq)
-        
-        return metadata
-    }
 }

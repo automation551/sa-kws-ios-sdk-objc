@@ -22,3 +22,18 @@ extension Points: Decodable {
         )
     }
 }
+
+
+extension Points: Encodable {
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Points.CodingKeys.self)
+        
+        try container.encode(totalReceived, forKey: .totalReceived)
+        try container.encode(total, forKey: .total)
+        try container.encode(totalPointsReceivedInCurrentApp, forKey: .totalPointsReceivedInCurrentApp)
+        try container.encode(availableBalance, forKey: .availableBalance)
+        try container.encode(pending, forKey: .pending)
+    }
+    
+}

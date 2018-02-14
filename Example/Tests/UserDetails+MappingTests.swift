@@ -32,7 +32,7 @@ class UserDetails_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"get_user_details_success_response")
         
-        let userDetailsResponse = try? UserDetailsResponse.decode(JSON!)
+        let userDetailsResponse = try? UserDetails.decode(JSON!)
         
         expect(userDetailsResponse).toNot(beNil())
         expect(userDetailsResponse?.id).to(equal(25))
