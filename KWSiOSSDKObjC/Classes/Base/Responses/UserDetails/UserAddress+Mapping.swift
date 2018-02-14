@@ -28,17 +28,10 @@ extension UserAddress: Encodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: UserAddress.CodingKeys.self)
         
-        if(street != nil && !(street?.isEmpty)!){
-            try container.encode(street, forKey: .street)
-        }
-        if(city != nil && !(city?.isEmpty)!){
-            try container.encode(city, forKey: .city)
-        }
-        if(postCode != nil && !(postCode?.isEmpty)!){
-            try container.encode(postCode, forKey: .postCode)
-        }
-        if(country != nil && !(country?.isEmpty)!){
-            try container.encode(country, forKey: .country)
-        }
+        try container.encode(street, forKey: .street)
+        try container.encode(city, forKey: .city)
+        try container.encode(postCode, forKey: .postCode)
+        try container.encode(country, forKey: .country)
+        
     }
 }

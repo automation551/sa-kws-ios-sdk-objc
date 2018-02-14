@@ -10,8 +10,6 @@ import SAMobileBase
 
 public class UpdateUserDetailsRequest: BaseRequest {
     
-    let userDetails: UserDetails
-    
     public init(environment: KWSNetworkEnvironment,
                 userDetails: UserDetails,
                 userId: Int,
@@ -23,95 +21,53 @@ public class UpdateUserDetailsRequest: BaseRequest {
         
         self.method = .PUT
         self.endpoint = "v1/users/\(userId)"
-        
-        //init with empty dictionary
-        self.body = [String: Any]()
-        
-        //validate adding to body
-        addBodyUserDetailsFirstName()
-        addBodyUserDetailsLastName()
-        addBodyUserDetailsEmail()
-        addBodyUserDetailsGender()
-        addBodyUserDetailsLanguage()
-        addBodyUserDetailsAddressJSONString()
-        addBodyUserDetailsAppProfileJSONString()
+        self.body = bodyTemp
         
     }
     
-    private func addBodyUserDetailsFirstName(){
-        if (userDetails.firstName != nil && !(userDetails.firstName?.isEmpty)!){
-            self.body!["firstName"] = userDetails.firstName
-        }
-    }
+    let userDetails: UserDetails
     
-    private func addBodyUserDetailsLastName(){
-        if (userDetails.lastName != nil && !(userDetails.lastName?.isEmpty)!){
-            self.body!["lastName"] = userDetails.lastName
-        }
-    }
-    
-    private func addBodyUserDetailsEmail(){
-        if (userDetails.email != nil && !(userDetails.email?.isEmpty)!){
-            self.body!["email"] = userDetails.email
-        }
-    }
-    
-    private func addBodyUserDetailsGender(){
-        if (userDetails.gender != nil && !(userDetails.gender?.isEmpty)!){
-            self.body!["gender"] = userDetails.gender
+    var bodyTemp: [String : Any]?{
+        get {
+            var tmpBody: [String:Any] = [:]
             
-        }
-    }
-    
-    private func addBodyUserDetailsLanguage(){
-        if (userDetails.language != nil && !(userDetails.language?.isEmpty)!){
-            self.body!["language"] = userDetails.language
-        }
-    }
-    
-    private func addBodyUserDetailsAddressJSONString(){
-        
-        if(userDetails.address != nil){
-            
-            let encoder = JSONEncoder()
-            
-            let jsonDataUserDetailsAddress = try? encoder.encode(userDetails.address)
-            var userDetailsJSONString = ""
-            
-            if(jsonDataUserDetailsAddress != nil){
-                userDetailsJSONString = String(data: jsonDataUserDetailsAddress!, encoding: .utf8)!
-                print("User Details as JSON string -> \n" + userDetailsJSONString + "\n")
-            }else{
-                print("Couldn't parse the user details address...something went wrong!")
+            if let firstName = userDetails.firstName, !firstName.isEmpty {
+                tmpBody["firstName"] = firstName
             }
             
-            if(!userDetailsJSONString.isEmpty && userDetailsJSONString != "{}"){
-                self.body!["address"] = userDetailsJSONString
+            if let lastName = userDetails.lastName, !lastName.isEmpty {
+                tmpBody["lastName"] = userDetails.lastName
             }
+            
+            if let email = userDetails.email, !email.isEmpty {
+                tmpBody["email"] = userDetails.email
+            }
+            
+            if let gender = userDetails.gender, !gender.isEmpty {
+                tmpBody["gender"] = userDetails.gender
+            }
+            
+            if let language = userDetails.language, !language.isEmpty {
+                tmpBody["language"] = userDetails.language
+            }
+            
+            let encoder = JSONEncoder ()            
+            if let address = userDetails.address,
+                let jsonDataAddress = try? encoder.encode(address),
+                let jsonStringAddress = String(data: jsonDataAddress, encoding: .utf8),
+                !jsonStringAddress.isEmpty && jsonStringAddress != "{}"  {
+                tmpBody["address"] = jsonStringAddress
+            }
+            
+            if let appProfile = userDetails.applicationProfile,
+                let jsonDataAppProfile = try? encoder.encode(appProfile),
+                let jsonStringAppProfile = String(data: jsonDataAppProfile, encoding: .utf8),
+                !jsonStringAppProfile.isEmpty && jsonStringAppProfile != "{}"  {
+                tmpBody["applicationProfile"] = jsonStringAppProfile
+            }
+            
+            return tmpBody
         }
-    }
-    
-    private func addBodyUserDetailsAppProfileJSONString(){
-        
-        if(userDetails.applicationProfile != nil){
-            
-            let encoder = JSONEncoder()
-            
-            let jsonDataUserDetailsAppProfile = try? encoder.encode(userDetails.applicationProfile)
-            var userDetailsAppProfileJSONString = ""
-            
-            if(jsonDataUserDetailsAppProfile != nil){
-                userDetailsAppProfileJSONString = String(data: jsonDataUserDetailsAppProfile!, encoding: .utf8)!
-                print("User Details App Profile as JSON string -> \n" + userDetailsAppProfileJSONString + "\n")
-            }else{
-                print("Couldn't parse the user details address...something went wrong!")
-            }
-            
-            if(!userDetailsAppProfileJSONString.isEmpty && userDetailsAppProfileJSONString != "{}"){
-                self.body!["applicationProfile"] = userDetailsAppProfileJSONString
-            }
-        }
-        
     }
     
 }

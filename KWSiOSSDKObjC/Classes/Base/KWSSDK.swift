@@ -55,43 +55,4 @@ import SAMobileBase
         }
     }
     
-    public func getKWSMetadata (token: String) -> MetadataKWS? {
-        
-        let base64req = ParseBase64Request(withBase64String: token)
-        let base64Task = ParseBase64Task()
-        let metadataJson = base64Task.execute(request: base64req)
-        
-        let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-        let parseJsonTask = JSONParseTask<MetadataKWS>()
-        let metadata = parseJsonTask.execute(request: parseJsonReq)
-        
-        return metadata
-    }
-    
-    public func getUserDetailsCountryCode(country: String) -> String?{
-        
-        /*
-         .This is a helper mapping to the `country` from GET User Details, for the PUT in update user.
-          - The GET User Details responds with country as full name (e.g "United Kingdom")
-          - The PUT Update User Details needs to send a `lowercase country code` (!!!)
-         */
-        
-        switch country {
-        case "gb", "GB", "United Kingdom":
-            return "gb"
-        case "us", "US", "United States":
-            return "us"
-        case "it", "IT", "Italy":
-            return ""
-        case "nl", "NL", "Netherlands":
-            return ""
-        case "fr", "FR", "France":
-            return ""
-        case "be", "BE", "Belgium":
-            return "be"
-        default:
-            return ""
-        }
-        
-    }
 }

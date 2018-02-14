@@ -192,7 +192,7 @@
 
 - (void) loginUser {
     
-    NSString* username = @"testusr198";
+    NSString* username = @"guithetest2";
     NSString* pwd = @"testtest";
     [[KWSChildren sdk] loginUser:username withPassword:pwd andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
@@ -256,7 +256,7 @@
     
     if (_user) {
         
-        _user.firstName = @"John";
+        _user.firstName = @"Peter";
         
         [[KWSChildren sdk] updateUser:_user withResponse:^(BOOL updated) {
             NSLog(@"Updated user %d", updated);

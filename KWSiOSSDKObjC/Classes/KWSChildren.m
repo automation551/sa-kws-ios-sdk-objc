@@ -211,7 +211,7 @@
 
 -(KWSMetadata*) getMetadataFromToken : (NSString*) token {
     //todo here
-    MetadataKWS* metadataNewObject = [[KWSSDK sharedInstance] getKWSMetadataWithToken:token];
+    MetadataKWS* metadataNewObject = [[UtilsHelpers sharedInstance] getKWSMetadataWithToken:token];
     
     KWSMetadata* kwsMetadata = [[KWSMetadata alloc]initWithUserId:metadataNewObject.userId andAppId:metadataNewObject.appId andClientId:metadataNewObject.clientId andScope:metadataNewObject.scope andIat:metadataNewObject.iat andExp:metadataNewObject.exp andIss:metadataNewObject.iss];
     
@@ -459,7 +459,7 @@
 -(KWSSwiftUserAddress*) buildSwiftUserAddress:(KWSAddress*) address {
     
     //parse country
-    NSString* parsedCountry = [[KWSSDK sharedInstance] getUserDetailsCountryCodeWithCountry:address.country];
+    NSString* parsedCountry = [[UtilsHelpers sharedInstance] getUserDetailsCountryCodeWithCountry:address.country];
     
     return [[KWSSwiftUserAddress alloc] initWithStreet:address.street city:address.city postCode:address.postCode country:parsedCountry ];
     
