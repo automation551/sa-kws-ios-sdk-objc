@@ -14,8 +14,8 @@ extension CreateUserResponse: Decodable {
     public static func decode(_ json: Any) throws -> CreateUserResponse {
         
         return try CreateUserResponse (
-            id:           try json =>? "id",
-            token:           try json =>? "token"
+            id:                 try json =>? "id",
+            token:              try json =>? "token"
         )
     }
 }

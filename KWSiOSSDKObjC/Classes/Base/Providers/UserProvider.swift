@@ -30,31 +30,24 @@ import SAMobileBase
             if let json = getUserDetailsNetworkResponse.response, getUserDetailsNetworkResponse.error == nil{
                 
                 let parseRequest = JsonParseRequest.init(withRawData: json)
+                let parseTask = JSONParseTask<UserDetails>()
                 
-                if getUserDetailsNetworkResponse.success{
-                    
-                    let parseTask = JSONParseTask<UserDetails>()
-                    
-                    if let getUserDetailsResponseObject = parseTask.execute(request: parseRequest){
-                        callback(getUserDetailsResponseObject, nil)
-                    }else{
-                        callback(nil, KWSBaseError.JsonParsingError)
-                    }
-                    
-                }else{
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    
-                    if let mappedResponse = parseTask.execute(request: parseRequest) {
-                        callback(nil, mappedResponse)
-                    } else {
-                        callback(nil, KWSBaseError.JsonParsingError)
-                    }
+                if let getUserDetailsResponseObject = parseTask.execute(request: parseRequest){
+                    callback(getUserDetailsResponseObject, nil)
+                } else {
+                    callback(nil, KWSBaseError.JsonParsingError)
                 }
                 
             }else{
                 // pass the network error forward through the callback to the user
-                callback(nil, getUserDetailsNetworkResponse.error)
-                print("request \(getUserDetailsNetworkRequest.environment.domain)\(getUserDetailsNetworkRequest.endpoint), generated error:\(getUserDetailsNetworkResponse.error ?? "unknown error" as! Error)")
+                let jsonParseRequest = JsonParseRequest.init(withRawData: (getUserDetailsNetworkResponse.error?.message)!)
+                let parseTask = JSONParseTask<ErrorResponse>()
+                
+                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                    callback(nil, mappedResponse)
+                } else {
+                    callback(nil, getUserDetailsNetworkResponse.error)
+                }
             }
             
         }
@@ -76,8 +69,14 @@ import SAMobileBase
                 callback(true, nil)
             } else {
                 // pass the network error forward through the callback to the user
-                callback(false, upddateUserDetailsNetworkResponse.error)
-                print("request \(upddateUserDetailsNetworkRequest.environment.domain)\(upddateUserDetailsNetworkRequest.endpoint), generated error:\(upddateUserDetailsNetworkResponse.error ?? "unknown error" as! Error)")
+                let jsonParseRequest = JsonParseRequest.init(withRawData: (upddateUserDetailsNetworkResponse.error?.message)!)
+                let parseTask = JSONParseTask<ErrorResponse>()
+                
+                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                    callback(false, mappedResponse)
+                } else {
+                    callback(false, upddateUserDetailsNetworkResponse.error)
+                }
             }
             
         }

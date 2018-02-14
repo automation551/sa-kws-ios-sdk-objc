@@ -40,7 +40,7 @@ import SAMobileBase
     
     
     public func getAppConfigDetails(environment: KWSNetworkEnvironment,
-                             callback: @escaping (AppConfigResponse?, Error?) -> ()){
+                                    callback: @escaping (AppConfigResponse?, Error?) -> ()){
         
         let getAppConfigNetworkRequest = AppConfigRequest(environment: environment,
                                                           clientID: environment.mobileKey)
@@ -50,35 +50,27 @@ import SAMobileBase
             if let json = getAppConfigNetworkResponse.response, getAppConfigNetworkResponse.error == nil{
                 
                 let parseRequest = JsonParseRequest.init(withRawData: json)
+                let parseTask = JSONParseTask<AppConfigResponse>()
                 
-                if getAppConfigNetworkResponse.success{
-                    
-                    let parseTask = JSONParseTask<AppConfigResponse>()
-                    
-                    if let getAppConfigResponseObject = parseTask.execute(request: parseRequest){
-                        callback(getAppConfigResponseObject, nil)
-                    }else{
-                        callback(nil, KWSBaseError.JsonParsingError)
-                    }
-                    
+                if let getAppConfigResponseObject = parseTask.execute(request: parseRequest){
+                    callback(getAppConfigResponseObject, nil)
                 }else{
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    
-                    if let mappedResponse = parseTask.execute(request: parseRequest) {
-                        callback(nil, mappedResponse)
-                    } else {
-                        callback(nil, KWSBaseError.JsonParsingError)
-                    }
+                    callback(nil, KWSBaseError.JsonParsingError)
                 }
+                
                 
             }else{
                 // pass the network error forward through the callback to the user
-                callback(nil, getAppConfigNetworkResponse.error)
-                print("request \(getAppConfigNetworkRequest.environment.domain)\(getAppConfigNetworkRequest.endpoint), generated error:\(getAppConfigNetworkResponse.error ?? "unknown error" as! Error)")
+                let jsonParseRequest = JsonParseRequest.init(withRawData: (getAppConfigNetworkResponse.error?.message)!)
+                let parseTask = JSONParseTask<ErrorResponse>()
+                
+                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                    callback(nil, mappedResponse)
+                } else {
+                    callback(nil, getAppConfigNetworkResponse.error)
+                }
             }
-            
         }
-        
     }
     
     
@@ -99,15 +91,22 @@ import SAMobileBase
                 
                 let parsedResponseString = responseString?.replacingOccurrences(of: "\"", with: "")
                 
-                if(parsedResponseString != nil && !(parsedResponseString?.isEmpty)!){
+                if (parsedResponseString != nil && !(parsedResponseString?.isEmpty)!){
                     callback(RandomUsernameResponse(randomUsername: parsedResponseString), nil)
-                }else{
+                } else {
                     callback(RandomUsernameResponse(randomUsername: responseString), nil)
                 }
                 
+            } else {
+                // pass the network error forward through the callback to the user
+                let jsonParseRequest = JsonParseRequest.init(withRawData: (getRandomUsernameNetworkResponse.error?.message)!)
+                let parseTask = JSONParseTask<ErrorResponse>()
                 
-            }else{
-                callback(nil, getRandomUsernameNetworkResponse.error)
+                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                    callback(nil, mappedResponse)
+                } else {
+                    callback(nil, getRandomUsernameNetworkResponse.error)
+                }
             }
         }
         

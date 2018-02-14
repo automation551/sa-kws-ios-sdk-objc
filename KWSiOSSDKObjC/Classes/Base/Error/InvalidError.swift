@@ -24,12 +24,12 @@ public final class InvalidError: NSObject, Error {
     
     public required init(
         
-        dateOfBirth:    SpecificInvalidError? = nil,
-        country:        SpecificInvalidError? = nil,
-        parentEmail:    SpecificInvalidError? = nil,
-        password:   SpecificInvalidError? = nil,
-        username:   SpecificInvalidError? = nil,
-        oauthClientId:   SpecificInvalidError? = nil
+        dateOfBirth:        SpecificInvalidError? = nil,
+        country:            SpecificInvalidError? = nil,
+        parentEmail:        SpecificInvalidError? = nil,
+        password:           SpecificInvalidError? = nil,
+        username:           SpecificInvalidError? = nil,
+        oauthClientId:      SpecificInvalidError? = nil
         
         ) {
         

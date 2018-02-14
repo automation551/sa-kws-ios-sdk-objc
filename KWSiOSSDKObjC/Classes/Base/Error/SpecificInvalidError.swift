@@ -15,14 +15,14 @@ import Foundation
 @objc(KWSSpecificInvalidError)
 public final class SpecificInvalidError: NSObject, Error {
     
-    public let code: Int
-    public let codeMeaning: String
-    public let errorMessage: String
+    public let code:            Int
+    public let codeMeaning:     String
+    public let errorMessage:    String
     public required init(
         
-        code: Int = -1,
-        codeMeaning: String  = "",
-        errorMessage: String  = ""
+        code:                   Int     = -1,
+        codeMeaning:            String  = "",
+        errorMessage:           String  = ""
         
         ) {
         

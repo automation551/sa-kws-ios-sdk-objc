@@ -15,6 +15,14 @@ import SAMobileBase
 
 class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
     
+    
+    /*
+     Create User is a 2 step process - this is step 1
+     The test here should be to test the provider through the Service (see Login Provider Test)
+     In order to keep each step of create user tested individually, this test uses the CreateUserProvider resource
+     instead of using CreateUserService
+     */
+    
     //class or data to test
     private var createUserResource: CreateUserProvider!
     private var environment: KWSNetworkEnvironment!
@@ -84,16 +92,9 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
                                                         expect(tempAccessTokenResponse).to(beNil())
                                                         
                                                         expect(error).toNot(beNil())
-                                                        let networkErrorMessage = (error as! NetworkError).message
-                                                        expect(networkErrorMessage).toNot(beNil())
-                                                        
-                                                        let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                        let parseTask = JSONParseTask<ErrorResponse>()
-                                                        let errorResponse = parseTask.execute(request: parseRequest)
-                                                        
-                                                        expect(errorResponse).toNot(beNil())
-                                                        expect(errorResponse?.errorCode).to(equal("invalid_request"))
-                                                        expect(errorResponse?.error).to(equal("Invalid or missing grant_type parameter"))
+                                                      
+                                                        expect((error as! ErrorResponse).errorCode).to(equal("invalid_request"))
+                                                        expect((error as! ErrorResponse).error).to(equal("Invalid or missing grant_type parameter"))
                                                         done()
                                                         
             })
@@ -121,16 +122,9 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
                                                         expect(tempAccessTokenResponse).to(beNil())
                                                         
                                                         expect(error).toNot(beNil())
-                                                        let networkErrorMessage = (error as! NetworkError).message
-                                                        expect(networkErrorMessage).toNot(beNil())
                                                         
-                                                        let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                        let parseTask = JSONParseTask<ErrorResponse>()
-                                                        let errorResponse = parseTask.execute(request: parseRequest)
-                                                        
-                                                        expect(errorResponse).toNot(beNil())
-                                                        expect(errorResponse?.errorCode).to(equal("invalid_client"))
-                                                        expect(errorResponse?.error).to(equal("Client credentials are invalid"))
+                                                        expect((error as! ErrorResponse).errorCode).to(equal("invalid_client"))
+                                                        expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
                                                         done()
                                                         
             })

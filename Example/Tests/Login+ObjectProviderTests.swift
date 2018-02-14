@@ -15,7 +15,7 @@ import SAMobileBase
 class Login_ObjectProviderTests: XCTestCase {
     
     // class or data to test
-    private var loginResource: LoginProvider!
+    private var loginService: LoginService!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUsername: String = "good_username"
@@ -37,14 +37,14 @@ class Login_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        loginResource = LoginProvider.init(environment: self.environment)
+        self.loginService = KWSSDK.getService(value: LoginService.self, environment: self.environment)
         
         
     }
     
     override func tearDown() {
         super.tearDown()
-        loginResource = nil
+        loginService = nil
         environment = nil
     }
     
@@ -64,9 +64,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginResource.loginUser(username: self.goodUsername,
-                                         password: self.goodPassword,
-                                         callback: {  loginResponse, error in
+            self.loginService.loginUser(username: self.goodUsername,
+                                        password: self.goodPassword,
+                                        callback: {  loginResponse, error in
                                             
                                             //then
                                             expect(loginResponse).toNot(beNil())
@@ -96,21 +96,14 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
+            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
                 
                 expect(error).toNot(beNil())
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
-                
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse?.code).to(equal(123))
-                expect(errorResponse?.codeMeaning).to(equal("notFound"))
+                expect((error as! ErrorResponse).code).to(equal(123))
+                expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
                 
                 done()
                 
@@ -134,21 +127,14 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
+            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil());
                 
                 expect(error).toNot(beNil());
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
-                
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse?.errorCode).to(equal("invalid_grant"))
-                expect(errorResponse?.error).to(equal("User credentials are invalid"))
+                expect((error as! ErrorResponse).errorCode).to(equal("invalid_grant"))
+                expect((error as! ErrorResponse).error).to(equal("User credentials are invalid"))
                 
                 done()
                 
@@ -172,21 +158,14 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword,callback: { loginResponse, error in
+            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword,callback: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
                 
                 expect(error).toNot(beNil());
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
-                
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse?.errorCode).to(equal("invalid_grant"))
-                expect(errorResponse?.error).to(equal("User credentials are invalid"))
+                expect((error as! ErrorResponse).errorCode).to(equal("invalid_grant"))
+                expect((error as! ErrorResponse).error).to(equal("User credentials are invalid"))
                 
                 done()
                 
@@ -210,22 +189,14 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
+            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
                 
                 expect(error).toNot(beNil())
-                
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
-                
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse?.errorCode).to(equal("invalid_client"))
-                expect(errorResponse?.error).to(equal("Client credentials are invalid"))
+                expect((error as! ErrorResponse).errorCode).to(equal("invalid_client"))
+                expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
                 
                 done()
                 
@@ -249,22 +220,14 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginResource.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
+            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
                 
                 expect(error).toNot(beNil())
-                
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
-                
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse?.errorCode).to(equal("invalid_client"))
-                expect(errorResponse?.error).to(equal("Client credentials are invalid"))
+                expect((error as! ErrorResponse).errorCode).to(equal("invalid_client"))
+                expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
                 
                 done()
                 
