@@ -27,24 +27,29 @@ import SAMobileBase
             
             if (authResponse?.token != nil && error == nil ){
                 
-                let token = authResponse?.token
-                
-                let base64req = ParseBase64Request(withBase64String: token)
-                let base64Task = ParseBase64Task()
-                let metadataJson = base64Task.execute(request: base64req)
-                
-                let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-                let parseJsonTask = JSONParseTask<MetadataKWS>()
-                let metadata = parseJsonTask.execute(request: parseJsonReq)
-                
-                if(metadata != nil){
-                    let appId = metadata?.appId?.intValue
+                if let token = authResponse?.token {
                     
-                    //todo here Creation of user with temp access token
-                    self.doUserCreation(environment: self.environment, username: username, password: password, dateOfBirth: dateOfBirth, country: country, parentEmail: parentEmail, appId: appId!, token: token!, callback: callback)
-                }else{
-                    callback(nil, KWSBaseError.JsonParsingError)
+                    let base64req = ParseBase64Request(withBase64String: token)
+                    let base64Task = ParseBase64Task()
+                    let metadataJson = base64Task.execute(request: base64req)
+                    
+                    let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
+                    let parseJsonTask = JSONParseTask<MetadataKWS>()
+                    let metadata = parseJsonTask.execute(request: parseJsonReq)
+                    
+                    if(metadata != nil){
+                        if let appId = metadata?.appId as? Int {
+                            
+                            //todo here Creation of user with temp access token
+                            self.doUserCreation(environment: self.environment, username: username, password: password, dateOfBirth: dateOfBirth, country: country, parentEmail: parentEmail, appId: appId, token: token, callback: callback)
+                            
+                        }
+                    } else {
+                        callback(nil, KWSBaseError.JsonParsingError)
+                    }
+                    
                 }
+                
                 
             } else {
                 callback(nil, error)
