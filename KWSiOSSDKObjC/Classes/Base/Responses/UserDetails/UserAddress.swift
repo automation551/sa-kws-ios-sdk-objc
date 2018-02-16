@@ -18,7 +18,10 @@ public final class UserAddress: NSObject {
    
     
     
-    public required init(street: String?, city: String?, postCode: String?, country:String?) {
+    public required init(street:    String? = nil,
+                         city:      String? = nil,
+                         postCode:  String? = nil,
+                         country:   String? = nil) {
         
         self.street = street
         self.city = city

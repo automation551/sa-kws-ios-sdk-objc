@@ -13,6 +13,7 @@
 #import "KWSMetadata.h"
 #import "SAAlert.h"
 #import "KWSLoggedUser.h"
+#import "SAUtils.h"
 
 //to allow ObjC - Swift interoperability
 #import "KWSiOSSDKObjC/KWSiOSSDKObjC-Swift.h"
@@ -319,13 +320,15 @@
     NSString *gender = [kwsUserDetailsResponse gender];
     NSString *language = [kwsUserDetailsResponse language];
     NSString *email = [kwsUserDetailsResponse email];
+    NSString *parentEmail = [kwsUserDetailsResponse parentEmail];
     
     KWSAddress *address = [self buildKWSUserAddress: [kwsUserDetailsResponse address]];
     KWSPoints *points = [self buildKWSPoints: [kwsUserDetailsResponse points]];
     KWSPermissions *permissions = [self buildKWSPermissions: [kwsUserDetailsResponse applicationPermissions]];
     KWSApplicationProfile *appProfile = [self buildKWSApplicationProfile: [kwsUserDetailsResponse applicationProfile]];
     
-    KWSUser * user = [[KWSUser alloc]initWithID:id andUsername:username andFirstName:firstName andLastName:lastName andDateOfBirth:dateOfBirth andGender:gender andLanguage:language andEmail:email andAddress:address andPoints:points andAppPermissions:permissions andAppProfile:appProfile];
+    
+    KWSUser * user = [[KWSUser alloc]initWithID:id andUsername:username andFirstName:firstName andLastName:lastName andDateOfBirth:dateOfBirth andGender:gender andLanguage:language andEmail:email andAddress:address andPoints:points andAppPermissions:permissions andAppProfile:appProfile andParentEmail:parentEmail];
     
     return user;
     
@@ -408,7 +411,7 @@
             return;
         }
         
-        //todo KWSUser into UserDetails here
+        //KWSUser into UserDetails here
         KWSUserDetails *userDetails = [self buildUserDetails: updatedUser];
         if(userDetails == nil){
             response(nil);
@@ -421,7 +424,13 @@
                                          callback:^(BOOL success, NSError * error) {
                                              //
                                              //callback here
+                                             if(success){
+                                                 NSLog(@"Success updating user!");
+                                             }else{
+                                                 NSLog(@"Failed to update user...");
+                                             }
                                              response(success);
+                                           
                                          }];
     } else {
         NSLog(kProviderErrorMessage);
@@ -436,9 +445,8 @@
     KWSSwiftUserAddress * kwsSwiftUserAddress = [self buildSwiftUserAddress: [updateUser address] ];
     KWSSwiftApplicationProfile * kwsSwiftAppProfile = [self buildSwiftAppProfile: [updateUser applicationProfile]];
     
-    
     return [[KWSUserDetails alloc] initWithId:nil
-                                     username: nil
+                                     username:nil
                                     firstName:updateUser.firstName
                                      lastName:updateUser.lastName
                                       address:kwsSwiftUserAddress
@@ -447,13 +455,17 @@
                                      language:updateUser.language
                                         email:updateUser.email
                                   phoneNumber:updateUser.phoneNumber
-                            hasSetParentEmail: nil
+                            hasSetParentEmail:nil
                            applicationProfile:kwsSwiftAppProfile
                        applicationPermissions:nil
                                        points:nil
-                                    createdAt:nil];
+                                    createdAt:nil
+                                  parentEmail:updateUser.parentEmail];
     
 }
+
+
+//-----------------//
 
 
 -(KWSSwiftUserAddress*) buildSwiftUserAddress:(KWSAddress*) address {
@@ -490,7 +502,63 @@
 
 - (void) updateParentEmail:(NSString *)email
               withResponse:(KWSChildrenUpdateParentEmailBlock)response {
-    [_parentEmail execute:email :response];
+    
+    
+    UserProvider* userProvider = [[KWSSDK sharedInstance]
+                                  getProviderWithEnvironment:_userKWSNetworkEnvironment
+                                  type:NSStringFromClass([UserProvider class])];
+    
+    if ([userProvider isKindOfClass: [UserProvider class]]){
+        
+        if(_loggedUser == nil || _loggedUser.metadata == nil ){
+            response(nil);
+            NSLog(kNoValidLoggedInUserMessage);
+            return;
+        }
+
+        //User details with only parentEmail
+        KWSUserDetails* userDetails = [[KWSUserDetails alloc] initWithId:nil
+                                                                username:nil
+                                                               firstName:nil
+                                                                lastName:nil
+                                                                 address:nil
+                                                             dateOfBirth:nil
+                                                                  gender:nil
+                                                                language:nil
+                                                                   email:nil
+                                                             phoneNumber:nil
+                                                       hasSetParentEmail:nil
+                                                      applicationProfile:nil
+                                                  applicationPermissions:nil
+                                                                  points:nil
+                                                               createdAt:nil
+                                                             parentEmail:email];
+
+        if(userDetails == nil){
+            response(nil);
+            NSLog(@"No valid user details...");
+        }
+
+        [userProvider updateUserDetailsWithUserId:(long)_loggedUser.metadata.userId
+                                            token: _loggedUser.token
+                                      userDetails:userDetails
+                                         callback:^(BOOL success, NSError * error) {
+                                             //
+                                             //callback here
+                                             if(success){
+                                                 response(KWSChildren_UpdateParentEmail_Success);
+                                             }else{
+                                                 response(KWSChildren_UpdateParentEmail_NetworkError);
+                                             }
+                                             
+                                         }];
+    } else {
+        NSLog(kProviderErrorMessage);
+    }
+    
+    
+    
+    
 }
 
 - (void) requestPermission:(NSArray<NSNumber *> *)requestedPermissions

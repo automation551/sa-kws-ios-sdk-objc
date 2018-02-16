@@ -28,8 +28,8 @@ extension UserDetails: Decodable {
             applicationProfile:     try json =>? "applicationProfile",
             applicationPermissions: try json =>? "applicationPermissions",
             points:                 try json =>? "points",
-            createdAt:              try json =>? "createdAt"
-            
+            createdAt:              try json =>? "createdAt",
+            parentEmail:            try json =>? "parentEmail"
         )
     }
 }
@@ -48,6 +48,7 @@ extension UserDetails: Encodable {
         try container.encode(phoneNumber, forKey: .phoneNumber)
         try container.encode(hasSetParentEmail, forKey: .hasSetParentEmail)
         try container.encode(createdAt, forKey: .createdAt)
+        try container.encode(parentEmail, forKey: .parentEmail)
         
         //address
         try container.encode(address, forKey: .address)

@@ -39,6 +39,10 @@ public class UpdateUserDetailsRequest: BaseRequest {
                 tmpBody["lastName"] = userDetails.lastName
             }
             
+            if let dateOfBirth = userDetails.dateOfBirth, !dateOfBirth.isEmpty {
+                tmpBody["dateOfBirth"] = userDetails.dateOfBirth
+            }
+            
             if let email = userDetails.email, !email.isEmpty {
                 tmpBody["email"] = userDetails.email
             }
@@ -49,6 +53,10 @@ public class UpdateUserDetailsRequest: BaseRequest {
             
             if let language = userDetails.language, !language.isEmpty {
                 tmpBody["language"] = userDetails.language
+            }
+            
+            if let parentEmail = userDetails.parentEmail, !parentEmail.isEmpty {
+                tmpBody["parentEmail"] = userDetails.parentEmail
             }
             
             let encoder = JSONEncoder ()            

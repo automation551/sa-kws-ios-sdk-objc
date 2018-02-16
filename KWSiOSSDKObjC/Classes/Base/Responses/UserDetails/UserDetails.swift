@@ -29,6 +29,7 @@ public final class UserDetails: NSObject {
     public let applicationPermissions:      ApplicationPermissions?
     public let points:                      Points?
     public let createdAt:                   String?
+    public let parentEmail:                 String?
     
     
     public required init(id:                        NSNumber? = nil,
@@ -45,7 +46,8 @@ public final class UserDetails: NSObject {
                          applicationProfile:        ApplicationProfile? = nil,
                          applicationPermissions:    ApplicationPermissions? = nil,
                          points:                    Points? = nil,
-                         createdAt:                 String? = nil) {
+                         createdAt:                 String? = nil,
+                         parentEmail:               String? = nil) {
         
         self.id = id
         self.username = username
@@ -62,6 +64,7 @@ public final class UserDetails: NSObject {
         self.applicationPermissions = applicationPermissions
         self.points = points
         self.createdAt = createdAt
+        self.parentEmail = parentEmail
     }
     
     public enum CodingKeys: String, CodingKey {
@@ -82,6 +85,7 @@ public final class UserDetails: NSObject {
         case applicationPermissions
         case points
         case createdAt
+        case parentEmail
     }
     
     
