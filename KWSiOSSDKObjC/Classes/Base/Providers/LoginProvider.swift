@@ -44,12 +44,14 @@ import SAMobileBase
                 
                 
             } else {
-                // pass the network error forward through the callback to the user
-                let jsonParseRequest = JsonParseRequest.init(withRawData: (loginUserNetworkResponse.error?.message)!)
-                let parseTask = JSONParseTask<ErrorResponse>()
                 
-                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                if let errorResponse = loginUserNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     callback(nil, mappedResponse)
+                    
                 } else {
                     callback(nil, loginUserNetworkResponse.error)
                 }
