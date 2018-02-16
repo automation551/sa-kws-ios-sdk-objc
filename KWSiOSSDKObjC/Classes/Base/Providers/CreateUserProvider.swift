@@ -25,33 +25,26 @@ import SAMobileBase
         
         getTempAccessToken(environment: environment){ authResponse, error in
             
-            if (authResponse?.token != nil && error == nil ){
+            if let token = authResponse?.token, error == nil {
                 
-                if let token = authResponse?.token {
+                let base64req = ParseBase64Request(withBase64String: token)
+                let base64Task = ParseBase64Task()
+                let metadataJson = base64Task.execute(request: base64req)
+                
+                let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
+                let parseJsonTask = JSONParseTask<MetadataKWS>()
+                let metadata = parseJsonTask.execute(request: parseJsonReq)
+                
+                if let met = metadata, let appId = met.appId as? Int {
                     
-                    let base64req = ParseBase64Request(withBase64String: token)
-                    let base64Task = ParseBase64Task()
-                    let metadataJson = base64Task.execute(request: base64req)
-                    
-                    let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-                    let parseJsonTask = JSONParseTask<MetadataKWS>()
-                    let metadata = parseJsonTask.execute(request: parseJsonReq)
-                    
-                    if(metadata != nil){
-                        if let appId = metadata?.appId as? Int {
-                            
-                            //todo here Creation of user with temp access token
-                            self.doUserCreation(environment: self.environment, username: username, password: password, dateOfBirth: dateOfBirth, country: country, parentEmail: parentEmail, appId: appId, token: token, callback: callback)
-                            
-                        }
-                    } else {
-                        callback(nil, KWSBaseError.JsonParsingError)
-                    }
+                    self.doUserCreation(environment: self.environment, username: username, password: password, dateOfBirth: dateOfBirth, country: country, parentEmail: parentEmail, appId: appId, token: token, callback: callback)
                     
                 }
-                
-                
-            } else {
+                else {
+                    callback(nil, KWSBaseError.JsonParsingError)
+                }
+            }
+            else {
                 callback(nil, error)
             }
             
@@ -82,12 +75,13 @@ import SAMobileBase
                 }                            
                 
             }else{
-                // pass the network error forward through the callback to the user
-                let jsonParseRequest = JsonParseRequest.init(withRawData: (getTempAccessTokenNetworkResponse.error?.message)!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                
-                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                if let errorResponse = getTempAccessTokenNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     callback(nil, mappedResponse)
+                    
                 } else {
                     callback(nil, getTempAccessTokenNetworkResponse.error)
                 }
@@ -108,7 +102,7 @@ import SAMobileBase
                                                          token: token,
                                                          appID: appId)
         
-        networkTask.execute(request: createUserNetworkRequest){ createUserNetworkResponse in
+        networkTask.execute(request: createUserNetworkRequest) { createUserNetworkResponse in
             
             if let json = createUserNetworkResponse.response, createUserNetworkResponse.error == nil {
                 
@@ -123,16 +117,19 @@ import SAMobileBase
                 }
                 
             } else {
-                // pass the network error forward through the callback to the user
-                let jsonParseRequest = JsonParseRequest.init(withRawData: (createUserNetworkResponse.error?.message)!)
-                let parseTask = JSONParseTask<ErrorResponse>()
                 
-                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                if let errorResponse = createUserNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     callback(nil, mappedResponse)
+                    
                 } else {
-                    callback(nil, createUserNetworkResponse.error)
+                   callback(nil, createUserNetworkResponse.error)
                 }
             }
         }
     }
 }
+

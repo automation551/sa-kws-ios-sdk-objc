@@ -60,12 +60,13 @@ import SAMobileBase
                 
                 
             }else{
-                // pass the network error forward through the callback to the user
-                let jsonParseRequest = JsonParseRequest.init(withRawData: (getAppConfigNetworkResponse.error?.message)!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                
-                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                if let errorResponse = getAppConfigNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     callback(nil, mappedResponse)
+                    
                 } else {
                     callback(nil, getAppConfigNetworkResponse.error)
                 }
@@ -98,12 +99,13 @@ import SAMobileBase
                 }
                 
             } else {
-                // pass the network error forward through the callback to the user
-                let jsonParseRequest = JsonParseRequest.init(withRawData: (getRandomUsernameNetworkResponse.error?.message)!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                
-                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                if let errorResponse = getRandomUsernameNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     callback(nil, mappedResponse)
+                    
                 } else {
                     callback(nil, getRandomUsernameNetworkResponse.error)
                 }

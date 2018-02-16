@@ -39,19 +39,18 @@ import SAMobileBase
                 }
                 
             }else{
-                // pass the network error forward through the callback to the user
-                let jsonParseRequest = JsonParseRequest.init(withRawData: (getUserDetailsNetworkResponse.error?.message)!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                
-                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                if let errorResponse = getUserDetailsNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     callback(nil, mappedResponse)
+                    
                 } else {
                     callback(nil, getUserDetailsNetworkResponse.error)
                 }
             }
-            
         }
-        
     }
     
     
@@ -68,12 +67,13 @@ import SAMobileBase
             if (upddateUserDetailsNetworkResponse.success && upddateUserDetailsNetworkResponse.error == nil) {
                 callback(true, nil)
             } else {
-                // pass the network error forward through the callback to the user
-                let jsonParseRequest = JsonParseRequest.init(withRawData: (upddateUserDetailsNetworkResponse.error?.message)!)
-                let parseTask = JSONParseTask<ErrorResponse>()
-                
-                if let mappedResponse = parseTask.execute(request: jsonParseRequest) {
+                if let errorResponse = upddateUserDetailsNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     callback(false, mappedResponse)
+                    
                 } else {
                     callback(false, upddateUserDetailsNetworkResponse.error)
                 }
