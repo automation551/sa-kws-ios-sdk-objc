@@ -1,0 +1,12 @@
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]",
+    "invalid": {
+        "parentEmail": {
+            "code": 7,
+            "codeMeaning": "invalidValue",
+            "errorMessage": "\"parentEmail\" must be a valid email"
+        }
+    }
+}

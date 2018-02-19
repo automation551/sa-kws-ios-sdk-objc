@@ -113,6 +113,9 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_details_address_fails_response")
         
+        //given
+        userDetails = UserDetails(address: UserAddress())
+        
         let request = UpdateUserDetailsRequest(environment: self.environment,
                                                userDetails: userDetails,
                                                userId: goodUserId,
