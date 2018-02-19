@@ -18,9 +18,11 @@ public final class InvalidError: NSObject, Error {
     public let username:        SpecificInvalidError?
     public let oauthClientId:   SpecificInvalidError?
     public let addressStreet:   SpecificInvalidError?
-    public let addressPostCode:   SpecificInvalidError?
-    public let addressCity:   SpecificInvalidError?
-    public let addressCountry:   SpecificInvalidError?
+    public let addressPostCode: SpecificInvalidError?
+    public let addressCity:     SpecificInvalidError?
+    public let addressCountry:  SpecificInvalidError?
+    public let permissions:     SpecificInvalidError?
+    
     
     
     
@@ -37,7 +39,8 @@ public final class InvalidError: NSObject, Error {
         addressStreet:      SpecificInvalidError? = nil,
         addressPostCode:    SpecificInvalidError? = nil,
         addressCity:        SpecificInvalidError? = nil,
-        addressCountry:     SpecificInvalidError? = nil
+        addressCountry:     SpecificInvalidError? = nil,
+        permissions:        SpecificInvalidError? = nil
         
         ) {
         
@@ -51,6 +54,7 @@ public final class InvalidError: NSObject, Error {
         self.addressPostCode = addressPostCode
         self.addressCity = addressCity
         self.addressCountry = addressCountry
+        self.permissions = permissions
         
         
     }

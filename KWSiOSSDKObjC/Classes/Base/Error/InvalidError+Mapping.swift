@@ -23,8 +23,8 @@ extension InvalidError: Decodable {
             addressStreet:          try json =>? "address.street",
             addressPostCode:        try json =>? "address.postCode",
             addressCity:            try json =>? "address.city",
-            addressCountry:         try json =>? "address.country"
-            
+            addressCountry:         try json =>? "address.country",
+            permissions:            try json =>? "permissions"            
             
         )
     }
