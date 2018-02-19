@@ -21,5 +21,12 @@ import SAMobileBase
                            userDetails: UserDetails,
                            callback: @escaping(Bool, Error?) -> () )
     
+    func requestPermissions(userId:Int,
+                           token: String,
+                           permissionsList: [String],
+                           callback: @escaping(Bool, Error?) -> () )
+    
+    
+    
     
 }
