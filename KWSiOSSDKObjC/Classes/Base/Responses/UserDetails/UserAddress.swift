@@ -11,10 +11,10 @@ import UIKit
 @objc(KWSSwiftUserAddress)
 public final class UserAddress: NSObject {
     
-    public let street: String?
-    public let city: String?
-    public let postCode: String?
-    public let country: String?
+    public let street:      String?
+    public let city:        String?
+    public let postCode:    String?
+    public let country:     String?
    
     
     

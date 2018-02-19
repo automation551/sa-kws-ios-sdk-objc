@@ -10,7 +10,7 @@ import SAMobileBase
 
 @objc public protocol LoginService: NSObjectProtocol, BaseService {
     
-   @objc func loginUser(username: String,
+   func loginUser(username: String,
                    password: String,
                    callback: @escaping(AuthResponse?,Error?) -> () )
     

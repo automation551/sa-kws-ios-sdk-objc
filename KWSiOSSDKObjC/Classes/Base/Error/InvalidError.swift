@@ -17,6 +17,10 @@ public final class InvalidError: NSObject, Error {
     public let password:        SpecificInvalidError?
     public let username:        SpecificInvalidError?
     public let oauthClientId:   SpecificInvalidError?
+    public let addressStreet:   SpecificInvalidError?
+    public let addressPostCode:   SpecificInvalidError?
+    public let addressCity:   SpecificInvalidError?
+    public let addressCountry:   SpecificInvalidError?
     
     
     
@@ -24,12 +28,16 @@ public final class InvalidError: NSObject, Error {
     
     public required init(
         
-        dateOfBirth:    SpecificInvalidError? = nil,
-        country:        SpecificInvalidError? = nil,
-        parentEmail:    SpecificInvalidError? = nil,
-        password:   SpecificInvalidError? = nil,
-        username:   SpecificInvalidError? = nil,
-        oauthClientId:   SpecificInvalidError? = nil
+        dateOfBirth:        SpecificInvalidError? = nil,
+        country:            SpecificInvalidError? = nil,
+        parentEmail:        SpecificInvalidError? = nil,
+        password:           SpecificInvalidError? = nil,
+        username:           SpecificInvalidError? = nil,
+        oauthClientId:      SpecificInvalidError? = nil,
+        addressStreet:      SpecificInvalidError? = nil,
+        addressPostCode:    SpecificInvalidError? = nil,
+        addressCity:        SpecificInvalidError? = nil,
+        addressCountry:     SpecificInvalidError? = nil
         
         ) {
         
@@ -39,6 +47,10 @@ public final class InvalidError: NSObject, Error {
         self.password = password
         self.username = username
         self.oauthClientId = oauthClientId
+        self.addressStreet = addressStreet
+        self.addressPostCode = addressPostCode
+        self.addressCity = addressCity
+        self.addressCountry = addressCountry
         
         
     }

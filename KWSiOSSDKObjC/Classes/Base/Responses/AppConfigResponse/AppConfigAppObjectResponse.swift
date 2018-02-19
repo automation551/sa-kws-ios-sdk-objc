@@ -9,8 +9,8 @@ import Foundation
 @objc(KWSAppConfigAppObjectResponse)
 public final class AppConfigAppObjectResponse: NSObject {
     
-    public let id: Int?
-    public let name: String?
+    public let id:      Int?
+    public let name:    String?
     
     public required init(id: Int?,
                          name: String? = "") {

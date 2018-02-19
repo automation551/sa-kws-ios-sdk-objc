@@ -14,6 +14,13 @@ import SAMobileBase
 
 class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
     
+    /*
+     Create User is a 2 step process - this is step 2
+     The test here should be to test the provider through the Service (see Login Provider Test)
+     In order to keep each step of create user tested individually, this test uses the CreateUserProvider resource
+     instead of using CreateUserService
+     */
+    
     //class or data to test
     private var createUserResource: CreateUserProvider!
     private var environment: KWSNetworkEnvironment!
@@ -59,7 +66,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         createUserResource = nil
         environment = nil
     }
-
+    
     
     //User Creation
     func test_CreateUser_ValidRequestAndResponse() {
@@ -135,16 +142,9 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(createUserResponse).to(beNil())
                                                     
                                                     expect(error).toNot(beNil())
-                                                    let networkErrorMessage = (error as! NetworkError).message
-                                                    expect(networkErrorMessage).toNot(beNil())
                                                     
-                                                    let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<SimpleErrorResponse>()
-                                                    let errorResponse = parseTask.execute(request: parseRequest)
-                                                    
-                                                    expect(errorResponse).toNot(beNil())
-                                                    expect(errorResponse?.errorCode).to(equal("invalid_token"))
-                                                    expect(errorResponse?.error).to(equal("The access token provided is invalid."))
+                                                    expect((error as! ErrorResponse).errorCode).to(equal("invalid_token"))
+                                                    expect((error as! ErrorResponse).error).to(equal("The access token provided is invalid."))
                                                     done()
                                                     
             })
@@ -184,15 +184,9 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(createUserResponse).to(beNil())
                                                     
                                                     expect(error).toNot(beNil())
-                                                    let networkErrorMessage = (error as! NetworkError).message
-                                                    expect(networkErrorMessage).toNot(beNil())
                                                     
-                                                    let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
-                                                    let errorResponse = parseTask.execute(request: parseRequest)
-                                                    
-                                                    expect(errorResponse?.code).to(equal(123))
-                                                    expect(errorResponse?.codeMeaning).to(equal("notFound"))
+                                                    expect((error as! ErrorResponse).code).to(equal(123))
+                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
                                                     
                                                     done()
                                                     
@@ -233,20 +227,13 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(createUserResponse).to(beNil())
                                                     
                                                     expect(error).toNot(beNil())
-                                                    let networkErrorMessage = (error as! NetworkError).message
-                                                    expect(networkErrorMessage).toNot(beNil())
-                                                    
-                                                    let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
-                                                    let errorResponse = parseTask.execute(request: parseRequest)
-                                                    
-                                                    expect(errorResponse).toNot(beNil())
-                                                    expect(errorResponse?.code).to(equal(10))
-                                                    expect(errorResponse?.codeMeaning).to(equal("conflict"))
-                                                    expect(errorResponse?.errorMessage).to(equal("username already taken"))
-                                                    expect(errorResponse?.invalid?.username?.code).to(equal(10))
-                                                    expect(errorResponse?.invalid?.username?.codeMeaning).to(equal("conflict"))
-                                                    expect(errorResponse?.invalid?.username?.errorMessage).to(equal("username already taken"))
+                                                   
+                                                    expect((error as! ErrorResponse).code).to(equal(10))
+                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("conflict"))
+                                                    expect((error as! ErrorResponse).errorMessage).to(equal("username already taken"))
+                                                    expect((error as! ErrorResponse).invalid?.username?.code).to(equal(10))
+                                                    expect((error as! ErrorResponse).invalid?.username?.codeMeaning).to(equal("conflict"))
+                                                    expect((error as! ErrorResponse).invalid?.username?.errorMessage).to(equal("username already taken"))
                                                     
                                                     done()
                                                     
@@ -286,20 +273,13 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(createUserResponse).to(beNil())
                                                     
                                                     expect(error).toNot(beNil())
-                                                    let networkErrorMessage = (error as! NetworkError).message
-                                                    expect(networkErrorMessage).toNot(beNil())
                                                     
-                                                    let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
-                                                    let errorResponse = parseTask.execute(request: parseRequest)
-                                                    
-                                                    expect(errorResponse).toNot(beNil())
-                                                    expect(errorResponse?.code).to(equal(5))
-                                                    expect(errorResponse?.codeMeaning).to(equal("validation"))
-                                                    expect(errorResponse?.errorMessage).to(equal("child \"username\" fails because [\"username\" length must be at least 3 characters long]"))
-                                                    expect(errorResponse?.invalid?.username?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid?.username?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid?.username?.errorMessage).to(equal("\"username\" length must be at least 3 characters long"))
+                                                    expect((error as! ErrorResponse).code).to(equal(5))
+                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"username\" fails because [\"username\" length must be at least 3 characters long]"))
+                                                    expect((error as! ErrorResponse).invalid?.username?.code).to(equal(7))
+                                                    expect((error as! ErrorResponse).invalid?.username?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorResponse).invalid?.username?.errorMessage).to(equal("\"username\" length must be at least 3 characters long"))
                                                     
                                                     done()
                                                     
@@ -339,20 +319,13 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(createUserResponse).to(beNil())
                                                     
                                                     expect(error).toNot(beNil())
-                                                    let networkErrorMessage = (error as! NetworkError).message
-                                                    expect(networkErrorMessage).toNot(beNil())
                                                     
-                                                    let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
-                                                    let errorResponse = parseTask.execute(request: parseRequest)
-                                                    
-                                                    expect(errorResponse).toNot(beNil())
-                                                    expect(errorResponse?.code).to(equal(5))
-                                                    expect(errorResponse?.codeMeaning).to(equal("validation"))
-                                                    expect(errorResponse?.errorMessage).to(equal("child \"password\" fails because [\"password\" length must be at least 8 characters long]"))
-                                                    expect(errorResponse?.invalid?.password?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid?.password?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid?.password?.errorMessage).to(equal("\"password\" length must be at least 8 characters long"))
+                                                    expect((error as! ErrorResponse).code).to(equal(5))
+                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"password\" fails because [\"password\" length must be at least 8 characters long]"))
+                                                    expect((error as! ErrorResponse).invalid?.password?.code).to(equal(7))
+                                                    expect((error as! ErrorResponse).invalid?.password?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorResponse).invalid?.password?.errorMessage).to(equal("\"password\" length must be at least 8 characters long"))
                                                     
                                                     done()
                                                     
@@ -392,20 +365,13 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(createUserResponse).to(beNil())
                                                     
                                                     expect(error).toNot(beNil())
-                                                    let networkErrorMessage = (error as! NetworkError).message
-                                                    expect(networkErrorMessage).toNot(beNil())
                                                     
-                                                    let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
-                                                    let errorResponse = parseTask.execute(request: parseRequest)
-                                                    
-                                                    expect(errorResponse).toNot(beNil())
-                                                    expect(errorResponse?.code).to(equal(5))
-                                                    expect(errorResponse?.codeMeaning).to(equal("validation"))
-                                                    expect(errorResponse?.errorMessage).to(equal("child \"dateOfBirth\" fails because [\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/]"))
-                                                    expect(errorResponse?.invalid?.dateOfBirth?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid?.dateOfBirth?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid?.dateOfBirth?.errorMessage).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
+                                                    expect((error as! ErrorResponse).code).to(equal(5))
+                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"dateOfBirth\" fails because [\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/]"))
+                                                    expect((error as! ErrorResponse).invalid?.dateOfBirth?.code).to(equal(7))
+                                                    expect((error as! ErrorResponse).invalid?.dateOfBirth?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorResponse).invalid?.dateOfBirth?.errorMessage).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
                                                     
                                                     done()
                                                     
@@ -445,20 +411,13 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(createUserResponse).to(beNil())
                                                     
                                                     expect(error).toNot(beNil())
-                                                    let networkErrorMessage = (error as! NetworkError).message
-                                                    expect(networkErrorMessage).toNot(beNil())
                                                     
-                                                    let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
-                                                    let errorResponse = parseTask.execute(request: parseRequest)
-                                                    
-                                                    expect(errorResponse).toNot(beNil())
-                                                    expect(errorResponse?.code).to(equal(5))
-                                                    expect(errorResponse?.codeMeaning).to(equal("validation"))
-                                                    expect(errorResponse?.errorMessage).to(equal("child \"country\" fails because [\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/]"))
-                                                    expect(errorResponse?.invalid?.country?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid?.country?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid?.country?.errorMessage).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
+                                                    expect((error as! ErrorResponse).code).to(equal(5))
+                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"country\" fails because [\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/]"))
+                                                    expect((error as! ErrorResponse).invalid?.country?.code).to(equal(7))
+                                                    expect((error as! ErrorResponse).invalid?.country?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorResponse).invalid?.country?.errorMessage).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
                                                     
                                                     done()
                                                     
@@ -499,20 +458,13 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect(createUserResponse).to(beNil())
                                                     
                                                     expect(error).toNot(beNil())
-                                                    let networkErrorMessage = (error as! NetworkError).message
-                                                    expect(networkErrorMessage).toNot(beNil())
                                                     
-                                                    let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                                                    let parseTask = JSONParseTask<ComplexErrorResponse>()
-                                                    let errorResponse = parseTask.execute(request: parseRequest)
-                                                    
-                                                    expect(errorResponse).toNot(beNil())
-                                                    expect(errorResponse?.code).to(equal(5))
-                                                    expect(errorResponse?.codeMeaning).to(equal("validation"))
-                                                    expect(errorResponse?.errorMessage).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
-                                                    expect(errorResponse?.invalid?.parentEmail?.code).to(equal(7))
-                                                    expect(errorResponse?.invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
-                                                    expect(errorResponse?.invalid?.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
+                                                    expect((error as! ErrorResponse).code).to(equal(5))
+                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
+                                                    expect((error as! ErrorResponse).invalid?.parentEmail?.code).to(equal(7))
+                                                    expect((error as! ErrorResponse).invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorResponse).invalid?.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
                                                     
                                                     done()
                                                     

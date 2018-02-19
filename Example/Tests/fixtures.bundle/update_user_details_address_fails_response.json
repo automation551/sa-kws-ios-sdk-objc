@@ -1,0 +1,27 @@
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"address\" fails because [child \"street\" fails because [\"street\" is required], child \"postCode\" fails because [\"postCode\" is required], child \"city\" fails because [\"city\" is required], child \"country\" fails because [\"country\" is required]]",
+    "invalid": {
+        "address.street": {
+            "code": 6,
+            "codeMeaning": "missing",
+            "errorMessage": "\"street\" is required"
+        },
+        "address.postCode": {
+            "code": 6,
+            "codeMeaning": "missing",
+            "errorMessage": "\"postCode\" is required"
+        },
+        "address.city": {
+            "code": 6,
+            "codeMeaning": "missing",
+            "errorMessage": "\"city\" is required"
+        },
+        "address.country": {
+            "code": 6,
+            "codeMeaning": "missing",
+            "errorMessage": "\"country\" is required"
+        }
+    }
+}

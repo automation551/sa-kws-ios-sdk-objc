@@ -46,11 +46,11 @@ class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let notFoundResponse = try? ComplexErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorResponse.decode(JSON!)
         
-        expect(notFoundResponse).toNot(beNil())
-        expect(notFoundResponse?.code).to(equal(123))
-        expect(notFoundResponse?.codeMeaning).to(equal("notFound"))
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(123))
+        expect(errorResponse?.codeMeaning).to(equal("notFound"))
         
     }
     

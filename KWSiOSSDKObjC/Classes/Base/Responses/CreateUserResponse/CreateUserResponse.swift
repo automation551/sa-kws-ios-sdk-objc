@@ -11,8 +11,8 @@ import UIKit
 @objc(KWSCreateUserResponse)
 public final class CreateUserResponse: NSObject {
     
-    public let id: Int?
-    public let token: String?
+    public let id:      Int?
+    public let token:   String?
     
     public required init(id: Int?,
                          token: String? = "") {

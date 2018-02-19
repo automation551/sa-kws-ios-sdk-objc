@@ -14,12 +14,12 @@ extension MetadataKWS: Decodable {
     public static func decode(_ json: Any) throws -> MetadataKWS {
         
         return try MetadataKWS (
-            userId:         try json =>? "userId" as? NSNumber,
-            appId:          try json =>? "appId" as? NSNumber,
+            userId:         try json =>? "userId"   as? NSNumber,
+            appId:          try json =>? "appId"    as? NSNumber,
             clientId:       try json =>? "clientId",
             scope:          try json =>? "scope",
-            iat:            try json =>? "iat"  as? NSNumber,
-            exp:            try json =>? "exp"  as? NSNumber,
+            iat:            try json =>? "iat"      as? NSNumber,
+            exp:            try json =>? "exp"      as? NSNumber,
             iss:            try json =>? "iss"
         )
     }

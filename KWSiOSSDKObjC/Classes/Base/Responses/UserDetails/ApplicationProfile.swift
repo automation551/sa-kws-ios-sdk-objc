@@ -11,10 +11,10 @@ import UIKit
 @objc(KWSSwiftApplicationProfile)
 public final class ApplicationProfile: NSObject {
 
-    public let username: String?
-    public let customField1: NSNumber?
-    public let customField2: NSNumber?
-    public let avatarId: NSNumber?
+    public let username:        String?
+    public let customField1:    NSNumber?
+    public let customField2:    NSNumber?
+    public let avatarId:        NSNumber?
     
     
     

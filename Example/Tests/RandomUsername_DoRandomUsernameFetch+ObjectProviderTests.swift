@@ -15,6 +15,13 @@ import SAMobileBase
 
 class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
     
+    /*
+     Random Username is a 2 step process - this is step 2
+     The test here should be to test the provider through the Service (see Login Provider Test)
+     In order to keep each step of create user tested individually, this test uses the RandomUsernameProvider resource
+     instead of using RandomUsernameService
+     */
+    
     // class or data to test
     private var resource: RandomUsernameProvider!
     private var environment: KWSNetworkEnvironment!
@@ -93,16 +100,9 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
                 
                 expect(error).toNot(beNil())
                 
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
-                
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ComplexErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse).toNot(beNil())
-                expect(errorResponse?.code).to(equal(123))
-                expect(errorResponse?.codeMeaning).to(equal("notFound"))
+                expect((error as! ErrorResponse)).toNot(beNil())
+                expect((error as! ErrorResponse).code).to(equal(123))
+                expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
                 
                 done()
             })

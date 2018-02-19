@@ -40,7 +40,7 @@ import SAMobileBase
     }
 
     //for swift
-    func getService <T:BaseService> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
+     static public func getService <T> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
         if (value == LoginService.self) {
             return LoginProvider(environment: environment) as? T
         } else if (value == CreateUserService.self){
@@ -50,7 +50,6 @@ import SAMobileBase
         } else if (value == UserService.self){
             return UserProvider(environment: environment) as? T
         } else {
-            
             return nil
         }
     }

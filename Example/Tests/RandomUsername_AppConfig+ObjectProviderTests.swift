@@ -15,6 +15,14 @@ import SAMobileBase
 
 class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
     
+    /*
+     Random Username is a 2 step process - this is step 1
+     The test here should be to test the provider through the Service (see Login Provider Test)
+     In order to keep each step of create user tested individually, this test uses the RandomUsernameProvider resource
+     instead of using RandomUsernameService
+     */
+    
+    
     // class or data to test
     private var resource: RandomUsernameProvider!
     private var environment: KWSNetworkEnvironment!
@@ -87,21 +95,12 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
             
                 expect(error).toNot(beNil())
                 
-                expect(error).toNot(beNil())
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
-                
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ComplexErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse).toNot(beNil())
-                expect(errorResponse?.code).to(equal(5))
-                expect(errorResponse?.codeMeaning).to(equal("validation"))
-                expect(errorResponse?.errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is required]"))
-                expect(errorResponse?.invalid?.oauthClientId?.code).to(equal(6))
-                expect(errorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("missing"))
-                expect(errorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is required"))
+                expect((error as! ErrorResponse).code).to(equal(5))
+                expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
+                expect((error as! ErrorResponse).errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is required]"))
+                expect((error as! ErrorResponse).invalid?.oauthClientId?.code).to(equal(6))
+                expect((error as! ErrorResponse).invalid?.oauthClientId?.codeMeaning).to(equal("missing"))
+                expect((error as! ErrorResponse).invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is required"))
                 
                 done()
             })
@@ -130,20 +129,13 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 expect(response).to(beNil())
                 
                 expect(error).toNot(beNil())
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
                 
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ComplexErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse).toNot(beNil())
-                expect(errorResponse?.code).to(equal(5))
-                expect(errorResponse?.codeMeaning).to(equal("validation"))
-                expect(errorResponse?.errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is not allowed to be empty]"))
-                expect(errorResponse?.invalid?.oauthClientId?.code).to(equal(7))
-                expect(errorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("invalidValue"))
-                expect(errorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
+                expect((error as! ErrorResponse).code).to(equal(5))
+                expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
+                expect((error as! ErrorResponse).errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is not allowed to be empty]"))
+                expect((error as! ErrorResponse).invalid?.oauthClientId?.code).to(equal(7))
+                expect((error as! ErrorResponse).invalid?.oauthClientId?.codeMeaning).to(equal("invalidValue"))
+                expect((error as! ErrorResponse).invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
                 done()
             })
             
@@ -171,17 +163,10 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 expect(response).to(beNil())
                 
                 expect(error).toNot(beNil())
-                let networkErrorMessage = (error as! NetworkError).message
-                expect(networkErrorMessage).toNot(beNil())
                 
-                let parseRequest = JsonParseRequest.init(withRawData:networkErrorMessage!)
-                let parseTask = JSONParseTask<ComplexErrorResponse>()
-                let errorResponse = parseTask.execute(request: parseRequest)
-                
-                expect(errorResponse).toNot(beNil())
-                expect(errorResponse?.code).to(equal(2))
-                expect(errorResponse?.codeMeaning).to(equal("notFound"))
-                expect(errorResponse?.errorMessage).to(equal("app not found."))
+                expect((error as! ErrorResponse).code).to(equal(2))
+                expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
+                expect((error as! ErrorResponse).errorMessage).to(equal("app not found."))
                 
                 done()
             })

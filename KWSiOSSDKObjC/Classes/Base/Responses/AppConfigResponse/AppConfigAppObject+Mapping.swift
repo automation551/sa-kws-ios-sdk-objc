@@ -14,7 +14,7 @@ extension AppConfigAppObjectResponse: Decodable {
     public static func decode(_ json: Any) throws -> AppConfigAppObjectResponse {
         
         return try AppConfigAppObjectResponse (
-            id:           try json =>? "id",
+            id:             try json =>? "id",
             name:           try json =>? "name"
         )
     }

@@ -19,7 +19,11 @@ extension InvalidError: Decodable {
             parentEmail:            try json =>? "parentEmail",
             password:               try json =>? "password",
             username:               try json =>? "username",
-            oauthClientId:          try json =>? "oauthClientId"
+            oauthClientId:          try json =>? "oauthClientId",
+            addressStreet:          try json =>? "address.street",
+            addressPostCode:        try json =>? "address.postCode",
+            addressCity:            try json =>? "address.city",
+            addressCountry:         try json =>? "address.country"
             
             
         )
