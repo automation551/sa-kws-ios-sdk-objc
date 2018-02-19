@@ -63,21 +63,6 @@
         "superawesomeclub": {
             "name": "good_name"
         },
-        "stan-test-2": {
-            "name": "good_name",
-            "logoUrl": {
-                "en": null
-            }
-        },
-        "nicolas-test-1": {
-            "name": "good_name"
-        },
-        "stan-test": {
-            "name": "good_name",
-            "logoUrl": {
-                "en": null
-            }
-        },
         "test-1234": {
             "name": "good_name"
         }

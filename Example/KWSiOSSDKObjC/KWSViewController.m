@@ -13,10 +13,18 @@
 #define DATA_TITLE @"title"
 #define DATA_SEC @"section"
 
-#define API @"https://stan-test-cluster.api.kws.superawesome.tv/"
-#define SINGLE_SIGN_ON @"https://stan-test-cluster.accounts.kws.superawesome.tv/"
-#define CLIENT_ID  @"stan-test"
-#define CLIENT_SECRET @"DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
+//stan-test
+//#define API @"https://stan-test-cluster.api.kws.superawesome.tv/"
+//#define SINGLE_SIGN_ON @"https://stan-test-cluster.accounts.kws.superawesome.tv/"
+//#define CLIENT_ID  @"stan-test"
+//#define CLIENT_SECRET @"DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
+
+//Demo Env
+
+#define API @"https://kwsapi.demo.superawesome.tv/"
+#define SINGLE_SIGN_ON @"https://club.demo.superawesome.tv/"
+#define CLIENT_ID  @"kws-sdk-testing"
+#define CLIENT_SECRET @"TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
 
 @interface KWSViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -192,7 +200,7 @@
 
 - (void) loginUser {
     
-    NSString* username = @"guithetest2";
+    NSString* username = @"guitestnumber3";
     NSString* pwd = @"testtest";
     [[KWSChildren sdk] loginUser:username withPassword:pwd andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
@@ -267,19 +275,30 @@
 }
 
 - (void) submitParentEmail {
-    [[KWSChildren sdk] updateParentEmail:@"dev.gabriel.coman@gmail.com"
+    
+    NSString * newParentEmail = @"guilherme.mota+1@superawesome.tv";
+    
+    [[KWSChildren sdk] updateParentEmail: newParentEmail
                             withResponse:^(KWSChildrenUpdateParentEmailStatus type) {
         switch (type) {
             case KWSChildren_UpdateParentEmail_Success:{
-                NSLog(@"Updated parent email");
+                NSLog(@"Updated parent email to: %@", newParentEmail);
                 break;
             }
             case KWSChildren_UpdateParentEmail_InvalidEmail: {
-                NSLog(@"Parent email invalid");
+                NSLog(@"Parent email invalid ->  %@", newParentEmail);
                 break;
             }
             case KWSChildren_UpdateParentEmail_NetworkError:{
-                NSLog(@"Parent email error");
+                NSLog(@"Parent email error ->  %@", newParentEmail);
+                break;
+            }
+            case KWSChildren_UpdateParentEmail_NoValidUserLoggedIn:{
+                NSLog(@"There's no valid user logged in...");
+                break;
+            }
+            case KWSChildren_UpdateParentEmail_NoValidUserDetails: {
+                NSLog(@"There's no valid User Details...");
                 break;
             }
             default:

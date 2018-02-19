@@ -15,6 +15,8 @@ typedef NS_ENUM(NSInteger, KWSChildrenUpdateParentEmailStatus) {
     KWSChildren_UpdateParentEmail_Success      = 0,
     KWSChildren_UpdateParentEmail_InvalidEmail = 1,
     KWSChildren_UpdateParentEmail_NetworkError = 2,
+    KWSChildren_UpdateParentEmail_NoValidUserLoggedIn = 3,
+    KWSChildren_UpdateParentEmail_NoValidUserDetails = 4
 };
 
 typedef void (^KWSChildrenUpdateParentEmailBlock)(KWSChildrenUpdateParentEmailStatus status);

@@ -47,7 +47,8 @@
 @property (nonatomic, strong) KWSPoints *points;
 @property (nonatomic, strong) KWSPermissions *applicationPermissions;
 @property (nonatomic, strong) KWSApplicationProfile *applicationProfile;
+@property (nonatomic, strong) NSString *parentEmail;
     
-    - (id) initWithID:(NSNumber*) id andUsername:(NSString*) username andFirstName: (NSString*) firstName andLastName: (NSString*) lastName  andDateOfBirth: (NSString*) dateOfBirth andGender: (NSString*) gender andLanguage: (NSString*) language andEmail: (NSString*) email andAddress: (KWSAddress*)userAddress andPoints: (KWSPoints*) points andAppPermissions: (KWSPermissions*) permissions andAppProfile: (KWSApplicationProfile*) appProfile;
+- (id) initWithID:(NSNumber*) id andUsername:(NSString*) username andFirstName: (NSString*) firstName andLastName: (NSString*) lastName  andDateOfBirth: (NSString*) dateOfBirth andGender: (NSString*) gender andLanguage: (NSString*) language andEmail: (NSString*) email andAddress: (KWSAddress*)userAddress andPoints: (KWSPoints*) points andAppPermissions: (KWSPermissions*) permissions andAppProfile: (KWSApplicationProfile*) appProfile andParentEmail:(NSString*) parentEmail;
 
 @end

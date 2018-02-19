@@ -15,7 +15,7 @@
 @implementation KWSUser
     
 - (id) initWithID:(NSNumber*) id andUsername:(NSString*) username andFirstName: (NSString*) firstName
-andLastName: (NSString*) lastName  andDateOfBirth: (NSString*) dateOfBirth andGender: (NSString*) gender andLanguage: (NSString*) language andEmail: (NSString*) email andAddress: (KWSAddress*)userAddress andPoints: (KWSPoints*) points andAppPermissions: (KWSPermissions*) permissions andAppProfile: (KWSApplicationProfile*) appProfile{
+andLastName: (NSString*) lastName  andDateOfBirth: (NSString*) dateOfBirth andGender: (NSString*) gender andLanguage: (NSString*) language andEmail: (NSString*) email andAddress: (KWSAddress*)userAddress andPoints: (KWSPoints*) points andAppPermissions: (KWSPermissions*) permissions andAppProfile: (KWSApplicationProfile*) appProfile andParentEmail:(NSString*) parentEmail{
     
     self = [super init];
     if (self != nil) {
@@ -32,6 +32,7 @@ andLastName: (NSString*) lastName  andDateOfBirth: (NSString*) dateOfBirth andGe
         _points = points;
         _address = userAddress;
         _applicationProfile = appProfile;
+        _parentEmail = parentEmail;
     }
     return self;
     

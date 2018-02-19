@@ -63,7 +63,6 @@ import SAMobileBase
         
         networkTask.execute(request: upddateUserDetailsNetworkRequest){ upddateUserDetailsNetworkResponse in
             
-            //todo finish here
             if (upddateUserDetailsNetworkResponse.success && upddateUserDetailsNetworkResponse.error == nil) {
                 callback(true, nil)
             } else {
@@ -82,8 +81,6 @@ import SAMobileBase
         }
         
     }
-    
-    
     
     
 }
