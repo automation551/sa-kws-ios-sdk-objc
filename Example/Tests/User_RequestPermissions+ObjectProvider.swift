@@ -82,7 +82,7 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         let request = PermissionsRequest(environment: self.environment,
                                          userId: goodUserId,
                                          token: goodToken,
-                                         permissionsList: goodPermissions)
+                                         permissionsList: badPermissions)
         
         //when
         let uri = "\(request.environment.domain + request.endpoint)"
@@ -92,7 +92,7 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
             
             self.userService.requestPermissions(userId: self.goodUserId,
                                                 token: self.goodToken,
-                                                permissionsList: self.goodPermissions,
+                                                permissionsList: self.badPermissions,
                                                 callback: {  permissionsResponse, error in
                                                     
                                                     expect(permissionsResponse).to(beFalse())
@@ -153,7 +153,7 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         let JSON: Any? = try? fixtureWithName(name:"permission_request_not_found_response")
         
         let request = PermissionsRequest(environment: self.environment,
-                                         userId: badUserId,
+                                         userId: goodUserId,
                                          token: goodToken,
                                          permissionsList: goodPermissions)
         
@@ -163,7 +163,7 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.requestPermissions(userId: self.badUserId,
+            self.userService.requestPermissions(userId: self.goodUserId,
                                                 token: self.goodToken,
                                                 permissionsList: self.goodPermissions,
                                                 callback: {  permissionsResponse, error in
