@@ -55,8 +55,7 @@
 
 #define kProviderErrorMessage @"An error occured getting the provider!"
 #define kNoValidLoggedInUserMessage @"No valid logged in user."
-
-
+#define kNoValidUserDetailsMessage @"No valid user details..."
 
 
 @end
@@ -406,7 +405,7 @@
         
       
         if(_loggedUser == nil || _loggedUser.metadata == nil ){
-            response(nil);
+            response(false);
             NSLog(kNoValidLoggedInUserMessage);
             return;
         }
@@ -414,8 +413,8 @@
         //KWSUser into UserDetails here
         KWSUserDetails *userDetails = [self buildUserDetails: updatedUser];
         if(userDetails == nil){
-            response(nil);
-            NSLog(@"No valid user details...");
+            response(false);
+            NSLog(kNoValidUserDetailsMessage);
         }
         
         [userProvider updateUserDetailsWithUserId:(long)_loggedUser.metadata.userId
@@ -511,7 +510,7 @@
     if ([userProvider isKindOfClass: [UserProvider class]]){
         
         if(_loggedUser == nil || _loggedUser.metadata == nil ){
-            response(nil);
+            response(KWSChildren_UpdateParentEmail_NoValidUserLoggedIn);
             NSLog(kNoValidLoggedInUserMessage);
             return;
         }
@@ -535,8 +534,8 @@
                                                              parentEmail:email];
 
         if(userDetails == nil){
-            response(nil);
-            NSLog(@"No valid user details...");
+            response(KWSChildren_UpdateParentEmail_NoValidUserDetails);
+            NSLog(kNoValidUserDetailsMessage);
         }
 
         [userProvider updateUserDetailsWithUserId:(long)_loggedUser.metadata.userId

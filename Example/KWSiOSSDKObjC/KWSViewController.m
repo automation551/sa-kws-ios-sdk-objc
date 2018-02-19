@@ -293,6 +293,14 @@
                 NSLog(@"Parent email error ->  %@", newParentEmail);
                 break;
             }
+            case KWSChildren_UpdateParentEmail_NoValidUserLoggedIn:{
+                NSLog(@"There's no valid user logged in...");
+                break;
+            }
+            case KWSChildren_UpdateParentEmail_NoValidUserDetails: {
+                NSLog(@"There's no valid User Details...");
+                break;
+            }
             default:
                 break;
         }
