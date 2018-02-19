@@ -38,4 +38,7 @@ typedef void (^KWSChildrenRequestPermissionBlock)(KWSChildrenRequestPermissionSt
 @interface KWSRequestPermission : KWSService
 - (void) execute:(NSArray<NSNumber*>*)requestPermissions
                 :(KWSChildrenRequestPermissionBlock)requested;
+    
+- (NSString*) typeToString:(KWSChildrenPermissionType)type;
+    
 @end

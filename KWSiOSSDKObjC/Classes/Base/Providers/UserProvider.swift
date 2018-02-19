@@ -10,7 +10,7 @@ import SAMobileBase
 
 
 @objc public class UserProvider: NSObject, UserService{
-    
+
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask
     
@@ -56,17 +56,17 @@ import SAMobileBase
     
     public func updateUserDetails(userId: Int, token: String, userDetails: UserDetails, callback: @escaping (Bool, Error?) -> ()) {
         
-        let upddateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
+        let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
                                                                         userDetails: userDetails,
                                                                         userId: userId,
                                                                         token: token)
         
-        networkTask.execute(request: upddateUserDetailsNetworkRequest){ upddateUserDetailsNetworkResponse in
+        networkTask.execute(request: updateUserDetailsNetworkRequest){ updateUserDetailsNetworkResponse in
             
-            if (upddateUserDetailsNetworkResponse.success && upddateUserDetailsNetworkResponse.error == nil) {
+            if (updateUserDetailsNetworkResponse.success && updateUserDetailsNetworkResponse.error == nil) {
                 callback(true, nil)
             } else {
-                if let errorResponse = upddateUserDetailsNetworkResponse.error?.message {
+                if let errorResponse = updateUserDetailsNetworkResponse.error?.message {
                     
                     let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
                     let parseTask = JSONParseTask<ErrorResponse>()
@@ -74,7 +74,7 @@ import SAMobileBase
                     callback(false, mappedResponse)
                     
                 } else {
-                    callback(false, upddateUserDetailsNetworkResponse.error)
+                    callback(false, updateUserDetailsNetworkResponse.error)
                 }
             }
             
@@ -82,5 +82,34 @@ import SAMobileBase
         
     }
     
+    public func requestPermissions(userId: Int, token: String, permissionsList: [String], callback: @escaping (Bool, Error?) -> ()) {
+        
+        let requestPermissionsNetworkRequest = PermissionsRequest(environment: environment,
+                                                                  userId: userId,
+                                                                  token: token,
+                                                                  permissionsList: permissionsList)
+        
+        networkTask.execute(request: requestPermissionsNetworkRequest) { requestPermissionsNetworkResponse in
+            
+            if (requestPermissionsNetworkResponse.success && requestPermissionsNetworkResponse.error == nil) {
+                callback(true, nil)
+            } else {
+                if let errorResponse = requestPermissionsNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
+                    callback(false, mappedResponse)
+                    
+                } else {
+                    callback(false, requestPermissionsNetworkResponse.error)
+                }
+            }
+            
+        }
+        
+        
+    }
+
     
 }
