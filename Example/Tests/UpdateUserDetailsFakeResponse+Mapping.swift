@@ -15,7 +15,8 @@ extension UpdateUserDetailsFakeResponse: Decodable {
     public static func decode(_ json: Any) throws -> UpdateUserDetailsFakeResponse {
         
         return try UpdateUserDetailsFakeResponse (
-            userUpdated:               try json =>? "userUpdated"
+            userUpdated:               try json =>? "userUpdated",
+            emailUpdated:              try json =>? "emailUpdated"
         )
     }
 }

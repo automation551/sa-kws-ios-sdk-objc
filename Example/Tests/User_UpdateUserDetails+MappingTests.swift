@@ -1,5 +1,5 @@
 //
-//  User_UpdateUserDetails+Mapping.swift
+//  User_UpdateUserDetails+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 14/02/2018.

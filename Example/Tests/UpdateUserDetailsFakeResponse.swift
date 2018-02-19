@@ -13,16 +13,20 @@ import UIKit
 public final class UpdateUserDetailsFakeResponse: NSObject, Error {
     
     public let userUpdated: Bool?
+    public let emailUpdated: Bool?
+    
     
     // MARK: - Initialization
     
     public required init(
         
-        userUpdated: Bool?  = false
+        userUpdated:    Bool?  = false,
+        emailUpdated:   Bool?  = false
         
         ) {
         
         self.userUpdated = userUpdated
+        self.emailUpdated = emailUpdated
         
     }
     
