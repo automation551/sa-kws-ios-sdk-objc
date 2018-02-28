@@ -16,7 +16,8 @@ extension UpdateUserDetailsFakeResponse: Decodable {
         
         return try UpdateUserDetailsFakeResponse (
             userUpdated:               try json =>? "userUpdated",
-            emailUpdated:              try json =>? "emailUpdated"
+            emailUpdated:              try json =>? "emailUpdated",
+            permissionsRequested:      try json =>? "permissionsRequested"
         )
     }
 }

@@ -1,0 +1,12 @@
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"permissions\" fails because [\"permissions\" is required]",
+    "invalid": {
+        "permissions": {
+            "code": 6,
+            "codeMeaning": "missing",
+            "errorMessage": "\"permissions\" is required"
+        }
+    }
+}

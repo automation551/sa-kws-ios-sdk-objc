@@ -14,6 +14,7 @@ public final class UpdateUserDetailsFakeResponse: NSObject, Error {
     
     public let userUpdated: Bool?
     public let emailUpdated: Bool?
+    public let permissionsRequested: Bool?
     
     
     // MARK: - Initialization
@@ -21,12 +22,14 @@ public final class UpdateUserDetailsFakeResponse: NSObject, Error {
     public required init(
         
         userUpdated:    Bool?  = false,
-        emailUpdated:   Bool?  = false
+        emailUpdated:   Bool?  = false,
+        permissionsRequested:   Bool?  = false
         
         ) {
         
         self.userUpdated = userUpdated
         self.emailUpdated = emailUpdated
+        self.permissionsRequested = permissionsRequested
         
     }
     
