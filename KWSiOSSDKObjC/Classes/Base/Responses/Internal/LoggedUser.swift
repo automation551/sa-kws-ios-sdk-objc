@@ -15,7 +15,7 @@ public class LoggedUser : NSObject, LoggedUserModelProtocol{
     
     public var id: AnyHashable
     
-    public init(token: String,
+    public required init(token: String,
                 tokenData: TokenData,
                 id: AnyHashable) {
         

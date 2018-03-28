@@ -7,21 +7,61 @@
 
 import Foundation
 import SAMobileBase
+import SAProtobufs
 
-@objc public class CreateUserProvider: NSObject, CreateUserService {
+@objc public class CreateUserProvider: NSObject, AuthServiceProtocol {
     
     
-    var environment: KWSNetworkEnvironment
-    var networkTask: NetworkTask
-    
-    public init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
-        self.environment = environment
-        self.networkTask = networkTask
+    public func loginUser(userName: String, password: String, completionHandler: @escaping (LoggedUserModelProtocol?, Error?) -> ()) {
+        //todo here
     }
     
-    
-    public func createUser(username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, callback: @escaping (AuthUserResponse?, Error?) -> ()) {
+    public func createUser(username: String, password: String, timeZone: String?, dateOfBirth: String?, country: String?, parentEmail: String?, completionHandler: @escaping (LoggedUserModelProtocol?, Error?) -> ()) {
         
+        let getTempAccessTokenNetworkRequest = TempAccessTokenRequest(environment: environment,
+                                                                      clientID: environment.mobileKey,
+                                                                      clientSecret: environment.appID)
+        
+        let parse = ParseJsonTask<LoginAuthResponse>()
+        let network = NetworkTask()
+        
+        let future = network
+            .execute(input: getTempAccessTokenNetworkRequest)
+            .map { (result: Result<String>) -> Result<LoginAuthResponse> in
+                return result.then(parse.execute)
+        }
+        
+        future.onResult { (result) in
+            
+            switch result {
+            case .success(let mappedResponse):
+                
+                let token = mappedResponse.token
+                let base64T = ParseBase64Task()
+                let tokenT = ParseJsonTask<TokenData>()
+                let result = base64T.execute(input: token).then(tokenT.execute)
+                
+                switch result {
+                case .success(let tokenData):
+                    let loggedUser = LoggedUser.init(token: token, userId: tokenData.userId)
+                    completionHandler (loggedUser, nil)
+                    break
+                case .error(let error):
+                    completionHandler (nil, error)
+                    break
+                }
+                
+                
+                break
+            case .error(let error):
+                
+                let mappedError = ErrorResponse().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
+                
+                break
+            }
+            
+        }
         
         getTempAccessToken(environment: environment){ authResponse, error in
             
@@ -51,43 +91,16 @@ import SAMobileBase
         }
     }
     
-    //TODO: Does it need to be public for tests? Is there a better way?
-    public func getTempAccessToken(environment: KWSNetworkEnvironment, callback: @escaping (LoginAuthResponse?, Error?) -> ()) {
-        
-        
-        let getTempAccessTokenNetworkRequest = TempAccessTokenRequest(environment: environment,
-                                                                      clientID: environment.mobileKey,
-                                                                      clientSecret: environment.appID)
-        
-        networkTask.execute(request: getTempAccessTokenNetworkRequest){ getTempAccessTokenNetworkResponse in
-            
-            if let json = getTempAccessTokenNetworkResponse.response, getTempAccessTokenNetworkResponse.error == nil {
-                
-                let parseRequest = JsonParseRequest.init(withRawData: json)
-                
-                
-                let parseTask = JSONParseTask<AuthResponse>()
-                
-                if let getTempAccessResponseObject = parseTask.execute(request: parseRequest){
-                    callback(getTempAccessResponseObject, nil)
-                }else{
-                    callback(nil, KWSBaseError.JsonParsingError)
-                }                            
-                
-            }else{
-                if let errorResponse = getTempAccessTokenNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    callback(nil, mappedResponse)
-                    
-                } else {
-                    callback(nil, getTempAccessTokenNetworkResponse.error)
-                }
-            }
-        }
+    
+    
+    var environment: KWSNetworkEnvironment
+    var networkTask: NetworkTask
+    
+    public init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
+        self.environment = environment
+        self.networkTask = networkTask
     }
+    
     
     //TODO: Does it need to be public for tests? Is there a better way?
     public func doUserCreation(environment: KWSNetworkEnvironment,username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, callback: @escaping (AuthUserResponse?, Error?) -> ()) {
@@ -126,7 +139,7 @@ import SAMobileBase
                     callback(nil, mappedResponse)
                     
                 } else {
-                   callback(nil, createUserNetworkResponse.error)
+                    callback(nil, createUserNetworkResponse.error)
                 }
             }
         }

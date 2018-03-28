@@ -6,46 +6,54 @@
 //
 
 import Foundation
-import UIKit
+import SAProtobufs
 
 @objc(KWSSwiftPoints)
-public final class Points: NSObject {
+public final class Points: NSObject, PointsModelProtocols {
     
-    public let totalReceived:                       NSNumber?
-    public let total:                               NSNumber?
-    public let totalPointsReceivedInCurrentApp:     NSNumber?
-    public let availableBalance:                    NSNumber?
-    public let pending:                             NSNumber?
-    
+    public var pending:         Int?
+    public var received:        Int?
+    public var total:           Int?
+    public var balance:         Int?
+    public var inApp:           Int?
 
-    public required init(totalReceived:                     NSNumber? = nil,
-                         total:                             NSNumber? = nil,
-                         totalPointsReceivedInCurrentApp:   NSNumber? = nil,
-                         availableBalance:                  NSNumber? = nil,
-                         pending:                           NSNumber? = nil) {
+    public required init(pending:   NSNumber? = nil,
+                         received:  NSNumber? = nil,
+                         total:     NSNumber? = nil,
+                         balance:   NSNumber? = nil,
+                         inApp:     NSNumber? = nil) {
 
-        self.totalReceived = totalReceived
-        self.total = total
-        self.totalPointsReceivedInCurrentApp = totalPointsReceivedInCurrentApp
-        self.availableBalance = availableBalance
-        self.pending = pending
+        self.pending = pending?.intValue
+        self.received = received?.intValue
+        self.total = total?.intValue
+        self.balance = balance?.intValue
+        self.inApp = inApp?.intValue
 
     }
     
     public enum CodingKeys: String, CodingKey {
         
         //to encode
-        case totalReceived
-        case total
-        case totalPointsReceivedInCurrentApp
-        case availableBalance
         case pending
+        case received
+        case total
+        case balance
+        case inApp
     }
     
     // MARK: - Equatable
+    public static func ==(lhs: Points, rhs: Points) -> Bool {
+        let areEqual = lhs.inApp == rhs.inApp
+        
+        return areEqual
+    }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? Points else { return false }
-        return self.totalReceived == object.totalReceived
+        return self.inApp == object.inApp
+    }
+    
+    public override var hash: Int {
+        return inApp!.hashValue
     }
 }

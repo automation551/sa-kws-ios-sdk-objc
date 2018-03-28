@@ -11,17 +11,17 @@ import SAProtobufs
 @objc(KWSSwiftApplicationPermissions)
 public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
     
-    public var notifications:       NSNumber?
-    public var address:             NSNumber?
-    public var firstName:           NSNumber?
-    public var lastName:            NSNumber?
-    public var email:               NSNumber?
-    public var streetAddress:       NSNumber?
-    public var city:                NSNumber?
-    public var postalCode:          NSNumber?
-    public var country:             NSNumber?
-    public var newsletter:          NSNumber?
-    public var competition:         NSNumber?
+    public var notifications:       Bool?
+    public var address:             Bool?
+    public var firstName:           Bool?
+    public var lastName:            Bool?
+    public var email:               Bool?
+    public var streetAddress:       Bool?
+    public var city:                Bool?
+    public var postalCode:          Bool?
+    public var country:             Bool?
+    public var newsletter:          Bool?
+    public var competition:         Bool?
     
 
     
@@ -37,17 +37,17 @@ public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
                          newsletter:        NSNumber? = nil,
                          competition:       NSNumber? = nil) {
         
-        self.notifications = notifications
-        self.address = address
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.streetAddress = streetAddress
-        self.city = city
-        self.postalCode = postalCode
-        self.country = country
-        self.newsletter = newsletter
-        self.competition = competition
+        self.notifications = notifications?.boolValue
+        self.address = address?.boolValue
+        self.firstName = firstName?.boolValue
+        self.lastName = lastName?.boolValue
+        self.email = email?.boolValue
+        self.streetAddress = streetAddress?.boolValue
+        self.city = city?.boolValue
+        self.postalCode = postalCode?.boolValue
+        self.country = country?.boolValue
+        self.newsletter = newsletter?.boolValue
+        self.competition = competition?.boolValue
         
     }
     
@@ -69,12 +69,20 @@ public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
     
     
     // MARK: - Equatable
+    public static func ==(lhs: ApplicationPermissions, rhs: ApplicationPermissions) -> Bool {
+        let areEqual = lhs.email == rhs.email
+        
+        return areEqual
+    }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? ApplicationPermissions else { return false }
-        return self.firstName == object.firstName
+        return self.email == object.email
     }
     
+    public override var hash: Int {
+        return email!.hashValue
+    }
     
     
 }

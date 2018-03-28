@@ -41,3 +41,20 @@ public final class ErrorResponse: NSObject, Error {
     }
     
 }
+
+extension ErrorResponse {
+    
+    func mapErrorResponse(error: PrintableErrorProtocol) -> Error {
+        let parseTask = ParseJsonTask<ErrorResponse>()
+        let error = parseTask.execute(input: error.message)
+        
+        switch (error) {
+        case .success(let serverError):
+            return serverError
+            break
+        case .error(_):
+            return error as! Error
+            break
+        }
+    }
+}

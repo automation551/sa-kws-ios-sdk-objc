@@ -6,17 +6,15 @@
 //
 
 import Foundation
-import UIKit
+import SAProtobufs
 
 @objc(KWSSwiftUserAddress)
-public final class UserAddress: NSObject {
+public final class UserAddress: NSObject, AddressModelProtocol {
     
-    public let street:      String?
-    public let city:        String?
-    public let postCode:    String?
-    public let country:     String?
-   
-    
+    public var street: String?
+    public var city: String?
+    public var postCode: String?
+    public var country: String?
     
     public required init(street:    String? = nil,
                          city:      String? = nil,
@@ -41,10 +39,19 @@ public final class UserAddress: NSObject {
     
     
     // MARK: - Equatable
+    public static func ==(lhs: UserAddress, rhs: UserAddress) -> Bool {
+        let areEqual = lhs.street == rhs.street
+        
+        return areEqual
+    }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? UserAddress else { return false }
         return self.street == object.street
+    }
+    
+    public override var hash: Int {
+        return street!.hashValue
     }
     
 }

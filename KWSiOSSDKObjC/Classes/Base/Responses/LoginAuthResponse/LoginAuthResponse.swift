@@ -23,10 +23,19 @@ public final class LoginAuthResponse: NSObject, LoggedUserModelProtocol {
     }
     
     // MARK: - Equatable
+    public static func ==(lhs: LoginAuthResponse, rhs: LoginAuthResponse) -> Bool {
+        let areEqual = lhs.id == rhs.id
+        
+        return areEqual
+    }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? LoginAuthResponse else { return false }
-        return self.token == object.token
+        return self.id == object.id
+    }
+    
+    public override var hash: Int {
+        return id.hashValue
     }
     
     

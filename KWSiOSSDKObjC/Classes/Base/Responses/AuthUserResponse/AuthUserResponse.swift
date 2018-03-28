@@ -23,10 +23,19 @@ public final class AuthUserResponse: NSObject, LoggedUserModelProtocol {
     }    
     
     // MARK: - Equatable
+    public static func ==(lhs: AuthUserResponse, rhs: AuthUserResponse) -> Bool {
+        let areEqual = lhs.id == rhs.id
+        
+        return areEqual
+    }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? AuthUserResponse else { return false }
         return self.id == object.id
+    }
+    
+    public override var hash: Int {
+        return id.hashValue
     }
     
 }

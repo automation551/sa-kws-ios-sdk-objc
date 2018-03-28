@@ -38,10 +38,19 @@ public final class ApplicationProfile: NSObject, AppProfileModelProtocol {
     }
     
     // MARK: - Equatable
+    public static func ==(lhs: ApplicationProfile, rhs: ApplicationProfile) -> Bool {
+        let areEqual = lhs.name == rhs.name
+        
+        return areEqual
+    }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? ApplicationProfile else { return false }
         return self.name == object.name
+    }
+    
+    public override var hash: Int {
+        return name!.hashValue
     }
     
     

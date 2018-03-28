@@ -6,94 +6,84 @@
 //
 
 import Foundation
-import UIKit
+import SAProtobufs
 
 import Decodable
 import protocol Decodable.Decodable
 
 @objc(KWSUserDetails)
-public final class UserDetails: NSObject {
+public final class UserDetails: NSObject, UserDetailsModelProtocol {
     
-    public let id:                          NSNumber?
-    public let username:                    String?
-    public let firstName:                   String?
-    public let lastName:                    String?
-    public let address:                     UserAddress?
-    public let dateOfBirth:                 String?
-    public let gender:                      String?
-    public let language:                    String?
-    public let email:                       String?
-    public let phoneNumber:                 String?
-    public let hasSetParentEmail:           NSNumber?
-    public let applicationProfile:          ApplicationProfile?
-    public let applicationPermissions:      ApplicationPermissions?
-    public let points:                      Points?
-    public let createdAt:                   String?
-    public let parentEmail:                 String?
+    public var firstName: String?
+    public var lastName: String?
+    public var dateOfBirth: String
+    public var gender: String?
+    public var email: String?
+    public var hasSetParentEmail: Bool?
+    public var createdAt: String
+    public var address: AddressModelProtocol?
+    public var applicationProfile: AppProfileModelProtocol?
+    public var applicationPermissions: PermissionsModelProtocols?
+    public var points: PointsModelProtocols?
     
+    public var id: AnyHashable
+    public var name: String?
+    public var language: String?
     
-    public required init(id:                        NSNumber? = nil,
-                         username:                  String? = nil,
-                         firstName:                 String? = nil,
+    //todo add this to Protobufs
+    public var allowedFields: AllowedFields?
+    
+    public required init(firstName:                 String? = nil,
                          lastName:                  String? = nil,
-                         address:                   UserAddress? = nil,
-                         dateOfBirth:               String? = nil,
+                         dateOfBirth:               String,
                          gender:                    String? = nil,
-                         language:                  String? = nil,
                          email:                     String? = nil,
-                         phoneNumber:               String? = nil,
                          hasSetParentEmail:         NSNumber? = nil,
+                         createdAt:                 String,
+                         address:                   UserAddress? = nil,
                          applicationProfile:        ApplicationProfile? = nil,
                          applicationPermissions:    ApplicationPermissions? = nil,
                          points:                    Points? = nil,
-                         createdAt:                 String? = nil,
-                         parentEmail:               String? = nil) {
+                         id:                        AnyHashable,
+                         name:                      String? = nil,
+                         language:                  String? = nil,
+                         allowedFields:              AllowedFields? = nil) {
         
-        self.id = id
-        self.username = username
         self.firstName = firstName
         self.lastName = lastName
-        self.address = address
         self.dateOfBirth = dateOfBirth
         self.gender = gender
-        self.language = language
         self.email = email
-        self.phoneNumber = phoneNumber
-        self.hasSetParentEmail = hasSetParentEmail
+        self.hasSetParentEmail = hasSetParentEmail?.boolValue
+        self.createdAt = createdAt
+        self.address = address
         self.applicationProfile = applicationProfile
         self.applicationPermissions = applicationPermissions
         self.points = points
-        self.createdAt = createdAt
-        self.parentEmail = parentEmail
-    }
-    
-    public enum CodingKeys: String, CodingKey {
+        self.id = id
+        self.name = name
+        self.language = language
+        self.allowedFields = allowedFields
         
-        //to encode
-        case id
-        case username
-        case firstName
-        case lastName
-        case address
-        case dateOfBirth
-        case gender
-        case language
-        case email
-        case phoneNumber
-        case hasSetParentEmail
-        case applicationProfile
-        case applicationPermissions
-        case points
-        case createdAt
-        case parentEmail
+        
     }
     
     
     // MARK: - Equatable
+    public static func ==(lhs: UserDetails, rhs: UserDetails) -> Bool {
+        let areEqual = lhs.id == rhs.id
+        
+        return areEqual
+    }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? UserDetails else { return false }
         return self.id == object.id
     }
+    
+    public override var hash: Int {
+        return id.hashValue
+    }
+    
     
 }

@@ -7,15 +7,15 @@
 
 import Foundation
 
-public class TokenData : NSObject {
+public final class TokenData : NSObject {
     
-    let userId:         Int?
-    let appId:          Int
-    let clientId:       String?
-    let scope:          String?
-    let iss:            String?
-    let iat:            Int?
-    let exp:            Int?
+    var userId:         Int?
+    var appId:          Int
+    var clientId:       String?
+    var scope:          String?
+    var iss:            String?
+    var iat:            Int?
+    var exp:            Int?
     
     public init (userId:            Int? = 0,
                  appId:             Int,
