@@ -6,27 +6,26 @@
 //
 
 import Foundation
-import UIKit
+import SAProtobufs
 
 @objc(KWSSwiftApplicationProfile)
-public final class ApplicationProfile: NSObject {
-
-    public let username:        String?
-    public let customField1:    NSNumber?
-    public let customField2:    NSNumber?
-    public let avatarId:        NSNumber?
+public final class ApplicationProfile: NSObject, AppProfileModelProtocol {
     
+    public var customField1: Int?
+    public var customField2: Int?
+    public var avatarId: Int?
+    public var name: String?
     
-    
-    public required init(username:      String?,
-                         customField1:  NSNumber? = nil ,
+    public required init(customField1:  NSNumber? = nil ,
                          customField2:  NSNumber? = nil ,
-                         avatarId:      NSNumber? = nil ) {
+                         avatarId:      NSNumber? = nil ,
+                         name:          String?
+                         ) {
         
-        self.username = username
-        self.customField1 = customField1
-        self.customField2 = customField2
-        self.avatarId = avatarId
+        self.customField1 = customField1?.intValue
+        self.customField2 = customField2?.intValue
+        self.avatarId = avatarId?.intValue
+        self.name = name
         
     }
     
@@ -41,8 +40,8 @@ public final class ApplicationProfile: NSObject {
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? UserDetails else { return false }
-        return self.username == object.username
+        guard let object = object as? ApplicationProfile else { return false }
+        return self.name == object.name
     }
     
     

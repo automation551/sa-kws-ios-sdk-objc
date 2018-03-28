@@ -6,67 +6,65 @@
 //
 
 import Foundation
-import UIKit
-//
-//import Decodable
-//import protocol Decodable.Decodable
+import SAProtobufs
 
 @objc(KWSSwiftApplicationPermissions)
-public final class ApplicationPermissions: NSObject {
+public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
     
-    public let accessAddress:           NSNumber?
-    public let accessFirstName:         NSNumber?
-    public let accessLastName:          NSNumber?
-    public let accessEmail:             NSNumber?
-    public let accessStreetAddress:     NSNumber?
-    public let accessCity:              NSNumber?
-    public let accessPostalCode:        NSNumber?
-    public let accessCountry:           NSNumber?
-    public let sendPushNotification:    NSNumber?
-    public let sendNewsletter:          NSNumber?
-    public let enterCompetitions:       NSNumber?
+    public var notifications:       NSNumber?
+    public var address:             NSNumber?
+    public var firstName:           NSNumber?
+    public var lastName:            NSNumber?
+    public var email:               NSNumber?
+    public var streetAddress:       NSNumber?
+    public var city:                NSNumber?
+    public var postalCode:          NSNumber?
+    public var country:             NSNumber?
+    public var newsletter:          NSNumber?
+    public var competition:         NSNumber?
+    
 
     
-    public required init(accessAddress:             NSNumber? = nil,
-                         accessFirstName:           NSNumber? = nil,
-                         accessLastName:            NSNumber? = nil,
-                         accessEmail:               NSNumber? = nil,
-                         accessStreetAddress:       NSNumber? = nil,
-                         accessCity :               NSNumber? = nil,
-                         accessPostalCode:          NSNumber? = nil,
-                         accessCountry:             NSNumber? = nil,
-                         sendPushNotification:      NSNumber? = nil,
-                         sendNewsletter:            NSNumber? = nil,
-                         enterCompetitions:         NSNumber? = nil) {
+    public required init(notifications:     NSNumber? = nil,
+                         address:           NSNumber? = nil,
+                         firstName:         NSNumber? = nil,
+                         lastName:          NSNumber? = nil,
+                         email:             NSNumber? = nil,
+                         streetAddress:     NSNumber? = nil,
+                         city:              NSNumber? = nil,
+                         postalCode:        NSNumber? = nil,
+                         country:           NSNumber? = nil,
+                         newsletter:        NSNumber? = nil,
+                         competition:       NSNumber? = nil) {
         
-        self.accessAddress = accessAddress
-        self.accessFirstName = accessFirstName
-        self.accessLastName = accessLastName
-        self.accessEmail = accessEmail
-        self.accessStreetAddress = accessStreetAddress
-        self.accessCity = accessCity
-        self.accessPostalCode = accessPostalCode
-        self.accessCountry = accessCountry
-        self.sendPushNotification = sendPushNotification
-        self.sendNewsletter = sendNewsletter
-        self.enterCompetitions = enterCompetitions
+        self.notifications = notifications
+        self.address = address
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.streetAddress = streetAddress
+        self.city = city
+        self.postalCode = postalCode
+        self.country = country
+        self.newsletter = newsletter
+        self.competition = competition
         
     }
     
     public enum CodingKeys: String, CodingKey {
         
         //to encode
-        case accessAddress
-        case accessFirstName
-        case accessLastName
-        case accessEmail
-        case accessStreetAddress
-        case accessCity
-        case accessPostalCode
-        case accessCountry
-        case sendPushNotification
-        case sendNewsletter
-        case enterCompetitions
+        case notifications
+        case address
+        case firstName
+        case lastName
+        case email
+        case streetAddress
+        case city
+        case postalCode
+        case country
+        case newsletter
+        case competition
     }
     
     
@@ -74,7 +72,7 @@ public final class ApplicationPermissions: NSObject {
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? ApplicationPermissions else { return false }
-        return self.accessAddress == object.accessAddress
+        return self.firstName == object.firstName
     }
     
     
