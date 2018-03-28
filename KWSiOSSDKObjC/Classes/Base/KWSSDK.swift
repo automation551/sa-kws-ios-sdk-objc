@@ -7,6 +7,7 @@
 
 import Foundation
 import SAMobileBase
+import SAProtobufs
 
 @objc public class KWSSDK : NSObject{
     
@@ -25,12 +26,10 @@ import SAMobileBase
     public func getProvider (environment: KWSNetworkEnvironment,type: String) -> AnyObject {
         var classFromParams = NSClassFromString(type)
         switch classFromParams {
-        case is LoginProvider.Type:
-            return LoginProvider(environment: environment)
-        case is CreateUserProvider.Type:
-            return CreateUserProvider(environment: environment)
-        case is RandomUsernameProvider.Type:
-            return RandomUsernameProvider(environment: environment)
+        case is AuthProvider.Type:
+            return AuthProvider(environment: environment)
+        case is UsernameProvider.Type:
+            return UsernameProvider(environment: environment)
         case is UserProvider.Type:
             return UserProvider(environment: environment)
         //todo other providers
@@ -41,12 +40,10 @@ import SAMobileBase
 
     //for swift
      static public func getService <T> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
-        if (value == LoginService.self) {
-            return LoginProvider(environment: environment) as? T
-        } else if (value == CreateUserService.self){
-            return CreateUserProvider(environment: environment) as? T
+        if (value == AuthServiceProtocol.self){
+            return AuthProvider(environment: environment) as? T
         } else if (value == RandomUsernameService.self){
-            return RandomUsernameProvider(environment: environment) as? T
+            return UsernameProvider(environment: environment) as? T
         } else if (value == UserService.self){
             return UserProvider(environment: environment) as? T
         } else {

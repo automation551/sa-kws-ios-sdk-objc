@@ -30,8 +30,6 @@ public final class UserDetails: NSObject, UserDetailsModelProtocol {
     public var name: String?
     public var language: String?
     
-    //todo add this to Protobufs
-    public var allowedFields: AllowedFields?
     
     public required init(firstName:                 String? = nil,
                          lastName:                  String? = nil,
@@ -46,8 +44,7 @@ public final class UserDetails: NSObject, UserDetailsModelProtocol {
                          points:                    Points? = nil,
                          id:                        AnyHashable,
                          name:                      String? = nil,
-                         language:                  String? = nil,
-                         allowedFields:              AllowedFields? = nil) {
+                         language:                  String? = nil) {
         
         self.firstName = firstName
         self.lastName = lastName
@@ -62,9 +59,7 @@ public final class UserDetails: NSObject, UserDetailsModelProtocol {
         self.points = points
         self.id = id
         self.name = name
-        self.language = language
-        self.allowedFields = allowedFields
-        
+        self.language = language        
         
     }
     

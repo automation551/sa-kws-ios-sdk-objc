@@ -39,9 +39,7 @@ public class UpdateUserDetailsRequest: BaseRequest {
                 tmpBody["lastName"] = userDetails.lastName
             }
             
-            if let dateOfBirth = userDetails.dateOfBirth, !dateOfBirth.isEmpty {
-                tmpBody["dateOfBirth"] = userDetails.dateOfBirth
-            }
+            tmpBody["dateOfBirth"] = userDetails.dateOfBirth
             
             if let email = userDetails.email, !email.isEmpty {
                 tmpBody["email"] = userDetails.email
@@ -54,20 +52,18 @@ public class UpdateUserDetailsRequest: BaseRequest {
             if let language = userDetails.language, !language.isEmpty {
                 tmpBody["language"] = userDetails.language
             }
+                       
             
-            if let parentEmail = userDetails.parentEmail, !parentEmail.isEmpty {
-                tmpBody["parentEmail"] = userDetails.parentEmail
-            }
+            let encoder = JSONEncoder ()
             
-            let encoder = JSONEncoder ()            
-            if let address = userDetails.address,
+            if let address = userDetails.address as? UserAddress ,
                 let jsonDataAddress = try? encoder.encode(address),
                 let jsonStringAddress = String(data: jsonDataAddress, encoding: .utf8),
                 !jsonStringAddress.isEmpty && jsonStringAddress != "{}"  {
                 tmpBody["address"] = jsonStringAddress
             }
             
-            if let appProfile = userDetails.applicationProfile,
+            if let appProfile = userDetails.applicationProfile as? ApplicationProfile,
                 let jsonDataAppProfile = try? encoder.encode(appProfile),
                 let jsonStringAppProfile = String(data: jsonDataAppProfile, encoding: .utf8),
                 !jsonStringAppProfile.isEmpty && jsonStringAppProfile != "{}"  {

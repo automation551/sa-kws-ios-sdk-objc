@@ -147,14 +147,14 @@
         andResponse:(KWSChildrenCreateUserBlock)response {
     
     
-    CreateUserProvider* createUserProvider =[[KWSSDK sharedInstance]
+    AuthProvider* authProvider =[[KWSSDK sharedInstance]
                                              getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                             type:NSStringFromClass([CreateUserProvider class])];
+                                             type:NSStringFromClass([AuthProvider class])];
     
     
-    if ([createUserProvider isKindOfClass: [CreateUserProvider class]]){
+    if ([authProvider isKindOfClass: [AuthProvider class]]){
         
-        [createUserProvider createUserWithUsername:username password:password dateOfBirth:dateOfBirth country:country parentEmail:parentEmail callback:^(KWSCreateUserResponse * createUserResponse, NSError * error) {
+        [authProvider createUserWithUsername:username password:password dateOfBirth:dateOfBirth country:country parentEmail:parentEmail callback:^(KWSCreateUserResponse * createUserResponse, NSError * error) {
             
             if(createUserResponse != nil && [createUserResponse token] != nil ){
                 

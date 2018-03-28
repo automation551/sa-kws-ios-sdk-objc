@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SAMobileBase
 
 @objc(KWSErrorResponse)
 public final class ErrorResponse: NSObject, Error {

@@ -7,10 +7,11 @@
 
 import Foundation
 import SAMobileBase
+import SAProtobufs
 
 
-@objc public class UserProvider: NSObject, UserService{
-
+@objc public class UserProvider: NSObject, UserServiceProtocol{
+    
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask
     
@@ -19,97 +20,120 @@ import SAMobileBase
         self.networkTask = networkTask
     }
     
-    public func getUserDetails(userId: NSInteger, token: String, callback: @escaping (UserDetails?, Error?) -> ()) {
+    public func getUser(userId: Int, token: String, completionHandler: @escaping (UserDetailsModelProtocol?, Error?) -> ()) {
         
         let getUserDetailsNetworkRequest = UserDetailsRequest(environment: environment,
                                                               userId: userId,
                                                               token: token)
         
-        networkTask.execute(request: getUserDetailsNetworkRequest){ getUserDetailsNetworkResponse in
+        let parseTask = ParseJsonTask<UserDetails>()
+        networkTask = NetworkTask()
+        
+        let future = networkTask.execute(input: getUserDetailsNetworkRequest)
+            .map { (result: Result<String>) -> Result<UserDetails> in
+                return result.then(parseTask.execute)
+        }
+        
+        future.onResult{ (result) in
             
-            if let json = getUserDetailsNetworkResponse.response, getUserDetailsNetworkResponse.error == nil{
+            switch result {
+            case .success(let mappedResponse):
+                completionHandler(mappedResponse, nil)
+                break
+            case .error(let error):
                 
-                let parseRequest = JsonParseRequest.init(withRawData: json)
-                let parseTask = JSONParseTask<UserDetails>()
+                let mappedError = ErrorResponse().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
                 
-                if let getUserDetailsResponseObject = parseTask.execute(request: parseRequest){
-                    callback(getUserDetailsResponseObject, nil)
-                } else {
-                    callback(nil, KWSBaseError.JsonParsingError)
-                }
-                
-            }else{
-                if let errorResponse = getUserDetailsNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    callback(nil, mappedResponse)
-                    
-                } else {
-                    callback(nil, getUserDetailsNetworkResponse.error)
-                }
+                break
             }
         }
+        
+        
+        
+        
     }
     
-    
-    public func updateUserDetails(userId: Int, token: String, userDetails: UserDetails, callback: @escaping (Bool, Error?) -> ()) {
+    public func updateUser(details: UserDetailsModelProtocol, token: String, completionHandler: @escaping (Error?) -> ()) {
+        
+        //TODO redo this bit
+        let tokenData = self.getTheTokenData(token: token)
+        
+        let userId = tokenData?.userId?.intValue
         
         let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
-                                                                        userDetails: userDetails,
-                                                                        userId: userId,
-                                                                        token: token)
+                                                                       userDetails: details as! UserDetails,
+                                                                       userId: userId!,
+                                                                       token: token)
         
-        networkTask.execute(request: updateUserDetailsNetworkRequest){ updateUserDetailsNetworkResponse in
+        networkTask = NetworkTask()
+        
+        let future = networkTask.execute(input: updateUserDetailsNetworkRequest)
+        
+        future.onResult { (result) in
             
-            if (updateUserDetailsNetworkResponse.success && updateUserDetailsNetworkResponse.error == nil) {
-                callback(true, nil)
-            } else {
-                if let errorResponse = updateUserDetailsNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    callback(false, mappedResponse)
-                    
-                } else {
-                    callback(false, updateUserDetailsNetworkResponse.error)
-                }
+            switch result {
+            case .success(let mappedResponse):
+                completionHandler(nil)
+                break
+            case .error(let error):
+                
+                let mappedError = ErrorResponse().mapErrorResponse(error: error)
+                completionHandler(mappedError)
+                
+                break
             }
-            
         }
-        
     }
     
-    public func requestPermissions(userId: Int, token: String, permissionsList: [String], callback: @escaping (Bool, Error?) -> ()) {
+    private func getTheTokenData(token : String) -> TokenData?{
+        
+        //TODO this has to be here?
+        
+        let base64T = ParseBase64Task()
+        let parseTask = ParseJsonTask<TokenData>()
+        let resultToken = base64T.execute(input: token).then(parseTask.execute)
+        
+        switch resultToken {
+        case .success(let tokenData):
+            return tokenData
+            break
+        case .error(let error):
+            return nil
+            break
+            
+        }
+    }
+    
+    
+    //TODO: this will be in another Provider
+    public func requestPermissions(userId: Int, token: String, permissionsList: [String], completionHandler: @escaping (Bool, Error?) -> ()) {
         
         let requestPermissionsNetworkRequest = PermissionsRequest(environment: environment,
                                                                   userId: userId,
                                                                   token: token,
                                                                   permissionsList: permissionsList)
         
-        networkTask.execute(request: requestPermissionsNetworkRequest) { requestPermissionsNetworkResponse in
+        //todo redo this
+        networkTask = NetworkTask()
+        
+        let future = networkTask.execute(input: requestPermissionsNetworkRequest)
+        
+        future.onResult { (result) in
             
-            if (requestPermissionsNetworkResponse.success && requestPermissionsNetworkResponse.error == nil) {
-                callback(true, nil)
-            } else {
-                if let errorResponse = requestPermissionsNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    callback(false, mappedResponse)
-                    
-                } else {
-                    callback(false, requestPermissionsNetworkResponse.error)
-                }
+            switch result {
+            case .success(let mappedResponse):
+                completionHandler(true, nil)
+                break
+            case .error(let error):
+                
+                let mappedError = ErrorResponse().mapErrorResponse(error: error)
+                completionHandler(false, mappedError)
+                
+                break
             }
             
         }
-        
-        
     }
-
     
 }

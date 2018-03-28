@@ -11,10 +11,10 @@ import SAProtobufs
 @objc(KWSSwiftApplicationProfile)
 public final class ApplicationProfile: NSObject, AppProfileModelProtocol {
     
-    public var customField1: Int?
-    public var customField2: Int?
-    public var avatarId: Int?
-    public var name: String?
+    public var customField1:    Int?
+    public var customField2:    Int?
+    public var avatarId:        Int?
+    public var name:            String?
     
     public required init(customField1:  NSNumber? = nil ,
                          customField2:  NSNumber? = nil ,

@@ -18,7 +18,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
     /*
      Random Username is a 2 step process - this is step 1
      The test here should be to test the provider through the Service (see Login Provider Test)
-     In order to keep each step of create user tested individually, this test uses the RandomUsernameProvider resource
+     In order to keep each step of create user tested individually, this test uses the UsernameProvider resource
      instead of using RandomUsernameService
      */
     

@@ -28,8 +28,7 @@ extension UserDetails: Decodable {
             points:                 try json =>? "points",
             id:                     try json =>? "id" as! AnyHashable,
             name:                   try json =>? "username",
-            language:               try json =>? "language",
-            allowedFields:          try json =>? "allowedFields"
+            language:               try json =>? "language"
             
         )
     }

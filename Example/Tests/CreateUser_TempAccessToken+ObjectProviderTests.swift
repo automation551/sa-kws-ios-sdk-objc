@@ -19,7 +19,7 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
     /*
      Create User is a 2 step process - this is step 1
      The test here should be to test the provider through the Service (see Login Provider Test)
-     In order to keep each step of create user tested individually, this test uses the CreateUserProvider resource
+     In order to keep each step of create user tested individually, this test uses the AuthProvider resource
      instead of using CreateUserService
      */
     
