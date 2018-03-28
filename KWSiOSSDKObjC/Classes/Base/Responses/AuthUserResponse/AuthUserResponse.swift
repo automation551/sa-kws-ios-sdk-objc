@@ -6,16 +6,16 @@
 //
 
 import Foundation
-import UIKit
+import SAProtobufs
 
 @objc(KWSCreateUserResponse)
-public final class CreateUserResponse: NSObject {
+public final class AuthUserResponse: NSObject, LoggedUserModelProtocol {
     
-    public let id:      Int?
-    public let token:   String?
-    
-    public required init(id: Int?,
-                         token: String? = "") {
+    public var id: AnyHashable
+    public var token: String
+
+    public required init(id: AnyHashable,
+                         token: String) {
         
         self.id = id
         self.token = token
@@ -25,7 +25,7 @@ public final class CreateUserResponse: NSObject {
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? CreateUserResponse else { return false }
+        guard let object = object as? AuthUserResponse else { return false }
         return self.id == object.id
     }
     

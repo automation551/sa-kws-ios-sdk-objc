@@ -15,15 +15,15 @@ public class TokenData : NSObject {
     let scope:          String?
     let iss:            String?
     let iat:            Int?
-    let exp:            Int
+    let exp:            Int?
     
     public init (userId:            Int? = 0,
                  appId:             Int,
                  clientId:          String? = nil,
                  scope:             String? = nil,
                  iss:               String? = nil,
-                 iat:               Int = 0,
-                 exp:               Int = 0) {
+                 iat:               Int? = 0,
+                 exp:               Int? = 0) {
         
         self.userId = userId
         self.appId = appId

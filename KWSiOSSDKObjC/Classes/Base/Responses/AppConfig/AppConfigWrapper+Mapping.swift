@@ -14,7 +14,7 @@ extension AppConfigWrapper: Decodable {
     public static func decode(_ json: Any) throws -> AppConfigWrapper {
         
         return try AppConfigWrapper (
-            app:           try json =>? "app"
+            app:           try json => "app"
         )
     }
 }

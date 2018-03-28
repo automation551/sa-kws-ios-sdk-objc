@@ -13,6 +13,6 @@ import Foundation
                     dateOfBirth: String,
                     country: String,
                     parentEmail: String,
-                    callback: @escaping(CreateUserResponse?,Error?) -> () )
+                    callback: @escaping(AuthUserResponse?,Error?) -> () )
     
 }

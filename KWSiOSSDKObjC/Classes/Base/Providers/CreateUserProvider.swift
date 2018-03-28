@@ -20,7 +20,7 @@ import SAMobileBase
     }
     
     
-    public func createUser(username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, callback: @escaping (CreateUserResponse?, Error?) -> ()) {
+    public func createUser(username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, callback: @escaping (AuthUserResponse?, Error?) -> ()) {
         
         
         getTempAccessToken(environment: environment){ authResponse, error in
@@ -52,7 +52,7 @@ import SAMobileBase
     }
     
     //TODO: Does it need to be public for tests? Is there a better way?
-    public func getTempAccessToken(environment: KWSNetworkEnvironment, callback: @escaping (AuthResponse?, Error?) -> ()) {
+    public func getTempAccessToken(environment: KWSNetworkEnvironment, callback: @escaping (LoginAuthResponse?, Error?) -> ()) {
         
         
         let getTempAccessTokenNetworkRequest = TempAccessTokenRequest(environment: environment,
@@ -90,7 +90,7 @@ import SAMobileBase
     }
     
     //TODO: Does it need to be public for tests? Is there a better way?
-    public func doUserCreation(environment: KWSNetworkEnvironment,username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, callback: @escaping (CreateUserResponse?, Error?) -> ()) {
+    public func doUserCreation(environment: KWSNetworkEnvironment,username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, callback: @escaping (AuthUserResponse?, Error?) -> ()) {
         
         
         let createUserNetworkRequest = CreateUserRequest(environment: environment,

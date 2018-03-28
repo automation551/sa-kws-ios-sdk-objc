@@ -11,14 +11,12 @@ import SAProtobufs
 @objc(KWSAppConfigResponse)
 public final class AppConfigWrapper: NSObject, AppConfigWrapperModelProtocol {
     
-    public var app: AppConfigModelProtocol?
+    public var app: AppConfigModelProtocol
     
-    public required init(app: AppConfig?) {
+    public required init(app: AppConfig) {
         
         self.app = app
         
     }
-    
-    //todo equals
-    
+
 }

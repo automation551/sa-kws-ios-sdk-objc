@@ -20,7 +20,7 @@ import SAMobileBase
     
     
     
-    public func loginUser(username: String, password: String, callback: @escaping (AuthResponse?, Error?) -> ()) {
+    public func loginUser(username: String, password: String, callback: @escaping (LoginAuthResponse?, Error?) -> ()) {
         
         let loginUserNetworkRequest = LoginRequest(environment: self.environment,
                                                    username: username,

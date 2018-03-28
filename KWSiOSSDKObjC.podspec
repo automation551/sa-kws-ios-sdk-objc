@@ -26,6 +26,6 @@ The SuperAwesome Kids Web Services iOS SDK
   s.dependency 'SAUtils', '1.5.2'
   s.dependency 'SANetworking',  '0.3.0'
   s.dependency 'SAMobileBase', '2.0.1'
-  s.dependency 'SAProtobufs', '1.1.1'
+  s.dependency 'SAProtobufs', '1.2.0'
   
 end
