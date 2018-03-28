@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import SAProtobufs
+
 @objc(KWSAppConfigAppObjectResponse)
-public final class AppConfigAppObjectResponse: NSObject {
+public final class AppConfig: NSObject, AppConfigModelProtocol {
     
-    public let id:      Int?
-    public let name:    String?
+    public var id: Int
+    public var name: String
     
-    public required init(id: Int?,
-                         name: String? = "") {
+    public required init(id: Int,
+                         name: String) {
         
         self.id = id
         self.name = name
@@ -23,7 +25,7 @@ public final class AppConfigAppObjectResponse: NSObject {
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? AppConfigAppObjectResponse else { return false }
+        guard let object = object as? AppConfig else { return false }
         return self.id == object.id
     }
     

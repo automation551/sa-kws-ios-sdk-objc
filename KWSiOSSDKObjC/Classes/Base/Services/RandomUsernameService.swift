@@ -10,6 +10,6 @@ import SAMobileBase
 
 @objc public protocol RandomUsernameService: BaseService {
     
-    func getRandomUsername(callback: @escaping(RandomUsernameResponse?,Error?) -> () )
+    func getRandomUsername(callback: @escaping(RandomUsername?,Error?) -> () )
     
 }

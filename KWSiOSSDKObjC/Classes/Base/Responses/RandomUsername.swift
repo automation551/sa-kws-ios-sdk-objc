@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import SAProtobufs
+
 @objc(KWSRandomUsernameResponse)
-public final class RandomUsernameResponse: NSObject {
+public final class RandomUsername: NSObject, RandomUsernameModelProtocol {
     
-    public let randomUsername: String?
+    
+    public var randomUsername: String?
     
     public required init(randomUsername: String? = "") {
         
@@ -20,7 +23,7 @@ public final class RandomUsernameResponse: NSObject {
     // MARK: - Equatable
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? RandomUsernameResponse else { return false }
+        guard let object = object as? RandomUsername else { return false }
         return self.randomUsername == object.randomUsername
     }
     

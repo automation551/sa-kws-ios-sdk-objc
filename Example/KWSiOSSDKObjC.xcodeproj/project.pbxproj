@@ -568,6 +568,7 @@
 				"${BUILT_PRODUCTS_DIR}/SAJsonParser/SAJsonParser.framework",
 				"${BUILT_PRODUCTS_DIR}/SAMobileBase/SAMobileBase.framework",
 				"${BUILT_PRODUCTS_DIR}/SANetworking/SANetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/SAProtobufs/SAProtobufs.framework",
 				"${BUILT_PRODUCTS_DIR}/SAUtils/SAUtils.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -577,6 +578,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAJsonParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMobileBase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SANetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAProtobufs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAUtils.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

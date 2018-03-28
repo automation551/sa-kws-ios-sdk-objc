@@ -1,5 +1,5 @@
 //
-//  AppConfigResponse+Mapping.swift
+//  AppConfigWrapper+Mapping.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 07/02/2018.
@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension AppConfigResponse: Decodable {
+extension AppConfigWrapper: Decodable {
     
-    public static func decode(_ json: Any) throws -> AppConfigResponse {
+    public static func decode(_ json: Any) throws -> AppConfigWrapper {
         
-        return try AppConfigResponse (
+        return try AppConfigWrapper (
             app:           try json =>? "app"
         )
     }

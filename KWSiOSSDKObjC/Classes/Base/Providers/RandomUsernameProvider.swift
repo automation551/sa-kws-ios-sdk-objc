@@ -20,7 +20,7 @@ import SAMobileBase
     }
     
     
-    public func getRandomUsername(callback: @escaping (RandomUsernameResponse?, Error?) -> ()) {
+    public func getRandomUsername(callback: @escaping (RandomUsername?, Error?) -> ()) {
         
         getAppConfigDetails(environment: environment){ appConfigResponse, error in
             
@@ -40,7 +40,7 @@ import SAMobileBase
     
     
     public func getAppConfigDetails(environment: KWSNetworkEnvironment,
-                                    callback: @escaping (AppConfigResponse?, Error?) -> ()){
+                                    callback: @escaping (AppConfigWrapper?, Error?) -> ()){
         
         let getAppConfigNetworkRequest = AppConfigRequest(environment: environment,
                                                           clientID: environment.mobileKey)
@@ -78,7 +78,7 @@ import SAMobileBase
     
     public func fetchRandomUsernameFromBackend(environment: KWSNetworkEnvironment,
                                                appID: Int,
-                                               callback: @escaping (RandomUsernameResponse?, Error?) -> ()){
+                                               callback: @escaping (RandomUsername?, Error?) -> ()){
         
         
         let getRandomUsernameNetworkRequest = RandomUsernameRequest(environment:environment,
