@@ -43,6 +43,8 @@ public final class ErrorResponse: NSObject, Error {
     
 }
 
+//This will come back
+/**
 extension ErrorResponse {
     
     func mapErrorResponse(error: PrintableErrorProtocol) -> Error {
@@ -58,4 +60,4 @@ extension ErrorResponse {
             break
         }
     }
-}
+}**/

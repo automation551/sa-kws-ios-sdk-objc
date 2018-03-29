@@ -26,114 +26,109 @@ import SAProtobufs
                                                               userId: userId,
                                                               token: token)
         
-        let parseTask = ParseJsonTask<UserDetails>()
-        networkTask = NetworkTask()
-        
-        let future = networkTask.execute(input: getUserDetailsNetworkRequest)
-            .map { (result: Result<String>) -> Result<UserDetails> in
-                return result.then(parseTask.execute)
-        }
-        
-        future.onResult{ (result) in
+        networkTask.execute(request: getUserDetailsNetworkRequest){ getUserDetailsNetworkResponse in
             
-            switch result {
-            case .success(let mappedResponse):
-                completionHandler(mappedResponse, nil)
-                break
-            case .error(let error):
+            if let json = getUserDetailsNetworkResponse.response, getUserDetailsNetworkResponse.error == nil{
                 
-                let mappedError = ErrorResponse().mapErrorResponse(error: error)
-                completionHandler(nil, mappedError)
+                let parseRequest = JsonParseRequest.init(withRawData: json)
+                let parseTask = JSONParseTask<UserDetails>()
                 
-                break
+                if let getUserDetailsResponseObject = parseTask.execute(request: parseRequest){
+                    completionHandler(getUserDetailsResponseObject, nil)
+                } else {
+                    completionHandler(nil, KWSBaseError.JsonParsingError)
+                }
+                
+            }else{
+                if let errorResponse = getUserDetailsNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
+                    completionHandler(nil, mappedResponse)
+                    
+                } else {
+                    completionHandler(nil, getUserDetailsNetworkResponse.error)
+                }
             }
         }
-        
-        
-        
         
     }
     
     public func updateUser(details: UserDetailsModelProtocol, token: String, completionHandler: @escaping (Error?) -> ()) {
         
-        //TODO redo this bit
-        let tokenData = self.getTheTokenData(token: token)
-        
-        let userId = tokenData?.userId?.intValue
+        //this will be improved
+        let userId = self.getTheTokenData(token: token)?.userId?.intValue
+        let userDetails = details as! UserDetails
         
         let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
-                                                                       userDetails: details as! UserDetails,
+                                                                       userDetails: userDetails,
+                                                                       //this will be improved
                                                                        userId: userId!,
                                                                        token: token)
         
-        networkTask = NetworkTask()
-        
-        let future = networkTask.execute(input: updateUserDetailsNetworkRequest)
-        
-        future.onResult { (result) in
+        networkTask.execute(request: updateUserDetailsNetworkRequest){ updateUserDetailsNetworkResponse in
             
-            switch result {
-            case .success(let mappedResponse):
-                completionHandler(nil)
-                break
-            case .error(let error):
-                
-                let mappedError = ErrorResponse().mapErrorResponse(error: error)
-                completionHandler(mappedError)
-                
-                break
+            if (updateUserDetailsNetworkResponse.success && updateUserDetailsNetworkResponse.error == nil) {
+                completionHandler( nil)
+            } else {
+                if let errorResponse = updateUserDetailsNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
+                    completionHandler(mappedResponse)
+                    
+                } else {
+                    completionHandler(updateUserDetailsNetworkResponse.error)
+                }
             }
+            
         }
     }
     
-    private func getTheTokenData(token : String) -> TokenData?{
+    public func getTheTokenData (token: String) -> TokenData? {
         
-        //TODO this has to be here?
+        let base64req = ParseBase64Request(withBase64String: token)
+        let base64Task = ParseBase64Task()
+        let metadataJson = base64Task.execute(request: base64req)
         
-        let base64T = ParseBase64Task()
-        let parseTask = ParseJsonTask<TokenData>()
-        let resultToken = base64T.execute(input: token).then(parseTask.execute)
+        let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
+        let parseJsonTask = JSONParseTask<TokenData>()
+        let metadata = parseJsonTask.execute(request: parseJsonReq)
         
-        switch resultToken {
-        case .success(let tokenData):
-            return tokenData
-            break
-        case .error(let error):
-            return nil
-            break
-            
-        }
+        return metadata
     }
     
     
     //TODO: this will be in another Provider
     public func requestPermissions(userId: Int, token: String, permissionsList: [String], completionHandler: @escaping (Bool, Error?) -> ()) {
         
+        
         let requestPermissionsNetworkRequest = PermissionsRequest(environment: environment,
                                                                   userId: userId,
                                                                   token: token,
                                                                   permissionsList: permissionsList)
         
-        //todo redo this
-        networkTask = NetworkTask()
-        
-        let future = networkTask.execute(input: requestPermissionsNetworkRequest)
-        
-        future.onResult { (result) in
+        networkTask.execute(request: requestPermissionsNetworkRequest) { requestPermissionsNetworkResponse in
             
-            switch result {
-            case .success(let mappedResponse):
+            if (requestPermissionsNetworkResponse.success && requestPermissionsNetworkResponse.error == nil) {
                 completionHandler(true, nil)
-                break
-            case .error(let error):
-                
-                let mappedError = ErrorResponse().mapErrorResponse(error: error)
-                completionHandler(false, mappedError)
-                
-                break
+            } else {
+                if let errorResponse = requestPermissionsNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
+                    completionHandler(false, mappedResponse)
+                    
+                } else {
+                    completionHandler(false, requestPermissionsNetworkResponse.error)
+                }
             }
             
         }
+        
     }
     
 }

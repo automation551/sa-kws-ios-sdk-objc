@@ -26,19 +26,15 @@ import SAMobileBase
     
     public func getTokenData (token: String) -> TokenData? {
         
-        let base64T = ParseBase64Task()
-        let parseTask = ParseJsonTask<TokenData>()
-        let resultToken = base64T.execute(input: token).then(parseTask.execute)
+        let base64req = ParseBase64Request(withBase64String: token)
+        let base64Task = ParseBase64Task()
+        let metadataJson = base64Task.execute(request: base64req)
         
-        switch resultToken {
-        case .success(let tokenData):
-            return tokenData
-            break
-        case .error(let error):
-            return nil
-            break
-        }
+        let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
+        let parseJsonTask = JSONParseTask<TokenData>()
+        let metadata = parseJsonTask.execute(request: parseJsonReq)
         
+        return metadata
     }
     
     public func getUserDetailsCountryCode(country: String) -> String?{

@@ -22,37 +22,58 @@ import SAProtobufs
     
     public func getRandomUsername(completionHandler: @escaping (RandomUsernameModelProtocol?, Error?) -> ()) {
         
-        let getAppConfigNetworkRequest = AppConfigRequest(environment: environment,
-                                                          clientID: environment.mobileKey)
-        
-        let parseTask = ParseJsonTask<AppConfigWrapper>()
-        networkTask = NetworkTask()
-        
-        let future = networkTask.execute(input: getAppConfigNetworkRequest)
-            .map { (result: Result<String>) -> Result<AppConfigWrapper> in
-                return result.then(parseTask.execute)
-        }
-        
-        future.onResult { (result) in
+        getAppConfigDetails(environment: environment){ appConfigResponse, error in
             
-            switch result {
-            case .success(let mappedResponse):
+            if (appConfigResponse?.app != nil && error == nil) {
                 
-                let appId = mappedResponse.app.id
+                let appID = appConfigResponse?.app.id
                 
-                self.fetchRandomUsernameFromBackend(environment: self.environment, appID: appId, completionHandler: completionHandler)
+                self.fetchRandomUsernameFromBackend(environment: self.environment, /*this will be improved*/ appID: appID!, completionHandler: completionHandler)
                 
-                break
-            case .error(let error):
-                
-                let mappedError = ErrorResponse().mapErrorResponse(error: error)
-                completionHandler(nil, mappedError)
-                
-                break
+            } else {
+                completionHandler(nil,error)
             }
+            
         }
         
     }
+    
+    
+    public func getAppConfigDetails(environment: KWSNetworkEnvironment,
+                                    completionHandler: @escaping (AppConfigWrapper?, Error?) -> ()){
+        
+        let getAppConfigNetworkRequest = AppConfigRequest(environment: environment,
+                                                          clientID: environment.mobileKey)
+        
+        networkTask.execute(request: getAppConfigNetworkRequest){ getAppConfigNetworkResponse in
+            
+            if let json = getAppConfigNetworkResponse.response, getAppConfigNetworkResponse.error == nil{
+                
+                let parseRequest = JsonParseRequest.init(withRawData: json)
+                let parseTask = JSONParseTask<AppConfigWrapper>()
+                
+                if let getAppConfigResponseObject = parseTask.execute(request: parseRequest){
+                    completionHandler(getAppConfigResponseObject, nil)
+                }else{
+                    completionHandler(nil, KWSBaseError.JsonParsingError)
+                }
+                
+                
+            }else{
+                if let errorResponse = getAppConfigNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
+                    completionHandler(nil, mappedResponse)
+                    
+                } else {
+                    completionHandler(nil, getAppConfigNetworkResponse.error)
+                }
+            }
+        }
+    }
+    
     
     
     public func fetchRandomUsernameFromBackend(environment: KWSNetworkEnvironment,
@@ -62,33 +83,35 @@ import SAProtobufs
         
         let getRandomUsernameNetworkRequest = RandomUsernameRequest(environment:environment,
                                                                     appID:appID)
-        networkTask = NetworkTask()
         
-        let future = networkTask.execute(input: getRandomUsernameNetworkRequest)
-        
-        future.onResult{ (result) in
+        networkTask.execute(request: getRandomUsernameNetworkRequest){ getRandomUsernameNetworkResponse in
             
-            switch (result){
-            case .success(let mappedResponse):
+            let responseString = getRandomUsernameNetworkResponse.response
+            
+            if let json = responseString, getRandomUsernameNetworkResponse.error == nil{
                 
-                let parsedResponseString = mappedResponse.replacingOccurrences(of: "\"", with: "")
+                let parsedResponseString = responseString?.replacingOccurrences(of: "\"", with: "")
                 
-                if ( parsedResponseString != nil && !(parsedResponseString.isEmpty) ){
+                if (parsedResponseString != nil && !(parsedResponseString?.isEmpty)!){
                     completionHandler(RandomUsername(randomUsername: parsedResponseString), nil)
                 } else {
-                    completionHandler(RandomUsername(randomUsername: mappedResponse), nil)
+                    completionHandler(RandomUsername(randomUsername: responseString), nil)
                 }
                 
-                break
-                
-            case .error(let error):
-                
-                let mappedError = ErrorResponse().mapErrorResponse(error: error)
-                completionHandler(nil, mappedError)
-                
-                break
+            } else {
+                if let errorResponse = getRandomUsernameNetworkResponse.error?.message {
+                    
+                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
+                    let parseTask = JSONParseTask<ErrorResponse>()
+                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
+                    completionHandler(nil, mappedResponse)
+                    
+                } else {
+                    completionHandler(nil, getRandomUsernameNetworkResponse.error)
+                }
             }
         }
+        
     }
     
     public func verifiyUsername(username: String, completionHandler: @escaping (VerifiedUsernameModelProtocol?, Error?) -> ()) {

@@ -151,6 +151,8 @@
                                              getProviderWithEnvironment:_userKWSNetworkEnvironment
                                              type:NSStringFromClass([AuthProvider class])];
     
+//    authProvider create
+    
     
     if ([authProvider isKindOfClass: [AuthProvider class]]){
         
@@ -182,11 +184,12 @@
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
     
-    LoginProvider* loginProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                                                                  type:NSStringFromClass([LoginProvider class])];
+    AuthProvider* authProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
+                                                                                  type:NSStringFromClass([AuthProvider class])];
     
-    if ([loginProvider isKindOfClass: [LoginProvider class]]){
-        [loginProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
+    if ([authProvider isKindOfClass: [AuthProvider class]]){
+        
+        [authProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
             
             if(loginResponse != nil && [loginResponse token] != nil
                && [[loginResponse token] length] != 0 && error == nil){
@@ -212,7 +215,7 @@
     
 -(KWSMetadata*) getMetadataFromToken : (NSString*) token {
     //todo here
-    MetadataKWS* metadataNewObject = [[UtilsHelpers sharedInstance] getKWSMetadataWithToken:token];
+    MetadataKWS* metadataNewObject = [[UtilsHelpers sharedInstance] getTokenDataWithToken : token];
     
     KWSMetadata* kwsMetadata = [[KWSMetadata alloc]initWithUserId:metadataNewObject.userId andAppId:metadataNewObject.appId andClientId:metadataNewObject.clientId andScope:metadataNewObject.scope andIat:metadataNewObject.iat andExp:metadataNewObject.exp andIss:metadataNewObject.iss];
     
@@ -249,12 +252,12 @@
     
 - (void) getRandomUsername:(KWSChildrenGetRandomUsernameBlock)response {
     
-    RandomUsernameProvider* randomUsernameProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                                                                                    type:NSStringFromClass([RandomUsernameProvider class])];
+    UsernameProvider* usernameProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
+                                                                                                    type:NSStringFromClass([UsernameProvider class])];
     
-    if ([randomUsernameProvider isKindOfClass: [RandomUsernameProvider class]]){
+    if ([usernameProvider isKindOfClass: [UsernameProvider class]]){
         
-        [randomUsernameProvider getRandomUsernameWithCallback:^(KWSRandomUsernameResponse *randomUsernameResponse, NSError * error) {
+        [usernameProvider getRandomUsernameWithCallback:^(KWSRandomUsernameResponse *randomUsernameResponse, NSError * error) {
             
             if(randomUsernameResponse != nil && [randomUsernameResponse randomUsername] != nil && [[randomUsernameResponse randomUsername]length] != 0 && error == nil){
                 response ([randomUsernameResponse randomUsername]);
@@ -350,10 +353,10 @@
 - (KWSPoints*) buildKWSPoints:(KWSSwiftPoints*) points{
     
     
-    NSInteger totalReceived = [points totalReceived];
+    NSInteger totalReceived = [points received];
     NSInteger total = [points total];
-    NSInteger totalPointsReceivedInCurrentApp = [points totalPointsReceivedInCurrentApp];
-    NSInteger availableBalance = [points availableBalance];
+    NSInteger totalPointsReceivedInCurrentApp = [points inApp];
+    NSInteger availableBalance = [points balance];
     NSInteger pending = [points pending];
     
     return [[KWSPoints alloc] initWithTotalReceived:totalReceived
@@ -365,17 +368,17 @@
     
 - (KWSPermissions*) buildKWSPermissions:(KWSSwiftApplicationPermissions*) permissions{
     
-    NSNumber * accessAddress = [permissions accessAddress];
-    NSNumber * accessFirstName = [permissions accessFirstName];
-    NSNumber * accessLastName = [permissions accessLastName];
-    NSNumber * accessEmail = [permissions accessEmail];
-    NSNumber * accessStreetAddress = [permissions accessStreetAddress];
-    NSNumber * accessCity = [permissions accessCity];
-    NSNumber * accessPostalCode = [permissions accessPostalCode];
-    NSNumber * accessCountry = [permissions accessCountry];
-    NSNumber * sendPushNotification = [permissions sendPushNotification];
-    NSNumber * sendNewsletter = [permissions sendNewsletter];
-    NSNumber * enterCompetitions = [permissions enterCompetitions];
+    NSNumber * accessAddress = [permissions address];
+    NSNumber * accessFirstName = [permissions firstName];
+    NSNumber * accessLastName = [permissions lastName];
+    NSNumber * accessEmail = [permissions email];
+    NSNumber * accessStreetAddress = [permissions street];
+    NSNumber * accessCity = [permissions city];
+    NSNumber * accessPostalCode = [permissions postalCode];
+    NSNumber * accessCountry = [permissions country];
+    NSNumber * sendPushNotification = [permissions notifications];
+    NSNumber * sendNewsletter = [permissions newsletter];
+    NSNumber * enterCompetitions = [permissions competition];
     
     
     return [[KWSPermissions alloc] initWithAccessAddress:accessAddress andAccessFirstName:accessFirstName andAccessLastName:accessLastName andAccessEmail:accessEmail andAccessStreetAddress:accessStreetAddress andAccessCity:accessCity andAccessPostalCode:accessPostalCode andAccessCountry:accessCountry andSendPushNotification:sendPushNotification andSendNewsletter:sendNewsletter andEnterCompetitions:enterCompetitions];
@@ -383,7 +386,7 @@
     
 - (KWSApplicationProfile*) buildKWSApplicationProfile:(KWSSwiftApplicationProfile*) appProfile{
     
-    NSString * username = [appProfile username];
+    NSString * username = [appProfile name];
     NSNumber * customField1 = [appProfile customField1];
     NSNumber * customField2 = [appProfile customField2];
     NSNumber * avatarId = [appProfile avatarId];
