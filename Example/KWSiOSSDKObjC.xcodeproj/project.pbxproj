@@ -28,6 +28,8 @@
 		67CC8CCBD77F2BACCDB2A92B /* Pods_KWSiOSSDKObjC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEAA0EFD440288E0C4D9DCD /* Pods_KWSiOSSDKObjC_Example.framework */; };
 		744C32A39EB75813A8C450D3 /* Pods_KWSiOSSDKObjC_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8693B1350E6A2C3CC3D17287 /* Pods_KWSiOSSDKObjC_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		9C05714E206CFA510082AC0F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05714D206CFA510082AC0F /* MainViewController.swift */; };
+		9C057150206D02A60082AC0F /* SwiftStuffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05714F206D02A60082AC0F /* SwiftStuffTableViewController.swift */; };
 		9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */; };
 		9C104F21203B4587003FAEF7 /* User_RequestPermissions+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F20203B4587003FAEF7 /* User_RequestPermissions+MappingTests.swift */; };
 		9C104F23203B4972003FAEF7 /* User_RequestPermissions+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F22203B4972003FAEF7 /* User_RequestPermissions+ObjectProvider.swift */; };
@@ -110,6 +112,9 @@
 		8693B1350E6A2C3CC3D17287 /* Pods_KWSiOSSDKObjC_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KWSiOSSDKObjC_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		888816DE2D88B99539CA41FB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		9C057148206CEC0C0082AC0F /* KWSiOSSDKObjC_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KWSiOSSDKObjC_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		9C05714D206CFA510082AC0F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9C05714F206D02A60082AC0F /* SwiftStuffTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftStuffTableViewController.swift; sourceTree = "<group>"; };
 		9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions+RequestTests.swift"; sourceTree = "<group>"; };
 		9C104F20203B4587003FAEF7 /* User_RequestPermissions+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_RequestPermissions+MappingTests.swift"; sourceTree = "<group>"; };
 		9C104F22203B4972003FAEF7 /* User_RequestPermissions+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_RequestPermissions+ObjectProvider.swift"; sourceTree = "<group>"; };
@@ -224,6 +229,9 @@
 				6003F5A6195388D20070C39A /* KWSViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				9C057148206CEC0C0082AC0F /* KWSiOSSDKObjC_Example-Bridging-Header.h */,
+				9C05714D206CFA510082AC0F /* MainViewController.swift */,
+				9C05714F206D02A60082AC0F /* SwiftStuffTableViewController.swift */,
 			);
 			name = "Example for KWSiOSSDKObjC";
 			path = KWSiOSSDKObjC;
@@ -441,6 +449,7 @@
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = K79XEZP48K;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -629,6 +638,8 @@
 				6003F59E195388D20070C39A /* KWSAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* KWSViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				9C05714E206CFA510082AC0F /* MainViewController.swift in Sources */,
+				9C057150206D02A60082AC0F /* SwiftStuffTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +825,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KWSiOSSDKObjC_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriel Coman (AWY9H4HC9C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -824,11 +836,15 @@
 				GCC_PREFIX_HEADER = "KWSiOSSDKObjC/KWSiOSSDKObjC-Prefix.pch";
 				INFOPLIST_FILE = "KWSiOSSDKObjC/KWSiOSSDKObjC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo.KWSiOSSDKObjC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KWSiOSSDKObjC/KWSiOSSDKObjC_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -841,6 +857,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KWSiOSSDKObjC_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriel Coman (AWY9H4HC9C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -851,11 +868,14 @@
 				GCC_PREFIX_HEADER = "KWSiOSSDKObjC/KWSiOSSDKObjC-Prefix.pch";
 				INFOPLIST_FILE = "KWSiOSSDKObjC/KWSiOSSDKObjC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo.KWSiOSSDKObjC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KWSiOSSDKObjC/KWSiOSSDKObjC_Example-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -865,6 +885,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E719D8E2C0BD3DAF48D87E20 /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -894,6 +915,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71B6985CE1BB06176F6EC130 /* Pods-KWSiOSSDKObjC_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

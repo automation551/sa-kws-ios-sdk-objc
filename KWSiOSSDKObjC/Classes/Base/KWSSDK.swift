@@ -42,9 +42,9 @@ import SAProtobufs
      static public func getService <T> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
         if (value == AuthServiceProtocol.self){
             return AuthProvider(environment: environment) as? T
-        } else if (value == RandomUsernameService.self){
+        } else if (value == UsernameServiceProtocol.self){
             return UsernameProvider(environment: environment) as? T
-        } else if (value == UserService.self){
+        } else if (value == UserServiceProtocol.self){
             return UserProvider(environment: environment) as? T
         } else {
             return nil
