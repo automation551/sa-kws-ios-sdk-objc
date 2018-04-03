@@ -10,7 +10,8 @@ import SAMobileBase
 import SAProtobufs
 
 
-@objc public class UserProvider: NSObject, UserServiceProtocol{
+public class UserProvider: NSObject, UserServiceProtocol {
+  
     
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask
@@ -54,17 +55,21 @@ import SAProtobufs
         }
         
     }
+
     
     public func updateUser(details: UserDetailsModelProtocol, token: String, completionHandler: @escaping (Error?) -> ()) {
+        //this is the old version, will be deleted once the Protobufs updates
+    }
+    
+    
+    public func updateUser(details: [String:Any], token: String, completionHandler: @escaping (Error?) -> ()) {
         
         //this will be improved
-        let userId = self.getTheTokenData(token: token)?.userId?.intValue
-        let userDetails = details as! UserDetails
+        let userId = self.getTheTokenData(token: token)?.userId?.intValue ?? 0
         
         let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
-                                                                       userDetails: userDetails,
-                                                                       //this will be improved
-                                                                       userId: userId!,
+                                                                       userDetailsMap: details ,                                                                    
+                                                                       userId: userId,
                                                                        token: token)
         
         networkTask.execute(request: updateUserDetailsNetworkRequest){ updateUserDetailsNetworkResponse in
@@ -100,35 +105,5 @@ import SAProtobufs
         return metadata
     }
     
-    
-    //TODO: this will be in another Provider
-    public func requestPermissions(userId: Int, token: String, permissionsList: [String], completionHandler: @escaping (Bool, Error?) -> ()) {
-        
-        
-        let requestPermissionsNetworkRequest = PermissionsRequest(environment: environment,
-                                                                  userId: userId,
-                                                                  token: token,
-                                                                  permissionsList: permissionsList)
-        
-        networkTask.execute(request: requestPermissionsNetworkRequest) { requestPermissionsNetworkResponse in
-            
-            if (requestPermissionsNetworkResponse.success && requestPermissionsNetworkResponse.error == nil) {
-                completionHandler(true, nil)
-            } else {
-                if let errorResponse = requestPermissionsNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(false, mappedResponse)
-                    
-                } else {
-                    completionHandler(false, requestPermissionsNetworkResponse.error)
-                }
-            }
-            
-        }
-        
-    }
     
 }

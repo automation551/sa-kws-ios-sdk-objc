@@ -9,7 +9,7 @@ import Foundation
 import SAMobileBase
 import SAProtobufs
 
-@objc public class KWSSDK : NSObject{
+public class KWSSDK : NSObject{
     
     static let _singletonInstance = KWSSDK()
     public override init() {
@@ -46,6 +46,8 @@ import SAProtobufs
             return UsernameProvider(environment: environment) as? T
         } else if (value == UserServiceProtocol.self){
             return UserProvider(environment: environment) as? T
+        }else if (value == UserActionsServiceProtocol.self){
+            return UserActionsProvider(environment: environment) as? T
         } else {
             return nil
         }

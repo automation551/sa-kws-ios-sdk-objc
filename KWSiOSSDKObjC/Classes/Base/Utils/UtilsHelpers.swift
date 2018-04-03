@@ -10,7 +10,7 @@ import Foundation
 import SAMobileBase
 
 
-@objc public class UtilsHelpers : NSObject{
+public class UtilsHelpers : NSObject{
     
     static let _singletonInstance = UtilsHelpers()
     public override init() {

@@ -9,7 +9,7 @@ import Foundation
 import SAMobileBase
 import SAProtobufs
 
-@objc public class AuthProvider: NSObject, AuthServiceProtocol {
+public class AuthProvider: NSObject, AuthServiceProtocol {
     
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask

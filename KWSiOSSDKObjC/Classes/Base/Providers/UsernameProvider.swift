@@ -9,7 +9,7 @@ import Foundation
 import SAMobileBase
 import SAProtobufs
 
-@objc public class UsernameProvider: NSObject, UsernameServiceProtocol {
+public class UsernameProvider: NSObject, UsernameServiceProtocol {
     
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask

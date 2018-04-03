@@ -29,7 +29,7 @@
 		744C32A39EB75813A8C450D3 /* Pods_KWSiOSSDKObjC_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8693B1350E6A2C3CC3D17287 /* Pods_KWSiOSSDKObjC_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9C05714E206CFA510082AC0F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05714D206CFA510082AC0F /* MainViewController.swift */; };
-		9C057150206D02A60082AC0F /* SwiftStuffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05714F206D02A60082AC0F /* SwiftStuffTableViewController.swift */; };
+		9C057150206D02A60082AC0F /* KWSSwiftTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05714F206D02A60082AC0F /* KWSSwiftTableViewController.swift */; };
 		9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */; };
 		9C104F21203B4587003FAEF7 /* User_RequestPermissions+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F20203B4587003FAEF7 /* User_RequestPermissions+MappingTests.swift */; };
 		9C104F23203B4972003FAEF7 /* User_RequestPermissions+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F22203B4972003FAEF7 /* User_RequestPermissions+ObjectProvider.swift */; };
@@ -114,7 +114,7 @@
 		888816DE2D88B99539CA41FB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		9C057148206CEC0C0082AC0F /* KWSiOSSDKObjC_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KWSiOSSDKObjC_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C05714D206CFA510082AC0F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9C05714F206D02A60082AC0F /* SwiftStuffTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftStuffTableViewController.swift; sourceTree = "<group>"; };
+		9C05714F206D02A60082AC0F /* KWSSwiftTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KWSSwiftTableViewController.swift; sourceTree = "<group>"; };
 		9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions+RequestTests.swift"; sourceTree = "<group>"; };
 		9C104F20203B4587003FAEF7 /* User_RequestPermissions+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_RequestPermissions+MappingTests.swift"; sourceTree = "<group>"; };
 		9C104F22203B4972003FAEF7 /* User_RequestPermissions+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_RequestPermissions+ObjectProvider.swift"; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 				6003F594195388D20070C39A /* Supporting Files */,
 				9C057148206CEC0C0082AC0F /* KWSiOSSDKObjC_Example-Bridging-Header.h */,
 				9C05714D206CFA510082AC0F /* MainViewController.swift */,
-				9C05714F206D02A60082AC0F /* SwiftStuffTableViewController.swift */,
+				9C05714F206D02A60082AC0F /* KWSSwiftTableViewController.swift */,
 			);
 			name = "Example for KWSiOSSDKObjC";
 			path = KWSiOSSDKObjC;
@@ -639,7 +639,7 @@
 				6003F5A7195388D20070C39A /* KWSViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				9C05714E206CFA510082AC0F /* MainViewController.swift in Sources */,
-				9C057150206D02A60082AC0F /* SwiftStuffTableViewController.swift in Sources */,
+				9C057150206D02A60082AC0F /* KWSSwiftTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
