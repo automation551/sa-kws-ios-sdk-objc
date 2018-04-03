@@ -92,7 +92,7 @@ import SAProtobufs
     }
     
     //TODO: Does it need to be public for tests? Is there a better way?
-    public func getTempAccessToken(environment: KWSNetworkEnvironment, completionHandler: @escaping (AuthUserResponse?, Error?) -> ()) {
+    public func getTempAccessToken(environment: KWSNetworkEnvironment, completionHandler: @escaping (LoginAuthResponse?, Error?) -> ()) {
         
         
         let getTempAccessTokenNetworkRequest = TempAccessTokenRequest(environment: environment,
@@ -106,7 +106,7 @@ import SAProtobufs
                 let parseRequest = JsonParseRequest.init(withRawData: json)
                 
                 
-                let parseTask = JSONParseTask<AuthUserResponse>()
+                let parseTask = JSONParseTask<LoginAuthResponse>()
                 
                 if let getTempAccessResponseObject = parseTask.execute(request: parseRequest){
                     completionHandler(getTempAccessResponseObject, nil)

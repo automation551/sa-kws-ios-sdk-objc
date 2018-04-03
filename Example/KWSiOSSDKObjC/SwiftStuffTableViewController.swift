@@ -7,98 +7,175 @@
 //
 
 import UIKit
+import KWSiOSSDKObjC
+import SAProtobufs
 
 class SwiftStuffTableViewController: UITableViewController {
     
+    //for Environment
+    let API = "https://kwsapi.demo.superawesome.tv/"
+    let SINGLE_SIGN_ON = "https://club.demo.superawesome.tv/"
+    let CLIENT_ID  = "kws-sdk-testing"
+    let CLIENT_SECRET = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
     
-    let functionalitiesDict: [(String, [String])] = [("User", ["LoginUser","CreateIser", "RandomUsername"])]
-
+    var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
+    
+    
+    //dictionary of KEY String and VALUE list of Strings - no order specified
+    let functionalitiesDict: [ String : [String] ] =
+        [
+            "Permissions" : ["Request Permissions"],
+            "User" : ["LoginUser","Create User","Random Username"]
+    ]
+    
+    
+    
+    // MARK: - TABLE VIEW STUFF
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section \(section)"
+        
+        let textForSection = Array(functionalitiesDict)[section].key
+        
+        return "\(textForSection)"
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return functionalitiesDict.count
         
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return functionalitiesDict[section].1.count
-        
+        let items = Array(functionalitiesDict)[section].value
+        return items.count
     }
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         
-        cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
+        let listOfItemsInRow = Array(functionalitiesDict)[indexPath.section].value
+        let textForRow = Array(listOfItemsInRow)[indexPath.row]
+        
+        cell.textLabel?.text = "\(textForRow)"
         
         return cell
     }
- 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let section = Array(functionalitiesDict)[indexPath.section].key
+        let arrayOfRows = Array(functionalitiesDict)[indexPath.section].value
+        
+        switch section {
+        case "User":
+            switch arrayOfRows[indexPath.row] {
+            case "LoginUser" : self.loginUser()
+            case "Create User" : self.createUser()
+            case "Random Username": self.randomUserName()
+            default:
+                break
+            }
+            break
+        case "Permissions":
+            switch arrayOfRows[indexPath.row] {
+            case "Request Permissions" : self.requestPermissions()
+            default:
+                break
+                
+            }
+        default:
+            break
+        }
+        
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    //END OF TABLE VIEW STUFF ----------------------------------------------------------------------//
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        kUserKWSNetworkEnvironment = UserKWSNetworkEnvironment(domain: API, appID: CLIENT_SECRET, mobileKey: CLIENT_ID)
+        
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func loginUser(){
+        
+        let userName = "guitestnumber3"
+        let pwd = "testtest"
+        
+        let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        auth?.loginUser(userName: userName, password: pwd) { (result, error) in
+            
+            if(error == nil){
+                print("Result for login is success")
+            } else {
+                print("Something went wrong for login \(String(describing: error)))")
+            }
+            
+        }
+        
     }
-    */
-
+    
+    func randomInt(min: Int, max:Int) -> Int {
+        return min + Int(arc4random_uniform(UInt32(max - min + 1)))
+    }
+    
+    func createUser(){
+        
+        let userName = String (format: "guitestusr%d", randomInt(min:100, max:500))
+        let pwd = "testtest"
+        let dob = "2012-03-22"
+        let country = "US"
+        let parentEmail = "guilherme.mota@superawesome.tv"
+        
+        let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        auth?.createUser(username: userName, password: pwd, timeZone: nil, dateOfBirth: dob, country: country, parentEmail: parentEmail) { (result, error) in
+            
+            if(error == nil){
+                print("Result for create user is success: \(String(describing: result))")
+            } else {
+                print("Something went wrong for create user \(String(describing: error)))")
+            }
+            
+        }
+        
+    }
+    
+    func randomUserName(){
+        
+        let username = KWSSDK.getService(value: UsernameServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        username?.getRandomUsername() { (result, error) in
+            
+            if(error == nil){
+                print("Result for random username is success: \(String(describing: result?.randomUsername))")
+            } else {
+                print("Something went wrong for random username \(String(describing: error)))")
+            }
+        }
+        
+        
+    }
+    
+    func requestPermissions(){
+        
+        //todo
+        
+    }
+    
 }

@@ -65,44 +65,33 @@
             <point key="canvasLocation" x="-1238" y="56"/>
         </scene>
         <!--Swift Version-->
-        <scene sceneID="BKl-Am-5VZ">
+        <scene sceneID="gAu-Nj-Hio">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xzv-jO-vgN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="P0Z-4N-vzi" customClass="SwiftStuffTableViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6fD-IW-eTX"/>
-                        <viewControllerLayoutGuide type="bottom" id="wGI-LF-loX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dDV-fI-AQ3">
+                <tableViewController id="049-Ql-KVa" customClass="SwiftStuffTableViewController" customModule="KWSiOSSDKObjC_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Khx-Pw-bbe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="T8j-gz-jgO">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" id="xjn-jt-wIx">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xjn-jt-wIx" id="7wQ-4X-WTs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="P0Z-4N-vzi" id="UaS-9h-AkT"/>
-                                    <outlet property="delegate" destination="P0Z-4N-vzi" id="m3x-h5-W47"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Swift Version" id="qnI-KM-mme"/>
-                </viewController>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" id="xjn-jt-wIx">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xjn-jt-wIx" id="7wQ-4X-WTs">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="049-Ql-KVa" id="vpH-FG-Pg6"/>
+                            <outlet property="delegate" destination="049-Ql-KVa" id="oLt-97-4KX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Swift Version" id="r6v-Qx-8Ge"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufw-k2-AfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1239" y="761"/>
+            <point key="canvasLocation" x="-1142" y="761"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dJH-Yg-aiN">
@@ -132,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="P0Z-4N-vzi" kind="relationship" relationship="rootViewController" id="13E-eh-JyK"/>
+                        <segue destination="049-Ql-KVa" kind="relationship" relationship="rootViewController" id="IAO-BT-xo0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huM-ao-lxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
