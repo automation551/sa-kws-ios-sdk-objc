@@ -22,7 +22,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
      */
     
     //class or data to test
-    private var createUserResource: CreateUserProvider!
+    private var createUserResource: AuthProvider!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUsername: String = "good_username"
@@ -57,7 +57,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        createUserResource = CreateUserProvider.init(environment: self.environment)
+        createUserResource = AuthProvider.init(environment: self.environment)
         
         
     }
@@ -95,7 +95,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.goodToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).toNot(beNil())
@@ -136,7 +136,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.badToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).to(beNil())
@@ -178,7 +178,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.goodToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).to(beNil())
@@ -221,7 +221,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.goodToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).to(beNil())
@@ -267,7 +267,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.goodToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).to(beNil())
@@ -313,7 +313,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.goodToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).to(beNil())
@@ -359,7 +359,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.goodToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).to(beNil())
@@ -405,7 +405,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.goodParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.goodToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).to(beNil())
@@ -452,7 +452,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                    parentEmail: self.badParentEmail,
                                                    appId: self.goodAppID,
                                                    token: self.goodToken,
-                                                   callback: { createUserResponse, error in
+                                                   completionHandler: { createUserResponse, error in
                                                     
                                                     //then
                                                     expect(createUserResponse).to(beNil())

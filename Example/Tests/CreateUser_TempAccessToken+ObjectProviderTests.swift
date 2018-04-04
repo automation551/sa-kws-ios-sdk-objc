@@ -24,7 +24,7 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
      */
     
     //class or data to test
-    private var createUserResource: CreateUserProvider!
+    private var createUserResource: AuthProvider!
     private var environment: KWSNetworkEnvironment!
     
     override func setUp() {
@@ -34,7 +34,7 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        createUserResource = CreateUserProvider.init(environment: self.environment)
+        createUserResource = AuthProvider.init(environment: self.environment)
         
         
     }
@@ -61,7 +61,7 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         waitUntil { done in
             
             self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       callback: { tempAccessTokenResponse, error in
+                                                       completionHandler: { tempAccessTokenResponse, error in
                                                         
                                                         expect(tempAccessTokenResponse).toNot(beNil())
                                                         expect(tempAccessTokenResponse?.token).to(equal("good_token"))
@@ -87,7 +87,7 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         waitUntil { done in
             
             self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       callback: { tempAccessTokenResponse, error in
+                                                       completionHandler: { tempAccessTokenResponse, error in
                                                         
                                                         expect(tempAccessTokenResponse).to(beNil())
                                                         
@@ -117,7 +117,7 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         waitUntil { done in
             
             self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       callback: { tempAccessTokenResponse, error in
+                                                       completionHandler: { tempAccessTokenResponse, error in
                                                         
                                                         expect(tempAccessTokenResponse).to(beNil())
                                                         

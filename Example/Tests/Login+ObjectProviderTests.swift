@@ -11,11 +11,12 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
+import SAProtobufs
 
 class Login_ObjectProviderTests: XCTestCase {
     
     // class or data to test
-    private var loginService: LoginService!
+    private var loginService: AuthServiceProtocol!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUsername: String = "good_username"
@@ -37,7 +38,7 @@ class Login_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.loginService = KWSSDK.getService(value: LoginService.self, environment: self.environment)
+        self.loginService = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
         
         
     }
@@ -64,9 +65,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginService.loginUser(username: self.goodUsername,
+            self.loginService.loginUser(userName: self.goodUsername,
                                         password: self.goodPassword,
-                                        callback: {  loginResponse, error in
+                                        completionHandler: {  loginResponse, error in
                                             
                                             //then
                                             expect(loginResponse).toNot(beNil())
@@ -96,7 +97,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: {  loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
@@ -127,7 +130,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: {  loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil());
@@ -158,7 +163,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword,callback: { loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
@@ -189,7 +196,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
@@ -220,7 +229,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())

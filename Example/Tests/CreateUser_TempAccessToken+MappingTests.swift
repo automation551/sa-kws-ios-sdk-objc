@@ -30,7 +30,7 @@ class CreateUser_TempAccessToken_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"temp_access_token_success_response")
         
-        let authResponse = try? AuthResponse.decode(JSON!)
+        let authResponse = try? LoginAuthResponse.decode(JSON!)
         
         expect(authResponse).toNot(beNil())
         expect(authResponse?.token).to(equal("good_token"))

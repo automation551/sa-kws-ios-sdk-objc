@@ -326,9 +326,9 @@
 		9C18313D2020EDA300DD4083 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9C18312C202085B200DD4083 /* LoginTests.swift */,
 				9C1831322020862800DD4083 /* Login+MappingTests.swift */,
 				9C1831302020861900DD4083 /* Login+ObjectProviderTests.swift */,
-				9C18312C202085B200DD4083 /* LoginTests.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";

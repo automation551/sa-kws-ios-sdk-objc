@@ -16,6 +16,8 @@ class LoginTests: XCTestCase {
     let goodToken: String = "good_token"
     let badToken: String = "bad_token"
     
+    let id: Int = 123
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -28,15 +30,15 @@ class LoginTests: XCTestCase {
     
     
     func testLoginEquality() {
-        let foo = AuthResponse(token: goodToken)
-        let bar = AuthResponse(token: goodToken)
+        let foo = LoginAuthResponse(token: goodToken, id: id)
+        let bar = LoginAuthResponse(token: goodToken, id: id)
         
         expect(foo).to(equal(bar))
     }
     
     func testLoginNotEquality() {
-        let foo = AuthResponse(token: goodToken)
-        let bar = AuthResponse(token: badToken)
+        let foo = LoginAuthResponse(token: goodToken, id: id)
+        let bar = LoginAuthResponse(token: badToken, id: id)
         
         expect(foo).toNot(equal(bar))
     }
@@ -44,8 +46,8 @@ class LoginTests: XCTestCase {
     // MARK: Objective-C
     
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = AuthResponse(token: goodToken)
-        let bar = AuthResponse(token: badToken)
+        let foo = LoginAuthResponse(token: goodToken, id: id)
+        let bar = LoginAuthResponse(token: badToken, id: id)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -54,7 +56,7 @@ class LoginTests: XCTestCase {
     }
     
     func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = AuthResponse(token: goodToken)
+        let foo = LoginAuthResponse(token: goodToken, id: id)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

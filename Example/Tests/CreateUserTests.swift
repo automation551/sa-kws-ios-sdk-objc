@@ -32,15 +32,15 @@ class CreateUserTests: XCTestCase {
     
     
     func testCreateUserEquality() {
-        let foo = CreateUserResponse(id: goodID,token: goodToken)
-        let bar = CreateUserResponse(id: goodID, token: goodToken)
+        let foo = AuthUserResponse(id: goodID,token: goodToken)
+        let bar = AuthUserResponse(id: goodID, token: goodToken)
         
         expect(foo).to(equal(bar))
     }
     
     func testCreateUserNotEquality() {
-        let foo = CreateUserResponse(id: goodID, token: goodToken)
-        let bar = CreateUserResponse(id: badID, token: badToken)
+        let foo = AuthUserResponse(id: goodID, token: goodToken)
+        let bar = AuthUserResponse(id: badID, token: badToken)
         
         expect(foo).toNot(equal(bar))
     }
@@ -49,8 +49,8 @@ class CreateUserTests: XCTestCase {
     // MARK: Objective-C
     
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = CreateUserResponse(id: goodID, token: goodToken)
-        let bar = CreateUserResponse(id: badID, token: badToken)
+        let foo = AuthUserResponse(id: goodID, token: goodToken)
+        let bar = AuthUserResponse(id: badID, token: badToken)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -59,7 +59,7 @@ class CreateUserTests: XCTestCase {
     }
     
     func testObjcCreateUserNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = CreateUserResponse(id: goodID, token: goodToken)
+        let foo = AuthUserResponse(id: goodID, token: goodToken)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

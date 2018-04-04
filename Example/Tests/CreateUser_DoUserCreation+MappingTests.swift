@@ -29,7 +29,7 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_success_response")
         
-        let createUserResponse = try? CreateUserResponse.decode(JSON!)
+        let createUserResponse = try? AuthUserResponse.decode(JSON!)
         
         expect(createUserResponse).toNot(beNil())
         expect(createUserResponse?.id).to(equal(99))
