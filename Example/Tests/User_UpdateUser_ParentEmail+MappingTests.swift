@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class User_UpdateParentEmail_MappingTests: XCTestCase {
+class User_UpdateUser_ParentEmail_MappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

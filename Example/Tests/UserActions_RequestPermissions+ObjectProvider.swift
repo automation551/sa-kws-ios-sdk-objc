@@ -11,12 +11,13 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
+import SAProtobufs
 
-class User_RequestPermissions_ObjectProviderTests: XCTestCase {
+class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
     
     
     //class or data to test
-    private var userService: UserService!
+    private var userService: UserActionsServiceProtocol!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUserId: NSInteger = 1
@@ -35,7 +36,7 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.userService = KWSSDK.getService(value: UserService.self, environment: self.environment)
+        self.userService = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: self.environment)
         
         
     }
@@ -51,9 +52,9 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         let JSON: Any? = try? fixtureWithName(name:"permission_request_success_response")
         
         let request = PermissionsRequest(environment: self.environment,
-                                               userId: goodUserId,
-                                               token: goodToken,
-                                               permissionsList: goodPermissions)
+                                         userId: goodUserId,
+                                         token: goodToken,
+                                         permissionsList: goodPermissions)
         
         //when
         let uri = "\(request.environment.domain + request.endpoint)"
@@ -61,16 +62,16 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.requestPermissions(userId: self.goodUserId,
-                                               token: self.goodToken,
-                                               permissionsList: self.goodPermissions,
-                                               callback: {  permissionsResponse, error in
-                                                
-                                                expect(permissionsResponse).to(beTrue())
-                                                expect(error).to(beNil())
-                                                
-                                                done()
-                                                
+            self.userService.requestPermissions(permissions: self.goodPermissions,
+                                                userId: self.goodUserId,
+                                                token: self.goodToken,
+                                                callback: {  permissionsResponse, error in
+                                                    
+                                                    expect(permissionsResponse).to(beTrue())
+                                                    expect(error).to(beNil())
+                                                    
+                                                    done()
+                                                    
             })
         }
     }
@@ -90,9 +91,9 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.requestPermissions(userId: self.goodUserId,
+            self.userService.requestPermissions(permissions: self.badPermissions,
+                                                userId: self.goodUserId,
                                                 token: self.goodToken,
-                                                permissionsList: self.badPermissions,
                                                 callback: {  permissionsResponse, error in
                                                     
                                                     expect(permissionsResponse).to(beFalse())
@@ -129,9 +130,9 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.requestPermissions(userId: self.badUserId,
+            self.userService.requestPermissions(permissions: self.goodPermissions,
+                                                userId: self.badUserId,
                                                 token: self.goodToken,
-                                                permissionsList: self.goodPermissions,
                                                 callback: {  permissionsResponse, error in
                                                     
                                                     expect(permissionsResponse).to(beFalse())
@@ -163,9 +164,9 @@ class User_RequestPermissions_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.requestPermissions(userId: self.goodUserId,
+            self.userService.requestPermissions(permissions: self.goodPermissions,
+                                                userId: self.goodUserId,
                                                 token: self.goodToken,
-                                                permissionsList: self.goodPermissions,
                                                 callback: {  permissionsResponse, error in
                                                     
                                                     expect(permissionsResponse).to(beFalse())

@@ -24,7 +24,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
     
     
     // class or data to test
-    private var resource: RandomUsernameProvider!
+    private var resource: UsernameProvider!
     private var environment: KWSNetworkEnvironment!
     
     override func setUp() {
@@ -34,7 +34,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        resource = RandomUsernameProvider.init(environment: self.environment)
+        resource = UsernameProvider.init(environment: self.environment)
         
         
     }
@@ -58,13 +58,13 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         
         waitUntil { done in
         
-            self.resource.getAppConfigDetails(environment: self.environment, callback: { response, error in
+            self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
 
                 //then
                 expect(response).toNot(beNil())
                 
-                expect(response?.app?.id).to(equal(2))
-                expect(response?.app?.name).to(equal("good_name"))
+                expect(response?.app.id).to(equal(2))
+                expect(response?.app.name).to(equal("good_name"))
 
                 expect(error).to(beNil())
                 
@@ -88,7 +88,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         
         waitUntil { done in
             
-            self.resource.getAppConfigDetails(environment: self.environment, callback: { response, error in
+            self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
                 
                 //then
                 expect(response).to(beNil())
@@ -123,7 +123,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         
         waitUntil { done in
             
-            self.resource.getAppConfigDetails(environment: self.environment, callback: { response, error in
+            self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
                 
                 //then
                 expect(response).to(beNil())
@@ -157,7 +157,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         
         waitUntil { done in
             
-            self.resource.getAppConfigDetails(environment: self.environment, callback: { response, error in
+            self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
                 
                 //then
                 expect(response).to(beNil())

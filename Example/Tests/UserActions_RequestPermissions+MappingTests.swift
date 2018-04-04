@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class User_RequestPermissions_MappingTests: XCTestCase {
+class UserActions_RequestPermissions_MappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

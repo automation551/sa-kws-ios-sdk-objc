@@ -30,11 +30,11 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_success_response")
         
-        let appConfigResponse = try? AppConfigResponse.decode(JSON!)
+        let appConfigResponse = try? AppConfigWrapper.decode(JSON!)
         
         expect(appConfigResponse).toNot(beNil())
-        expect(appConfigResponse?.app?.id).to(equal(2))
-        expect(appConfigResponse?.app?.name).to(equal("good_name"))
+        expect(appConfigResponse?.app.id).to(equal(2))
+        expect(appConfigResponse?.app.name).to(equal("good_name"))
         
     }
     

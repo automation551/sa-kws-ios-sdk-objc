@@ -16,6 +16,9 @@ class UserDetailsTests: XCTestCase {
     let goodId: NSNumber = 123
     let badId: NSNumber = 321
     
+    let dob : String = "2012-03-03"
+    let createdAt : String = "2018-01-02"
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -28,15 +31,15 @@ class UserDetailsTests: XCTestCase {
     
     
     func testLoginEquality() {
-        let foo = UserDetails(id: goodId)
-        let bar = UserDetails(id: goodId)
+        let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
+        let bar = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
         
         expect(foo).to(equal(bar))
     }
     
     func testLoginNotEquality() {
-        let foo = UserDetails(id: goodId)
-        let bar = UserDetails(id: badId)
+        let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
+        let bar = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: badId)
         
         expect(foo).toNot(equal(bar))
     }
@@ -44,8 +47,8 @@ class UserDetailsTests: XCTestCase {
     // MARK: Objective-C
     
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = UserDetails(id: goodId)
-        let bar = UserDetails(id: badId)
+        let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
+        let bar = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: badId)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -54,7 +57,7 @@ class UserDetailsTests: XCTestCase {
     }
     
     func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = UserDetails(id: goodId)
+        let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

@@ -27,15 +27,15 @@ class RandomUsernameTests: XCTestCase {
     }
     
     func testRandomUsernameEquality() {
-        let foo = RandomUsernameResponse(randomUsername: goodRandomUsername)
-        let bar = RandomUsernameResponse(randomUsername: goodRandomUsername)
+        let foo = RandomUsername(randomUsername: goodRandomUsername)
+        let bar = RandomUsername(randomUsername: goodRandomUsername)
         
         expect(foo).to(equal(bar))
     }
     
     func testLoginNotEquality() {
-        let foo = RandomUsernameResponse(randomUsername: goodRandomUsername)
-        let bar = RandomUsernameResponse(randomUsername: badRandomUsername)
+        let foo = RandomUsername(randomUsername: goodRandomUsername)
+        let bar = RandomUsername(randomUsername: badRandomUsername)
         
         expect(foo).toNot(equal(bar))
     }
@@ -43,8 +43,8 @@ class RandomUsernameTests: XCTestCase {
     // MARK: Objective-C
     
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = RandomUsernameResponse(randomUsername: goodRandomUsername)
-        let bar = RandomUsernameResponse(randomUsername: badRandomUsername)
+        let foo = RandomUsername(randomUsername: goodRandomUsername)
+        let bar = RandomUsername(randomUsername: badRandomUsername)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -53,7 +53,7 @@ class RandomUsernameTests: XCTestCase {
     }
     
     func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = RandomUsernameResponse(randomUsername: goodRandomUsername)
+        let foo = RandomUsername(randomUsername: goodRandomUsername)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

@@ -11,12 +11,13 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
+import SAProtobufs
 
-class User_UpdateParentEmail_ObjectProviderTests: XCTestCase {
+class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
     
     
     //class or data to test
-    private var userService: UserService!
+    private var userService: UserServiceProtocol!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUserId: NSInteger = 1
@@ -33,9 +34,7 @@ class User_UpdateParentEmail_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.userService = KWSSDK.getService(value: UserService.self, environment: self.environment)
-        
-        self.userDetails = UserDetails()
+        self.userService = KWSSDK.getService(value: UserServiceProtocol.self, environment: self.environment)
         
         
     }
@@ -48,10 +47,12 @@ class User_UpdateParentEmail_ObjectProviderTests: XCTestCase {
     
     func test_User_UpdateParentEmail_ValidRequestAndResponse(){
         
+        let mapUserDetails : [String : Any] = ["parentEmail" : "parent.email@mail.com"]
+        
         let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_success_response")
         
         let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetails: userDetails,
+                                               userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
                                                token: goodToken)
         
@@ -61,10 +62,9 @@ class User_UpdateParentEmail_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.updateUserDetails(userId: self.goodUserId,
+            self.userService.updateUser(details: mapUserDetails,
                                                token: self.goodToken,
-                                               userDetails: self.userDetails,
-                                               callback: {  userParentEmailResponse, error in
+                                               completionHandler: {  userParentEmailResponse, error in
                                                 
                                                 expect(userParentEmailResponse).to(beTrue())
                                                 expect(error).to(beNil())
@@ -77,10 +77,12 @@ class User_UpdateParentEmail_ObjectProviderTests: XCTestCase {
     
     func test_User_UpdateParentEmail_Email_Already_Set_Response(){
         
+        let mapUserDetails : [String : Any] = ["parentEmail" : "parent.email@mail.com"]
+        
         let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_already_set_response")
         
         let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetails: userDetails,
+                                               userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
                                                token: goodToken)
         
@@ -90,10 +92,9 @@ class User_UpdateParentEmail_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.updateUserDetails(userId: self.goodUserId,
+            self.userService.updateUser(details: mapUserDetails,
                                                token: self.goodToken,
-                                               userDetails: self.userDetails,
-                                               callback: {  userParentEmailResponse, error in
+                                               completionHandler: {  userParentEmailResponse, error in
                                                 
                                                 expect(userParentEmailResponse).to(beFalse())
                                                 
@@ -115,10 +116,12 @@ class User_UpdateParentEmail_ObjectProviderTests: XCTestCase {
     
     func test_User_UpdateParentEmail_Invalid_Email_Response(){
         
+        let mapUserDetails : [String : Any] = ["parentEmail" : "parent.email"]
+        
         let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_invalid_email_response")
         
         let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetails: userDetails,
+                                               userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
                                                token: goodToken)
         
@@ -128,10 +131,9 @@ class User_UpdateParentEmail_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.updateUserDetails(userId: self.goodUserId,
+            self.userService.updateUser(details: mapUserDetails,
                                                token: self.goodToken,
-                                               userDetails: self.userDetails,
-                                               callback: {  userParentEmailResponse, error in
+                                               completionHandler: {  userParentEmailResponse, error in
                                                 
                                                 expect(userParentEmailResponse).to(beFalse())
                                                 

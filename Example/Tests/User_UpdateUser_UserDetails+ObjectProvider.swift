@@ -11,18 +11,18 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
+import SAProtobufs
 
-class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
+class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
     
     
     //class or data to test
-    private var userService: UserService!
+    private var userService: UserServiceProtocol!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUserId: NSInteger = 1
     private var badUserId: NSInteger = -1
     
-    private var userDetails: UserDetails!
     private var goodToken: String = "good_token"
     private var badToken: String = "bad_token"
     
@@ -33,9 +33,7 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.userService = KWSSDK.getService(value: UserService.self, environment: self.environment)
-        
-        self.userDetails = UserDetails()
+        self.userService = KWSSDK.getService(value: UserServiceProtocol.self, environment: self.environment)
         
         
     }
@@ -48,10 +46,19 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
     
     func test_User_UpdateUserDetails_ValidRequestAndResponse(){
         
+        let mapUserDetails : [String : Any] = ["firstName" : "John",
+                                               "lastName" : "Doe",
+                                               "address" : [ "street" : "Street One",
+                                                             "city" : "London",
+                                                             "postCode" : "EA12 34Z",
+                                                             "country" : "United Kingdom",
+                                                             "countryCode" : "UK",
+                                                             "countryName" : "United Kingdom"] ]
+        
         let JSON: Any? = try? fixtureWithName(name:"update_user_detail_success_response")
         
         let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetails: userDetails,
+                                               userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
                                                token: goodToken)
         
@@ -61,16 +68,16 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.updateUserDetails(userId: self.goodUserId,
-                                               token: self.goodToken,
-                                               userDetails: self.userDetails,
-                                               callback: {  userDetailsResponse, error in
-                                                
-                                                expect(userDetailsResponse).to(beTrue())
-                                                expect(error).to(beNil())
-                                                
-                                                done()
-                                                
+            self.userService.updateUser(details: mapUserDetails,
+                                        token: self.goodToken,
+                                        completionHandler: {  userDetailsResponse, error in
+                                            
+                                            
+                                            expect(userDetailsResponse).to(beTrue())
+                                            expect(error).to(beNil())
+                                            
+                                            done()
+                                            
             })
         }
     }
@@ -78,10 +85,19 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
     
     func test_User_UpdateUserDetails_Forbidden_Response(){
         
+        let mapUserDetails : [String : Any] = ["firstName" : "John",
+                                               "lastName" : "Doe",
+                                               "address" : [ "street" : "Street One",
+                                                             "city" : "London",
+                                                             "postCode" : "EA12 34Z",
+                                                             "country" : "United Kingdom",
+                                                             "countryCode" : "UK",
+                                                             "countryName" : "United Kingdom"] ]
+        
         let JSON: Any? = try? fixtureWithName(name:"update_user_detail_permission_not_granted_response")
         
         let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetails: userDetails,
+                                               userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
                                                token: goodToken)
         
@@ -91,25 +107,28 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.updateUserDetails(userId: self.goodUserId,
-                                               token: self.goodToken,
-                                               userDetails: self.userDetails,
-                                               callback: {  userDetailsResponse, error in
-                                                
-                                                expect(userDetailsResponse).to(beFalse())
-                                                
-                                                expect(error).toNot(beNil())
-                                                expect((error as! ErrorResponse).code).to(equal(1))
-                                                expect((error as! ErrorResponse).codeMeaning).to(equal("forbidden"))
-                                                expect((error as! ErrorResponse).errorMessage).to(equal("permission not granted"))
-                                                
-                                                done()
-                                                
+            self.userService.updateUser(details: mapUserDetails,
+                                        token: self.badToken,
+                                        completionHandler: {  userDetailsResponse, error in
+                                            
+                                            expect(userDetailsResponse).to(beFalse())
+                                            
+                                            expect(error).toNot(beNil())
+                                            expect((error as! ErrorResponse).code).to(equal(1))
+                                            expect((error as! ErrorResponse).codeMeaning).to(equal("forbidden"))
+                                            expect((error as! ErrorResponse).errorMessage).to(equal("permission not granted"))
+                                            
+                                            done()
+                                            
             })
         }
     }
     
     func test_User_UpdateUserDetails_Address_Fails_Complete_Response(){
+        
+        let mapUserDetails : [String : Any] = ["firstName" : "John",
+                                               "lastName" : "Doe",
+                                               "address" : [ "" : ""] ]
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_details_address_fails_response")
         
@@ -117,7 +136,7 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
         userDetails = UserDetails(address: UserAddress())
         
         let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetails: userDetails,
+                                               userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
                                                token: goodToken)
         
@@ -127,10 +146,9 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.updateUserDetails(userId: self.goodUserId,
+            self.userService.updateUser(userDetailsMap: self.userDetails,
                                                token: self.goodToken,
-                                               userDetails: self.userDetails,
-                                               callback: {  userDetailsResponse, error in
+                                               completionHandler: {  userDetailsResponse, error in
                                                 
                                                 expect(userDetailsResponse).to(beFalse())
                                                 
@@ -164,6 +182,5 @@ class User_UpdateUserDetails_ObjectProviderTests: XCTestCase {
             })
         }
     }
-    
     
 }

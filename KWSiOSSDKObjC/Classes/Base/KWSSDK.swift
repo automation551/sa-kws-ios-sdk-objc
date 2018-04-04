@@ -40,15 +40,20 @@ public class KWSSDK : NSObject{
 
     //for swift
      static public func getService <T> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
-        if (value == AuthServiceProtocol.self){
+        
+        if value == AuthServiceProtocol.self {
             return AuthProvider(environment: environment) as? T
-        } else if (value == UsernameServiceProtocol.self){
+        }
+        else if value == UsernameServiceProtocol.self {
             return UsernameProvider(environment: environment) as? T
-        } else if (value == UserServiceProtocol.self){
+        }
+        else if value == UserServiceProtocol.self {
             return UserProvider(environment: environment) as? T
-        }else if (value == UserActionsServiceProtocol.self){
+        }
+        else if value == UserActionsServiceProtocol.self {
             return UserActionsProvider(environment: environment) as? T
-        } else {
+        }
+        else {
             return nil
         }
     }

@@ -11,11 +11,12 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
+import SAProtobufs
 
-class User_GetUserDetails_ObjectProviderTests: XCTestCase {
+class User_GetUser_ObjectProviderTests: XCTestCase {
     
     //class or data to test
-    private var userService: UserService!
+    private var userService: UserServiceProtocol!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUserId: NSInteger = 1
@@ -32,7 +33,7 @@ class User_GetUserDetails_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.userService = KWSSDK.getService(value: UserService.self, environment: self.environment)
+        self.userService = KWSSDK.getService(value: UserServiceProtocol.self, environment: self.environment)
         
         
     }
@@ -57,15 +58,15 @@ class User_GetUserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.getUserDetails(userId: self.goodUserId,
+            self.userService.getUser(userId: self.goodUserId,
                                             token: self.goodToken,
-                                            callback: {  userDetailsResponse, error in
+                                            completionHandler: {  userDetailsResponse, error in
                                                 
                                                 //then
                                                 expect(userDetailsResponse).toNot(beNil())
                                                 
                                                 expect(userDetailsResponse?.id).to(equal(25))
-                                                expect(userDetailsResponse?.username).to(equal("username"))
+                                                expect(userDetailsResponse?.name).to(equal("username"))
                                                 expect(userDetailsResponse?.firstName).to(equal("first_name"))
                                                 expect(userDetailsResponse?.lastName).to(equal("last_name"))
                                                 
@@ -81,27 +82,27 @@ class User_GetUserDetails_ObjectProviderTests: XCTestCase {
                                                 
                                                 expect(userDetailsResponse?.hasSetParentEmail).to(beTruthy())
                                                 
-                                                expect(userDetailsResponse?.applicationProfile?.username).to(equal("username"))
+                                                expect(userDetailsResponse?.applicationProfile?.name).to(equal("username"))
                                                 expect(userDetailsResponse?.applicationProfile?.customField1).to(equal(0))
                                                 expect(userDetailsResponse?.applicationProfile?.customField2).to(equal(0))
                                                 expect(userDetailsResponse?.applicationProfile?.avatarId).to(equal(0))
                                                 
-                                                expect(userDetailsResponse?.applicationPermissions?.accessAddress).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.accessFirstName).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.accessLastName).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.accessEmail).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.accessStreetAddress).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.accessCity).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.accessPostalCode).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.accessCountry).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.sendPushNotification).to(beTruthy())
-                                                expect(userDetailsResponse?.applicationPermissions?.sendNewsletter).to(beFalsy())
-                                                expect(userDetailsResponse?.applicationPermissions?.enterCompetitions).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.address).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.firstName).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.lastName).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.email).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.streetAddress).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.city).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.postalCode).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.country).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.notifications).to(beTruthy())
+                                                expect(userDetailsResponse?.applicationPermissions?.newsletter).to(beFalsy())
+                                                expect(userDetailsResponse?.applicationPermissions?.competition).to(beFalsy())
                                                 
-                                                expect(userDetailsResponse?.points?.totalReceived).to(equal(600))
+                                                expect(userDetailsResponse?.points?.received).to(equal(600))
                                                 expect(userDetailsResponse?.points?.total).to(equal(600))
-                                                expect(userDetailsResponse?.points?.totalPointsReceivedInCurrentApp).to(equal(600))
-                                                expect(userDetailsResponse?.points?.availableBalance).to(equal(600))
+                                                expect(userDetailsResponse?.points?.inApp).to(equal(600))
+                                                expect(userDetailsResponse?.points?.balance).to(equal(600))
                                                 expect(userDetailsResponse?.points?.pending).to(equal(1))
                                                 
                                                 expect(userDetailsResponse?.createdAt).to(equal("creation_date"))
@@ -129,9 +130,9 @@ class User_GetUserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.userService.getUserDetails(userId: self.goodUserId,
+            self.userService.getUser(userId: self.goodUserId,
                                             token: self.goodToken,
-                                            callback: {  userDetailsResponse, error in
+                                            completionHandler: {  userDetailsResponse, error in
                                                 
                                                 //then
                                                 expect(userDetailsResponse).to(beNil())
