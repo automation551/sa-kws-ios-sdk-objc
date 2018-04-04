@@ -220,18 +220,15 @@ class KWSSwiftTableViewController: UITableViewController {
         
         if let cachedUser = getLoggedUser(){
             
-            /**
-             Uncomment this once Protobufs are updated
-             user.updateUser(details: nil, map: map, token: cachedUser.token) { (error) in
-             
-             if(error == nil){
-             print("User updated!")
-             }else{
-             print("Something went wrong for update user:  \(String(describing: error))")
-             }
-             
-             }
-             */
+            user?.updateUser(details: map, token: cachedUser.token) { (error) in
+                
+                if(error == nil){
+                    print("User updated!")
+                }else{
+                    print("Something went wrong for update user:  \(String(describing: error))")
+                }
+                
+            }
         }else{
             print("No valid user cached!!!")
         }
@@ -254,21 +251,17 @@ class KWSSwiftTableViewController: UITableViewController {
         
         if let cachedUser = getLoggedUser(){
             
-            /**
-             Uncomment this once Protobufs are updated
-             
-             user.updateUser(details: map, token: cachedUser.token) { (error) in
-             
-             if(error == nil){
-             print("User updated!")
-             }else{
-             print("Something went wrong for update user:  \(String(describing: error))")
-             }
-             
-             }
-             */
+            user?.updateUser(details: map, token: cachedUser.token) { (error) in
+                
+                if(error == nil){
+                    print("User updated!")
+                }else{
+                    print("Something went wrong for update user:  \(String(describing: error))")
+                }
+                
+            }
             
-        }else{
+        } else {
             print("No valid user cached!!!")
         }
         

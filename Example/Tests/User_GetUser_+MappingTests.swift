@@ -34,23 +34,25 @@ class User_GetUser_MappingTests: XCTestCase {
         
         expect(userDetailsResponse).toNot(beNil())
         expect(userDetailsResponse?.id).to(equal(25))
-        expect(userDetailsResponse?.name).to(equal("username"))
-        expect(userDetailsResponse?.firstName).to(equal("first_name"))
-        expect(userDetailsResponse?.lastName).to(equal("last_name"))
+        expect(userDetailsResponse?.name).to(equal("geniouspokemon123"))
+        expect(userDetailsResponse?.firstName).to(equal("John"))
+        expect(userDetailsResponse?.lastName).to(equal("Doe"))
         
-        expect(userDetailsResponse?.address?.street).to(equal("street"))
-        expect(userDetailsResponse?.address?.city).to(equal("city"))
-        expect(userDetailsResponse?.address?.postCode).to(equal("postCode"))
-        expect(userDetailsResponse?.address?.country).to(equal("country"))
+        expect(userDetailsResponse?.address?.street).to(equal("Number 12"))
+        expect(userDetailsResponse?.address?.city).to(equal("London"))
+        expect(userDetailsResponse?.address?.postCode).to(equal("NW1 23L"))
+        expect(userDetailsResponse?.address?.country).to(equal("United Kingdom"))
+        expect(userDetailsResponse?.address?.countryCode).to(equal("GB"))
+        expect(userDetailsResponse?.address?.countryName).to(equal("United Kingdom"))
         
-        expect(userDetailsResponse?.dateOfBirth).to(equal("dob"))
+        expect(userDetailsResponse?.dateOfBirth).to(equal("2012-03-02"))
         expect(userDetailsResponse?.gender).to(equal("male"))
         expect(userDetailsResponse?.language).to(equal("en"))
-        expect(userDetailsResponse?.email).to(equal("email@email"))
+        expect(userDetailsResponse?.email).to(equal("john.doe@email"))
         
         expect(userDetailsResponse?.hasSetParentEmail).to(beTruthy())
         
-        expect(userDetailsResponse?.applicationProfile?.name).to(equal("username"))
+        expect(userDetailsResponse?.applicationProfile?.name).to(equal("geniouspokemon123"))
         expect(userDetailsResponse?.applicationProfile?.customField1).to(equal(0))
         expect(userDetailsResponse?.applicationProfile?.customField2).to(equal(0))
         expect(userDetailsResponse?.applicationProfile?.avatarId).to(equal(0))
@@ -73,7 +75,7 @@ class User_GetUser_MappingTests: XCTestCase {
         expect(userDetailsResponse?.points?.balance).to(equal(600))
         expect(userDetailsResponse?.points?.pending).to(equal(1))
 
-        expect(userDetailsResponse?.createdAt).to(equal("creation_date"))
+        expect(userDetailsResponse?.createdAt).to(equal("2018-01-19"))
         
     }
     

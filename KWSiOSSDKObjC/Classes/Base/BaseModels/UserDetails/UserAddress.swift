@@ -15,16 +15,22 @@ public final class UserAddress: NSObject, AddressModelProtocol {
     public var city: String?
     public var postCode: String?
     public var country: String?
+    public var countryCode: String?
+    public var countryName: String?
     
     public required init(street:    String? = nil,
                          city:      String? = nil,
                          postCode:  String? = nil,
-                         country:   String? = nil) {
+                         country:   String? = nil,
+                         countryCode:   String? = nil,
+                         countryName:   String? = nil) {
         
         self.street = street
         self.city = city
         self.postCode = postCode
         self.country = country
+        self.countryCode = countryCode
+        self.countryName = countryName
         
     }
     
@@ -35,6 +41,8 @@ public final class UserAddress: NSObject, AddressModelProtocol {
         case city
         case postCode
         case country
+        case countryCode
+        case countryName
     }
     
     

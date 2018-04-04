@@ -55,12 +55,6 @@ public class UserProvider: NSObject, UserServiceProtocol {
         }
         
     }
-
-    
-    public func updateUser(details: UserDetailsModelProtocol, token: String, completionHandler: @escaping (Error?) -> ()) {
-        //this is the old version, will be deleted once the Protobufs updates
-    }
-    
     
     public func updateUser(details: [String:Any], token: String, completionHandler: @escaping (Error?) -> ()) {
         
@@ -96,13 +90,19 @@ public class UserProvider: NSObject, UserServiceProtocol {
         
         let base64req = ParseBase64Request(withBase64String: token)
         let base64Task = ParseBase64Task()
-        let metadataJson = base64Task.execute(request: base64req)
         
-        let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-        let parseJsonTask = JSONParseTask<TokenData>()
-        let metadata = parseJsonTask.execute(request: parseJsonReq)
+        if let metadataJson = base64Task.execute(request: base64req){
+            
+            let parseJsonReq = JsonParseRequest(withRawData: metadataJson)
+            let parseJsonTask = JSONParseTask<TokenData>()
+            let metadata = parseJsonTask.execute(request: parseJsonReq)
+            
+            return metadata
+            
+        } else {
+            return nil
+        }
         
-        return metadata
     }
     
     

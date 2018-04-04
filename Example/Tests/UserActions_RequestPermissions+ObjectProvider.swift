@@ -65,9 +65,8 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
             self.userService.requestPermissions(permissions: self.goodPermissions,
                                                 userId: self.goodUserId,
                                                 token: self.goodToken,
-                                                callback: {  permissionsResponse, error in
+                                                completionHandler: { error in
                                                     
-                                                    expect(permissionsResponse).to(beTrue())
                                                     expect(error).to(beNil())
                                                     
                                                     done()
@@ -94,9 +93,7 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
             self.userService.requestPermissions(permissions: self.badPermissions,
                                                 userId: self.goodUserId,
                                                 token: self.goodToken,
-                                                callback: {  permissionsResponse, error in
-                                                    
-                                                    expect(permissionsResponse).to(beFalse())
+                                                completionHandler: {  error in
                                                     
                                                     expect(error).toNot(beNil())
                                                     
@@ -133,9 +130,7 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
             self.userService.requestPermissions(permissions: self.goodPermissions,
                                                 userId: self.badUserId,
                                                 token: self.goodToken,
-                                                callback: {  permissionsResponse, error in
-                                                    
-                                                    expect(permissionsResponse).to(beFalse())
+                                                completionHandler: { error in                                                                                                    
                                                     
                                                     expect(error).toNot(beNil())
                                                     
@@ -167,9 +162,7 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
             self.userService.requestPermissions(permissions: self.goodPermissions,
                                                 userId: self.goodUserId,
                                                 token: self.goodToken,
-                                                callback: {  permissionsResponse, error in
-                                                    
-                                                    expect(permissionsResponse).to(beFalse())
+                                                completionHandler: { error in
                                                     
                                                     expect(error).toNot(beNil())
                                                     

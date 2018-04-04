@@ -17,7 +17,9 @@ extension UserAddress: Decodable {
             street:                 try json =>? "street",
             city:                   try json =>? "city",
             postCode:               try json =>? "postCode",
-            country:                try json =>? "country"
+            country:                try json =>? "country",
+            countryCode:            try json =>? "countryCode",
+            countryName:            try json =>? "countryName"
         )
     }
 }
@@ -32,6 +34,8 @@ extension UserAddress: Encodable {
         try container.encode(city, forKey: .city)
         try container.encode(postCode, forKey: .postCode)
         try container.encode(country, forKey: .country)
+        try container.encode(countryCode, forKey: .countryCode)
+        try container.encode(countryName, forKey: .countryName)
         
     }
 }

@@ -24,8 +24,8 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
     private var badUserId: NSInteger = -1
     
     private var userDetails: UserDetails!
-    private var goodToken: String = "good_token"
-    private var badToken: String = "bad_token"
+    
+    private var token: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VySWQiOjM0NDIsImFwcElkIjozNTgsImNsaWVudElkIjoia3dzLXNkay10ZXN0aW5nIiwic2NvcGUiOiJ1c2VyIiwiaWF0IjoxNTIyODI5Nzk1LCJleHAiOjE4MzgxODk3OTUsImlzcyI6InN1cGVyYXdlc29tZSJ9.AUwbdZYTKEKyUGusGN6DRwpoBZbWHM7m4RqpRFutjDQ6AwUVEEYlQ9upGf6In3p73PcHtS9HjrqJtg6Aox6s9IzcTPK5lPFWm-VrFnECH6XnktslUYzBtOeepgwjhlbugjCSaVgfJ2CPfQZJ6f4rUv7fcsfh74xmmYRXOTzCmQh_LNZcvs5vLK2BHwdppa4mWj0HUgoIcbOwxBR0ZgHg7qFfCEQMlql-cfd6gBJ81-q7zZlcoXHS4MAF2eBs_kh9vHCwM2ajTANdFgsW6MToR_xYDN1h-dfRIGCOmQDqM2UMVQ8IW5pXYRT_S7iNbobccE-Gx7jYmGErCC4aHWL2WQ"
     
     override func setUp() {
         super.setUp()
@@ -54,7 +54,7 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         let request = UpdateUserDetailsRequest(environment: self.environment,
                                                userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
-                                               token: goodToken)
+                                               token: token)
         
         //when
         let uri = "\(request.environment.domain + request.endpoint)"
@@ -63,14 +63,11 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         waitUntil { done in
             
             self.userService.updateUser(details: mapUserDetails,
-                                               token: self.goodToken,
-                                               completionHandler: {  userParentEmailResponse, error in
+                                               token: self.token,
+                                               completionHandler: { error in
                                                 
-                                                expect(userParentEmailResponse).to(beTrue())
                                                 expect(error).to(beNil())
-                                                
                                                 done()
-                                                
             })
         }
     }
@@ -84,19 +81,20 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         let request = UpdateUserDetailsRequest(environment: self.environment,
                                                userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
-                                               token: goodToken)
+                                               token: token)
         
         //when
         let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.put, uri: uri ) , json(JSON!, status: 409))
+//        stub(http(.put, uri: uri ) , json(JSON!, status: 409))
+        
+        stub(everything , json(JSON!, status: 409))
         
         waitUntil { done in
             
             self.userService.updateUser(details: mapUserDetails,
-                                               token: self.goodToken,
-                                               completionHandler: {  userParentEmailResponse, error in
+                                               token: self.token,
+                                               completionHandler: { error in
                                                 
-                                                expect(userParentEmailResponse).to(beFalse())
                                                 
                                                 expect(error).toNot(beNil())
                                                 expect((error as! ErrorResponse).code).to(equal(10))
@@ -108,7 +106,6 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
                                                 expect((error as! ErrorResponse).invalid?.parentEmail?.errorMessage).to(equal("parentEmail already set"))
                                                 
                                                 done()
-                                                
             })
         }
     }
@@ -123,7 +120,7 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         let request = UpdateUserDetailsRequest(environment: self.environment,
                                                userDetailsMap: mapUserDetails,
                                                userId: goodUserId,
-                                               token: goodToken)
+                                               token: token)
         
         //when
         let uri = "\(request.environment.domain + request.endpoint)"
@@ -132,11 +129,9 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         waitUntil { done in
             
             self.userService.updateUser(details: mapUserDetails,
-                                               token: self.goodToken,
-                                               completionHandler: {  userParentEmailResponse, error in
-                                                
-                                                expect(userParentEmailResponse).to(beFalse())
-                                                
+                                               token: self.token,
+                                               completionHandler: { error in
+                                                                                
                                                 expect(error).toNot(beNil())
                                                 expect((error as! ErrorResponse).code).to(equal(5))
                                                 expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
