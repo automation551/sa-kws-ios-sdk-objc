@@ -58,93 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
-            timestampString = "544534140.597574"
+            timestampString = "544546911.534426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "createUser()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;SAProtobufs.LoggedUserModelProtocol&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in KWSiOSSDKObjC_Example.KWSSwiftTableViewController.createUser() -&gt; ()"
-                  moduleName = "KWSiOSSDKObjC_Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/Example/KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
-                  timestampString = "544540306.423273"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "182">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;SAProtobufs.LoggedUserModelProtocol&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in KWSiOSSDKObjC_Example.KWSSwiftTableViewController.createUser() -&gt; ()"
-                  moduleName = "KWSiOSSDKObjC_Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/Example/KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
-                  timestampString = "544540306.426035"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "3109">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
-            timestampString = "544534140.59763"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KWSiOSSDKObjC_Example.KWSSwiftTableViewController.tableView(__ObjC.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "KWSiOSSDKObjC_Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/Example/KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
-                  timestampString = "544540306.432034"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "9640">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KWSiOSSDKObjC_Example.KWSSwiftTableViewController.tableView(__ObjC.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "KWSiOSSDKObjC_Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/Example/KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
-                  timestampString = "544540306.434556"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "11065">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

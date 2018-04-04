@@ -26,8 +26,10 @@ class KWSSwiftTableViewController: UITableViewController {
     //dictionary of KEY String and VALUE list of Strings - no order specified
     let functionalitiesDict: [ String : [String] ] =
         [
-            "Permissions" : ["Submit Parent Email", "Request Permissions"],
-            "User" : ["Random Username", "Create User", "Login User", "Update User"]
+            "Permissions" :
+                ["Submit Parent Email", "Request Permissions"],
+            "User" :
+                ["Random Username", "Create User", "Login User", "Update User", "Get User Details"]
     ]
     
     
@@ -88,6 +90,7 @@ class KWSSwiftTableViewController: UITableViewController {
             case "Create User" : self.createUser()
             case "Random Username": self.randomUserName()
             case "Update User": self.updateUserDetails()
+            case "Get User Details": self.getUserDetails()
             default:
                 break
             }
@@ -129,10 +132,16 @@ class KWSSwiftTableViewController: UITableViewController {
         auth?.createUser(username: userName, password: pwd, timeZone: nil, dateOfBirth: dob, country: country, parentEmail: parentEmail) { (result, error) in
             
             if(error == nil){
-                let tokenData = self.getTokenData(token: (result?.token)!)
-                let user = LoggedUser(token: (result?.token)!, tokenData: tokenData!, id: (result?.id)! )
-                self.saveUser(user: user)
-                print("Result for create user is success: \(String(describing: user))")
+                
+                if let token = result?.token, let tokenData = self.getTheTokenData(token: token), let userId = tokenData.userId {
+                    
+                    let user = LoggedUser(token: token, tokenData: tokenData, id: userId)
+                    self.saveUser(user: user)
+                    
+                    print("Result for create user is success: \(String(describing: user))")
+                } else {
+                    print ("Ooops, something went wrong parsing the token!!!")
+                }
             } else {
                 print("Something went wrong for create user \(String(describing: error)))")
             }
@@ -140,28 +149,6 @@ class KWSSwiftTableViewController: UITableViewController {
         }
         
     }
-    
-    // MARK - helper methods
-    
-    func randomInt(min: Int, max:Int) -> Int {
-        return min + Int(arc4random_uniform(UInt32(max - min + 1)))
-    }
-    
-    public func getTokenData (token: String) -> TokenData? {
-        
-        let base64req = ParseBase64Request(withBase64String: token)
-        let base64Task = ParseBase64Task()
-        let metadataJson = base64Task.execute(request: base64req)
-        
-        let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-        let parseJsonTask = JSONParseTask<TokenData>()
-        let metadata = parseJsonTask.execute(request: parseJsonReq)
-        
-        return metadata
-    }
-    
-    
-    // end of helper methods
     
     func loginUser(){
         
@@ -172,11 +159,16 @@ class KWSSwiftTableViewController: UITableViewController {
         
         auth?.loginUser(userName: userName, password: pwd) { (result, error) in
             
-            if(error == nil){
-                let tokenData = self.getTokenData(token: (result?.token)!)
-                let user = LoggedUser(token: (result?.token)!, tokenData: tokenData!, id: (result?.id)! )
-                self.saveUser(user: user)
-                print("Result for login is success: \(String(describing: user))")
+            if (error == nil) {
+                if let token = result?.token, let tokenData = self.getTheTokenData(token: token), let userId = tokenData.userId {
+                   
+                    let user = LoggedUser(token: token, tokenData: tokenData, id: userId)
+                    self.saveUser(user: user)
+                    
+                    print("Result for login is success: \(String(describing: user))")
+                } else {
+                    print ("Ooops, something went wrong parsing the token!!!")
+                }
             } else {
                 print("Something went wrong for login \(String(describing: error)))")
             }
@@ -204,8 +196,27 @@ class KWSSwiftTableViewController: UITableViewController {
     
     func requestPermissions(){
         
+        let permissions : [String] = ["accessEmail"]
         
-        //TODO
+        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let userId : Int = cachedUser.id as? Int ?? 0
+            
+            userActions?.requestPermissions(permissions: permissions, userId: userId, token: cachedUser.token) { error in
+                
+                if (error == nil){
+                    print("Permissions requested with success!")
+                } else {
+                    print("Something went wrong for request permissions:  \(String(describing: error))")
+                }
+                
+                
+            }
+        } else {
+            print("No valid user cached!!!")
+        }
         
         
     }
@@ -229,7 +240,7 @@ class KWSSwiftTableViewController: UITableViewController {
                 }
                 
             }
-        }else{
+        } else {
             print("No valid user cached!!!")
         }
     }
@@ -241,7 +252,7 @@ class KWSSwiftTableViewController: UITableViewController {
         let user = KWSSDK.getService(value: UserServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         
         let map: [String : Any] = ["firstName" : "John",
-                                   "lastName" : "Doe",
+                                   "lastName" : "Doy",
                                    "address" : ["street": "Number One",
                                                 "city": "London",
                                                 "postCode": "abc",
@@ -253,14 +264,37 @@ class KWSSwiftTableViewController: UITableViewController {
             
             user?.updateUser(details: map, token: cachedUser.token) { (error) in
                 
-                if(error == nil){
+                if (error == nil) {
                     print("User updated!")
-                }else{
+                } else {
                     print("Something went wrong for update user:  \(String(describing: error))")
                 }
                 
             }
             
+        } else {
+            print("No valid user cached!!!")
+        }
+        
+    }
+    
+    func getUserDetails() {
+        
+        let user = KWSSDK.getService(value: UserServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser(){
+            
+            let userId : Int = cachedUser.id as? Int ?? 0
+            
+            user?.getUser(userId: userId, token: cachedUser.token) { userDetails, error in
+                
+                if (userDetails != nil) {
+                    print("Got user: \(String(describing: userDetails))")
+                } else {
+                    print("Something went wrong for get user details:  \(String(describing: error))")
+                }
+                
+            }
         } else {
             print("No valid user cached!!!")
         }
@@ -280,6 +314,33 @@ class KWSSwiftTableViewController: UITableViewController {
         //TODO this needs to use Session Provider (wip)
         return kUser
     }
+    
+    // MARK - helper methods -----------------------------------
+    
+    func randomInt(min: Int, max:Int) -> Int {
+        return min + Int(arc4random_uniform(UInt32(max - min + 1)))
+    }
+    
+    public func getTheTokenData (token: String) -> TokenData? {
+        
+        let base64req = ParseBase64Request(withBase64String: token)
+        let base64Task = ParseBase64Task()
+        
+        if let metadataJson = base64Task.execute(request: base64req){
+            
+            let parseJsonReq = JsonParseRequest(withRawData: metadataJson)
+            let parseJsonTask = JSONParseTask<TokenData>()
+            let metadata = parseJsonTask.execute(request: parseJsonReq)
+            
+            return metadata
+            
+        } else {
+            return nil
+        }
+        
+    }
+    // end of helper methods -----------------------------------
+    
     
     
 }
