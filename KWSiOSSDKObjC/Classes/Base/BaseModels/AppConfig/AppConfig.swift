@@ -8,18 +8,16 @@
 import Foundation
 import SAProtobufs
 
-@objc(KWSAppConfigAppObjectResponse)
 public final class AppConfig: NSObject, AppConfigModelProtocol {
     
-    public var id: Int
-    public var name: String
+    public var id:      Int
+    public var name:    String
     
-    public required init(id: Int,
-                         name: String) {
+    public required init(id:    Int,
+                         name:  String) {
         
         self.id = id
-        self.name = name
-        
+        self.name = name        
     }
     
     // MARK: - Equatable
@@ -31,11 +29,10 @@ public final class AppConfig: NSObject, AppConfigModelProtocol {
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? AppConfig else { return false }
-        return self.id == object.id
+        return self == object
     }
     
     public override var hash: Int {
         return id.hashValue
     }
-    
 }

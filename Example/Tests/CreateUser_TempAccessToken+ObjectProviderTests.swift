@@ -12,9 +12,7 @@ import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
 
-
 class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
-    
     
     /*
      Create User is a 2 step process - this is step 1
@@ -35,8 +33,6 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         
         //when
         createUserResource = AuthProvider.init(environment: self.environment)
-        
-        
     }
     
     override func tearDown() {
@@ -59,7 +55,6 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!))
         
         waitUntil { done in
-            
             self.createUserResource.getTempAccessToken(environment: self.environment,
                                                        completionHandler: { tempAccessTokenResponse, error in
                                                         
@@ -67,10 +62,8 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
                                                         expect(tempAccessTokenResponse?.token).to(equal("good_token"))
                                                         expect(error).to(beNil())
                                                         done()
-                                                        
             })
         }
-        
     }
     
     func test_TempAccessToken_BadGrantType_Request() {
@@ -96,12 +89,9 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
                                                         expect((error as! ErrorResponse).errorCode).to(equal("invalid_request"))
                                                         expect((error as! ErrorResponse).error).to(equal("Invalid or missing grant_type parameter"))
                                                         done()
-                                                        
             })
         }
-        
     }
-    
     
     func test_TempAccessToken_BadClientCredentials_Request() {
         
@@ -115,7 +105,6 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.createUserResource.getTempAccessToken(environment: self.environment,
                                                        completionHandler: { tempAccessTokenResponse, error in
                                                         
@@ -126,11 +115,7 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
                                                         expect((error as! ErrorResponse).errorCode).to(equal("invalid_client"))
                                                         expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
                                                         done()
-                                                        
             })
         }
-        
     }
-    
-
 }

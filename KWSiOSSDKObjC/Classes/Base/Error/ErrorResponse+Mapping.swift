@@ -19,8 +19,7 @@ extension ErrorResponse: Decodable {
             errorMessage:       try json =>? "errorMessage",
             invalid:            try json =>? "invalid",
             errorCode:          try json =>? "ErrorCode",
-            error:              try json =>? "Error"
-            
+            error:              try json =>? "Error"            
         )
     }
 }

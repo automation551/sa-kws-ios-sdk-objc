@@ -8,7 +8,6 @@
 import Foundation
 import SAProtobufs
 
-@objc(KWSSwiftApplicationPermissions)
 public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
     
     public var notifications:       Bool?
@@ -23,66 +22,43 @@ public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
     public var newsletter:          Bool?
     public var competition:         Bool?
     
+    public required init(notifications:     Bool? = nil,
+                         address:           Bool? = nil,
+                         firstName:         Bool? = nil,
+                         lastName:          Bool? = nil,
+                         email:             Bool? = nil,
+                         streetAddress:     Bool? = nil,
+                         city:              Bool? = nil,
+                         postalCode:        Bool? = nil,
+                         country:           Bool? = nil,
+                         newsletter:        Bool? = nil,
+                         competition:       Bool? = nil) {
+        
+        self.notifications = notifications
+        self.address = address
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.streetAddress = streetAddress
+        self.city = city
+        self.postalCode = postalCode
+        self.country = country
+        self.newsletter = newsletter
+        self.competition = competition
+    }
 
-    
-    public required init(notifications:     NSNumber? = nil,
-                         address:           NSNumber? = nil,
-                         firstName:         NSNumber? = nil,
-                         lastName:          NSNumber? = nil,
-                         email:             NSNumber? = nil,
-                         streetAddress:     NSNumber? = nil,
-                         city:              NSNumber? = nil,
-                         postalCode:        NSNumber? = nil,
-                         country:           NSNumber? = nil,
-                         newsletter:        NSNumber? = nil,
-                         competition:       NSNumber? = nil) {
-        
-        self.notifications = notifications?.boolValue
-        self.address = address?.boolValue
-        self.firstName = firstName?.boolValue
-        self.lastName = lastName?.boolValue
-        self.email = email?.boolValue
-        self.streetAddress = streetAddress?.boolValue
-        self.city = city?.boolValue
-        self.postalCode = postalCode?.boolValue
-        self.country = country?.boolValue
-        self.newsletter = newsletter?.boolValue
-        self.competition = competition?.boolValue
-        
-    }
-    
-    public enum CodingKeys: String, CodingKey {
-        
-        //to encode
-        case notifications
-        case address
-        case firstName
-        case lastName
-        case email
-        case streetAddress
-        case city
-        case postalCode
-        case country
-        case newsletter
-        case competition
-    }
-    
-    
     // MARK: - Equatable
     public static func ==(lhs: ApplicationPermissions, rhs: ApplicationPermissions) -> Bool {
         let areEqual = lhs.email == rhs.email
-        
         return areEqual
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
+    public override func isEqual(_ object: Any?) -> Bool {        
         guard let object = object as? ApplicationPermissions else { return false }
-        return self.email == object.email
+        return self == object
     }
     
     public override var hash: Int {
         return email!.hashValue
     }
-    
-    
 }

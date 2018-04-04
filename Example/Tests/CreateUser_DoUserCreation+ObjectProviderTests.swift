@@ -49,7 +49,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
     private var goodAppID: Int = 1
     private var badAppID: Int = -1
     
-    
     override func setUp() {
         super.setUp()
         
@@ -58,15 +57,13 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         
         //when
         createUserResource = AuthProvider.init(environment: self.environment)
-        
-        
     }
+    
     override func tearDown() {
         super.tearDown()
         createUserResource = nil
         environment = nil
     }
-    
     
     //User Creation
     func test_CreateUser_ValidRequestAndResponse() {
@@ -86,7 +83,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.goodUsername,
                                                    password: self.goodPassword,
@@ -104,10 +100,8 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).to(beNil())
                                                     done()
-                                                    
             })
         }
-        
     }
     
     func test_CreateUser_BadToken_Request() {
@@ -127,7 +121,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.goodUsername,
                                                    password: self.goodPassword,
@@ -146,10 +139,8 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).errorCode).to(equal("invalid_token"))
                                                     expect((error as! ErrorResponse).error).to(equal("The access token provided is invalid."))
                                                     done()
-                                                    
             })
         }
-        
     }
     
     func test_CreateUser_BadHttp_Response() {
@@ -169,7 +160,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 404))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.goodUsername,
                                                    password: self.goodPassword,
@@ -189,7 +179,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -212,7 +201,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 409))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.goodUsername,
                                                    password: self.goodPassword,
@@ -236,7 +224,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).invalid?.username?.errorMessage).to(equal("username already taken"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -258,7 +245,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.badUsername,
                                                    password: self.goodPassword,
@@ -282,7 +268,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).invalid?.username?.errorMessage).to(equal("\"username\" length must be at least 3 characters long"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -304,7 +289,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.goodUsername,
                                                    password: self.badPassword,
@@ -328,7 +312,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).invalid?.password?.errorMessage).to(equal("\"password\" length must be at least 8 characters long"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -350,7 +333,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.goodUsername,
                                                    password: self.goodPassword,
@@ -374,7 +356,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).invalid?.dateOfBirth?.errorMessage).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -396,7 +377,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.goodUsername,
                                                    password: self.goodPassword,
@@ -420,7 +400,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).invalid?.country?.errorMessage).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -443,7 +422,6 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.createUserResource.doUserCreation(environment: self.environment,
                                                    username: self.goodUsername,
                                                    password: self.goodPassword,
@@ -467,10 +445,7 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).invalid?.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
-    
-    
 }

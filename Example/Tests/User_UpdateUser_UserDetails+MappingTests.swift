@@ -35,7 +35,6 @@ class User_UpdateUser_UserDetails_MappingTests: XCTestCase {
         expect(userDetailsResponse?.userUpdated).to(beTrue())
         
     }
-
     
     func test_User_UpdateUserDetails_Mapping_Forbidden_Response() {
         
@@ -48,7 +47,6 @@ class User_UpdateUser_UserDetails_MappingTests: XCTestCase {
         expect(errorResponse?.code).to(equal(1))
         expect(errorResponse?.codeMeaning).to(equal("forbidden"))
         expect(errorResponse?.errorMessage).to(equal("permission not granted"))
-        
     }
 
     func test_User_UpdateUserDetails_Mapping_Address_Fails_Complete_Response() {
@@ -82,7 +80,5 @@ class User_UpdateUser_UserDetails_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.addressCountry?.code).to(equal(6))
         expect(errorResponse?.invalid?.addressCountry?.codeMeaning).to(equal("missing"))
         expect(errorResponse?.invalid?.addressCountry?.errorMessage).to(equal("\"country\" is required"))
-        
     }
-    
 }

@@ -33,7 +33,6 @@ class UserActions_RequestPermissions_MappingTests: XCTestCase {
         
         expect(userParentEmailResponse).toNot(beNil())
         expect(userParentEmailResponse?.permissionsRequested).to(beTrue())
-        
     }
     
     func test_User_Permissions_Request_Mapping_Permission_Required_Response() {
@@ -67,7 +66,6 @@ class UserActions_RequestPermissions_MappingTests: XCTestCase {
         expect(errorResponse?.code).to(equal(1))
         expect(errorResponse?.codeMeaning).to(equal("forbidden"))
         expect(errorResponse?.errorMessage).to(equal("operation not supported for this user"))
-        
     }
     
     func test_User_Permissions_Request_Mapping_Permission_Not_Found_Response() {
@@ -82,7 +80,5 @@ class UserActions_RequestPermissions_MappingTests: XCTestCase {
         expect(errorResponse?.code).to(equal(2))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
         expect(errorResponse?.errorMessage).to(equal("permissions not found: mock_permission"))
-        
     }
-    
 }

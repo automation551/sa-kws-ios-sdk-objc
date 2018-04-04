@@ -15,7 +15,7 @@ extension AuthUserResponse: Decodable {
         
         return try AuthUserResponse (
             id:                 try json => "id" as! AnyHashable,
-            token:              try json => "token"
+            token:              try json => "token"            
         )
     }
 }

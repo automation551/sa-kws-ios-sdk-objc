@@ -10,7 +10,6 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-
 class LoginTests: XCTestCase {
   
     let goodToken: String = "good_token"
@@ -29,7 +28,6 @@ class LoginTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func testLoginEquality() {
         let foo = LoginAuthResponse(token: goodToken, id: goodId)
         let bar = LoginAuthResponse(token: goodToken, id: goodId)
@@ -45,7 +43,6 @@ class LoginTests: XCTestCase {
     }
     
     // MARK: Objective-C
-    
     func testSameEqualityBetweenObjcAndSwift() {
         let foo = LoginAuthResponse(token: goodToken, id: goodId)
         let bar = LoginAuthResponse(token: badToken, id: badId)
@@ -62,5 +59,4 @@ class LoginTests: XCTestCase {
         
         expect(foo.isEqual(bar)).to(beFalse())
     }
-    
 }

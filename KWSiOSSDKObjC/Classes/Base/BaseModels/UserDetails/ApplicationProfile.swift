@@ -8,7 +8,6 @@
 import Foundation
 import SAProtobufs
 
-@objc(KWSSwiftApplicationProfile)
 public final class ApplicationProfile: NSObject, AppProfileModelProtocol {
     
     public var customField1:    Int?
@@ -16,42 +15,30 @@ public final class ApplicationProfile: NSObject, AppProfileModelProtocol {
     public var avatarId:        Int?
     public var name:            String?
     
-    public required init(customField1:  NSNumber? = nil ,
-                         customField2:  NSNumber? = nil ,
-                         avatarId:      NSNumber? = nil ,
+    public required init(customField1:  Int? = nil,
+                         customField2:  Int? = nil,
+                         avatarId:      Int? = nil,
                          name:          String?
                          ) {
         
-        self.customField1 = customField1?.intValue
-        self.customField2 = customField2?.intValue
-        self.avatarId = avatarId?.intValue
+        self.customField1 = customField1
+        self.customField2 = customField2
+        self.avatarId = avatarId
         self.name = name
-        
     }
-    
-    public enum CodingKeys: String, CodingKey {
-        
-        //to encode
-        case customField1
-        case customField2
-        case avatarId
-    }
-    
+
     // MARK: - Equatable
     public static func ==(lhs: ApplicationProfile, rhs: ApplicationProfile) -> Bool {
         let areEqual = lhs.name == rhs.name
-        
         return areEqual
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
+    public override func isEqual(_ object: Any?) -> Bool {        
         guard let object = object as? ApplicationProfile else { return false }
-        return self.name == object.name
+        return self == object
     }
     
     public override var hash: Int {
         return name!.hashValue
     }
-    
-    
 }

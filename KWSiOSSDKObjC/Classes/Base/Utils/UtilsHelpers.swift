@@ -23,7 +23,6 @@ public class UtilsHelpers : NSObject{
         
     }
     
-    
     public func getTokenData (token: String) -> TokenData? {
         
         let base64req = ParseBase64Request(withBase64String: token)
@@ -53,7 +52,6 @@ public class UtilsHelpers : NSObject{
         default:
             return ""
         }
-        
     }
     
     private func localeForCountry(countryFullName : String) -> String {
@@ -66,7 +64,6 @@ public class UtilsHelpers : NSObject{
             }
         }
         return locales
-    }
-    
+    }    
 }
 

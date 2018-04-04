@@ -39,8 +39,7 @@ class Login_ObjectProviderTests: XCTestCase {
         
         //when
         self.loginService = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
-        
-        
+
     }
     
     override func tearDown() {
@@ -64,7 +63,6 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri ) , json(JSON!))
         
         waitUntil { done in
-            
             self.loginService.loginUser(userName: self.goodUsername,
                                         password: self.goodPassword,
                                         completionHandler: {  loginResponse, error in
@@ -76,10 +74,8 @@ class Login_ObjectProviderTests: XCTestCase {
                                             expect(error).to(beNil())
                                             
                                             done()
-                                            
             })
         }
-        
     }
     
     func test_Login_BadHttp_Response(){
@@ -109,10 +105,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
                 
                 done()
-                
             })
         }
-        
     }
     
     func test_Login_BadUsername_Request(){
@@ -129,7 +123,6 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.loginService.loginUser(userName: self.goodUsername,
                                         password: self.goodPassword,
                                         completionHandler: {  loginResponse, error in
@@ -142,10 +135,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).error).to(equal("User credentials are invalid"))
                 
                 done()
-                
             })
         }
-        
     }
     
     func test_Login_BadPassword_Request(){
@@ -162,7 +153,6 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.loginService.loginUser(userName: self.goodUsername,
                                         password: self.goodPassword,
                                         completionHandler: { loginResponse, error in
@@ -175,7 +165,6 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).error).to(equal("User credentials are invalid"))
                 
                 done()
-                
             })
         }
         
@@ -195,7 +184,6 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.loginService.loginUser(userName: self.goodUsername,
                                         password: self.goodPassword,
                                         completionHandler: { loginResponse, error in
@@ -208,7 +196,6 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
                 
                 done()
-                
             })
         }
         
@@ -228,7 +215,6 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.loginService.loginUser(userName: self.goodUsername,
                                         password: self.goodPassword,
                                         completionHandler: { loginResponse, error in
@@ -241,12 +227,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
                 
                 done()
-                
             })
         }
-        
     }
-    
-    
-    
 }

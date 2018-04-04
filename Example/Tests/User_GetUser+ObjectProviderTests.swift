@@ -25,7 +25,6 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
     private var goodToken: String = "good_token"
     private var badToken: String = "bad_token"
     
-    
     override func setUp() {
         super.setUp()
         
@@ -34,8 +33,6 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
         
         //when
         self.userService = KWSSDK.getService(value: UserServiceProtocol.self, environment: self.environment)
-        
-        
     }
     
     override func tearDown() {
@@ -57,7 +54,6 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
         stub(http(.get, uri: uri ) , json(JSON!))
         
         waitUntil { done in
-            
             self.userService.getUser(userId: self.goodUserId,
                                             token: self.goodToken,
                                             completionHandler: {  userDetailsResponse, error in
@@ -112,7 +108,6 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
                                                 expect(error).to(beNil())
                                                 
                                                 done()
-                                                
             })
         }
         
@@ -131,7 +126,6 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
         stub(http(.get, uri: uri ) , json(JSON!, status: 404))
         
         waitUntil { done in
-            
             self.userService.getUser(userId: self.goodUserId,
                                             token: self.goodToken,
                                             completionHandler: {  userDetailsResponse, error in
@@ -145,11 +139,7 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
                                                 expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
                                                 
                                                 done()
-                                                
             })
         }
-        
     }
-    
-    
 }

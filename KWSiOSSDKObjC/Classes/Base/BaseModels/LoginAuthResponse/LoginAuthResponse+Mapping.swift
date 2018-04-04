@@ -13,9 +13,9 @@ extension LoginAuthResponse: Decodable {
     
     public static func decode(_ json: Any) throws -> LoginAuthResponse {
         
-        return try LoginAuthResponse (
+        return try LoginAuthResponse (            
             token:       json => "access_token",
-            id:          "" // INFO: It's alright if not there
+            id:          0 // INFO: It's alright if not there
         )
     }
 }

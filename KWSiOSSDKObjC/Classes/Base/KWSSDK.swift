@@ -21,24 +21,6 @@ public class KWSSDK : NSObject{
         return KWSSDK._singletonInstance
     }
     
-    
-    //for obj c
-    public func getProvider (environment: KWSNetworkEnvironment,type: String) -> AnyObject {
-        var classFromParams = NSClassFromString(type)
-        switch classFromParams {
-        case is AuthProvider.Type:
-            return AuthProvider(environment: environment)
-        case is UsernameProvider.Type:
-            return UsernameProvider(environment: environment)
-        case is UserProvider.Type:
-            return UserProvider(environment: environment)
-        //todo other providers
-        default:
-            return KWSBaseError.ServiceError as AnyObject
-        }
-    }
-
-    //for swift
      static public func getService <T> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
         
         if value == AuthServiceProtocol.self {
@@ -57,5 +39,4 @@ public class KWSSDK : NSObject{
             return nil
         }
     }
-    
 }

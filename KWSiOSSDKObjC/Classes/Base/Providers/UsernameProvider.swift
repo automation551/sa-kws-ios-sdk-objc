@@ -33,12 +33,9 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
             } else {
                 completionHandler(nil,error)
             }
-            
         }
-        
     }
-    
-    
+
     public func getAppConfigDetails(environment: KWSNetworkEnvironment,
                                     completionHandler: @escaping (AppConfigWrapper?, Error?) -> ()){
         
@@ -54,11 +51,9 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
                 
                 if let getAppConfigResponseObject = parseTask.execute(request: parseRequest){
                     completionHandler(getAppConfigResponseObject, nil)
-                }else{
+                } else {
                     completionHandler(nil, KWSBaseError.JsonParsingError)
                 }
-                
-                
             }else{
                 if let errorResponse = getAppConfigNetworkResponse.error?.message {
                     
@@ -66,7 +61,6 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
                     let parseTask = JSONParseTask<ErrorResponse>()
                     let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     completionHandler(nil, mappedResponse)
-                    
                 } else {
                     completionHandler(nil, getAppConfigNetworkResponse.error)
                 }
@@ -74,12 +68,9 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
         }
     }
     
-    
-    
     public func fetchRandomUsernameFromBackend(environment: KWSNetworkEnvironment,
                                                appID: Int,
                                                completionHandler: @escaping (RandomUsername?, Error?) -> ()){
-        
         
         let getRandomUsernameNetworkRequest = RandomUsernameRequest(environment:environment,
                                                                     appID:appID)
@@ -87,7 +78,6 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
         networkTask.execute(request: getRandomUsernameNetworkRequest){ getRandomUsernameNetworkResponse in
             
             let responseString = getRandomUsernameNetworkResponse.response
-            
             if let json = responseString, getRandomUsernameNetworkResponse.error == nil{
                 
                 let parsedResponseString = responseString?.replacingOccurrences(of: "\"", with: "")
@@ -97,7 +87,6 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
                 } else {
                     completionHandler(RandomUsername(randomUsername: responseString), nil)
                 }
-                
             } else {
                 if let errorResponse = getRandomUsernameNetworkResponse.error?.message {
                     
@@ -105,21 +94,14 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
                     let parseTask = JSONParseTask<ErrorResponse>()
                     let mappedResponse = parseTask.execute(request: jsonParseRequest)
                     completionHandler(nil, mappedResponse)
-                    
                 } else {
                     completionHandler(nil, getRandomUsernameNetworkResponse.error)
                 }
             }
         }
-        
     }
     
-    public func verifiyUsername(username: String, completionHandler: @escaping (VerifiedUsernameModelProtocol?, Error?) -> ()) {
-        
+    public func verifiyUsername(username: String, completionHandler: @escaping (VerifiedUsernameModelProtocol?, Error?) -> ()) {        
         //not used
-        
     }
-    
 }
-
-

@@ -24,7 +24,6 @@ class User_GetUser_MappingTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func test_User_GetUserDetails_Mapping_ResponseSuccess() {
         
         var JSON: Any?
@@ -76,9 +75,7 @@ class User_GetUser_MappingTests: XCTestCase {
         expect(userDetailsResponse?.points?.pending).to(equal(1))
 
         expect(userDetailsResponse?.createdAt).to(equal("2018-01-19"))
-        
     }
-    
     
     func test_User_GetUserDetails_Mapping_ErrorResponse_NotFound() {
         
@@ -90,10 +87,6 @@ class User_GetUser_MappingTests: XCTestCase {
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
-        
     }
-
-
-
 }
 

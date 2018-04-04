@@ -24,9 +24,6 @@ public class TempAccessTokenRequest: BaseRequest{
             "grant_type": "client_credentials",
             "client_id": clientID,
             "client_secret": clientSecret
-        ]
-        
+        ]        
     }
-    
-    
 }

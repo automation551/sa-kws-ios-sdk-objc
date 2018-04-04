@@ -52,8 +52,6 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
             }
             
         }
-        
-        
     }
     
     public func triggerEvent(eventId: String, points: Int, userId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {
@@ -78,9 +76,5 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
         
         //TODO
         
-    }
-    
-    
-    
-    
+    }    
 }

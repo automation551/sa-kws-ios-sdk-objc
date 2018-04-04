@@ -15,7 +15,6 @@ import SAProtobufs
 
 class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
     
-    
     //class or data to test
     private var userService: UserActionsServiceProtocol!
     private var environment: KWSNetworkEnvironment!
@@ -37,8 +36,6 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
         
         //when
         self.userService = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: self.environment)
-        
-        
     }
     
     override func tearDown() {
@@ -70,7 +67,6 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
                                                     expect(error).to(beNil())
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -89,7 +85,6 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri ) , json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.userService.requestPermissions(permissions: self.badPermissions,
                                                 userId: self.goodUserId,
                                                 token: self.goodToken,
@@ -107,7 +102,6 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
                                                     
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -126,7 +120,6 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri ) , json(JSON!, status: 403))
         
         waitUntil { done in
-            
             self.userService.requestPermissions(permissions: self.goodPermissions,
                                                 userId: self.badUserId,
                                                 token: self.goodToken,
@@ -139,7 +132,6 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).errorMessage).to(equal("operation not supported for this user"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
@@ -158,7 +150,6 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri ) , json(JSON!, status: 404))
         
         waitUntil { done in
-            
             self.userService.requestPermissions(permissions: self.goodPermissions,
                                                 userId: self.goodUserId,
                                                 token: self.goodToken,
@@ -171,9 +162,7 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
                                                     expect((error as! ErrorResponse).errorMessage).to(equal("permissions not found: mock_permission"))
                                                     
                                                     done()
-                                                    
             })
         }
     }
-    
 }

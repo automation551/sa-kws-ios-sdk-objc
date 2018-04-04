@@ -12,7 +12,6 @@ import KWSiOSSDKObjC
 
 class UserDetailsTests: XCTestCase {
 
-
     let goodId: NSNumber = 123
     let badId: NSNumber = 321
     
@@ -29,7 +28,6 @@ class UserDetailsTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func testLoginEquality() {
         let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
         let bar = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
@@ -45,7 +43,6 @@ class UserDetailsTests: XCTestCase {
     }
     
     // MARK: Objective-C
-    
     func testSameEqualityBetweenObjcAndSwift() {
         let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
         let bar = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: badId)
@@ -62,6 +59,4 @@ class UserDetailsTests: XCTestCase {
         
         expect(foo.isEqual(bar)).to(beFalse())
     }
-
-
 }

@@ -10,21 +10,16 @@ import SAProtobufs
 
 public class LoggedUser : NSObject, LoggedUserModelProtocol{
     
-    public var token: String
-    public var tokenData: TokenData
+    public var token:       String
+    public var tokenData:   TokenData
+    public var id:          AnyHashable
     
-    public var id: AnyHashable
-    
-    public required init(token: String,
-                tokenData: TokenData,
-                id: AnyHashable) {
+    public required init(token:     String,
+                         tokenData: TokenData,
+                         id:        AnyHashable) {
         
         self.token = token
         self.tokenData = tokenData
         self.id = id
     }
-    
-    
-    
-    
 }

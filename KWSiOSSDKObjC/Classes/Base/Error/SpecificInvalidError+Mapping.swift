@@ -13,11 +13,10 @@ extension SpecificInvalidError: Decodable {
     
     public static func decode(_ json: Any) throws -> SpecificInvalidError {
         
-        return try SpecificInvalidError (
+        return try SpecificInvalidError (            
             code:               try json => "code",
             codeMeaning:        try json => "codeMeaning",
             errorMessage:       try json => "errorMessage"
-            
         )
     }
 }

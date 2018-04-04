@@ -12,7 +12,6 @@ import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
 
-
 class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
     
     /*
@@ -37,8 +36,6 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
         
         //when
         resource = UsernameProvider.init(environment: self.environment)
-        
-        
     }
     
     override func tearDown() {
@@ -60,7 +57,6 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
         stub(http(.get, uri: uri), json(JSON!))
         
         waitUntil { done in
-
             self.resource.fetchRandomUsernameFromBackend(environment: self.environment,appID: self.goodAppID, completionHandler: { response, error in
 
                 //then
@@ -73,11 +69,8 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
 
                 done()
             })
-
         }
-        
     }
-    
     
     func test_RandomUsername_DoRandomUsernameFetch_NotFound_Response(){
         
@@ -106,9 +99,6 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
                 
                 done()
             })
-            
         }
-        
     }
-    
 }

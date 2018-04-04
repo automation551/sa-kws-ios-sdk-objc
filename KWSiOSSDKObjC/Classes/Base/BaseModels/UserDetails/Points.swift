@@ -8,7 +8,6 @@
 import Foundation
 import SAProtobufs
 
-@objc(KWSSwiftPoints)
 public final class Points: NSObject, PointsModelProtocols {
     
     public var pending:         Int?
@@ -17,40 +16,29 @@ public final class Points: NSObject, PointsModelProtocols {
     public var balance:         Int?
     public var inApp:           Int?
 
-    public required init(pending:   NSNumber? = nil,
-                         received:  NSNumber? = nil,
-                         total:     NSNumber? = nil,
-                         balance:   NSNumber? = nil,
-                         inApp:     NSNumber? = nil) {
+    public required init(pending:   Int? = nil,
+                         received:  Int? = nil,
+                         total:     Int? = nil,
+                         balance:   Int? = nil,
+                         inApp:     Int? = nil) {
 
-        self.pending = pending?.intValue
-        self.received = received?.intValue
-        self.total = total?.intValue
-        self.balance = balance?.intValue
-        self.inApp = inApp?.intValue
+        self.pending = pending
+        self.received = received
+        self.total = total
+        self.balance = balance
+        self.inApp = inApp
 
-    }
-    
-    public enum CodingKeys: String, CodingKey {
-        
-        //to encode
-        case pending
-        case received
-        case total
-        case balance
-        case inApp
     }
     
     // MARK: - Equatable
     public static func ==(lhs: Points, rhs: Points) -> Bool {
         let areEqual = lhs.inApp == rhs.inApp
-        
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? Points else { return false }
-        return self.inApp == object.inApp
+        return self == object
     }
     
     public override var hash: Int {

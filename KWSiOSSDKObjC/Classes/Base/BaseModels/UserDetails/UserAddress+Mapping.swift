@@ -23,19 +23,3 @@ extension UserAddress: Decodable {
         )
     }
 }
-
-
-extension UserAddress: Encodable {
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: UserAddress.CodingKeys.self)
-        
-        try container.encode(street, forKey: .street)
-        try container.encode(city, forKey: .city)
-        try container.encode(postCode, forKey: .postCode)
-        try container.encode(country, forKey: .country)
-        try container.encode(countryCode, forKey: .countryCode)
-        try container.encode(countryName, forKey: .countryName)
-        
-    }
-}

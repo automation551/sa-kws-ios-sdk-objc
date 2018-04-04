@@ -15,12 +15,7 @@ public class AppConfigRequest: BaseRequest {
         
         super.init(environment: environment)
         
-        self.endpoint = "v1/apps/config"
-        
-        self.query = [
-            "oauthClientId": clientID
-        ]
-        
-        
+        self.endpoint = "v1/apps/config"        
+        self.query = ["oauthClientId": clientID]
     }
 }

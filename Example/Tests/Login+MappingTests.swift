@@ -24,7 +24,6 @@ class Login_MappingTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func test_Login_Mapping_ResponseSuccess() {
         
         var JSON: Any?
@@ -34,7 +33,6 @@ class Login_MappingTests: XCTestCase {
         
         expect(loginResponse).toNot(beNil())
         expect(loginResponse?.token).to(equal("good_token"))
-        
     }
     
    
@@ -48,7 +46,6 @@ class Login_MappingTests: XCTestCase {
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.errorCode).to(equal("invalid_client"))
         expect(errorResponse?.error).to(equal("Client credentials are invalid"))
-        
     }
     
     func test_Login_Mapping_ErrorResponse_BadUserCredentials(){
@@ -61,9 +58,7 @@ class Login_MappingTests: XCTestCase {
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.errorCode).to(equal("invalid_grant"))
         expect(errorResponse?.error).to(equal("User credentials are invalid"))
-        
     }
-    
     
     func test_Login_Mapping_ErrorResponse_NotFound() {
         
@@ -75,7 +70,5 @@ class Login_MappingTests: XCTestCase {
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
-        
     }
-    
 }

@@ -8,15 +8,11 @@
 import Foundation
 import SAProtobufs
 
-@objc(KWSAppConfigResponse)
 public final class AppConfigWrapper: NSObject, AppConfigWrapperModelProtocol {
     
     public var app: AppConfigModelProtocol
     
     public required init(app: AppConfig) {
-        
-        self.app = app
-        
+        self.app = app        
     }
-
 }

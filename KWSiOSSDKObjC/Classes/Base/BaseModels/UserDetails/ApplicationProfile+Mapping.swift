@@ -13,27 +13,11 @@ extension ApplicationProfile: Decodable {
     
     public static func decode(_ json: Any) throws -> ApplicationProfile {
         
-        return try ApplicationProfile (
-            
-            customField1:             try json =>? "customField1" as? NSNumber,
-            customField2:             try json =>? "customField2" as? NSNumber,
-            avatarId:                 try json =>? "avatarId" as? NSNumber,
+        return try ApplicationProfile (            
+            customField1:             try json =>? "customField1",
+            customField2:             try json =>? "customField2",
+            avatarId:                 try json =>? "avatarId",
             name:                     try json =>? "username"
-            
         )
-    }
-}
-
-
-extension ApplicationProfile: Encodable {
-    
-    public func encode(to encoder: Encoder) throws {
-        
-        var container = encoder.container(keyedBy: ApplicationProfile.CodingKeys.self)
-        
-        try container.encode(customField1, forKey: .customField1)
-        try container.encode(customField2, forKey: .customField1)
-        try container.encode(avatarId, forKey: .customField1)
-        
     }
 }

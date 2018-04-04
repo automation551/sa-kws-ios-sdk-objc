@@ -33,7 +33,6 @@ class User_UpdateUser_ParentEmail_MappingTests: XCTestCase {
         
         expect(userParentEmailResponse).toNot(beNil())
         expect(userParentEmailResponse?.emailUpdated).to(beTrue())
-        
     }
     
     func test_User_UpdateParentEmail_Mapping_Email_Already_Set_Response() {
@@ -51,7 +50,6 @@ class User_UpdateUser_ParentEmail_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.parentEmail?.code).to(equal(10))
         expect(errorResponse?.invalid?.parentEmail?.codeMeaning).to(equal("conflict"))
         expect(errorResponse?.invalid?.parentEmail?.errorMessage).to(equal("parentEmail already set"))
-        
     }
 
     func test_User_UpdateParentEmail_Mapping_Invalid_Email_Response() {
@@ -69,7 +67,5 @@ class User_UpdateUser_ParentEmail_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.parentEmail?.code).to(equal(7))
         expect(errorResponse?.invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
         expect(errorResponse?.invalid?.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
-        
     }
-    
 }

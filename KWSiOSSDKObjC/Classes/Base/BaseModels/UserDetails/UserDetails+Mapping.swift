@@ -14,13 +14,12 @@ extension UserDetails: Decodable {
     public static func decode(_ json: Any) throws -> UserDetails {
         
         return try UserDetails (
-
             firstName:              try json =>? "firstName",
             lastName:               try json =>? "lastName",
             dateOfBirth:            try json => "dateOfBirth",
             gender:                 try json =>? "gender",
             email:                  try json =>? "email",
-            hasSetParentEmail:      try json =>? "hasSetParentEmail" as? NSNumber,
+            hasSetParentEmail:      try json =>? "hasSetParentEmail",
             createdAt:              try json => "createdAt",
             address:                try json =>? "address",
             applicationProfile:     try json =>? "applicationProfile",
@@ -29,7 +28,6 @@ extension UserDetails: Decodable {
             id:                     try json =>? "id" as! AnyHashable,
             name:                   try json =>? "username",
             language:               try json =>? "language"
-            
         )
     }
 }

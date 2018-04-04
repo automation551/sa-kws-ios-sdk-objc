@@ -10,7 +10,6 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-
 class RandomUsernameTests: XCTestCase {
 
     let goodRandomUsername: String = "good_random_username"
@@ -58,5 +57,4 @@ class RandomUsernameTests: XCTestCase {
         
         expect(foo.isEqual(bar)).to(beFalse())
     }
-
 }

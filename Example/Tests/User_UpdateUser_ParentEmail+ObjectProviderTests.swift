@@ -15,7 +15,6 @@ import SAProtobufs
 
 class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
     
-    
     //class or data to test
     private var userService: UserServiceProtocol!
     private var environment: KWSNetworkEnvironment!
@@ -35,8 +34,6 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         
         //when
         self.userService = KWSSDK.getService(value: UserServiceProtocol.self, environment: self.environment)
-        
-        
     }
     
     override func tearDown() {
@@ -82,7 +79,6 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         stub(everything , json(JSON!, status: 409))
         
         waitUntil { done in
-            
             self.userService.updateUser(details: mapUserDetails,
                                                token: self.token,
                                                completionHandler: { error in
@@ -113,7 +109,6 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         stub(everything , json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.userService.updateUser(details: mapUserDetails,
                                                token: self.token,
                                                completionHandler: { error in
@@ -128,11 +123,7 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
                                                 expect((error as! ErrorResponse).invalid?.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
                                                 
                                                 done()
-                                                
             })
         }
     }
-    
-    
-   
 }

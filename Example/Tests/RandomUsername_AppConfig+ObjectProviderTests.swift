@@ -12,7 +12,6 @@ import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
 
-
 class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
     
     /*
@@ -21,7 +20,6 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
      In order to keep each step of create user tested individually, this test uses the UsernameProvider resource
      instead of using RandomUsernameService
      */
-    
     
     // class or data to test
     private var resource: UsernameProvider!
@@ -35,8 +33,6 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         
         //when
         resource = UsernameProvider.init(environment: self.environment)
-        
-        
     }
     
     override func tearDown() {
@@ -70,9 +66,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 
                 done()
             })
-
         }
-        
     }
     
     func test_RandomUsername_AppConfig_NilOAuthClient_Response(){
@@ -87,7 +81,6 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         stub(http(.get, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
                 
                 //then
@@ -122,7 +115,6 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         stub(http(.get, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
             self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
                 
                 //then
@@ -138,11 +130,8 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 expect((error as! ErrorResponse).invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
                 done()
             })
-            
         }
-        
     }
-    
     
     func test_RandomUsername_AppConfig_AppNotFound_Response(){
         
@@ -170,10 +159,6 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 
                 done()
             })
-            
         }
-        
     }
-    
-    
 }

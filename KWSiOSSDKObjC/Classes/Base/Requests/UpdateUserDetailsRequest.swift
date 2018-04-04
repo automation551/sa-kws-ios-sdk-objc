@@ -19,7 +19,6 @@ public class UpdateUserDetailsRequest: BaseRequest {
         
         self.method = .PUT
         self.endpoint = "v1/users/\(userId)"
-        self.body = userDetailsMap
-        
+        self.body = userDetailsMap        
     }
 }

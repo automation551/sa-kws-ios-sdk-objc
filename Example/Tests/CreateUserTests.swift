@@ -10,9 +10,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-
 class CreateUserTests: XCTestCase {
-    
     
     let goodToken: String = "good_token"
     let badToken: String = "bad_token"
@@ -30,7 +28,6 @@ class CreateUserTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func testCreateUserEquality() {
         let foo = AuthUserResponse(id: goodID,token: goodToken)
         let bar = AuthUserResponse(id: goodID, token: goodToken)
@@ -45,9 +42,7 @@ class CreateUserTests: XCTestCase {
         expect(foo).toNot(equal(bar))
     }
     
-    
-    // MARK: Objective-C
-    
+    // MARK: Objective-C    
     func testSameEqualityBetweenObjcAndSwift() {
         let foo = AuthUserResponse(id: goodID, token: goodToken)
         let bar = AuthUserResponse(id: badID, token: badToken)
@@ -64,5 +59,4 @@ class CreateUserTests: XCTestCase {
         
         expect(foo.isEqual(bar)).to(beFalse())
     }
-    
 }

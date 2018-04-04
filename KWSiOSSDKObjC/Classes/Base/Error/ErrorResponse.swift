@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import SAMobileBase
 
-@objc(KWSErrorResponse)
 public final class ErrorResponse: NSObject, Error {
     
     public let code:            Int?
@@ -20,44 +19,18 @@ public final class ErrorResponse: NSObject, Error {
     public let error:           String?
     
     // MARK: - Initialization
-    
-    public required init(
+    public required init(code:          Int? = -1,
+                        codeMeaning:    String? = "",
+                        errorMessage:   String? = "",
+                        invalid:        InvalidError? = InvalidError(),
+                        errorCode:      String? = "",
+                        error:          String? = "") {
         
-        code:           Int?            = -1,
-        codeMeaning:    String?         = "",
-        errorMessage:   String?         = "",
-        invalid:        InvalidError?   = InvalidError(),
-        errorCode:      String?         = "",
-        error:          String?         = ""
-        
-        ) {
-        
-        self.code           =   code
-        self.codeMeaning    =   codeMeaning
-        self.errorMessage   =   errorMessage
-        self.invalid        =   invalid
-        self.errorCode      =   errorCode
-        self.error          =   error
-        
+        self.code = code
+        self.codeMeaning = codeMeaning
+        self.errorMessage = errorMessage
+        self.invalid = invalid
+        self.errorCode = errorCode
+        self.error = error
     }
-    
 }
-
-//This will come back
-/**
-extension ErrorResponse {
-    
-    func mapErrorResponse(error: PrintableErrorProtocol) -> Error {
-        let parseTask = ParseJsonTask<ErrorResponse>()
-        let error = parseTask.execute(input: error.message)
-        
-        switch (error) {
-        case .success(let serverError):
-            return serverError
-            break
-        case .error(_):
-            return error as! Error
-            break
-        }
-    }
-}**/

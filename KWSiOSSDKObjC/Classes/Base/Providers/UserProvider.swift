@@ -12,7 +12,6 @@ import SAProtobufs
 
 public class UserProvider: NSObject, UserServiceProtocol {
   
-    
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask
     
@@ -39,8 +38,7 @@ public class UserProvider: NSObject, UserServiceProtocol {
                 } else {
                     completionHandler(nil, KWSBaseError.JsonParsingError)
                 }
-                
-            }else{
+            } else {
                 if let errorResponse = getUserDetailsNetworkResponse.error?.message {
                     
                     let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
@@ -53,13 +51,12 @@ public class UserProvider: NSObject, UserServiceProtocol {
                 }
             }
         }
-        
     }
     
     public func updateUser(details: [String:Any], token: String, completionHandler: @escaping (Error?) -> ()) {
         
         //this will be improved
-        let userId = self.getTheTokenData(token: token)?.userId?.intValue ?? 0
+        let userId = self.getTheTokenData(token: token)?.userId ?? 0
         
         let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
                                                                        userDetailsMap: details ,                                                                    
@@ -101,9 +98,6 @@ public class UserProvider: NSObject, UserServiceProtocol {
             
         } else {
             return nil
-        }
-        
+        }        
     }
-    
-    
 }

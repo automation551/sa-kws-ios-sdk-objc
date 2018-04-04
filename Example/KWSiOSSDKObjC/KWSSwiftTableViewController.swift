@@ -32,31 +32,21 @@ class KWSSwiftTableViewController: UITableViewController {
                 ["Random Username", "Create User", "Login User", "Update User", "Get User Details"]
     ]
     
-    
-    
     // MARK: - TABLE VIEW STUFF
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         let textForSection = Array(functionalitiesDict)[section].key
-        
         return "\(textForSection)"
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return functionalitiesDict.count
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         let items = Array(functionalitiesDict)[section].value
         return items.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -106,18 +96,14 @@ class KWSSwiftTableViewController: UITableViewController {
         default:
             break
         }
-        
     }
-    
     //END OF TABLE VIEW STUFF ----------------------------------------------------------------------//
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         kUserKWSNetworkEnvironment = UserKWSNetworkEnvironment(domain: API, appID: CLIENT_SECRET, mobileKey: CLIENT_ID)
-        
     }
-    
     
     func createUser(){
         
@@ -145,9 +131,7 @@ class KWSSwiftTableViewController: UITableViewController {
             } else {
                 print("Something went wrong for create user \(String(describing: error)))")
             }
-            
         }
-        
     }
     
     func loginUser(){
@@ -172,11 +156,8 @@ class KWSSwiftTableViewController: UITableViewController {
             } else {
                 print("Something went wrong for login \(String(describing: error)))")
             }
-            
         }
-        
     }
-    
     
     func randomUserName(){
         
@@ -261,31 +242,25 @@ class KWSSwiftTableViewController: UITableViewController {
         ]
         
         if let cachedUser = getLoggedUser(){
-            
             user?.updateUser(details: map, token: cachedUser.token) { (error) in
-                
                 if (error == nil) {
                     print("User updated!")
                 } else {
                     print("Something went wrong for update user:  \(String(describing: error))")
                 }
-                
             }
-            
         } else {
             print("No valid user cached!!!")
         }
-        
     }
     
     func getUserDetails() {
         
         let user = KWSSDK.getService(value: UserServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
-        
+       
         if let cachedUser = getLoggedUser(){
             
             let userId : Int = cachedUser.id as? Int ?? 0
-            
             user?.getUser(userId: userId, token: cachedUser.token) { userDetails, error in
                 
                 if (userDetails != nil) {
@@ -293,18 +268,15 @@ class KWSSwiftTableViewController: UITableViewController {
                 } else {
                     print("Something went wrong for get user details:  \(String(describing: error))")
                 }
-                
             }
         } else {
             print("No valid user cached!!!")
         }
-        
     }
     
     func saveUser(user: LoggedUserModelProtocol) {
         
         //TODO this needs to use Session Provider (wip)
-        
         kUser = user
         
     }
@@ -340,7 +312,4 @@ class KWSSwiftTableViewController: UITableViewController {
         
     }
     // end of helper methods -----------------------------------
-    
-    
-    
 }
