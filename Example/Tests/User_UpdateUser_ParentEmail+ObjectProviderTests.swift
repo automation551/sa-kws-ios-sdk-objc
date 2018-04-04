@@ -78,15 +78,7 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_already_set_response")
         
-        let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetailsMap: mapUserDetails,
-                                               userId: goodUserId,
-                                               token: token)
-        
         //when
-        let uri = "\(request.environment.domain + request.endpoint)"
-//        stub(http(.put, uri: uri ) , json(JSON!, status: 409))
-        
         stub(everything , json(JSON!, status: 409))
         
         waitUntil { done in
@@ -117,14 +109,8 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_invalid_email_response")
         
-        let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetailsMap: mapUserDetails,
-                                               userId: goodUserId,
-                                               token: token)
-        
         //when
-        let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.put, uri: uri ) , json(JSON!, status: 400))
+        stub(everything , json(JSON!, status: 400))
         
         waitUntil { done in
             

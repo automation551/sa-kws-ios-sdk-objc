@@ -17,7 +17,7 @@ class LoginTests: XCTestCase {
     let badToken: String = "bad_token"
     
     let goodId: Int = 123
-    let badId: Int = 123
+    let badId: Int = 321
     
     override func setUp() {
         super.setUp()

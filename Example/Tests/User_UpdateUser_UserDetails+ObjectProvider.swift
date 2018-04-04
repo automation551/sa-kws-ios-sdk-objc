@@ -57,14 +57,9 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_detail_success_response")
         
-        let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetailsMap: mapUserDetails,
-                                               userId: goodUserId,
-                                               token: token)
         
         //when
-        let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.put, uri: uri ) , json(JSON!, status: 204))
+        stub(everything , json(JSON!, status: 204))
         
         waitUntil { done in
             
@@ -91,15 +86,10 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
                                                              "countryName" : "United Kingdom"] ]
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_detail_permission_not_granted_response")
-        
-        let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetailsMap: mapUserDetails,
-                                               userId: goodUserId,
-                                               token: token)
+
         
         //when
-        let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.put, uri: uri ) , json(JSON!, status: 403))
+        stub(everything, json(JSON!, status: 403))
         
         waitUntil { done in
             
@@ -119,21 +109,16 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
     
     func test_User_UpdateUserDetails_Address_Fails_Complete_Response(){
         
+        //given
         let mapUserDetails : [String : Any] = ["firstName" : "John",
                                                "lastName" : "Doe",
                                                "address" : [ "" : ""] ]
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_details_address_fails_response")
         
-        //given
-        let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetailsMap: mapUserDetails,
-                                               userId: goodUserId,
-                                               token: token)
         
         //when
-        let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.put, uri: uri ) , json(JSON!, status: 400))
+        stub(everything , json(JSON!, status: 400))
         
         waitUntil { done in
             
