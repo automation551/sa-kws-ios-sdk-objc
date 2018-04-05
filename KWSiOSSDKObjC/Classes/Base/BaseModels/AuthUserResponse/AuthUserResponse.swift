@@ -22,7 +22,7 @@ public final class AuthUserResponse: NSObject, LoggedUserModelProtocol {
     
     // MARK: - Equatable
     public static func ==(lhs: AuthUserResponse, rhs: AuthUserResponse) -> Bool {
-        let areEqual = lhs.id == rhs.id
+        let areEqual = lhs.id == rhs.id && lhs.token == rhs.token
         return areEqual
     }
     

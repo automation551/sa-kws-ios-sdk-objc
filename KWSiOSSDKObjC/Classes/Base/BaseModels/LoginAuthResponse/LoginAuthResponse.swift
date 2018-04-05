@@ -23,7 +23,7 @@ public final class LoginAuthResponse: NSObject, LoggedUserModelProtocol {
     
     // MARK: - Equatable
     public static func ==(lhs: LoginAuthResponse, rhs: LoginAuthResponse) -> Bool {
-        let areEqual = lhs.id == rhs.id
+        let areEqual = lhs.id == rhs.id && lhs.token == rhs.token
         return areEqual
     }
     

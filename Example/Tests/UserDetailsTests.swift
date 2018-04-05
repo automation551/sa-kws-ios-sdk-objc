@@ -11,41 +11,32 @@ import Nimble
 import KWSiOSSDKObjC
 
 class UserDetailsTests: XCTestCase {
-
-    let goodId: NSNumber = 123
-    let badId: NSNumber = 321
-    
-    let dob : String = "2012-03-03"
-    let createdAt : String = "2018-01-02"
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testLoginEquality() {
-        let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
-        let bar = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
+    func testUserDetailsEquality() {
+        let foo = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 123)
+        let bar = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 123)
         
         expect(foo).to(equal(bar))
     }
     
-    func testLoginNotEquality() {
-        let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
-        let bar = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: badId)
+    func testUserDetailsNotEquality() {
+        let foo = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 123)
+        let bar = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 321)
         
         expect(foo).toNot(equal(bar))
     }
     
-    // MARK: Objective-C
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
-        let bar = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: badId)
+        let foo = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 123)
+        let bar = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 321)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -53,8 +44,22 @@ class UserDetailsTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = UserDetails(dateOfBirth: dob, createdAt: createdAt, id: goodId)
+    func testUserDetailsHashIsEqual() {
+        let foo = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 123)
+        let bar = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 123)
+        
+        expect(foo.hash).to(equal(bar.hash))
+    }
+    
+    func testUserDetailsHashIsNotEqual() {
+        let foo = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 123)
+        let bar = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 321)
+        
+        expect(foo.hash).toNot(equal(bar.hash))
+    }
+    
+    func testObjcUserDetailsNotEqualityWithDifferentClassAndSameIdentifier() {
+         let foo = UserDetails(dateOfBirth: "2012-03-03", createdAt: "2018-01-02", id: 123)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

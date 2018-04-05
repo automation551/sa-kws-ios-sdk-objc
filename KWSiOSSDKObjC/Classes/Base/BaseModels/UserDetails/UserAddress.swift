@@ -34,16 +34,16 @@ public final class UserAddress: NSObject, AddressModelProtocol {
     
     // MARK: - Equatable
     public static func ==(lhs: UserAddress, rhs: UserAddress) -> Bool {
-        let areEqual = lhs.street == rhs.street
+        
+        let areEqual = lhs.city == rhs.city
+                && lhs.postCode == rhs.postCode
+                && lhs.countryCode == rhs.countryCode
+    
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? UserAddress else { return false }
         return self == object
-    }
-    
-    public override var hash: Int {
-        return street!.hashValue
     }
 }

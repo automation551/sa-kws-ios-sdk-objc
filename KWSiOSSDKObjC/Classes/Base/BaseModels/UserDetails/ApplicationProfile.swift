@@ -29,7 +29,7 @@ public final class ApplicationProfile: NSObject, AppProfileModelProtocol {
 
     // MARK: - Equatable
     public static func ==(lhs: ApplicationProfile, rhs: ApplicationProfile) -> Bool {
-        let areEqual = lhs.name == rhs.name
+        let areEqual = lhs.name == rhs.name && lhs.avatarId == rhs.avatarId
         return areEqual
     }
     

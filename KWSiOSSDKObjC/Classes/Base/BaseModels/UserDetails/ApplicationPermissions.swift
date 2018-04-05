@@ -49,16 +49,15 @@ public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
 
     // MARK: - Equatable
     public static func ==(lhs: ApplicationPermissions, rhs: ApplicationPermissions) -> Bool {
-        let areEqual = lhs.email == rhs.email
+        let areEqual = lhs.firstName == rhs.firstName
+        && lhs.lastName == rhs.lastName
+        && lhs.address == rhs.address
+        && lhs.email == rhs.email
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {        
         guard let object = object as? ApplicationPermissions else { return false }
         return self == object
-    }
-    
-    public override var hash: Int {
-        return email!.hashValue
     }
 }

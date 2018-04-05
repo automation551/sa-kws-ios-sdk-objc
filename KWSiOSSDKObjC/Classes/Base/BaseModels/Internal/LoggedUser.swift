@@ -22,4 +22,19 @@ public class LoggedUser : NSObject, LoggedUserModelProtocol{
         self.tokenData = tokenData
         self.id = id
     }
+    
+    // MARK: - Equatable
+    public static func ==(lhs: LoggedUser, rhs: LoggedUser) -> Bool {
+        let areEqual = lhs.id == rhs.id
+        return areEqual
+    }
+    
+    public override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? LoggedUser else { return false }
+        return self == object
+    }
+    
+    public override var hash: Int {
+        return id.hashValue
+    }
 }

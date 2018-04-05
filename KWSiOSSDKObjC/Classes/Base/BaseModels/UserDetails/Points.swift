@@ -31,7 +31,11 @@ public final class Points: NSObject, PointsModelProtocols {
     
     // MARK: - Equatable
     public static func ==(lhs: Points, rhs: Points) -> Bool {
-        let areEqual = lhs.inApp == rhs.inApp
+        let areEqual = lhs.pending == rhs.pending
+        && lhs.received == rhs.received
+        && lhs.total == rhs.total
+        && lhs.balance == rhs.balance
+        && lhs.inApp == rhs.inApp
         return areEqual
     }
     

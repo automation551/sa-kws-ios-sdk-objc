@@ -297,7 +297,8 @@ class KWSSwiftTableViewController: UITableViewController {
             let parseJsonTask = JSONParseTask<TokenData>()
             let metadata = parseJsonTask.execute(request: parseJsonReq)
             
-            return metadata            
+            return metadata
+            
         } else {
             return nil
         }
