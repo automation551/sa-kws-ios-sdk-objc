@@ -10,7 +10,7 @@ import Foundation
 import SAMobileBase
 
 
-@objc public class UtilsHelpers : NSObject{
+public class UtilsHelpers : NSObject{
     
     static let _singletonInstance = UtilsHelpers()
     public override init() {
@@ -23,15 +23,14 @@ import SAMobileBase
         
     }
     
-    
-    public func getKWSMetadata (token: String) -> MetadataKWS? {
+    public func getTokenData (token: String) -> TokenData? {
         
         let base64req = ParseBase64Request(withBase64String: token)
         let base64Task = ParseBase64Task()
         let metadataJson = base64Task.execute(request: base64req)
         
         let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-        let parseJsonTask = JSONParseTask<MetadataKWS>()
+        let parseJsonTask = JSONParseTask<TokenData>()
         let metadata = parseJsonTask.execute(request: parseJsonReq)
         
         return metadata
@@ -53,7 +52,6 @@ import SAMobileBase
         default:
             return ""
         }
-        
     }
     
     private func localeForCountry(countryFullName : String) -> String {
@@ -66,7 +64,6 @@ import SAMobileBase
             }
         }
         return locales
-    }
-    
+    }    
 }
 

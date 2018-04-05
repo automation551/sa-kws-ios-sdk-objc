@@ -7,10 +7,11 @@
 
 import Foundation
 import SAMobileBase
+import SAProtobufs
 
 
-@objc public class UserProvider: NSObject, UserService{
-
+public class UserProvider: NSObject, UserServiceProtocol {
+  
     var environment: KWSNetworkEnvironment
     var networkTask: NetworkTask
     
@@ -19,7 +20,7 @@ import SAMobileBase
         self.networkTask = networkTask
     }
     
-    public func getUserDetails(userId: NSInteger, token: String, callback: @escaping (UserDetails?, Error?) -> ()) {
+    public func getUser(userId: Int, token: String, completionHandler: @escaping (UserDetailsModelProtocol?, Error?) -> ()) {
         
         let getUserDetailsNetworkRequest = UserDetailsRequest(environment: environment,
                                                               userId: userId,
@@ -33,83 +34,70 @@ import SAMobileBase
                 let parseTask = JSONParseTask<UserDetails>()
                 
                 if let getUserDetailsResponseObject = parseTask.execute(request: parseRequest){
-                    callback(getUserDetailsResponseObject, nil)
+                    completionHandler(getUserDetailsResponseObject, nil)
                 } else {
-                    callback(nil, KWSBaseError.JsonParsingError)
+                    completionHandler(nil, KWSBaseError.JsonParsingError)
                 }
-                
-            }else{
+            } else {
                 if let errorResponse = getUserDetailsNetworkResponse.error?.message {
                     
                     let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
                     let parseTask = JSONParseTask<ErrorResponse>()
                     let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    callback(nil, mappedResponse)
+                    completionHandler(nil, mappedResponse)
                     
                 } else {
-                    callback(nil, getUserDetailsNetworkResponse.error)
+                    completionHandler(nil, getUserDetailsNetworkResponse.error)
                 }
             }
         }
     }
     
-    
-    public func updateUserDetails(userId: Int, token: String, userDetails: UserDetails, callback: @escaping (Bool, Error?) -> ()) {
+    public func updateUser(details: [String:Any], token: String, completionHandler: @escaping (Error?) -> ()) {
+        
+        //this will be improved
+        let userId = self.getTheTokenData(token: token)?.userId ?? 0
         
         let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
-                                                                        userDetails: userDetails,
-                                                                        userId: userId,
-                                                                        token: token)
+                                                                       userDetailsMap: details ,                                                                    
+                                                                       userId: userId,
+                                                                       token: token)
         
         networkTask.execute(request: updateUserDetailsNetworkRequest){ updateUserDetailsNetworkResponse in
             
             if (updateUserDetailsNetworkResponse.success && updateUserDetailsNetworkResponse.error == nil) {
-                callback(true, nil)
+                completionHandler( nil)
             } else {
                 if let errorResponse = updateUserDetailsNetworkResponse.error?.message {
                     
                     let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
                     let parseTask = JSONParseTask<ErrorResponse>()
                     let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    callback(false, mappedResponse)
+                    completionHandler(mappedResponse)
                     
                 } else {
-                    callback(false, updateUserDetailsNetworkResponse.error)
+                    completionHandler(updateUserDetailsNetworkResponse.error)
                 }
             }
             
         }
-        
     }
     
-    public func requestPermissions(userId: Int, token: String, permissionsList: [String], callback: @escaping (Bool, Error?) -> ()) {
+    public func getTheTokenData (token: String) -> TokenData? {
         
-        let requestPermissionsNetworkRequest = PermissionsRequest(environment: environment,
-                                                                  userId: userId,
-                                                                  token: token,
-                                                                  permissionsList: permissionsList)
+        let base64req = ParseBase64Request(withBase64String: token)
+        let base64Task = ParseBase64Task()
         
-        networkTask.execute(request: requestPermissionsNetworkRequest) { requestPermissionsNetworkResponse in
+        if let metadataJson = base64Task.execute(request: base64req){
             
-            if (requestPermissionsNetworkResponse.success && requestPermissionsNetworkResponse.error == nil) {
-                callback(true, nil)
-            } else {
-                if let errorResponse = requestPermissionsNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    callback(false, mappedResponse)
-                    
-                } else {
-                    callback(false, requestPermissionsNetworkResponse.error)
-                }
-            }
+            let parseJsonReq = JsonParseRequest(withRawData: metadataJson)
+            let parseJsonTask = JSONParseTask<TokenData>()
+            let metadata = parseJsonTask.execute(request: parseJsonReq)
             
-        }
-        
-        
+            return metadata
+            
+        } else {
+            return nil
+        }        
     }
-
-    
 }

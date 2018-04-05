@@ -10,7 +10,6 @@ import SAMobileBase
 
 public class PermissionsRequest: BaseRequest {
     
-    
     public init(environment: KWSNetworkEnvironment,
                 userId: Int,
                 token: String,

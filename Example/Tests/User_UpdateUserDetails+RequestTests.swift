@@ -19,11 +19,13 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
     private var env: KWSNetworkEnvironment!
     private var userId: Int = 123
     private var token: String!
-    private var userDetails: UserDetails!
+    
     private var method: NetworkMethod!
     private var endpoint: String!
     
     private var goodUsername = "good_username"
+    
+    private var mapUserDetails : [String : Any]!
     
     override func setUp() {
         super.setUp()
@@ -38,10 +40,17 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
         
         //when
         
-        userDetails = UserDetails(id: userId as NSNumber, username: goodUsername)
+        mapUserDetails = ["firstName" : "John",
+                          "lastName" : "Doe",
+                          "address" : [ "street" : "Street One",
+                                        "city" : "London",
+                                        "postCode" : "EA12 34Z",
+                                        "country" : "United Kingdom",
+                                        "countryCode" : "UK",
+                                        "countryName" : "United Kingdom"] ]
         
         request = UpdateUserDetailsRequest.init(environment: env,
-                                                userDetails: userDetails,
+                                                userDetailsMap: mapUserDetails,
                                                 userId: userId,
                                                 token:token)
         
@@ -57,7 +66,7 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
         //then
         expect(self.userId).toNot(beNil())
         expect(self.token).toNot(beNil())
-        expect(self.userDetails).toNot(beNil())
+        expect(self.mapUserDetails).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
     }

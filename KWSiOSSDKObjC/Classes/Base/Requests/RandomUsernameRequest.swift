@@ -15,7 +15,6 @@ public class RandomUsernameRequest: BaseRequest {
         
         super.init(environment: environment)
         
-        self.endpoint = "v2/apps/\(appID)/random-display-name"
-        
+        self.endpoint = "v2/apps/\(appID)/random-display-name"        
     }
 }

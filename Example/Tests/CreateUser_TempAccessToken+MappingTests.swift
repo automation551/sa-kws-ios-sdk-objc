@@ -12,7 +12,6 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-
 class CreateUser_TempAccessToken_MappingTests: XCTestCase {
     
     override func setUp() {
@@ -23,18 +22,15 @@ class CreateUser_TempAccessToken_MappingTests: XCTestCase {
         super.tearDown()
     }
     
-    
     //Temp access token mapping
     func test_TempAccessToken_ResponseSuccess() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"temp_access_token_success_response")
         
-        let authResponse = try? AuthResponse.decode(JSON!)
+        let authResponse = try? LoginAuthResponse.decode(JSON!)
         
         expect(authResponse).toNot(beNil())
         expect(authResponse?.token).to(equal("good_token"))
-        
     }
-    
 }

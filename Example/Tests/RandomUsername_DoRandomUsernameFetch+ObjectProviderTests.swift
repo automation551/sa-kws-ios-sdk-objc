@@ -12,18 +12,17 @@ import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
 
-
 class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
     
     /*
      Random Username is a 2 step process - this is step 2
      The test here should be to test the provider through the Service (see Login Provider Test)
-     In order to keep each step of create user tested individually, this test uses the RandomUsernameProvider resource
+     In order to keep each step of create user tested individually, this test uses the UsernameProvider resource
      instead of using RandomUsernameService
      */
     
     // class or data to test
-    private var resource: RandomUsernameProvider!
+    private var resource: UsernameProvider!
     private var environment: KWSNetworkEnvironment!
     
     private var goodAppID: Int = 1
@@ -36,9 +35,7 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        resource = RandomUsernameProvider.init(environment: self.environment)
-        
-        
+        resource = UsernameProvider.init(environment: self.environment)
     }
     
     override func tearDown() {
@@ -60,8 +57,7 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
         stub(http(.get, uri: uri), json(JSON!))
         
         waitUntil { done in
-
-            self.resource.fetchRandomUsernameFromBackend(environment: self.environment,appID: self.goodAppID, callback: { response, error in
+            self.resource.fetchRandomUsernameFromBackend(environment: self.environment,appID: self.goodAppID, completionHandler: { response, error in
 
                 //then
                 expect(response).toNot(beNil())
@@ -73,11 +69,8 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
 
                 done()
             })
-
         }
-        
     }
-    
     
     func test_RandomUsername_DoRandomUsernameFetch_NotFound_Response(){
         
@@ -93,7 +86,7 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
         
         waitUntil { done in
             
-            self.resource.fetchRandomUsernameFromBackend(environment: self.environment,appID: self.goodAppID, callback: { response, error in
+            self.resource.fetchRandomUsernameFromBackend(environment: self.environment,appID: self.goodAppID, completionHandler: { response, error in
                 
                 //then
                 expect(response).to(beNil())
@@ -106,9 +99,6 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
                 
                 done()
             })
-            
         }
-        
     }
-    
 }

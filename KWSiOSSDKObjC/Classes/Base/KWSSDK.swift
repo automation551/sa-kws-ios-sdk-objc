@@ -7,8 +7,9 @@
 
 import Foundation
 import SAMobileBase
+import SAProtobufs
 
-@objc public class KWSSDK : NSObject{
+public class KWSSDK : NSObject{
     
     static let _singletonInstance = KWSSDK()
     public override init() {
@@ -20,38 +21,22 @@ import SAMobileBase
         return KWSSDK._singletonInstance
     }
     
-    
-    //for obj c
-    public func getProvider (environment: KWSNetworkEnvironment,type: String) -> AnyObject {
-        var classFromParams = NSClassFromString(type)
-        switch classFromParams {
-        case is LoginProvider.Type:
-            return LoginProvider(environment: environment)
-        case is CreateUserProvider.Type:
-            return CreateUserProvider(environment: environment)
-        case is RandomUsernameProvider.Type:
-            return RandomUsernameProvider(environment: environment)
-        case is UserProvider.Type:
-            return UserProvider(environment: environment)
-        //todo other providers
-        default:
-            return KWSBaseError.ServiceError as AnyObject
-        }
-    }
-
-    //for swift
      static public func getService <T> (value: T.Type, environment: KWSNetworkEnvironment) -> T? {
-        if (value == LoginService.self) {
-            return LoginProvider(environment: environment) as? T
-        } else if (value == CreateUserService.self){
-            return CreateUserProvider(environment: environment) as? T
-        } else if (value == RandomUsernameService.self){
-            return RandomUsernameProvider(environment: environment) as? T
-        } else if (value == UserService.self){
+        
+        if value == AuthServiceProtocol.self {
+            return AuthProvider(environment: environment) as? T
+        }
+        else if value == UsernameServiceProtocol.self {
+            return UsernameProvider(environment: environment) as? T
+        }
+        else if value == UserServiceProtocol.self {
             return UserProvider(environment: environment) as? T
-        } else {
+        }
+        else if value == UserActionsServiceProtocol.self {
+            return UserActionsProvider(environment: environment) as? T
+        }
+        else {
             return nil
         }
     }
-    
 }

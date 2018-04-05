@@ -1,21 +1,23 @@
 {
     "id": 25,
-    "username": "username",
-    "firstName": "first_name",
-    "lastName": "last_name",
+    "username": "genioustiger123",
+    "firstName": "John",
+    "lastName": "Doe",
     "address": {
-        "street": "street",
-        "city": "city",
-        "postCode": "postCode",
-        "country": "country"
+        "street": "Number 12",
+        "city": "London",
+        "postCode": "NW1 23L",
+        "country": "United Kingdom",
+        "countryCode": "GB",
+        "countryName": "United Kingdom"
     },
-    "dateOfBirth": "dob",
+    "dateOfBirth": "2012-03-02",
     "gender": "male",
     "language": "en",
-    "email": "email@email",
+    "email": "john.doe@email",
     "hasSetParentEmail": true,
     "applicationProfile": {
-        "username": "username",
+        "username": "genioustiger123",
         "customField1": 0,
         "customField2": 0,
         "avatarId": 0
@@ -40,5 +42,5 @@
         "availableBalance": 600,
         "pending": 1
     },
-    "createdAt": "creation_date"
+    "createdAt": "2018-01-19"
 }

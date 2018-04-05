@@ -12,19 +12,17 @@ import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
 
-
 class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
     
     /*
      Random Username is a 2 step process - this is step 1
      The test here should be to test the provider through the Service (see Login Provider Test)
-     In order to keep each step of create user tested individually, this test uses the RandomUsernameProvider resource
+     In order to keep each step of create user tested individually, this test uses the UsernameProvider resource
      instead of using RandomUsernameService
      */
     
-    
     // class or data to test
-    private var resource: RandomUsernameProvider!
+    private var resource: UsernameProvider!
     private var environment: KWSNetworkEnvironment!
     
     override func setUp() {
@@ -34,9 +32,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        resource = RandomUsernameProvider.init(environment: self.environment)
-        
-        
+        resource = UsernameProvider.init(environment: self.environment)
     }
     
     override func tearDown() {
@@ -58,21 +54,19 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         
         waitUntil { done in
         
-            self.resource.getAppConfigDetails(environment: self.environment, callback: { response, error in
+            self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
 
                 //then
                 expect(response).toNot(beNil())
                 
-                expect(response?.app?.id).to(equal(2))
-                expect(response?.app?.name).to(equal("good_name"))
+                expect(response?.app.id).to(equal(2))
+                expect(response?.app.name).to(equal("good_name"))
 
                 expect(error).to(beNil())
                 
                 done()
             })
-
         }
-        
     }
     
     func test_RandomUsername_AppConfig_NilOAuthClient_Response(){
@@ -87,8 +81,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         stub(http(.get, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
-            self.resource.getAppConfigDetails(environment: self.environment, callback: { response, error in
+            self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
                 
                 //then
                 expect(response).to(beNil())
@@ -122,8 +115,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         stub(http(.get, uri: uri), json(JSON!, status: 400))
         
         waitUntil { done in
-            
-            self.resource.getAppConfigDetails(environment: self.environment, callback: { response, error in
+            self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
                 
                 //then
                 expect(response).to(beNil())
@@ -138,11 +130,8 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 expect((error as! ErrorResponse).invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
                 done()
             })
-            
         }
-        
     }
-    
     
     func test_RandomUsername_AppConfig_AppNotFound_Response(){
         
@@ -157,7 +146,7 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
         
         waitUntil { done in
             
-            self.resource.getAppConfigDetails(environment: self.environment, callback: { response, error in
+            self.resource.getAppConfigDetails(environment: self.environment, completionHandler: { response, error in
                 
                 //then
                 expect(response).to(beNil())
@@ -170,10 +159,6 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 
                 done()
             })
-            
         }
-        
     }
-    
-    
 }

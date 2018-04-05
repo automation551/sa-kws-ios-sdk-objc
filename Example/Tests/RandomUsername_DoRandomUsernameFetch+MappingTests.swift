@@ -12,8 +12,6 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-
-
 class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
     
     override func setUp() {
@@ -23,7 +21,6 @@ class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-    
     
     //Random Username fetch mapping
     func test_RandomUsername_DoRandomUsernameFetch_ResponseSuccess() {
@@ -38,7 +35,6 @@ class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
         
         expect(randomUsernameFakeResponse).toNot(beNil())
         expect(randomUsernameFakeResponse?.randomUsername).to(equal("coolrandomusername123"))
-        
     }
     
     func test_RandomUsername_DoRandomUsernameFetch_NotFound_Response() {
@@ -51,7 +47,5 @@ class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
-        
     }
-    
 }

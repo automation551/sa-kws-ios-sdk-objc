@@ -19,7 +19,6 @@ public class CreateUserRequest: BaseRequest{
                 token: String,
                 appID: Int) {
         
-        
         super.init(environment: environment)
         
         self.method = .POST
@@ -33,14 +32,7 @@ public class CreateUserRequest: BaseRequest{
             "authenticate":  true
         ]
         
-        self.query = [
-            "access_token": token
-        ]
-        
-        
-        
+        self.query = ["access_token": token]
     }
-    
-    
 }
 

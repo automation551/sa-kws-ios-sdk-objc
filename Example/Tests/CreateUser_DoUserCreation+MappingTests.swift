@@ -22,19 +22,16 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
         super.tearDown()
     }
     
-    
-    //User creation mapping
     func test_CreateUser_ResponseSuccess() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_success_response")
         
-        let createUserResponse = try? CreateUserResponse.decode(JSON!)
+        let createUserResponse = try? AuthUserResponse.decode(JSON!)
         
         expect(createUserResponse).toNot(beNil())
         expect(createUserResponse?.id).to(equal(99))
         expect(createUserResponse?.token).to(equal("good_token"))
-        
     }
     
     func test_CreateUser_BadUsername_Response(){
@@ -76,7 +73,6 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.errorCode).to(equal("invalid_token"))
         expect(errorResponse?.error).to(equal("The access token provided is invalid."))
-        
     }
     
     func test_CreateUser_BadPassword_Response(){
@@ -109,7 +105,6 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.dateOfBirth?.errorMessage).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
     }
     
-    
     func test_CreateUser_BadCountry_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_country_response")
@@ -140,9 +135,6 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
     }
     
-   
-    
-    
     func test_CreateUser_NotFound_Response() {
         
         var JSON: Any?
@@ -153,7 +145,5 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
-        
     }
-    
 }

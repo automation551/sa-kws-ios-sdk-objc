@@ -146,85 +146,29 @@
      andParentEmail:(NSString*)parentEmail
         andResponse:(KWSChildrenCreateUserBlock)response {
     
-    
-    CreateUserProvider* createUserProvider =[[KWSSDK sharedInstance]
-                                             getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                             type:NSStringFromClass([CreateUserProvider class])];
-    
-    
-    if ([createUserProvider isKindOfClass: [CreateUserProvider class]]){
-        
-        [createUserProvider createUserWithUsername:username password:password dateOfBirth:dateOfBirth country:country parentEmail:parentEmail callback:^(KWSCreateUserResponse * createUserResponse, NSError * error) {
-            
-            if(createUserResponse != nil && [createUserResponse token] != nil ){
-                
-                NSString* token = [createUserResponse token];
-                KWSMetadata *kwsMetadata = [self getMetadataFromToken:token];
-                
-                KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc]initWithToken:token andMetadata:kwsMetadata];
-                [self setLoggedUser:loggedUser];
-                
-                
-                response(KWSChildren_CreateUser_Success);
-            }else{
-                response(KWSChildren_CreateUser_InvalidOperation);
-            }
-        }];
-        
-    }else{
-        NSLog(kProviderErrorMessage);
-    }
-    
-    
+    [_createUserProcess createWithUsername:username
+                               andPassword:password
+                            andDateOfBirth:dateOfBirth
+                                andCountry:country
+                            andParentEmail:parentEmail
+                                          :response];
+
 }
     
 - (void) loginUser:(NSString *)username
       withPassword:(NSString *)password
        andResponse:(KWSChildrenLoginUserBlock)response {
     
-    LoginProvider* loginProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                                                                  type:NSStringFromClass([LoginProvider class])];
-    
-    if ([loginProvider isKindOfClass: [LoginProvider class]]){
-        [loginProvider loginUserWithUsername:username password:password callback:^(KWSLoginResponse *loginResponse, NSError *error) {
-            
-            if(loginResponse != nil && [loginResponse token] != nil
-               && [[loginResponse token] length] != 0 && error == nil){
-                
-                NSString* token = [loginResponse token];
-                KWSMetadata *kwsMetadata = [self getMetadataFromToken:token];
-                
-                KWSLoggedUser *loggedUser = [[KWSLoggedUser alloc]initWithToken:token andMetadata:kwsMetadata];
-                [self setLoggedUser:loggedUser];
-                
-                response (KWSChildren_LoginUser_Success);
-            }else{
-                response (KWSChildren_LoginUser_NetworkError);
-            }
-            
-        }];
-    } else {
-        NSLog(kProviderErrorMessage);
-    }
-}
-    
-    //------METADATA NEW LOGIC--------
-    
--(KWSMetadata*) getMetadataFromToken : (NSString*) token {
-    //todo here
-    MetadataKWS* metadataNewObject = [[UtilsHelpers sharedInstance] getKWSMetadataWithToken:token];
-    
-    KWSMetadata* kwsMetadata = [[KWSMetadata alloc]initWithUserId:metadataNewObject.userId andAppId:metadataNewObject.appId andClientId:metadataNewObject.clientId andScope:metadataNewObject.scope andIat:metadataNewObject.iat andExp:metadataNewObject.exp andIss:metadataNewObject.iss];
-    
-    return kwsMetadata;
+    [_authUserProcess authWithUsername:username
+                           andPassword:password
+                                      :response];
     
 }
-    
-    //------END METADATA NEW LOGIC------
-    
+
 - (void) authWithSingleSignOnUrl: (NSString*) url
                       fromParent: (UIViewController*)parent
                      andResponse:(KWSChildrenLoginUserBlock) response {
+    
     [_authUserProcess authWithSingleSignOnUrl:url
                                    fromParent:parent
                                              :response];
@@ -249,361 +193,39 @@
     
 - (void) getRandomUsername:(KWSChildrenGetRandomUsernameBlock)response {
     
-    RandomUsernameProvider* randomUsernameProvider = [[KWSSDK sharedInstance] getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                                                                                    type:NSStringFromClass([RandomUsernameProvider class])];
-    
-    if ([randomUsernameProvider isKindOfClass: [RandomUsernameProvider class]]){
-        
-        [randomUsernameProvider getRandomUsernameWithCallback:^(KWSRandomUsernameResponse *randomUsernameResponse, NSError * error) {
-            
-            if(randomUsernameResponse != nil && [randomUsernameResponse randomUsername] != nil && [[randomUsernameResponse randomUsername]length] != 0 && error == nil){
-                response ([randomUsernameResponse randomUsername]);
-            }else{
-                response (nil);
-            }
-            
-        }];
-    } else {
-        NSLog(kProviderErrorMessage);
-    }
-    
-    
+    [_randomName getRandomName:response];
     
 }
     
     // get user & update user details
     
 - (void) getUser:(KWSChildrenGetUserBlock)response {
-    
-    UserProvider* userProvider = [[KWSSDK sharedInstance]
-                                  getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                  type:NSStringFromClass([UserProvider class])];
-    
-    if ([userProvider isKindOfClass: [UserProvider class]]){
-        
-        if(_loggedUser == nil || _loggedUser.metadata == nil){
-            response(nil);
-            NSLog(kNoValidLoggedInUserMessage);
-            return;
-        }
-        
-        [userProvider getUserDetailsWithUserId: (long)_loggedUser.metadata.userId
-                                         token: _loggedUser.token
-                                      callback:^(KWSUserDetails * userDetails, NSError * error) {
-                                          
-                                          
-                                          if(userDetails != nil){
-                                              KWSUser *kwsUser = [self buildKWSUser:userDetails];
-                                              response(kwsUser);
-                                          }else{
-                                              response(nil);
-                                          }
-                                          
-                                          
-                                          
-                                      }];
-    } else {
-        NSLog(kProviderErrorMessage);
-    }
+        [_getUser execute:response];
     
 }
-    
-    //---------------------Helper methods to build KWSUser---------------------//
-    
-- (KWSUser*) buildKWSUser:(KWSUserDetails*) kwsUserDetailsResponse {
-    
-    NSNumber *id = [kwsUserDetailsResponse id];
-    NSString *username = [kwsUserDetailsResponse username];
-    NSString *firstName = [kwsUserDetailsResponse firstName];
-    NSString *lastName = [kwsUserDetailsResponse lastName];
-    NSString *dateOfBirth = [kwsUserDetailsResponse dateOfBirth];
-    NSString *gender = [kwsUserDetailsResponse gender];
-    NSString *language = [kwsUserDetailsResponse language];
-    NSString *email = [kwsUserDetailsResponse email];
-    NSString *parentEmail = [kwsUserDetailsResponse parentEmail];
-    
-    KWSAddress *address = [self buildKWSUserAddress: [kwsUserDetailsResponse address]];
-    KWSPoints *points = [self buildKWSPoints: [kwsUserDetailsResponse points]];
-    KWSPermissions *permissions = [self buildKWSPermissions: [kwsUserDetailsResponse applicationPermissions]];
-    KWSApplicationProfile *appProfile = [self buildKWSApplicationProfile: [kwsUserDetailsResponse applicationProfile]];
-    
-    
-    KWSUser * user = [[KWSUser alloc]initWithID:id andUsername:username andFirstName:firstName andLastName:lastName andDateOfBirth:dateOfBirth andGender:gender andLanguage:language andEmail:email andAddress:address andPoints:points andAppPermissions:permissions andAppProfile:appProfile andParentEmail:parentEmail];
-    
-    return user;
-    
-}
-    
-- (KWSAddress*) buildKWSUserAddress:(KWSSwiftUserAddress*) address{
-    
-    NSString * street = [address street];
-    NSString * city = [address city];
-    NSString * postCode = [address postCode];
-    NSString * country = [address country];
-    
-    return [[KWSAddress alloc] initWithStreet: street
-                                      andCity:city
-                                  andPostCode:postCode
-                                   andCountry:country];
-}
-    
-- (KWSPoints*) buildKWSPoints:(KWSSwiftPoints*) points{
-    
-    
-    NSInteger totalReceived = [points totalReceived];
-    NSInteger total = [points total];
-    NSInteger totalPointsReceivedInCurrentApp = [points totalPointsReceivedInCurrentApp];
-    NSInteger availableBalance = [points availableBalance];
-    NSInteger pending = [points pending];
-    
-    return [[KWSPoints alloc] initWithTotalReceived:totalReceived
-                                           andTotal:total
-                 andTotalPointsReceivedInCurrentApp:totalPointsReceivedInCurrentApp
-                                andAvailableBalance:availableBalance
-                                         andPending:pending];
-}
-    
-- (KWSPermissions*) buildKWSPermissions:(KWSSwiftApplicationPermissions*) permissions{
-    
-    NSNumber * accessAddress = [permissions accessAddress];
-    NSNumber * accessFirstName = [permissions accessFirstName];
-    NSNumber * accessLastName = [permissions accessLastName];
-    NSNumber * accessEmail = [permissions accessEmail];
-    NSNumber * accessStreetAddress = [permissions accessStreetAddress];
-    NSNumber * accessCity = [permissions accessCity];
-    NSNumber * accessPostalCode = [permissions accessPostalCode];
-    NSNumber * accessCountry = [permissions accessCountry];
-    NSNumber * sendPushNotification = [permissions sendPushNotification];
-    NSNumber * sendNewsletter = [permissions sendNewsletter];
-    NSNumber * enterCompetitions = [permissions enterCompetitions];
-    
-    
-    return [[KWSPermissions alloc] initWithAccessAddress:accessAddress andAccessFirstName:accessFirstName andAccessLastName:accessLastName andAccessEmail:accessEmail andAccessStreetAddress:accessStreetAddress andAccessCity:accessCity andAccessPostalCode:accessPostalCode andAccessCountry:accessCountry andSendPushNotification:sendPushNotification andSendNewsletter:sendNewsletter andEnterCompetitions:enterCompetitions];
-}
-    
-- (KWSApplicationProfile*) buildKWSApplicationProfile:(KWSSwiftApplicationProfile*) appProfile{
-    
-    NSString * username = [appProfile username];
-    NSNumber * customField1 = [appProfile customField1];
-    NSNumber * customField2 = [appProfile customField2];
-    NSNumber * avatarId = [appProfile avatarId];
-    
-    return [[KWSApplicationProfile alloc] initWithUsername: username andCustomField1: customField1 andCustomField2: customField2 andAvatarId: avatarId];
-}
-    //---------------------end helper method for KWSUser---------------------//
-    
-    
     
     
 - (void) updateUser:(KWSUser*)updatedUser
        withResponse:(KWSChildrenUpdateUserBlock)response {
-    
-    UserProvider* userProvider = [[KWSSDK sharedInstance]
-                                  getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                  type:NSStringFromClass([UserProvider class])];
-    
-    if ([userProvider isKindOfClass: [UserProvider class]]){
-        
-        
-        if(_loggedUser == nil || _loggedUser.metadata == nil ){
-            response(false);
-            NSLog(kNoValidLoggedInUserMessage);
-            return;
-        }
-        
-        //KWSUser into UserDetails here
-        KWSUserDetails *userDetails = [self buildUserDetails: updatedUser];
-        if(userDetails == nil){
-            response(false);
-            NSLog(kNoValidUserDetailsMessage);
-        }
-        
-        [userProvider updateUserDetailsWithUserId:(long)_loggedUser.metadata.userId
-                                            token: _loggedUser.token
-                                      userDetails:userDetails
-                                         callback:^(BOOL success, NSError * error) {
-                                             //
-                                             //callback here
-                                             if(success){
-                                                 NSLog(@"Success updating user!");
-                                             }else{
-                                                 NSLog(@"Failed to update user...");
-                                             }
-                                             response(success);
-                                             
-                                         }];
-    } else {
-        NSLog(kProviderErrorMessage);
-    }
-    
+
+    [_updateUser execute:updatedUser :response];
     
 }
-    
-    //---------------------Helper methods for User Details---------------------//
--(KWSUserDetails*) buildUserDetails: (KWSUser*) updateUser {
-    
-    KWSSwiftUserAddress * kwsSwiftUserAddress = [self buildSwiftUserAddress: [updateUser address] ];
-    KWSSwiftApplicationProfile * kwsSwiftAppProfile = [self buildSwiftAppProfile: [updateUser applicationProfile]];
-    
-    return [[KWSUserDetails alloc] initWithId:nil
-                                     username:nil
-                                    firstName:updateUser.firstName
-                                     lastName:updateUser.lastName
-                                      address:kwsSwiftUserAddress
-                                  dateOfBirth:updateUser.dateOfBirth
-                                       gender:updateUser.gender
-                                     language:updateUser.language
-                                        email:updateUser.email
-                                  phoneNumber:updateUser.phoneNumber
-                            hasSetParentEmail:nil
-                           applicationProfile:kwsSwiftAppProfile
-                       applicationPermissions:nil
-                                       points:nil
-                                    createdAt:nil
-                                  parentEmail:updateUser.parentEmail];
-    
-}
-    
-    
-    //-----------------//
-    
-    
--(KWSSwiftUserAddress*) buildSwiftUserAddress:(KWSAddress*) address {
-    
-    //parse country
-    NSString* parsedCountry = [[UtilsHelpers sharedInstance] getUserDetailsCountryCodeWithCountry:address.country];
-    
-    return [[KWSSwiftUserAddress alloc] initWithStreet:address.street city:address.city postCode:address.postCode country:parsedCountry ];
-    
-}
-    
-    
--(KWSSwiftApplicationProfile*) buildSwiftAppProfile:(KWSApplicationProfile*) profile {
-    
-    NSNumber* customField1 = [NSNumber numberWithInteger:profile.customField1];
-    NSNumber* customField2 = [NSNumber numberWithInteger:profile.customField2];
-    NSNumber* avatarId = [NSNumber numberWithInteger:profile.customField1];
-    
-    
-    return [[KWSSwiftApplicationProfile alloc] initWithUsername:nil
-                                                   customField1:customField1
-                                                   customField2:customField2
-                                                       avatarId:avatarId];
-    
-    
-}
-    
-    
-    
-    
-    //---------------------end helper method for User details---------------------//
-    
+
     // request permissions & submit parent email, if not already submitted
     
 - (void) updateParentEmail:(NSString *)email
               withResponse:(KWSChildrenUpdateParentEmailBlock)response {
     
-    
-    UserProvider* userProvider = [[KWSSDK sharedInstance]
-                                  getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                  type:NSStringFromClass([UserProvider class])];
-    
-    if ([userProvider isKindOfClass: [UserProvider class]]){
-        
-        if(_loggedUser == nil || _loggedUser.metadata == nil ){
-            response(KWSChildren_UpdateParentEmail_NoValidUserLoggedIn);
-            NSLog(kNoValidLoggedInUserMessage);
-            return;
-        }
-        
-        //User details with only parentEmail
-        KWSUserDetails* userDetails = [[KWSUserDetails alloc] initWithId:nil
-                                                                username:nil
-                                                               firstName:nil
-                                                                lastName:nil
-                                                                 address:nil
-                                                             dateOfBirth:nil
-                                                                  gender:nil
-                                                                language:nil
-                                                                   email:nil
-                                                             phoneNumber:nil
-                                                       hasSetParentEmail:nil
-                                                      applicationProfile:nil
-                                                  applicationPermissions:nil
-                                                                  points:nil
-                                                               createdAt:nil
-                                                             parentEmail:email];
-        
-        if(userDetails == nil){
-            response(KWSChildren_UpdateParentEmail_NoValidUserDetails);
-            NSLog(kNoValidUserDetailsMessage);
-        }
-        
-        [userProvider updateUserDetailsWithUserId:(long)_loggedUser.metadata.userId
-                                            token: _loggedUser.token
-                                      userDetails:userDetails
-                                         callback:^(BOOL success, NSError * error) {
-                                             //
-                                             //callback here
-                                             if(success){
-                                                 response(KWSChildren_UpdateParentEmail_Success);
-                                             }else{
-                                                 response(KWSChildren_UpdateParentEmail_NetworkError);
-                                             }
-                                             
-                                         }];
-    } else {
-        NSLog(kProviderErrorMessage);
-    }
-    
-    
-    
+    [_parentEmail execute:email :response];
     
 }
     
 - (void) requestPermission:(NSArray<NSNumber *> *)requestedPermissions
               withResponse:(KWSChildrenRequestPermissionBlock)response {
 
-    UserProvider* userProvider = [[KWSSDK sharedInstance]
-                                  getProviderWithEnvironment:_userKWSNetworkEnvironment
-                                  type:NSStringFromClass([UserProvider class])];
-    
-    if ([userProvider isKindOfClass: [UserProvider class]]){
-        
-        if(_loggedUser == nil || _loggedUser.metadata == nil ){
-            response(KWSChildren_RequestPermission_NetworkError);
-            NSLog(kNoValidLoggedInUserMessage);
-            return;
-        }
-        
-        NSMutableArray<NSString*> *requestedPermissionsStringArray = [[NSMutableArray alloc] init];
-        for (NSNumber *number in requestedPermissions) {
-            NSInteger typeAsInt = [number integerValue];
-            [requestedPermissionsStringArray addObject:[_requestPermission typeToString:typeAsInt]];
-        }
-        
-        if(requestedPermissionsStringArray == nil || [requestedPermissionsStringArray count] == 0 ){
-            response(KWSChildren_RequestPermission_NetworkError);
-            NSLog(kNoValidPermissionsMessage);
-            return;
-        }
-        
-        [userProvider requestPermissionsWithUserId:(long)_loggedUser.metadata.userId
-                                             token:_loggedUser.token
-                                   permissionsList:requestedPermissionsStringArray
-                                          callback:^(BOOL success, NSError * error) {
-                                              //
-                                              //callback here
-                                              if(success){
-                                                  response(KWSChildren_RequestPermission_Success);
-                                              }else{
-                                                  response(KWSChildren_RequestPermission_NetworkError);
-                                              }
-        }];
-        
-    }else{
-        NSLog(kProviderErrorMessage);
-    }
+    [_requestPermission execute:requestedPermissions
+                               :response];
     
 }
     

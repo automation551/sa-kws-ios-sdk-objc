@@ -11,11 +11,12 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
+import SAProtobufs
 
 class Login_ObjectProviderTests: XCTestCase {
     
     // class or data to test
-    private var loginService: LoginService!
+    private var loginService: AuthServiceProtocol!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUsername: String = "good_username"
@@ -37,9 +38,8 @@ class Login_ObjectProviderTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.loginService = KWSSDK.getService(value: LoginService.self, environment: self.environment)
-        
-        
+        self.loginService = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
+
     }
     
     override func tearDown() {
@@ -63,10 +63,9 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: uri ) , json(JSON!))
         
         waitUntil { done in
-            
-            self.loginService.loginUser(username: self.goodUsername,
+            self.loginService.loginUser(userName: self.goodUsername,
                                         password: self.goodPassword,
-                                        callback: {  loginResponse, error in
+                                        completionHandler: {  loginResponse, error in
                                             
                                             //then
                                             expect(loginResponse).toNot(beNil())
@@ -75,10 +74,8 @@ class Login_ObjectProviderTests: XCTestCase {
                                             expect(error).to(beNil())
                                             
                                             done()
-                                            
             })
         }
-        
     }
     
     func test_Login_BadHttp_Response(){
@@ -96,7 +93,9 @@ class Login_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: {  loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
@@ -106,10 +105,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
                 
                 done()
-                
             })
         }
-        
     }
     
     func test_Login_BadUsername_Request(){
@@ -126,8 +123,9 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: {  loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: {  loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil());
@@ -137,10 +135,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).error).to(equal("User credentials are invalid"))
                 
                 done()
-                
             })
         }
-        
     }
     
     func test_Login_BadPassword_Request(){
@@ -157,8 +153,9 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword,callback: { loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
@@ -168,7 +165,6 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).error).to(equal("User credentials are invalid"))
                 
                 done()
-                
             })
         }
         
@@ -188,8 +184,9 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
@@ -199,7 +196,6 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
                 
                 done()
-                
             })
         }
         
@@ -219,8 +215,9 @@ class Login_ObjectProviderTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            
-            self.loginService.loginUser(username: self.goodUsername, password: self.goodPassword, callback: { loginResponse, error in
+            self.loginService.loginUser(userName: self.goodUsername,
+                                        password: self.goodPassword,
+                                        completionHandler: { loginResponse, error in
                 
                 //then
                 expect(loginResponse).to(beNil())
@@ -230,12 +227,7 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
                 
                 done()
-                
             })
         }
-        
     }
-    
-    
-    
 }

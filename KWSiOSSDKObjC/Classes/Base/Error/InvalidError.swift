@@ -23,26 +23,18 @@ public final class InvalidError: NSObject, Error {
     public let addressCountry:  SpecificInvalidError?
     public let permissions:     SpecificInvalidError?
     
-    
-    
-    
-    // MARK: - Initialization
-    
-    public required init(
-        
-        dateOfBirth:        SpecificInvalidError? = nil,
-        country:            SpecificInvalidError? = nil,
-        parentEmail:        SpecificInvalidError? = nil,
-        password:           SpecificInvalidError? = nil,
-        username:           SpecificInvalidError? = nil,
-        oauthClientId:      SpecificInvalidError? = nil,
-        addressStreet:      SpecificInvalidError? = nil,
-        addressPostCode:    SpecificInvalidError? = nil,
-        addressCity:        SpecificInvalidError? = nil,
-        addressCountry:     SpecificInvalidError? = nil,
-        permissions:        SpecificInvalidError? = nil
-        
-        ) {
+    // MARK: - Initialization    
+    public required init(dateOfBirth:        SpecificInvalidError? = nil,
+                         country:            SpecificInvalidError? = nil,
+                         parentEmail:        SpecificInvalidError? = nil,
+                         password:           SpecificInvalidError? = nil,
+                         username:           SpecificInvalidError? = nil,
+                         oauthClientId:      SpecificInvalidError? = nil,
+                         addressStreet:      SpecificInvalidError? = nil,
+                         addressPostCode:    SpecificInvalidError? = nil,
+                         addressCity:        SpecificInvalidError? = nil,
+                         addressCountry:     SpecificInvalidError? = nil,
+                         permissions:        SpecificInvalidError? = nil ) {
         
         self.dateOfBirth = dateOfBirth
         self.country = country
@@ -55,9 +47,5 @@ public final class InvalidError: NSObject, Error {
         self.addressCity = addressCity
         self.addressCountry = addressCountry
         self.permissions = permissions
-        
-        
     }
-    
-    
 }

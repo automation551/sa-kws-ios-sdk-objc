@@ -11,71 +11,14 @@ import SAMobileBase
 public class UpdateUserDetailsRequest: BaseRequest {
     
     public init(environment: KWSNetworkEnvironment,
-                userDetails: UserDetails,
+                userDetailsMap: [String : Any],
                 userId: Int,
                 token: String) {
-        
-        self.userDetails = userDetails
         
         super.init(environment: environment, token: token)
         
         self.method = .PUT
         self.endpoint = "v1/users/\(userId)"
-        self.body = bodyTemp
-        
+        self.body = userDetailsMap        
     }
-    
-    let userDetails: UserDetails
-    
-    var bodyTemp: [String : Any]?{
-        get {
-            var tmpBody: [String:Any] = [:]
-            
-            if let firstName = userDetails.firstName, !firstName.isEmpty {
-                tmpBody["firstName"] = firstName
-            }
-            
-            if let lastName = userDetails.lastName, !lastName.isEmpty {
-                tmpBody["lastName"] = userDetails.lastName
-            }
-            
-            if let dateOfBirth = userDetails.dateOfBirth, !dateOfBirth.isEmpty {
-                tmpBody["dateOfBirth"] = userDetails.dateOfBirth
-            }
-            
-            if let email = userDetails.email, !email.isEmpty {
-                tmpBody["email"] = userDetails.email
-            }
-            
-            if let gender = userDetails.gender, !gender.isEmpty {
-                tmpBody["gender"] = userDetails.gender
-            }
-            
-            if let language = userDetails.language, !language.isEmpty {
-                tmpBody["language"] = userDetails.language
-            }
-            
-            if let parentEmail = userDetails.parentEmail, !parentEmail.isEmpty {
-                tmpBody["parentEmail"] = userDetails.parentEmail
-            }
-            
-            let encoder = JSONEncoder ()            
-            if let address = userDetails.address,
-                let jsonDataAddress = try? encoder.encode(address),
-                let jsonStringAddress = String(data: jsonDataAddress, encoding: .utf8),
-                !jsonStringAddress.isEmpty && jsonStringAddress != "{}"  {
-                tmpBody["address"] = jsonStringAddress
-            }
-            
-            if let appProfile = userDetails.applicationProfile,
-                let jsonDataAppProfile = try? encoder.encode(appProfile),
-                let jsonStringAppProfile = String(data: jsonDataAppProfile, encoding: .utf8),
-                !jsonStringAppProfile.isEmpty && jsonStringAppProfile != "{}"  {
-                tmpBody["applicationProfile"] = jsonStringAppProfile
-            }
-            
-            return tmpBody
-        }
-    }
-    
 }

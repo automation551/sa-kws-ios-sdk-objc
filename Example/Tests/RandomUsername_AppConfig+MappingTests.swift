@@ -12,7 +12,6 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-
 class RandomUsername_AppConfig_MappingTests : XCTestCase{
     
     override func setUp() {
@@ -23,19 +22,17 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         super.tearDown()
     }
     
-    
     //App Config mapping
     func test_RandomUsername_AppConfig_ResponseSuccess() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_success_response")
         
-        let appConfigResponse = try? AppConfigResponse.decode(JSON!)
+        let appConfigResponse = try? AppConfigWrapper.decode(JSON!)
         
         expect(appConfigResponse).toNot(beNil())
-        expect(appConfigResponse?.app?.id).to(equal(2))
-        expect(appConfigResponse?.app?.name).to(equal("good_name"))
-        
+        expect(appConfigResponse?.app.id).to(equal(2))
+        expect(appConfigResponse?.app.name).to(equal("good_name"))
     }
     
     func test_RandomUsername_AppConfig_NilAuthClientId_Response (){
@@ -51,7 +48,6 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         expect(errorResponse?.invalid?.oauthClientId?.code).to(equal(6))
         expect(errorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("missing"))
         expect(errorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is required"))
-        
     }
     
     func test_RandomUsername_AppConfig_Empty_AuthClientId_Response (){
@@ -67,7 +63,6 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         expect(errorResponse?.invalid?.oauthClientId?.code).to(equal(7))
         expect(errorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("invalidValue"))
         expect(errorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
-        
     }
     
     func test_RandomUsername_AppConfig_AppNotFound_Response (){
@@ -80,9 +75,7 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         expect(errorResponse?.code).to(equal(2))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
         expect(errorResponse?.errorMessage).to(equal("app not found."))
-        
     }
-    
     
     func test_RandomUsername_DoRandomUsernameFetch_NotFound_Response() {
         
@@ -94,9 +87,5 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
-        
-        
     }
-    
-    
 }
