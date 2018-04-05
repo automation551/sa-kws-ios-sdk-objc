@@ -171,8 +171,6 @@ class KWSSwiftTableViewController: UITableViewController {
                 print("Something went wrong for random username: \(String(describing: error)))")
             }
         }
-        
-        
     }
     
     func requestPermissions(){
@@ -192,14 +190,10 @@ class KWSSwiftTableViewController: UITableViewController {
                 } else {
                     print("Something went wrong for request permissions:  \(String(describing: error))")
                 }
-                
-                
             }
         } else {
             print("No valid user cached!!!")
         }
-        
-        
     }
     
     func updateParentEmail(){
@@ -219,7 +213,6 @@ class KWSSwiftTableViewController: UITableViewController {
                 }else{
                     print("Something went wrong for update user:  \(String(describing: error))")
                 }
-                
             }
         } else {
             print("No valid user cached!!!")
@@ -304,12 +297,10 @@ class KWSSwiftTableViewController: UITableViewController {
             let parseJsonTask = JSONParseTask<TokenData>()
             let metadata = parseJsonTask.execute(request: parseJsonReq)
             
-            return metadata
-            
+            return metadata            
         } else {
             return nil
         }
-        
     }
     // end of helper methods -----------------------------------
 }

@@ -27,7 +27,6 @@ public final class Points: NSObject, PointsModelProtocols {
         self.total = total
         self.balance = balance
         self.inApp = inApp
-
     }
     
     // MARK: - Equatable
