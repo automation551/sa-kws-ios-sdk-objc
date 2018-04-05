@@ -62,7 +62,7 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
                                                 expect(userDetailsResponse).toNot(beNil())
                                                 
                                                 expect(userDetailsResponse?.id).to(equal(25))
-                                                expect(userDetailsResponse?.name).to(equal("geniouspokemon123"))
+                                                expect(userDetailsResponse?.name).to(equal("genioustiger123"))
                                                 expect(userDetailsResponse?.firstName).to(equal("John"))
                                                 expect(userDetailsResponse?.lastName).to(equal("Doe"))
                                                 
@@ -80,7 +80,7 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
                                                 
                                                 expect(userDetailsResponse?.hasSetParentEmail).to(beTruthy())
                                                 
-                                                expect(userDetailsResponse?.applicationProfile?.name).to(equal("geniouspokemon123"))
+                                                expect(userDetailsResponse?.applicationProfile?.name).to(equal("genioustiger123"))
                                                 expect(userDetailsResponse?.applicationProfile?.customField1).to(equal(0))
                                                 expect(userDetailsResponse?.applicationProfile?.customField2).to(equal(0))
                                                 expect(userDetailsResponse?.applicationProfile?.avatarId).to(equal(0))

@@ -1,6 +1,6 @@
 {
     "id": 25,
-    "username": "geniouspokemon123",
+    "username": "genioustiger123",
     "firstName": "John",
     "lastName": "Doe",
     "address": {
@@ -17,7 +17,7 @@
     "email": "john.doe@email",
     "hasSetParentEmail": true,
     "applicationProfile": {
-        "username": "geniouspokemon123",
+        "username": "genioustiger123",
         "customField1": 0,
         "customField2": 0,
         "avatarId": 0
