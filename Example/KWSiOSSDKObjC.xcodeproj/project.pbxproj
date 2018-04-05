@@ -32,6 +32,7 @@
 		9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */; };
 		9C104F21203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F20203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift */; };
 		9C104F23203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F22203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift */; };
+		9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift */; };
 		9C18312F202085FC00DD4083 /* Login+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C18312E202085FC00DD4083 /* Login+RequestTests.swift */; };
 		9C1831312020861900DD4083 /* Login+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1831302020861900DD4083 /* Login+ObjectProviderTests.swift */; };
 		9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1831322020862800DD4083 /* Login+MappingTests.swift */; };
@@ -123,6 +124,7 @@
 		9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions+RequestTests.swift"; sourceTree = "<group>"; };
 		9C104F20203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_RequestPermissions+MappingTests.swift"; sourceTree = "<group>"; };
 		9C104F22203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_RequestPermissions+ObjectProvider.swift"; sourceTree = "<group>"; };
+		9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_CreateUser+ObjectProvider.swift"; sourceTree = "<group>"; };
 		9C18312E202085FC00DD4083 /* Login+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+RequestTests.swift"; sourceTree = "<group>"; };
 		9C1831302020861900DD4083 /* Login+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C1831322020862800DD4083 /* Login+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+MappingTests.swift"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				9C80FD462028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift */,
 				9C59C7BB202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift */,
 				9C59C7BD202B196900BE4E74 /* CreateUser_TempAccessToken+ObjectProviderTests.swift */,
+				9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift */,
 			);
 			name = CreateUser;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				9C59C7BC202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift in Sources */,
 				9C104F23203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift in Sources */,
 				9C59C7C2202B199B00BE4E74 /* RandomUsername_AppConfig+ObjectProviderTests.swift in Sources */,
+				9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift in Sources */,
 				9C59C7C6202B19CA00BE4E74 /* RandomUsername_DoRandomUsernameFetch+ObjectProviderTests.swift in Sources */,
 				9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */,
 				9C59C7CC202B1ED000BE4E74 /* RandomUsername+RequestTests.swift in Sources */,

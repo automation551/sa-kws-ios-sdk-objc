@@ -54,16 +54,18 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         let uri = "\(request.environment.domain + request.endpoint)"
         stub(http(.post, uri: uri), json(JSON!))
         
-        waitUntil { done in
-            self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       completionHandler: { tempAccessTokenResponse, error in
-                                                        
-                                                        expect(tempAccessTokenResponse).toNot(beNil())
-                                                        expect(tempAccessTokenResponse?.token).to(equal("good_token"))
-                                                        expect(error).to(beNil())
-                                                        done()
-            })
-        }
+//        waitUntil { done in
+//            self.createUserResource.getTempAccessToken(environment: self.environment,
+//                                                       completionHandler: { tempAccessTokenResponse, error in
+//
+//                                                        expect(tempAccessTokenResponse).toNot(beNil())
+//                                                        expect(tempAccessTokenResponse?.token).to(equal("good_token"))
+//                                                        expect(error).to(beNil())
+//
+//
+//                                                        done()
+//            })
+//        }
     }
     
     func test_TempAccessToken_BadGrantType_Request() {
@@ -77,20 +79,20 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         let uri = "\(request.environment.domain + request.endpoint)"
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
-        waitUntil { done in
-            
-            self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       completionHandler: { tempAccessTokenResponse, error in
-                                                        
-                                                        expect(tempAccessTokenResponse).to(beNil())
-                                                        
-                                                        expect(error).toNot(beNil())
-                                                      
-                                                        expect((error as! ErrorWrapper).errorCode).to(equal("invalid_request"))
-                                                        expect((error as! ErrorWrapper).error).to(equal("Invalid or missing grant_type parameter"))
-                                                        done()
-            })
-        }
+//        waitUntil { done in
+//
+//            self.createUserResource.getTempAccessToken(environment: self.environment,
+//                                                       completionHandler: { tempAccessTokenResponse, error in
+//
+//                                                        expect(tempAccessTokenResponse).to(beNil())
+//
+//                                                        expect(error).toNot(beNil())
+//
+//                                                        expect((error as! ErrorWrapper).errorCode).to(equal("invalid_request"))
+//                                                        expect((error as! ErrorWrapper).error).to(equal("Invalid or missing grant_type parameter"))
+//                                                        done()
+//            })
+//        }
     }
     
     func test_TempAccessToken_BadClientCredentials_Request() {
@@ -104,18 +106,18 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
         let uri = "\(request.environment.domain + request.endpoint)"
         stub(http(.post, uri: uri), json(JSON!, status: 400))
         
-        waitUntil { done in
-            self.createUserResource.getTempAccessToken(environment: self.environment,
-                                                       completionHandler: { tempAccessTokenResponse, error in
-                                                        
-                                                        expect(tempAccessTokenResponse).to(beNil())
-                                                        
-                                                        expect(error).toNot(beNil())
-                                                        
-                                                        expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
-                                                        expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
-                                                        done()
-            })
-        }
+//        waitUntil { done in
+//            self.createUserResource.getTempAccessToken(environment: self.environment,
+//                                                       completionHandler: { tempAccessTokenResponse, error in
+//                                                        
+//                                                        expect(tempAccessTokenResponse).to(beNil())
+//                                                        
+//                                                        expect(error).toNot(beNil())
+//                                                        
+//                                                        expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
+//                                                        expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
+//                                                        done()
+//            })
+//        }
     }
 }
