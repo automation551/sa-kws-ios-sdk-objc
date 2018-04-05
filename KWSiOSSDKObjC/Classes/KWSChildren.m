@@ -50,9 +50,6 @@
     // user defaults
     @property (nonatomic, strong) NSUserDefaults *defs;
     
-    //network environment
-    @property (nonatomic, strong) UserKWSNetworkEnvironment* userKWSNetworkEnvironment;
-    
 #define kProviderErrorMessage @"An error occured getting the provider!"
 #define kNoValidLoggedInUserMessage @"No valid logged in user."
 #define kNoValidUserDetailsMessage @"No valid user details..."
@@ -104,10 +101,6 @@
     _clientId = clientId;
     _clientSecret = clientSecret;
     _kwsApiUrl = apiUrl;
-    
-    //set network environment
-    _userKWSNetworkEnvironment = [[UserKWSNetworkEnvironment alloc] initWithDomain:apiUrl appID:clientSecret mobileKey:clientId];
-    
     
     // get user defaults
     _defs = [NSUserDefaults standardUserDefaults];

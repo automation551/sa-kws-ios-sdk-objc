@@ -27,7 +27,13 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
                                                    clientID: self.environment.mobileKey,
                                                    clientSecret: self.environment.appID)
         
-        networkTask.execute(request: loginUserNetworkRequest) { loginUserNetworkResponse in
+        let parseTask = ParseJsonTask<LoginAuthResponse>()
+        let future = networkTask.execute(input: loginUserNetworkRequest)
+            
+            
+            
+            
+        networkTask.execute(input: loginUserNetworkRequest) { loginUserNetworkResponse in
             
             if let json = loginUserNetworkResponse.response, loginUserNetworkResponse.error == nil{
                 

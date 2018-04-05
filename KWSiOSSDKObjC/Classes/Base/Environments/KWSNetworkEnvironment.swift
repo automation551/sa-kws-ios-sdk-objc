@@ -8,8 +8,9 @@
 import Foundation
 import SAMobileBase
 
-public protocol KWSNetworkEnvironment : NetworkEnvironment {
+public protocol KWSNetworkEnvironment : NetworkEnvironmentProtocol {
     
     var appID: String { get }
-    var mobileKey: String { get }    
+    var mobileKey: String { get }
+    
 }

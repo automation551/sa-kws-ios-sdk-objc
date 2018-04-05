@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KWSiOSSDKObjC/KWSViewController.m"
-            timestampString = "544617999.766507"
+            timestampString = "544448233.178808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "270"
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/KWSChildren.m"
-            timestampString = "544471082.208136"
+            filePath = "KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
+            timestampString = "544546911.534426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-createUser:withPassword:andDateOfBirth:andCountry:andParentEmail:andResponse:"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "createUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
