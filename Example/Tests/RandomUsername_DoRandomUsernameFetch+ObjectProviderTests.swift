@@ -93,9 +93,9 @@ class RandomUsername_DoRandomUsernameFetch_ObjectProviderTests : XCTestCase{
                 
                 expect(error).toNot(beNil())
                 
-                expect((error as! ErrorResponse)).toNot(beNil())
-                expect((error as! ErrorResponse).code).to(equal(123))
-                expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
+                expect((error as! ErrorWrapper)).toNot(beNil())
+                expect((error as! ErrorWrapper).code).to(equal(123))
+                expect((error as! ErrorWrapper).codeMeaning).to(equal("notFound"))
                 
                 done()
             })

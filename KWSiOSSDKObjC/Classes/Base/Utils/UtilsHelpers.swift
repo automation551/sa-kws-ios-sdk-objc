@@ -9,7 +9,6 @@
 import Foundation
 import SAMobileBase
 
-
 public class UtilsHelpers : NSObject{
     
     static let _singletonInstance = UtilsHelpers()
@@ -23,17 +22,17 @@ public class UtilsHelpers : NSObject{
         
     }
     
-    public func getTokenData (token: String) -> TokenData? {
-        
-        let base64req = ParseBase64Request(withBase64String: token)
+    static public func getTokenData (token: String) -> TokenData? {
         let base64Task = ParseBase64Task()
-        let metadataJson = base64Task.execute(request: base64req)
+        let parseTask = ParseJsonTask<TokenData>()
+        let tokenResult = base64Task.execute(input: token).then(parseTask.execute)
         
-        let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-        let parseJsonTask = JSONParseTask<TokenData>()
-        let metadata = parseJsonTask.execute(request: parseJsonReq)
-        
-        return metadata
+        switch tokenResult {
+        case .success(let tokenData):
+            return tokenData
+        case .error(_):
+            return nil
+        }
     }
     
     public func getUserDetailsCountryCode(country: String) -> String?{

@@ -86,8 +86,8 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
                                                         
                                                         expect(error).toNot(beNil())
                                                       
-                                                        expect((error as! ErrorResponse).errorCode).to(equal("invalid_request"))
-                                                        expect((error as! ErrorResponse).error).to(equal("Invalid or missing grant_type parameter"))
+                                                        expect((error as! ErrorWrapper).errorCode).to(equal("invalid_request"))
+                                                        expect((error as! ErrorWrapper).error).to(equal("Invalid or missing grant_type parameter"))
                                                         done()
             })
         }
@@ -112,8 +112,8 @@ class CreateUser_TempAccessToken_ObjectProviderTests: XCTestCase {
                                                         
                                                         expect(error).toNot(beNil())
                                                         
-                                                        expect((error as! ErrorResponse).errorCode).to(equal("invalid_client"))
-                                                        expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
+                                                        expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
+                                                        expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
                                                         done()
             })
         }

@@ -8,15 +8,14 @@
 import Foundation
 import SAMobileBase
 import SAProtobufs
+import KWSiOSSDKObjC
 
 public class AuthProvider: NSObject, AuthServiceProtocol {
     
     var environment: KWSNetworkEnvironment
-    var networkTask: NetworkTask
     
-    public init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
+    public init(environment: KWSNetworkEnvironment) {
         self.environment = environment
-        self.networkTask = networkTask
     }
     
     public func loginUser(userName: String, password: String, completionHandler: @escaping (LoggedUserModelProtocol?, Error?) -> ()) {
@@ -28,37 +27,24 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
                                                    clientSecret: self.environment.appID)
         
         let parseTask = ParseJsonTask<LoginAuthResponse>()
-        let future = networkTask.execute(input: loginUserNetworkRequest)
+        let networkTask = NetworkTask()
+        
+        let future = networkTask
+            .execute(input: loginUserNetworkRequest)
+            .map { (result: Result<String>) -> Result<LoginAuthResponse> in
+                return result.then(parseTask.execute)
+        }
+        
+        future.onResult { result in
             
-            
-            
-            
-        networkTask.execute(input: loginUserNetworkRequest) { loginUserNetworkResponse in
-            
-            if let json = loginUserNetworkResponse.response, loginUserNetworkResponse.error == nil{
-                
-                let parseRequest = JsonParseRequest.init(withRawData: json)
-                let parseTask = JSONParseTask<LoginAuthResponse>()
-                
-                if let loginResponseObject = parseTask.execute(request: parseRequest){
-                    completionHandler(loginResponseObject,nil)
-                } else {
-                    completionHandler(nil,KWSBaseError.JsonParsingError)
-                }
-                
-                
-            } else {
-                
-                if let errorResponse = loginUserNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(nil, mappedResponse)
-                    
-                } else {
-                    completionHandler(nil, loginUserNetworkResponse.error)
-                }
+            switch result {
+            case .success(let value):
+                completionHandler(value,nil)
+                break
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
+                break
             }
         }
     }
@@ -69,68 +55,47 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
         var countryValue = country ?? ""
         var parentEmailValue = parentEmail ?? ""
         
-        getTempAccessToken(environment: environment){ authResponse, error in
-            
-            if let token = authResponse?.token, error == nil {
-                
-                let base64req = ParseBase64Request(withBase64String: token)
-                let base64Task = ParseBase64Task()
-                let metadataJson = base64Task.execute(request: base64req)
-                
-                let parseJsonReq = JsonParseRequest(withRawData: metadataJson!)
-                let parseJsonTask = JSONParseTask<TokenData>()
-                let metadata = parseJsonTask.execute(request: parseJsonReq)
-                
-                if let met = metadata, let appId = met.appId as? Int {
-                    
-                    self.doUserCreation(environment: self.environment, username: username, password: password, dateOfBirth: dobValue, country: countryValue, parentEmail: parentEmailValue, appId: appId, token: token, completionHandler: completionHandler)
-                    
-                }
-                else {
-                    completionHandler(nil, KWSBaseError.JsonParsingError)
-                }
-            }
-            else {
-                completionHandler(nil, error)
-            }
-            
-        }
-    }
-    
-    //TODO: Does it need to be public for tests? Is there a better way?
-    public func getTempAccessToken(environment: KWSNetworkEnvironment, completionHandler: @escaping (LoginAuthResponse?, Error?) -> ()) {
-        
-        
         let getTempAccessTokenNetworkRequest = TempAccessTokenRequest(environment: environment,
                                                                       clientID: environment.mobileKey,
                                                                       clientSecret: environment.appID)
         
-        networkTask.execute(request: getTempAccessTokenNetworkRequest){ getTempAccessTokenNetworkResponse in
+        let parseTask = ParseJsonTask<LoginAuthResponse>()
+        let networkTask = NetworkTask()
+        
+        let future = networkTask
+            .execute(input: getTempAccessTokenNetworkRequest)
+            .map { (result: Result<String>) -> Result <LoginAuthResponse> in
+                return result.then(parseTask.execute)
+        }
+        
+        future.onResult { result in
             
-            if let json = getTempAccessTokenNetworkResponse.response, getTempAccessTokenNetworkResponse.error == nil {
+            switch result {
+            case .success(let value):
                 
-                let parseRequest = JsonParseRequest.init(withRawData: json)
+                let token = value.token
                 
+                let base64Task = ParseBase64Task()
+                let parseTask = ParseJsonTask<TokenData>()
+                let tokenResult = base64Task.execute(input: token).then(parseTask.execute)
                 
-                let parseTask = JSONParseTask<LoginAuthResponse>()
-                
-                if let getTempAccessResponseObject = parseTask.execute(request: parseRequest){
-                    completionHandler(getTempAccessResponseObject, nil)
-                }else{
-                    completionHandler(nil, KWSBaseError.JsonParsingError)
+                switch tokenResult {
+                case .success(let tokenData):
+                    let appId = tokenData.appId
+                    
+                    self.doUserCreation(environment: self.environment, username: username, password: password, dateOfBirth: dobValue, country: countryValue, parentEmail: parentEmailValue, appId: appId, token: token, completionHandler: completionHandler)
+                    break
+                case .error(let error):
+                    let mappedError = Provider().mapErrorResponse(error: error)
+                    completionHandler(nil, mappedError)
+                    break
                 }
                 
-            }else{
-                if let errorResponse = getTempAccessTokenNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(nil, mappedResponse)
-                    
-                } else {
-                    completionHandler(nil, getTempAccessTokenNetworkResponse.error)
-                }
+                break
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
+                break
             }
         }
     }
@@ -148,32 +113,25 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
                                                          token: token,
                                                          appID: appId)
         
-        networkTask.execute(request: createUserNetworkRequest) { createUserNetworkResponse in
+        let parseTask = ParseJsonTask<AuthUserResponse>()
+        let networkTask = NetworkTask()
+        
+        let future = networkTask
+            .execute(input: createUserNetworkRequest)
+            .map { (result: Result<String>) -> Result<AuthUserResponse> in
+                return result.then(parseTask.execute)
+        }
+        
+        future.onResult { result in
             
-            if let json = createUserNetworkResponse.response, createUserNetworkResponse.error == nil {
-                
-                let parseRequest = JsonParseRequest.init(withRawData: json)
-                
-                let parseTask = JSONParseTask<AuthUserResponse>()
-                
-                if let createUserResponseObject = parseTask.execute(request: parseRequest){
-                    completionHandler(createUserResponseObject, nil)
-                } else {
-                    completionHandler(nil, KWSBaseError.JsonParsingError)
-                }
-                
-            } else {
-                
-                if let errorResponse = createUserNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(nil, mappedResponse)
-                    
-                } else {
-                    completionHandler(nil, createUserNetworkResponse.error)
-                }
+            switch result {
+            case .success(let value):
+                completionHandler(value,nil)
+                break
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
+                break
             }
         }
     }

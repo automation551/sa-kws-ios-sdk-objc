@@ -1,5 +1,5 @@
 //
-//  InvalidErrorResponse+Mapping.swift
+//  InvalidTypeError+Mapping.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 05/02/2018.
@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension InvalidError: Decodable {
+extension InvalidTypeError: Decodable {
     
-    public static func decode(_ json: Any) throws -> InvalidError {
+    public static func decode(_ json: Any) throws -> InvalidTypeError {
         
-        return try InvalidError (
+        return try InvalidTypeError (
             dateOfBirth:            try json =>? "dateOfBirth",
             country:                try json =>? "country",
             parentEmail:            try json =>? "parentEmail",

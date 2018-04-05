@@ -136,8 +136,8 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).errorCode).to(equal("invalid_token"))
-                                                    expect((error as! ErrorResponse).error).to(equal("The access token provided is invalid."))
+                                                    expect((error as! ErrorWrapper).errorCode).to(equal("invalid_token"))
+                                                    expect((error as! ErrorWrapper).error).to(equal("The access token provided is invalid."))
                                                     done()
             })
         }
@@ -175,8 +175,8 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(123))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(123))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("notFound"))
                                                     
                                                     done()
             })
@@ -216,12 +216,12 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                    
-                                                    expect((error as! ErrorResponse).code).to(equal(10))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("conflict"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("username already taken"))
-                                                    expect((error as! ErrorResponse).invalid?.username?.code).to(equal(10))
-                                                    expect((error as! ErrorResponse).invalid?.username?.codeMeaning).to(equal("conflict"))
-                                                    expect((error as! ErrorResponse).invalid?.username?.errorMessage).to(equal("username already taken"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(10))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("conflict"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("username already taken"))
+                                                    expect((error as! ErrorWrapper).invalid?.username?.code).to(equal(10))
+                                                    expect((error as! ErrorWrapper).invalid?.username?.codeMeaning).to(equal("conflict"))
+                                                    expect((error as! ErrorWrapper).invalid?.username?.message).to(equal("username already taken"))
                                                     
                                                     done()
             })
@@ -260,12 +260,12 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(5))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"username\" fails because [\"username\" length must be at least 3 characters long]"))
-                                                    expect((error as! ErrorResponse).invalid?.username?.code).to(equal(7))
-                                                    expect((error as! ErrorResponse).invalid?.username?.codeMeaning).to(equal("invalidValue"))
-                                                    expect((error as! ErrorResponse).invalid?.username?.errorMessage).to(equal("\"username\" length must be at least 3 characters long"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(5))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("child \"username\" fails because [\"username\" length must be at least 3 characters long]"))
+                                                    expect((error as! ErrorWrapper).invalid?.username?.code).to(equal(7))
+                                                    expect((error as! ErrorWrapper).invalid?.username?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorWrapper).invalid?.username?.message).to(equal("\"username\" length must be at least 3 characters long"))
                                                     
                                                     done()
             })
@@ -304,12 +304,12 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(5))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"password\" fails because [\"password\" length must be at least 8 characters long]"))
-                                                    expect((error as! ErrorResponse).invalid?.password?.code).to(equal(7))
-                                                    expect((error as! ErrorResponse).invalid?.password?.codeMeaning).to(equal("invalidValue"))
-                                                    expect((error as! ErrorResponse).invalid?.password?.errorMessage).to(equal("\"password\" length must be at least 8 characters long"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(5))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("child \"password\" fails because [\"password\" length must be at least 8 characters long]"))
+                                                    expect((error as! ErrorWrapper).invalid?.password?.code).to(equal(7))
+                                                    expect((error as! ErrorWrapper).invalid?.password?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorWrapper).invalid?.password?.message).to(equal("\"password\" length must be at least 8 characters long"))
                                                     
                                                     done()
             })
@@ -348,12 +348,12 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(5))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"dateOfBirth\" fails because [\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/]"))
-                                                    expect((error as! ErrorResponse).invalid?.dateOfBirth?.code).to(equal(7))
-                                                    expect((error as! ErrorResponse).invalid?.dateOfBirth?.codeMeaning).to(equal("invalidValue"))
-                                                    expect((error as! ErrorResponse).invalid?.dateOfBirth?.errorMessage).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(5))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("child \"dateOfBirth\" fails because [\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/]"))
+                                                    expect((error as! ErrorWrapper).invalid?.dateOfBirth?.code).to(equal(7))
+                                                    expect((error as! ErrorWrapper).invalid?.dateOfBirth?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorWrapper).invalid?.dateOfBirth?.message).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
                                                     
                                                     done()
             })
@@ -392,12 +392,12 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(5))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"country\" fails because [\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/]"))
-                                                    expect((error as! ErrorResponse).invalid?.country?.code).to(equal(7))
-                                                    expect((error as! ErrorResponse).invalid?.country?.codeMeaning).to(equal("invalidValue"))
-                                                    expect((error as! ErrorResponse).invalid?.country?.errorMessage).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(5))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("child \"country\" fails because [\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/]"))
+                                                    expect((error as! ErrorWrapper).invalid?.country?.code).to(equal(7))
+                                                    expect((error as! ErrorWrapper).invalid?.country?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorWrapper).invalid?.country?.message).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
                                                     
                                                     done()
             })
@@ -437,12 +437,12 @@ class CreateUser_DoUserCreation_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(5))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
-                                                    expect((error as! ErrorResponse).invalid?.parentEmail?.code).to(equal(7))
-                                                    expect((error as! ErrorResponse).invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
-                                                    expect((error as! ErrorResponse).invalid?.parentEmail?.errorMessage).to(equal("\"parentEmail\" must be a valid email"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(5))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
+                                                    expect((error as! ErrorWrapper).invalid?.parentEmail?.code).to(equal(7))
+                                                    expect((error as! ErrorWrapper).invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
+                                                    expect((error as! ErrorWrapper).invalid?.parentEmail?.message).to(equal("\"parentEmail\" must be a valid email"))
                                                     
                                                     done()
             })

@@ -1,5 +1,5 @@
 //
-//  ErrorResponse+Mapping.swift
+//  ErrorWrapper+Mapping.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 05/02/2018.
@@ -9,17 +9,17 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension ErrorResponse: Decodable {
+extension ErrorWrapper: Decodable {
     
-    public static func decode(_ json: Any) throws -> ErrorResponse {
+    public static func decode(_ json: Any) throws -> ErrorWrapper {
         
-        return try ErrorResponse (
+        return try ErrorWrapper (
             code:               try json =>? "code",
             codeMeaning:        try json =>? "codeMeaning",
-            errorMessage:       try json =>? "errorMessage",
             invalid:            try json =>? "invalid",
             errorCode:          try json =>? "ErrorCode",
-            error:              try json =>? "Error"            
+            error:              try json =>? "Error",
+            message:            try json =>? "errorMessage"
         )
     }
 }

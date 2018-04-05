@@ -39,42 +39,42 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_null_oauthclientid_response")
         
-        let errorResponse = try? ErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
         expect(errorResponse?.codeMeaning).to(equal("validation"))
-        expect(errorResponse?.errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is required]"))
+        expect(errorResponse?.message).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is required]"))
         expect(errorResponse?.invalid?.oauthClientId?.code).to(equal(6))
         expect(errorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("missing"))
-        expect(errorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is required"))
+        expect(errorResponse?.invalid?.oauthClientId?.message).to(equal("\"oauthClientId\" is required"))
     }
     
     func test_RandomUsername_AppConfig_Empty_AuthClientId_Response (){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_empty_oauthclientid_response")
         
-        let errorResponse = try? ErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
         expect(errorResponse?.codeMeaning).to(equal("validation"))
-        expect(errorResponse?.errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is not allowed to be empty]"))
+        expect(errorResponse?.message).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is not allowed to be empty]"))
         expect(errorResponse?.invalid?.oauthClientId?.code).to(equal(7))
         expect(errorResponse?.invalid?.oauthClientId?.codeMeaning).to(equal("invalidValue"))
-        expect(errorResponse?.invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
+        expect(errorResponse?.invalid?.oauthClientId?.message).to(equal("\"oauthClientId\" is not allowed to be empty"))
     }
     
     func test_RandomUsername_AppConfig_AppNotFound_Response (){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_app_not_found_response")
         
-        let errorResponse = try? ErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(2))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
-        expect(errorResponse?.errorMessage).to(equal("app not found."))
+        expect(errorResponse?.message).to(equal("app not found."))
     }
     
     func test_RandomUsername_DoRandomUsernameFetch_NotFound_Response() {
@@ -82,7 +82,7 @@ class RandomUsername_AppConfig_MappingTests : XCTestCase{
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let errorResponse = try? ErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))

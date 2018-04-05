@@ -6,7 +6,15 @@
 //
 
 import Foundation
-enum KWSBaseError: Error {
-    case JsonParsingError
-    case ServiceError
+import SAMobileBase
+
+public class KWSBaseError : PrintableErrorProtocol {
+    
+    public var message: String
+    
+    public required init(message: String) {
+        self.message = message
+    }
+    
+    
 }

@@ -12,58 +12,36 @@ import SAProtobufs
 public class UsernameProvider: NSObject, UsernameServiceProtocol {
     
     var environment: KWSNetworkEnvironment
-    var networkTask: NetworkTask
     
-    public init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
+    public init(environment: KWSNetworkEnvironment) {
         self.environment = environment
-        self.networkTask = networkTask
-        
     }
     
     public func getRandomUsername(completionHandler: @escaping (RandomUsernameModelProtocol?, Error?) -> ()) {
         
-        getAppConfigDetails(environment: environment){ appConfigResponse, error in
-            
-            if (appConfigResponse?.app != nil && error == nil) {
-                
-                let appID = appConfigResponse?.app.id
-                
-                self.fetchRandomUsernameFromBackend(environment: self.environment, /*this will be improved*/ appID: appID!, completionHandler: completionHandler)
-                
-            } else {
-                completionHandler(nil,error)
-            }
-        }
-    }
-
-    public func getAppConfigDetails(environment: KWSNetworkEnvironment,
-                                    completionHandler: @escaping (AppConfigWrapper?, Error?) -> ()){
-        
         let getAppConfigNetworkRequest = AppConfigRequest(environment: environment,
                                                           clientID: environment.mobileKey)
         
-        networkTask.execute(request: getAppConfigNetworkRequest){ getAppConfigNetworkResponse in
+        let parseTask = ParseJsonTask<AppConfigWrapper>()
+        let networkTask = NetworkTask()
+        
+        let future = networkTask
+            .execute(input: getAppConfigNetworkRequest)
+            .map { (result: Result<String>) -> Result <AppConfigWrapper> in
+                return result.then(parseTask.execute)
+        }
+        
+        future.onResult { result in
             
-            if let json = getAppConfigNetworkResponse.response, getAppConfigNetworkResponse.error == nil{
-                
-                let parseRequest = JsonParseRequest.init(withRawData: json)
-                let parseTask = JSONParseTask<AppConfigWrapper>()
-                
-                if let getAppConfigResponseObject = parseTask.execute(request: parseRequest){
-                    completionHandler(getAppConfigResponseObject, nil)
-                } else {
-                    completionHandler(nil, KWSBaseError.JsonParsingError)
-                }
-            }else{
-                if let errorResponse = getAppConfigNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(nil, mappedResponse)
-                } else {
-                    completionHandler(nil, getAppConfigNetworkResponse.error)
-                }
+            switch result {
+            case .success(let value):
+                let appID = value.app.id
+                self.fetchRandomUsernameFromBackend(environment: self.environment, appID: appID, completionHandler: completionHandler)
+                break
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
+                break
             }
         }
     }
@@ -75,28 +53,26 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
         let getRandomUsernameNetworkRequest = RandomUsernameRequest(environment:environment,
                                                                     appID:appID)
         
-        networkTask.execute(request: getRandomUsernameNetworkRequest){ getRandomUsernameNetworkResponse in
+        let networkTask = NetworkTask()
+        let future = networkTask.execute(input: getRandomUsernameNetworkRequest)
+        
+        future.onResult { result in
             
-            let responseString = getRandomUsernameNetworkResponse.response
-            if let json = responseString, getRandomUsernameNetworkResponse.error == nil{
+            switch result {
+            case .success(let value):
                 
-                let parsedResponseString = responseString?.replacingOccurrences(of: "\"", with: "")
+                let parsedResponseString = value.replacingOccurrences(of: "\"", with: "")
                 
-                if (parsedResponseString != nil && !(parsedResponseString?.isEmpty)!){
+                if (parsedResponseString != nil && !(parsedResponseString.isEmpty)){
                     completionHandler(RandomUsername(randomUsername: parsedResponseString), nil)
                 } else {
-                    completionHandler(RandomUsername(randomUsername: responseString), nil)
+                    completionHandler(RandomUsername(randomUsername: value), nil)
                 }
-            } else {
-                if let errorResponse = getRandomUsernameNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(nil, mappedResponse)
-                } else {
-                    completionHandler(nil, getRandomUsernameNetworkResponse.error)
-                }
+                break
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
+                break
             }
         }
     }

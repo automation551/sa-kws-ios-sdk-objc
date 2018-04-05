@@ -88,12 +88,12 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
             
                 expect(error).toNot(beNil())
                 
-                expect((error as! ErrorResponse).code).to(equal(5))
-                expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
-                expect((error as! ErrorResponse).errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is required]"))
-                expect((error as! ErrorResponse).invalid?.oauthClientId?.code).to(equal(6))
-                expect((error as! ErrorResponse).invalid?.oauthClientId?.codeMeaning).to(equal("missing"))
-                expect((error as! ErrorResponse).invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is required"))
+                expect((error as! ErrorWrapper).code).to(equal(5))
+                expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                expect((error as! ErrorWrapper).message).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is required]"))
+                expect((error as! ErrorWrapper).invalid?.oauthClientId?.code).to(equal(6))
+                expect((error as! ErrorWrapper).invalid?.oauthClientId?.codeMeaning).to(equal("missing"))
+                expect((error as! ErrorWrapper).invalid?.oauthClientId?.message).to(equal("\"oauthClientId\" is required"))
                 
                 done()
             })
@@ -122,12 +122,12 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 
                 expect(error).toNot(beNil())
                 
-                expect((error as! ErrorResponse).code).to(equal(5))
-                expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
-                expect((error as! ErrorResponse).errorMessage).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is not allowed to be empty]"))
-                expect((error as! ErrorResponse).invalid?.oauthClientId?.code).to(equal(7))
-                expect((error as! ErrorResponse).invalid?.oauthClientId?.codeMeaning).to(equal("invalidValue"))
-                expect((error as! ErrorResponse).invalid?.oauthClientId?.errorMessage).to(equal("\"oauthClientId\" is not allowed to be empty"))
+                expect((error as! ErrorWrapper).code).to(equal(5))
+                expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                expect((error as! ErrorWrapper).message).to(equal("child \"oauthClientId\" fails because [\"oauthClientId\" is not allowed to be empty]"))
+                expect((error as! ErrorWrapper).invalid?.oauthClientId?.code).to(equal(7))
+                expect((error as! ErrorWrapper).invalid?.oauthClientId?.codeMeaning).to(equal("invalidValue"))
+                expect((error as! ErrorWrapper).invalid?.oauthClientId?.message).to(equal("\"oauthClientId\" is not allowed to be empty"))
                 done()
             })
         }
@@ -153,9 +153,9 @@ class RandomUsername_AppConfig_ObjectProviderTests : XCTestCase{
                 
                 expect(error).toNot(beNil())
                 
-                expect((error as! ErrorResponse).code).to(equal(2))
-                expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
-                expect((error as! ErrorResponse).errorMessage).to(equal("app not found."))
+                expect((error as! ErrorWrapper).code).to(equal(2))
+                expect((error as! ErrorWrapper).codeMeaning).to(equal("notFound"))
+                expect((error as! ErrorWrapper).message).to(equal("app not found."))
                 
                 done()
             })
