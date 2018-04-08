@@ -55,13 +55,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/AuthProvider.swift"
-            timestampString = "544896324.687058"
+            filePath = "KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
+            timestampString = "544901803.471995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "createUser(username:password:timeZone:dateOfBirth:country:parentEmail:completionHandler:)"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "loginUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -71,13 +71,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/AuthProvider.swift"
-            timestampString = "544896324.6871589"
+            filePath = "KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
+            timestampString = "544901803.4720531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "createUser(username:password:timeZone:dateOfBirth:country:parentEmail:completionHandler:)"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "getLoggedUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
+            timestampString = "544901803.472096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "saveUser(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

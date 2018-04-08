@@ -13,12 +13,18 @@ import SAMobileBase
 
 class KWSSwiftTableViewController: UITableViewController {
     
-    //for Environment
-    let API = "https://kwsapi.demo.superawesome.tv/"
-    let SINGLE_SIGN_ON = "https://club.demo.superawesome.tv/"
-    let CLIENT_ID  = "kws-sdk-testing"
-    let CLIENT_SECRET = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
+    //for DEMO Environment
+//    let API = "https://kwsapi.demo.superawesome.tv/"
+//    let SINGLE_SIGN_ON = "https://club.demo.superawesome.tv/"
+//    let CLIENT_ID  = "kws-sdk-testing"
+//    let CLIENT_SECRET = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
     
+    //for STAN TEST Environment
+    let API = "https://stan-test-cluster.api.kws.superawesome.tv/"
+    let SINGLE_SIGN_ON = "https://stan-test-cluster.accounts.kws.superawesome.tv/"
+    let CLIENT_ID  = "stan-test"
+    let CLIENT_SECRET = "DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
+
     var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
     
     var kUser : LoggedUserModelProtocol?
@@ -136,7 +142,11 @@ class KWSSwiftTableViewController: UITableViewController {
     
     func loginUser(){
         
-        let userName = "guitestnumber3"
+        //stan test environment
+        let userName = "guithetest1111"
+        
+        //demo environment
+//        let userName = "guitestnumber3"
         let pwd = "testtest"
         
         let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
@@ -268,16 +278,14 @@ class KWSSwiftTableViewController: UITableViewController {
     }
     
     func saveUser(user: LoggedUserModelProtocol) {
-        
-        //TODO this needs to use Session Provider (wip)
-        kUser = user
-        
+        let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let success = sessionsService?.saveLoggedUser(user: user)
+        print("Saving user was \(String(describing: success))")
     }
     
     func getLoggedUser () -> LoggedUserModelProtocol?{
-        
-        //TODO this needs to use Session Provider (wip)
-        return kUser
+        let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        return sessionsService?.getLoggedUser()
     }
     
     // MARK - helper methods -----------------------------------
