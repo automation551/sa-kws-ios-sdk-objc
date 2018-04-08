@@ -100,8 +100,7 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
         }
     }
     
-    //TODO: Does it need to be public for tests? Is there a better way?
-    public func doUserCreation(environment: KWSNetworkEnvironment,username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponse?, Error?) -> ()) {
+    private func doUserCreation(environment: KWSNetworkEnvironment,username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponse?, Error?) -> ()) {
         
         
         let createUserNetworkRequest = CreateUserRequest(environment: environment,

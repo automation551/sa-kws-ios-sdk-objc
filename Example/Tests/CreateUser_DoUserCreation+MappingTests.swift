@@ -30,8 +30,8 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
         let createUserResponse = try? AuthUserResponse.decode(JSON!)
         
         expect(createUserResponse).toNot(beNil())
-        expect(createUserResponse?.id).to(equal(99))
-        expect(createUserResponse?.token).to(equal("good_token"))
+        expect(createUserResponse?.id).to(equal(170))
+        expect(createUserResponse?.token).to(equal("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE3MCwiYXBwSWQiOjIsImNsaWVudElkIjoic3Rhbi10ZXN0Iiwic2NvcGUiOiJ1c2VyIiwiaWF0IjoxNTIzMjAzMzI3LCJleHAiOjE1MjMyODk3MjcsImlzcyI6InN1cGVyYXdlc29tZSJ9.uqBAxvmUoyq-o22_cEG2zNKLvRzjTdY7OQu24xzjZDI"))
     }
     
     func test_CreateUser_BadUsername_Response(){

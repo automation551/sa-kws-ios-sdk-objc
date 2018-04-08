@@ -43,11 +43,8 @@
 		9C3C5BCD203AE22F0095FC1C /* User_UpdateUser_ParentEmail+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3C5BCC203AE22F0095FC1C /* User_UpdateUser_ParentEmail+ObjectProviderTests.swift */; };
 		9C59C7BA202B18B700BE4E74 /* RandomUsernameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7B9202B18B700BE4E74 /* RandomUsernameTests.swift */; };
 		9C59C7BC202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7BB202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift */; };
-		9C59C7BE202B196900BE4E74 /* CreateUser_TempAccessToken+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7BD202B196900BE4E74 /* CreateUser_TempAccessToken+ObjectProviderTests.swift */; };
 		9C59C7C0202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7BF202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift */; };
-		9C59C7C2202B199B00BE4E74 /* RandomUsername_AppConfig+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7C1202B199B00BE4E74 /* RandomUsername_AppConfig+ObjectProviderTests.swift */; };
 		9C59C7C4202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7C3202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift */; };
-		9C59C7C6202B19CA00BE4E74 /* RandomUsername_DoRandomUsernameFetch+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7C5202B19CA00BE4E74 /* RandomUsername_DoRandomUsernameFetch+ObjectProviderTests.swift */; };
 		9C59C7C8202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7C7202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift */; };
 		9C59C7CA202B1DF900BE4E74 /* AppConfig+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7C9202B1DF900BE4E74 /* AppConfig+RequestTests.swift */; };
 		9C59C7CC202B1ED000BE4E74 /* RandomUsername+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7CB202B1ED000BE4E74 /* RandomUsername+RequestTests.swift */; };
@@ -60,13 +57,13 @@
 		9C5A79D2207634F3009E4B8C /* AppConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D1207634F3009E4B8C /* AppConfigTests.swift */; };
 		9C5A79D420763500009E4B8C /* AuthUserResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D320763500009E4B8C /* AuthUserResponseTests.swift */; };
 		9C5A79D620763888009E4B8C /* LoginAuthResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D520763888009E4B8C /* LoginAuthResponseTests.swift */; };
+		9C68ED87207A7A4300444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift */; };
 		9C7F2FFB202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */; };
 		9C7F2FFE202DE980002795DD /* UserDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */; };
 		9C7F3000202DEB92002795DD /* User_GetUser_+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */; };
 		9C7F3002202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F3001202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift */; };
 		9C80FD3720285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80FD3620285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift */; };
 		9C80FD3920285F46003BD328 /* CreateUser+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80FD3820285F46003BD328 /* CreateUser+RequestTests.swift */; };
-		9C80FD472028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80FD462028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift */; };
 		9C9CD8C020345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CD8BF20345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift */; };
 		9C9CD8C220345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CD8C120345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift */; };
 		9C9CD8C720349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CD8C620349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift */; };
@@ -135,11 +132,8 @@
 		9C3C5BCC203AE22F0095FC1C /* User_UpdateUser_ParentEmail+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_UpdateUser_ParentEmail+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C59C7B9202B18B700BE4E74 /* RandomUsernameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsernameTests.swift; sourceTree = "<group>"; };
 		9C59C7BB202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_TempAccessToken+MappingTests.swift"; sourceTree = "<group>"; };
-		9C59C7BD202B196900BE4E74 /* CreateUser_TempAccessToken+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_TempAccessToken+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C59C7BF202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername_AppConfig+MappingTests.swift"; sourceTree = "<group>"; };
-		9C59C7C1202B199B00BE4E74 /* RandomUsername_AppConfig+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername_AppConfig+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C59C7C3202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername_DoRandomUsernameFetch+MappingTests.swift"; sourceTree = "<group>"; };
-		9C59C7C5202B19CA00BE4E74 /* RandomUsername_DoRandomUsernameFetch+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername_DoRandomUsernameFetch+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C59C7C7202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TempAccessToken+RequestTests.swift"; sourceTree = "<group>"; };
 		9C59C7C9202B1DF900BE4E74 /* AppConfig+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConfig+RequestTests.swift"; sourceTree = "<group>"; };
 		9C59C7CB202B1ED000BE4E74 /* RandomUsername+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername+RequestTests.swift"; sourceTree = "<group>"; };
@@ -152,13 +146,13 @@
 		9C5A79D1207634F3009E4B8C /* AppConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigTests.swift; sourceTree = "<group>"; };
 		9C5A79D320763500009E4B8C /* AuthUserResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserResponseTests.swift; sourceTree = "<group>"; };
 		9C5A79D520763888009E4B8C /* LoginAuthResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthResponseTests.swift; sourceTree = "<group>"; };
+		9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername_GetRandomUsername+ObjectProvider.swift"; sourceTree = "<group>"; };
 		9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUserDetails+RequestTests.swift"; sourceTree = "<group>"; };
 		9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTests.swift; sourceTree = "<group>"; };
 		9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUser_+MappingTests.swift"; sourceTree = "<group>"; };
 		9C7F3001202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUser+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C80FD3620285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_DoUserCreation+MappingTests.swift"; sourceTree = "<group>"; };
 		9C80FD3820285F46003BD328 /* CreateUser+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser+RequestTests.swift"; sourceTree = "<group>"; };
-		9C80FD462028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_DoUserCreation+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C9CD8BF20345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_UpdateUser_UserDetails+ObjectProvider.swift"; sourceTree = "<group>"; };
 		9C9CD8C120345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_UpdateUser_UserDetails+MappingTests.swift"; sourceTree = "<group>"; };
 		9C9CD8C620349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_UpdateUserDetails+RequestTests.swift"; sourceTree = "<group>"; };
@@ -391,9 +385,8 @@
 			children = (
 				9CDBB3BC202C6F4D00D20FD4 /* FakeMockModels */,
 				9C59C7BF202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift */,
-				9C59C7C1202B199B00BE4E74 /* RandomUsername_AppConfig+ObjectProviderTests.swift */,
 				9C59C7C3202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift */,
-				9C59C7C5202B19CA00BE4E74 /* RandomUsername_DoRandomUsernameFetch+ObjectProviderTests.swift */,
+				9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift */,
 			);
 			name = RandomUsername;
 			sourceTree = "<group>";
@@ -420,9 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				9C80FD3620285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift */,
-				9C80FD462028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift */,
 				9C59C7BB202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift */,
-				9C59C7BD202B196900BE4E74 /* CreateUser_TempAccessToken+ObjectProviderTests.swift */,
 				9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift */,
 			);
 			name = CreateUser;
@@ -714,6 +705,7 @@
 				9C80FD3720285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift in Sources */,
 				9C5A79CC20762B57009E4B8C /* PointsTests.swift in Sources */,
 				9C3C5BCD203AE22F0095FC1C /* User_UpdateUser_ParentEmail+ObjectProviderTests.swift in Sources */,
+				9C68ED87207A7A4300444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift in Sources */,
 				9C59C7C0202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift in Sources */,
 				9CDBB3BE202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift in Sources */,
 				1B87E4A81CF89E690053FD8F /* KWSKWSRequestPermissionTests.m in Sources */,
@@ -722,7 +714,6 @@
 				9C59C7C8202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift in Sources */,
 				9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */,
 				9C18313820209F3E00DD4083 /* TestUtils.swift in Sources */,
-				9C80FD472028A8FF003BD328 /* CreateUser_DoUserCreation+ObjectProviderTests.swift in Sources */,
 				9C9CD8CC2034A3A80019CF2C /* UpdateUserDetailsFakeResponse+Mapping.swift in Sources */,
 				9C5A79D420763500009E4B8C /* AuthUserResponseTests.swift in Sources */,
 				1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */,
@@ -730,16 +721,13 @@
 				9C5A79CA207629D1009E4B8C /* ApplicationPermissionsTests.swift in Sources */,
 				9C5A79C6207623CF009E4B8C /* UserAddress.swift in Sources */,
 				9C9CD8C020345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift in Sources */,
-				9C59C7BE202B196900BE4E74 /* CreateUser_TempAccessToken+ObjectProviderTests.swift in Sources */,
 				9C1831312020861900DD4083 /* Login+ObjectProviderTests.swift in Sources */,
 				9C5A79C8207626BC009E4B8C /* ApplicationProfileTest.swift in Sources */,
 				9C9CD8C92034A3870019CF2C /* UpdateUserDetailsFakeResponse.swift in Sources */,
 				1B87E4A41CF89E400053FD8F /* KWSTokenTests.m in Sources */,
 				9C59C7BC202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift in Sources */,
 				9C104F23203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift in Sources */,
-				9C59C7C2202B199B00BE4E74 /* RandomUsername_AppConfig+ObjectProviderTests.swift in Sources */,
 				9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift in Sources */,
-				9C59C7C6202B19CA00BE4E74 /* RandomUsername_DoRandomUsernameFetch+ObjectProviderTests.swift in Sources */,
 				9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */,
 				9C59C7CC202B1ED000BE4E74 /* RandomUsername+RequestTests.swift in Sources */,
 				9C9CD8C220345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift in Sources */,

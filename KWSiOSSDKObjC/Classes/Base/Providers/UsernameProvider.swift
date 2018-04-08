@@ -46,7 +46,7 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
         }
     }
     
-    public func fetchRandomUsernameFromBackend(environment: KWSNetworkEnvironment,
+    private func fetchRandomUsernameFromBackend(environment: KWSNetworkEnvironment,
                                                appID: Int,
                                                completionHandler: @escaping (RandomUsername?, Error?) -> ()){
         

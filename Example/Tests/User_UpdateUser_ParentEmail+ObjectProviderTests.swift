@@ -55,7 +55,7 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         
         //when
         let uri = "\(request.environment.domain + request.endpoint)"
-        stub(http(.put, uri: uri ) , json(JSON!, status: 204))
+        stub(everything, json(JSON!, status: 204))
         
         waitUntil { done in
             
