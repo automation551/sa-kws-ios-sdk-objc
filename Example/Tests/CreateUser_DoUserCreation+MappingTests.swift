@@ -66,7 +66,7 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
     
     func test_CreateUser_BadTokenResponse(){
         var JSON: Any?
-        JSON = try? fixtureWithName(name:"create_user_bad_token_response")
+        JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
         let errorResponse = try? ErrorWrapper.decode(JSON!)
         

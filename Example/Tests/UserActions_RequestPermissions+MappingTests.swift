@@ -58,7 +58,7 @@ class UserActions_RequestPermissions_MappingTests: XCTestCase {
         //403
         
         var JSON: Any?
-        JSON = try? fixtureWithName(name:"permission_request_not_supported_for_user_response")
+        JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
         let errorResponse = try? ErrorWrapper.decode(JSON!)
         

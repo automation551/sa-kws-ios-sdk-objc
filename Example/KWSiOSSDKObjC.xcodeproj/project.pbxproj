@@ -59,6 +59,9 @@
 		9C5A79D620763888009E4B8C /* LoginAuthResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D520763888009E4B8C /* LoginAuthResponseTests.swift */; };
 		9C68ED87207A7A4300444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift */; };
 		9C68ED8F207A87D900444D2B /* Session+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED8B207A87BE00444D2B /* Session+ObjectProvider.swift */; };
+		9C68ED93207A8BFE00444D2B /* GetAppData+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED92207A8BFE00444D2B /* GetAppData+RequestTests.swift */; };
+		9C68ED9E207A917E00444D2B /* User_Actions_GetAppData+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED9D207A917E00444D2B /* User_Actions_GetAppData+MappingTests.swift */; };
+		9C68EDA0207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED9F207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift */; };
 		9C7F2FFB202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */; };
 		9C7F2FFE202DE980002795DD /* UserDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */; };
 		9C7F3000202DEB92002795DD /* User_GetUser_+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */; };
@@ -149,6 +152,9 @@
 		9C5A79D520763888009E4B8C /* LoginAuthResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthResponseTests.swift; sourceTree = "<group>"; };
 		9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername_GetRandomUsername+ObjectProvider.swift"; sourceTree = "<group>"; };
 		9C68ED8B207A87BE00444D2B /* Session+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+ObjectProvider.swift"; sourceTree = "<group>"; };
+		9C68ED92207A8BFE00444D2B /* GetAppData+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GetAppData+RequestTests.swift"; sourceTree = "<group>"; };
+		9C68ED9D207A917E00444D2B /* User_Actions_GetAppData+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_Actions_GetAppData+MappingTests.swift"; sourceTree = "<group>"; };
+		9C68ED9F207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_Actions_GetAppData+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUserDetails+RequestTests.swift"; sourceTree = "<group>"; };
 		9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTests.swift; sourceTree = "<group>"; };
 		9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUser_+MappingTests.swift"; sourceTree = "<group>"; };
@@ -318,6 +324,7 @@
 				9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */,
 				9C9CD8C620349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift */,
 				9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */,
+				9C68ED92207A8BFE00444D2B /* GetAppData+RequestTests.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -348,6 +355,8 @@
 			children = (
 				9C104F20203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift */,
 				9C104F22203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift */,
+				9C68ED9D207A917E00444D2B /* User_Actions_GetAppData+MappingTests.swift */,
+				9C68ED9F207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift */,
 			);
 			name = UserActionsServices;
 			sourceTree = "<group>";
@@ -703,6 +712,7 @@
 			files = (
 				9C7F3000202DEB92002795DD /* User_GetUser_+MappingTests.swift in Sources */,
 				9C9CD8C720349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift in Sources */,
+				9C68EDA0207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift in Sources */,
 				9C104F21203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift in Sources */,
 				9C7F2FFB202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift in Sources */,
 				9C7F2FFE202DE980002795DD /* UserDetailsTests.swift in Sources */,
@@ -728,6 +738,7 @@
 				9C18313820209F3E00DD4083 /* TestUtils.swift in Sources */,
 				9C9CD8CC2034A3A80019CF2C /* UpdateUserDetailsFakeResponse+Mapping.swift in Sources */,
 				9C5A79D420763500009E4B8C /* AuthUserResponseTests.swift in Sources */,
+				9C68ED93207A8BFE00444D2B /* GetAppData+RequestTests.swift in Sources */,
 				1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */,
 				9C18312F202085FC00DD4083 /* Login+RequestTests.swift in Sources */,
 				9C5A79CA207629D1009E4B8C /* ApplicationPermissionsTests.swift in Sources */,
@@ -740,6 +751,7 @@
 				9C59C7BC202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift in Sources */,
 				9C104F23203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift in Sources */,
 				9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift in Sources */,
+				9C68ED9E207A917E00444D2B /* User_Actions_GetAppData+MappingTests.swift in Sources */,
 				9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */,
 				9C59C7CC202B1ED000BE4E74 /* RandomUsername+RequestTests.swift in Sources */,
 				9C9CD8C220345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift in Sources */,

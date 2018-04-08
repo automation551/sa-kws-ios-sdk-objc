@@ -1,26 +1,29 @@
 //
-//  User_GetUserDetails+RequestTests.swift
+//  GetAppData+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 09/02/2018.
+//  Created by Guilherme Mota on 08/04/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
+
 
 import XCTest
 import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class User_GetUserDetails_RequestTests: XCTestCase {
+class GetAppData_RequestTests: XCTestCase {
     
     //class or data to test
-    private var request: UserDetailsRequest!
+    private var request: GetAppDataRequest!
     
     private var env: KWSNetworkEnvironment!
     private var userId: Int = 123
+    private var appId: Int = 2
     private var token: String!
     private var method: NetworkMethod!
     private var endpoint: String!
+    
     
     override func setUp() {
         super.setUp()
@@ -31,12 +34,13 @@ class User_GetUserDetails_RequestTests: XCTestCase {
         token = "mock_token"
         
         method = .GET
-        endpoint = "v1/users/\(userId)"
+        endpoint = "v1/apps/\(appId)/users/\(userId)/app-data"
         
         //when
-        request = UserDetailsRequest.init(environment: env,
-                                          userId: userId,
-                                          token:token)
+        request = GetAppDataRequest.init(environment: env,
+                                         appId: appId,
+                                         userId: userId,
+                                         token:token)
         
     }
     
@@ -49,6 +53,7 @@ class User_GetUserDetails_RequestTests: XCTestCase {
     func testConstantsToBeNotNil(){
         //then
         expect(self.userId).toNot(beNil())
+        expect(self.appId).toNot(beNil())
         expect(self.token).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
@@ -77,7 +82,7 @@ class User_GetUserDetails_RequestTests: XCTestCase {
     func testRequestBodyToBeNil(){
         //then
         expect(self.request.body).to(beNil())
-      
+        
     }
     
     public func testRequestHeader() {
@@ -93,10 +98,11 @@ class User_GetUserDetails_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
     
+    
     func testRequestQueryToBeNil() {
         //then
         expect(self.request.query).to(beNil())
-       
+        
     }
     
     func testRequestFormUrlEncodeToBeFalse(){

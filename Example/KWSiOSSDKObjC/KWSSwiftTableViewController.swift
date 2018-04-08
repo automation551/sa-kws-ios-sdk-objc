@@ -14,17 +14,17 @@ import SAMobileBase
 class KWSSwiftTableViewController: UITableViewController {
     
     //for DEMO Environment
-//    let API = "https://kwsapi.demo.superawesome.tv/"
-//    let SINGLE_SIGN_ON = "https://club.demo.superawesome.tv/"
-//    let CLIENT_ID  = "kws-sdk-testing"
-//    let CLIENT_SECRET = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
+    //    let API = "https://kwsapi.demo.superawesome.tv/"
+    //    let SINGLE_SIGN_ON = "https://club.demo.superawesome.tv/"
+    //    let CLIENT_ID  = "kws-sdk-testing"
+    //    let CLIENT_SECRET = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
     
     //for STAN TEST Environment
     let API = "https://stan-test-cluster.api.kws.superawesome.tv/"
     let SINGLE_SIGN_ON = "https://stan-test-cluster.accounts.kws.superawesome.tv/"
     let CLIENT_ID  = "stan-test"
     let CLIENT_SECRET = "DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
-
+    
     var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
     
     var kUser : LoggedUserModelProtocol?
@@ -35,7 +35,7 @@ class KWSSwiftTableViewController: UITableViewController {
             "Permissions" :
                 ["Submit Parent Email", "Request Permissions"],
             "User" :
-                ["Random Username", "Create User", "Login User", "Update User", "Get User Details"]
+                ["Random Username", "Create User", "Login User", "Update User", "Get User Details", "Get App Data"]
     ]
     
     // MARK: - TABLE VIEW STUFF
@@ -87,6 +87,7 @@ class KWSSwiftTableViewController: UITableViewController {
             case "Random Username": self.randomUserName()
             case "Update User": self.updateUserDetails()
             case "Get User Details": self.getUserDetails()
+            case "Get App Data": self.getAppData()
             default:
                 break
             }
@@ -146,7 +147,7 @@ class KWSSwiftTableViewController: UITableViewController {
         let userName = "guithetest1111"
         
         //demo environment
-//        let userName = "guitestnumber3"
+        //        let userName = "guitestnumber3"
         let pwd = "testtest"
         
         let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
@@ -277,15 +278,42 @@ class KWSSwiftTableViewController: UITableViewController {
         }
     }
     
+    func getAppData(){
+        
+        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let userId = cachedUser.id as? Int ?? 0
+            let appId = cachedUser.tokenData.appId
+            let token = cachedUser.token
+            
+            userActions?.getAppData(userId: userId, appId: appId, token: token) { appData, error in
+                
+                if( appData != nil){
+                    print("Got app data: \(String(describing: appData))")
+                } else {
+                    print("Something went wrong for get user details:  \(String(describing: error))")
+                }
+            }
+        } else {
+            print("No valid user cached!!!")
+        }
+    }
+    
     func saveUser(user: LoggedUserModelProtocol) {
         let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         let success = sessionsService?.saveLoggedUser(user: user)
         print("Saving user was \(String(describing: success))")
     }
     
-    func getLoggedUser () -> LoggedUserModelProtocol?{
-        let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
-        return sessionsService?.getLoggedUser()
+    func getLoggedUser () -> LoggedUser?{
+        let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)        
+        if let loggedUser = sessionsService?.getLoggedUser()  {
+            return loggedUser as? LoggedUser
+        } else {
+            return nil
+        }
     }
     
     // MARK - helper methods -----------------------------------

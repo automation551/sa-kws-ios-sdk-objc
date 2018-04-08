@@ -108,7 +108,7 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
     
     func test_User_Permissions_Not_Supported_For_User_Response(){
         
-        let JSON: Any? = try? fixtureWithName(name:"permission_request_not_supported_for_user_response")
+        let JSON: Any? = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
         let request = PermissionsRequest(environment: self.environment,
                                          userId: badUserId,
