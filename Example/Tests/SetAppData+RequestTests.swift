@@ -1,25 +1,26 @@
 //
-//  GetAppData+RequestTests.swift
+//  SetAppData+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 08/04/2018.
+//  Created by Guilherme Mota on 09/04/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
-
 
 import XCTest
 import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class GetAppData_RequestTests: XCTestCase {
+class SetAppData_RequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
-    private var request: GetAppDataRequest!
-    private var method: NetworkMethod!
-    private var endpoint: String!
-    private var userId: Int = 123
-    private var appId: Int = 2
+    public var env: KWSNetworkEnvironment!
+    public var request: SetAppDataRequest!
+    public var method: NetworkMethod!
+    public var endpoint: String!
+    private var appId: Int = 0
+    private var userId: Int = 0
+    private var value: Int = 0
+    private var key: String!
     private var token: String!
     
     override func setUp() {
@@ -27,16 +28,21 @@ class GetAppData_RequestTests: XCTestCase {
         
         // given
         env = GoodMockNetworkEnvironment()
+        appId = 1
+        userId = 123
+        value = 24
+        key = "new_value"
         token = "mock_token"
-        method = .GET
-        endpoint = "v1/apps/\(appId)/users/\(userId)/app-data"
+        method = .POST
+        endpoint = "v1/apps/\(appId)/users/\(userId)/app-data/set"
         
         //when
-        request = GetAppDataRequest.init(environment: env,
-                                         appId: appId,
-                                         userId: userId,
-                                         token:token)
-        
+        request = SetAppDataRequest(environment: env,
+                                    appId: appId,
+                                    userId: userId,
+                                    value: value,
+                                    key: key,
+                                    token: token)
     }
     
     override func tearDown() {
@@ -65,17 +71,27 @@ class GetAppData_RequestTests: XCTestCase {
     
     func testConstantsToBeNotNil(){
         //then
-        expect(self.userId).toNot(beNil())
         expect(self.appId).toNot(beNil())
+        expect(self.userId).toNot(beNil())
+        expect(self.value).toNot(beNil())
+        expect(self.key).toNot(beNil())
         expect(self.token).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
     }
     
-    func testRequestBodyToBeNil(){
-        //then
-        expect(self.request.body).to(beNil())
+    func testRequestBody(){
+        let requestBody = self.request.body
         
+        //then
+        expect(requestBody).toNot(beNil())
+        expect(requestBody?.count).to(equal(2))
+        
+        expect(requestBody?.keys.contains("name")).to(beTrue())
+        expect(requestBody?.keys.contains("value")).to(beTrue())
+        
+        expect(self.key).to(equal((requestBody?["name"] as! String)))
+        expect(self.value).to(equal((requestBody?["value"] as! Int)))
     }
     
     public func testRequestHeader() {
@@ -91,10 +107,9 @@ class GetAppData_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
     
-    func testRequestQueryToBeNil() {
+    func testRequestQuery() {
         //then
         expect(self.request.query).to(beNil())
-        
     }
     
     func testRequestFormUrlEncodeToBeFalse(){
@@ -102,3 +117,4 @@ class GetAppData_RequestTests: XCTestCase {
         expect(self.request.formEncodeUrls).to(beFalse())
     }
 }
+

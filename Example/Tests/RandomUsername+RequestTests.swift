@@ -14,15 +14,11 @@ import KWSiOSSDKObjC
 
 class RandomUsername_RequestTests: XCTestCase {
     
-    
-    //class or data to test
-    private var request: RandomUsernameRequest!
     private var env: KWSNetworkEnvironment!
-    
-    private var appID: Int = 0
-    
+    private var request: RandomUsernameRequest!
     private var method: NetworkMethod!
     private var endpoint: String!
+    private var appID: Int = 0
     
     override func setUp() {
         super.setUp()
@@ -39,18 +35,8 @@ class RandomUsername_RequestTests: XCTestCase {
         
     }
     
-    
     override func tearDown() {
         super.tearDown()
-        request = nil
-        env = nil
-    }
-    
-    func testConstantsToBeNotNil(){
-        //then
-        expect(self.appID).toNot(beNil())
-        expect(self.endpoint).toNot(beNil())
-        expect(self.method).toNot(beNil())
     }
     
     func testRequestToBeNotNil(){
@@ -71,6 +57,13 @@ class RandomUsername_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
+    }  
+    
+    func testConstantsToBeNotNil(){
+        //then
+        expect(self.appID).toNot(beNil())
+        expect(self.endpoint).toNot(beNil())
+        expect(self.method).toNot(beNil())
     }
     
     func testRequestBodyToBeNil(){
@@ -91,7 +84,6 @@ class RandomUsername_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beFalse())
     }
     
-    
     func testRequestQueryToBeNil() {
         //then
         expect(self.request.query).to(beNil())
@@ -101,7 +93,6 @@ class RandomUsername_RequestTests: XCTestCase {
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }
-    
 }
 
 

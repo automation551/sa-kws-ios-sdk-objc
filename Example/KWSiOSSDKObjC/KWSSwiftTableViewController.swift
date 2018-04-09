@@ -14,16 +14,16 @@ import SAMobileBase
 class KWSSwiftTableViewController: UITableViewController {
     
     //for DEMO Environment
-    //    let API = "https://kwsapi.demo.superawesome.tv/"
-    //    let SINGLE_SIGN_ON = "https://club.demo.superawesome.tv/"
-    //    let CLIENT_ID  = "kws-sdk-testing"
-    //    let CLIENT_SECRET = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
+        let API = "https://kwsapi.demo.superawesome.tv/"
+        let SINGLE_SIGN_ON = "https://club.demo.superawesome.tv/"
+        let CLIENT_ID  = "kws-sdk-testing"
+        let CLIENT_SECRET = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
     
     //for STAN TEST Environment
-    let API = "https://stan-test-cluster.api.kws.superawesome.tv/"
-    let SINGLE_SIGN_ON = "https://stan-test-cluster.accounts.kws.superawesome.tv/"
-    let CLIENT_ID  = "stan-test"
-    let CLIENT_SECRET = "DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
+//    let API = "https://stan-test-cluster.api.kws.superawesome.tv/"
+//    let SINGLE_SIGN_ON = "https://stan-test-cluster.accounts.kws.superawesome.tv/"
+//    let CLIENT_ID  = "stan-test"
+//    let CLIENT_SECRET = "DRYNvSStuSvnaDg0d3f9t17QybbpQqX4"
     
     var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
     
@@ -35,7 +35,9 @@ class KWSSwiftTableViewController: UITableViewController {
             "Permissions" :
                 ["Submit Parent Email", "Request Permissions"],
             "User" :
-                ["Random Username", "Create User", "Login User", "Update User", "Get User Details", "Get App Data"]
+                ["Random Username", "Create User", "Login User", "Update User", "Get User Details"],
+            "App Data" :
+                ["Get App Data", "Set App Data"]
     ]
     
     // MARK: - TABLE VIEW STUFF
@@ -87,7 +89,6 @@ class KWSSwiftTableViewController: UITableViewController {
             case "Random Username": self.randomUserName()
             case "Update User": self.updateUserDetails()
             case "Get User Details": self.getUserDetails()
-            case "Get App Data": self.getAppData()
             default:
                 break
             }
@@ -98,7 +99,13 @@ class KWSSwiftTableViewController: UITableViewController {
             case "Request Permissions" : self.requestPermissions()
             default:
                 break
-                
+            }
+        case "App Data":
+            switch arrayOfRows[indexPath.row] {
+            case "Get App Data": self.getAppData()
+            case "Set App Data" : self.setAppData()
+            default:
+                break
             }
         default:
             break
@@ -144,10 +151,10 @@ class KWSSwiftTableViewController: UITableViewController {
     func loginUser(){
         
         //stan test environment
-        let userName = "guithetest1111"
+//        let userName = "guithetest1111"
         
         //demo environment
-        //        let userName = "guitestnumber3"
+        let userName = "guitestnumber3"
         let pwd = "testtest"
         
         let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
@@ -296,6 +303,33 @@ class KWSSwiftTableViewController: UITableViewController {
                     print("Something went wrong for get user details:  \(String(describing: error))")
                 }
             }
+        } else {
+            print("No valid user cached!!!")
+        }
+    }
+    
+    func setAppData(){
+        
+        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let userId = cachedUser.id as? Int ?? 0
+            let appId = cachedUser.tokenData.appId
+            let token = cachedUser.token
+            
+            let value = 123
+            let key = "new_value"
+            
+            userActions?.setAppData(value: value, key: key, userId: userId, appId: appId, token: token) { error in
+                
+                if (error == nil){
+                    print("App Data set with success!")
+                } else {
+                    print("Something went wrong for App Data:  \(String(describing: error))")
+                }
+            }
+            
         } else {
             print("No valid user cached!!!")
         }

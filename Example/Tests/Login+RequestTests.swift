@@ -13,24 +13,20 @@ import KWSiOSSDKObjC
 
 class Login_RequestTests: XCTestCase {
     
-    // class or data to test
-    private var request: LoginRequest!
-    
     private var env: KWSNetworkEnvironment!
+    private var request: LoginRequest!
+    private var method: NetworkMethod!
+    private var endpoint: String!    
     private var username: String!
     private var password: String!
     private var clientID: String!
     private var clientSecret: String!
-    private var method: NetworkMethod!
-    private var endpoint: String!
-    
     
     override func setUp() {
         super.setUp()
         
         // given
         env = GoodMockNetworkEnvironment()
-        
         username = "mock_username"
         password = "mock_password"
         clientID = "mock_client_id"
@@ -48,22 +44,7 @@ class Login_RequestTests: XCTestCase {
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        request = nil
-        env = nil
-    }
-    
-    
-    func testConstantsToBeNotNil(){
-        //then
-        expect(self.username).toNot(beNil())
-        expect(self.password).toNot(beNil())
-        expect(self.clientID).toNot(beNil())
-        expect(self.clientSecret).toNot(beNil())
-        expect(self.endpoint).toNot(beNil())
-        expect(self.method).toNot(beNil())
-        
     }
     
     func testRequestToBeNotNil(){
@@ -84,6 +65,17 @@ class Login_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
+    }  
+    
+    func testConstantsToBeNotNil(){
+        //then
+        expect(self.username).toNot(beNil())
+        expect(self.password).toNot(beNil())
+        expect(self.clientID).toNot(beNil())
+        expect(self.clientSecret).toNot(beNil())
+        expect(self.endpoint).toNot(beNil())
+        expect(self.method).toNot(beNil())
+        
     }
     
     func testRequestBody(){
@@ -128,9 +120,4 @@ class Login_RequestTests: XCTestCase {
         //then
         expect(self.request.formEncodeUrls).to(beTrue())
     }
-    
-    
-    
-    
-    
 }

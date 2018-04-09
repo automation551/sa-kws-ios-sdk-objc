@@ -13,16 +13,13 @@ import KWSiOSSDKObjC
 
 class Permissions_RequestTests: XCTestCase {
     
-    //class or data to test
-    private var request: PermissionsRequest!
     private var env: KWSNetworkEnvironment!
-    
+    private var request: PermissionsRequest!
+    private var method: NetworkMethod!
+    private var endpoint: String!
     private var userId: Int = 0
     private var token: String!
     private var permissionsList: [String]!
-    
-    private var method: NetworkMethod!
-    private var endpoint: String!
     
     override func setUp() {
         super.setUp()
@@ -32,7 +29,6 @@ class Permissions_RequestTests: XCTestCase {
         userId = 1
         token = "mock_token"
         permissionsList = ["good_permission_1"]
-        
         method = .POST
         endpoint = "v1/users/\(userId)/request-permissions"
         
@@ -46,17 +42,6 @@ class Permissions_RequestTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-        request = nil
-        env = nil
-    }
-    
-    func testConstantsToBeNotNil(){
-        //then
-        expect(self.userId).toNot(beNil())
-        expect(self.token).toNot(beNil())
-        expect(self.permissionsList).toNot(beNil())
-        expect(self.endpoint).toNot(beNil())
-        expect(self.method).toNot(beNil())
     }
     
     func testRequestToBeNotNil(){
@@ -77,6 +62,15 @@ class Permissions_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
+    }
+    
+    func testConstantsToBeNotNil(){
+        //then
+        expect(self.userId).toNot(beNil())
+        expect(self.token).toNot(beNil())
+        expect(self.permissionsList).toNot(beNil())
+        expect(self.endpoint).toNot(beNil())
+        expect(self.method).toNot(beNil())
     }
     
     func testRequestBodyToNotBeNil(){
