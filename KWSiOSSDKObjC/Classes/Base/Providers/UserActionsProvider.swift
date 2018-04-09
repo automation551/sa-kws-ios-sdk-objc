@@ -49,8 +49,29 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
     
     public func getAppData(userId: Int, appId: Int, token: String, completionHandler: @escaping (AppDataWrapperModelProtocol?, Error?) -> ()) {
         
-        //TODO
+        let getAppDataNetworkRequest = GetAppDataRequest.init(environment: environment, appId: appId, userId: userId, token: token)
         
+        let networktask = NetworkTask()
+        let parseTask = ParseJsonTask<AppDataWrapper>()
+        
+        let future = networktask
+            .execute(input: getAppDataNetworkRequest)
+            .map { (result: Result<String>) -> Result <AppDataWrapper> in
+                return result.then(parseTask.execute)
+            }
+        
+        future.onResult { result in
+            
+            switch result {
+            case .success(let value):
+                completionHandler(value,nil)
+                break
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
+                break
+            }
+        }
     }
     
     public func setAppData(value: Int, key: String, userId: Int, appId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {

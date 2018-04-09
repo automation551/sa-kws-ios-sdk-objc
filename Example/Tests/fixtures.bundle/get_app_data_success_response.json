@@ -1,0 +1,23 @@
+{
+    "count": 4,
+    "offset": 0,
+    "limit": 1000,
+    "results": [
+                {
+                "name": "new_val",
+                "value": 33
+                },
+                {
+                "name": "new_val_2",
+                "value": 34
+                },
+                {
+                "name": "new_val_3",
+                "value": -1
+                },
+                {
+                "name": "new_value_0",
+                "value": 0
+                }
+                ]
+}

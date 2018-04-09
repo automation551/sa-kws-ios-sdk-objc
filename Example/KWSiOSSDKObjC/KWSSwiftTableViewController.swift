@@ -21,7 +21,7 @@ class KWSSwiftTableViewController: UITableViewController {
             "Permissions" :
                 ["Submit Parent Email", "Request Permissions"],
             "User" :
-                ["Random Username", "Create User", "Login User", "Update User", "Get User Details"]
+                ["Random Username", "Create User", "Login User", "Update User", "Get User Details", "Get App Data"]
     ]
     
     // MARK: - TABLE VIEW STUFF
@@ -73,6 +73,7 @@ class KWSSwiftTableViewController: UITableViewController {
             case "Random Username": self.randomUserName()
             case "Update User": self.updateUserDetails()
             case "Get User Details": self.getUserDetails()
+            case "Get App Data": self.getAppData()
             default:
                 break
             }
@@ -159,7 +160,6 @@ class KWSSwiftTableViewController: UITableViewController {
         if let cachedUser = getLoggedUser() {
             
             let userId : Int = cachedUser.id as? Int ?? 0
-            
             userActions?.requestPermissions(permissions: permissions, userId: userId, token: cachedUser.token) { error in
                 
                 if (error == nil){
@@ -184,7 +184,6 @@ class KWSSwiftTableViewController: UITableViewController {
         if let cachedUser = getLoggedUser(){
             
             let userId = cachedUser.id as? Int ?? 0
-            
             user?.updateUser(details: map, userId: userId , token: cachedUser.token) { (error) in
                 
                 if(error == nil){
@@ -250,10 +249,32 @@ class KWSSwiftTableViewController: UITableViewController {
         }
     }
     
+    func getAppData(){
+        
+        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let userId = cachedUser.id as? Int ?? 0
+            let appId = cachedUser.tokenData.appId
+            let token = cachedUser.token
+            
+            userActions?.getAppData(userId: userId, appId: appId, token: token) { appData, error in
+                
+                if(appData != nil){
+                    print("Got app data: \(String(describing: appData))")
+                } else {
+                    print("Something went wrong for get user details:  \(String(describing: error))")
+                }
+            }
+        } else {
+            print("No valid user cached!!!")
+        }
+    }
+    
     func saveUser(user: LoggedUserModelProtocol) {
         let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         let success = sessionsService?.saveLoggedUser(user: user)
-        print("Saving user was \(String(describing: success))")
     }
     
     func getLoggedUser () -> LoggedUser? {
