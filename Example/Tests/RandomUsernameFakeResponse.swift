@@ -16,14 +16,7 @@ public final class RandomUsernameFakeResponse: NSObject, Error {
     
     // MARK: - Initialization
     
-    public required init(
-        
-        randomUsername: String?  = ""
-        
-        ) {
-        
+    public required init(randomUsername: String?  = "") {
         self.randomUsername = randomUsername
-        
     }
-    
 }

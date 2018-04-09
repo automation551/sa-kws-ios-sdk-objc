@@ -19,18 +19,11 @@ public final class UpdateUserDetailsFakeResponse: NSObject, Error {
     
     // MARK: - Initialization
     
-    public required init(
-        
-        userUpdated:    Bool?  = false,
-        emailUpdated:   Bool?  = false,
-        permissionsRequested:   Bool?  = false
-        
-        ) {
-        
+    public required init(userUpdated:    Bool?  = false,
+                         emailUpdated:   Bool?  = false,
+                         permissionsRequested:   Bool?  = false) {
         self.userUpdated = userUpdated
         self.emailUpdated = emailUpdated
         self.permissionsRequested = permissionsRequested
-        
-    }
-    
+    }    
 }

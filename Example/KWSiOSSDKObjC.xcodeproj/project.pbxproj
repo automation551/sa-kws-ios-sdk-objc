@@ -64,6 +64,10 @@
 		9C68EDA0207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED9F207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift */; };
 		9C6F9D56207B691700F78119 /* SetAppData+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D55207B691700F78119 /* SetAppData+RequestTests.swift */; };
 		9C6F9D5A207B784C00F78119 /* AppDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D59207B784C00F78119 /* AppDataTests.swift */; };
+		9C6F9D5E207B7DBE00F78119 /* User_Actions_SetAppData+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D5D207B7DBE00F78119 /* User_Actions_SetAppData+MappingTests.swift */; };
+		9C6F9D60207B7DCC00F78119 /* User_Actions_SetAppData+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D5F207B7DCC00F78119 /* User_Actions_SetAppData+ObjectProviderTests.swift */; };
+		9C6F9D62207B7E5200F78119 /* SetAppDataFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D61207B7E5200F78119 /* SetAppDataFakeResponse.swift */; };
+		9C6F9D64207B7E5E00F78119 /* SetAppDataFakeResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D63207B7E5E00F78119 /* SetAppDataFakeResponse+Mapping.swift */; };
 		9C7F2FFB202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */; };
 		9C7F2FFE202DE980002795DD /* UserDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */; };
 		9C7F3000202DEB92002795DD /* User_GetUser_+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */; };
@@ -159,6 +163,10 @@
 		9C68ED9F207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_Actions_GetAppData+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C6F9D55207B691700F78119 /* SetAppData+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetAppData+RequestTests.swift"; sourceTree = "<group>"; };
 		9C6F9D59207B784C00F78119 /* AppDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataTests.swift; sourceTree = "<group>"; };
+		9C6F9D5D207B7DBE00F78119 /* User_Actions_SetAppData+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_Actions_SetAppData+MappingTests.swift"; sourceTree = "<group>"; };
+		9C6F9D5F207B7DCC00F78119 /* User_Actions_SetAppData+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_Actions_SetAppData+ObjectProviderTests.swift"; sourceTree = "<group>"; };
+		9C6F9D61207B7E5200F78119 /* SetAppDataFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAppDataFakeResponse.swift; sourceTree = "<group>"; };
+		9C6F9D63207B7E5E00F78119 /* SetAppDataFakeResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetAppDataFakeResponse+Mapping.swift"; sourceTree = "<group>"; };
 		9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUserDetails+RequestTests.swift"; sourceTree = "<group>"; };
 		9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTests.swift; sourceTree = "<group>"; };
 		9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUser_+MappingTests.swift"; sourceTree = "<group>"; };
@@ -358,10 +366,13 @@
 		9C2D50952074CEC70009F699 /* UserActionsServices */ = {
 			isa = PBXGroup;
 			children = (
+				9C9CD8CA2034A38C0019CF2C /* FakeMockModels */,
 				9C104F20203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift */,
 				9C104F22203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift */,
 				9C68ED9D207A917E00444D2B /* User_Actions_GetAppData+MappingTests.swift */,
 				9C68ED9F207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift */,
+				9C6F9D5D207B7DBE00F78119 /* User_Actions_SetAppData+MappingTests.swift */,
+				9C6F9D5F207B7DCC00F78119 /* User_Actions_SetAppData+ObjectProviderTests.swift */,
 			);
 			name = UserActionsServices;
 			sourceTree = "<group>";
@@ -369,7 +380,6 @@
 		9C2D50962074CED40009F699 /* UserServices */ = {
 			isa = PBXGroup;
 			children = (
-				9C9CD8CA2034A38C0019CF2C /* FakeMockModels */,
 				9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */,
 				9C7F3001202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift */,
 				9C9CD8C120345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift */,
@@ -450,6 +460,8 @@
 			children = (
 				9C9CD8C82034A3870019CF2C /* UpdateUserDetailsFakeResponse.swift */,
 				9C9CD8CB2034A3A80019CF2C /* UpdateUserDetailsFakeResponse+Mapping.swift */,
+				9C6F9D61207B7E5200F78119 /* SetAppDataFakeResponse.swift */,
+				9C6F9D63207B7E5E00F78119 /* SetAppDataFakeResponse+Mapping.swift */,
 			);
 			name = FakeMockModels;
 			sourceTree = "<group>";
@@ -720,12 +732,15 @@
 				9C9CD8C720349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift in Sources */,
 				9C68EDA0207A919200444D2B /* User_Actions_GetAppData+ObjectProviderTests.swift in Sources */,
 				9C6F9D5A207B784C00F78119 /* AppDataTests.swift in Sources */,
+				9C6F9D5E207B7DBE00F78119 /* User_Actions_SetAppData+MappingTests.swift in Sources */,
 				9C104F21203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift in Sources */,
 				9C7F2FFB202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift in Sources */,
 				9C7F2FFE202DE980002795DD /* UserDetailsTests.swift in Sources */,
 				9C18313F2020F04F00DD4083 /* Mocks.swift in Sources */,
 				9C3C5BCB203AE1F10095FC1C /* User_UpdateUser_ParentEmail+MappingTests.swift in Sources */,
+				9C6F9D62207B7E5200F78119 /* SetAppDataFakeResponse.swift in Sources */,
 				9C5A79CE20762C44009E4B8C /* LoggedUserTests.swift in Sources */,
+				9C6F9D60207B7DCC00F78119 /* User_Actions_SetAppData+ObjectProviderTests.swift in Sources */,
 				9C59C7BA202B18B700BE4E74 /* RandomUsernameTests.swift in Sources */,
 				9C7F3002202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift in Sources */,
 				9C59C7C4202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift in Sources */,
@@ -745,6 +760,7 @@
 				9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */,
 				9C18313820209F3E00DD4083 /* TestUtils.swift in Sources */,
 				9C9CD8CC2034A3A80019CF2C /* UpdateUserDetailsFakeResponse+Mapping.swift in Sources */,
+				9C6F9D64207B7E5E00F78119 /* SetAppDataFakeResponse+Mapping.swift in Sources */,
 				9C5A79D420763500009E4B8C /* AuthUserResponseTests.swift in Sources */,
 				9C68ED93207A8BFE00444D2B /* GetAppData+RequestTests.swift in Sources */,
 				1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */,

@@ -4,10 +4,11 @@
 //
 //  Created by Guilherme Mota on 09/04/2018.
 //
+
 import Foundation
 import SAMobileBase
 
-public class SetAppDataRequest: BaseRequest {
+public class SetAppDataRequest: BaseRequest{
     
     public init(environment: KWSNetworkEnvironment,
                 appId: Int,
@@ -21,8 +22,8 @@ public class SetAppDataRequest: BaseRequest {
         self.method = .POST
         self.endpoint = "v1/apps/\(appId)/users/\(userId)/app-data/set"
         self.body = [
-            "name": key,
-            "value": value
+            "name" : key,
+            "value" : value
         ]
     }
 }
