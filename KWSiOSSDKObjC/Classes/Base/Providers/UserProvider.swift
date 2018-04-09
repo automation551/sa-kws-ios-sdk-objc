@@ -11,7 +11,7 @@ import SAProtobufs
 
 
 public class UserProvider: NSObject, UserServiceProtocol {
-  
+    
     var environment: KWSNetworkEnvironment
     
     public init(environment: KWSNetworkEnvironment) {
@@ -45,31 +45,25 @@ public class UserProvider: NSObject, UserServiceProtocol {
         }
     }
     
-    public func updateUser(details: [String:Any], token: String, completionHandler: @escaping (Error?) -> ()) {
+    public func updateUser(details: [String:Any], userId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {
         
-        if let tokenData = UtilsHelpers.getTokenData(token: token), let userId = tokenData.userId {
+        let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
+                                                                       userDetailsMap: details ,
+                                                                       userId: userId,
+                                                                       token: token)
+        
+        let networkTask = NetworkTask()
+        let future = networkTask.execute(input: updateUserDetailsNetworkRequest)
+        
+        future.onResult { result in
             
-            let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
-                                                                           userDetailsMap: details ,
-                                                                           userId: userId,
-                                                                           token: token)
-            
-            let networkTask = NetworkTask()
-            let future = networkTask.execute(input: updateUserDetailsNetworkRequest)
-                
-            future.onResult { result in
-                
-                switch result {
-                case .success(_):
-                    completionHandler(nil)
-                case .error(let error):
-                    let mappedError = Provider().mapErrorResponse(error: error)
-                    completionHandler(mappedError)
-                }
+            switch result {
+            case .success(_):
+                completionHandler(nil)
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(mappedError)
             }
-        } else {
-            let error = KWSBaseError(message: "Error parsing token!")
-            completionHandler(error)
-        }
+        }        
     }
 }
