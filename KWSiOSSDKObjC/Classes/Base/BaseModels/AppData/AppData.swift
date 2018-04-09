@@ -19,4 +19,15 @@ public final class AppData: NSObject, AppDataModelProtocol {
         self.value = value
         self.name = name        
     }
+    
+    // MARK: - Equatable
+    public static func ==(lhs: AppData, rhs: AppData) -> Bool {
+        let areEqual = lhs.value == rhs.value && lhs.name == rhs.name        
+        return areEqual
+    }
+    
+    public override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? AppData else { return false }
+        return self == object
+    }
 }
