@@ -21,8 +21,9 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
     
     public func inviteUser(email: String, userId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {
         
-        //TODO
+        let inviteUserNetworkRequest = InviteUserRequest(environment: environment, emailAddress: email, userId: userId, token: token)
         
+        self.parse(request: inviteUserNetworkRequest, completionHandler: completionHandler)
     }
     
     public func requestPermissions(permissions: [String], userId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {
