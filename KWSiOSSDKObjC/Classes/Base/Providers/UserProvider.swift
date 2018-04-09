@@ -38,11 +38,9 @@ public class UserProvider: NSObject, UserServiceProtocol {
             switch result {
             case .success(let value):
                 completionHandler(value, nil)
-                break
             case .error(let error):
                 let mappedError = Provider().mapErrorResponse(error: error)
                 completionHandler(nil, mappedError)
-                break
             }
         }
     }
@@ -64,11 +62,9 @@ public class UserProvider: NSObject, UserServiceProtocol {
                 switch result {
                 case .success(_):
                     completionHandler(nil)
-                    break
                 case .error(let error):
                     let mappedError = Provider().mapErrorResponse(error: error)
                     completionHandler(mappedError)
-                    break
                 }
             }
         } else {

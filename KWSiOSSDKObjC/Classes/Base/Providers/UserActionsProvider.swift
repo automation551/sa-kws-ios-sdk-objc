@@ -70,11 +70,9 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
             switch networkResponse {
             case .success(_):
                 completionHandler(nil)
-                break
             case .error(let error):
                 let mappedError = Provider().mapErrorResponse(error: error)
                 completionHandler(mappedError)
-                break
             }
         }
     }
