@@ -13,15 +13,7 @@ import SAMobileBase
 
 class KWSSwiftTableViewController: UITableViewController {
     
-    //for Environment
-    let API = "https://kwsapi.demo.superawesome.tv/"
-    let SINGLE_SIGN_ON = "https://club.demo.superawesome.tv/"
-    let CLIENT_ID  = "kws-sdk-testing"
-    let CLIENT_SECRET = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
-    
     var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
-    
-    var kUser : LoggedUserModelProtocol?
     
     //dictionary of KEY String and VALUE list of Strings - no order specified
     let functionalitiesDict: [ String : [String] ] =
@@ -102,7 +94,7 @@ class KWSSwiftTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        kUserKWSNetworkEnvironment = UserKWSNetworkEnvironment(domain: API, appID: CLIENT_SECRET, mobileKey: CLIENT_ID)
+        kUserKWSNetworkEnvironment = DemoTestEnvironment()
     }
     
     func createUser(){
@@ -117,17 +109,9 @@ class KWSSwiftTableViewController: UITableViewController {
         
         auth?.createUser(username: userName, password: pwd, timeZone: nil, dateOfBirth: dob, country: country, parentEmail: parentEmail) { (result, error) in
             
-            if(error == nil){
-                
-                if let token = result?.token, let tokenData = UtilsHelpers.getTokenData(token: token), let userId = tokenData.userId {
-                    
-                    let user = LoggedUser(token: token, tokenData: tokenData, id: userId)
-                    self.saveUser(user: user)
-                    
-                    print("Result for create user is success: \(String(describing: user))")
-                } else {
-                    print ("Ooops, something went wrong parsing the token!!!")
-                }
+            if let user = result {
+                self.saveUser(user: user)
+                print("Result for create user is success: \(String(describing: user))")
             } else {
                 print("Something went wrong for create user \(String(describing: error)))")
             }
@@ -143,16 +127,9 @@ class KWSSwiftTableViewController: UITableViewController {
         
         auth?.loginUser(userName: userName, password: pwd) { (result, error) in
             
-            if (error == nil) {
-                if let token = result?.token, let tokenData = UtilsHelpers.getTokenData(token: token), let userId = tokenData.userId {
-                    
-                    let user = LoggedUser(token: token, tokenData: tokenData, id: userId)
-                    self.saveUser(user: user)
-                    
-                    print("Result for login is success: \(String(describing: user))")
-                } else {
-                    print ("Ooops, something went wrong parsing the token!!!")
-                }
+            if let user = result {
+                self.saveUser(user: user)
+                print("Result for login is success: \(String(describing: user))")
             } else {
                 print("Something went wrong for login \(String(describing: error)))")
             }
@@ -206,7 +183,9 @@ class KWSSwiftTableViewController: UITableViewController {
         
         if let cachedUser = getLoggedUser(){
             
-            user?.updateUser(details: map, token: cachedUser.token) { (error) in
+            let userId = cachedUser.id as? Int ?? 0
+            
+            user?.updateUser(details: map, userId: userId , token: cachedUser.token) { (error) in
                 
                 if(error == nil){
                     print("User updated!")
@@ -235,7 +214,11 @@ class KWSSwiftTableViewController: UITableViewController {
         ]
         
         if let cachedUser = getLoggedUser(){
-            user?.updateUser(details: map, token: cachedUser.token) { (error) in
+            
+            let userId = cachedUser.id as? Int ?? 0
+            
+            user?.updateUser(details: map, userId: userId, token: cachedUser.token) { (error) in
+
                 if (error == nil) {
                     print("User updated!")
                 } else {
@@ -268,16 +251,18 @@ class KWSSwiftTableViewController: UITableViewController {
     }
     
     func saveUser(user: LoggedUserModelProtocol) {
-        
-        //TODO this needs to use Session Provider (wip)
-        kUser = user
-        
+        let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let success = sessionsService?.saveLoggedUser(user: user)
+        print("Saving user was \(String(describing: success))")
     }
     
-    func getLoggedUser () -> LoggedUserModelProtocol?{
-        
-        //TODO this needs to use Session Provider (wip)
-        return kUser
+    func getLoggedUser () -> LoggedUser? {
+        let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        if let user = sessionsService?.getLoggedUser() as? LoggedUser {
+            return user
+        } else {
+            return nil
+        }
     }
     
     // MARK - helper methods -----------------------------------

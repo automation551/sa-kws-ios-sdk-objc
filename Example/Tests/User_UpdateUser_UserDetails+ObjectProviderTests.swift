@@ -59,6 +59,7 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
                                         token: self.token,
                                         completionHandler: { error in
                                             
@@ -87,6 +88,7 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
                                         token: self.token,
                                         completionHandler: { error in
                                             
@@ -115,6 +117,7 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
                                         token: self.token,
                                         completionHandler: { error in
                                             

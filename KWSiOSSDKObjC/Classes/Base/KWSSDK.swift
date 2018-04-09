@@ -35,6 +35,9 @@ public class KWSSDK : NSObject{
         else if value == UserActionsServiceProtocol.self {
             return UserActionsProvider(environment: environment) as? T
         }
+        else if value == SessionServiceProtocol.self {
+            return SessionProvider(environment: environment) as? T
+        }
         else {
             return nil
         }
