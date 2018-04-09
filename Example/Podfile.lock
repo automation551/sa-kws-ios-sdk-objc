@@ -32,7 +32,7 @@ PODS:
     - SAJsonParser (= 1.3.3)
     - SAMobileBase (= 2.2.0)
     - SANetworking (= 0.3.0)
-    - SAProtobufs (= 1.4.0)
+    - SAProtobufs (= 1.5.0)
     - SAUtils (= 1.5.2)
   - Mockingjay (2.0.1):
     - Mockingjay/Core (= 2.0.1)
@@ -46,7 +46,7 @@ PODS:
   - SAMobileBase (2.2.0):
     - Decodable (~> 0.6.0)
   - SANetworking (0.3.0)
-  - SAProtobufs (1.4.0)
+  - SAProtobufs (1.5.0)
   - SAUtils (1.5.2)
   - URITemplate (2.0.3)
 
@@ -57,9 +57,30 @@ DEPENDENCIES:
   - Mockingjay
   - Nimble
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Decodable
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleInterchangeUtilities
+    - GoogleIPhoneUtilities
+    - GoogleSymbolUtilities
+    - GoogleUtilities
+    - Mockingjay
+    - Nimble
+    - SAJsonParser
+    - SAMobileBase
+    - SANetworking
+    - SAProtobufs
+    - SAUtils
+    - URITemplate
+
 EXTERNAL SOURCES:
   KWSiOSSDKObjC:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Decodable: f0b95fa2fcf8633dd097aa8f7f09838ab3524f5d
@@ -72,16 +93,16 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  KWSiOSSDKObjC: 6555198fd997e8bac8eae73d99da0b855df5d7d6
+  KWSiOSSDKObjC: fa0e1dcd4360f85f77b9cbc1bb415d059c609ecf
   Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   SAJsonParser: 528ef25b7cf7f362164731a7aa8401bc89dc4cf5
   SAMobileBase: 021d882febb6d5a1f4e5a4120dcceaf9fdc63c78
   SANetworking: 4abd5443131b7dc3ca373f83f156045d7e7d0836
-  SAProtobufs: ad7525d5e7b251c4175f15e46b59f57f05f8a330
+  SAProtobufs: 59bd2829bbd8e4a2e3781df9fb6acca7a59ea68d
   SAUtils: c0d6c68af97b4fdc18a1dcc613f9b5cde25b78f8
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
 PODFILE CHECKSUM: 84479e3e908c902965bb9a33c87cee4fe6be7073
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

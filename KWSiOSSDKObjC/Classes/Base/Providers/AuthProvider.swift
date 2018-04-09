@@ -40,11 +40,9 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
             switch result {
             case .success(let value):
                 completionHandler(value,nil)
-                break
             case .error(let error):
                 let mappedError = Provider().mapErrorResponse(error: error)
                 completionHandler(nil, mappedError)
-                break
             }
         }
     }
@@ -82,25 +80,19 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
                 switch tokenResult {
                 case .success(let tokenData):
                     let appId = tokenData.appId
-                    
                     self.doUserCreation(environment: self.environment, username: username, password: password, dateOfBirth: dobValue, country: countryValue, parentEmail: parentEmailValue, appId: appId, token: token, completionHandler: completionHandler)
-                    break
                 case .error(let error):
                     let mappedError = Provider().mapErrorResponse(error: error)
                     completionHandler(nil, mappedError)
-                    break
                 }
-                
-                break
             case .error(let error):
                 let mappedError = Provider().mapErrorResponse(error: error)
                 completionHandler(nil, mappedError)
-                break
             }
         }
     }
     
-    private func doUserCreation(environment: KWSNetworkEnvironment,username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponse?, Error?) -> ()) {
+    private func doUserCreation(environment: KWSNetworkEnvironment, username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponse?, Error?) -> ()) {
         
         
         let createUserNetworkRequest = CreateUserRequest(environment: environment,
@@ -126,11 +118,9 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
             switch result {
             case .success(let value):
                 completionHandler(value,nil)
-                break
             case .error(let error):
                 let mappedError = Provider().mapErrorResponse(error: error)
                 completionHandler(nil, mappedError)
-                break
             }
         }
     }

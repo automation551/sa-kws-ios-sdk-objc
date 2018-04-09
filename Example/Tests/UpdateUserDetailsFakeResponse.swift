@@ -2,7 +2,7 @@
 //  UpdateUserDetailsFakeResponse.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 14/02/2018.
+//  Created by Guilherme Mota on 09/04/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -25,5 +25,5 @@ public final class UpdateUserDetailsFakeResponse: NSObject, Error {
         self.userUpdated = userUpdated
         self.emailUpdated = emailUpdated
         self.permissionsRequested = permissionsRequested
-    }    
+    }
 }

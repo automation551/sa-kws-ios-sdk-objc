@@ -6,7 +6,6 @@
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
-
 import XCTest
 import Mockingjay
 import Nimble
@@ -27,8 +26,7 @@ class User_Actions_GetAppData_ObjectProviderTests: XCTestCase {
     private var badToken: String = "bad_token"
     
     private var goodAppId: Int = 1
-    private var badAppId: Int = -1
-    
+    private var badAppId: Int = -1    
     
     override func setUp() {
         super.setUp()

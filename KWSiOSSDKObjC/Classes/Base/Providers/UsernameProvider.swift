@@ -37,11 +37,9 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
             case .success(let value):
                 let appID = value.app.id
                 self.fetchRandomUsernameFromBackend(environment: self.environment, appID: appID, completionHandler: completionHandler)
-                break
             case .error(let error):
                 let mappedError = Provider().mapErrorResponse(error: error)
-                completionHandler(nil, mappedError)
-                break
+                completionHandler(nil, mappedError)                
             }
         }
     }
@@ -68,11 +66,9 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
                 } else {
                     completionHandler(RandomUsername(randomUsername: value), nil)
                 }
-                break
             case .error(let error):
                 let mappedError = Provider().mapErrorResponse(error: error)
                 completionHandler(nil, mappedError)
-                break
             }
         }
     }

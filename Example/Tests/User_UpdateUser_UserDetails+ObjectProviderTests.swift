@@ -1,5 +1,5 @@
 //
-//  User_UpdateUserDetails+ObjectProvider.swift
+//  User_UpdateUserDetails+ObjectProviderTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 14/02/2018.
@@ -59,6 +59,7 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
                                         token: self.token,
                                         completionHandler: { error in
                                             
@@ -87,6 +88,7 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
                                         token: self.token,
                                         completionHandler: { error in
                                             
@@ -115,6 +117,7 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
                                         token: self.token,
                                         completionHandler: { error in
                                             

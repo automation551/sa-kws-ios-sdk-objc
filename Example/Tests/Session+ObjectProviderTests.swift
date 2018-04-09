@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class Session_ObjectProvider: XCTestCase {
+class Session_ObjectProviderTests: XCTestCase {
     
     //mock or real data
     private let kTokenKey: String = "kwsSDK_LoggedUser_Token_key"
@@ -32,7 +32,6 @@ class Session_ObjectProvider: XCTestCase {
         
         //when
         self.service = KWSSDK.getService(value: SessionServiceProtocol.self, environment: self.environment)
-        
     }
     
     override func tearDown() {

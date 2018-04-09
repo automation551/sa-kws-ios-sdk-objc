@@ -1,8 +1,8 @@
 //
-//  CreateUser_CreateUser+ObjectProvider.swift
-//  KWSiOSSDKObjC_Tests
+//  RandomUsername_GetRandomUsername+ObjectProviderTests.swift
+//  KWSiOSSDKObjC_Example
 //
-//  Created by Guilherme Mota on 05/04/2018.
+//  Created by Guilherme Mota on 08/04/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -13,10 +13,10 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class CreateUser_CreateUser_ObjectProvider: XCTestCase {
+class RandomUsername_GetRandomUsername_ObjectProviderTests: XCTestCase {
     
     // class or data to test
-    private var service: AuthServiceProtocol!
+    private var service: UsernameServiceProtocol!
     private var environment: KWSNetworkEnvironment!
     
     override func setUp() {
@@ -26,8 +26,7 @@ class CreateUser_CreateUser_ObjectProvider: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.service = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
-        
+        self.service = KWSSDK.getService(value: UsernameServiceProtocol.self, environment: self.environment)
     }
     
     override func tearDown() {
@@ -37,12 +36,11 @@ class CreateUser_CreateUser_ObjectProvider: XCTestCase {
     }
     
     func test_Multiple_Stubs(){
-        let JSON1: Any? = try? fixtureWithName(name: "temp_access_token_success_response")
-        let JSON2: Any? = try? fixtureWithName(name: "create_user_success_response")
+        let JSON1: Any? = try? fixtureWithName(name: "app_config_success_response")
+        let JSON2: Any? = try? fixtureWithName(name: "random_username_success_response")
         
         stub(everything, json(JSON2!))
         stub(everything, json(JSON1!))
-        
         //todo
     }
 }
