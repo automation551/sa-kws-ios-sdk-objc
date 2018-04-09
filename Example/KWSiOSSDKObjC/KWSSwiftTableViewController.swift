@@ -25,7 +25,9 @@ class KWSSwiftTableViewController: UITableViewController {
             "App Data" :
                 ["Get App Data", "Set App Data"],
             "Invite" :
-                ["Invite User"]
+                ["Invite User"],
+            "Invite" :
+                ["Trigger Event", "Is Triggered Event"]
     ]
     
     // MARK: - TABLE VIEW STUFF
@@ -98,6 +100,13 @@ class KWSSwiftTableViewController: UITableViewController {
         case "Invite":
             switch arrayOfRows[indexPath.row] {
             case "Invite User": self.inviteUser()
+            default:
+                break
+            }
+        case "Events":
+            switch arrayOfRows[indexPath.row] {
+            case "Trigger Event": self.triggerEvent()
+            case "Is Triggered Event": self.isTriggeredEvent()
             default:
                 break
             }
@@ -336,7 +345,58 @@ class KWSSwiftTableViewController: UITableViewController {
         } else {
             print("No valid user cached!!!")
         }
-    }    
+    }
+    
+    func triggerEvent(){
+        
+        let eventId = ""
+        let points = 20
+        
+        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let userId = cachedUser.id as? Int ?? 0
+            let token = cachedUser.token
+            
+            userActions?.triggerEvent(eventId: eventId, points: points, userId: userId, token: token ){ error in
+                
+                if (error == nil){
+                    print("Trigger Event with success!")
+                } else {
+                    print("Something went wrong for Trigger Event:  \(String(describing: error))")
+                }
+            }
+        } else {
+            print("No valid user cached!!!")
+        }
+    }
+    
+    func isTriggeredEvent(){
+        
+        let eventId = 802
+        
+        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let userId = cachedUser.id as? Int ?? 0
+            let token = cachedUser.token
+            
+            //TODO - eventId has to be Int
+            
+//            userActions?.hasTriggeredEvent(eventId: eventId, userId: userId, token: token) { error in
+//
+//                if (error == nil){
+//                    print("Has Triggered Event with success!")
+//                } else {
+//                    print("Something went wrong for Has Triggered Event:  \(String(describing: error))")
+//                }
+//            }
+        } else {
+            print("No valid user cached!!!")
+        }
+    }
     
     func saveUser(user: LoggedUserModelProtocol) {
         let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)

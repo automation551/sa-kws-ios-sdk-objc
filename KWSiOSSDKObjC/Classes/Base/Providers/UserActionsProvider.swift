@@ -10,7 +10,6 @@ import Foundation
 import SAMobileBase
 import SAProtobufs
 
-
 public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
     
     var environment: KWSNetworkEnvironment
@@ -38,14 +37,18 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
     
     public func triggerEvent(eventId: String, points: Int, userId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {
         
-        //TODO
+        let triggerEventNetworkRequest = TriggerEventRequest(environment: environment, eventId: eventId, points: points, userId: userId, token: token)
         
+        self.parse(request: triggerEventNetworkRequest, completionHandler: completionHandler)
     }
     
     public func hasTriggeredEvent(eventId: String, userId: Int, token: String, completionHandler: @escaping (HasTriggeredEventModelProtocol?, Error?) -> ()) {
+
+        //TODO PENDING - eventId has to be Int
         
-        //TODO
-        
+//        let hasTriggeredEventNetworkRequest = HasTriggeredEventRequest(environment: environment, eventId: eventId, userId: userId, token: token)
+//
+//        self.parse(request: hasTriggeredEventNetworkRequest, completionHandler: completionHandler)
     }
     
     public func getAppData(userId: Int, appId: Int, token: String, completionHandler: @escaping (AppDataWrapperModelProtocol?, Error?) -> ()) {
