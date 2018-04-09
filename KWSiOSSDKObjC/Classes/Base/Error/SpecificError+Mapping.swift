@@ -1,5 +1,5 @@
 //
-//  SpecificInvalidErrorResponse+Mapping.swift
+//  SpecificError+Mapping.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 05/02/2018.
@@ -9,14 +9,14 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension SpecificInvalidError: Decodable {
+extension SpecificError: Decodable {
     
-    public static func decode(_ json: Any) throws -> SpecificInvalidError {
+    public static func decode(_ json: Any) throws -> SpecificError {
         
-        return try SpecificInvalidError (            
+        return try SpecificError (            
             code:               try json => "code",
             codeMeaning:        try json => "codeMeaning",
-            errorMessage:       try json => "errorMessage"
+            message:            try json => "errorMessage"
         )
     }
 }

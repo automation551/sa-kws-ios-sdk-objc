@@ -119,7 +119,7 @@ class KWSSwiftTableViewController: UITableViewController {
             
             if(error == nil){
                 
-                if let token = result?.token, let tokenData = self.getTheTokenData(token: token), let userId = tokenData.userId {
+                if let token = result?.token, let tokenData = UtilsHelpers.getTokenData(token: token), let userId = tokenData.userId {
                     
                     let user = LoggedUser(token: token, tokenData: tokenData, id: userId)
                     self.saveUser(user: user)
@@ -144,8 +144,8 @@ class KWSSwiftTableViewController: UITableViewController {
         auth?.loginUser(userName: userName, password: pwd) { (result, error) in
             
             if (error == nil) {
-                if let token = result?.token, let tokenData = self.getTheTokenData(token: token), let userId = tokenData.userId {
-                   
+                if let token = result?.token, let tokenData = UtilsHelpers.getTokenData(token: token), let userId = tokenData.userId {
+                    
                     let user = LoggedUser(token: token, tokenData: tokenData, id: userId)
                     self.saveUser(user: user)
                     
@@ -250,7 +250,7 @@ class KWSSwiftTableViewController: UITableViewController {
     func getUserDetails() {
         
         let user = KWSSDK.getService(value: UserServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
-       
+        
         if let cachedUser = getLoggedUser(){
             
             let userId : Int = cachedUser.id as? Int ?? 0
@@ -284,24 +284,6 @@ class KWSSwiftTableViewController: UITableViewController {
     
     func randomInt(min: Int, max:Int) -> Int {
         return min + Int(arc4random_uniform(UInt32(max - min + 1)))
-    }
-    
-    public func getTheTokenData (token: String) -> TokenData? {
-        
-        let base64req = ParseBase64Request(withBase64String: token)
-        let base64Task = ParseBase64Task()
-        
-        if let metadataJson = base64Task.execute(request: base64req){
-            
-            let parseJsonReq = JsonParseRequest(withRawData: metadataJson)
-            let parseJsonTask = JSONParseTask<TokenData>()
-            let metadata = parseJsonTask.execute(request: parseJsonReq)
-            
-            return metadata
-            
-        } else {
-            return nil
-        }
     }
     // end of helper methods -----------------------------------
 }

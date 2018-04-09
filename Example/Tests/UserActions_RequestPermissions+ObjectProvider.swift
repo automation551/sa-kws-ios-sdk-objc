@@ -92,13 +92,13 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(5))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("validation"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("child \"permissions\" fails because [\"permissions\" is required]"))
-                                                    expect((error as! ErrorResponse).invalid?.permissions).toNot(beNil())
-                                                    expect((error as! ErrorResponse).invalid?.permissions?.code).to(equal(6))
-                                                    expect((error as! ErrorResponse).invalid?.permissions?.codeMeaning).to(equal("missing"))
-                                                    expect((error as! ErrorResponse).invalid?.permissions?.errorMessage).to(equal("\"permissions\" is required"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(5))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("child \"permissions\" fails because [\"permissions\" is required]"))
+                                                    expect((error as! ErrorWrapper).invalid?.permissions).toNot(beNil())
+                                                    expect((error as! ErrorWrapper).invalid?.permissions?.code).to(equal(6))
+                                                    expect((error as! ErrorWrapper).invalid?.permissions?.codeMeaning).to(equal("missing"))
+                                                    expect((error as! ErrorWrapper).invalid?.permissions?.message).to(equal("\"permissions\" is required"))
                                                     
                                                     
                                                     done()
@@ -127,9 +127,9 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(1))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("forbidden"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("operation not supported for this user"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(1))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("forbidden"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("operation not supported for this user"))
                                                     
                                                     done()
             })
@@ -157,9 +157,9 @@ class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
                                                     
                                                     expect(error).toNot(beNil())
                                                     
-                                                    expect((error as! ErrorResponse).code).to(equal(2))
-                                                    expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
-                                                    expect((error as! ErrorResponse).errorMessage).to(equal("permissions not found: mock_permission"))
+                                                    expect((error as! ErrorWrapper).code).to(equal(2))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("notFound"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("permissions not found: mock_permission"))
                                                     
                                                     done()
             })

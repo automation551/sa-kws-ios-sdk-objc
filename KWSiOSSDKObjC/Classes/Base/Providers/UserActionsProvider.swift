@@ -14,11 +14,9 @@ import SAProtobufs
 public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
     
     var environment: KWSNetworkEnvironment
-    var networkTask: NetworkTask
     
-    public init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
+    public init(environment: KWSNetworkEnvironment) {
         self.environment = environment
-        self.networkTask = networkTask
     }
     
     public func inviteUser(email: String, userId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {
@@ -34,24 +32,7 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
                                                                   token: token,
                                                                   permissionsList: permissions)
         
-        networkTask.execute(request: requestPermissionsNetworkRequest) { requestPermissionsNetworkResponse in
-            
-            if (requestPermissionsNetworkResponse.success && requestPermissionsNetworkResponse.error == nil) {
-                completionHandler(nil)
-            } else {
-                if let errorResponse = requestPermissionsNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(mappedResponse)
-                    
-                } else {
-                    completionHandler(requestPermissionsNetworkResponse.error)
-                }
-            }
-            
-        }
+        self.parse(request: requestPermissionsNetworkRequest, completionHandler: completionHandler)
     }
     
     public func triggerEvent(eventId: String, points: Int, userId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {
@@ -76,5 +57,23 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
         
         //TODO
         
-    }    
+    }
+    
+    private func parse(request: BaseRequest,
+                       completionHandler: @escaping (Error?) -> ()) {
+        
+        let networkTask = NetworkTask()
+        let future = networkTask.execute(input: request)
+        
+        future.onResult { networkResponse in
+            
+            switch networkResponse {
+            case .success(_):
+                completionHandler(nil)
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(mappedError)
+            }
+        }
+    }
 }

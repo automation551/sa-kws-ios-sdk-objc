@@ -13,11 +13,9 @@ import SAProtobufs
 public class UserProvider: NSObject, UserServiceProtocol {
   
     var environment: KWSNetworkEnvironment
-    var networkTask: NetworkTask
     
-    public init(environment: KWSNetworkEnvironment, networkTask: NetworkTask = NetworkTask()) {
+    public init(environment: KWSNetworkEnvironment) {
         self.environment = environment
-        self.networkTask = networkTask
     }
     
     public func getUser(userId: Int, token: String, completionHandler: @escaping (UserDetailsModelProtocol?, Error?) -> ()) {
@@ -26,78 +24,52 @@ public class UserProvider: NSObject, UserServiceProtocol {
                                                               userId: userId,
                                                               token: token)
         
-        networkTask.execute(request: getUserDetailsNetworkRequest){ getUserDetailsNetworkResponse in
+        let parseTask = ParseJsonTask<UserDetails>()
+        let networkTask = NetworkTask()
+        
+        let future = networkTask
+            .execute(input: getUserDetailsNetworkRequest)
+            .map { (result: Result<String>) -> Result<UserDetails> in
+                return result.then(parseTask.execute)
+        }
+        
+        future.onResult { result in
             
-            if let json = getUserDetailsNetworkResponse.response, getUserDetailsNetworkResponse.error == nil{
-                
-                let parseRequest = JsonParseRequest.init(withRawData: json)
-                let parseTask = JSONParseTask<UserDetails>()
-                
-                if let getUserDetailsResponseObject = parseTask.execute(request: parseRequest){
-                    completionHandler(getUserDetailsResponseObject, nil)
-                } else {
-                    completionHandler(nil, KWSBaseError.JsonParsingError)
-                }
-            } else {
-                if let errorResponse = getUserDetailsNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(nil, mappedResponse)
-                    
-                } else {
-                    completionHandler(nil, getUserDetailsNetworkResponse.error)
-                }
+            switch result {
+            case .success(let value):
+                completionHandler(value, nil)
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
             }
         }
     }
     
     public func updateUser(details: [String:Any], token: String, completionHandler: @escaping (Error?) -> ()) {
         
-        //this will be improved
-        let userId = self.getTheTokenData(token: token)?.userId ?? 0
-        
-        let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
-                                                                       userDetailsMap: details ,                                                                    
-                                                                       userId: userId,
-                                                                       token: token)
-        
-        networkTask.execute(request: updateUserDetailsNetworkRequest){ updateUserDetailsNetworkResponse in
+        if let tokenData = UtilsHelpers.getTokenData(token: token), let userId = tokenData.userId {
             
-            if (updateUserDetailsNetworkResponse.success && updateUserDetailsNetworkResponse.error == nil) {
-                completionHandler( nil)
-            } else {
-                if let errorResponse = updateUserDetailsNetworkResponse.error?.message {
-                    
-                    let jsonParseRequest = JsonParseRequest.init(withRawData: (errorResponse))
-                    let parseTask = JSONParseTask<ErrorResponse>()
-                    let mappedResponse = parseTask.execute(request: jsonParseRequest)
-                    completionHandler(mappedResponse)
-                    
-                } else {
-                    completionHandler(updateUserDetailsNetworkResponse.error)
+            let updateUserDetailsNetworkRequest = UpdateUserDetailsRequest(environment: environment,
+                                                                           userDetailsMap: details ,
+                                                                           userId: userId,
+                                                                           token: token)
+            
+            let networkTask = NetworkTask()
+            let future = networkTask.execute(input: updateUserDetailsNetworkRequest)
+                
+            future.onResult { result in
+                
+                switch result {
+                case .success(_):
+                    completionHandler(nil)
+                case .error(let error):
+                    let mappedError = Provider().mapErrorResponse(error: error)
+                    completionHandler(mappedError)
                 }
             }
-            
-        }
-    }
-    
-    public func getTheTokenData (token: String) -> TokenData? {
-        
-        let base64req = ParseBase64Request(withBase64String: token)
-        let base64Task = ParseBase64Task()
-        
-        if let metadataJson = base64Task.execute(request: base64req){
-            
-            let parseJsonReq = JsonParseRequest(withRawData: metadataJson)
-            let parseJsonTask = JSONParseTask<TokenData>()
-            let metadata = parseJsonTask.execute(request: parseJsonReq)
-            
-            return metadata
-            
         } else {
-            return nil
-        }        
+            let error = KWSBaseError(message: "Error parsing token!")
+            completionHandler(error)
+        }
     }
 }

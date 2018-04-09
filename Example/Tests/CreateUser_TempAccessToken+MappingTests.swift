@@ -31,6 +31,6 @@ class CreateUser_TempAccessToken_MappingTests: XCTestCase {
         let authResponse = try? LoginAuthResponse.decode(JSON!)
         
         expect(authResponse).toNot(beNil())
-        expect(authResponse?.token).to(equal("good_token"))
+        expect(authResponse?.token).to(equal("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6MiwiY2xpZW50SWQiOiJ0ZXN0LWFwcCIsInNjb3BlIjoibW9iaWxlQXBwIiwiaWF0IjoxNTIzMjAyOTU2LCJleHAiOjE1MjMyODkzNTYsImlzcyI6InN1cGVyYXdlc29tZSJ9.ss2qbLJJkqJ1LHgl06ivtthZ5g9PhYIVYJJqW4NIuFE"))
     }
 }

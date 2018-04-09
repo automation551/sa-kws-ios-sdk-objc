@@ -82,7 +82,7 @@ class User_GetUser_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let errorResponse = try? ErrorResponse.decode(JSON!)
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))

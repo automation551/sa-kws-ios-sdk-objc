@@ -8,7 +8,7 @@
 import Foundation
 import SAMobileBase
 
-open class BaseRequest: NetworkRequest {
+open class BaseRequest: NetworkRequestProtocol {
     
     public init (environment: KWSNetworkEnvironment, token: String? = nil) {
         self.environment = environment
@@ -28,7 +28,7 @@ open class BaseRequest: NetworkRequest {
   
     open var body: [String : Any]? = nil
     
-    open var environment: NetworkEnvironment
+    open var environment: NetworkEnvironmentProtocol
     
     open var endpoint: String = ""
     

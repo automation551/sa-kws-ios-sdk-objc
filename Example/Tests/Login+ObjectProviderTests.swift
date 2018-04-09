@@ -39,7 +39,6 @@ class Login_ObjectProviderTests: XCTestCase {
         
         //when
         self.loginService = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
-
     }
     
     override func tearDown() {
@@ -101,8 +100,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(loginResponse).to(beNil())
                 
                 expect(error).toNot(beNil())
-                expect((error as! ErrorResponse).code).to(equal(123))
-                expect((error as! ErrorResponse).codeMeaning).to(equal("notFound"))
+                expect((error as! ErrorWrapper).code).to(equal(123))
+                expect((error as! ErrorWrapper).codeMeaning).to(equal("notFound"))
                 
                 done()
             })
@@ -131,8 +130,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(loginResponse).to(beNil());
                 
                 expect(error).toNot(beNil());
-                expect((error as! ErrorResponse).errorCode).to(equal("invalid_grant"))
-                expect((error as! ErrorResponse).error).to(equal("User credentials are invalid"))
+                expect((error as! ErrorWrapper).errorCode).to(equal("invalid_grant"))
+                expect((error as! ErrorWrapper).error).to(equal("User credentials are invalid"))
                 
                 done()
             })
@@ -161,8 +160,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(loginResponse).to(beNil())
                 
                 expect(error).toNot(beNil());
-                expect((error as! ErrorResponse).errorCode).to(equal("invalid_grant"))
-                expect((error as! ErrorResponse).error).to(equal("User credentials are invalid"))
+                expect((error as! ErrorWrapper).errorCode).to(equal("invalid_grant"))
+                expect((error as! ErrorWrapper).error).to(equal("User credentials are invalid"))
                 
                 done()
             })
@@ -192,8 +191,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(loginResponse).to(beNil())
                 
                 expect(error).toNot(beNil())
-                expect((error as! ErrorResponse).errorCode).to(equal("invalid_client"))
-                expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
+                expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
+                expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
                 
                 done()
             })
@@ -223,8 +222,8 @@ class Login_ObjectProviderTests: XCTestCase {
                 expect(loginResponse).to(beNil())
                 
                 expect(error).toNot(beNil())
-                expect((error as! ErrorResponse).errorCode).to(equal("invalid_client"))
-                expect((error as! ErrorResponse).error).to(equal("Client credentials are invalid"))
+                expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
+                expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
                 
                 done()
             })
