@@ -26,7 +26,7 @@ class KWSSwiftTableViewController: UITableViewController {
                 ["Get App Data", "Set App Data"],
             "Invite" :
                 ["Invite User"],
-            "Invite" :
+            "Events" :
                 ["Trigger Event", "Is Triggered Event"]
     ]
     

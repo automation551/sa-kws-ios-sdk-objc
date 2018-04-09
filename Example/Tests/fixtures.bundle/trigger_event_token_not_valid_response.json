@@ -1,0 +1,13 @@
+
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"token\" fails because [\"token\" is not allowed to be empty]",
+    "invalid": {
+        "token": {
+            "code": 7,
+            "codeMeaning": "invalidValue",
+            "errorMessage": "\"token\" is not allowed to be empty"
+        }
+    }
+}
