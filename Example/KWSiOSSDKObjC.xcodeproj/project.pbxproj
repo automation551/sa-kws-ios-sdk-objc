@@ -32,7 +32,7 @@
 		9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */; };
 		9C104F21203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F20203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift */; };
 		9C104F23203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C104F22203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift */; };
-		9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift */; };
+		9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProviderTests.swift */; };
 		9C18312F202085FC00DD4083 /* Login+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C18312E202085FC00DD4083 /* Login+RequestTests.swift */; };
 		9C1831312020861900DD4083 /* Login+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1831302020861900DD4083 /* Login+ObjectProviderTests.swift */; };
 		9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1831322020862800DD4083 /* Login+MappingTests.swift */; };
@@ -57,14 +57,14 @@
 		9C5A79D2207634F3009E4B8C /* AppConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D1207634F3009E4B8C /* AppConfigTests.swift */; };
 		9C5A79D420763500009E4B8C /* AuthUserResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D320763500009E4B8C /* AuthUserResponseTests.swift */; };
 		9C5A79D620763888009E4B8C /* LoginAuthResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D520763888009E4B8C /* LoginAuthResponseTests.swift */; };
-		9C68ED87207A7A4300444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift */; };
+		9C68ED87207A7A4300444D2B /* RandomUsername_GetRandomUsername+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProviderTests.swift */; };
 		9C7F2FFB202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */; };
 		9C7F2FFE202DE980002795DD /* UserDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */; };
 		9C7F3000202DEB92002795DD /* User_GetUser_+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */; };
 		9C7F3002202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F3001202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift */; };
 		9C80FD3720285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80FD3620285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift */; };
 		9C80FD3920285F46003BD328 /* CreateUser+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80FD3820285F46003BD328 /* CreateUser+RequestTests.swift */; };
-		9C9CD8C020345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CD8BF20345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift */; };
+		9C9CD8C020345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CD8BF20345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProviderTests.swift */; };
 		9C9CD8C220345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CD8C120345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift */; };
 		9C9CD8C720349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CD8C620349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift */; };
 		9C9CD8C92034A3870019CF2C /* UpdateUserDetailsFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CD8C82034A3870019CF2C /* UpdateUserDetailsFakeResponse.swift */; };
@@ -121,7 +121,7 @@
 		9C104F1E203B43A5003FAEF7 /* Permissions+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions+RequestTests.swift"; sourceTree = "<group>"; };
 		9C104F20203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_RequestPermissions+MappingTests.swift"; sourceTree = "<group>"; };
 		9C104F22203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_RequestPermissions+ObjectProvider.swift"; sourceTree = "<group>"; };
-		9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_CreateUser+ObjectProvider.swift"; sourceTree = "<group>"; };
+		9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_CreateUser+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C18312E202085FC00DD4083 /* Login+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+RequestTests.swift"; sourceTree = "<group>"; };
 		9C1831302020861900DD4083 /* Login+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C1831322020862800DD4083 /* Login+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+MappingTests.swift"; sourceTree = "<group>"; };
@@ -146,14 +146,14 @@
 		9C5A79D1207634F3009E4B8C /* AppConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigTests.swift; sourceTree = "<group>"; };
 		9C5A79D320763500009E4B8C /* AuthUserResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserResponseTests.swift; sourceTree = "<group>"; };
 		9C5A79D520763888009E4B8C /* LoginAuthResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthResponseTests.swift; sourceTree = "<group>"; };
-		9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername_GetRandomUsername+ObjectProvider.swift"; sourceTree = "<group>"; };
+		9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername_GetRandomUsername+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C7F2FFA202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUserDetails+RequestTests.swift"; sourceTree = "<group>"; };
 		9C7F2FFD202DE980002795DD /* UserDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTests.swift; sourceTree = "<group>"; };
 		9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUser_+MappingTests.swift"; sourceTree = "<group>"; };
 		9C7F3001202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_GetUser+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C80FD3620285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser_DoUserCreation+MappingTests.swift"; sourceTree = "<group>"; };
 		9C80FD3820285F46003BD328 /* CreateUser+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateUser+RequestTests.swift"; sourceTree = "<group>"; };
-		9C9CD8BF20345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_UpdateUser_UserDetails+ObjectProvider.swift"; sourceTree = "<group>"; };
+		9C9CD8BF20345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_UpdateUser_UserDetails+ObjectProviderTests.swift"; sourceTree = "<group>"; };
 		9C9CD8C120345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_UpdateUser_UserDetails+MappingTests.swift"; sourceTree = "<group>"; };
 		9C9CD8C620349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User_UpdateUserDetails+RequestTests.swift"; sourceTree = "<group>"; };
 		9C9CD8C82034A3870019CF2C /* UpdateUserDetailsFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserDetailsFakeResponse.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 				9C7F2FFF202DEB92002795DD /* User_GetUser_+MappingTests.swift */,
 				9C7F3001202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift */,
 				9C9CD8C120345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift */,
-				9C9CD8BF20345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift */,
+				9C9CD8BF20345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProviderTests.swift */,
 				9C3C5BCA203AE1F10095FC1C /* User_UpdateUser_ParentEmail+MappingTests.swift */,
 				9C3C5BCC203AE22F0095FC1C /* User_UpdateUser_ParentEmail+ObjectProviderTests.swift */,
 			);
@@ -386,7 +386,7 @@
 				9CDBB3BC202C6F4D00D20FD4 /* FakeMockModels */,
 				9C59C7BF202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift */,
 				9C59C7C3202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift */,
-				9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift */,
+				9C68ED85207A792400444D2B /* RandomUsername_GetRandomUsername+ObjectProviderTests.swift */,
 			);
 			name = RandomUsername;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 			children = (
 				9C80FD3620285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift */,
 				9C59C7BB202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift */,
-				9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift */,
+				9C12C4CC20769CE3008364CB /* CreateUser_CreateUser+ObjectProviderTests.swift */,
 			);
 			name = CreateUser;
 			sourceTree = "<group>";
@@ -449,7 +449,6 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				A25D53C34D9AB3A77F9FAB38 /* [CP] Embed Pods Frameworks */,
-				FAA223C3EE956F3222EC6301 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -469,7 +468,6 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				64C37BACC9FE1CBE0B9C9F8F /* [CP] Embed Pods Frameworks */,
-				21862CF0B608772F7B8F5E46 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -554,21 +552,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		21862CF0B608772F7B8F5E46 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		581B7AA0154BE0586A84DB7D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -657,21 +640,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FAA223C3EE956F3222EC6301 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -705,7 +673,7 @@
 				9C80FD3720285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift in Sources */,
 				9C5A79CC20762B57009E4B8C /* PointsTests.swift in Sources */,
 				9C3C5BCD203AE22F0095FC1C /* User_UpdateUser_ParentEmail+ObjectProviderTests.swift in Sources */,
-				9C68ED87207A7A4300444D2B /* RandomUsername_GetRandomUsername+ObjectProvider.swift in Sources */,
+				9C68ED87207A7A4300444D2B /* RandomUsername_GetRandomUsername+ObjectProviderTests.swift in Sources */,
 				9C59C7C0202B198C00BE4E74 /* RandomUsername_AppConfig+MappingTests.swift in Sources */,
 				9CDBB3BE202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift in Sources */,
 				1B87E4A81CF89E690053FD8F /* KWSKWSRequestPermissionTests.m in Sources */,
@@ -720,14 +688,14 @@
 				9C18312F202085FC00DD4083 /* Login+RequestTests.swift in Sources */,
 				9C5A79CA207629D1009E4B8C /* ApplicationPermissionsTests.swift in Sources */,
 				9C5A79C6207623CF009E4B8C /* UserAddress.swift in Sources */,
-				9C9CD8C020345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProvider.swift in Sources */,
+				9C9CD8C020345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProviderTests.swift in Sources */,
 				9C1831312020861900DD4083 /* Login+ObjectProviderTests.swift in Sources */,
 				9C5A79C8207626BC009E4B8C /* ApplicationProfileTest.swift in Sources */,
 				9C9CD8C92034A3870019CF2C /* UpdateUserDetailsFakeResponse.swift in Sources */,
 				1B87E4A41CF89E400053FD8F /* KWSTokenTests.m in Sources */,
 				9C59C7BC202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift in Sources */,
 				9C104F23203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProvider.swift in Sources */,
-				9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProvider.swift in Sources */,
+				9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProviderTests.swift in Sources */,
 				9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */,
 				9C59C7CC202B1ED000BE4E74 /* RandomUsername+RequestTests.swift in Sources */,
 				9C9CD8C220345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift in Sources */,

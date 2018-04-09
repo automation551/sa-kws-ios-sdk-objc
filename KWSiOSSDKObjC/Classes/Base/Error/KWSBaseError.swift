@@ -15,6 +15,4 @@ public class KWSBaseError : PrintableErrorProtocol {
     public required init(message: String) {
         self.message = message
     }
-    
-    
 }
