@@ -96,8 +96,7 @@ class Permissions_RequestTests: XCTestCase {
         expect("application/json").to(equal(requestHeaders?["Content-Type"]))
         
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
-    }
-    
+    }    
     
     func testRequestQueryToBeNil() {
         //then
@@ -109,6 +108,4 @@ class Permissions_RequestTests: XCTestCase {
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }
-    
-    
 }

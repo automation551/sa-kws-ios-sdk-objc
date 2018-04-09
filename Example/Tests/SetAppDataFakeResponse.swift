@@ -14,8 +14,7 @@ public final class SetAppDataFakeResponse: NSObject, Error {
     
     public let appSet: Bool?
     
-    // MARK: - Initialization
-    
+    // MARK: - Initialization    
     public required init(appSet: Bool?  = false) {
         self.appSet = appSet
     }

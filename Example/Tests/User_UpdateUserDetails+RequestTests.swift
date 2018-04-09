@@ -99,8 +99,7 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
         
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
-    
-    
+        
     func testRequestQueryToBeNil() {
         //then
         expect(self.request.query).to(beNil())
@@ -111,5 +110,4 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }
-    
 }

@@ -6,7 +6,6 @@
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
-
 import XCTest
 import Nimble
 import Decodable

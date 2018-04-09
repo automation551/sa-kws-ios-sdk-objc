@@ -100,7 +100,6 @@ class AppConfig_RequestTests: XCTestCase {
     func testRequestFormUrlEncodeToBeFalse(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
-    }
-    
+    }    
 }
 

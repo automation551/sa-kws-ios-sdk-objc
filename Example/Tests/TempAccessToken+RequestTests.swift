@@ -106,6 +106,5 @@ class TempAccessToken_RequestTests: XCTestCase {
     func testRequestFormUrlEncodeToBeTrue(){
         //then
         expect(self.request.formEncodeUrls).to(beTrue())
-    }
-    
+    }    
 }

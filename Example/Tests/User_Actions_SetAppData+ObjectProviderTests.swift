@@ -29,8 +29,7 @@ class User_Actions_GetAppData_ObjectProviderTests: XCTestCase {
     private var badAppId: Int = -1
     
     private var value: Int = 1
-    private var nameKey: String = "name_key"
-    
+    private var nameKey: String = "name_key"    
     
     override func setUp() {
         super.setUp()
