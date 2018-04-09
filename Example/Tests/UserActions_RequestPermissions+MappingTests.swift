@@ -51,7 +51,6 @@ class UserActions_RequestPermissions_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.permissions?.code).to(equal(6))
         expect(errorResponse?.invalid?.permissions?.codeMeaning).to(equal("missing"))
         expect(errorResponse?.invalid?.permissions?.message).to(equal("\"permissions\" is required"))
-        
     }
     
     func test_User_Permissions_Request_Mapping_Not_Supported_For_User_Response() {

@@ -1,5 +1,5 @@
 //
-//  User_UpdateUserDetails+ObjectProvider.swift
+//  User_UpdateUserDetails+ObjectProviderTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 14/02/2018.
