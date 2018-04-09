@@ -14,10 +14,10 @@ extension AppDataWrapper: Decodable {
     public static func decode(_ json: Any) throws -> AppDataWrapper {
         
         return try AppDataWrapper (
-            results:         json => "results",
-            count:           json => "count",
-            offset:          json => "offset",
-            limit:           json => "limit"
+            results:    json => "results",
+            count:      json => "count",
+            offset:     json => "offset",
+            limit:      json => "limit"
         )
     }
 }

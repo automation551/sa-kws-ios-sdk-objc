@@ -14,7 +14,7 @@ extension AppData: Decodable {
     public static func decode(_ json: Any) throws -> AppData {
         
         return try AppData (
-            value:         json => "id",
+            value:         json => "value",
             name:          json => "name"        
         )
     }
