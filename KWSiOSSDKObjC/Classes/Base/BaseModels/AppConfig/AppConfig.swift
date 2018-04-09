@@ -22,8 +22,7 @@ public final class AppConfig: NSObject, AppConfigModelProtocol {
     
     // MARK: - Equatable
     public static func ==(lhs: AppConfig, rhs: AppConfig) -> Bool {
-        let areEqual = lhs.id == rhs.id
-        
+        let areEqual = lhs.id == rhs.id        
         return areEqual
     }
     
