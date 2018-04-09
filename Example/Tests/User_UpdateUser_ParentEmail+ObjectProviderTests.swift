@@ -60,11 +60,12 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         waitUntil { done in
             
             self.userService.updateUser(details: mapUserDetails,
-                                               token: self.token,
-                                               completionHandler: { error in
+                                        userId: self.goodUserId,
+                                        token: self.token,
+                                        completionHandler: { error in
                                                 
-                                                expect(error).to(beNil())
-                                                done()
+                                            expect(error).to(beNil())
+                                            done()
             })
         }
     }
@@ -80,20 +81,21 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             self.userService.updateUser(details: mapUserDetails,
-                                               token: self.token,
-                                               completionHandler: { error in
+                                        userId: self.goodUserId,
+                                        token: self.token,
+                                        completionHandler: { error in
                                                 
                                                 
-                                                expect(error).toNot(beNil())
-                                                expect((error as! ErrorWrapper).code).to(equal(10))
-                                                expect((error as! ErrorWrapper).codeMeaning).to(equal("conflict"))
-                                                expect((error as! ErrorWrapper).message).to(equal("parentEmail already set"))
-                                                expect((error as! ErrorWrapper).invalid?.parentEmail).toNot(beNil())
-                                                expect((error as! ErrorWrapper).invalid?.parentEmail?.code).to(equal(10))
-                                                expect((error as! ErrorWrapper).invalid?.parentEmail?.codeMeaning).to(equal("conflict"))
-                                                expect((error as! ErrorWrapper).invalid?.parentEmail?.message).to(equal("parentEmail already set"))
-                                                
-                                                done()
+                                            expect(error).toNot(beNil())
+                                            expect((error as! ErrorWrapper).code).to(equal(10))
+                                            expect((error as! ErrorWrapper).codeMeaning).to(equal("conflict"))
+                                            expect((error as! ErrorWrapper).message).to(equal("parentEmail already set"))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail).toNot(beNil())
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.code).to(equal(10))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.codeMeaning).to(equal("conflict"))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.message).to(equal("parentEmail already set"))
+                                            
+                                            done()
             })
         }
     }
@@ -110,19 +112,20 @@ class User_UpdateUser_ParentEmail_ObjectProviderTests: XCTestCase {
         
         waitUntil { done in
             self.userService.updateUser(details: mapUserDetails,
-                                               token: self.token,
-                                               completionHandler: { error in
-                                                                                
-                                                expect(error).toNot(beNil())
-                                                expect((error as! ErrorWrapper).code).to(equal(5))
-                                                expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
-                                                expect((error as! ErrorWrapper).message).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
-                                                expect((error as! ErrorWrapper).invalid?.parentEmail).toNot(beNil())
-                                                expect((error as! ErrorWrapper).invalid?.parentEmail?.code).to(equal(7))
-                                                expect((error as! ErrorWrapper).invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
-                                                expect((error as! ErrorWrapper).invalid?.parentEmail?.message).to(equal("\"parentEmail\" must be a valid email"))
-                                                
-                                                done()
+                                        userId: self.goodUserId,
+                                        token: self.token,
+                                        completionHandler: { error in
+                                            
+                                            expect(error).toNot(beNil())
+                                            expect((error as! ErrorWrapper).code).to(equal(5))
+                                            expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                                            expect((error as! ErrorWrapper).message).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail).toNot(beNil())
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.code).to(equal(7))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.message).to(equal("\"parentEmail\" must be a valid email"))
+                                            
+                                            done()
             })
         }
     }

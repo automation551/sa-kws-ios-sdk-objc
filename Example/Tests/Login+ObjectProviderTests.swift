@@ -39,7 +39,6 @@ class Login_ObjectProviderTests: XCTestCase {
         
         //when
         self.loginService = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
-
     }
     
     override func tearDown() {
