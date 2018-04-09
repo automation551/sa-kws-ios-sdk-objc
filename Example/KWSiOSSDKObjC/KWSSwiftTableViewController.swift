@@ -160,7 +160,6 @@ class KWSSwiftTableViewController: UITableViewController {
         if let cachedUser = getLoggedUser() {
             
             let userId : Int = cachedUser.id as? Int ?? 0
-            
             userActions?.requestPermissions(permissions: permissions, userId: userId, token: cachedUser.token) { error in
                 
                 if (error == nil){
@@ -185,7 +184,6 @@ class KWSSwiftTableViewController: UITableViewController {
         if let cachedUser = getLoggedUser(){
             
             let userId = cachedUser.id as? Int ?? 0
-            
             user?.updateUser(details: map, userId: userId , token: cachedUser.token) { (error) in
                 
                 if(error == nil){
@@ -263,7 +261,7 @@ class KWSSwiftTableViewController: UITableViewController {
             
             userActions?.getAppData(userId: userId, appId: appId, token: token) { appData, error in
                 
-                if( appData != nil){
+                if(appData != nil){
                     print("Got app data: \(String(describing: appData))")
                 } else {
                     print("Something went wrong for get user details:  \(String(describing: error))")
@@ -277,7 +275,6 @@ class KWSSwiftTableViewController: UITableViewController {
     func saveUser(user: LoggedUserModelProtocol) {
         let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         let success = sessionsService?.saveLoggedUser(user: user)
-        print("Saving user was \(String(describing: success))")
     }
     
     func getLoggedUser () -> LoggedUser? {
