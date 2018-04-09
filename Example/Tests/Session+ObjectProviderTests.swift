@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class Session_ObjectProvider: XCTestCase {
+class Session_ObjectProviderTests: XCTestCase {
     
     //mock or real data
     private let kTokenKey: String = "kwsSDK_LoggedUser_Token_key"

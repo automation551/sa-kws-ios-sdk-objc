@@ -108,7 +108,7 @@ class KWSSwiftTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        kUserKWSNetworkEnvironment = UserKWSNetworkEnvironment(domain: API, appID: CLIENT_SECRET, mobileKey: CLIENT_ID)
+        kUserKWSNetworkEnvironment = StanTestEnvironment()
     }
     
     func createUser(){
