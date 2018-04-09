@@ -32,7 +32,6 @@ class Session_ObjectProviderTests: XCTestCase {
         
         //when
         self.service = KWSSDK.getService(value: SessionServiceProtocol.self, environment: self.environment)
-        
     }
     
     override func tearDown() {
