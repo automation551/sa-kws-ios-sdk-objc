@@ -24,8 +24,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
     
     func test_UserActions_TriggerEvent_Mapping_ResponseSuccess() {
         
-        var JSON: Any?
-        JSON = ["{}"]
+        let JSON: Any? = ["{}"]
         
         let triggerEvent = try? ErrorWrapper.decode(JSON!)
         
@@ -34,8 +33,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
     
     func test_UserActions_TriggerEvent_Mapping_BadToken_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_invalid_token_response")
+        let JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
         let errorResponse = try? ErrorWrapper.decode(JSON!)
         
@@ -47,8 +45,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
     
     func test_UserActions_TriggerEvent_Mapping_BadUserId_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
+        let JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
         let errorResponse = try? ErrorWrapper.decode(JSON!)
         
@@ -61,8 +58,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
     
     func test_UserActions_TriggerEvent_Mapping_BadEventId_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"trigger_event_token_not_valid_response")
+        let JSON = try? fixtureWithName(name:"trigger_event_token_not_valid_response")
         
         //400
         let errorResponse = try? ErrorWrapper.decode(JSON!)
@@ -80,8 +76,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
     
     func test_UserActions_HasTriggeredEvent_Mapping_BadEventId_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_event_not_found_response")
+        let JSON = try? fixtureWithName(name:"generic_event_not_found_response")
         
         //404
         let errorResponse = try? ErrorWrapper.decode(JSON!)

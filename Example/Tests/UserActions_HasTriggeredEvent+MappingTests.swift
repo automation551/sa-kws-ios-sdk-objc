@@ -25,8 +25,7 @@ class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
     
     func test_UserActions_HasTriggeredEvent_Mapping_ResponseSuccess() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"has_triggered_event_success_response")
+        let JSON: Any? = try? fixtureWithName(name:"has_triggered_event_success_response")
         
         let response = try? HasTriggeredEvent.decode(JSON!)
         
@@ -36,8 +35,7 @@ class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
     
     func test_UserActions_HasTriggeredEvent_Mapping_BadToken_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_invalid_token_response")
+        let JSON: Any? = try? fixtureWithName(name:"generic_invalid_token_response")
         
         let errorResponse = try? ErrorWrapper.decode(JSON!)
         
@@ -49,8 +47,7 @@ class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
     
     func test_UserActions_HasTriggeredEvent_Mapping_BadUserId_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
+        let JSON: Any? = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
         let errorResponse = try? ErrorWrapper.decode(JSON!)
         
@@ -63,8 +60,7 @@ class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
     
     func test_UserActions_HasTriggeredEvent_Mapping_BadEventId_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_event_not_found_response")
+        let JSON: Any? = try? fixtureWithName(name:"generic_event_not_found_response")
         
         //400
         let errorResponse = try? ErrorWrapper.decode(JSON!)

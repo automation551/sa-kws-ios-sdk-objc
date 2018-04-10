@@ -1,5 +1,5 @@
 //
-//  UserActions_HasTriggeredEvent+ObjectProvider.swift
+//  UserActions_HasTriggeredEvent+ObjectProviderTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
