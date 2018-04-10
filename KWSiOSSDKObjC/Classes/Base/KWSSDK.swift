@@ -38,6 +38,9 @@ public class KWSSDK : NSObject{
         else if value == SessionServiceProtocol.self {
             return SessionProvider(environment: environment) as? T
         }
+        else if value == ScoringServiceProtocol.self {
+            return ScoreProvider(environment: environment) as? T
+        }
         else {
             return nil
         }
