@@ -13,27 +13,20 @@ import KWSiOSSDKObjC
 
 class TempAccessToken_RequestTests: XCTestCase {
     
-    
-    //class or data to test
-    private var request: TempAccessTokenRequest!
     private var env: KWSNetworkEnvironment!
-    
-    
-    private var clientID: String!
-    private var clientSecret: String!
-    
+    private var request: TempAccessTokenRequest!
     private var method: NetworkMethod!
     private var endpoint: String!
+    private var clientID: String!
+    private var clientSecret: String!
     
     override func setUp() {
         super.setUp()
         
         // given
         env = GoodMockNetworkEnvironment()
-        
         clientID = "mock_client_id"
         clientSecret = "mock_client_secret"
-        
         method = .POST
         endpoint = "oauth/token"
         
@@ -41,22 +34,10 @@ class TempAccessToken_RequestTests: XCTestCase {
         request = TempAccessTokenRequest(environment: env,
                                          clientID:clientID,
                                          clientSecret:clientSecret)
-        
     }
-    
     
     override func tearDown() {
         super.tearDown()
-        request = nil
-        env = nil
-    }
-    
-    func testConstantsToBeNotNil(){
-        //then
-        expect(self.clientID).toNot(beNil())
-        expect(self.clientSecret).toNot(beNil())
-        expect(self.endpoint).toNot(beNil())
-        expect(self.method).toNot(beNil())
     }
     
     func testRequestToBeNotNil(){
@@ -77,6 +58,14 @@ class TempAccessToken_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
+    }  
+    
+    func testConstantsToBeNotNil(){
+        //then
+        expect(self.clientID).toNot(beNil())
+        expect(self.clientSecret).toNot(beNil())
+        expect(self.endpoint).toNot(beNil())
+        expect(self.method).toNot(beNil())
     }
     
     func testRequestBody(){
@@ -117,6 +106,5 @@ class TempAccessToken_RequestTests: XCTestCase {
     func testRequestFormUrlEncodeToBeTrue(){
         //then
         expect(self.request.formEncodeUrls).to(beTrue())
-    }
-    
+    }    
 }

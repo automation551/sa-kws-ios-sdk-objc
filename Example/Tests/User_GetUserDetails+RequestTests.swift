@@ -13,23 +13,19 @@ import KWSiOSSDKObjC
 
 class User_GetUserDetails_RequestTests: XCTestCase {
     
-    //class or data to test
-    private var request: UserDetailsRequest!
-    
     private var env: KWSNetworkEnvironment!
-    private var userId: Int = 123
-    private var token: String!
+    private var request: UserDetailsRequest!
     private var method: NetworkMethod!
     private var endpoint: String!
+    private var userId: Int = 123
+    private var token: String!
     
     override func setUp() {
         super.setUp()
         
         // given
         env = GoodMockNetworkEnvironment()
-        
         token = "mock_token"
-        
         method = .GET
         endpoint = "v1/users/\(userId)"
         
@@ -42,16 +38,6 @@ class User_GetUserDetails_RequestTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-        request = nil
-        env = nil
-    }
-    
-    func testConstantsToBeNotNil(){
-        //then
-        expect(self.userId).toNot(beNil())
-        expect(self.token).toNot(beNil())
-        expect(self.endpoint).toNot(beNil())
-        expect(self.method).toNot(beNil())
     }
     
     func testRequestToBeNotNil(){
@@ -72,12 +58,14 @@ class User_GetUserDetails_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
-    }
+    }  
     
-    func testRequestBodyToBeNil(){
+    func testConstantsToBeNotNil(){
         //then
-        expect(self.request.body).to(beNil())
-      
+        expect(self.userId).toNot(beNil())
+        expect(self.token).toNot(beNil())
+        expect(self.endpoint).toNot(beNil())
+        expect(self.method).toNot(beNil())
     }
     
     public func testRequestHeader() {

@@ -13,10 +13,10 @@ import KWSiOSSDKObjC
 
 class CreateUser_RequestTests: XCTestCase {
     
-    //class or data to test
-    private var request: CreateUserRequest!
     private var env: KWSNetworkEnvironment!
-    
+    private var request: CreateUserRequest!
+    private var method: NetworkMethod!
+    private var endpoint: String!
     private var username: String!
     private var password: String!
     private var dateOfBirth: String!
@@ -24,16 +24,12 @@ class CreateUser_RequestTests: XCTestCase {
     private var parentEmail: String!
     private var token: String!
     private var appID: Int = 0
-    private var method: NetworkMethod!
-    private var endpoint: String!
-    
     
     override func setUp() {
         super.setUp()
         
         // given
         env = GoodMockNetworkEnvironment()
-        
         username = "mock_username"
         password = "mock_password"
         dateOfBirth = "mock_dob"
@@ -53,29 +49,10 @@ class CreateUser_RequestTests: XCTestCase {
                                     parentEmail: parentEmail,
                                     token: token,
                                     appID: appID)
-        
-        
-        
     }
-    
     
     override func tearDown() {
         super.tearDown()
-        request = nil
-        env = nil
-    }
-    
-    func testConstantsToBeNotNil(){
-        //then
-        expect(self.username).toNot(beNil())
-        expect(self.password).toNot(beNil())
-        expect(self.dateOfBirth).toNot(beNil())
-        expect(self.country).toNot(beNil())
-        expect(self.parentEmail).toNot(beNil())
-        expect(self.token).toNot(beNil())
-        expect(self.appID).toNot(beNil())
-        expect(self.endpoint).toNot(beNil())
-        expect(self.method).toNot(beNil())
     }
     
     func testRequestToBeNotNil(){
@@ -96,6 +73,19 @@ class CreateUser_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
+    }  
+    
+    func testConstantsToBeNotNil(){
+        //then
+        expect(self.username).toNot(beNil())
+        expect(self.password).toNot(beNil())
+        expect(self.dateOfBirth).toNot(beNil())
+        expect(self.country).toNot(beNil())
+        expect(self.parentEmail).toNot(beNil())
+        expect(self.token).toNot(beNil())
+        expect(self.appID).toNot(beNil())
+        expect(self.endpoint).toNot(beNil())
+        expect(self.method).toNot(beNil())
     }
     
     func testRequestBody(){
@@ -133,7 +123,6 @@ class CreateUser_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beFalse())
     }
     
-    
     func testRequestQuery() {
         let requestQuery = self.request.query
         
@@ -150,7 +139,4 @@ class CreateUser_RequestTests: XCTestCase {
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }
-    
-    
-    
 }

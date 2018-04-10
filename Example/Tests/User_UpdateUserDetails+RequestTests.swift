@@ -13,18 +13,13 @@ import KWSiOSSDKObjC
 
 class User_UpdateUserDetails_RequestTests: XCTestCase {
     
-    //class or data to test
-    private var request: UpdateUserDetailsRequest!
-    
     private var env: KWSNetworkEnvironment!
-    private var userId: Int = 123
-    private var token: String!
-    
+    private var request: UpdateUserDetailsRequest!
     private var method: NetworkMethod!
     private var endpoint: String!
-    
+    private var userId: Int = 123
+    private var token: String!
     private var goodUsername = "good_username"
-    
     private var mapUserDetails : [String : Any]!
     
     override func setUp() {
@@ -32,14 +27,11 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
         
         // given
         env = GoodMockNetworkEnvironment()
-        
         token = "mock_token"
-        
         method = .PUT
         endpoint = "v1/users/\(userId)"
         
-        //when
-        
+        //when        
         mapUserDetails = ["firstName" : "John",
                           "lastName" : "Doe",
                           "address" : [ "street" : "Street One",
@@ -58,17 +50,6 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-        request = nil
-        env = nil
-    }
-    
-    func testConstantsToBeNotNil(){
-        //then
-        expect(self.userId).toNot(beNil())
-        expect(self.token).toNot(beNil())
-        expect(self.mapUserDetails).toNot(beNil())
-        expect(self.endpoint).toNot(beNil())
-        expect(self.method).toNot(beNil())
     }
     
     func testRequestToBeNotNil(){
@@ -89,6 +70,15 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
+    }  
+    
+    func testConstantsToBeNotNil(){
+        //then
+        expect(self.userId).toNot(beNil())
+        expect(self.token).toNot(beNil())
+        expect(self.mapUserDetails).toNot(beNil())
+        expect(self.endpoint).toNot(beNil())
+        expect(self.method).toNot(beNil())
     }
     
     func testRequestBodyToNotBeNil(){
@@ -109,8 +99,7 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
         
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
-    
-    
+        
     func testRequestQueryToBeNil() {
         //then
         expect(self.request.query).to(beNil())
@@ -121,5 +110,4 @@ class User_UpdateUserDetails_RequestTests: XCTestCase {
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }
-    
 }

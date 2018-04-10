@@ -13,24 +13,18 @@ import KWSiOSSDKObjC
 
 class AppConfig_RequestTests: XCTestCase {
     
-    
-    //class or data to test
-    private var request: AppConfigRequest!
     private var env: KWSNetworkEnvironment!
-    
-    private var clientID: String!
-    
+    private var request: AppConfigRequest!
     private var method: NetworkMethod!
     private var endpoint: String!
+    private var clientID: String!
     
     override func setUp() {
         super.setUp()
         
         // given
         env = GoodMockNetworkEnvironment()
-        
-        clientID = "mock_client_id"
-        
+        clientID = "mock_client_id"        
         method = .GET
         endpoint = "v1/apps/config"
         
@@ -40,19 +34,8 @@ class AppConfig_RequestTests: XCTestCase {
         
     }
     
-    
     override func tearDown() {
         super.tearDown()
-        request = nil
-        env = nil
-    }
-    
-    
-    func testConstantsToBeNotNil(){
-        //then
-        expect(self.clientID).toNot(beNil())
-        expect(self.endpoint).toNot(beNil())
-        expect(self.method).toNot(beNil())
     }
     
     func testRequestToBeNotNil(){
@@ -73,8 +56,15 @@ class AppConfig_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
-    }
+    }  
     
+    func testConstantsToBeNotNil(){
+        //then
+        expect(self.clientID).toNot(beNil())
+        expect(self.endpoint).toNot(beNil())
+        expect(self.method).toNot(beNil())
+    }
+
     func testRequestBody(){
         //then
         expect(self.request.body).to(beNil())
@@ -110,7 +100,6 @@ class AppConfig_RequestTests: XCTestCase {
     func testRequestFormUrlEncodeToBeFalse(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
-    }
-    
+    }    
 }
 

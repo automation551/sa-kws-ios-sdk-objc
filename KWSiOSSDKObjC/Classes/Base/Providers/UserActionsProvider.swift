@@ -76,8 +76,9 @@ public class UserActionsProvider: NSObject, UserActionsServiceProtocol {
     
     public func setAppData(value: Int, key: String, userId: Int, appId: Int, token: String, completionHandler: @escaping (Error?) -> ()) {
         
-        //TODO
-        
+        let setAppDataNetworkRequest = SetAppDataRequest(environment: environment, appId: appId, userId: userId, value: value, key: key, token: token)
+    
+        self.parse(request: setAppDataNetworkRequest, completionHandler: completionHandler)        
     }
     
     private func parse(request: BaseRequest,
