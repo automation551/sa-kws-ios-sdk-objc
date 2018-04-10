@@ -27,7 +27,7 @@ class KWSSwiftTableViewController: UITableViewController {
             "Invite" :
                 ["Invite User"],
             "Score" :
-                ["Get Leaderboard"]
+                ["Get Leaderboard", "Get User Score"]
     ]
     
     // MARK: - TABLE VIEW STUFF
@@ -106,6 +106,7 @@ class KWSSwiftTableViewController: UITableViewController {
         case "Score":
             switch arrayOfRows[indexPath.row] {
             case "Get Leaderboard": self.getLeaderboard()
+            case "Get User Score": self.getUserScore()
             default:
                 break
             }
@@ -361,6 +362,28 @@ class KWSSwiftTableViewController: UITableViewController {
                     print("Get Leaderboard with success: \(String(describing: response))")
                 } else {
                     print("Something went wrong for Get Leaderboard: \(String(describing: error))")
+                }
+            }
+        } else {
+            print("No valid user cached!!!")
+        }
+    }
+    
+    func getUserScore(){
+        
+        let score = KWSSDK.getService(value: ScoringServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let appId = cachedUser.tokenData.appId
+            let token = cachedUser.token
+            
+            score?.getScore(appId: appId, token: token){ (response, error) in
+                
+                if (response != nil){
+                    print("Get Score with success: \(String(describing: response))")
+                } else {
+                    print("Something went wrong for Get Score: \(String(describing: error))")
                 }
             }
         } else {
