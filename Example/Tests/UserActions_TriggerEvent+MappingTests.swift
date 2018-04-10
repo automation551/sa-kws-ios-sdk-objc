@@ -71,6 +71,11 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         expect(errorResponse?.code).to(equal(5))
         expect(errorResponse?.codeMeaning).to(equal("validation"))
         expect(errorResponse?.message).to(equal("child \"token\" fails because [\"token\" is not allowed to be empty]"))
+        expect(errorResponse?.invalid).toNot(beNil())
+        expect(errorResponse?.invalid?.token).toNot(beNil())
+        expect(errorResponse?.invalid?.token?.code).to(equal(7))
+        expect(errorResponse?.invalid?.token?.codeMeaning).to(equal("invalidValue"))
+        expect(errorResponse?.invalid?.token?.message).to(equal("\"token\" is not allowed to be empty"))
     }
     
     func test_UserActions_HasTriggeredEvent_Mapping_BadEventId_Response() {
