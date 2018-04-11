@@ -109,7 +109,6 @@ class UserActions_InviteUser_ObjectProviderTests: XCTestCase {
         }
     }
     
-    
     func test_User_Actions_InviteUser_Mapping_BadEmail_Response() {
         
         let JSON: Any? = try? fixtureWithName(name:"invite_user_bad_email_response")

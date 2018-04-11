@@ -175,7 +175,7 @@
              withPassword:@"testtest"
            andDateOfBirth:@"2012-03-02"
                andCountry:@"US"
-           andParentEmail:@"guilherme.mota@superawesome.tv"
+           andParentEmail:@"mobile.dev.test@superawesome.tv"
               andResponse:^(KWSChildrenCreateUserStatus status) {
                              
                              switch (status) {
@@ -200,7 +200,7 @@
 
 - (void) loginUser {
     
-    NSString* username = @"guitestnumber3";
+    NSString* username = @"randomtestuser12345";
     NSString* pwd = @"testtest";
     [[KWSChildren sdk] loginUser:username withPassword:pwd andResponse:^(KWSChildrenLoginUserStatus status) {
         switch (status) {
@@ -276,7 +276,7 @@
 
 - (void) submitParentEmail {
     
-    NSString * newParentEmail = @"guilherme.mota+1@superawesome.tv";
+    NSString * newParentEmail = @"mobile.dev.test@superawesome.tv";
     
     [[KWSChildren sdk] updateParentEmail: newParentEmail
                             withResponse:^(KWSChildrenUpdateParentEmailStatus type) {

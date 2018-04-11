@@ -1,5 +1,5 @@
 //
-//  InviteUser+RequestTests.swift
+//  TriggerEvent+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
@@ -11,13 +11,14 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class InviteUser_RequestTests: XCTestCase {
+class TriggerEvent_RequestTests: XCTestCase {
     
     private var env: KWSNetworkEnvironment!
-    private var request: InviteUserRequest!
+    private var request: TriggerEventRequest!
     private var method: NetworkMethod!
     private var endpoint: String!
-    private var emailAddress: String!
+    private var points: Int = 0
+    private var eventId: String!
     private var userId: Int = 0
     private var token: String!
     
@@ -26,17 +27,19 @@ class InviteUser_RequestTests: XCTestCase {
         
         // given
         env = GoodMockNetworkEnvironment()
-        emailAddress = "john.doe@email.com"
+        points = 20
+        eventId = "8X9QneMSaxU2VzCBJI5YdxRGG7l3GOUw"
         userId = 123
         token = "mock_token"
         method = .POST
-        endpoint = "v1/users/\(userId)/invite-user"
+        endpoint = "v1/users/\(userId)/trigger-event"
         
         //when
-        request = InviteUserRequest(environment: env,
-                                    emailAddress: emailAddress,
-                                    userId: userId,
-                                    token: token)
+        request = TriggerEventRequest(environment: env,
+                                      eventId: eventId,
+                                      points: points,
+                                      userId: userId,
+                                      token: token)
     }
     
     override func tearDown() {
@@ -65,7 +68,7 @@ class InviteUser_RequestTests: XCTestCase {
     
     func testConstantsToBeNotNil(){
         //then
-        expect(self.emailAddress).toNot(beNil())
+        expect(self.eventId).toNot(beNil())
         expect(self.userId).toNot(beNil())
         expect(self.token).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
@@ -77,11 +80,13 @@ class InviteUser_RequestTests: XCTestCase {
         
         //then
         expect(requestBody).toNot(beNil())
-        expect(requestBody?.count).to(equal(1))
+        expect(requestBody?.count).to(equal(2))
         
-        expect(requestBody?.keys.contains("email")).to(beTrue())
+        expect(requestBody?.keys.contains("points")).to(beTrue())
+        expect(requestBody?.keys.contains("token")).to(beTrue())
         
-        expect(self.emailAddress).to(equal((requestBody?["email"] as! String)))
+        expect(self.points).to(equal((requestBody?["points"] as! Int)))
+        expect(self.eventId).to(equal((requestBody?["token"] as! String)))
     }
     
     public func testRequestHeader() {
