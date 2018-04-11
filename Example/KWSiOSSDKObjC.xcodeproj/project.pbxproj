@@ -82,6 +82,12 @@
 		9CFD4A0D207C0034002CC7B6 /* InviteUser+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A0C207C0034002CC7B6 /* InviteUser+RequestTests.swift */; };
 		9CFD4A0F207C02FF002CC7B6 /* UserActions_InviteUser+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A0E207C02FF002CC7B6 /* UserActions_InviteUser+MappingTests.swift */; };
 		9CFD4A11207C1271002CC7B6 /* UserActions_InviteUser+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A10207C1271002CC7B6 /* UserActions_InviteUser+ObjectProvider.swift */; };
+		9CFD4A17207C1BD4002CC7B6 /* HasTriggeredEvent+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A16207C1BD4002CC7B6 /* HasTriggeredEvent+RequestTests.swift */; };
+		9CFD4A19207C1BE4002CC7B6 /* TriggerEvent+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A18207C1BE4002CC7B6 /* TriggerEvent+RequestTests.swift */; };
+		9CFD4A1E207C25CB002CC7B6 /* UserActions_TriggerEvent+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A1D207C25CB002CC7B6 /* UserActions_TriggerEvent+MappingTests.swift */; };
+		9CFD4A20207C25E3002CC7B6 /* UserActions_TriggerEvent+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A1F207C25E3002CC7B6 /* UserActions_TriggerEvent+ObjectProvider.swift */; };
+		9CFD4A22207C25F4002CC7B6 /* UserActions_HasTriggeredEvent+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A21207C25F4002CC7B6 /* UserActions_HasTriggeredEvent+MappingTests.swift */; };
+		9CFD4A24207C2603002CC7B6 /* UserActions_HasTriggeredEvent+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A23207C2603002CC7B6 /* UserActions_HasTriggeredEvent+ObjectProvider.swift */; };
 		A42D5B5943E86C60CCA171E8 /* Pods_KWSiOSSDKObjC_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A957CB14B000B5D0F54508 /* Pods_KWSiOSSDKObjC_Tests.framework */; };
 		B3D6168FCDECF613E1EEB140 /* Pods_KWSiOSSDKObjC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4967F6F548204F77DEFF20 /* Pods_KWSiOSSDKObjC_Example.framework */; };
 /* End PBXBuildFile section */
@@ -188,6 +194,12 @@
 		9CFD4A0C207C0034002CC7B6 /* InviteUser+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InviteUser+RequestTests.swift"; sourceTree = "<group>"; };
 		9CFD4A0E207C02FF002CC7B6 /* UserActions_InviteUser+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_InviteUser+MappingTests.swift"; sourceTree = "<group>"; };
 		9CFD4A10207C1271002CC7B6 /* UserActions_InviteUser+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_InviteUser+ObjectProvider.swift"; sourceTree = "<group>"; };
+		9CFD4A16207C1BD4002CC7B6 /* HasTriggeredEvent+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HasTriggeredEvent+RequestTests.swift"; sourceTree = "<group>"; };
+		9CFD4A18207C1BE4002CC7B6 /* TriggerEvent+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriggerEvent+RequestTests.swift"; sourceTree = "<group>"; };
+		9CFD4A1D207C25CB002CC7B6 /* UserActions_TriggerEvent+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_TriggerEvent+MappingTests.swift"; sourceTree = "<group>"; };
+		9CFD4A1F207C25E3002CC7B6 /* UserActions_TriggerEvent+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_TriggerEvent+ObjectProvider.swift"; sourceTree = "<group>"; };
+		9CFD4A21207C25F4002CC7B6 /* UserActions_HasTriggeredEvent+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_HasTriggeredEvent+MappingTests.swift"; sourceTree = "<group>"; };
+		9CFD4A23207C2603002CC7B6 /* UserActions_HasTriggeredEvent+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_HasTriggeredEvent+ObjectProvider.swift"; sourceTree = "<group>"; };
 		AD982F81C05A586DC692E518 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A957CB14B000B5D0F54508 /* Pods_KWSiOSSDKObjC_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KWSiOSSDKObjC_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD857536016DA4F86ACFB196 /* Pods-KWSiOSSDKObjC_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KWSiOSSDKObjC_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -338,6 +350,8 @@
 				9C6F9D6B207BD16E00F78119 /* GetAppData+RequestTests.swift */,
 				9C6F9D70207BD6CC00F78119 /* SetAppData+RequestTests.swift */,
 				9CFD4A0C207C0034002CC7B6 /* InviteUser+RequestTests.swift */,
+				9CFD4A16207C1BD4002CC7B6 /* HasTriggeredEvent+RequestTests.swift */,
+				9CFD4A18207C1BE4002CC7B6 /* TriggerEvent+RequestTests.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -375,6 +389,10 @@
 				9C6F9D78207BD74600F78119 /* UserActions_SetAppData+ObjectProviderTests.swift */,
 				9CFD4A0E207C02FF002CC7B6 /* UserActions_InviteUser+MappingTests.swift */,
 				9CFD4A10207C1271002CC7B6 /* UserActions_InviteUser+ObjectProvider.swift */,
+				9CFD4A1D207C25CB002CC7B6 /* UserActions_TriggerEvent+MappingTests.swift */,
+				9CFD4A1F207C25E3002CC7B6 /* UserActions_TriggerEvent+ObjectProvider.swift */,
+				9CFD4A21207C25F4002CC7B6 /* UserActions_HasTriggeredEvent+MappingTests.swift */,
+				9CFD4A23207C2603002CC7B6 /* UserActions_HasTriggeredEvent+ObjectProvider.swift */,
 			);
 			name = UserActionsServices;
 			sourceTree = "<group>";
@@ -727,6 +745,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C7F3000202DEB92002795DD /* User_GetUser_+MappingTests.swift in Sources */,
+				9CFD4A1E207C25CB002CC7B6 /* UserActions_TriggerEvent+MappingTests.swift in Sources */,
 				9C9CD8C720349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift in Sources */,
 				9C104F21203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift in Sources */,
 				9C7F2FFB202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift in Sources */,
@@ -742,6 +761,8 @@
 				9C59C7BA202B18B700BE4E74 /* RandomUsernameTests.swift in Sources */,
 				9C7F3002202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift in Sources */,
 				9C59C7C4202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift in Sources */,
+				9CFD4A24207C2603002CC7B6 /* UserActions_HasTriggeredEvent+ObjectProvider.swift in Sources */,
+				9CFD4A20207C25E3002CC7B6 /* UserActions_TriggerEvent+ObjectProvider.swift in Sources */,
 				9CDBB3C0202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift in Sources */,
 				9C68ED8F207A87D900444D2B /* Session+ObjectProviderTests.swift in Sources */,
 				9C80FD3720285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift in Sources */,
@@ -761,6 +782,7 @@
 				9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */,
 				9C18313820209F3E00DD4083 /* TestUtils.swift in Sources */,
 				9C6F9D64207B7E5E00F78119 /* (null) in Sources */,
+				9CFD4A22207C25F4002CC7B6 /* UserActions_HasTriggeredEvent+MappingTests.swift in Sources */,
 				9C5A79D420763500009E4B8C /* AuthUserResponseTests.swift in Sources */,
 				1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */,
 				9C18312F202085FC00DD4083 /* Login+RequestTests.swift in Sources */,
@@ -769,12 +791,14 @@
 				9CFD4A0D207C0034002CC7B6 /* InviteUser+RequestTests.swift in Sources */,
 				9C9CD8C020345C060019CF2C /* User_UpdateUser_UserDetails+ObjectProviderTests.swift in Sources */,
 				9C1831312020861900DD4083 /* Login+ObjectProviderTests.swift in Sources */,
+				9CFD4A19207C1BE4002CC7B6 /* TriggerEvent+RequestTests.swift in Sources */,
 				9CFD4A0F207C02FF002CC7B6 /* UserActions_InviteUser+MappingTests.swift in Sources */,
 				9C5A79C8207626BC009E4B8C /* ApplicationProfileTest.swift in Sources */,
 				1B87E4A41CF89E400053FD8F /* KWSTokenTests.m in Sources */,
 				9C59C7BC202B190700BE4E74 /* CreateUser_TempAccessToken+MappingTests.swift in Sources */,
 				9C104F23203B4972003FAEF7 /* UserActions_RequestPermissions+ObjectProviderTests.swift in Sources */,
 				9C12C4CD20769CE3008364CB /* CreateUser_CreateUser+ObjectProviderTests.swift in Sources */,
+				9CFD4A17207C1BD4002CC7B6 /* HasTriggeredEvent+RequestTests.swift in Sources */,
 				9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */,
 				9C59C7CC202B1ED000BE4E74 /* RandomUsername+RequestTests.swift in Sources */,
 				9C9CD8C220345C170019CF2C /* User_UpdateUser_UserDetails+MappingTests.swift in Sources */,

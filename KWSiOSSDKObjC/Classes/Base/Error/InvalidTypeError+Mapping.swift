@@ -25,7 +25,9 @@ extension InvalidTypeError: Decodable {
             addressCity:            try json =>? "address.city",
             addressCountry:         try json =>? "address.country",
             permissions:            try json =>? "permissions",
-            nameKey:                try json =>? "name"
+            nameKey:                try json =>? "name",
+            email:                  try json =>? "email",
+            token:                  try json =>? "token"
         )
     }
 }

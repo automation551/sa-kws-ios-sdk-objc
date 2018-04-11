@@ -15,6 +15,9 @@ class KWSSwiftTableViewController: UITableViewController {
     
     var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
     
+    private let rowHeight: CGFloat = 44.0
+    private let headerHeight: CGFloat = 50.0
+    
     //dictionary of KEY String and VALUE list of Strings - no order specified
     let functionalitiesDict: [ String : [String] ] =
         [
@@ -25,13 +28,15 @@ class KWSSwiftTableViewController: UITableViewController {
             "App Data" :
                 ["Get App Data", "Set App Data"],
             "Invite" :
-                ["Invite User"]
+                ["Invite User"],
+            "Events" :
+                ["Trigger Event", "Is Triggered Event"]
     ]
     
     // MARK: - TABLE VIEW STUFF
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let textForSection = Array(functionalitiesDict)[section].key
-        return "\(textForSection)"
+        return textForSection
     }
     
     // MARK: - Table view data source
@@ -51,17 +56,17 @@ class KWSSwiftTableViewController: UITableViewController {
         let listOfItemsInRow = Array(functionalitiesDict)[indexPath.section].value
         let textForRow = Array(listOfItemsInRow)[indexPath.row]
         
-        cell.textLabel?.text = "\(textForRow)"
+        cell.textLabel?.text = textForRow
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return rowHeight
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return headerHeight
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -101,6 +106,13 @@ class KWSSwiftTableViewController: UITableViewController {
             default:
                 break
             }
+        case "Events":
+            switch arrayOfRows[indexPath.row] {
+            case "Trigger Event": self.triggerEvent()
+            case "Is Triggered Event": self.isTriggeredEvent()
+            default:
+                break
+            }
         default:
             break
         }
@@ -115,11 +127,11 @@ class KWSSwiftTableViewController: UITableViewController {
     
     func createUser(){
         
-        let userName = String (format: "guitestusr%d", randomInt(min:100, max:500))
+        let userName = String (format: "randomtestusr%d", randomInt(min:100, max:500))
         let pwd = "testtest"
         let dob = "2012-03-22"
         let country = "US"
-        let parentEmail = "guilherme.mota@superawesome.tv"
+        let parentEmail = "mobile.dev.test@superawesome.tv"
         
         let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         
@@ -129,14 +141,14 @@ class KWSSwiftTableViewController: UITableViewController {
                 self.saveUser(user: user)
                 print("Result for create user is success: \(String(describing: user))")
             } else {
-                print("Something went wrong for create user \(String(describing: error)))")
+                print("Something went wrong for create user: \(String(describing: error)))")
             }
         }
     }
     
     func loginUser(){
         
-        let userName = "guitestnumber3"
+        let userName = "randomtestuser123"
         let pwd = "testtest"
         
         let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
@@ -168,7 +180,7 @@ class KWSSwiftTableViewController: UITableViewController {
     
     func requestPermissions(){
         
-        let permissions : [String] = ["accessEmail"]
+        let permissions : [String] = ["accessEmail","accessAddress"]
         
         let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         
@@ -177,10 +189,10 @@ class KWSSwiftTableViewController: UITableViewController {
             let userId : Int = cachedUser.id as? Int ?? 0
             userActions?.requestPermissions(permissions: permissions, userId: userId, token: cachedUser.token) { error in
                 
-                if (error == nil){
+                if error == nil {
                     print("Permissions requested with success!")
                 } else {
-                    print("Something went wrong for request permissions:  \(String(describing: error))")
+                    print("Something went wrong for request permissions: \(String(describing: error))")
                 }
             }
         } else {
@@ -190,7 +202,8 @@ class KWSSwiftTableViewController: UITableViewController {
     
     func updateParentEmail(){
         
-        let parentEmail = "guilherme.mota@superawesome.tv"
+        
+        let parentEmail = "mobile.dev.test@superawesome.tv"
         
         let user = KWSSDK.getService(value: UserServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         
@@ -201,10 +214,10 @@ class KWSSwiftTableViewController: UITableViewController {
             let userId = cachedUser.id as? Int ?? 0
             user?.updateUser(details: map, userId: userId , token: cachedUser.token) { (error) in
                 
-                if(error == nil){
+                if error == nil {
                     print("User updated!")
-                }else{
-                    print("Something went wrong for update user:  \(String(describing: error))")
+                } else {
+                    print("Something went wrong for update user: \(String(describing: error))")
                 }
             }
         } else {
@@ -233,10 +246,10 @@ class KWSSwiftTableViewController: UITableViewController {
             
             user?.updateUser(details: map, userId: userId, token: cachedUser.token) { (error) in
                 
-                if (error == nil) {
+                if error == nil {
                     print("User updated!")
                 } else {
-                    print("Something went wrong for update user:  \(String(describing: error))")
+                    print("Something went wrong for update user: \(String(describing: error))")
                 }
             }
         } else {
@@ -253,10 +266,10 @@ class KWSSwiftTableViewController: UITableViewController {
             let userId : Int = cachedUser.id as? Int ?? 0
             user?.getUser(userId: userId, token: cachedUser.token) { userDetails, error in
                 
-                if (userDetails != nil) {
+                if userDetails != nil {
                     print("Got user: \(String(describing: userDetails))")
                 } else {
-                    print("Something went wrong for get user details:  \(String(describing: error))")
+                    print("Something went wrong for get user details: \(String(describing: error))")
                 }
             }
         } else {
@@ -276,10 +289,10 @@ class KWSSwiftTableViewController: UITableViewController {
             
             userActions?.getAppData(userId: userId, appId: appId, token: token) { appData, error in
                 
-                if(appData != nil){
+                if appData != nil {
                     print("Got app data: \(String(describing: appData))")
                 } else {
-                    print("Something went wrong for get user details:  \(String(describing: error))")
+                    print("Something went wrong for get user details: \(String(describing: error))")
                 }
             }
         } else {
@@ -302,10 +315,10 @@ class KWSSwiftTableViewController: UITableViewController {
             
             userActions?.setAppData(value: value, key: key, userId: userId, appId: appId, token: token) { error in
                 
-                if (error == nil){
+                if error == nil {
                     print("App Data set with success!")
                 } else {
-                    print("Something went wrong for App Data:  \(String(describing: error))")
+                    print("Something went wrong for App Data: \(String(describing: error))")
                 }
             }
             
@@ -316,7 +329,7 @@ class KWSSwiftTableViewController: UITableViewController {
     
     func inviteUser(){
         
-        let emailAddress = "guilherme.mota+11@superawesome.tv"
+        let emailAddress = "mobile.dev.test+1@superawesome.tv"
         
         let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         
@@ -327,23 +340,70 @@ class KWSSwiftTableViewController: UITableViewController {
             
             userActions?.inviteUser(email: emailAddress, userId: userId, token: token) { error in
                 
-                if (error == nil){
+                if error == nil {
                     print("Invited User with success!")
                 } else {
-                    print("Something went wrong for Invite User:  \(String(describing: error))")
+                    print("Something went wrong for Invite User: \(String(describing: error))")
                 }
             }
         } else {
             print("No valid user cached!!!")
         }
-    }    
+    }
+    
+    func triggerEvent(){
+        
+        let eventId = "8X9QneMSaxU2VzCBJI5YdxRGG7l3GOUw"
+        let points = 20
+        
+        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let userId = cachedUser.id as? Int ?? 0
+            let token = cachedUser.token
+            
+            userActions?.triggerEvent(eventId: eventId, points: points, userId: userId, token: token ){ error in
+                
+                if error == nil {
+                    print("Trigger Event with success!")
+                } else {
+                    print("Something went wrong for Trigger Event: \(String(describing: error))")
+                }
+            }
+        } else {
+            print("No valid user cached!!!")
+        }
+    }
+    
+    func isTriggeredEvent(){
+        
+        let eventId = 802
+        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        if let cachedUser = getLoggedUser() {
+            
+            let userId = cachedUser.id as? Int ?? 0
+            let token = cachedUser.token
+            userActions?.hasTriggeredEvent(eventId: eventId, userId: userId, token: token){ (hasTriggeredEvent, error) in
+
+                if hasTriggeredEvent != nil {
+                    print("Has Triggered Event with success!")
+                } else {
+                    print("Something went wrong for Has Triggered Event: \(String(describing: error))")
+                }
+            }
+        } else {
+            print("No valid user cached!!!")
+        }
+    }
     
     func saveUser(user: LoggedUserModelProtocol) {
         let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         let success = sessionsService?.saveLoggedUser(user: user)
     }
     
-    func getLoggedUser () -> LoggedUser? {
+    func getLoggedUser() -> LoggedUser? {
         let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         if let user = sessionsService?.getLoggedUser() as? LoggedUser {
             return user
