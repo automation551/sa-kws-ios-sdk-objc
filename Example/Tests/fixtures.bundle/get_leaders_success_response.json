@@ -1,0 +1,18 @@
+
+{
+    "results": [
+                {
+                "user": "testuser9112",
+                "score": 540,
+                "rank": 1
+                },
+                {
+                "user": "testusr472",
+                "score": 40,
+                "rank": 2
+                }
+                ],
+    "count": 2,
+    "offset": 0,
+    "limit": 1000
+}
