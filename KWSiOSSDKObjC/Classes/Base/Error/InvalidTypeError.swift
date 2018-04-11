@@ -23,6 +23,8 @@ public final class InvalidTypeError: NSObject, Error, InvalidTypeErrorWrapperMod
     public var addressCountry:  ErrorModelProtocol?
     public var permissions:     ErrorModelProtocol?
     public var nameKey:         ErrorModelProtocol?
+    public var email:           ErrorModelProtocol?
+    public var token:           ErrorModelProtocol?
     
     // MARK: - Initialization    
     public required init(dateOfBirth:        SpecificError? = nil,
@@ -36,7 +38,9 @@ public final class InvalidTypeError: NSObject, Error, InvalidTypeErrorWrapperMod
                          addressCity:        SpecificError? = nil,
                          addressCountry:     SpecificError? = nil,
                          permissions:        SpecificError? = nil,
-                         nameKey:            SpecificError? = nil) {
+                         nameKey:            SpecificError? = nil,
+                         email:              SpecificError? = nil,
+                         token:              SpecificError? = nil) {
         
         self.dateOfBirth = dateOfBirth
         self.country = country
@@ -50,5 +54,7 @@ public final class InvalidTypeError: NSObject, Error, InvalidTypeErrorWrapperMod
         self.addressCountry = addressCountry
         self.permissions = permissions
         self.nameKey = nameKey
+        self.email = email
+        self.token = token
     }
 }

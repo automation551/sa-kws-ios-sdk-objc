@@ -71,5 +71,9 @@ class UserActions_InviteUser_MappingTests: XCTestCase {
         expect(errorResponse?.code).to(equal(5))
         expect(errorResponse?.codeMeaning).to(equal("validation"))
         expect(errorResponse?.message).to(equal("child \"email\" fails because [\"email\" must be a valid email]"))
+        expect(errorResponse?.invalid?.email).toNot(beNil())
+        expect(errorResponse?.invalid?.email?.code).to(equal(7))
+        expect(errorResponse?.invalid?.email?.codeMeaning).to(equal("invalidValue"))
+        expect(errorResponse?.invalid?.email?.message).to(equal("\"email\" must be a valid email"))
     }
 }
