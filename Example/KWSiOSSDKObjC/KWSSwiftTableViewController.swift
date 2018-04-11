@@ -418,7 +418,7 @@ class KWSSwiftTableViewController: UITableViewController {
 
             score?.getLeaderboard(appId: appId, token: token ){ (response, error) in
 
-                if (response != nil){
+                if response != nil {
                     print("Get Leaderboard with success: \(String(describing: response))")
                 } else {
                     print("Something went wrong for Get Leaderboard: \(String(describing: error))")
@@ -440,7 +440,7 @@ class KWSSwiftTableViewController: UITableViewController {
 
             score?.getScore(appId: appId, token: token){ (response, error) in
 
-                if (response != nil){
+                if response != nil {
                     print("Get Score with success: \(String(describing: response))")
                 } else {
                     print("Something went wrong for Get Score: \(String(describing: error))")

@@ -58,7 +58,6 @@ class Scoring_GetLeaders_MappingTests: XCTestCase {
         expect(errorResponse?.error).to(equal("The access token provided is invalid."))
     }
     
-    
     func test_Scoring_GetLeaders_Mapping_BadClientId_Response() {
         
         var JSON: Any?
@@ -71,4 +70,5 @@ class Scoring_GetLeaders_MappingTests: XCTestCase {
         expect(errorResponse?.code).to(equal(1))
         expect(errorResponse?.codeMeaning).to(equal("forbidden"))
         expect(errorResponse?.message).to(equal("operation not supported for this client"))
-    }}
+    }
+}

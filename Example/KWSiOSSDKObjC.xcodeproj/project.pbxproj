@@ -79,6 +79,14 @@
 		9CD6E5DD207BE6A10077F56C /* KWSEnvironmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D65207BA13500F78119 /* KWSEnvironmentModels.swift */; };
 		9CDBB3BE202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBB3BD202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift */; };
 		9CDBB3C0202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBB3BF202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift */; };
+		9CF4569E207E84D300D3CC67 /* LeadersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4569C207E84D200D3CC67 /* LeadersTests.swift */; };
+		9CF4569F207E84D300D3CC67 /* ScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4569D207E84D200D3CC67 /* ScoreTests.swift */; };
+		9CF456A1207E855D00D3CC67 /* Leaders+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF456A0207E855D00D3CC67 /* Leaders+RequestTests.swift */; };
+		9CF456A3207E857800D3CC67 /* GetUserScore+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF456A2207E857800D3CC67 /* GetUserScore+RequestTests.swift */; };
+		9CF456A9207E859800D3CC67 /* Scoring_GetLeaders+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF456A5207E859800D3CC67 /* Scoring_GetLeaders+MappingTests.swift */; };
+		9CF456AA207E859800D3CC67 /* Scoring_GetScore+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF456A6207E859800D3CC67 /* Scoring_GetScore+ObjectProviderTests.swift */; };
+		9CF456AB207E859800D3CC67 /* Scoring_GetLeaders+ObjectProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF456A7207E859800D3CC67 /* Scoring_GetLeaders+ObjectProviderTests.swift */; };
+		9CF456AC207E859800D3CC67 /* Scoring_GetScore+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF456A8207E859800D3CC67 /* Scoring_GetScore+MappingTests.swift */; };
 		9CFD4A0D207C0034002CC7B6 /* InviteUser+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A0C207C0034002CC7B6 /* InviteUser+RequestTests.swift */; };
 		9CFD4A0F207C02FF002CC7B6 /* UserActions_InviteUser+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A0E207C02FF002CC7B6 /* UserActions_InviteUser+MappingTests.swift */; };
 		9CFD4A11207C1271002CC7B6 /* UserActions_InviteUser+ObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD4A10207C1271002CC7B6 /* UserActions_InviteUser+ObjectProvider.swift */; };
@@ -191,6 +199,14 @@
 		9CD6E5DB207BE3D30077F56C /* UpdateUserDetailsFakeResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateUserDetailsFakeResponse+Mapping.swift"; sourceTree = "<group>"; };
 		9CDBB3BD202C6F6A00D20FD4 /* RandomUsernameFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsernameFakeResponse.swift; sourceTree = "<group>"; };
 		9CDBB3BF202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandoUsernameFakeResponse+Mapping.swift"; sourceTree = "<group>"; };
+		9CF4569C207E84D200D3CC67 /* LeadersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadersTests.swift; sourceTree = "<group>"; };
+		9CF4569D207E84D200D3CC67 /* ScoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTests.swift; sourceTree = "<group>"; };
+		9CF456A0207E855D00D3CC67 /* Leaders+RequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Leaders+RequestTests.swift"; sourceTree = "<group>"; };
+		9CF456A2207E857800D3CC67 /* GetUserScore+RequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GetUserScore+RequestTests.swift"; sourceTree = "<group>"; };
+		9CF456A5207E859800D3CC67 /* Scoring_GetLeaders+MappingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scoring_GetLeaders+MappingTests.swift"; sourceTree = "<group>"; };
+		9CF456A6207E859800D3CC67 /* Scoring_GetScore+ObjectProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scoring_GetScore+ObjectProviderTests.swift"; sourceTree = "<group>"; };
+		9CF456A7207E859800D3CC67 /* Scoring_GetLeaders+ObjectProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scoring_GetLeaders+ObjectProviderTests.swift"; sourceTree = "<group>"; };
+		9CF456A8207E859800D3CC67 /* Scoring_GetScore+MappingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scoring_GetScore+MappingTests.swift"; sourceTree = "<group>"; };
 		9CFD4A0C207C0034002CC7B6 /* InviteUser+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InviteUser+RequestTests.swift"; sourceTree = "<group>"; };
 		9CFD4A0E207C02FF002CC7B6 /* UserActions_InviteUser+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_InviteUser+MappingTests.swift"; sourceTree = "<group>"; };
 		9CFD4A10207C1271002CC7B6 /* UserActions_InviteUser+ObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActions_InviteUser+ObjectProvider.swift"; sourceTree = "<group>"; };
@@ -339,6 +355,8 @@
 		9C18313B2020ED7500DD4083 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				9CF456A0207E855D00D3CC67 /* Leaders+RequestTests.swift */,
+				9CF456A2207E857800D3CC67 /* GetUserScore+RequestTests.swift */,
 				9C18312E202085FC00DD4083 /* Login+RequestTests.swift */,
 				9C80FD3820285F46003BD328 /* CreateUser+RequestTests.swift */,
 				9C59C7C7202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift */,
@@ -359,6 +377,7 @@
 		9C18313C2020ED8200DD4083 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9CF456A4207E857D00D3CC67 /* Scoring */,
 				9C68ED8A207A879A00444D2B /* Sessions */,
 				9C2D50972074CF240009F699 /* AuthServices */,
 				9C2D50952074CEC70009F699 /* UserActionsServices */,
@@ -442,6 +461,8 @@
 		9C5A79C420762326009E4B8C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9CF4569C207E84D200D3CC67 /* LeadersTests.swift */,
+				9CF4569D207E84D200D3CC67 /* ScoreTests.swift */,
 				9C5A79D1207634F3009E4B8C /* AppConfigTests.swift */,
 				9C5A79D320763500009E4B8C /* AuthUserResponseTests.swift */,
 				9C5A79D520763888009E4B8C /* LoginAuthResponseTests.swift */,
@@ -509,6 +530,17 @@
 				9CDBB3BF202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift */,
 			);
 			name = FakeMockModels;
+			sourceTree = "<group>";
+		};
+		9CF456A4207E857D00D3CC67 /* Scoring */ = {
+			isa = PBXGroup;
+			children = (
+				9CF456A5207E859800D3CC67 /* Scoring_GetLeaders+MappingTests.swift */,
+				9CF456A7207E859800D3CC67 /* Scoring_GetLeaders+ObjectProviderTests.swift */,
+				9CF456A8207E859800D3CC67 /* Scoring_GetScore+MappingTests.swift */,
+				9CF456A6207E859800D3CC67 /* Scoring_GetScore+ObjectProviderTests.swift */,
+			);
+			name = Scoring;
 			sourceTree = "<group>";
 		};
 		A3AC1017DFC0B31EA9929FCA /* Pods */ = {
@@ -744,25 +776,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CF4569E207E84D300D3CC67 /* LeadersTests.swift in Sources */,
 				9C7F3000202DEB92002795DD /* User_GetUser_+MappingTests.swift in Sources */,
 				9CFD4A1E207C25CB002CC7B6 /* UserActions_TriggerEvent+MappingTests.swift in Sources */,
 				9C9CD8C720349F9C0019CF2C /* User_UpdateUserDetails+RequestTests.swift in Sources */,
 				9C104F21203B4587003FAEF7 /* UserActions_RequestPermissions+MappingTests.swift in Sources */,
 				9C7F2FFB202DE2F0002795DD /* User_GetUserDetails+RequestTests.swift in Sources */,
+				9CF456A1207E855D00D3CC67 /* Leaders+RequestTests.swift in Sources */,
 				9C7F2FFE202DE980002795DD /* UserDetailsTests.swift in Sources */,
 				9C18313F2020F04F00DD4083 /* Mocks.swift in Sources */,
 				9C3C5BCB203AE1F10095FC1C /* User_UpdateUser_ParentEmail+MappingTests.swift in Sources */,
+				9CF4569F207E84D300D3CC67 /* ScoreTests.swift in Sources */,
 				9C6F9D74207BD73100F78119 /* SetAppDataFakeResponse+Mapping.swift in Sources */,
 				9C6F9D62207B7E5200F78119 /* (null) in Sources */,
 				9C6F9D79207BD74700F78119 /* UserActions_SetAppData+MappingTests.swift in Sources */,
 				9C5A79CE20762C44009E4B8C /* LoggedUserTests.swift in Sources */,
+				9CF456AB207E859800D3CC67 /* Scoring_GetLeaders+ObjectProviderTests.swift in Sources */,
 				9CD6E5DA207BE3C50077F56C /* UpdateUserDetailsFakeResponse.swift in Sources */,
 				9C6F9D60207B7DCC00F78119 /* (null) in Sources */,
 				9C59C7BA202B18B700BE4E74 /* RandomUsernameTests.swift in Sources */,
+				9CF456A9207E859800D3CC67 /* Scoring_GetLeaders+MappingTests.swift in Sources */,
 				9C7F3002202DF71C002795DD /* User_GetUser+ObjectProviderTests.swift in Sources */,
+				9CF456A3207E857800D3CC67 /* GetUserScore+RequestTests.swift in Sources */,
 				9C59C7C4202B19B800BE4E74 /* RandomUsername_DoRandomUsernameFetch+MappingTests.swift in Sources */,
 				9CFD4A24207C2603002CC7B6 /* UserActions_HasTriggeredEvent+ObjectProvider.swift in Sources */,
 				9CFD4A20207C25E3002CC7B6 /* UserActions_TriggerEvent+ObjectProvider.swift in Sources */,
+				9CF456AA207E859800D3CC67 /* Scoring_GetScore+ObjectProviderTests.swift in Sources */,
 				9CDBB3C0202C6FA200D20FD4 /* RandoUsernameFakeResponse+Mapping.swift in Sources */,
 				9C68ED8F207A87D900444D2B /* Session+ObjectProviderTests.swift in Sources */,
 				9C80FD3720285E57003BD328 /* CreateUser_DoUserCreation+MappingTests.swift in Sources */,
@@ -785,6 +824,7 @@
 				9CFD4A22207C25F4002CC7B6 /* UserActions_HasTriggeredEvent+MappingTests.swift in Sources */,
 				9C5A79D420763500009E4B8C /* AuthUserResponseTests.swift in Sources */,
 				1B87E4A61CF89E590053FD8F /* KWSCheckPermissionTests.m in Sources */,
+				9CF456AC207E859800D3CC67 /* Scoring_GetScore+MappingTests.swift in Sources */,
 				9C18312F202085FC00DD4083 /* Login+RequestTests.swift in Sources */,
 				9C5A79CA207629D1009E4B8C /* ApplicationPermissionsTests.swift in Sources */,
 				9C5A79C6207623CF009E4B8C /* UserAddress.swift in Sources */,

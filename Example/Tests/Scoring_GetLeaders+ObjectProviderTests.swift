@@ -75,7 +75,7 @@ class Scoring_GetLeaders_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_InviteUser_BadTokenResponse(){
+    func test_Scoring_GetLeaders_BadTokenResponse(){
         let JSON: Any? = try? fixtureWithName(name:"generic_invalid_token_response")
         
         //when
@@ -96,7 +96,7 @@ class Scoring_GetLeaders_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_InviteUser_BadClientId_Response(){
+    func test_Scoring_GetLeaders_BadClientId_Response(){
         let JSON: Any? = try? fixtureWithName(name:"generic_operation_not_supported_for_client_response")
         
         //when
