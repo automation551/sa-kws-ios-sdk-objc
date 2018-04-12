@@ -18,7 +18,30 @@ public class ScoreProvider: NSObject, ScoringServiceProtocol {
     }
     
     public func getScore(appId: Int, token: String, completionHandler: @escaping (ScoreModelProtocol?, Error?) -> ()) {
-        //todo
+        
+        let getScoreNetworkRequest = GetUserScoreRequest(environment: environment, appId: appId, token: token)
+        
+        let networktask = NetworkTask()
+        let parseTask = ParseJsonTask<Score>()
+        
+        let future = networktask
+            .execute(input: getScoreNetworkRequest)
+            .map { (result: Result<String>) -> Result <Score> in
+                return result.then(parseTask.execute)
+        }
+        
+        future.onResult { result in
+            
+            switch result {
+            case .success(let value):
+                completionHandler(value,nil)
+                break
+            case .error(let error):
+                let mappedError = Provider().mapErrorResponse(error: error)
+                completionHandler(nil, mappedError)
+                break
+            }
+        }
     }
     
     public func getLeaderboard(appId: Int, token: String, completionHandler: @escaping (LeaderWrapperModelProtocol?, Error?) -> ()) {

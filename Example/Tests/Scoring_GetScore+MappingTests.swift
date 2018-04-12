@@ -1,5 +1,5 @@
 //
-//  Scoring_GetLeaders+MappingTests.swift
+//  Scoring_GetScore+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 10/04/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class Scoring_GetLeaders_MappingTests: XCTestCase {
+class Scoring_GetScore_MappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -22,30 +22,19 @@ class Scoring_GetLeaders_MappingTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_Scoring_GetLeaders_Mapping_ResponseSuccess() {
+    func test_Scoring_GetScore_Mapping_ResponseSuccess() {
         
         var JSON: Any?
-        JSON = try? fixtureWithName(name:"get_leaders_success_response")
+        JSON = try? fixtureWithName(name:"get_user_score_success_response")
         
-        let leadersResponse = try? LeadersWrapper.decode(JSON!)
+        let getScoreResponse = try? Score.decode(JSON!)
         
-        expect(leadersResponse).toNot(beNil())
-        
-        expect(leadersResponse?.results).toNot(beNil())
-        expect(leadersResponse?.results[0].name).to(equal("testuser9112"))
-        expect(leadersResponse?.results[0].score).to(equal(540))
-        expect(leadersResponse?.results[0].rank).to(equal(1))
-        
-        expect(leadersResponse?.results[1].name).to(equal("testusr472"))
-        expect(leadersResponse?.results[1].score).to(equal(40))
-        expect(leadersResponse?.results[1].rank).to(equal(2))
-        
-        expect(leadersResponse?.count).to(equal(2))
-        expect(leadersResponse?.offset).to(equal(0))
-        expect(leadersResponse?.limit).to(equal(1000))
+        expect(getScoreResponse).toNot(beNil())
+        expect(getScoreResponse?.score).to(equal(600))
+        expect(getScoreResponse?.rank).to(equal(1))
     }
     
-    func test_Scoring_GetLeaders_Mapping_BadToken_Response() {
+    func test_Scoring_GetScore_Mapping_BadToken_Response() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_invalid_token_response")
@@ -58,7 +47,7 @@ class Scoring_GetLeaders_MappingTests: XCTestCase {
         expect(errorResponse?.error).to(equal("The access token provided is invalid."))
     }
     
-    func test_Scoring_GetLeaders_Mapping_BadClientId_Response() {
+    func test_Scoring_GetScores_Mapping_BadClientId_Response() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_client_response")
