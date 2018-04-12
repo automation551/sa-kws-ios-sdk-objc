@@ -1,8 +1,8 @@
 //
-//  GetAppData+RequestTests.swift
+//  Leaders+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 08/04/2018.
+//  Created by Guilherme Mota on 10/04/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -11,14 +11,13 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class GetAppData_RequestTests: XCTestCase {
+class Leaders_RequestTests: XCTestCase {
     
     private var env: KWSNetworkEnvironment!
-    private var request: GetAppDataRequest!
+    private var request: LeadersRequest!
     private var method: NetworkMethod!
     private var endpoint: String!
-    private var userId: Int = 123
-    private var appId: Int = 2
+    private var appId: Int = 123
     private var token: String!
     
     override func setUp() {
@@ -26,16 +25,15 @@ class GetAppData_RequestTests: XCTestCase {
         
         // given
         env = GoodMockNetworkEnvironment()
+        appId = 123
         token = "mock_token"
         method = .GET
-        endpoint = "v1/apps/\(appId)/users/\(userId)/app-data"
+        endpoint = "v1/apps/\(appId)/leaders"
         
         //when
-        request = GetAppDataRequest.init(environment: env,
-                                         appId: appId,
-                                         userId: userId,
-                                         token:token)
-        
+        request = LeadersRequest(environment: env,
+                                 appId: appId,
+                                 token: token)
     }
     
     override func tearDown() {
@@ -60,20 +58,19 @@ class GetAppData_RequestTests: XCTestCase {
     func testEndpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
-    }  
+    }
     
     func testConstantsToBeNotNil(){
         //then
-        expect(self.userId).toNot(beNil())
         expect(self.appId).toNot(beNil())
         expect(self.token).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
     }
     
-    func testRequestBodyToBeNil(){
+    func testRequestBody(){
         //then
-        expect(self.request.body).to(beNil())        
+        expect(self.request.body).to(beNil())
     }
     
     public func testRequestHeader() {
@@ -89,7 +86,7 @@ class GetAppData_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
     
-    func testRequestQueryToBeNil() {
+    func testRequestQuery() {
         //then
         expect(self.request.query).to(beNil())
     }
