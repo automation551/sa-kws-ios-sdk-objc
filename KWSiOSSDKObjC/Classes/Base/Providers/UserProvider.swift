@@ -9,7 +9,6 @@ import Foundation
 import SAMobileBase
 import SAProtobufs
 
-
 public class UserProvider: NSObject, UserServiceProtocol {
     
     var environment: KWSNetworkEnvironment
