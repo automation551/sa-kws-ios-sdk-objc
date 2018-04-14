@@ -65,6 +65,8 @@ class User_GetUser_ObjectProviderTests: XCTestCase {
                                                 expect(userDetailsResponse?.name).to(equal("genioustiger123"))
                                                 expect(userDetailsResponse?.firstName).to(equal("John"))
                                                 expect(userDetailsResponse?.lastName).to(equal("Doe"))
+                                                expect(userDetailsResponse?.consentAgeForCountry).to(equal(13))
+                                                expect(userDetailsResponse?.isMinor).to(beTrue())
                                                 
                                                 expect(userDetailsResponse?.address?.street).to(equal("Number 12"))
                                                 expect(userDetailsResponse?.address?.city).to(equal("London"))
