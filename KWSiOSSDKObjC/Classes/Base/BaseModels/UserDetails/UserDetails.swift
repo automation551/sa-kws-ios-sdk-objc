@@ -27,6 +27,8 @@ public final class UserDetails: NSObject, UserDetailsModelProtocol {
     public var id:                          AnyHashable
     public var name:                        String?
     public var language:                    String?
+    public var consentAgeForCountry:        Int
+    public var isMinor:                     Bool
     
     public required init(firstName:                 String? = nil,
                          lastName:                  String? = nil,
@@ -41,7 +43,9 @@ public final class UserDetails: NSObject, UserDetailsModelProtocol {
                          points:                    Points? = nil,
                          id:                        AnyHashable,
                          name:                      String? = nil,
-                         language:                  String? = nil) {
+                         language:                  String? = nil,
+                         consentAgeForCountry:      Int,
+                         isMinor:                   Bool) {
         
         self.firstName = firstName
         self.lastName = lastName
@@ -57,6 +61,8 @@ public final class UserDetails: NSObject, UserDetailsModelProtocol {
         self.id = id
         self.name = name
         self.language = language
+        self.consentAgeForCountry = consentAgeForCountry
+        self.isMinor = isMinor
     }
     
     // MARK: - Equatable

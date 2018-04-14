@@ -16,6 +16,8 @@
     "language": "en",
     "email": "john.doe@email",
     "hasSetParentEmail": true,
+    "consentAgeForCountry": 13,
+    "isMinor": true,
     "applicationProfile": {
         "username": "genioustiger123",
         "customField1": 0,
