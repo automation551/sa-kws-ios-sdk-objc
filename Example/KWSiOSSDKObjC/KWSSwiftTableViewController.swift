@@ -24,7 +24,7 @@ class KWSSwiftTableViewController: UITableViewController {
             "Permissions" :
                 ["Submit Parent Email", "Request Permissions"],
             "User" :
-                ["Random Username", "Create User", "Login User", "Update User", "Get User Details"],
+                ["Random Username", "Create User", "Login User", "Update User", "Get User Details", "Auth User"],
             "App Data" :
                 ["Get App Data", "Set App Data"],
             "Invite" :
@@ -84,6 +84,7 @@ class KWSSwiftTableViewController: UITableViewController {
             case "Random Username": self.randomUserName()
             case "Update User": self.updateUserDetails()
             case "Get User Details": self.getUserDetails()
+            case "Auth User": self.oAuthUser()
             default:
                 break
             }
@@ -448,6 +449,21 @@ class KWSSwiftTableViewController: UITableViewController {
             }
         } else {
             print("No valid user cached!!!")
+        }
+    }
+    
+    func oAuthUser() {
+        
+        let singleSignOn = KWSSDK.getService(value: SingleSignOnServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        singleSignOn?.signOn(url: "myURlHe", parent: self) { (response, error) in
+            
+            if response != nil {
+                print("OAuth User responded with success: \(String(describing: response))")
+            } else {
+                print("Something went wrong for OAuth User: \(String(describing: error))")
+            }
+            
         }
     }
 

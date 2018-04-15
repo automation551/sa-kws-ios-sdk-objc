@@ -31,50 +31,15 @@ public class OAuthCodeTask: TaskProtocol {
     }
     
     public func execute(input: Any?) -> OAuthData {
-        let codeVerifier = self.generateCodeVerifier()
-        let codeChallenge = self.generateCodeChallenge(codeVerifier: codeVerifier!)
+        
         let codeChallengeMethod = OAuthChallenge.S256
         
-        return OAuthData(codeChallenge: codeChallenge!, codeVerifier: codeVerifier!, codeChallengeMethod: codeChallengeMethod.rawValue)
-    }
-    
-    private func generateCodeVerifier() -> String? {
-        
-        var keyData = Data(count: 32)
-        let result = keyData.withUnsafeMutableBytes {
-            (mutableBytes: UnsafeMutablePointer<UInt8>) -> Int32 in
-            SecRandomCopyBytes(kSecRandomDefault, keyData.count, mutableBytes)
-        }
-        if result == errSecSuccess {
-            return base64UrlEncode(keyData)
+        //OAuthHelper is a ObjC class as per the CommonCrypto framework needing to be imported
+        let oauthHelper = OAuthHelper.init()
+        if let codeVerifier = oauthHelper.generateCodeVerifier(), let codeChallenge = oauthHelper.generateCodeChallenge(codeVerifier){
+            return OAuthData(codeChallenge: codeChallenge, codeVerifier: codeVerifier, codeChallengeMethod: codeChallengeMethod.rawValue)
         } else {
-            // TODO: handle error
-            return nil
+            return OAuthData(codeChallenge: "", codeVerifier: "", codeChallengeMethod: codeChallengeMethod.rawValue)
         }
     }
-    
-    private func base64UrlEncode(_ data: Data) -> String {
-        var b64 = data.base64EncodedString()
-        b64 = b64.replacingOccurrences(of: "=", with: "")
-        b64 = b64.replacingOccurrences(of: "+", with: "-")
-        b64 = b64.replacingOccurrences(of: "/", with: "_")
-        return b64
-    }
-    
-    private func generateCodeChallenge(codeVerifier: String) -> String? {
-//        guard let data = verifier.data(using: .utf8) else { return nil }
-//        var buffer = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
-//        data.withUnsafeBytes {
-//            _ = CC_SHA256($0, CC_LONG(data.count), &buffer)
-//        }
-//        let hash = Data(bytes: buffer)
-//        let challenge = hash.base64EncodedString()
-//            .replacingOccurrences(of: "+", with: "-")
-//            .replacingOccurrences(of: "/", with: "_")
-//            .replacingOccurrences(of: "=", with: "")
-//            .trimmingCharacters(in: .whitespaces)
-        
-        return ""
-    }
-    
 }
