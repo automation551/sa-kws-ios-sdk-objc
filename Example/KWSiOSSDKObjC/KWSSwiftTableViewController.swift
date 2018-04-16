@@ -14,6 +14,7 @@ import SAMobileBase
 class KWSSwiftTableViewController: UITableViewController {
 
     var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
+    private var singleSignOn: SingleSignOnServiceProtocol?
 
     private let rowHeight: CGFloat = 44.0
     private let headerHeight: CGFloat = 50.0
@@ -131,10 +132,9 @@ class KWSSwiftTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         kUserKWSNetworkEnvironment = DemoTestEnvironment()
     }
-
+    
     func createUser(){
 
         let userName = String (format: "randomtestusr%d", randomInt(min:100, max:500))
@@ -454,7 +454,7 @@ class KWSSwiftTableViewController: UITableViewController {
     
     func oAuthUser() {
         
-        let singleSignOn = KWSSDK.getService(value: SingleSignOnServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        singleSignOn = KWSSDK.getService(value: SingleSignOnServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         
         let urlString = (kUserKWSNetworkEnvironment as! DemoTestEnvironment).singleSignOn
         
@@ -467,11 +467,6 @@ class KWSSwiftTableViewController: UITableViewController {
             }
             
         }
-    }
-    
-    func authWithCode(code: String){
-        //todo
-        print("My code is: \(code)")
     }
 
     func saveUser(user: LoggedUserModelProtocol) {

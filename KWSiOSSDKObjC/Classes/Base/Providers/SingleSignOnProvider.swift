@@ -12,6 +12,7 @@ import SAProtobufs
 public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
     
     var environment: KWSNetworkEnvironment
+    private var kwsWebAuthresponse: KWSWebAuthResponse!
     
     public init(environment: KWSNetworkEnvironment) {
         self.environment = environment
@@ -51,7 +52,7 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
         
         if let actualURL = URL.init(string: completeUrl), !(completeUrl.isEmpty) {
             
-            let kwsWebAuthresponse = KWSWebAuthResponse(authURL: actualURL, parent: parent) { (authCodeResponse) in
+            kwsWebAuthresponse = KWSWebAuthResponse(authURL: actualURL, parent: parent) { (authCodeResponse) in
                 
                 if let code = authCodeResponse {
                     completionHandler(code, nil)
