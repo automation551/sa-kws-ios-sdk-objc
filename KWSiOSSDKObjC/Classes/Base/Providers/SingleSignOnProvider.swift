@@ -8,8 +8,9 @@
 import Foundation
 import SAMobileBase
 import SAProtobufs
+import SafariServices
 
-public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
+public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol, SFSafariViewControllerDelegate {
     
     var environment: KWSNetworkEnvironment
     
@@ -22,9 +23,24 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
         let oAuthCodeGenerator = OAuthCodeTask()
         let oAuthDataClass = oAuthCodeGenerator.execute(input: ())
         
+        if let actualURL = URL.init(string: url) {
+            
+            let safariVC = SFSafariViewController.init(url: actualURL)
+            safariVC.delegate = self
+            parent.present(safariVC, animated: true, completion: nil)
+            
+        }
         //TODO
         print("OAuth data codeChallenge:\(oAuthDataClass.codeChallenge)\nOAuth data code verifier: \(oAuthDataClass.codeVerifier)\nOAuth data code method: \(oAuthDataClass.codeChallengeMethod)")
         
+        
+    }
+    
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    private func getAuthCode(){
         
     }
     

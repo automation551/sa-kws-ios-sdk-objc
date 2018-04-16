@@ -456,8 +456,10 @@ class KWSSwiftTableViewController: UITableViewController {
         
         let singleSignOn = KWSSDK.getService(value: SingleSignOnServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         
-        singleSignOn?.signOn(url: "myURlHe", parent: self) { (response, error) in
-            
+        let urlString = "https://stackoverflow.com/questions/27062454/converting-url-to-string-and-back-again"
+        
+        singleSignOn?.signOn(url: urlString, parent: self) { (response, error) in
+             
             if response != nil {
                 print("OAuth User responded with success: \(String(describing: response))")
             } else {
