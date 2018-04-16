@@ -456,7 +456,7 @@ class KWSSwiftTableViewController: UITableViewController {
         
         let singleSignOn = KWSSDK.getService(value: SingleSignOnServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
         
-        let urlString = "https://stackoverflow.com/questions/27062454/converting-url-to-string-and-back-again"
+        let urlString = (kUserKWSNetworkEnvironment as! DemoTestEnvironment).singleSignOn
         
         singleSignOn?.signOn(url: urlString, parent: self) { (response, error) in
              
@@ -467,6 +467,11 @@ class KWSSwiftTableViewController: UITableViewController {
             }
             
         }
+    }
+    
+    func authWithCode(code: String){
+        //todo
+        print("My code is: \(code)")
     }
 
     func saveUser(user: LoggedUserModelProtocol) {
@@ -482,6 +487,7 @@ class KWSSwiftTableViewController: UITableViewController {
             return nil
         }
     }
+    
 
     // MARK - helper methods -----------------------------------
 

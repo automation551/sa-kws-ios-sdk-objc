@@ -8,9 +8,8 @@
 import Foundation
 import SAMobileBase
 import SAProtobufs
-import SafariServices
 
-public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol, SFSafariViewControllerDelegate {
+public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
     
     var environment: KWSNetworkEnvironment
     
@@ -23,25 +22,46 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol, SFSafa
         let oAuthCodeGenerator = OAuthCodeTask()
         let oAuthDataClass = oAuthCodeGenerator.execute(input: ())
         
-        if let actualURL = URL.init(string: url) {
-            
-            let safariVC = SFSafariViewController.init(url: actualURL)
-            safariVC.delegate = self
-            parent.present(safariVC, animated: true, completion: nil)
-            
+        getOAuthCode(environment: self.environment,
+                     parent: parent,
+                     singleSignOnUrl: url,
+                     codeChallenge: oAuthDataClass.codeChallenge,
+                     codeChallengeMethod: oAuthDataClass.codeChallengeMethod) { (code, error) in
+                        
+                        if let authCode = code {
+                            self.getAccessToken(environment: self.environment,
+                                                authCode: authCode,
+                                                codeVerifier: oAuthDataClass.codeVerifier,
+                                                completionHandler: completionHandler)
+                        }
         }
-        //TODO
-        print("OAuth data codeChallenge:\(oAuthDataClass.codeChallenge)\nOAuth data code verifier: \(oAuthDataClass.codeVerifier)\nOAuth data code method: \(oAuthDataClass.codeChallengeMethod)")
-        
         
     }
     
-    func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    private func getAuthCode(){
+    private func getOAuthCode(environment: KWSNetworkEnvironment, parent: UIViewController, singleSignOnUrl: String, codeChallenge: String, codeChallengeMethod: String,
+                              completionHandler: @escaping (String?, Error?) -> ()){
         
+        var completeUrl = ""
+        let endpoint = "oauth"
+        let clientId = environment.mobileKey
+        
+        if let redirectUri = Bundle.main.bundleIdentifier {
+             completeUrl = singleSignOnUrl + endpoint + "?clientId=\(clientId)&codeChallenge=\(codeChallenge)&codeChallengeMethod=\(codeChallengeMethod)&redirectUri=\(redirectUri)://"
+        }
+        
+        if let actualURL = URL.init(string: completeUrl), !(completeUrl.isEmpty) {
+            
+            let kwsWebAuthresponse = KWSWebAuthResponse(authURL: actualURL, parent: parent) { (authCodeResponse) in
+                
+                if let code = authCodeResponse {
+                    completionHandler(code, nil)
+                } else {
+                    completionHandler(nil, KWSBaseError(message: "Error getting auth code from web view!"))
+                }
+            }
+        } else {
+              completionHandler(nil, KWSBaseError(message: "Empty URI for OAuth..."))
+        }
     }
     
     private func getAccessToken(environment: KWSNetworkEnvironment,
@@ -91,4 +111,11 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol, SFSafa
         }
     }
     
+    public func openURL(openURL: NSURL, sourceApplication: String?){
+        
+        // just making sure we send the notification when the URL is opened in SFSafariViewController
+        if (sourceApplication == "com.apple.SafariViewService") {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kCloseSafariViewControllerNotification"), object: openURL)
+        }
+    }    
 }

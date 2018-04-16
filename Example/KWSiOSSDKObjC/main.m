@@ -6,12 +6,12 @@
 //  Copyright (c) 2016 Gabriel Coman. All rights reserved.
 //
 
-@import UIKit;
-#import "KWSAppDelegate.h"
-
-int main(int argc, char * argv[])
-{
-    @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([KWSAppDelegate class]));
-    }
-}
+//@import UIKit;
+//#import "KWSAppDelegate.h"
+//
+//int main(int argc, char * argv[])
+//{
+//    @autoreleasepool {
+//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([KWSAppDelegate class]));
+//    }
+//}

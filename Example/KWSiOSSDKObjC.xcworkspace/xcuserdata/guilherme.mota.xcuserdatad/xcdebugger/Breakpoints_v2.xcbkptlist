@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/WebAuth/KWSWebAuthResponse.swift"
-            timestampString = "545562824.400624"
+            timestampString = "545583860.618726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "safariViewControllerDidFinish(controller:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,44 +88,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/WebAuth/KWSWebAuthResponse.swift"
-            timestampString = "545562824.400686"
+            timestampString = "545583860.619041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "saCallback(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/WebAuth/KWSWebAuthResponse.swift"
-            timestampString = "545562824.400741"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "saCallback(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/SingleSignOnProvider.swift"
-            timestampString = "545562824.400795"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "signOn(url:parent:completionHandler:)"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "safariViewControllerDidFinish(controller:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -136,12 +104,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KWSiOSSDKObjC/KWSSwiftTableViewController.swift"
-            timestampString = "545562824.401471"
+            timestampString = "545583860.619439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "463"
-            endingLineNumber = "463"
-            landmarkName = "oAuthUser()"
+            startingLineNumber = "474"
+            endingLineNumber = "474"
+            landmarkName = "authWithCode(code:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -151,13 +119,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/WebAuth/KWSWebAuthResponse.swift"
-            timestampString = "545562884.817945"
+            filePath = "KWSiOSSDKObjC/AppDelegate.swift"
+            timestampString = "545583860.6195019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "oAuthInit(authURL:)"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "application(application:openURL:sourceApplication:annotation:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KWSiOSSDKObjC/AppDelegate.swift"
+            timestampString = "545583860.619561"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "application(application:openURL:sourceApplication:annotation:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KWSiOSSDKObjC/AppDelegate.swift"
+            timestampString = "545583860.619602"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "application(application:openURL:sourceApplication:annotation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -168,12 +168,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/SingleSignOnProvider.swift"
-            timestampString = "545563625.903156"
+            timestampString = "545583860.619643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "safariViewControllerDidFinish(controller:)"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "getAccessToken(environment:authCode:codeVerifier:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/WebAuth/KWSWebAuthResponse.swift"
+            timestampString = "545584741.457419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "saCallback(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

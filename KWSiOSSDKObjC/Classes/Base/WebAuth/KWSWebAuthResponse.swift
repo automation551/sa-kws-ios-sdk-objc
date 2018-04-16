@@ -13,6 +13,7 @@ let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotifica
 class KWSWebAuthResponse: UIViewController, SFSafariViewControllerDelegate {
     
     var safariVC: SFSafariViewController?
+    var callback: ((String?) -> ())? = nil
     
     public required init() {
         super.init(nibName: nil, bundle: nil)
@@ -22,25 +23,31 @@ class KWSWebAuthResponse: UIViewController, SFSafariViewControllerDelegate {
         super.init(coder: aDecoder)
     }
     
-    public func oAuthInit(authURL: URL){
+    public required init(authURL: URL,
+                          parent: UIViewController,
+                          completionHandler: @escaping (String?) -> ()){
+        super.init(nibName: nil, bundle: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(saCallback(_:)), name: Notification.Name(kCloseSafariViewControllerNotification), object: nil)
         safariVC = SFSafariViewController(url: authURL)
         safariVC!.delegate = self
-        self.present(safariVC!, animated: true, completion: nil)
+        parent.present(safariVC!, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: "saCallback:", name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
-    }
+//    func setUp() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(KWSWebAuthResponse.saCallback(notification:)), name: NSNotification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
+//    }
     
-    func saCallback(notification: NSNotification) {
-        // get the url form the auth callback
-        let url = notification.object as! NSURL
-        // then do whatever you like, for example :
-        // get the code (token) from the URL
-        // and do a request to get the information you need (id, name, ...)
-        // Finally dismiss the Safari View Controller with:
-        self.safariVC!.dismiss(animated: true, completion: nil)
+    @objc func saCallback(_ notification: NSNotification) {
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(kCloseSafariViewControllerNotification), object: nil)
+        
+        guard let url = notification.object as? URL else {
+            return
+        }
+        
+        // Parse url ...
     }
     
     // MARK: - SFSafariViewControllerDelegate
