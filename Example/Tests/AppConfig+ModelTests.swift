@@ -1,5 +1,5 @@
 //
-//  AppConfigTests.swift
+//  AppConfig+ModelTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 05/04/2018.
@@ -10,7 +10,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class AppConfigTests: XCTestCase {
+class AppConfig_ModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

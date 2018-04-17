@@ -1,5 +1,5 @@
 //
-//  LoginAuthResponseTests.swift
+//  LoginAuthResponse+ModelTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 05/04/2018.
@@ -11,7 +11,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class LoginAuthResponseTests: XCTestCase {
+class LoginAuthResponse_ModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
