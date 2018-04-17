@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KWSiOSSDKObjC/KWSViewController.m"
-            timestampString = "545491409.812261"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "-updateUser"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "KWSiOSSDKObjC/SwiftStuffTableViewController.swift"
             timestampString = "544448272.525943"
             startingColumnNumber = "9223372036854775807"
@@ -72,12 +56,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/SingleSignOnProvider.swift"
-            timestampString = "545591578.730105"
+            timestampString = "545669759.904826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "openURL(openURL:sourceApplication:)"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "getOAuthCode(environment:parent:singleSignOnUrl:codeChallenge:codeChallengeMethod:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -87,13 +71,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/SingleSignOnProvider.swift"
-            timestampString = "545591578.730442"
+            filePath = "KWSiOSSDKObjC/AppDelegate.swift"
+            timestampString = "545669759.904904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "getAccessToken(environment:authCode:codeVerifier:completionHandler:)"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "application(_:open:options:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -103,29 +87,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/SingleSignOnProvider.swift"
-            timestampString = "545591578.7306989"
+            filePath = "KWSiOSSDKObjC/AppDelegate.swift"
+            timestampString = "545669759.904961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "getAccessToken(environment:authCode:codeVerifier:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Providers/SingleSignOnProvider.swift"
-            timestampString = "545591578.7308789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "getAccessToken(environment:authCode:codeVerifier:completionHandler:)"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "application(_:open:options:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

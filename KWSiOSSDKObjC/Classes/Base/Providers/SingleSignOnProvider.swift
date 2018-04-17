@@ -44,7 +44,7 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
         
         var completeUrl = ""
         let endpoint = "oauth"
-        let clientId = environment.mobileKey
+        let clientId = environment.clientID
         
         if let redirectUri = Bundle.main.bundleIdentifier {
              completeUrl = singleSignOnUrl + endpoint + "?clientId=\(clientId)&codeChallenge=\(codeChallenge)&codeChallengeMethod=\(codeChallengeMethod)&redirectUri=\(redirectUri)://"
@@ -70,10 +70,10 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
                                 codeVerifier: String, completionHandler: @escaping (LoggedUser?, Error?) -> ()) {
         
         let getOAuthTokenNetworkRequest = OAuthUserTokenRequest(environment: environment,
-                                                                clientID: environment.appID,
+                                                                clientID: environment.clientID,
                                                                 authCode: authCode,
                                                                 codeVerifier: codeVerifier,
-                                                                clientSecret: environment.mobileKey)
+                                                                clientSecret: environment.clientSecret)
         
         let parseTask = ParseJsonTask<LoginAuthResponse>()
         let networkTask = NetworkTask()
@@ -111,12 +111,4 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
             }
         }
     }
-    
-    public func openURL(openURL: NSURL, sourceApplication: String?){
-        
-        // just making sure we send the notification when the URL is opened in SFSafariViewController
-        if (sourceApplication == "com.apple.SafariViewService") {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kCloseSafariViewControllerNotification"), object: openURL)
-        }
-    }    
 }

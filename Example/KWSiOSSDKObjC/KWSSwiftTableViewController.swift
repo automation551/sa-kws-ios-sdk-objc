@@ -14,6 +14,8 @@ import SAMobileBase
 class KWSSwiftTableViewController: UITableViewController {
 
     var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
+    
+    //strong reference to our Service Protocol
     private var singleSignOn: SingleSignOnServiceProtocol?
 
     private let rowHeight: CGFloat = 44.0
@@ -466,6 +468,8 @@ class KWSSwiftTableViewController: UITableViewController {
                 print("Something went wrong for OAuth User: \(String(describing: error))")
             }
             
+            //clear reference to Single Sign On Service
+            self.singleSignOn = nil
         }
     }
 

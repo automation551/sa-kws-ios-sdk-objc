@@ -16,7 +16,6 @@
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
-		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* KWSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* KWSAppDelegate.m */; };
 		6003F5A7195388D20070C39A /* KWSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* KWSViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
@@ -125,7 +124,6 @@
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6003F595195388D20070C39A /* KWSiOSSDKObjC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KWSiOSSDKObjC-Info.plist"; sourceTree = "<group>"; };
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* KWSiOSSDKObjC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KWSiOSSDKObjC-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* KWSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KWSAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* KWSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KWSAppDelegate.m; sourceTree = "<group>"; };
@@ -310,7 +308,6 @@
 			children = (
 				6003F595195388D20070C39A /* KWSiOSSDKObjC-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
-				6003F599195388D20070C39A /* main.m */,
 				6003F59B195388D20070C39A /* KWSiOSSDKObjC-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -771,7 +768,6 @@
 				6003F59E195388D20070C39A /* KWSAppDelegate.m in Sources */,
 				9CD6E5DD207BE6A10077F56C /* KWSEnvironmentModels.swift in Sources */,
 				6003F5A7195388D20070C39A /* KWSViewController.m in Sources */,
-				6003F59A195388D20070C39A /* main.m in Sources */,
 				9C057150206D02A60082AC0F /* KWSSwiftTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

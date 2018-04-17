@@ -74,7 +74,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.token?.message).to(equal("\"token\" is not allowed to be empty"))
     }
     
-    func test_UserActions_HasTriggeredEvent_Mapping_BadEventId_Response() {
+    func test_UserActions_TriggerEvent_Mapping_EventNotFound_Response() {
         
         let JSON = try? fixtureWithName(name:"generic_event_not_found_response")
         
@@ -85,5 +85,18 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         expect(errorResponse?.code).to(equal(2))
         expect(errorResponse?.codeMeaning).to(equal("notFound"))
         expect(errorResponse?.message).to(equal("event not found"))
+    }
+    
+    func test_UserActions_TriggerEvent_Mapping_TokenReachedUserLimit_Response() {
+        
+        let JSON = try? fixtureWithName(name:"trigger_event_token_reached_user_limit_response")
+        
+        //403
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(1))
+        expect(errorResponse?.codeMeaning).to(equal("forbidden"))
+        expect(errorResponse?.message).to(equal("Token reached user limit"))
     }
 }

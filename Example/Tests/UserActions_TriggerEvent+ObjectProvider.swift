@@ -162,5 +162,30 @@ class UserActions_TriggerEvent_ObjectProviderTests: XCTestCase {
             })
         }
     }
+    
+    func test_UserActions_TriggerEvent_Mapping_TokenReachedUserLimit_Response() {
+        
+        let JSON: Any? = try? fixtureWithName(name:"trigger_event_token_reached_user_limit_response")
+        
+        //when
+        stub(everything , json(JSON!, status: 403))
+        
+        waitUntil { done in
+            
+            self.userActionsService.triggerEvent(eventId: "",
+                                                 points: self.points,
+                                                 userId: self.badUserId,
+                                                 token: self.goodToken,
+                                                 completionHandler:  { error in
+                                                    
+                                                    expect(error).toNot(beNil())
+                                                    expect((error as! ErrorWrapper).code).to(equal(1))
+                                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("forbidden"))
+                                                    expect((error as! ErrorWrapper).message).to(equal("Token reached user limit"))
+                                                    
+                                                    done()
+            })
+        }
+    }
 }
 

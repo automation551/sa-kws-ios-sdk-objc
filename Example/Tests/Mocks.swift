@@ -13,12 +13,12 @@ import KWSiOSSDKObjC
 
 class GoodMockNetworkEnvironment: KWSNetworkEnvironment {
     var domain: String = "https://localhost:8080/"
-    var appID: String = "good_app_id"
-    var mobileKey: String = "good_mobile_key"
+    var clientSecret: String = "good_mobile_key"
+    var clientID: String = "good_app_id"
 }
 
 class BadMockNetworkEnvironment: KWSNetworkEnvironment {
     var domain: String = "bad_domain"
-    var appID: String = "good_app_id"
-    var mobileKey: String = "good_mobile_key"
+    var clientSecret: String = "good_mobile_key"
+    var clientID: String = "good_app_id"
 }
