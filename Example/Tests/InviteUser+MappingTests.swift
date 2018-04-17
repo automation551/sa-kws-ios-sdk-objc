@@ -1,5 +1,5 @@
 //
-//  UserActions_InviteUser+MappingTests.swift
+//  InviteUser+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class UserActions_InviteUser_MappingTests: XCTestCase {
+class InviteUser_MappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
