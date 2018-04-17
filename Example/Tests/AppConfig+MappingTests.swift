@@ -1,5 +1,5 @@
 //
-//  RandomUsername_AppConfig+MappingTests.swift
+//  AppConfig+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 07/02/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class RandomUsername_AppConfig_MappingTests : XCTestCase{
+class AppConfig_MappingTests : XCTestCase{
     
     override func setUp() {
         super.setUp()

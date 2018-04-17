@@ -150,4 +150,91 @@ class User_UpdateUser_UserDetails_ObjectProviderTests: XCTestCase {
             })
         }
     }
+    func test_User_UpdateParentEmail_ValidRequestAndResponse(){
+        
+        let mapUserDetails : [String : Any] = ["parentEmail" : "parent.email@mail.com"]
+        
+        let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_success_response")
+        
+        let request = UpdateUserDetailsRequest(environment: self.environment,
+                                               userDetailsMap: mapUserDetails,
+                                               userId: goodUserId,
+                                               token: token)
+        
+        //when
+        let uri = "\(request.environment.domain + request.endpoint)"
+        stub(everything, json(JSON!, status: 204))
+        
+        waitUntil { done in
+            
+            self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
+                                        token: self.token,
+                                        completionHandler: { error in
+                                            
+                                            expect(error).to(beNil())
+                                            done()
+            })
+        }
+    }
+    
+    func test_User_UpdateParentEmail_Email_Already_Set_Response(){
+        
+        let mapUserDetails : [String : Any] = ["parentEmail" : "parent.email@mail.com"]
+        
+        let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_already_set_response")
+        
+        //when
+        stub(everything , json(JSON!, status: 409))
+        
+        waitUntil { done in
+            self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
+                                        token: self.token,
+                                        completionHandler: { error in
+                                            
+                                            
+                                            expect(error).toNot(beNil())
+                                            expect((error as! ErrorWrapper).code).to(equal(10))
+                                            expect((error as! ErrorWrapper).codeMeaning).to(equal("conflict"))
+                                            expect((error as! ErrorWrapper).message).to(equal("parentEmail already set"))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail).toNot(beNil())
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.code).to(equal(10))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.codeMeaning).to(equal("conflict"))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.message).to(equal("parentEmail already set"))
+                                            
+                                            done()
+            })
+        }
+    }
+    
+    
+    func test_User_UpdateParentEmail_Invalid_Email_Response(){
+        
+        let mapUserDetails : [String : Any] = ["parentEmail" : "parent.email"]
+        
+        let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_invalid_email_response")
+        
+        //when
+        stub(everything , json(JSON!, status: 400))
+        
+        waitUntil { done in
+            self.userService.updateUser(details: mapUserDetails,
+                                        userId: self.goodUserId,
+                                        token: self.token,
+                                        completionHandler: { error in
+                                            
+                                            expect(error).toNot(beNil())
+                                            expect((error as! ErrorWrapper).code).to(equal(5))
+                                            expect((error as! ErrorWrapper).codeMeaning).to(equal("validation"))
+                                            expect((error as! ErrorWrapper).message).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail).toNot(beNil())
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.code).to(equal(7))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
+                                            expect((error as! ErrorWrapper).invalid?.parentEmail?.message).to(equal("\"parentEmail\" must be a valid email"))
+                                            
+                                            done()
+            })
+        }
+    }
 }

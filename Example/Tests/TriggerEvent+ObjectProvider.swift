@@ -1,5 +1,5 @@
 //
-//  UserActions_TriggerEvent+ObjectProviderTests.swift
+//  TriggerEvent+ObjectProviderTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class UserActions_TriggerEvent_ObjectProviderTests: XCTestCase {
+class TriggerEvent_ObjectProviderTests: XCTestCase {
     
     //class or data to test
     private var userActionsService: UserActionsServiceProtocol!
@@ -44,7 +44,7 @@ class UserActions_TriggerEvent_ObjectProviderTests: XCTestCase {
         environment = nil
     }
     
-    func test_UserActions_InviteUser_ValidRequestAndResponse(){
+    func test_InviteUser_ValidRequestAndResponse(){
         
         let JSON: Any? = ["{}"]
         
@@ -66,7 +66,7 @@ class UserActions_TriggerEvent_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_InviteUser_BadTokenResponse(){
+    func test_InviteUser_BadTokenResponse(){
         let JSON: Any? = try? fixtureWithName(name:"generic_invalid_token_response")
         
         //when
@@ -89,7 +89,7 @@ class UserActions_TriggerEvent_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_SetAppData_BadUserIdResponse(){
+    func test_SetAppData_BadUserIdResponse(){
         let JSON: Any? = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
         //when
@@ -113,7 +113,7 @@ class UserActions_TriggerEvent_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_TriggerEvent_Mapping_EmptyEventId_Response() {
+    func test_TriggerEvent_Mapping_EmptyEventId_Response() {
         
         let JSON: Any? = try? fixtureWithName(name:"trigger_event_token_not_valid_response")
         
@@ -138,7 +138,7 @@ class UserActions_TriggerEvent_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_TriggerEvent_Mapping_EventNotFound_Response() {
+    func test_TriggerEvent_Mapping_EventNotFound_Response() {
         
         let JSON: Any? = try? fixtureWithName(name:"generic_event_not_found_response")
         
@@ -163,7 +163,7 @@ class UserActions_TriggerEvent_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_TriggerEvent_Mapping_TokenReachedUserLimit_Response() {
+    func test_TriggerEvent_Mapping_TokenReachedUserLimit_Response() {
         
         let JSON: Any? = try? fixtureWithName(name:"trigger_event_token_reached_user_limit_response")
         

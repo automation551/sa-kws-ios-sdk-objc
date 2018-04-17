@@ -80,4 +80,49 @@ class User_UpdateUser_UserDetails_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.addressCountry?.codeMeaning).to(equal("missing"))
         expect(errorResponse?.invalid?.addressCountry?.message).to(equal("\"country\" is required"))
     }
+    
+    func test_User_UpdateParentEmail_Mapping_ResponseSuccess() {
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"update_user_parent_email_success_response")
+        
+        let userParentEmailResponse = try? UpdateUserDetailsFakeResponse.decode(JSON!)
+        
+        expect(userParentEmailResponse).toNot(beNil())
+        expect(userParentEmailResponse?.emailUpdated).to(beTrue())
+    }
+    
+    func test_User_UpdateParentEmail_Mapping_Email_Already_Set_Response() {
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"update_user_parent_email_already_set_response")
+        
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(10))
+        expect(errorResponse?.codeMeaning).to(equal("conflict"))
+        expect(errorResponse?.message).to(equal("parentEmail already set"))
+        expect(errorResponse?.invalid?.parentEmail).toNot(beNil())
+        expect(errorResponse?.invalid?.parentEmail?.code).to(equal(10))
+        expect(errorResponse?.invalid?.parentEmail?.codeMeaning).to(equal("conflict"))
+        expect(errorResponse?.invalid?.parentEmail?.message).to(equal("parentEmail already set"))
+    }
+    
+    func test_User_UpdateParentEmail_Mapping_Invalid_Email_Response() {
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"update_user_parent_email_invalid_email_response")
+        
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(5))
+        expect(errorResponse?.codeMeaning).to(equal("validation"))
+        expect(errorResponse?.message).to(equal("child \"parentEmail\" fails because [\"parentEmail\" must be a valid email]"))
+        expect(errorResponse?.invalid?.parentEmail).toNot(beNil())
+        expect(errorResponse?.invalid?.parentEmail?.code).to(equal(7))
+        expect(errorResponse?.invalid?.parentEmail?.codeMeaning).to(equal("invalidValue"))
+        expect(errorResponse?.invalid?.parentEmail?.message).to(equal("\"parentEmail\" must be a valid email"))
+    }
 }

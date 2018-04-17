@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class UserActions_HasTriggeredEvent_ObjectProviderTests: XCTestCase {
+class HasTriggeredEvent_ObjectProviderTests: XCTestCase {
     
     //class or data to test
     private var userActionsService: UserActionsServiceProtocol!
@@ -43,7 +43,7 @@ class UserActions_HasTriggeredEvent_ObjectProviderTests: XCTestCase {
         environment = nil
     }
     
-    func test_UserActions_InviteUser_ValidRequestAndResponse(){
+    func test_InviteUser_ValidRequestAndResponse(){
         
         let JSON = try? fixtureWithName(name:"has_triggered_event_success_response")
         
@@ -66,7 +66,7 @@ class UserActions_HasTriggeredEvent_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_InviteUser_BadTokenResponse(){
+    func test_InviteUser_BadTokenResponse(){
         let JSON: Any? = try? fixtureWithName(name:"generic_invalid_token_response")
         
         //when
@@ -88,7 +88,7 @@ class UserActions_HasTriggeredEvent_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_SetAppData_BadUserIdResponse(){
+    func test_SetAppData_BadUserIdResponse(){
         let JSON: Any? = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
         //when
@@ -111,7 +111,7 @@ class UserActions_HasTriggeredEvent_ObjectProviderTests: XCTestCase {
         }
     }
     
-    func test_UserActions_TriggerEvent_Mapping_EventNotFound_Response() {
+    func test_TriggerEvent_Mapping_EventNotFound_Response() {
         
         let JSON: Any? = try? fixtureWithName(name:"generic_event_not_found_response")
         

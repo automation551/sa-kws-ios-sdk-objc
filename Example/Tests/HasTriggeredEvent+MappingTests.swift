@@ -1,5 +1,5 @@
 //
-//  UserActions_HasTriggeredEvent+MappingTests.swift
+//  HasTriggeredEvent+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
@@ -13,7 +13,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
+class HasTriggeredEvent_MappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -23,7 +23,7 @@ class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_UserActions_HasTriggeredEvent_Mapping_ResponseSuccess() {
+    func test_HasTriggeredEvent_Mapping_ResponseSuccess() {
         
         let JSON: Any? = try? fixtureWithName(name:"has_triggered_event_success_response")
         
@@ -33,7 +33,7 @@ class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
         expect(response?.hasTriggeredEvent).to(beTrue())        
     }
     
-    func test_UserActions_HasTriggeredEvent_Mapping_BadToken_Response() {
+    func test_HasTriggeredEvent_Mapping_BadToken_Response() {
         
         let JSON: Any? = try? fixtureWithName(name:"generic_invalid_token_response")
         
@@ -45,7 +45,7 @@ class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
         expect(errorResponse?.error).to(equal("The access token provided is invalid."))
     }
     
-    func test_UserActions_HasTriggeredEvent_Mapping_BadUserId_Response() {
+    func test_HasTriggeredEvent_Mapping_BadUserId_Response() {
         
         let JSON: Any? = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
@@ -58,7 +58,7 @@ class UserActions_HasTriggeredEvent_MappingTests: XCTestCase {
         expect(errorResponse?.message).to(equal("operation not supported for this user"))
     }
     
-    func test_UserActions_HasTriggeredEvent_Mapping_BadEventId_Response() {
+    func test_HasTriggeredEvent_Mapping_BadEventId_Response() {
         
         let JSON: Any? = try? fixtureWithName(name:"generic_event_not_found_response")
         

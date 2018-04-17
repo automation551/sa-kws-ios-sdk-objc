@@ -1,5 +1,5 @@
 //
-//  UserActions_TriggerEvent+MappingTests.swift
+//  TriggerEvent+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class UserActions_TriggerEvent_MappingTests: XCTestCase {
+class TriggerEvent_MappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -22,7 +22,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_UserActions_TriggerEvent_Mapping_ResponseSuccess() {
+    func test_TriggerEvent_Mapping_ResponseSuccess() {
         
         let JSON: Any? = ["{}"]
         
@@ -31,7 +31,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         expect(triggerEvent).to(beNil())
     }
     
-    func test_UserActions_TriggerEvent_Mapping_BadToken_Response() {
+    func test_TriggerEvent_Mapping_BadToken_Response() {
         
         let JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
@@ -43,7 +43,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         expect(errorResponse?.error).to(equal("The access token provided is invalid."))
     }
     
-    func test_UserActions_TriggerEvent_Mapping_BadUserId_Response() {
+    func test_TriggerEvent_Mapping_BadUserId_Response() {
         
         let JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
@@ -56,7 +56,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         expect(errorResponse?.message).to(equal("operation not supported for this user"))
     }
     
-    func test_UserActions_TriggerEvent_Mapping_BadEventId_Response() {
+    func test_riggerEvent_Mapping_BadEventId_Response() {
         
         let JSON = try? fixtureWithName(name:"trigger_event_token_not_valid_response")
         
@@ -74,7 +74,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         expect(errorResponse?.invalid?.token?.message).to(equal("\"token\" is not allowed to be empty"))
     }
     
-    func test_UserActions_TriggerEvent_Mapping_EventNotFound_Response() {
+    func test_TriggerEvent_Mapping_EventNotFound_Response() {
         
         let JSON = try? fixtureWithName(name:"generic_event_not_found_response")
         
@@ -87,7 +87,7 @@ class UserActions_TriggerEvent_MappingTests: XCTestCase {
         expect(errorResponse?.message).to(equal("event not found"))
     }
     
-    func test_UserActions_TriggerEvent_Mapping_TokenReachedUserLimit_Response() {
+    func test_TriggerEvent_Mapping_TokenReachedUserLimit_Response() {
         
         let JSON = try? fixtureWithName(name:"trigger_event_token_reached_user_limit_response")
         
