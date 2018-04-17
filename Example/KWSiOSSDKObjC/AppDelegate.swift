@@ -16,7 +16,6 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     
     public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        // Before doing this, you should check the url is your redirect-uri before doing anything. Be safe :)
         if let components =  NSURLComponents(url: url as URL, resolvingAgainstBaseURL: false),
             let queryItems = components.queryItems,
             let code = queryItems.first?.value {
