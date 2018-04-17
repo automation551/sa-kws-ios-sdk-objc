@@ -1,5 +1,5 @@
 //
-//  User_Actions_SetAppData+MappingTests.swift
+//  SetAppData+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class UserActions_SetAppData_MappingTests: XCTestCase {
+class SetAppData_MappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

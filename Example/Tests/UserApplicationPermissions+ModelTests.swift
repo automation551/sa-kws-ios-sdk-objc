@@ -1,5 +1,5 @@
 //
-//  ApplicationPermissionsTests.swift
+//  UserApplicationPermissions+ModelTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 05/04/2018.
@@ -10,7 +10,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class ApplicationPermissionsTests: XCTestCase {
+class UserApplicationPermissions_ModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

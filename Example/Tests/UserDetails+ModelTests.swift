@@ -1,5 +1,5 @@
 //
-//  UserDetailsTests.swift
+//  UserDetails+ModelTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/02/2018.
@@ -10,7 +10,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class UserDetailsTests: XCTestCase {
+class UserDetails_ModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

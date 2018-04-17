@@ -1,5 +1,5 @@
 //
-//  User_RequestPermissions+ObjectProvider.swift
+//  Permissions+ServiceTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 19/02/2018.
@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class UserActions_RequestPermissions_ObjectProviderTests: XCTestCase {
+class Permissions_ServiceTests: XCTestCase {
     
     //class or data to test
     private var userService: UserActionsServiceProtocol!

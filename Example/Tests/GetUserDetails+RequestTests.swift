@@ -1,5 +1,5 @@
 //
-//  User_GetUserDetails+RequestTests.swift
+//  GetUserDetails+RequestTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/02/2018.
@@ -11,7 +11,7 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class User_GetUserDetails_RequestTests: XCTestCase {
+class GetUserDetails_RequestTests: XCTestCase {
     
     private var env: KWSNetworkEnvironment!
     private var request: UserDetailsRequest!

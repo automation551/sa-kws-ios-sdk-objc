@@ -1,5 +1,5 @@
 //
-//  User_RequestPermissions+MappingTests.swift
+//  Permissions+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 19/02/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class UserActions_RequestPermissions_MappingTests: XCTestCase {
+class Permissions_MappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

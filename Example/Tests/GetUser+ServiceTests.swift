@@ -1,5 +1,5 @@
 //
-//  User_GetUserDetails+ObjectProviderTests.swift
+//  GetUser+ServiceTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/02/2018.
@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class User_GetUser_ObjectProviderTests: XCTestCase {
+class GetUser_ServiceTests: XCTestCase {
     
     //class or data to test
     private var userService: UserServiceProtocol!
