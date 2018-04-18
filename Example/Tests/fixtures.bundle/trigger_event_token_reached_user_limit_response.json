@@ -1,0 +1,6 @@
+
+{
+    "code": 1,
+    "codeMeaning": "forbidden",
+    "errorMessage": "Token reached user limit"
+}

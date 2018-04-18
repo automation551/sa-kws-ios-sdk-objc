@@ -41,6 +41,9 @@ public class KWSSDK : NSObject{
         else if value == ScoringServiceProtocol.self {
             return ScoreProvider(environment: environment) as? T
         }
+        else if value == SingleSignOnServiceProtocol.self {
+            return SingleSignOnProvider(environment: environment) as? T
+        }
         else {
             return nil
         }

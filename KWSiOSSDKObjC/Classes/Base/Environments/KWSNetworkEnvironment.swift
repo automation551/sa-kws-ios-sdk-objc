@@ -10,7 +10,7 @@ import SAMobileBase
 
 public protocol KWSNetworkEnvironment : NetworkEnvironmentProtocol {
     
-    var appID: String { get }
-    var mobileKey: String { get }
+    var clientSecret: String { get }
+    var clientID: String { get }
     
 }

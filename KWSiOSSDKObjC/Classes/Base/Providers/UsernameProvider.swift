@@ -20,7 +20,7 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
     public func getRandomUsername(completionHandler: @escaping (RandomUsernameModelProtocol?, Error?) -> ()) {
         
         let getAppConfigNetworkRequest = AppConfigRequest(environment: environment,
-                                                          clientID: environment.mobileKey)
+                                                          clientID: environment.clientID)
         
         let parseTask = ParseJsonTask<AppConfigWrapper>()
         let networkTask = NetworkTask()

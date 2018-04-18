@@ -11,15 +11,15 @@ import SAMobileBase
 public class UserKWSNetworkEnvironment: NSObject, KWSNetworkEnvironment{
     
     public var domain: String
-    public let appID: String
-    public let mobileKey: String
+    public let clientSecret: String
+    public let clientID: String
     
     public required init(domain: String,
                          appID: String,
                          mobileKey: String) {
         
         self.domain = domain
-        self.appID = appID
-        self.mobileKey = mobileKey
+        self.clientSecret = appID
+        self.clientID = mobileKey
     }
 }

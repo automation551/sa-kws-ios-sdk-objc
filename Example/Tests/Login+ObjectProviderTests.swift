@@ -54,8 +54,8 @@ class Login_ObjectProviderTests: XCTestCase {
         let request = LoginRequest(environment: self.environment,
                                    username: goodUsername,
                                    password: goodPassword,
-                                   clientID: self.environment.mobileKey,
-                                   clientSecret: self.environment.appID)
+                                   clientID: self.environment.clientID,
+                                   clientSecret: self.environment.clientSecret)
         
         //when
         let uri = "\(request.environment.domain + request.endpoint)"
@@ -84,8 +84,8 @@ class Login_ObjectProviderTests: XCTestCase {
         let  request = LoginRequest(environment: self.environment,
                                     username: goodUsername,
                                     password: goodPassword,
-                                    clientID: self.environment.mobileKey,
-                                    clientSecret: self.environment.appID)
+                                    clientID: self.environment.clientID,
+                                    clientSecret: self.environment.clientSecret)
         
         //when
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 404))
@@ -115,8 +115,8 @@ class Login_ObjectProviderTests: XCTestCase {
         let request = LoginRequest(environment: self.environment,
                                    username: badUsername,
                                    password: goodPassword,
-                                   clientID: self.environment.mobileKey,
-                                   clientSecret: self.environment.appID)
+                                   clientID: self.environment.clientID,
+                                   clientSecret: self.environment.clientSecret)
         
         //when
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
@@ -145,8 +145,8 @@ class Login_ObjectProviderTests: XCTestCase {
         let request = LoginRequest(environment: self.environment,
                                    username: goodUsername,
                                    password: badPassword,
-                                   clientID: self.environment.mobileKey,
-                                   clientSecret: self.environment.appID)
+                                   clientID: self.environment.clientID,
+                                   clientSecret: self.environment.clientSecret)
         
         //when
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
@@ -177,7 +177,7 @@ class Login_ObjectProviderTests: XCTestCase {
                                     username: goodUsername,
                                     password: goodPassword,
                                     clientID: badClientID,
-                                    clientSecret: self.environment.appID)
+                                    clientSecret: self.environment.clientSecret)
         
         //when
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
@@ -207,7 +207,7 @@ class Login_ObjectProviderTests: XCTestCase {
         let request = LoginRequest(environment: self.environment,
                                    username: goodUsername,
                                    password: goodPassword,
-                                   clientID: self.environment.mobileKey,
+                                   clientID: self.environment.clientID,
                                    clientSecret: badClientSecret)
         
         //when

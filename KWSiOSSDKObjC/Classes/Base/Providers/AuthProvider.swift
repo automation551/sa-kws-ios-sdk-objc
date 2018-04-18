@@ -23,8 +23,8 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
         let loginUserNetworkRequest = LoginRequest(environment: self.environment,
                                                    username: userName,
                                                    password: password,
-                                                   clientID: self.environment.mobileKey,
-                                                   clientSecret: self.environment.appID)
+                                                   clientID: self.environment.clientID,
+                                                   clientSecret: self.environment.clientSecret)
         
         let parseTask = ParseJsonTask<LoginAuthResponse>()
         let networkTask = NetworkTask()
@@ -54,8 +54,8 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
         var parentEmailValue = parentEmail ?? ""
         
         let getTempAccessTokenNetworkRequest = TempAccessTokenRequest(environment: environment,
-                                                                      clientID: environment.mobileKey,
-                                                                      clientSecret: environment.appID)
+                                                                      clientID: environment.clientID,
+                                                                      clientSecret: environment.clientSecret)
         
         let parseTask = ParseJsonTask<LoginAuthResponse>()
         let networkTask = NetworkTask()

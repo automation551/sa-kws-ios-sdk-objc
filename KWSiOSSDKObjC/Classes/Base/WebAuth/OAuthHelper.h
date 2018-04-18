@@ -26,4 +26,8 @@ typedef NS_ENUM(NSInteger, OAuthChallengeMethod) {
 
 - (OAuthData*) execute;
 
+- (NSString*) generateCodeChallenge: (NSString*) verifier;
+
+- (NSString*) generateCodeVerifier;
+
 @end
