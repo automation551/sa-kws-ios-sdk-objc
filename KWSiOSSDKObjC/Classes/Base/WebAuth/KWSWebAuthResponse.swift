@@ -8,8 +8,6 @@
 import Foundation
 import SafariServices
 
-public let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotification"
-
 public class KWSWebAuthResponse: NSObject, SFSafariViewControllerDelegate {
     
     var safariVC: SFSafariViewController?
@@ -24,7 +22,7 @@ public class KWSWebAuthResponse: NSObject, SFSafariViewControllerDelegate {
         callback = completionHandler
         parentRef = parent
         
-        NotificationCenter.default.addObserver(self, selector: #selector(saCallback(_:)), name: Notification.Name(rawValue: kCloseSafariViewControllerNotification), object: nil)
+        Notifications.addObserver(withObserver: self, handler: #selector(KWSWebAuthResponse.saCallback(_:)), notificationIdentifier: .item)
         
         safariVC = SFSafariViewController(url: authURL)
         safariVC!.delegate = self
@@ -33,7 +31,7 @@ public class KWSWebAuthResponse: NSObject, SFSafariViewControllerDelegate {
     
     @objc func saCallback(_ notification: NSNotification) {
         
-        NotificationCenter.default.removeObserver(self, name: Notification.Name(kCloseSafariViewControllerNotification), object: nil)
+        Notifications.removeObserver(withObserver: self, notificationIdentifier: .item)
         
         if let authCode = notification.userInfo {
             callback?(authCode["code"] as! String)

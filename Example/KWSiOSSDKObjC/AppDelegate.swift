@@ -6,6 +6,7 @@
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import KWSiOSSDKObjC
 
@@ -16,17 +17,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     
     public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        if let components =  NSURLComponents(url: url as URL, resolvingAgainstBaseURL: false),
-            let queryItems = components.queryItems,
-            let code = queryItems.first?.value {
-            
-            let nc = NotificationCenter.default
-            nc.post(name:Notification.Name(rawValue:kCloseSafariViewControllerNotification),
-                    object: nil,
-                    userInfo: ["code":code])
-            
-            return true
-        }
-        return true
+        //connect to KWS SDK from SSO - returns false if not intended for KWS
+        return KWSAppDelegate.shared.application(app, open: url, options: options)
     }
 }
