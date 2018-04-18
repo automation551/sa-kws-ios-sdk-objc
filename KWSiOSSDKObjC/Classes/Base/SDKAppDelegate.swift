@@ -1,5 +1,5 @@
 //
-//  KWSAppDelegate.swift
+//  SDKAppDelegate.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 18/04/2018.
@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-public final class KWSAppDelegate {
+public final class SDKAppDelegate {
     
     /// Returns the singleton instance of an application delegate.
-    public static let shared = KWSAppDelegate()
+    public static let shared = SDKAppDelegate()
     
     private init() { }
     

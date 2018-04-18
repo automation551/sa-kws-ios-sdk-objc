@@ -11,9 +11,12 @@ import KWSiOSSDKObjC
 import SAProtobufs
 import SAMobileBase
 
-class KWSSwiftTableViewController: UITableViewController {
+class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textView: UITextView!
     
     //strong reference to our Service Protocol
     private var singleSignOn: SingleSignOnServiceProtocol?
@@ -38,108 +41,113 @@ class KWSSwiftTableViewController: UITableViewController {
                 ["Get Leaderboard", "Get User Score"]
     ]
 
-    // MARK: - TABLE VIEW STUFF
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let textForSection = Array(functionalitiesDict)[section].key
-        return textForSection
-    }
-
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return functionalitiesDict.count
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let items = Array(functionalitiesDict)[section].value
-        return items.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-
-        let listOfItemsInRow = Array(functionalitiesDict)[indexPath.section].value
-        let textForRow = Array(listOfItemsInRow)[indexPath.row]
-
-        cell.textLabel?.text = textForRow
-
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return rowHeight
-    }
-
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return headerHeight
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        let section = Array(functionalitiesDict)[indexPath.section].key
-        let arrayOfRows = Array(functionalitiesDict)[indexPath.section].value
-
-        switch section {
-        case "User":
-            switch arrayOfRows[indexPath.row] {
-            case "Login User" : self.loginUser()
-            case "Create User" : self.createUser()
-            case "Random Username": self.randomUserName()
-            case "Update User": self.updateUserDetails()
-            case "Get User Details": self.getUserDetails()
-            case "Auth User": self.oAuthUser()
-            default:
-                break
-            }
-            break
-        case "Permissions":
-            switch arrayOfRows[indexPath.row] {
-            case "Submit Parent Email" : self.updateParentEmail()
-            case "Request Permissions" : self.requestPermissions()
-            default:
-                break
-            }
-        case "App Data":
-            switch arrayOfRows[indexPath.row] {
-            case "Get App Data": self.getAppData()
-            case "Set App Data" : self.setAppData()
-            default:
-                break
-            }
-        case "Invite":
-            switch arrayOfRows[indexPath.row] {
-            case "Invite User": self.inviteUser()
-            default:
-                break
-            }
-        case "Events":
-            switch arrayOfRows[indexPath.row] {
-            case "Trigger Event": self.triggerEvent()
-            case "Is Triggered Event": self.isTriggeredEvent()
-            default:
-              break
-            }
-        case "Score":
-            switch arrayOfRows[indexPath.row] {
-            case "Get Leaderboard": self.getLeaderboard()
-            case "Get User Score": self.getUserScore()
-            default:
-              break
-            }
-        default:
-            break
-        }
-    }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let section = Array(functionalitiesDict)[indexPath.section].key
+//        let arrayOfRows = Array(functionalitiesDict)[indexPath.section].value
+//
+//        switch section {
+//        case "User":
+//            switch arrayOfRows[indexPath.row] {
+//            case "Login User" : self.loginUser()
+//            case "Create User" : self.createUser()
+//            case "Random Username": self.randomUserName()
+//            case "Update User": self.updateUserDetails()
+//            case "Get User Details": self.getUserDetails()
+//            case "Auth User": self.oAuthUser()
+//            default:
+//                break
+//            }
+//            break
+//        case "Permissions":
+//            switch arrayOfRows[indexPath.row] {
+//            case "Submit Parent Email" : self.updateParentEmail()
+//            case "Request Permissions" : self.requestPermissions()
+//            default:
+//                break
+//            }
+//        case "App Data":
+//            switch arrayOfRows[indexPath.row] {
+//            case "Get App Data": self.getAppData()
+//            case "Set App Data" : self.setAppData()
+//            default:
+//                break
+//            }
+//        case "Invite":
+//            switch arrayOfRows[indexPath.row] {
+//            case "Invite User": self.inviteUser()
+//            default:
+//                break
+//            }
+//        case "Events":
+//            switch arrayOfRows[indexPath.row] {
+//            case "Trigger Event": self.triggerEvent()
+//            case "Is Triggered Event": self.isTriggeredEvent()
+//            default:
+//                break
+//            }
+//        case "Score":
+//            switch arrayOfRows[indexPath.row] {
+//            case "Get Leaderboard": self.getLeaderboard()
+//            case "Get User Score": self.getUserScore()
+//            default:
+//                break
+//            }
+//        default:
+//            break
+//        }
+//    }
+//
+//    // MARK: - TABLE VIEW STUFF
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+//
+//        let listOfItemsInRow = Array(functionalitiesDict)[indexPath.section].value
+//        let textForRow = Array(listOfItemsInRow)[indexPath.row]
+//
+//        cell.textLabel?.text = textForRow
+//
+//        return cell
+//    }
+//
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        let textForSection = Array(functionalitiesDict)[section].key
+//        return textForSection
+//    }
+//
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return functionalitiesDict.count
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        let items = Array(functionalitiesDict)[section].value
+//        return items.count
+//    }
+//
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return rowHeight
+//    }
+//
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return headerHeight
+//    }
     //END OF TABLE VIEW STUFF ----------------------------------------------------------------------//
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        
         kUserKWSNetworkEnvironment = DemoTestEnvironment()
+        self.textView.text! = "Here will be the responses: \n"
     }
     
     func createUser(){
 
-        let userName = String (format: "randomtestusr%d", randomInt(min:100, max:500))
+        let userName = String (format: "123", randomInt(min:100, max:500))
         let pwd = "testtest"
         let dob = "2012-03-22"
         let country = "US"
@@ -151,9 +159,15 @@ class KWSSwiftTableViewController: UITableViewController {
 
             if let user = result {
                 self.saveUser(user: user)
+                self.textView.text! += "Result for create user with username '\(userName)' and pwd '\(pwd)' is success:\nUser ID is - \(user.id) and has been cached.\n"
                 print("Result for create user is success: \(String(describing: user))")
             } else {
-                print("Something went wrong for create user: \(String(describing: error)))")
+                if let errorMessage : String = (error as! ErrorWrapper).message{
+                    self.textView.text! += "Something went wrong for create user: \(errorMessage)\n"
+                } else {
+                    self.textView.text! += "Something went wrong for create user: unknown error!\n"
+                }
+                print("Something went wrong for create user: \(String(describing: (error as! ErrorWrapper).message)))")
             }
         }
     }
@@ -183,8 +197,10 @@ class KWSSwiftTableViewController: UITableViewController {
         username?.getRandomUsername() { (result, error) in
 
             if(error == nil){
+                self.textView.text! += "The random name result is ---> \(result?.randomUsername ?? "ERROR")\n"
                 print("Result for random username is success: \(String(describing: result?.randomUsername))")
             } else {
+                self.textView.text! += "Something went wrong for random username ---> \(String(describing: error))\n"
                 print("Something went wrong for random username: \(String(describing: error)))")
             }
         }
