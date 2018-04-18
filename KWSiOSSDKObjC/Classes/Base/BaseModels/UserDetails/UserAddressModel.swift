@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class UserAddress: NSObject, AddressModelProtocol {
+public final class UserAddressModel: NSObject, AddressModelProtocol {
     
     public var street:      String?
     public var city:        String?
@@ -33,7 +33,7 @@ public final class UserAddress: NSObject, AddressModelProtocol {
     }
     
     // MARK: - Equatable
-    public static func ==(lhs: UserAddress, rhs: UserAddress) -> Bool {
+    public static func ==(lhs: UserAddressModel, rhs: UserAddressModel) -> Bool {
         
         let areEqual = lhs.city == rhs.city
                 && lhs.postCode == rhs.postCode
@@ -43,7 +43,7 @@ public final class UserAddress: NSObject, AddressModelProtocol {
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? UserAddress else { return false }
+        guard let object = object as? UserAddressModel else { return false }
         return self == object
     }
 }

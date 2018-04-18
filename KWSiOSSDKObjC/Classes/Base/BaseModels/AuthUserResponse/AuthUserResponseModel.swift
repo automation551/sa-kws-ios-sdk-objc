@@ -1,5 +1,5 @@
 //
-//  CreateUserResponse.swift
+//  AuthUserResponseModel.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 02/02/2018.
@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class AuthUserResponse: NSObject, LoggedUserModelProtocol {
+public final class AuthUserResponseModel: NSObject, LoggedUserModelProtocol {
     
     public var id:      AnyHashable
     public var token:   String
@@ -21,13 +21,13 @@ public final class AuthUserResponse: NSObject, LoggedUserModelProtocol {
     }    
     
     // MARK: - Equatable
-    public static func ==(lhs: AuthUserResponse, rhs: AuthUserResponse) -> Bool {
+    public static func ==(lhs: AuthUserResponseModel, rhs: AuthUserResponseModel) -> Bool {
         let areEqual = lhs.id == rhs.id && lhs.token == rhs.token
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? AuthUserResponse else { return false }
+        guard let object = object as? AuthUserResponseModel else { return false }
         return self == object
     }
     

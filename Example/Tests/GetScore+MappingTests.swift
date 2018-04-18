@@ -1,5 +1,5 @@
 //
-//  Scoring_GetScore+MappingTests.swift
+//  GetScore+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 10/04/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class Scoring_GetScore_MappingTests: XCTestCase {
+class GetScoreMappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -27,7 +27,7 @@ class Scoring_GetScore_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"get_user_score_success_response")
         
-        let getScoreResponse = try? Score.decode(JSON!)
+        let getScoreResponse = try? ScoreModel.decode(JSON!)
         
         expect(getScoreResponse).toNot(beNil())
         expect(getScoreResponse?.score).to(equal(600))

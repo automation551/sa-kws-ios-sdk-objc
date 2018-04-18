@@ -10,7 +10,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class AppConfig_ModelTests: XCTestCase {
+class AppConfigModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -20,23 +20,23 @@ class AppConfig_ModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testAppConfigEquality() {
-        let foo = AppConfig(id: 123, name: "app_name_abc")
-        let bar = AppConfig(id: 123, name: "app_name_abc")
+    func test_AppConfig_Equality() {
+        let foo = AppConfigModel(id: 123, name: "app_name_abc")
+        let bar = AppConfigModel(id: 123, name: "app_name_abc")
         
         expect(foo).to(equal(bar))
     }
     
-    func testAppConfigTestsNotEquality() {
-        let foo = AppConfig(id: 123, name: "app_name_abc")
-        let bar = AppConfig(id: 321, name: "app_name_abc")
+    func test_AppConfig_NotEquality() {
+        let foo = AppConfigModel(id: 123, name: "app_name_abc")
+        let bar = AppConfigModel(id: 321, name: "app_name_abc")
         
         expect(foo).toNot(equal(bar))
     }
     
-    func testSameEqualityBetweenObjcAndSwift() {
-        let foo = AppConfig(id: 123, name: "app_name_abc")
-        let bar = AppConfig(id: 321, name: "app_name_abc")
+    func test_SameEquality_BetweenObjcAndSwift() {
+        let foo = AppConfigModel(id: 123, name: "app_name_abc")
+        let bar = AppConfigModel(id: 321, name: "app_name_abc")
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -44,22 +44,22 @@ class AppConfig_ModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func testAppConfigTestsHashIsEqual() {
-        let foo = AppConfig(id: 123, name: "app_name_abc")
-        let bar = AppConfig(id: 123, name: "app_name_abc")
+    func test_AppConfig_HashIsEqual() {
+        let foo = AppConfigModel(id: 123, name: "app_name_abc")
+        let bar = AppConfigModel(id: 123, name: "app_name_abc")
         
         expect(foo.hash).to(equal(bar.hash))
     }
     
-    func testAppConfigTestsHashIsNotEqual() {
-        let foo = AppConfig(id: 123, name: "app_name_abc")
-        let bar = AppConfig(id: 321, name: "app_name_abc")
+    func test_AppConfig_HashIsNotEqual() {
+        let foo = AppConfigModel(id: 123, name: "app_name_abc")
+        let bar = AppConfigModel(id: 321, name: "app_name_abc")
         
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func testObjcAppConfigTestsNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = AppConfig(id: 123, name: "app_name_abc")
+    func test_ObjcAppConfig_NotEquality_WithDifferentClassAndSameIdentifier() {
+        let foo = AppConfigModel(id: 123, name: "app_name_abc")
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

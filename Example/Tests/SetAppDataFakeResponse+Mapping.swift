@@ -10,11 +10,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension SetAppDataFakeResponse: Decodable {
+extension SetAppDataFakeResponseModel: Decodable {
     
-    public static func decode(_ json: Any) throws -> SetAppDataFakeResponse {
+    public static func decode(_ json: Any) throws -> SetAppDataFakeResponseModel {
         
-        return try SetAppDataFakeResponse (
+        return try SetAppDataFakeResponseModel (
             appSet:               try json =>? "appSet"
         )
     }

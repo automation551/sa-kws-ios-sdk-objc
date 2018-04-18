@@ -43,7 +43,7 @@ internal struct SessionProvider: SessionServiceProtocol {
             switch tokenResult {
             case .success(let tokenData):
                 if let userId = tokenData.userId {
-                    return LoggedUser(token: token, tokenData: tokenData , id: userId)
+                    return LoggedUserModel(token: token, tokenData: tokenData , id: userId)
                 } else {
                   return nil
                 }

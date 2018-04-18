@@ -1,5 +1,5 @@
 //
-//  Scoring_GetLeaders+MappingTests.swift
+//  GetLeaders+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 10/04/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class Scoring_GetLeaders_MappingTests: XCTestCase {
+class GetLeadersMappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

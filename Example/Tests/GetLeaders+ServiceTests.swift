@@ -1,5 +1,5 @@
 //
-//  Scoring_GetLeaders+ObjectProviderTests.swift
+//  GetLeaders+ServiceTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 10/04/2018.
@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class Scoring_GetLeaders_ObjectProviderTests: XCTestCase {
+class GetLeadersServiceTests: XCTestCase {
     
     //class or data to test
     private var scoringService: ScoringServiceProtocol!

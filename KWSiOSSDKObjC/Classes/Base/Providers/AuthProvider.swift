@@ -26,12 +26,12 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
                                                    clientID: self.environment.clientID,
                                                    clientSecret: self.environment.clientSecret)
         
-        let parseTask = ParseJsonTask<LoginAuthResponse>()
+        let parseTask = ParseJsonTask<LoginAuthResponseModel>()
         let networkTask = NetworkTask()
         
         let future = networkTask
             .execute(input: loginUserNetworkRequest)
-            .map { (result: Result<String>) -> Result<LoginAuthResponse> in
+            .map { (result: Result<String>) -> Result<LoginAuthResponseModel> in
                 return result.then(parseTask.execute)
         }
         
@@ -57,12 +57,12 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
                                                                       clientID: environment.clientID,
                                                                       clientSecret: environment.clientSecret)
         
-        let parseTask = ParseJsonTask<LoginAuthResponse>()
+        let parseTask = ParseJsonTask<LoginAuthResponseModel>()
         let networkTask = NetworkTask()
         
         let future = networkTask
             .execute(input: getTempAccessTokenNetworkRequest)
-            .map { (result: Result<String>) -> Result <LoginAuthResponse> in
+            .map { (result: Result<String>) -> Result <LoginAuthResponseModel> in
                 return result.then(parseTask.execute)
         }
         
@@ -92,7 +92,7 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
         }
     }
     
-    private func doUserCreation(environment: KWSNetworkEnvironment, username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponse?, Error?) -> ()) {
+    private func doUserCreation(environment: KWSNetworkEnvironment, username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponseModel?, Error?) -> ()) {
         
         
         let createUserNetworkRequest = CreateUserRequest(environment: environment,
@@ -104,12 +104,12 @@ public class AuthProvider: NSObject, AuthServiceProtocol {
                                                          token: token,
                                                          appID: appId)
         
-        let parseTask = ParseJsonTask<AuthUserResponse>()
+        let parseTask = ParseJsonTask<AuthUserResponseModel>()
         let networkTask = NetworkTask()
         
         let future = networkTask
             .execute(input: createUserNetworkRequest)
-            .map { (result: Result<String>) -> Result<AuthUserResponse> in
+            .map { (result: Result<String>) -> Result<AuthUserResponseModel> in
                 return result.then(parseTask.execute)
         }
         

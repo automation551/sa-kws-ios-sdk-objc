@@ -1,5 +1,5 @@
 //
-//  RandomUsername_GetRandomUsername+ObjectProviderTests.swift
+//  RandomUsername+ServiceTests.swift
 //  KWSiOSSDKObjC_Example
 //
 //  Created by Guilherme Mota on 08/04/2018.
@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class RandomUsername_GetRandomUsername_ObjectProviderTests: XCTestCase {
+class RandomUsernameServiceTests: XCTestCase {
     
     // class or data to test
     private var service: UsernameServiceProtocol!

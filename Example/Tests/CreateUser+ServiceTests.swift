@@ -1,5 +1,5 @@
 //
-//  CreateUser_CreateUser+ObjectProviderTests.swift
+//  CreateUser+ServiceTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 05/04/2018.
@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class CreateUser_CreateUser_ObjectProviderTests: XCTestCase {
+class CreateUserServiceTests: XCTestCase {
     
     // class or data to test
     private var service: AuthServiceProtocol!

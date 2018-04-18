@@ -21,22 +21,22 @@ class LeadersTests: XCTestCase {
     }
     
     func testRandomUsernameEquality() {
-        let foo = Leaders(score: 20, rank: 1, name: "testusr9112")
-        let bar = Leaders(score: 20, rank: 1, name: "testusr9112")
+        let foo = LeadersModel(score: 20, rank: 1, name: "testusr9112")
+        let bar = LeadersModel(score: 20, rank: 1, name: "testusr9112")
         
         expect(foo).to(equal(bar))
     }
     
     func testLoginNotEquality() {
-        let foo = Leaders(score: 20, rank: 1, name: "testusr9112")
-        let bar = Leaders(score: 10, rank: 2, name: "testusr2119")
+        let foo = LeadersModel(score: 20, rank: 1, name: "testusr9112")
+        let bar = LeadersModel(score: 10, rank: 2, name: "testusr2119")
         
         expect(foo).toNot(equal(bar))
     }
     
     func testSameEqualityBetweenObjcAndSwift() {
-        let foo = Leaders(score: 20, rank: 1, name: "testusr9112")
-        let bar = Leaders(score: 10, rank: 2, name: "testusr2119")
+        let foo = LeadersModel(score: 20, rank: 1, name: "testusr9112")
+        let bar = LeadersModel(score: 10, rank: 2, name: "testusr2119")
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -45,7 +45,7 @@ class LeadersTests: XCTestCase {
     }
     
     func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = Leaders(score: 20, rank: 1, name: "testusr9112")
+        let foo = LeadersModel(score: 20, rank: 1, name: "testusr9112")
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

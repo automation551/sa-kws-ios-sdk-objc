@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class HasTriggeredEvent_ServiceTests: XCTestCase {
+class HasTriggeredEventServiceTests: XCTestCase {
     
     //class or data to test
     private var userActionsService: UserActionsServiceProtocol!

@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
+public final class ApplicationPermissionsModel: NSObject, PermissionsModelProtocols {
     
     public var notifications:       Bool?
     public var address:             Bool?
@@ -48,7 +48,7 @@ public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
     }
 
     // MARK: - Equatable
-    public static func ==(lhs: ApplicationPermissions, rhs: ApplicationPermissions) -> Bool {
+    public static func ==(lhs: ApplicationPermissionsModel, rhs: ApplicationPermissionsModel) -> Bool {
         let areEqual = lhs.firstName == rhs.firstName
         && lhs.lastName == rhs.lastName
         && lhs.address == rhs.address
@@ -57,7 +57,7 @@ public final class ApplicationPermissions: NSObject, PermissionsModelProtocols {
     }
     
     public override func isEqual(_ object: Any?) -> Bool {        
-        guard let object = object as? ApplicationPermissions else { return false }
+        guard let object = object as? ApplicationPermissionsModel else { return false }
         return self == object
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class Points: NSObject, PointsModelProtocols {
+public final class PointsModel: NSObject, PointsModelProtocols {
     
     public var pending:         Int?
     public var received:        Int?
@@ -30,7 +30,7 @@ public final class Points: NSObject, PointsModelProtocols {
     }
     
     // MARK: - Equatable
-    public static func ==(lhs: Points, rhs: Points) -> Bool {
+    public static func ==(lhs: PointsModel, rhs: PointsModel) -> Bool {
         let areEqual = lhs.pending == rhs.pending
         && lhs.received == rhs.received
         && lhs.total == rhs.total
@@ -40,7 +40,7 @@ public final class Points: NSObject, PointsModelProtocols {
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? Points else { return false }
+        guard let object = object as? PointsModel else { return false }
         return self == object
     }
     

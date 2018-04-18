@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension Points: Decodable {
+extension PointsModel: Decodable {
     
-    public static func decode(_ json: Any) throws -> Points {
+    public static func decode(_ json: Any) throws -> PointsModel {
         
-        return try Points (            
+        return try PointsModel (            
             pending:    try json =>? "pending",
             received:   try json =>? "totalReceived",
             total:      try json =>? "total",

@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class CreateUser_DoUserCreation_MappingTests: XCTestCase {
+class CreateUserMappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -27,7 +27,7 @@ class CreateUser_DoUserCreation_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_success_response")
         
-        let createUserResponse = try? AuthUserResponse.decode(JSON!)
+        let createUserResponse = try? AuthUserResponseModel.decode(JSON!)
         
         expect(createUserResponse).toNot(beNil())
         expect(createUserResponse?.id).to(equal(170))

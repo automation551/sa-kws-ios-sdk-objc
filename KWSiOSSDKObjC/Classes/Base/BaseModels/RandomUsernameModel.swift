@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class RandomUsername: NSObject, RandomUsernameModelProtocol {
+public final class RandomUsernameModel: NSObject, RandomUsernameModelProtocol {
     
     public var randomUsername: String?
     
@@ -18,7 +18,7 @@ public final class RandomUsername: NSObject, RandomUsernameModelProtocol {
     
     // MARK: - Equatable
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? RandomUsername else { return false }
+        guard let object = object as? RandomUsernameModel else { return false }
         return self.randomUsername == object.randomUsername
     }
 }

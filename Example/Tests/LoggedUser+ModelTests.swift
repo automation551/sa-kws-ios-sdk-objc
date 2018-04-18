@@ -1,5 +1,5 @@
 //
-//  LoggedUserTests.swift
+//  LoggedUser+ModelTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 05/04/2018.
@@ -10,7 +10,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class LoggedUser_ModelTests: XCTestCase {
+class LoggedUserModelTests: XCTestCase {
  
     override func setUp() {
         super.setUp()
@@ -20,32 +20,32 @@ class LoggedUser_ModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLoggedUserEquality() {
+    func test_LoggedUser_Equality() {
         
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
-        let foo = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 111)
-        let bar = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 111)
+        let foo = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 111)
+        let bar = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 111)
         
         expect(foo).to(equal(bar))
     }
     
-    func testLoggedUserNotEquality() {
+    func test_LoggedUser_NotEquality() {
         
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
-        let foo = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 111)
-        let bar = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 222)
+        let foo = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 111)
+        let bar = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 222)
         
         expect(foo).toNot(equal(bar))
     }
     
-    func testSameEqualityBetweenObjcAndSwift() {
+    func test_SameEquality_BetweenObjcAndSwift() {
        
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
-        let foo = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 111)
-        let bar = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 222)
+        let foo = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 111)
+        let bar = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 222)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -53,31 +53,31 @@ class LoggedUser_ModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func testLoggedUserHashIsEqual() {
+    func test_LoggedUser_HashIsEqual() {
         
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
-        let foo = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 111)
-        let bar = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 111)
+        let foo = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 111)
+        let bar = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 111)
         
         expect(foo.hash).to(equal(bar.hash))
     }
     
-    func testLoggedUserHashIsNotEqual() {
+    func test_LoggedUser_HashIsNotEqual() {
         
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
-        let foo = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 111)
-        let bar = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 222)
+        let foo = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 111)
+        let bar = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 222)
         
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func testObjcLoggedUserNotEqualityWithDifferentClassAndSameIdentifier() {
+    func test_ObjcLoggedUser_NotEquality_WithDifferentClassAndSameIdentifier() {
         
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
-        let foo = LoggedUser(token: "111.111.111", tokenData: tokenData, id: 111)
+        let foo = LoggedUserModel(token: "111.111.111", tokenData: tokenData, id: 111)
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

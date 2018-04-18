@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class Permissions_ServiceTests: XCTestCase {
+class PermissionsServiceTests: XCTestCase {
     
     //class or data to test
     private var userService: UserActionsServiceProtocol!

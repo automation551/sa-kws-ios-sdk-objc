@@ -1,5 +1,5 @@
 //
-//  LoginAuthResponse.swift
+//  LoginAuthResponseModel.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 22/01/2018.
@@ -8,8 +8,7 @@
 import Foundation
 import SAProtobufs
 
-
-public final class LoginAuthResponse: NSObject, LoggedUserModelProtocol {
+public final class LoginAuthResponseModel: NSObject, LoggedUserModelProtocol {
     
     public var token:   String
     public var id:      AnyHashable
@@ -22,13 +21,13 @@ public final class LoginAuthResponse: NSObject, LoggedUserModelProtocol {
     }
     
     // MARK: - Equatable
-    public static func ==(lhs: LoginAuthResponse, rhs: LoginAuthResponse) -> Bool {
+    public static func ==(lhs: LoginAuthResponseModel, rhs: LoginAuthResponseModel) -> Bool {
         let areEqual = lhs.id == rhs.id && lhs.token == rhs.token
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? LoginAuthResponse else { return false }
+        guard let object = object as? LoginAuthResponseModel else { return false }
         return self == object
     }
     

@@ -67,7 +67,7 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
     
     private func getAccessToken(environment: KWSNetworkEnvironment,
                                 authCode: String,
-                                codeVerifier: String, completionHandler: @escaping (LoggedUser?, Error?) -> ()) {
+                                codeVerifier: String, completionHandler: @escaping (LoggedUserModel?, Error?) -> ()) {
         
         let getOAuthTokenNetworkRequest = OAuthUserTokenRequest(environment: environment,
                                                                 clientID: environment.clientID,
@@ -75,12 +75,12 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
                                                                 codeVerifier: codeVerifier,
                                                                 clientSecret: environment.clientSecret)
         
-        let parseTask = ParseJsonTask<LoginAuthResponse>()
+        let parseTask = ParseJsonTask<LoginAuthResponseModel>()
         let networkTask = NetworkTask()
         
         let future = networkTask
             .execute(input: getOAuthTokenNetworkRequest)
-            .map { (result: Result<String>) -> Result <LoginAuthResponse> in
+            .map { (result: Result<String>) -> Result <LoginAuthResponseModel> in
                 return result.then(parseTask.execute)
         }
         
@@ -98,7 +98,7 @@ public class SingleSignOnProvider: NSObject, SingleSignOnServiceProtocol {
                 switch tokenResult {
                 case .success(let tokenData):
                     if let userId = tokenData.userId {
-                        let user = LoggedUser(token: token, tokenData: tokenData, id: userId)
+                        let user = LoggedUserModel(token: token, tokenData: tokenData, id: userId)
                         completionHandler(user, nil)
                     }
                 case .error(let error):

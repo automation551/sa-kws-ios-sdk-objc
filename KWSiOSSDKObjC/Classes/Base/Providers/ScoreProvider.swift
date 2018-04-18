@@ -22,11 +22,11 @@ public class ScoreProvider: NSObject, ScoringServiceProtocol {
         let getScoreNetworkRequest = GetUserScoreRequest(environment: environment, appId: appId, token: token)
         
         let networktask = NetworkTask()
-        let parseTask = ParseJsonTask<Score>()
+        let parseTask = ParseJsonTask<ScoreModel>()
         
         let future = networktask
             .execute(input: getScoreNetworkRequest)
-            .map { (result: Result<String>) -> Result <Score> in
+            .map { (result: Result<String>) -> Result <ScoreModel> in
                 return result.then(parseTask.execute)
         }
         

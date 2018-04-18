@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class TriggerEvent_MappingTests: XCTestCase {
+class TriggerEventMappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

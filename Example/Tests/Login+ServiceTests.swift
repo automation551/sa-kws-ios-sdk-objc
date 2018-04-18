@@ -1,5 +1,5 @@
 //
-//  Login+ObjectProviderTests.swift
+//  Login+ServiceTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 30/01/2018.
@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class Login_ObjectProviderTests: XCTestCase {
+class LoginServiceTests: XCTestCase {
     
     // class or data to test
     private var loginService: AuthServiceProtocol!

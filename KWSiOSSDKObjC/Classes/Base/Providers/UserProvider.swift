@@ -23,12 +23,12 @@ public class UserProvider: NSObject, UserServiceProtocol {
                                                               userId: userId,
                                                               token: token)
         
-        let parseTask = ParseJsonTask<UserDetails>()
+        let parseTask = ParseJsonTask<UserDetailsModel>()
         let networkTask = NetworkTask()
         
         let future = networkTask
             .execute(input: getUserDetailsNetworkRequest)
-            .map { (result: Result<String>) -> Result<UserDetails> in
+            .map { (result: Result<String>) -> Result<UserDetailsModel> in
                 return result.then(parseTask.execute)
         }
         

@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension AppConfig: Decodable {
+extension AppConfigModel: Decodable {
     
-    public static func decode(_ json: Any) throws -> AppConfig {
+    public static func decode(_ json: Any) throws -> AppConfigModel {
         
-        return try AppConfig (
+        return try AppConfigModel (
             id:             json => "id",
             name:           json => "name"
         )

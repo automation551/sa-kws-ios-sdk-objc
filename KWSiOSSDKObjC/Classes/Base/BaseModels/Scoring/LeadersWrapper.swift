@@ -16,7 +16,7 @@ public final class LeadersWrapper: NSObject, LeaderWrapperModelProtocol {
     public var offset:  Int
     public var limit:   Int
     
-    public required init(results: [Leaders],
+    public required init(results: [LeadersModel],
                          count:   Int,
                          offset:  Int,
                          limit:   Int) {

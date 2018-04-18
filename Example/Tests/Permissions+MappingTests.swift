@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class Permissions_MappingTests: XCTestCase {
+class PermissionsMappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -29,7 +29,7 @@ class Permissions_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"permission_request_success_response")
         
-        let userParentEmailResponse = try? UpdateUserDetailsFakeResponse.decode(JSON!)
+        let userParentEmailResponse = try? UpdateUserDetailsFakeResponseModel.decode(JSON!)
         
         expect(userParentEmailResponse).toNot(beNil())
         expect(userParentEmailResponse?.permissionsRequested).to(beTrue())

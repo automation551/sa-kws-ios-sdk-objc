@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class ApplicationProfile: NSObject, AppProfileModelProtocol {
+public final class ApplicationProfileModel: NSObject, AppProfileModelProtocol {
     
     public var customField1:    Int?
     public var customField2:    Int?
@@ -28,13 +28,13 @@ public final class ApplicationProfile: NSObject, AppProfileModelProtocol {
     }
 
     // MARK: - Equatable
-    public static func ==(lhs: ApplicationProfile, rhs: ApplicationProfile) -> Bool {
+    public static func ==(lhs: ApplicationProfileModel, rhs: ApplicationProfileModel) -> Bool {
         let areEqual = lhs.name == rhs.name && lhs.avatarId == rhs.avatarId
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {        
-        guard let object = object as? ApplicationProfile else { return false }
+        guard let object = object as? ApplicationProfileModel else { return false }
         return self == object
     }
     

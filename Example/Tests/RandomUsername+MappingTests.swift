@@ -1,5 +1,5 @@
 //
-//  RandomUsername_DoRandomUsernameFetch+MappingTests.swift
+//  RandomUsername+MappingTests.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 07/02/2018.
@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class RandomUsername_DoRandomUsernameFetch_MappingTests : XCTestCase {
+class RandomUsernameMappingTests : XCTestCase {
     
     override func setUp() {
         super.setUp()

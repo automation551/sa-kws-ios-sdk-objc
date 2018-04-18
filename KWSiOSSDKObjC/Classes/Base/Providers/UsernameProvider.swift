@@ -46,7 +46,7 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
     
     private func fetchRandomUsernameFromBackend(environment: KWSNetworkEnvironment,
                                                appID: Int,
-                                               completionHandler: @escaping (RandomUsername?, Error?) -> ()){
+                                               completionHandler: @escaping (RandomUsernameModel?, Error?) -> ()){
         
         let getRandomUsernameNetworkRequest = RandomUsernameRequest(environment:environment,
                                                                     appID:appID)
@@ -62,9 +62,9 @@ public class UsernameProvider: NSObject, UsernameServiceProtocol {
                 let parsedResponseString = value.replacingOccurrences(of: "\"", with: "")
                 
                 if (parsedResponseString != nil && !(parsedResponseString.isEmpty)){
-                    completionHandler(RandomUsername(randomUsername: parsedResponseString), nil)
+                    completionHandler(RandomUsernameModel(randomUsername: parsedResponseString), nil)
                 } else {
-                    completionHandler(RandomUsername(randomUsername: value), nil)
+                    completionHandler(RandomUsernameModel(randomUsername: value), nil)
                 }
             case .error(let error):
                 let mappedError = Provider().mapErrorResponse(error: error)

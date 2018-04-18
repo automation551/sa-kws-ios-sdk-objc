@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class AppConfig: NSObject, AppConfigModelProtocol {
+public final class AppConfigModel: NSObject, AppConfigModelProtocol {
     
     public var id:      Int
     public var name:    String
@@ -21,13 +21,13 @@ public final class AppConfig: NSObject, AppConfigModelProtocol {
     }
     
     // MARK: - Equatable
-    public static func ==(lhs: AppConfig, rhs: AppConfig) -> Bool {
+    public static func ==(lhs: AppConfigModel, rhs: AppConfigModel) -> Bool {
         let areEqual = lhs.id == rhs.id        
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? AppConfig else { return false }
+        guard let object = object as? AppConfigModel else { return false }
         return self == object
     }
     

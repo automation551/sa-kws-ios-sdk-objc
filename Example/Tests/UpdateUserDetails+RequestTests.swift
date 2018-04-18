@@ -11,7 +11,7 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class UpdateUserDetails_RequestTests: XCTestCase {
+class UpdateUserDetailsRequestTests: XCTestCase {
     
     private var env: KWSNetworkEnvironment!
     private var request: UpdateUserDetailsRequest!

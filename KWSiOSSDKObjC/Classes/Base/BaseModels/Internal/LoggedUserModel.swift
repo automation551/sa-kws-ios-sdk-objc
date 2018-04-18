@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public class LoggedUser : NSObject, LoggedUserModelProtocol{
+public class LoggedUserModel : NSObject, LoggedUserModelProtocol{
     
     public var token:       String
     public var tokenData:   TokenData
@@ -24,13 +24,13 @@ public class LoggedUser : NSObject, LoggedUserModelProtocol{
     }
     
     // MARK: - Equatable
-    public static func ==(lhs: LoggedUser, rhs: LoggedUser) -> Bool {
+    public static func ==(lhs: LoggedUserModel, rhs: LoggedUserModel) -> Bool {
         let areEqual = lhs.id == rhs.id
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? LoggedUser else { return false }
+        guard let object = object as? LoggedUserModel else { return false }
         return self == object
     }
     

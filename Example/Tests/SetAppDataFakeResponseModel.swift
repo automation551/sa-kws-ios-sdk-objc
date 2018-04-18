@@ -1,5 +1,5 @@
 //
-//  SetAppDataFakeResponse.swift
+//  SetAppDataFakeResponseModel.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 //FAKE DECODER
-public final class SetAppDataFakeResponse: NSObject, Error {
+public final class SetAppDataFakeResponseModel: NSObject, Error {
     
     public let appSet: Bool?
     

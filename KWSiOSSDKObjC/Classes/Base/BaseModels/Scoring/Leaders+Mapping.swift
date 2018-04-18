@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension Leaders: Decodable {
+extension LeadersModel: Decodable {
     
-    public static func decode(_ json: Any) throws -> Leaders {
+    public static func decode(_ json: Any) throws -> LeadersModel {
         
-        return try Leaders (
+        return try LeadersModel (
             score:    json => "score",
             rank:     json => "rank",
             name:     json => "user"

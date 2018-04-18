@@ -10,7 +10,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class TokenData_ModelTests: XCTestCase {
+class TokenDataModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -20,21 +20,21 @@ class TokenData_ModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testTokenDataEquality() {
+    func test_TokenData_Equality() {
         let foo = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         let bar = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         
         expect(foo).to(equal(bar))
     }
     
-    func testTokenDataNotEquality() {
+    func test_TokenData_NotEquality() {
         let foo = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         let bar = TokenData(userId: 222, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         
         expect(foo).toNot(equal(bar))
     }
     
-    func testSameEqualityBetweenObjcAndSwift() {
+    func test_SameEquality_BetweenObjcAndSwift() {
         let foo = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         let bar = TokenData(userId: 222, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         
@@ -44,21 +44,21 @@ class TokenData_ModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func testTokenDataHashIsEqual() {
+    func test_TokenData_HashIsEqual() {
         let foo = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         let bar = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         
         expect(foo.hash).to(equal(bar.hash))
     }
     
-    func testTokenDataHashIsNotEqual() {
+    func test_TokenData_HashIsNotEqual() {
         let foo = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         let bar = TokenData(userId: 222, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func testObjcTokenDataNotEqualityWithDifferentClassAndSameIdentifier() {
+    func test_ObjcTokenData_NotEquality_WithDifferentClassAndSameIdentifier() {
         let foo = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         let bar = "12345"
         

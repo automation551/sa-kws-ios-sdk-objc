@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension AuthUserResponse: Decodable {
+extension AuthUserResponseModel: Decodable {
     
-    public static func decode(_ json: Any) throws -> AuthUserResponse {
+    public static func decode(_ json: Any) throws -> AuthUserResponseModel {
         
-        return try AuthUserResponse (
+        return try AuthUserResponseModel (
             id:                 try json => "id" as! AnyHashable,
             token:              try json => "token"            
         )

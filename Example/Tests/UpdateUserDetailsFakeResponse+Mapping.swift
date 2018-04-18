@@ -10,11 +10,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension UpdateUserDetailsFakeResponse: Decodable {
+extension UpdateUserDetailsFakeResponseModel: Decodable {
     
-    public static func decode(_ json: Any) throws -> UpdateUserDetailsFakeResponse {
+    public static func decode(_ json: Any) throws -> UpdateUserDetailsFakeResponseModel {
         
-        return try UpdateUserDetailsFakeResponse (
+        return try UpdateUserDetailsFakeResponseModel (
             userUpdated:               try json =>? "userUpdated",
             emailUpdated:              try json =>? "emailUpdated",
             permissionsRequested:      try json =>? "permissionsRequested"

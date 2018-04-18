@@ -1,5 +1,5 @@
 //
-//  Session+ObjectProvider.swift
+//  Session+ServiceTests.swift
 //  KWSiOSSDKObjC_Example
 //
 //  Created by Guilherme Mota on 08/04/2018.
@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class Session_ObjectProviderTests: XCTestCase {
+class SessionServiceTests: XCTestCase {
     
     //mock or real data
     private let kTokenKey: String = "kwsSDK_LoggedUser_Token_key"

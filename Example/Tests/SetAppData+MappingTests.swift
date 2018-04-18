@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class SetAppData_MappingTests: XCTestCase {
+class SetAppDataMappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -27,7 +27,7 @@ class SetAppData_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"set_app_data_fake_success_response")
         
-        let setAppDataResponse = try? SetAppDataFakeResponse.decode(JSON!)
+        let setAppDataResponse = try? SetAppDataFakeResponseModel.decode(JSON!)
         
         expect(setAppDataResponse).toNot(beNil())
         expect(setAppDataResponse?.appSet).to(beTrue())

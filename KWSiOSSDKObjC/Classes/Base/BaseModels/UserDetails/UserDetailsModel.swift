@@ -1,5 +1,5 @@
 //
-//  UserDetailsUserDetails.swift
+//  UserDetailsModel.swift
 //  KWSiOSSDKObjC
 //
 //  Created by Guilherme Mota on 08/02/2018.
@@ -11,7 +11,7 @@ import SAProtobufs
 import Decodable
 import protocol Decodable.Decodable
 
-public final class UserDetails: NSObject, UserDetailsModelProtocol {
+public final class UserDetailsModel: NSObject, UserDetailsModelProtocol {
     
     public var firstName:                   String?
     public var lastName:                    String?
@@ -37,10 +37,10 @@ public final class UserDetails: NSObject, UserDetailsModelProtocol {
                          email:                     String? = nil,
                          hasSetParentEmail:         Bool? = nil,
                          createdAt:                 String,
-                         address:                   UserAddress? = nil,
-                         applicationProfile:        ApplicationProfile? = nil,
-                         applicationPermissions:    ApplicationPermissions? = nil,
-                         points:                    Points? = nil,
+                         address:                   UserAddressModel? = nil,
+                         applicationProfile:        ApplicationProfileModel? = nil,
+                         applicationPermissions:    ApplicationPermissionsModel? = nil,
+                         points:                    PointsModel? = nil,
                          id:                        AnyHashable,
                          name:                      String? = nil,
                          language:                  String? = nil,
@@ -66,13 +66,13 @@ public final class UserDetails: NSObject, UserDetailsModelProtocol {
     }
     
     // MARK: - Equatable
-    public static func ==(lhs: UserDetails, rhs: UserDetails) -> Bool {
+    public static func ==(lhs: UserDetailsModel, rhs: UserDetailsModel) -> Bool {
         let areEqual = lhs.id == rhs.id
         return areEqual
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? UserDetails else { return false }
+        guard let object = object as? UserDetailsModel else { return false }
         return self == object
     }
     

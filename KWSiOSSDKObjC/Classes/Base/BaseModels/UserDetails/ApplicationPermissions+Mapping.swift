@@ -9,11 +9,11 @@ import Foundation
 import Decodable
 import protocol Decodable.Decodable
 
-extension ApplicationPermissions: Decodable {
+extension ApplicationPermissionsModel: Decodable {
     
-    public static func decode(_ json: Any) throws -> ApplicationPermissions {
+    public static func decode(_ json: Any) throws -> ApplicationPermissionsModel {
         
-        return try ApplicationPermissions (            
+        return try ApplicationPermissionsModel (            
             notifications:           try json =>? "sendPushNotification",
             address:                 try json =>? "accessAddress",
             firstName:               try json =>? "accessFirstName",

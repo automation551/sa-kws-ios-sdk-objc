@@ -1,5 +1,5 @@
 //
-//  UpdateUserDetailsFakeResponse.swift
+//  UpdateUserDetailsFakeResponseModel.swift
 //  KWSiOSSDKObjC_Tests
 //
 //  Created by Guilherme Mota on 09/04/2018.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 //FAKE DECODER
-public final class UpdateUserDetailsFakeResponse: NSObject, Error {
+public final class UpdateUserDetailsFakeResponseModel: NSObject, Error {
     
     public let userUpdated: Bool?
     public let emailUpdated: Bool?

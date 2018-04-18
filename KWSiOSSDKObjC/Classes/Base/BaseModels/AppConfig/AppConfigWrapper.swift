@@ -12,7 +12,7 @@ public final class AppConfigWrapper: NSObject, AppConfigWrapperModelProtocol {
     
     public var app: AppConfigModelProtocol
     
-    public required init(app: AppConfig) {
+    public required init(app: AppConfigModel) {
         self.app = app        
     }
 }

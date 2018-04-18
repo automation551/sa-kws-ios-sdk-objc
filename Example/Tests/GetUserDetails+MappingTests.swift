@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class GetUser_MappingTests: XCTestCase {
+class GetUserDetailsMappingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -29,7 +29,7 @@ class GetUser_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"get_user_details_success_response")
         
-        let userDetailsResponse = try? UserDetails.decode(JSON!)
+        let userDetailsResponse = try? UserDetailsModel.decode(JSON!)
         
         expect(userDetailsResponse).toNot(beNil())
         expect(userDetailsResponse?.id).to(equal(25))

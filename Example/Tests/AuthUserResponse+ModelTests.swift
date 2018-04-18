@@ -10,7 +10,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class AuthUserResponse_ModelTests: XCTestCase {
+class AuthUserResponseModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -20,23 +20,23 @@ class AuthUserResponse_ModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testAuthUserResponseEquality() {
-        let foo = AuthUserResponse(id: 123, token: "111.111.111")
-        let bar = AuthUserResponse(id: 123, token: "111.111.111")
+    func test_AuthUser_Response_Equality() {
+        let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
+        let bar = AuthUserResponseModel(id: 123, token: "111.111.111")
         
         expect(foo).to(equal(bar))
     }
     
-    func testAuthUserResponseTestsNotEquality() {
-        let foo = AuthUserResponse(id: 123, token: "111.111.111")
-        let bar = AuthUserResponse(id: 321, token: "222.222.222")
+    func test_AuthUserResponse_Response_NotEquality() {
+        let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
+        let bar = AuthUserResponseModel(id: 321, token: "222.222.222")
         
         expect(foo).toNot(equal(bar))
     }
     
-    func testSameEqualityBetweenObjcAndSwift() {
-        let foo = AuthUserResponse(id: 123, token: "111.111.111")
-        let bar = AuthUserResponse(id: 321, token: "222.222.222")
+    func test_SameEquality_BetweenObjcAndSwift() {
+        let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
+        let bar = AuthUserResponseModel(id: 321, token: "222.222.222")
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -44,22 +44,22 @@ class AuthUserResponse_ModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func testAuthUserResponseTestsHashIsEqual() {
-        let foo = AuthUserResponse(id: 123, token: "111.111.111")
-        let bar = AuthUserResponse(id: 123, token: "111.111.111")
+    func test_AuthUserResponse_HashIsEqual() {
+        let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
+        let bar = AuthUserResponseModel(id: 123, token: "111.111.111")
         
         expect(foo.hash).to(equal(bar.hash))
     }
     
-    func testAuthUserResponseTestsHashIsNotEqual() {
-        let foo = AuthUserResponse(id: 123, token: "111.111.111")
-        let bar = AuthUserResponse(id: 321, token: "111.111.111")
+    func test_AuthUserResponse_HashIsNotEqual() {
+        let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
+        let bar = AuthUserResponseModel(id: 321, token: "111.111.111")
         
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func testObjcAuthUserResponseTestsNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = AuthUserResponse(id: 123, token: "111.111.111")
+    func test_ObjcAuthUserResponse_NotEquality_WithDifferentClassAndSameIdentifier() {
+        let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())

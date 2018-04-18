@@ -11,7 +11,7 @@ import XCTest
 import Nimble
 import KWSiOSSDKObjC
 
-class LoginAuthResponse_ModelTests: XCTestCase {
+class LoginAuthResponseModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,23 +21,23 @@ class LoginAuthResponse_ModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLoginAuthResponseEquality() {
-        let foo = LoginAuthResponse(token: "111.111.111", id: 123)
-        let bar = LoginAuthResponse(token: "111.111.111", id: 123)
+    func test_LoginAuthResponse_Equality() {
+        let foo = LoginAuthResponseModel(token: "111.111.111", id: 123)
+        let bar = LoginAuthResponseModel(token: "111.111.111", id: 123)
         
         expect(foo).to(equal(bar))
     }
     
-    func testLoginAuthResponseTestsNotEquality() {
-        let foo = LoginAuthResponse(token: "111.111.111", id: 123)
-        let bar = LoginAuthResponse(token: "222.222.222", id: 321)
+    func test_LoginAuthResponse_NotEquality() {
+        let foo = LoginAuthResponseModel(token: "111.111.111", id: 123)
+        let bar = LoginAuthResponseModel(token: "222.222.222", id: 321)
         
         expect(foo).toNot(equal(bar))
     }
     
-    func testSameEqualityBetweenObjcAndSwift() {
-        let foo = LoginAuthResponse(token: "111.111.111", id: 123)
-        let bar = LoginAuthResponse(token: "222.222.222", id: 321)
+    func test_SameEquality_BetweenObjcAndSwift() {
+        let foo = LoginAuthResponseModel(token: "111.111.111", id: 123)
+        let bar = LoginAuthResponseModel(token: "222.222.222", id: 321)
         
         let objc = foo.isEqual(bar)
         let swift = foo == bar
@@ -45,22 +45,22 @@ class LoginAuthResponse_ModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func testLoginAuthResponseTestsHashIsEqual() {
-        let foo = LoginAuthResponse(token: "111.111.111", id: 123)
-        let bar = LoginAuthResponse(token: "111.111.111", id: 123)
+    func test_LoginAuthResponse_HashIsEqual() {
+        let foo = LoginAuthResponseModel(token: "111.111.111", id: 123)
+        let bar = LoginAuthResponseModel(token: "111.111.111", id: 123)
         
         expect(foo.hash).to(equal(bar.hash))
     }
     
-    func testLoginAuthResponseTestsHashIsNotEqual() {
-        let foo = LoginAuthResponse(token: "111.111.111", id: 123)
-        let bar = LoginAuthResponse(token: "111.111.111", id: 321)
+    func test_LoginAuthResponse_HashIsNotEqual() {
+        let foo = LoginAuthResponseModel(token: "111.111.111", id: 123)
+        let bar = LoginAuthResponseModel(token: "111.111.111", id: 321)
         
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func testObjcLoginAuthResponseTestsNotEqualityWithDifferentClassAndSameIdentifier() {
-        let foo = AuthUserResponse(id: 123, token: "111.111.111")
+    func test_ObjcLoginAuthResponse_NotEquality_WithDifferentClassAndSameIdentifier() {
+        let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
         let bar = "12345"
         
         expect(foo.isEqual(bar)).to(beFalse())
