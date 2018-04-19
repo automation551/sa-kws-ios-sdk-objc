@@ -34,7 +34,7 @@ class AppConfigModelTests: XCTestCase {
         expect(foo).toNot(equal(bar))
     }
     
-    func test_SameEquality_BetweenObjcAndSwift() {
+    func test_SameEquality_Between_Objc_And_Swift() {
         let foo = AppConfigModel(id: 123, name: "app_name_abc")
         let bar = AppConfigModel(id: 321, name: "app_name_abc")
         
@@ -44,21 +44,21 @@ class AppConfigModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func test_AppConfig_HashIsEqual() {
+    func test_AppConfig_Hash_Is_Equal() {
         let foo = AppConfigModel(id: 123, name: "app_name_abc")
         let bar = AppConfigModel(id: 123, name: "app_name_abc")
         
         expect(foo.hash).to(equal(bar.hash))
     }
     
-    func test_AppConfig_HashIsNotEqual() {
+    func test_AppConfig_Hash_Is_Not_Equal() {
         let foo = AppConfigModel(id: 123, name: "app_name_abc")
         let bar = AppConfigModel(id: 321, name: "app_name_abc")
         
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func test_ObjcAppConfig_NotEquality_WithDifferentClassAndSameIdentifier() {
+    func test_Objc_AppConfig_Not_Equality_With_Different_Class_And_Same_Identifier() {
         let foo = AppConfigModel(id: 123, name: "app_name_abc")
         let bar = "12345"
         

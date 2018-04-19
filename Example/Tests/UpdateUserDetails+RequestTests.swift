@@ -57,22 +57,22 @@ class UpdateUserDetailsRequestTests: XCTestCase {
         expect(self.request).toNot(beNil())
     }
     
-    func testRequestEnvironmentToBeNotNil(){
+    func test_Request_Environment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func testRequestMethod(){
+    func test_Request_Method(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
     
-    func testEndpoint(){
+    func test_Endpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
     }  
     
-    func testConstantsToBeNotNil(){
+    func test_Constants_ToBe_NotNil(){
         //then
         expect(self.userId).toNot(beNil())
         expect(self.token).toNot(beNil())
@@ -81,13 +81,13 @@ class UpdateUserDetailsRequestTests: XCTestCase {
         expect(self.method).toNot(beNil())
     }
     
-    func testRequestBodyToNotBeNil(){
+    func test_Request_Body_ToBe_NotNil(){
         //then
         expect(self.request.body).toNot(beNil())
         
     }
     
-    public func testRequestHeader() {
+    public func test_Request_Header() {
         let requestHeaders = self.request.headers
         
         //then
@@ -100,13 +100,13 @@ class UpdateUserDetailsRequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
         
-    func testRequestQueryToBeNil() {
+    func test_Request_Query_ToBe_Nil() {
         //then
         expect(self.request.query).to(beNil())
         
     }
     
-    func testRequestFormUrlEncodeToBeFalse(){
+    func testRequest_Form_Url_Encode_ToBe_False(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }

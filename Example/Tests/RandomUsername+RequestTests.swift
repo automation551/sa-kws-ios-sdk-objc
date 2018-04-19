@@ -44,12 +44,12 @@ class RandomUsernameRequestTests: XCTestCase {
         expect(self.request).toNot(beNil())
     }
     
-    func test_RequestEnvironment_ToBe_NotNil(){
+    func test_Request_Environment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func test_RequestMethod(){
+    func test_Request_Method(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
@@ -66,7 +66,7 @@ class RandomUsernameRequestTests: XCTestCase {
         expect(self.method).toNot(beNil())
     }
     
-    func test_RequestBody_ToBe_Nil(){
+    func test_Request_Body_ToBe_Nil(){
         //then
         expect(self.request.body).to(beNil())
     }
@@ -84,12 +84,12 @@ class RandomUsernameRequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beFalse())
     }
     
-    func test_RequestQuery_ToBe_Nil() {
+    func test_Request_Query_ToBe_Nil() {
         //then
         expect(self.request.query).to(beNil())
     }
     
-    func test_RequestFormUrlEncode_ToBe_False(){
+    func test_Request_FormUrl_Encode_ToBe_False(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }

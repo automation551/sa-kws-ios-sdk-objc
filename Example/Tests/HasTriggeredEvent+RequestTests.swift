@@ -48,12 +48,12 @@ class HasTriggeredEventRequestTests: XCTestCase {
         expect(self.request).toNot(beNil())
     }
     
-    func test_RequestEnvironment_ToBe_NotNil(){
+    func test_Request_Environment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func test_RequestMethod(){
+    func test_Request_Method(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
@@ -72,7 +72,7 @@ class HasTriggeredEventRequestTests: XCTestCase {
         expect(self.method).toNot(beNil())
     }
     
-    func test_RequestBody(){
+    func test_Request_Body(){
         let requestBody = self.request.body
         
         //then
@@ -84,7 +84,7 @@ class HasTriggeredEventRequestTests: XCTestCase {
         expect(self.eventId).to(equal((requestBody?["eventId"] as! Int)))
     }
     
-    public func test_RequestHeader() {
+    public func test_Request_Header() {
         let requestHeaders = self.request.headers
         
         //then
@@ -97,12 +97,12 @@ class HasTriggeredEventRequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
     
-    func test_RequestQuery() {
+    func test_Request_Query() {
         //then
         expect(self.request.query).to(beNil())
     }
     
-    func test_RequestFormUrlEncode_ToBe_False(){
+    func test_Request_Form_Url_Encode_ToBe_False(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }

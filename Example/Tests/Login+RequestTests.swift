@@ -52,12 +52,12 @@ class LoginRequestTests: XCTestCase {
         expect(self.request).toNot(beNil())
     }
     
-    func test_RequestEnvironment_ToBe_NotNil(){
+    func test_Request_Environment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func test_RequestMethod(){
+    func test_Request_Method(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
@@ -78,7 +78,7 @@ class LoginRequestTests: XCTestCase {
         
     }
     
-    func test_RequestBody(){
+    func test_Request_Body(){
         let requestBody = self.request.body
         
         //then
@@ -98,7 +98,7 @@ class LoginRequestTests: XCTestCase {
         expect(self.clientSecret).to(equal((requestBody?["client_secret"] as! String)))
     }
     
-    public func test_RequestHeader() {
+    public func test_Request_Header() {
         let requestHeaders = self.request.headers
         
         //then
@@ -116,7 +116,7 @@ class LoginRequestTests: XCTestCase {
         expect(self.request.query).to(beNil())
     }
     
-    func test_RequestFormUrlEncode_ToBe_True(){
+    func test_Request_Form_Url_Encode_ToBe_True(){
         //then
         expect(self.request.formEncodeUrls).to(beTrue())
     }

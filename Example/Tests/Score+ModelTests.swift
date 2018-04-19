@@ -34,7 +34,7 @@ class ScoreModelTests: XCTestCase {
         expect(foo).toNot(equal(bar))
     }
     
-    func test_SameEquality_BetweenObjcAndSwift() {
+    func test_SameEquality_Between_Objc_And_Swift() {
         let foo = ScoreModel(score: 20, rank: 1)
         let bar = ScoreModel(score: 10, rank: 2)
         
@@ -44,7 +44,7 @@ class ScoreModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func test_ObjcScore_NotEquality_WithDifferentClassAndSameIdentifier() {
+    func test_ObjcScore_NotEquality_With_Different_Class_And_Same_Identifier() {
         let foo = ScoreModel(score: 20, rank: 1)
         let bar = "12345"
         

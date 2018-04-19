@@ -49,12 +49,12 @@ class PermissionsRequestTests: XCTestCase {
         expect(self.request).toNot(beNil())
     }
     
-    func test_RequestEnvironment_ToBe_NotNil(){
+    func test_Request_Environment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func test_RequestMethod(){
+    func test_Request_Method(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
@@ -73,7 +73,7 @@ class PermissionsRequestTests: XCTestCase {
         expect(self.method).toNot(beNil())
     }
     
-    func test_RequestBody_ToBe_NotNil(){
+    func test_Request_Body_ToBe_NotNil(){
         //then
         
         let requestBody = self.request.body
@@ -85,7 +85,7 @@ class PermissionsRequestTests: XCTestCase {
         
     }
     
-    public func test_RequestHeader() {
+    public func test_Request_Header() {
         let requestHeaders = self.request.headers
         
         //then
@@ -98,13 +98,13 @@ class PermissionsRequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }    
     
-    func test_RequestQuery_ToBe_Nil() {
+    func test_Request_Query_ToBe_Nil() {
         //then
         expect(self.request.query).to(beNil())
         
     }
     
-    func test_RequestFormUrlEncode_ToBe_False(){
+    func test_Request_Form_Url_Encode_ToBe_False(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }

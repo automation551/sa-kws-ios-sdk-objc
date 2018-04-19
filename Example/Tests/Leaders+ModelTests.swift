@@ -20,21 +20,21 @@ class LeadersModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testRandomUsernameEquality() {
+    func test_Leaders_Equality() {
         let foo = LeadersModel(score: 20, rank: 1, name: "testusr9112")
         let bar = LeadersModel(score: 20, rank: 1, name: "testusr9112")
         
         expect(foo).to(equal(bar))
     }
     
-    func testLoginNotEquality() {
+    func test_Leaders_NotEquality() {
         let foo = LeadersModel(score: 20, rank: 1, name: "testusr9112")
         let bar = LeadersModel(score: 10, rank: 2, name: "testusr2119")
         
         expect(foo).toNot(equal(bar))
     }
     
-    func testSameEqualityBetweenObjcAndSwift() {
+    func test_Same_Equality_Between_Objc_And_Swift() {
         let foo = LeadersModel(score: 20, rank: 1, name: "testusr9112")
         let bar = LeadersModel(score: 10, rank: 2, name: "testusr2119")
         
@@ -44,7 +44,7 @@ class LeadersModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func testObjcLoginNotEqualityWithDifferentClassAndSameIdentifier() {
+    func test_Objc_Leaders_NotEquality_With_Different_Class_And_Same_Identifier() {
         let foo = LeadersModel(score: 20, rank: 1, name: "testusr9112")
         let bar = "12345"
         

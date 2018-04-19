@@ -34,7 +34,7 @@ class RandomUsernameModelTests: XCTestCase {
         expect(foo).toNot(equal(bar))
     }
     
-    func test_SameEquality_BetweenObjcAndSwift() {
+    func test_SameEquality_Between_Objc_And_Swift() {
         let foo = RandomUsernameModel(randomUsername: "good_random_username")
         let bar = RandomUsernameModel(randomUsername: "bad_random_username")
         
@@ -44,7 +44,7 @@ class RandomUsernameModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func test_ObjcRandomUsername_NotEquality_WithDifferentClassAndSameIdentifier() {
+    func test_Objc_RandomUsername_NotEquality_With_Different_Class_And_Same_Identifier() {
         let foo = RandomUsernameModel(randomUsername: "good_random_username")
         let bar = "12345"
         

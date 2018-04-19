@@ -43,12 +43,12 @@ class AppConfigRequestTests: XCTestCase {
         expect(self.request).toNot(beNil())
     }
     
-    func test_RequestEnvironment_ToBe_NotNil(){
+    func test_Request_Environment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func test_RequestMethod(){
+    func test_Request_Method(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
@@ -65,12 +65,12 @@ class AppConfigRequestTests: XCTestCase {
         expect(self.method).toNot(beNil())
     }
 
-    func test_RequestBody_ToBe_Nil(){
+    func test_Request_Body_ToBe_Nil(){
         //then
         expect(self.request.body).to(beNil())
     }
     
-    public func test_RequestHeader() {
+    public func test_Request_Header() {
         let requestHeaders = self.request.headers
         
         //then
@@ -84,7 +84,7 @@ class AppConfigRequestTests: XCTestCase {
     }
     
     
-    func test_RequestQuery() {
+    func test_Request_Query() {
         
         let requestQuery = self.request.query
         
@@ -97,7 +97,7 @@ class AppConfigRequestTests: XCTestCase {
         expect(self.clientID).to(equal((requestQuery?["oauthClientId"] as! String)))
     }
     
-    func test_RequestFormUrlEncodeToBeFalse(){
+    func test_Request_Form_Url_Encode_ToBe_False(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }    

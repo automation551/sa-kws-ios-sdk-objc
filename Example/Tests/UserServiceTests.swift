@@ -270,7 +270,6 @@ class UserServiceTests: XCTestCase {
                                                token: token)
         
         //when
-        let uri = "\(request.environment.domain + request.endpoint)"
         stub(everything, json(JSON!, status: 204))
         
         waitUntil { done in

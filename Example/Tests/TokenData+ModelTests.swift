@@ -58,7 +58,7 @@ class TokenDataModelTests: XCTestCase {
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func test_ObjcTokenData_NotEquality_WithDifferentClassAndSameIdentifier() {
+    func test_ObjcTokenData_NotEquality_With_Different_Class_And_Same_Identifier() {
         let foo = TokenData(userId: 111, appId: 999, clientId: "client_id_1", scope: "scope_1", iat: 10, exp: 10, iss: "iss_1")
         let bar = "12345"
         

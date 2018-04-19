@@ -45,12 +45,12 @@ class GetUserDetailsRequestTests: XCTestCase {
         expect(self.request).toNot(beNil())
     }
     
-    func test_RequestEnvironment_ToBe_NotNil(){
+    func test_Request_Environment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func test_RequestMethod(){
+    func test_Request_Method(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
@@ -87,7 +87,7 @@ class GetUserDetailsRequestTests: XCTestCase {
        
     }
     
-    func test_RequestFormUrlEncode_ToBe_False(){
+    func test_Request_Form_Url_Encode_ToBe_False(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }

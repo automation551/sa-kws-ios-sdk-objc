@@ -40,7 +40,7 @@ class LoggedUserModelTests: XCTestCase {
         expect(foo).toNot(equal(bar))
     }
     
-    func test_SameEquality_BetweenObjcAndSwift() {
+    func test_SameEquality_Between_Objc_And_Swift() {
        
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
@@ -53,7 +53,7 @@ class LoggedUserModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func test_LoggedUser_HashIsEqual() {
+    func test_LoggedUser_Hash_Is_Equal() {
         
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
@@ -63,7 +63,7 @@ class LoggedUserModelTests: XCTestCase {
         expect(foo.hash).to(equal(bar.hash))
     }
     
-    func test_LoggedUser_HashIsNotEqual() {
+    func test_LoggedUser_Hash_Is_Not_Equal() {
         
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         
@@ -73,7 +73,7 @@ class LoggedUserModelTests: XCTestCase {
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func test_ObjcLoggedUser_NotEquality_WithDifferentClassAndSameIdentifier() {
+    func test_Objc_LoggedUser_Not_Equality_With_Different_Class_And_Same_Identifier() {
         
         let tokenData = TokenData(appId: 123, clientId: "client_id")
         

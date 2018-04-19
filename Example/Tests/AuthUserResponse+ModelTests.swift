@@ -34,7 +34,7 @@ class AuthUserResponseModelTests: XCTestCase {
         expect(foo).toNot(equal(bar))
     }
     
-    func test_SameEquality_BetweenObjcAndSwift() {
+    func test_SameEquality_Between_Objc_And_Swift() {
         let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
         let bar = AuthUserResponseModel(id: 321, token: "222.222.222")
         
@@ -44,21 +44,21 @@ class AuthUserResponseModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func test_AuthUserResponse_HashIsEqual() {
+    func test_AuthUserResponse_Hash_Is_Equal() {
         let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
         let bar = AuthUserResponseModel(id: 123, token: "111.111.111")
         
         expect(foo.hash).to(equal(bar.hash))
     }
     
-    func test_AuthUserResponse_HashIsNotEqual() {
+    func test_AuthUserResponse_Hash_Is_Not_Equal() {
         let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
         let bar = AuthUserResponseModel(id: 321, token: "111.111.111")
         
         expect(foo.hash).toNot(equal(bar.hash))
     }
     
-    func test_ObjcAuthUserResponse_NotEquality_WithDifferentClassAndSameIdentifier() {
+    func test_Objc_AuthUserResponse_NotEquality_With_Different_Class_And_Same_Identifier() {
         let foo = AuthUserResponseModel(id: 123, token: "111.111.111")
         let bar = "12345"
         

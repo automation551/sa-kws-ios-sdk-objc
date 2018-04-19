@@ -33,7 +33,7 @@ class UserAddressModelTests: XCTestCase {
         expect(foo).toNot(equal(bar))
     }
     
-    func test_SameEquality_BetweenObjcAndSwift() {
+    func test_SameEquality_Between_Objc_And_Swift() {
         let foo = UserAddressModel(street: nil, city: "London", postCode: "N12 21L", country: nil, countryCode: "GB", countryName: nil)
         let bar = UserAddressModel(street: nil, city: "Manchester", postCode: "M11 11L", country: nil, countryCode: "UK", countryName: nil)
         let objc = foo.isEqual(bar)
@@ -42,7 +42,7 @@ class UserAddressModelTests: XCTestCase {
         expect(objc).to(equal(swift))
     }
     
-    func test_ObjcUserAddress_NotEquality_WithDifferentClassAndSameIdentifier() {
+    func test_ObjcUserAddress_NotEquality_With_Different_Class_And_Same_Identifier() {
         let foo = UserAddressModel(street: nil, city: "London", postCode: "N12 21L", country: nil, countryCode: "GB", countryName: nil)
         let bar = "12345"
         
