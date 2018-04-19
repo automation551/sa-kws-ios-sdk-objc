@@ -1,8 +1,8 @@
 //
-//  Login+ServiceTests.swift
+//  Auth+ServiceTests.swift
 //  KWSiOSSDKObjC_Tests
 //
-//  Created by Guilherme Mota on 30/01/2018.
+//  Created by Guilherme Mota on 19/04/2018.
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
@@ -13,10 +13,10 @@ import KWSiOSSDKObjC
 import SAMobileBase
 import SAProtobufs
 
-class LoginServiceTests: XCTestCase {
+class AuthServiceTests: XCTestCase {
     
     // class or data to test
-    private var loginService: AuthServiceProtocol!
+    private var service: AuthServiceProtocol!
     private var environment: KWSNetworkEnvironment!
     
     private var goodUsername: String = "good_username"
@@ -38,15 +38,27 @@ class LoginServiceTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.loginService = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
+        self.service = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
     }
     
     override func tearDown() {
         super.tearDown()
-        loginService = nil
+        service = nil
         environment = nil
     }
     
+    //MARK: CREATE USER
+    
+    func test_Multiple_Stubs(){
+        let JSON1: Any? = try? fixtureWithName(name: "temp_access_token_success_response")
+        let JSON2: Any? = try? fixtureWithName(name: "create_user_success_response")
+        
+        stub(everything, json(JSON2!))
+        stub(everything, json(JSON1!))
+        //todo
+    }
+    
+    //MARK: LOGIN
     func test_Login_ValidRequestAndResponse(){
         
         let JSON: Any? = try? fixtureWithName(name:"login_success_response")
@@ -62,17 +74,17 @@ class LoginServiceTests: XCTestCase {
         stub(http(.post, uri: uri ) , json(JSON!))
         
         waitUntil { done in
-            self.loginService.loginUser(userName: self.goodUsername,
-                                        password: self.goodPassword,
-                                        completionHandler: {  loginResponse, error in
-                                            
-                                            //then
-                                            expect(loginResponse).toNot(beNil())
-                                            expect(loginResponse?.token).to(equal("good_token"))
-                                            
-                                            expect(error).to(beNil())
-                                            
-                                            done()
+            self.service.loginUser(userName: self.goodUsername,
+                                   password: self.goodPassword,
+                                   completionHandler: {  loginResponse, error in
+                                    
+                                    //then
+                                    expect(loginResponse).toNot(beNil())
+                                    expect(loginResponse?.token).to(equal("good_token"))
+                                    
+                                    expect(error).to(beNil())
+                                    
+                                    done()
             })
         }
     }
@@ -92,18 +104,18 @@ class LoginServiceTests: XCTestCase {
         
         waitUntil { done in
             
-            self.loginService.loginUser(userName: self.goodUsername,
-                                        password: self.goodPassword,
-                                        completionHandler: {  loginResponse, error in
-                
-                //then
-                expect(loginResponse).to(beNil())
-                
-                expect(error).toNot(beNil())
-                expect((error as! ErrorWrapper).code).to(equal(123))
-                expect((error as! ErrorWrapper).codeMeaning).to(equal("notFound"))
-                
-                done()
+            self.service.loginUser(userName: self.goodUsername,
+                                   password: self.goodPassword,
+                                   completionHandler: {  loginResponse, error in
+                                    
+                                    //then
+                                    expect(loginResponse).to(beNil())
+                                    
+                                    expect(error).toNot(beNil())
+                                    expect((error as! ErrorWrapper).code).to(equal(123))
+                                    expect((error as! ErrorWrapper).codeMeaning).to(equal("notFound"))
+                                    
+                                    done()
             })
         }
     }
@@ -122,18 +134,18 @@ class LoginServiceTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            self.loginService.loginUser(userName: self.goodUsername,
-                                        password: self.goodPassword,
-                                        completionHandler: {  loginResponse, error in
-                
-                //then
-                expect(loginResponse).to(beNil());
-                
-                expect(error).toNot(beNil());
-                expect((error as! ErrorWrapper).errorCode).to(equal("invalid_grant"))
-                expect((error as! ErrorWrapper).error).to(equal("User credentials are invalid"))
-                
-                done()
+            self.service.loginUser(userName: self.goodUsername,
+                                   password: self.goodPassword,
+                                   completionHandler: {  loginResponse, error in
+                                    
+                                    //then
+                                    expect(loginResponse).to(beNil());
+                                    
+                                    expect(error).toNot(beNil());
+                                    expect((error as! ErrorWrapper).errorCode).to(equal("invalid_grant"))
+                                    expect((error as! ErrorWrapper).error).to(equal("User credentials are invalid"))
+                                    
+                                    done()
             })
         }
     }
@@ -152,18 +164,18 @@ class LoginServiceTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            self.loginService.loginUser(userName: self.goodUsername,
-                                        password: self.goodPassword,
-                                        completionHandler: { loginResponse, error in
-                
-                //then
-                expect(loginResponse).to(beNil())
-                
-                expect(error).toNot(beNil());
-                expect((error as! ErrorWrapper).errorCode).to(equal("invalid_grant"))
-                expect((error as! ErrorWrapper).error).to(equal("User credentials are invalid"))
-                
-                done()
+            self.service.loginUser(userName: self.goodUsername,
+                                   password: self.goodPassword,
+                                   completionHandler: { loginResponse, error in
+                                    
+                                    //then
+                                    expect(loginResponse).to(beNil())
+                                    
+                                    expect(error).toNot(beNil());
+                                    expect((error as! ErrorWrapper).errorCode).to(equal("invalid_grant"))
+                                    expect((error as! ErrorWrapper).error).to(equal("User credentials are invalid"))
+                                    
+                                    done()
             })
         }
         
@@ -183,18 +195,18 @@ class LoginServiceTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            self.loginService.loginUser(userName: self.goodUsername,
-                                        password: self.goodPassword,
-                                        completionHandler: { loginResponse, error in
-                
-                //then
-                expect(loginResponse).to(beNil())
-                
-                expect(error).toNot(beNil())
-                expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
-                expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
-                
-                done()
+            self.service.loginUser(userName: self.goodUsername,
+                                   password: self.goodPassword,
+                                   completionHandler: { loginResponse, error in
+                                    
+                                    //then
+                                    expect(loginResponse).to(beNil())
+                                    
+                                    expect(error).toNot(beNil())
+                                    expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
+                                    expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
+                                    
+                                    done()
             })
         }
         
@@ -214,18 +226,18 @@ class LoginServiceTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            self.loginService.loginUser(userName: self.goodUsername,
-                                        password: self.goodPassword,
-                                        completionHandler: { loginResponse, error in
-                
-                //then
-                expect(loginResponse).to(beNil())
-                
-                expect(error).toNot(beNil())
-                expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
-                expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
-                
-                done()
+            self.service.loginUser(userName: self.goodUsername,
+                                   password: self.goodPassword,
+                                   completionHandler: { loginResponse, error in
+                                    
+                                    //then
+                                    expect(loginResponse).to(beNil())
+                                    
+                                    expect(error).toNot(beNil())
+                                    expect((error as! ErrorWrapper).errorCode).to(equal("invalid_client"))
+                                    expect((error as! ErrorWrapper).error).to(equal("Client credentials are invalid"))
+                                    
+                                    done()
             })
         }
     }
