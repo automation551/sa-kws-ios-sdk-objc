@@ -1,0 +1,30 @@
+//
+//  ApplicationPermissions+Mapping.swift
+//  KWSiOSSDKObjC
+//
+//  Created by Guilherme Mota on 08/02/2018.
+//
+
+import Foundation
+import Decodable
+import protocol Decodable.Decodable
+
+extension ApplicationPermissionsModel: Decodable {
+    
+    public static func decode(_ json: Any) throws -> ApplicationPermissionsModel {
+        
+        return try ApplicationPermissionsModel (            
+            notifications:           try json =>? "sendPushNotification",
+            address:                 try json =>? "accessAddress",
+            firstName:               try json =>? "accessFirstName",
+            lastName:                try json =>? "accessLastName",
+            email:                   try json =>? "accessEmail",
+            streetAddress:           try json =>? "accessStreetAddress",
+            city:                    try json =>? "accessCity",
+            postalCode:              try json =>? "accessPostalCode",
+            country:                 try json =>? "accessCountry",
+            newsletter:              try json =>? "sendNewsletter",
+            competition:             try json =>? "enterCompetitions"
+        )
+    }
+}

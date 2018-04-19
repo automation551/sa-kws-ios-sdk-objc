@@ -12,7 +12,7 @@ import Decodable
 import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class Login_MappingTests: XCTestCase {
+class LoginMappingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -29,7 +29,7 @@ class Login_MappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"login_success_response")
         
-        let loginResponse = try? LoginAuthResponse.decode(JSON!)
+        let loginResponse = try? LoginAuthResponseModel.decode(JSON!)
         
         expect(loginResponse).toNot(beNil())
         expect(loginResponse?.token).to(equal("good_token"))

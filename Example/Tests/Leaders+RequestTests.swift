@@ -11,7 +11,7 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class Leaders_RequestTests: XCTestCase {
+class LeadersRequestTests: XCTestCase {
     
     private var env: KWSNetworkEnvironment!
     private var request: LeadersRequest!
@@ -40,27 +40,27 @@ class Leaders_RequestTests: XCTestCase {
         super.tearDown()
     }
     
-    func testRequestToBeNotNil(){
+    func test_Request_ToBe_NotNil(){
         //then
         expect(self.request).toNot(beNil())
     }
     
-    func testRequestEnvironmentToBeNotNil(){
+    func test_RequestEnvironment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func testRequestMethod(){
+    func test_RequestMethod(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
     
-    func testEndpoint(){
+    func test_Endpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
     }
     
-    func testConstantsToBeNotNil(){
+    func test_Constants_ToBe_NotNil(){
         //then
         expect(self.appId).toNot(beNil())
         expect(self.token).toNot(beNil())
@@ -68,12 +68,12 @@ class Leaders_RequestTests: XCTestCase {
         expect(self.method).toNot(beNil())
     }
     
-    func testRequestBody(){
+    func test_RequestBody_ToBe_Nil(){
         //then
         expect(self.request.body).to(beNil())
     }
     
-    public func testRequestHeader() {
+    public func test_RequestHeader() {
         let requestHeaders = self.request.headers
         
         //then
@@ -86,12 +86,12 @@ class Leaders_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beTrue())
     }
     
-    func testRequestQuery() {
+    func test_RequestQuery() {
         //then
         expect(self.request.query).to(beNil())
     }
     
-    func testRequestFormUrlEncodeToBeFalse(){
+    func test_RequestFormUrlEncode_ToBe_False(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }

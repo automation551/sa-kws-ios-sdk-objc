@@ -695,9 +695,9 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
         let success = sessionsService?.saveLoggedUser(user: user)
     }
 
-    func getLoggedUser() -> LoggedUser? {
+    func getLoggedUser() -> LoggedUserModel? {
         let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
-        if let user = sessionsService?.getLoggedUser() as? LoggedUser {
+        if let user = sessionsService?.getLoggedUser() as? LoggedUserModel {
             return user
         } else {
             return nil

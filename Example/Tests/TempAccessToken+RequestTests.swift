@@ -11,7 +11,7 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class TempAccessToken_RequestTests: XCTestCase {
+class TempAccessTokenRequestTests: XCTestCase {
     
     private var env: KWSNetworkEnvironment!
     private var request: TempAccessTokenRequest!
@@ -40,27 +40,27 @@ class TempAccessToken_RequestTests: XCTestCase {
         super.tearDown()
     }
     
-    func testRequestToBeNotNil(){
+    func test_Request_ToBe_NotNil(){
         //then
         expect(self.request).toNot(beNil())
     }
     
-    func testRequestEnvironmentToBeNotNil(){
+    func test_RequestEnvironment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func testRequestMethod(){
+    func test_RequestMethod(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
     
-    func testEndpoint(){
+    func test_Endpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
     }  
     
-    func testConstantsToBeNotNil(){
+    func test_Constants_ToBe_NotNil(){
         //then
         expect(self.clientID).toNot(beNil())
         expect(self.clientSecret).toNot(beNil())
@@ -68,7 +68,7 @@ class TempAccessToken_RequestTests: XCTestCase {
         expect(self.method).toNot(beNil())
     }
     
-    func testRequestBody(){
+    func test_RequestBody(){
         let requestBody = self.request.body
         
         //then
@@ -84,7 +84,7 @@ class TempAccessToken_RequestTests: XCTestCase {
         expect(self.clientSecret).to(equal((requestBody?["client_secret"] as! String)))
     }
     
-    public func testRequestHeader() {
+    public func test_RequestHeader() {
         let requestHeaders = self.request.headers
         
         //then
@@ -98,12 +98,12 @@ class TempAccessToken_RequestTests: XCTestCase {
     }
     
     
-    func testRequestQueryToBeNil() {
+    func test_RequestQuery_ToBe_Nil() {
         //then
         expect(self.request.query).to(beNil())
     }
     
-    func testRequestFormUrlEncodeToBeTrue(){
+    func test_RequestFormUrlEncode_ToBe_True(){
         //then
         expect(self.request.formEncodeUrls).to(beTrue())
     }    

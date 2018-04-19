@@ -12,7 +12,7 @@ import Nimble
 import SAMobileBase
 import KWSiOSSDKObjC
 
-class RandomUsername_RequestTests: XCTestCase {
+class RandomUsernameRequestTests: XCTestCase {
     
     private var env: KWSNetworkEnvironment!
     private var request: RandomUsernameRequest!
@@ -39,39 +39,39 @@ class RandomUsername_RequestTests: XCTestCase {
         super.tearDown()
     }
     
-    func testRequestToBeNotNil(){
+    func test_Request_ToBe_NotNil(){
         //then
         expect(self.request).toNot(beNil())
     }
     
-    func testRequestEnvironmentToBeNotNil(){
+    func test_Request_Environment_ToBe_NotNil(){
         //then
         expect(self.request.environment).toNot(beNil())
     }
     
-    func testRequestMethod(){
+    func test_Request_Method(){
         //then
         expect(self.method).to(equal(self.request.method))
     }
     
-    func testEndpoint(){
+    func test_Endpoint(){
         //then
         expect(self.endpoint).to(equal(self.request.endpoint))
     }  
     
-    func testConstantsToBeNotNil(){
+    func test_Constants_ToBe_NotNil(){
         //then
         expect(self.appID).toNot(beNil())
         expect(self.endpoint).toNot(beNil())
         expect(self.method).toNot(beNil())
     }
     
-    func testRequestBodyToBeNil(){
+    func test_Request_Body_ToBe_Nil(){
         //then
         expect(self.request.body).to(beNil())
     }
     
-    public func testRequestHeader() {
+    public func test_RequestHeader() {
         let requestHeaders = self.request.headers
         
         //then
@@ -84,12 +84,12 @@ class RandomUsername_RequestTests: XCTestCase {
         expect(requestHeaders?.keys.contains("Authorization")).to(beFalse())
     }
     
-    func testRequestQueryToBeNil() {
+    func test_Request_Query_ToBe_Nil() {
         //then
         expect(self.request.query).to(beNil())
     }
     
-    func testRequestFormUrlEncodeToBeFalse(){
+    func test_Request_FormUrl_Encode_ToBe_False(){
         //then
         expect(self.request.formEncodeUrls).to(beFalse())
     }
