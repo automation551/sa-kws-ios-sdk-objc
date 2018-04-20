@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class PermissionsRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: PermissionsRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

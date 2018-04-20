@@ -11,6 +11,7 @@ import UIKit
 
 internal struct SessionService: SessionServiceProtocol {
     
+    
     // MARK: - Properties
     private let environment: NetworkEnvironmentProtocol
     private let storage: UserDefaults = UserDefaults.standard
@@ -25,6 +26,11 @@ internal struct SessionService: SessionServiceProtocol {
     
     func isUserLoggedIn() -> Bool {
         return getLoggedUser() != nil
+    }
+    
+    func clearLoggedUser() -> Bool {
+        let result = clearDb().take()
+        return result ?? false
     }
     
     func getLoggedUser() -> LoggedUserModelProtocol? {
@@ -63,5 +69,11 @@ internal struct SessionService: SessionServiceProtocol {
         let tokenResult = task.execute(input: tokenRequest).take() ?? false
         
         return tokenResult
+    }
+    
+    private func clearDb () -> Result<Bool> {
+        let request = ClearDbRequest(storage: storage, key: kTokenKey)
+        let task = ClearDbTask()
+        return task.execute(input: request)
     }
 }

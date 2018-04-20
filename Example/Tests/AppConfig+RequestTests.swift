@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class AppConfigRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: AppConfigRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

@@ -17,7 +17,7 @@ class AuthServiceTests: XCTestCase {
     
     // class or data to test
     private var service: AuthServiceProtocol!
-    private var environment: KWSNetworkEnvironment!
+    private var environment: ComplianceNetworkEnvironment!
     
     private var goodUsername: String = "good_username"
     private var badUsername: String = "bad_username"
@@ -38,7 +38,8 @@ class AuthServiceTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.service = KWSSDK.getService(value: AuthServiceProtocol.self, environment: self.environment)
+        let sdk = ComplianceSDK(withEnvirnoment: self.environment)
+        self.service = sdk.getService(withType: AuthServiceProtocol.self)
     }
     
     override func tearDown() {

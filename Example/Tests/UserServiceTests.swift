@@ -17,7 +17,7 @@ class UserServiceTests: XCTestCase {
     
     //class or data to test
     private var userService: UserServiceProtocol!
-    private var environment: KWSNetworkEnvironment!
+    private var environment: ComplianceNetworkEnvironment!
     
     private var goodUserId: NSInteger = 1
     private var badUserId: NSInteger = -1
@@ -31,7 +31,8 @@ class UserServiceTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.userService = KWSSDK.getService(value: UserServiceProtocol.self, environment: self.environment)
+        let sdk = ComplianceSDK(withEnvirnoment: self.environment)
+        self.userService = sdk.getService(withType: UserServiceProtocol.self)
     }
     
     override func tearDown() {

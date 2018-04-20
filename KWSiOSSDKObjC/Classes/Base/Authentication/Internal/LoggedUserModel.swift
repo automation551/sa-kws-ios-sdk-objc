@@ -8,13 +8,13 @@
 import Foundation
 import SAProtobufs
 
-public class LoggedUserModel : NSObject, LoggedUserModelProtocol{
+public struct LoggedUserModel : LoggedUserModelProtocol, Equatable, Encodable {
     
     public var token:       String
     public var tokenData:   TokenData
     public var id:          AnyHashable
     
-    public required init(token:     String,
+    public init(token:     String,
                          tokenData: TokenData,
                          id:        AnyHashable) {
         
@@ -29,12 +29,43 @@ public class LoggedUserModel : NSObject, LoggedUserModelProtocol{
         return areEqual
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
+    public  func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? LoggedUserModel else { return false }
         return self == object
     }
     
-    public override var hash: Int {
+    public var hash: Int {
         return id.hashValue
+    }
+    
+    enum CodingKeys: String, CodingKey  {
+        case token = "access_token"
+        case id = "id"
+        case tokenData = "tokenData"
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container (keyedBy: CodingKeys.self)
+        try container.encode (token, forKey: .token)
+//        try container.encode (tokenData, forKey: .tokenData)
+        if let id = id as? Int {
+            try container.encode (id, forKey: .id)
+        }
+    }
+}
+
+import Foundation
+import Decodable
+import protocol Decodable.Decodable
+
+extension LoggedUserModel: Decodable {
+    
+    public static func decode(_ json: Any) throws -> LoggedUserModel {
+        
+        return try LoggedUserModel (
+            token:      json => "access_token",
+            tokenData:  json => "tokenData",
+            id:         json => "id" as! AnyHashable
+        )
     }
 }

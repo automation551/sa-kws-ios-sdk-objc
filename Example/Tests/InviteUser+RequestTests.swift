@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class InviteUserRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: InviteUserRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

@@ -9,7 +9,7 @@
 import Foundation
 import KWSiOSSDKObjC
 
-public class StanTestEnvironment: KWSNetworkEnvironment {
+public class StanTestEnvironment: ComplianceNetworkEnvironment {
     
     public var domain: String = "https://stan-test-cluster.api.kws.superawesome.tv/"
     public var clientID: String = "stan-test"
@@ -18,7 +18,7 @@ public class StanTestEnvironment: KWSNetworkEnvironment {
     public var singleSignOn: String = "https://stan-test-cluster.accounts.kws.superawesome.tv/"
 }
 
-public class DemoTestEnvironment: KWSNetworkEnvironment {
+public class DemoTestEnvironment: ComplianceNetworkEnvironment {
     
     public var domain: String = "https://kwsapi.demo.superawesome.tv/"
     public var clientID: String = "kws-sdk-testing"

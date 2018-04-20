@@ -16,8 +16,8 @@ import SAProtobufs
 class ScoringServiceTests: XCTestCase {
     
     //class or data to test
-    private var scoringService: ScoringServiceProtocol!
-    private var environment: KWSNetworkEnvironment!
+    private var scoringService: ScoreServiceProtocol!
+    private var environment: ComplianceNetworkEnvironment!
     
     private var goodAppId: Int = 123
     private var badAppId: Int = -1
@@ -32,7 +32,8 @@ class ScoringServiceTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.scoringService = KWSSDK.getService(value: ScoringServiceProtocol.self, environment: self.environment)
+        let sdk = ComplianceSDK(withEnvirnoment: self.environment)
+        self.scoringService = sdk.getService(withType: ScoreServiceProtocol.self)
     }
     
     override func tearDown() {

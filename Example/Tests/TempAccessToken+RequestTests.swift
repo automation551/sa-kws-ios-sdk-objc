@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class TempAccessTokenRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: TempAccessTokenRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

@@ -13,7 +13,7 @@ import SAMobileBase
 
 class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var kUserKWSNetworkEnvironment : KWSNetworkEnvironment?
+    var kUserKWSNetworkEnvironment : ComplianceNetworkEnvironment?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: UITextView!
@@ -32,7 +32,7 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
             "Permissions" :
                 ["Submit Parent Email", "Request Permissions"],
             "User" :
-                ["Random Username", "Create User", "Login User", "Update User", "Get User Details", "Auth User"],
+                ["Random Username", "Create User", "Login User", "Update User", "Get User Details", "Auth User", "Logout"],
             "App Data" :
                 ["Get App Data", "Set App Data"],
             "Invite" :
@@ -62,6 +62,7 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
             case "Update User": self.updateUserDetails()
             case "Get User Details": self.getUserDetails()
             case "Auth User": self.oAuthUser()
+            case "Logout": self.logoutUser()
             default:
                 break
             }
@@ -166,7 +167,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
         let country = "US"
         let parentEmail = "mobile.dev.test@superawesome.tv"
 
-        let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let auth = sdk.getService(withType: AuthServiceProtocol.self)
 
         auth?.createUser(username: userName, password: pwd, timeZone: nil, dateOfBirth: dob, country: country, parentEmail: parentEmail) { (result, error) in
 
@@ -191,8 +193,9 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
         let userName = "randomtestuser123"
         let pwd = "testtest"
-
-        let auth = KWSSDK.getService(value: AuthServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let auth = sdk.getService(withType: AuthServiceProtocol.self)
 
         auth?.loginUser(userName: userName, password: pwd) { (result, error) in
 
@@ -218,8 +221,9 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     func randomUserName(){
-
-        let username = KWSSDK.getService(value: UsernameServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let username = sdk.getService(withType: UsernameServiceProtocol.self)
 
         username?.getRandomUsername() { (result, error) in
             
@@ -243,7 +247,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
         let permissions : [String] = ["accessEmail","accessAddress"]
 
-        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let userActions = sdk.getService(withType: UserActionsServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -281,7 +286,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
         let parentEmail = "mobile.dev.test@superawesome.tv"
 
-        let user = KWSSDK.getService(value: UserServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let user = sdk.getService(withType: UserServiceProtocol.self)
 
         let map: [String : Any] = ["parentEmail" : parentEmail]
         
@@ -316,7 +322,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
         //check documentation to see what fields can be updated
 
-        let user = KWSSDK.getService(value: UserServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let user = sdk.getService(withType: UserServiceProtocol.self)
 
         let map: [String : Any] = ["firstName" : "John",
                                    "lastName" : "Doy",
@@ -358,7 +365,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func getUserDetails() {
 
-        let user = KWSSDK.getService(value: UserServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let user = sdk.getService(withType: UserServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -388,7 +396,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func getAppData(){
 
-        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let userActions = sdk.getService(withType: UserActionsServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -432,7 +441,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func setAppData(){
 
-        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let userActions = sdk.getService(withType: UserActionsServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -473,7 +483,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
         let emailAddress = "mobile.dev.test+1@superawesome.tv"
 
-        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let userActions = sdk.getService(withType: UserActionsServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -510,7 +521,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
         let eventId = "8X9QneMSaxU2VzCBJI5YdxRGG7l3GOUw"
         let points = 20
 
-        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let userActions = sdk.getService(withType: UserActionsServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -545,7 +557,9 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
     func isTriggeredEvent(){
 
         let eventId = 802
-        let userActions = KWSSDK.getService(value: UserActionsServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let userActions = sdk.getService(withType: UserActionsServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -578,7 +592,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func getLeaderboard(){
 
-        let score = KWSSDK.getService(value: ScoringServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let score = sdk.getService(withType: ScoreServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -624,7 +639,8 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func getUserScore(){
 
-        let score = KWSSDK.getService(value: ScoringServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let score = sdk.getService(withType: ScoreServiceProtocol.self)
 
         var responseText: String = ""
         
@@ -658,11 +674,12 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func oAuthUser() {
         
-        singleSignOn = KWSSDK.getService(value: SingleSignOnServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        singleSignOn = sdk.getService(withType: SingleSignOnServiceProtocol.self)
         
         let urlString = (kUserKWSNetworkEnvironment as! DemoTestEnvironment).singleSignOn
         
-         var responseText: String = ""
+        var responseText: String = ""
         
         singleSignOn?.signOn(url: urlString, parent: self) { (response, error) in
              
@@ -690,13 +707,31 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
 
+    func logoutUser(){
+        
+        var responseText: String = ""
+        
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let sessionsService = sdk.getService(withType: SessionServiceProtocol.self)
+        if let success = sessionsService?.clearLoggedUser() {
+            responseText = "\nUser cleared!!!\n"
+        } else {
+            responseText = "\nOops...something went wrong clearing the user...\n"
+        }
+        
+        //update text
+        self.updateTextView(text: responseText)
+    }
+    
     func saveUser(user: LoggedUserModelProtocol) {
-        let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let sessionsService = sdk.getService(withType: SessionServiceProtocol.self)
         let success = sessionsService?.saveLoggedUser(user: user)
     }
 
     func getLoggedUser() -> LoggedUserModel? {
-        let sessionsService = KWSSDK.getService(value: SessionServiceProtocol.self, environment: kUserKWSNetworkEnvironment!)
+        let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
+        let sessionsService = sdk.getService(withType: SessionServiceProtocol.self)
         if let user = sessionsService?.getLoggedUser() as? LoggedUserModel {
             return user
         } else {

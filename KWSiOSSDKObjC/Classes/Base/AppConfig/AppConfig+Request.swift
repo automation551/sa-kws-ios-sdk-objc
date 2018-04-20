@@ -10,7 +10,7 @@ import SAMobileBase
 
 public class AppConfigRequest: BaseRequest {
     
-    public init(environment: KWSNetworkEnvironment,
+    public init(environment: ComplianceNetworkEnvironment,
                 clientID: String) {
         
         super.init(environment: environment)

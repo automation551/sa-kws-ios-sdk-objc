@@ -10,7 +10,7 @@ import SAMobileBase
 
 public class LeadersRequest: BaseRequest{
     
-    public init(environment: KWSNetworkEnvironment,
+    public init(environment: ComplianceNetworkEnvironment,
                 appId: Int,
                 token: String) {
         

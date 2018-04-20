@@ -10,7 +10,7 @@ import SAMobileBase
 
 public class TempAccessTokenRequest: BaseRequest{
     
-    public init(environment: KWSNetworkEnvironment,
+    public init(environment: ComplianceNetworkEnvironment,
                 clientID: String,
                 clientSecret: String) {
         

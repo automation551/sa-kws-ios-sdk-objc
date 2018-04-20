@@ -8,7 +8,7 @@
 import Foundation
 import SAMobileBase
 
-public class UserKWSNetworkEnvironment: NSObject, KWSNetworkEnvironment{
+public class UserKWSNetworkEnvironment: NSObject, ComplianceNetworkEnvironment{
     
     public var domain: String
     public let clientSecret: String

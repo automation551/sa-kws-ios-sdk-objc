@@ -10,7 +10,7 @@ import SAMobileBase
 
 public class LoginRequest: BaseRequest {
     
-    public init(environment: KWSNetworkEnvironment,
+    public init(environment: ComplianceNetworkEnvironment,
                 username: String,
                 password: String,
                 clientID: String,

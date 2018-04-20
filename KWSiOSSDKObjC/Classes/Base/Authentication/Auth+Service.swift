@@ -12,9 +12,9 @@ import KWSiOSSDKObjC
 
 public class AuthService: NSObject, AuthServiceProtocol {
     
-    var environment: KWSNetworkEnvironment
+    var environment: ComplianceNetworkEnvironment
     
-    public init(environment: KWSNetworkEnvironment) {
+    public init(environment: ComplianceNetworkEnvironment) {
         self.environment = environment
     }
     
@@ -92,7 +92,7 @@ public class AuthService: NSObject, AuthServiceProtocol {
         }
     }
     
-    private func doUserCreation(environment: KWSNetworkEnvironment, username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponseModel?, Error?) -> ()) {
+    private func doUserCreation(environment: ComplianceNetworkEnvironment, username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponseModel?, Error?) -> ()) {
         
         
         let createUserNetworkRequest = CreateUserRequest(environment: environment,
