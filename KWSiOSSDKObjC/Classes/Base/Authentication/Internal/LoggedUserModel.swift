@@ -29,7 +29,7 @@ public struct LoggedUserModel : LoggedUserModelProtocol, Equatable {
         return areEqual
     }
     
-    public  func isEqual(_ object: Any?) -> Bool {
+    public func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? LoggedUserModel else { return false }
         return self == object
     }

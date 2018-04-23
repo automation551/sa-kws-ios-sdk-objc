@@ -11,7 +11,6 @@ import UIKit
 
 internal struct SessionService: SessionServiceProtocol {
     
-    
     // MARK: - Properties
     private let environment: NetworkEnvironmentProtocol
     private let storage: UserDefaults = UserDefaults.standard
