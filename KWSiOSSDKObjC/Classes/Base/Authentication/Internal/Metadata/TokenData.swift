@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public final class TokenData: NSObject {
+public struct TokenData: Equatable {
     
     public let userId:      Int?
     public let appId:       Int
@@ -18,7 +18,7 @@ public final class TokenData: NSObject {
     public let exp:         Int?
     public let iss:         String?
     
-    public required init(userId:    Int? = nil,
+    public init(userId:    Int? = nil,
                          appId:     Int,
                          clientId:  String,
                          scope:     String? = "",
@@ -40,12 +40,12 @@ public final class TokenData: NSObject {
         return lhs.userId == rhs.userId
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
+    public func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? TokenData else { return false }
         return self == object
     }
     
-    public override var hash: Int {
+    public var hash: Int {
         return userId!.hashValue
     }
 }

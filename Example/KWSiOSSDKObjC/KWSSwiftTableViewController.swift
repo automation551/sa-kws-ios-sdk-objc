@@ -712,8 +712,7 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
         var responseText: String = ""
         
         let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
-        let sessionsService = sdk.getService(withType: SessionServiceProtocol.self)
-        if let success = sessionsService?.clearLoggedUser() {
+        if let sessionsService = sdk.getService(withType: SessionServiceProtocol.self), sessionsService.clearLoggedUser() {
             responseText = "\nUser cleared!!!\n"
         } else {
             responseText = "\nOops...something went wrong clearing the user...\n"
@@ -724,9 +723,18 @@ class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func saveUser(user: LoggedUserModelProtocol) {
+        
+        var responseText: String = ""
+
         let sdk = ComplianceSDK(withEnvirnoment: kUserKWSNetworkEnvironment!)
-        let sessionsService = sdk.getService(withType: SessionServiceProtocol.self)
-        let success = sessionsService?.saveLoggedUser(user: user)
+        if let sessionsService = sdk.getService(withType: SessionServiceProtocol.self), sessionsService.saveLoggedUser(user: user) {
+            responseText = "\nUser saved successfully!!!"
+        } else {
+            responseText = "\nOops...something went wrong saving the user...\n"
+        }
+        
+        //update text
+        self.updateTextView(text: responseText)
     }
 
     func getLoggedUser() -> LoggedUserModel? {
