@@ -25,11 +25,13 @@ class AuthServiceTests: XCTestCase {
     private var goodPassword: String = "good_password"
     private var badPassword: String = "bad_password"
     
-    private var goodToken: String = "good_token"
+    private var goodToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhcHBJZCI6MzU4LCJjbGllbnRJZCI6Imt3cy1zZGstdGVzdGluZyIsInNjb3BlIjoibW9iaWxlQXBwIiwiaWF0IjoxNTI0NDgzMTgxLCJleHAiOjE1MjQ1Njk1ODEsImlzcyI6InN1cGVyYXdlc29tZSJ9.KIzj1aDotN6irP2E9xrmpBgwNVCYkV6f9J3W8LimMtG5Vu6NlV6dIj369ZyWshenmcJ5fXLxIQiGoNizkd_maGGQksRvR5ll1puysP2wEmtPqt9GBmrni8fzc_oQp3T9L_qwnFLkcNTHV0uY1meGttuKja9-1QfU9in-bwtX1G7Fp4KzeVCtt9zYVai1kvQsjGujyiN0zy9MPe9TBYkswQDEP0TcYyH1RsXsFA4Rfxea75yVUbpi7Lv4w1CdAPsl-J9I3G5GxOqumOE1ZTuzbWqjpB03a1xN-ahGXTGc2Gkh184QD8mFe_AVZFQQgUfxLM9IzBNE5rRLG_M41n-Ksg"
     private var badToken: String = "bad_token"
     
     private var badClientID: String = "bad_client_id"
     private var badClientSecret: String = "bad_client_secret"
+    
+    var dataProvider: AuthService!
     
     override func setUp() {
         super.setUp()
@@ -40,6 +42,7 @@ class AuthServiceTests: XCTestCase {
         //when
         let sdk = ComplianceSDK(withEnvirnoment: self.environment)
         self.service = sdk.getService(withType: AuthServiceProtocol.self)
+       
     }
     
     override func tearDown() {
@@ -51,13 +54,61 @@ class AuthServiceTests: XCTestCase {
     //MARK: CREATE USER
     
     func test_Multiple_Stubs(){
+        
         let JSON1: Any? = try? fixtureWithName(name: "temp_access_token_success_response")
         let JSON2: Any? = try? fixtureWithName(name: "create_user_success_response")
         
-        stub(everything, json(JSON2!))
-        stub(everything, json(JSON1!))
-        //todo
+        let requestTempToken = TempAccessTokenRequest(environment: environment, clientID: environment.clientID, clientSecret: environment.clientSecret)
+        
+        let requestCreateUser = CreateUserRequest(environment: environment, username: "aa", password: "pwd", dateOfBirth: "2012-02-02", country: "GB", parentEmail: "mail@mail.com", token: self.goodToken, appID: 358)
+        
+        let uriTemp = "\(requestTempToken.environment.domain + requestTempToken.endpoint)"
+        stub(http(.post, uri: uriTemp), json(JSON1!))
+//        stub(everything, json(JSON1!))
+        
+        let uriCreate = "\(requestCreateUser.environment.domain + requestCreateUser.endpoint)"
+        stub(http(.post, uri: uriCreate), json(JSON2!))
+//       stub(everything, json(JSON2!))
+        
+        waitUntil { done in
+        
+            self.service.createUser(username: "aa", password: "pwd", timeZone: nil, dateOfBirth: "2012-02-02", country: "GB", parentEmail: "mail@mail.com") { (model, error) in
+                
+                expect(model).toNot(beNil())
+                expect(error).to(beNil())
+                
+                done()
+            }
+        }
+        
     }
+    
+    func test_Do_User_Creation_Success(){
+        
+        //todo add JSON
+        let JSON: Any? = try? fixtureWithName(name: "create_user_success_response")
+        
+        stub(everything, json(JSON!))
+        
+        if let authService = service as? AuthService {
+            
+            waitUntil { done in
+                
+                authService.doUserCreation(environment: self.environment, username: self.goodUsername, password: self.goodPassword, dateOfBirth: "2012-02-02", country: "GB", parentEmail: "mail@mail.com", appId: 123, token: self.goodToken, completionHandler: { (model, error) in
+                    
+                    //todo expect
+                    
+                    expect(model).toNot(beNil())
+                    expect(error).to(beNil())
+                    
+                    done()
+                })
+            }
+            
+        }
+    }
+    
+   
     
     //MARK: LOGIN
     func test_Login_ValidRequestAndResponse(){
