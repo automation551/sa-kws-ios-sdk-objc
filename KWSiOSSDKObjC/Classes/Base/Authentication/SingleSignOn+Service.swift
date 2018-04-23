@@ -11,10 +11,10 @@ import SAProtobufs
 
 public class SingleSignOnService: NSObject, SingleSignOnServiceProtocol {
     
-    var environment: KWSNetworkEnvironment
+    var environment: ComplianceNetworkEnvironment
     private var kwsWebAuthresponse: WebAuthController!
     
-    public init(environment: KWSNetworkEnvironment) {
+    public init(environment: ComplianceNetworkEnvironment) {
         self.environment = environment
     }
     
@@ -39,7 +39,7 @@ public class SingleSignOnService: NSObject, SingleSignOnServiceProtocol {
         
     }
     
-    private func getOAuthCode(environment: KWSNetworkEnvironment, parent: UIViewController, singleSignOnUrl: String, codeChallenge: String, codeChallengeMethod: String,
+    private func getOAuthCode(environment: ComplianceNetworkEnvironment, parent: UIViewController, singleSignOnUrl: String, codeChallenge: String, codeChallengeMethod: String,
                               completionHandler: @escaping (String?, Error?) -> ()){
         
         var completeUrl = ""
@@ -65,7 +65,7 @@ public class SingleSignOnService: NSObject, SingleSignOnServiceProtocol {
         }
     }
     
-    private func getAccessToken(environment: KWSNetworkEnvironment,
+    private func getAccessToken(environment: ComplianceNetworkEnvironment,
                                 authCode: String,
                                 codeVerifier: String, completionHandler: @escaping (LoggedUserModel?, Error?) -> ()) {
         

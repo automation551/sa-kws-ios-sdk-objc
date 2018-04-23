@@ -9,11 +9,11 @@ import Foundation
 import SAMobileBase
 import SAProtobufs
 
-public class ScoreService: NSObject, ScoringServiceProtocol {
+public class ScoreService: NSObject, ScoreServiceProtocol {
     
-    var environment: KWSNetworkEnvironment
+    var environment: ComplianceNetworkEnvironment
     
-    public init(environment: KWSNetworkEnvironment) {
+    public init(environment: ComplianceNetworkEnvironment) {
         self.environment = environment
     }
     

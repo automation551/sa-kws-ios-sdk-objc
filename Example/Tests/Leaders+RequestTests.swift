@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class LeadersRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: LeadersRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

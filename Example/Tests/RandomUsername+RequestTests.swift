@@ -14,7 +14,7 @@ import KWSiOSSDKObjC
 
 class RandomUsernameRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: RandomUsernameRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

@@ -10,7 +10,7 @@ import SAMobileBase
 
 public class OAuthUserTokenRequest: BaseRequest {
     
-    public init(environment: KWSNetworkEnvironment,
+    public init(environment: ComplianceNetworkEnvironment,
                 clientID: String,
                 authCode: String,
                 codeVerifier: String,

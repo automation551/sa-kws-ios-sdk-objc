@@ -10,7 +10,7 @@ import SAMobileBase
 
 public class TriggerEventRequest: BaseRequest {
     
-    public init(environment: KWSNetworkEnvironment,
+    public init(environment: ComplianceNetworkEnvironment,
                 eventId: String,
                 points: Int,
                 userId: Int,

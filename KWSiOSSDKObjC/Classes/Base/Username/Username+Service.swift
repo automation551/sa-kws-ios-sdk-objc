@@ -11,9 +11,9 @@ import SAProtobufs
 
 public class UsernameService: NSObject, UsernameServiceProtocol {
     
-    var environment: KWSNetworkEnvironment
+    var environment: ComplianceNetworkEnvironment
     
-    public init(environment: KWSNetworkEnvironment) {
+    public init(environment: ComplianceNetworkEnvironment) {
         self.environment = environment
     }
     
@@ -44,7 +44,7 @@ public class UsernameService: NSObject, UsernameServiceProtocol {
         }
     }
     
-    private func fetchRandomUsernameFromBackend(environment: KWSNetworkEnvironment,
+    private func fetchRandomUsernameFromBackend(environment: ComplianceNetworkEnvironment,
                                                appID: Int,
                                                completionHandler: @escaping (RandomUsernameModel?, Error?) -> ()){
         

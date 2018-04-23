@@ -10,7 +10,7 @@ import SAMobileBase
 
 public class SetAppDataRequest: BaseRequest{
     
-    public init(environment: KWSNetworkEnvironment,
+    public init(environment: ComplianceNetworkEnvironment,
                 appId: Int,
                 userId: Int,
                 value: Int,

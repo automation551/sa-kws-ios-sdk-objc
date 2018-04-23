@@ -11,9 +11,9 @@ import SAProtobufs
 
 public class UserService: NSObject, UserServiceProtocol {
     
-    var environment: KWSNetworkEnvironment
+    var environment: ComplianceNetworkEnvironment
     
-    public init(environment: KWSNetworkEnvironment) {
+    public init(environment: ComplianceNetworkEnvironment) {
         self.environment = environment
     }
     

@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class GetUserDetailsRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: UserDetailsRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class UpdateUserDetailsRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: UpdateUserDetailsRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

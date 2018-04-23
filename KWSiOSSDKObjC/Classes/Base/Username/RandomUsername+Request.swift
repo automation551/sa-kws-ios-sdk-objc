@@ -10,7 +10,7 @@ import SAMobileBase
 
 public class RandomUsernameRequest: BaseRequest {
     
-    public init(environment: KWSNetworkEnvironment,
+    public init(environment: ComplianceNetworkEnvironment,
                 appID: Int) {
         
         super.init(environment: environment)

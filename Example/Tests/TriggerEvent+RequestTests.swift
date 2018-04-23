@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class TriggerEventRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: TriggerEventRequest!
     private var method: NetworkMethod!
     private var endpoint: String!

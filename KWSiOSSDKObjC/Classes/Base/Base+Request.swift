@@ -10,7 +10,7 @@ import SAMobileBase
 
 open class BaseRequest: NetworkRequestProtocol {
     
-    public init (environment: KWSNetworkEnvironment, token: String? = nil) {
+    public init (environment: ComplianceNetworkEnvironment, token: String? = nil) {
         self.environment = environment
         
         headers = ["Content-Type" : "application/json"]

@@ -8,15 +8,15 @@
 import Foundation
 import SAProtobufs
 
-public class LoggedUserModel : NSObject, LoggedUserModelProtocol{
+public struct LoggedUserModel : LoggedUserModelProtocol, Equatable {
     
     public var token:       String
     public var tokenData:   TokenData
     public var id:          AnyHashable
     
-    public required init(token:     String,
-                         tokenData: TokenData,
-                         id:        AnyHashable) {
+    public init(token:     String,
+                tokenData: TokenData,
+                id:        AnyHashable) {
         
         self.token = token
         self.tokenData = tokenData
@@ -29,12 +29,12 @@ public class LoggedUserModel : NSObject, LoggedUserModelProtocol{
         return areEqual
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
+    public func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? LoggedUserModel else { return false }
         return self == object
     }
     
-    public override var hash: Int {
+    public var hash: Int {
         return id.hashValue
     }
 }

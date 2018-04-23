@@ -34,7 +34,6 @@
 		9C26F9BF208886A7008837BF /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C26F9BE208886A7008837BF /* UserServiceTests.swift */; };
 		9C26F9C3208887FA008837BF /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C26F9C2208887FA008837BF /* AuthServiceTests.swift */; };
 		9C59C7BA202B18B700BE4E74 /* RandomUsername+ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7B9202B18B700BE4E74 /* RandomUsername+ModelTests.swift */; };
-		9C59C7BC202B190700BE4E74 /* TempAccessToken+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7BB202B190700BE4E74 /* TempAccessToken+MappingTests.swift */; };
 		9C59C7C0202B198C00BE4E74 /* AppConfig+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7BF202B198C00BE4E74 /* AppConfig+MappingTests.swift */; };
 		9C59C7C4202B19B800BE4E74 /* RandomUsername+MappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7C3202B19B800BE4E74 /* RandomUsername+MappingTests.swift */; };
 		9C59C7C8202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59C7C7202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift */; };
@@ -138,7 +137,6 @@
 		9C26F9BE208886A7008837BF /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		9C26F9C2208887FA008837BF /* AuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
 		9C59C7B9202B18B700BE4E74 /* RandomUsername+ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername+ModelTests.swift"; sourceTree = "<group>"; };
-		9C59C7BB202B190700BE4E74 /* TempAccessToken+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TempAccessToken+MappingTests.swift"; sourceTree = "<group>"; };
 		9C59C7BF202B198C00BE4E74 /* AppConfig+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConfig+MappingTests.swift"; sourceTree = "<group>"; };
 		9C59C7C3202B19B800BE4E74 /* RandomUsername+MappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUsername+MappingTests.swift"; sourceTree = "<group>"; };
 		9C59C7C7202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TempAccessToken+RequestTests.swift"; sourceTree = "<group>"; };
@@ -362,7 +360,6 @@
 		9C0A3A0820865C6D00BC7756 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				9C26F9C5208888D2008837BF /* TempAccessToken */,
 				9C26F9C4208888C8008837BF /* TokenData */,
 				9C80FD3320285DD5003BD328 /* CreateUser */,
 				9C18313D2020EDA300DD4083 /* Login */,
@@ -535,14 +532,6 @@
 				9C5A79CF207634EA009E4B8C /* TokenData+ModelTests.swift */,
 			);
 			name = TokenData;
-			sourceTree = "<group>";
-		};
-		9C26F9C5208888D2008837BF /* TempAccessToken */ = {
-			isa = PBXGroup;
-			children = (
-				9C59C7BB202B190700BE4E74 /* TempAccessToken+MappingTests.swift */,
-			);
-			name = TempAccessToken;
 			sourceTree = "<group>";
 		};
 		9C26F9C6208888FF008837BF /* GetAppData */ = {
@@ -936,7 +925,6 @@
 				9CFD4A19207C1BE4002CC7B6 /* TriggerEvent+RequestTests.swift in Sources */,
 				9CFD4A0F207C02FF002CC7B6 /* InviteUser+MappingTests.swift in Sources */,
 				9C5A79C8207626BC009E4B8C /* ApplicationProfile+ModelTests.swift in Sources */,
-				9C59C7BC202B190700BE4E74 /* TempAccessToken+MappingTests.swift in Sources */,
 				9CFD4A17207C1BD4002CC7B6 /* HasTriggeredEvent+RequestTests.swift in Sources */,
 				9C104F1F203B43A5003FAEF7 /* Permissions+RequestTests.swift in Sources */,
 				9C59C7CC202B1ED000BE4E74 /* RandomUsername+RequestTests.swift in Sources */,

@@ -20,7 +20,7 @@ class SessionServiceTests: XCTestCase {
     
     // class or data to test
     private var service: SessionServiceProtocol!
-    private var environment: KWSNetworkEnvironment!
+    private var environment: ComplianceNetworkEnvironment!
     
     let defaults = UserDefaults.standard
     
@@ -31,7 +31,8 @@ class SessionServiceTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        self.service = KWSSDK.getService(value: SessionServiceProtocol.self, environment: self.environment)
+        let sdk = ComplianceSDK(withEnvirnoment: self.environment)
+        self.service = sdk.getService(withType: SessionServiceProtocol.self)
     }
     
     override func tearDown() {
