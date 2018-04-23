@@ -55,13 +55,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Authentication/Auth+Service.swift"
-            timestampString = "546182435.5444731"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/User/User+Service.swift"
+            timestampString = "546185532.868925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "doUserCreation(environment:username:password:dateOfBirth:country:parentEmail:appId:token:completionHandler:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "getUser(userId:token:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -71,13 +71,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Authentication/Auth+Service.swift"
-            timestampString = "546182435.5445549"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/User/User+Service.swift"
+            timestampString = "546185533.510841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "doUserCreation(environment:username:password:dateOfBirth:country:parentEmail:appId:token:completionHandler:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "getUser(userId:token:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -87,61 +87,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tests/AuthServiceTests.swift"
-            timestampString = "546182435.544623"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/Username/Username+Service.swift"
+            timestampString = "546185726.9374501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "test_Multiple_Stubs()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;SAProtobufs.LoggedUserModelProtocol&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (() -&gt; ()) -&gt; () in KWSiOSSDKObjC_Tests.AuthServiceTests.test_Multiple_Stubs() -&gt; ()"
-                  moduleName = "KWSiOSSDKObjC_Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/Example/Tests/AuthServiceTests.swift"
-                  timestampString = "546182436.1740741"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "126">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.Optional&lt;SAProtobufs.LoggedUserModelProtocol&gt; in closure #1 (Swift.Optional&lt;SAProtobufs.LoggedUserModelProtocol&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (() -&gt; ()) -&gt; () in KWSiOSSDKObjC_Tests.AuthServiceTests.test_Multiple_Stubs() -&gt; ()"
-                  moduleName = "KWSiOSSDKObjC_Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guilherme.mota/Workspace/sa-kws-ios-sdk-objc/Example/Tests/AuthServiceTests.swift"
-                  timestampString = "546182436.176704"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Base/Authentication/Auth+Service.swift"
-            timestampString = "546182435.545068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "doUserCreation(environment:username:password:dateOfBirth:country:parentEmail:appId:token:completionHandler:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "getRandomUsername(completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -151,13 +103,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/URITemplate/Sources/URITemplate.swift"
-            timestampString = "546182367.471868"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/Username/Username+Service.swift"
+            timestampString = "546185726.937505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
-            landmarkName = "extract(_:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "getRandomUsername(completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -167,13 +119,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/URITemplate/Sources/URITemplate.swift"
-            timestampString = "546182367.471916"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/Username/Username+Service.swift"
+            timestampString = "546185726.9375499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "extract(_:)"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "fetchRandomUsernameFromBackend(environment:appID:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -183,29 +135,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/Mockingjay/Sources/Mockingjay/Matchers.swift"
-            timestampString = "546182435.54519"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/Username/Username+Service.swift"
+            timestampString = "546185726.937613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "http(_:uri:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/URITemplate/Sources/URITemplate.swift"
-            timestampString = "546182421.0571671"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
-            landmarkName = "extract(_:)"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "fetchRandomUsernameFromBackend(environment:appID:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -215,13 +151,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/URITemplate/Sources/URITemplate.swift"
-            timestampString = "546182518.11193"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/Username/Username+Service.swift"
+            timestampString = "546185836.195591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "extract(_:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "fetchRandomUsernameFromBackend(environment:appID:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/Username/Username+Service.swift"
+            timestampString = "546185836.7024879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "fetchRandomUsernameFromBackend(environment:appID:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

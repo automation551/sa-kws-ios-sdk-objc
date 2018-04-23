@@ -42,7 +42,6 @@ class AuthServiceTests: XCTestCase {
         //when
         let sdk = ComplianceSDK(withEnvirnoment: self.environment)
         self.service = sdk.getService(withType: AuthServiceProtocol.self)
-       
     }
     
     override func tearDown() {
@@ -53,22 +52,18 @@ class AuthServiceTests: XCTestCase {
     
     //MARK: CREATE USER
     
-    func test_Multiple_Stubs(){
+    func test_CreateUser_Valid_Request_And_Response(){
         
-        let JSON1: Any? = try? fixtureWithName(name: "temp_access_token_success_response")
-        let JSON2: Any? = try? fixtureWithName(name: "create_user_success_response")
+        let TEMP_ACCESS_TOKEN: Any? = try? fixtureWithName(name: "temp_access_token_success_response")
+        let CREATE_USER: Any? = try? fixtureWithName(name: "create_user_success_response")
         
-        let requestTempToken = TempAccessTokenRequest(environment: environment, clientID: environment.clientID, clientSecret: environment.clientSecret)
+        let tempAccessURI = "https://localhost:8080/oauth/token"
+    
+        let appID = 358
+        let createURI = "https://localhost:8080/v1/apps/\(appID)/users?access_token=\(goodToken)"
         
-        let requestCreateUser = CreateUserRequest(environment: environment, username: "aa", password: "pwd", dateOfBirth: "2012-02-02", country: "GB", parentEmail: "mail@mail.com", token: self.goodToken, appID: 358)
-        
-        let uriTemp = "\(requestTempToken.environment.domain + requestTempToken.endpoint)"
-        stub(http(.post, uri: uriTemp), json(JSON1!))
-//        stub(everything, json(JSON1!))
-        
-        let uriCreate = "\(requestCreateUser.environment.domain + requestCreateUser.endpoint)"
-        stub(http(.post, uri: uriCreate), json(JSON2!))
-//       stub(everything, json(JSON2!))
+        stub(http(.post, uri: tempAccessURI), json(TEMP_ACCESS_TOKEN!))
+        stub(http(.post, uri: createURI), json(CREATE_USER!))
         
         waitUntil { done in
         
@@ -80,38 +75,10 @@ class AuthServiceTests: XCTestCase {
                 done()
             }
         }
-        
     }
-    
-    func test_Do_User_Creation_Success(){
-        
-        //todo add JSON
-        let JSON: Any? = try? fixtureWithName(name: "create_user_success_response")
-        
-        stub(everything, json(JSON!))
-        
-        if let authService = service as? AuthService {
-            
-            waitUntil { done in
-                
-                authService.doUserCreation(environment: self.environment, username: self.goodUsername, password: self.goodPassword, dateOfBirth: "2012-02-02", country: "GB", parentEmail: "mail@mail.com", appId: 123, token: self.goodToken, completionHandler: { (model, error) in
-                    
-                    //todo expect
-                    
-                    expect(model).toNot(beNil())
-                    expect(error).to(beNil())
-                    
-                    done()
-                })
-            }
-            
-        }
-    }
-    
-   
     
     //MARK: LOGIN
-    func test_Login_ValidRequestAndResponse(){
+    func test_Login_Valid_Request_And_Response(){
         
         let JSON: Any? = try? fixtureWithName(name:"login_success_response")
         

@@ -37,11 +37,29 @@ class UsernameServiceTests: XCTestCase {
     }
     
     func test_Multiple_Stubs(){
-        let JSON1: Any? = try? fixtureWithName(name: "app_config_success_response")
-        let JSON2: Any? = try? fixtureWithName(name: "random_username_success_response")
+        let APP_CONFIG: Any? = try? fixtureWithName(name: "app_config_success_response")
+        let RANDOM_USERNAME: Any? = try? fixtureWithName(name: "random_username_success_response")
         
-        stub(everything, json(JSON2!))
-        stub(everything, json(JSON1!))
-        //todo
+        let appConfigURI = "https://localhost:8080/v1/apps/config?oauthClientId" + environment.clientID
+        
+        let appID = 358
+        let randomUsernameURI = "https://localhost:8080/v2/apps/\(appID)/random-display-name"
+        
+        stub(http(.get, uri:appConfigURI), json(APP_CONFIG!))
+        stub(http(.get, uri:randomUsernameURI), json(RANDOM_USERNAME!))
+        
+        waitUntil { done in
+            
+            self.service.getRandomUsername(completionHandler: { (model, error) in
+                
+                expect(model).toNot(beNil())
+                expect(error).to(beNil())
+                
+                done()
+            })
+        }
+        
+        
+        
     }
 }
