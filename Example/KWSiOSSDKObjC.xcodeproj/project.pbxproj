@@ -327,6 +327,7 @@
 		9C0A3A0720865BDB00BC7756 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				9C4DE2F0208F387000F80668 /* Requets */,
 				9C4DE2E7208F375500F80668 /* Models */,
 			);
 			name = Config;
@@ -482,7 +483,6 @@
 				9C59C7C7202B1D9B00BE4E74 /* TempAccessToken+RequestTests.swift */,
 				9C18312E202085FC00DD4083 /* Login+RequestTests.swift */,
 				9C80FD3820285F46003BD328 /* CreateUser+RequestTests.swift */,
-				9C59C7C9202B1DF900BE4E74 /* AppConfig+RequestTests.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -541,6 +541,14 @@
 				9C5A79D1207634F3009E4B8C /* AppConfig+ModelTests.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		9C4DE2F0208F387000F80668 /* Requets */ = {
+			isa = PBXGroup;
+			children = (
+				9C59C7C9202B1DF900BE4E74 /* AppConfig+RequestTests.swift */,
+			);
+			name = Requets;
 			sourceTree = "<group>";
 		};
 		9C59C7B8202B18A100BE4E74 /* Username */ = {
