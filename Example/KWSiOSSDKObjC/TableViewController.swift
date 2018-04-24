@@ -417,7 +417,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                         //iterate over list to append to text display
                         for (index, items) in results.enumerated() {
-                            responseText += "- Name #\(index + 1) is '\(items.name ?? "")' and Value is '\(items.value as? Int ?? 0)'\n"
+                            responseText += "- Name #\(index + 1) is '\(items.name ?? "")' and Value is '\(items.value)'\n"
                         }
                     } else {
                         responseText = "\nGot app data, but no items seems to be available..."

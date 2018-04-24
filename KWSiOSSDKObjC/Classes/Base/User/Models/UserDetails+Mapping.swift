@@ -13,7 +13,7 @@ extension UserDetailsModel: Decodable {
     
     public static func decode(_ json: Any) throws -> UserDetailsModel {
         
-        return try UserDetailsModel (
+        return UserDetailsModel (
             firstName:              try json =>? "firstName",
             lastName:               try json =>? "lastName",
             dateOfBirth:            try json => "dateOfBirth",

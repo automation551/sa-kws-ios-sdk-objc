@@ -13,7 +13,7 @@ extension InvalidTypeError: Decodable {
     
     public static func decode(_ json: Any) throws -> InvalidTypeError {
         
-        return try InvalidTypeError (
+        return InvalidTypeError (
             dateOfBirth:            try json =>? "dateOfBirth",
             country:                try json =>? "country",
             parentEmail:            try json =>? "parentEmail",

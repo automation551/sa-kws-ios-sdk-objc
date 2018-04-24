@@ -13,7 +13,7 @@ extension ErrorWrapper: Decodable {
     
     public static func decode(_ json: Any) throws -> ErrorWrapper {
         
-        return try ErrorWrapper (
+        return ErrorWrapper (
             code:               try json =>? "code",
             codeMeaning:        try json =>? "codeMeaning",
             invalid:            try json =>? "invalid",

@@ -13,7 +13,7 @@ extension AuthUserResponseModel: Decodable {
     
     public static func decode(_ json: Any) throws -> AuthUserResponseModel {
         
-        return try AuthUserResponseModel (
+        return AuthUserResponseModel (
             id:                 try json => "id" as! AnyHashable,
             token:              try json => "token"            
         )

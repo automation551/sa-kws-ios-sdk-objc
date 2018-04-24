@@ -13,7 +13,7 @@ extension TokenData: Decodable {
     
     public static func decode(_ json: Any) throws -> TokenData {
         
-        return try TokenData (
+        return TokenData (
             userId:         try json =>? "userId",
             appId:          try json =>  "appId",
             clientId:       try json => "clientId",

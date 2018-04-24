@@ -13,7 +13,7 @@ extension ApplicationProfileModel: Decodable {
     
     public static func decode(_ json: Any) throws -> ApplicationProfileModel {
         
-        return try ApplicationProfileModel (            
+        return ApplicationProfileModel (            
             customField1:             try json =>? "customField1",
             customField2:             try json =>? "customField2",
             avatarId:                 try json =>? "avatarId",

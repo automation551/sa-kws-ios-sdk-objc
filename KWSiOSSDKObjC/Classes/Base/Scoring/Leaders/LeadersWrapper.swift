@@ -7,7 +7,6 @@
 
 import Foundation
 import SAProtobufs
-import KWSiOSSDKObjC
 
 public final class LeadersWrapper: NSObject, LeaderWrapperModelProtocol {
     

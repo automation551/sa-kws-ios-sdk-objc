@@ -13,7 +13,7 @@ extension ApplicationPermissionsModel: Decodable {
     
     public static func decode(_ json: Any) throws -> ApplicationPermissionsModel {
         
-        return try ApplicationPermissionsModel (            
+        return ApplicationPermissionsModel (            
             notifications:           try json =>? "sendPushNotification",
             address:                 try json =>? "accessAddress",
             firstName:               try json =>? "accessFirstName",
