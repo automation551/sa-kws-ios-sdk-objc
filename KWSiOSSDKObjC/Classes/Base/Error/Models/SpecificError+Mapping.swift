@@ -13,7 +13,7 @@ extension SpecificError: Decodable {
     
     public static func decode(_ json: Any) throws -> SpecificError {
         
-        return try SpecificError (            
+        return SpecificError (            
             code:               try json => "code",
             codeMeaning:        try json => "codeMeaning",
             message:            try json => "errorMessage"

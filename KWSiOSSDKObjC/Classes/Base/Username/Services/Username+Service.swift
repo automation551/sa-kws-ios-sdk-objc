@@ -61,7 +61,7 @@ public class UsernameService: NSObject, UsernameServiceProtocol {
                 
                 let parsedResponseString = value.replacingOccurrences(of: "\"", with: "")
                 
-                if (parsedResponseString != nil && !(parsedResponseString.isEmpty)){
+                if !(parsedResponseString.isEmpty) {
                     completionHandler(RandomUsernameModel(randomUsername: parsedResponseString), nil)
                 } else {
                     completionHandler(RandomUsernameModel(randomUsername: value), nil)

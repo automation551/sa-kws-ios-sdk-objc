@@ -8,7 +8,6 @@
 import Foundation
 import SAMobileBase
 import SAProtobufs
-import KWSiOSSDKObjC
 
 public class AuthService: NSObject, AuthServiceProtocol {
     
@@ -49,9 +48,9 @@ public class AuthService: NSObject, AuthServiceProtocol {
     
     public func createUser(username: String, password: String, timeZone: String?, dateOfBirth: String?, country: String?, parentEmail: String?, completionHandler: @escaping (LoggedUserModelProtocol?, Error?) -> ()) {
         
-        var dobValue = dateOfBirth ?? ""
-        var countryValue = country ?? ""
-        var parentEmailValue = parentEmail ?? ""
+        let dobValue = dateOfBirth ?? ""
+        let countryValue = country ?? ""
+        let parentEmailValue = parentEmail ?? ""
         
         let getTempAccessTokenNetworkRequest = TempAccessTokenRequest(environment: environment,
                                                                       clientID: environment.clientID,

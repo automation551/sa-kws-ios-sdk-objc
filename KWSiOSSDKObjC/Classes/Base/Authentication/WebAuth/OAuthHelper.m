@@ -8,6 +8,10 @@
 #import "OAuthHelper.h"
 #import <CommonCrypto/CommonDigest.h>
 
+#import "KWSiOSSDKObjC/KWSiOSSDKObjC-Swift.h"
+
+//@class OAuthData;
+
 @implementation OAuthHelper
 
 NSUInteger const numberBytesToEncode = 32;
@@ -48,33 +52,10 @@ NSUInteger const numberBytesToEncode = 32;
     return base64string;
 }
 
-- (NSString*) typeToString:(OAuthChallengeMethod)type {
-    switch (type) {
-        case S256: return @"S256";
-        case PLAIN: return @"plain";
-    }
-}
-
 - (NSData *)sha265:(NSString *)inputString {
     NSData *verifierData = [inputString dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *sha256Verifier = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     CC_SHA256(verifierData.bytes, (CC_LONG)verifierData.length, sha256Verifier.mutableBytes);
     return sha256Verifier;
 }
-
--(OAuthData*) execute{
-    
-    NSString* codeVerifier = [self generateCodeVerifier];
-    NSString* codeChallenge = [self generateCodeChallenge:codeVerifier];
-    NSString* codeChallengeMethod = [self typeToString:S256];
-    
-    OAuthData* oAuthData = [[OAuthData alloc]initWithCodeVerifier:codeVerifier
-                                                 andCodeChallenge:codeChallenge
-                                           andCodeChallengeMethod:codeChallengeMethod];
-    
-    return oAuthData;
-    
-}
-
-
 @end

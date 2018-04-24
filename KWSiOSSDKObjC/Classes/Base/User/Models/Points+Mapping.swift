@@ -13,7 +13,7 @@ extension PointsModel: Decodable {
     
     public static func decode(_ json: Any) throws -> PointsModel {
         
-        return try PointsModel (            
+        return PointsModel (            
             pending:    try json =>? "pending",
             received:   try json =>? "totalReceived",
             total:      try json =>? "total",

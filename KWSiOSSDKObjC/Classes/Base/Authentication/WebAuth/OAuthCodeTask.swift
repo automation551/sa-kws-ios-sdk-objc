@@ -40,6 +40,6 @@ public class OAuthCodeTask: TaskProtocol {
             return OAuthData(codeChallenge: codeChallenge, codeVerifier: codeVerifier, codeChallengeMethod: codeChallengeMethod.rawValue)
         } else {
             return OAuthData(codeChallenge: "", codeVerifier: "", codeChallengeMethod: codeChallengeMethod.rawValue)
-        }
+        }        
     }
 }

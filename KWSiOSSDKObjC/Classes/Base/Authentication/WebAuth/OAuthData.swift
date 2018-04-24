@@ -7,8 +7,20 @@
 
 import Foundation
 
-public struct OAuthData {
-    let codeChallenge: String
-    let codeVerifier: String
+@objc
+public class OAuthData: NSObject {
+    
+    let codeChallenge:       String
+    let codeVerifier:        String
     let codeChallengeMethod: String
+    
+    public init (codeChallenge:       String,
+                 codeVerifier:        String,
+                 codeChallengeMethod: String) {
+        
+        self.codeChallenge = codeChallenge
+        self.codeVerifier = codeVerifier
+        self.codeChallengeMethod = codeChallengeMethod
+    }
+    
 }
