@@ -31,7 +31,7 @@ class CreateUserMappingTests: XCTestCase {
         
         expect(createUserResponse).toNot(beNil())
         expect(createUserResponse?.id).to(equal(170))
-        expect(createUserResponse?.token).to(equal("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE3MCwiYXBwSWQiOjIsImNsaWVudElkIjoic3Rhbi10ZXN0Iiwic2NvcGUiOiJ1c2VyIiwiaWF0IjoxNTIzMjAzMzI3LCJleHAiOjE1MjMyODk3MjcsImlzcyI6InN1cGVyYXdlc29tZSJ9.uqBAxvmUoyq-o22_cEG2zNKLvRzjTdY7OQu24xzjZDI"))
+        expect(createUserResponse?.token).to(equal("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VySWQiOjUxMjEsImFwcElkIjozNTgsImNsaWVudElkIjoia3dzLXNkay10ZXN0aW5nIiwic2NvcGUiOiJ1c2VyIiwiaWF0IjoxNTI0NDgzMzQ5LCJleHAiOjE4Mzk4NDMzNDksImlzcyI6InN1cGVyYXdlc29tZSJ9.go6JGvx9TEdM963QwexhLmvjNQp-u1qlwQ9-o_N-KNBRwLtI3EJJOGo8DAv0gEt1HPJ4VYKHxlEk3pisaTLzOFQ0jCIK7_vqXWKNFr9Tj7DEUbh8Nq1I47JtCgDyfgCCwoMvGYcv3nUEqg0b0SXCrVYdyQvO1UWDNurAcT8Cfts8awkKcMETXR1-uDr1-EnyDX21IjWu9U7K9seclePYcdwbLVYCly81PM3ZTwfisutoBofDoGfnc33exymqVHB8U-_csvs11hiUVw6KAGTsD2SEI8k1sedUDq-GPXSMTPDrdFB7W4CGXEJsnKD54g8CFGnTKHvw2Oea-D48-KN-_w"))
     }
     
     func test_CreateUser_BadUsername_Response(){
@@ -49,7 +49,7 @@ class CreateUserMappingTests: XCTestCase {
         expect(errorResponse?.invalid?.username?.message).to(equal("\"username\" length must be at least 3 characters long"))
     }
     
-    func test_CreateUser_BadUsernameConflict_Response(){
+    func test_CreateUser_Bad_Username_Conflict_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_conflict_username_taken_response")
         
@@ -64,7 +64,7 @@ class CreateUserMappingTests: XCTestCase {
         expect(errorResponse?.invalid?.username?.message).to(equal("username already taken"))
     }
     
-    func test_CreateUser_BadTokenResponse(){
+    func test_CreateUser_Bad_Token_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
@@ -75,7 +75,7 @@ class CreateUserMappingTests: XCTestCase {
         expect(errorResponse?.error).to(equal("The access token provided is invalid."))
     }
     
-    func test_CreateUser_BadPassword_Response(){
+    func test_CreateUser_Bad_Password_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_password_response")
         
@@ -90,7 +90,7 @@ class CreateUserMappingTests: XCTestCase {
         expect(errorResponse?.invalid?.password?.message).to(equal("\"password\" length must be at least 8 characters long"))
     }
     
-    func test_CreateUser_BadDateOfBirth_Response(){
+    func test_CreateUser_Bad_Date_Of_Birth_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_dob_response")
         
@@ -105,7 +105,7 @@ class CreateUserMappingTests: XCTestCase {
         expect(errorResponse?.invalid?.dateOfBirth?.message).to(equal("\"dateOfBirth\" with value \"a\" fails to match the required pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/"))
     }
     
-    func test_CreateUser_BadCountry_Response(){
+    func test_CreateUser_Bad_Country_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_country_response")
         
@@ -120,7 +120,7 @@ class CreateUserMappingTests: XCTestCase {
         expect(errorResponse?.invalid?.country?.message).to(equal("\"country\" with value \"a\" fails to match the required pattern: /^[A-Z]{2}$/"))
     }
     
-    func test_CreateUser_BadParentEmail_Response(){
+    func test_CreateUser_Bad_Parent_Email_Response(){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_email_response")
         
@@ -135,7 +135,7 @@ class CreateUserMappingTests: XCTestCase {
         expect(errorResponse?.invalid?.parentEmail?.message).to(equal("\"parentEmail\" must be a valid email"))
     }
     
-    func test_CreateUser_NotFound_Response() {
+    func test_CreateUser_Not_Found_Response() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
