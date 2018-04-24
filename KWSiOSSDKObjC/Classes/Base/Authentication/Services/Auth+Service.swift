@@ -92,7 +92,7 @@ public class AuthService: NSObject, AuthServiceProtocol {
         }
     }
     
-    private func doUserCreation(environment: ComplianceNetworkEnvironment, username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponseModel?, Error?) -> ()) {
+    public func doUserCreation(environment: ComplianceNetworkEnvironment, username: String, password: String, dateOfBirth: String, country: String, parentEmail: String, appId: Int, token: String, completionHandler: @escaping (AuthUserResponseModel?, Error?) -> ()) {
         
         
         let createUserNetworkRequest = CreateUserRequest(environment: environment,

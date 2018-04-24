@@ -23,7 +23,7 @@ class RandomUsernameMappingTests : XCTestCase {
     }
     
     //Random Username fetch mapping
-    func test_RandomUsername_DoRandomUsernameFetch_ResponseSuccess() {
+    func test_RandomUsername_Do_Random_Username_Fetch_Response_Success() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"random_username_success_response")
@@ -37,7 +37,7 @@ class RandomUsernameMappingTests : XCTestCase {
         expect(randomUsernameFakeResponse?.randomUsername).to(equal("coolrandomusername123"))
     }
     
-    func test_RandomUsername_DoRandomUsernameFetch_NotFound_Response() {
+    func test_RandomUsername_Do_Random_Username_Fetch_Not_Found_Response() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")

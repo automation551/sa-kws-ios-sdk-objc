@@ -23,7 +23,7 @@ class AppConfigMappingTests : XCTestCase{
     }
     
     //App Config mapping
-    func test_RandomUsername_AppConfig_ResponseSuccess() {
+    func test_Random_Username_App_Config_Response_Success() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_success_response")
@@ -31,11 +31,11 @@ class AppConfigMappingTests : XCTestCase{
         let appConfigResponse = try? AppConfigWrapper.decode(JSON!)
         
         expect(appConfigResponse).toNot(beNil())
-        expect(appConfigResponse?.app.id).to(equal(2))
+        expect(appConfigResponse?.app.id).to(equal(358))
         expect(appConfigResponse?.app.name).to(equal("good_name"))
     }
     
-    func test_RandomUsername_AppConfig_NilAuthClientId_Response (){
+    func test_Random_Username_App_Config_Nil_Auth_Client_Id_Response (){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_null_oauthclientid_response")
         
@@ -50,7 +50,7 @@ class AppConfigMappingTests : XCTestCase{
         expect(errorResponse?.invalid?.oauthClientId?.message).to(equal("\"oauthClientId\" is required"))
     }
     
-    func test_RandomUsername_AppConfig_Empty_AuthClientId_Response (){
+    func test_Random_Username_App_Config_Empty_Auth_Client_Id_Response (){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_empty_oauthclientid_response")
         
@@ -65,7 +65,7 @@ class AppConfigMappingTests : XCTestCase{
         expect(errorResponse?.invalid?.oauthClientId?.message).to(equal("\"oauthClientId\" is not allowed to be empty"))
     }
     
-    func test_RandomUsername_AppConfig_AppNotFound_Response (){
+    func test_Random_Username_App_Config_App_Not_Found_Response (){
         var JSON: Any?
         JSON = try? fixtureWithName(name:"app_config_app_not_found_response")
         
@@ -77,7 +77,7 @@ class AppConfigMappingTests : XCTestCase{
         expect(errorResponse?.message).to(equal("app not found."))
     }
     
-    func test_RandomUsername_DoRandomUsernameFetch_NotFound_Response() {
+    func test_Random_Username_App_Config_Generic_Not_Found_Response() {
         
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")

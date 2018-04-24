@@ -13,7 +13,7 @@ import KWSiOSSDKObjC
 
 class GetAppDataRequestTests: XCTestCase {
     
-    private var env: KWSNetworkEnvironment!
+    private var env: ComplianceNetworkEnvironment!
     private var request: GetAppDataRequest!
     private var method: NetworkMethod!
     private var endpoint: String!
