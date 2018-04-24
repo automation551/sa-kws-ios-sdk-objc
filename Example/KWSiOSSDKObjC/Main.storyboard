@@ -10,96 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ObjC-->
-        <scene sceneID="AoR-EA-2nc">
-            <objects>
-                <navigationController id="fYJ-C7-Cfe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ObjC" id="UMc-x2-nqx"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dPR-ON-VxP">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="whP-gf-Uak" kind="relationship" relationship="rootViewController" id="bcj-rg-dJ3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pl6-lt-TKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2223" y="55"/>
-        </scene>
-        <!--ObjC Version-->
-        <scene sceneID="wQg-tq-qST">
-            <objects>
-                <viewController id="whP-gf-Uak" customClass="KWSViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uEw-UM-LJ8"/>
-                        <viewControllerLayoutGuide type="bottom" id="Mvr-aV-6Um"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TpU-gO-2f1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fcR-Lx-Y0w">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="whP-gf-Uak" id="Mth-Rk-NA5"/>
-                                    <outlet property="delegate" destination="whP-gf-Uak" id="chU-ra-n90"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Mvr-aV-6Um" firstAttribute="top" secondItem="fcR-Lx-Y0w" secondAttribute="bottom" id="AS6-pa-OWn"/>
-                            <constraint firstAttribute="trailing" secondItem="fcR-Lx-Y0w" secondAttribute="trailing" id="E8s-we-xzC"/>
-                            <constraint firstItem="fcR-Lx-Y0w" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" id="Hyh-O0-YjC"/>
-                            <constraint firstItem="fcR-Lx-Y0w" firstAttribute="top" secondItem="TpU-gO-2f1" secondAttribute="top" id="uCi-ZM-87E"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="ObjC Version" id="7R7-6c-JKd"/>
-                    <connections>
-                        <outlet property="table" destination="fcR-Lx-Y0w" id="Q0o-Fy-Per"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1238" y="56"/>
-        </scene>
-        <!--Swift Version-->
-        <scene sceneID="gAu-Nj-Hio">
-            <objects>
-                <tableViewController id="049-Ql-KVa" customClass="KWSSwiftTableViewController" customModule="KWSiOSSDKObjC_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Khx-Pw-bbe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="uMR-KZ-yGd">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
-                        <connections>
-                            <outlet property="dataSource" destination="049-Ql-KVa" id="vpH-FG-Pg6"/>
-                            <outlet property="delegate" destination="049-Ql-KVa" id="oLt-97-4KX"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Swift Version" id="r6v-Qx-8Ge"/>
-                    <connections>
-                        <outlet property="textView" destination="uMR-KZ-yGd" id="lBW-90-nhq"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufw-k2-AfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1142" y="761"/>
-        </scene>
-        <!--Swift Version-->
+        <!--Compliance SDK-->
         <scene sceneID="d7J-Nd-8hZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sDu-Fz-Uea" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Swift Version" id="gRt-7d-2sL" customClass="KWSSwiftTableViewController" customModule="KWSiOSSDKObjC_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Swift Version" id="gRt-7d-2sL" userLabel="Compliance SDK" customClass="TableViewController" customModule="KWSiOSSDKObjC_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uMZ-Hl-sOg"/>
                         <viewControllerLayoutGuide type="bottom" id="bP9-Vd-gJ2"/>
@@ -150,8 +64,9 @@
                         <outlet property="textView" destination="tJD-lP-JY1" id="59w-Rg-h7J"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDu-Fz-Uea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1634.4000000000001" y="1503.5982008995504"/>
+            <point key="canvasLocation" x="-1303" y="313"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dJH-Yg-aiN">
@@ -170,11 +85,11 @@
             </objects>
             <point key="canvasLocation" x="-3278" y="313"/>
         </scene>
-        <!--Swift-->
+        <!--Compliance SDK-->
         <scene sceneID="7R4-li-lwJ">
             <objects>
                 <navigationController id="PFw-HN-Bjn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Swift" id="FeW-6j-jVf"/>
+                    <tabBarItem key="tabBarItem" title="Compliance SDK" id="FeW-6j-jVf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TZe-rV-iZ9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -185,7 +100,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huM-ao-lxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2223" y="761"/>
+            <point key="canvasLocation" x="-2260" y="313"/>
         </scene>
     </scenes>
 </document>

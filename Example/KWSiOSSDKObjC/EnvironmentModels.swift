@@ -1,5 +1,5 @@
 //
-//  KWSEnvironmentModels.swift
+//  EnvironmentModels.swift
 //  KWSiOSSDKObjC_Example
 //
 //  Created by Guilherme Mota on 09/04/2018.

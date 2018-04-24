@@ -12,19 +12,12 @@
 #endif /* OAuthHelper_h */
 
 #import <Foundation/Foundation.h>
-#import "OAuthData.h"
+
+@class OAuthData;
 
 @interface OAuthHelper : NSObject
 
 extern NSUInteger const numberBytesToEncode;
-
-// enum to define permissions
-typedef NS_ENUM(NSInteger, OAuthChallengeMethod) {
-    S256 = 0,
-    PLAIN = 1
-};
-
-- (OAuthData*) execute;
 
 - (NSString*) generateCodeChallenge: (NSString*) verifier;
 

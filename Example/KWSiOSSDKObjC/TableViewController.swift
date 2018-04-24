@@ -11,7 +11,7 @@ import KWSiOSSDKObjC
 import SAProtobufs
 import SAMobileBase
 
-class KWSSwiftTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var kUserKWSNetworkEnvironment : ComplianceNetworkEnvironment?
     
