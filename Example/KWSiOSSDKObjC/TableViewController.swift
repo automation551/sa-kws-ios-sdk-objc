@@ -692,11 +692,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             } else {
                 if let errorMessage : String = (error as! ErrorWrapper).message {
-                    responseText = "\nSomething went wrong for GET user score: '\(errorMessage)' \n"
+                    responseText = "\nSomething went wrong for Auth: '\(errorMessage)' \n"
                 } else if let error : String = (error as! ErrorWrapper).error {
-                    responseText = "\nSomething went wrong for GET user score: '\(error)' \n"
+                    responseText = "\nSomething went wrong for Auth: '\(error)' \n"
                 } else{
-                    responseText = "\nSomething went wrong for GET user score: unknown error \n"
+                    responseText = "\nSomething went wrong for Auth: unknown error \n"
                 }
             }
             //update text
