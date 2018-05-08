@@ -51,6 +51,20 @@ class SetAppDataMappingTests: XCTestCase {
         expect(errorResponse?.invalid?.nameKey?.message).to(equal("\"name\" is not allowed to be empty"))
     }
     
+    func test_User_Actions_SetAppData_Mapping_Bad_Lenght_Name_Response() {
+        
+        var JSON: Any?
+        JSON = try? fixtureWithName(name:"set_app_name_len_bad_response")
+        
+        //403
+        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        
+        expect(errorResponse).toNot(beNil())
+        expect(errorResponse?.code).to(equal(11))
+        expect(errorResponse?.codeMeaning).to(equal("unexpected"))
+        expect(errorResponse?.message).to(equal("Validation error: Validation len on name failed"))
+    }
+    
     func test_User_Actions_SetAppData_Mapping_BadToken_Response() {
         
         var JSON: Any?

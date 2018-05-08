@@ -29,11 +29,8 @@ PODS:
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
   - KWSiOSSDKObjC (2.3.2):
-    - SAJsonParser (= 1.3.3)
     - SAMobileBase (= 2.2.3)
-    - SANetworking (= 0.3.0)
     - SAProtobufs (= 1.6.5)
-    - SAUtils (= 1.5.2)
   - Mockingjay (2.0.1):
     - Mockingjay/Core (= 2.0.1)
     - Mockingjay/XCTest (= 2.0.1)
@@ -42,12 +39,9 @@ PODS:
   - Mockingjay/XCTest (2.0.1):
     - Mockingjay/Core
   - Nimble (7.1.1)
-  - SAJsonParser (1.3.3)
   - SAMobileBase (2.2.3):
     - Decodable (~> 0.6.0)
-  - SANetworking (0.3.0)
   - SAProtobufs (1.6.5)
-  - SAUtils (1.5.2)
   - URITemplate (2.0.3)
 
 DEPENDENCIES:
@@ -71,11 +65,8 @@ SPEC REPOS:
     - GoogleUtilities
     - Mockingjay
     - Nimble
-    - SAJsonParser
     - SAMobileBase
-    - SANetworking
     - SAProtobufs
-    - SAUtils
     - URITemplate
 
 EXTERNAL SOURCES:
@@ -93,14 +84,11 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  KWSiOSSDKObjC: 8f5a16394c1debad04c9a1987cc3fa420531573d
+  KWSiOSSDKObjC: 2984d51f912c53b3e7ece894afaaa41986d68ed2
   Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
-  SAJsonParser: 528ef25b7cf7f362164731a7aa8401bc89dc4cf5
   SAMobileBase: a4df3b42502cecf085c95fcc97b5301ed7daa1f3
-  SANetworking: 4abd5443131b7dc3ca373f83f156045d7e7d0836
   SAProtobufs: 9bc1d6240939c3cfe2b700fe4dd10638973d808c
-  SAUtils: c0d6c68af97b4fdc18a1dcc613f9b5cde25b78f8
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
 PODFILE CHECKSUM: 84479e3e908c902965bb9a33c87cee4fe6be7073

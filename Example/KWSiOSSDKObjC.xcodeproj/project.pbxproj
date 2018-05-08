@@ -50,9 +50,9 @@
 		9C5A79D620763888009E4B8C /* LoginAuthResponse+ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D520763888009E4B8C /* LoginAuthResponse+ModelTests.swift */; };
 		9C68ED87207A7A4300444D2B /* UsernameServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED85207A792400444D2B /* UsernameServiceTests.swift */; };
 		9C68ED8F207A87D900444D2B /* Session+ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED8B207A87BE00444D2B /* Session+ServiceTests.swift */; };
-		9C6F9D60207B7DCC00F78119 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		9C6F9D62207B7E5200F78119 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		9C6F9D64207B7E5E00F78119 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9C6F9D60207B7DCC00F78119 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		9C6F9D62207B7E5200F78119 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		9C6F9D64207B7E5E00F78119 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		9C6F9D71207BD6CC00F78119 /* SetAppData+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D70207BD6CC00F78119 /* SetAppData+RequestTests.swift */; };
 		9C6F9D74207BD73100F78119 /* SetAppDataFakeResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D72207BD73100F78119 /* SetAppDataFakeResponse+Mapping.swift */; };
 		9C6F9D75207BD73100F78119 /* SetAppDataFakeResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D73207BD73100F78119 /* SetAppDataFakeResponseModel.swift */; };
@@ -788,21 +788,15 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Decodable/Decodable.framework",
 				"${BUILT_PRODUCTS_DIR}/KWSiOSSDKObjC/KWSiOSSDKObjC.framework",
-				"${BUILT_PRODUCTS_DIR}/SAJsonParser/SAJsonParser.framework",
 				"${BUILT_PRODUCTS_DIR}/SAMobileBase/SAMobileBase.framework",
-				"${BUILT_PRODUCTS_DIR}/SANetworking/SANetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/SAProtobufs/SAProtobufs.framework",
-				"${BUILT_PRODUCTS_DIR}/SAUtils/SAUtils.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Decodable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KWSiOSSDKObjC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAJsonParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMobileBase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SANetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAProtobufs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAUtils.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -840,11 +834,11 @@
 				9C18313F2020F04F00DD4083 /* Mocks.swift in Sources */,
 				9CF4569F207E84D300D3CC67 /* Score+ModelTests.swift in Sources */,
 				9C6F9D74207BD73100F78119 /* SetAppDataFakeResponse+Mapping.swift in Sources */,
-				9C6F9D62207B7E5200F78119 /* (null) in Sources */,
+				9C6F9D62207B7E5200F78119 /* BuildFile in Sources */,
 				9C6F9D79207BD74700F78119 /* SetAppData+MappingTests.swift in Sources */,
 				9C5A79CE20762C44009E4B8C /* LoggedUser+ModelTests.swift in Sources */,
 				9CD6E5DA207BE3C50077F56C /* UpdateUserDetailsFakeResponseModel.swift in Sources */,
-				9C6F9D60207B7DCC00F78119 /* (null) in Sources */,
+				9C6F9D60207B7DCC00F78119 /* BuildFile in Sources */,
 				9C59C7BA202B18B700BE4E74 /* RandomUsername+ModelTests.swift in Sources */,
 				9CF456A9207E859800D3CC67 /* GetLeaders+MappingTests.swift in Sources */,
 				9CF456A3207E857800D3CC67 /* GetScore+RequestTests.swift in Sources */,
@@ -865,7 +859,7 @@
 				9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */,
 				9C18313820209F3E00DD4083 /* TestUtils.swift in Sources */,
 				9C4DE2E6208F36D900F80668 /* GetAppData+RequestTests.swift in Sources */,
-				9C6F9D64207B7E5E00F78119 /* (null) in Sources */,
+				9C6F9D64207B7E5E00F78119 /* BuildFile in Sources */,
 				9CFD4A22207C25F4002CC7B6 /* HasTriggeredEvent+MappingTests.swift in Sources */,
 				9C5A79D420763500009E4B8C /* AuthUserResponse+ModelTests.swift in Sources */,
 				9CF456AC207E859800D3CC67 /* GetScore+MappingTests.swift in Sources */,

@@ -22,9 +22,6 @@ The SuperAwesome Kids Web Services iOS SDK
   s.ios.deployment_target = '9.0'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.2' }
   s.source_files = 'KWSiOSSDKObjC/Classes/**/*'
-  s.dependency 'SAJsonParser', '1.3.3'
-  s.dependency 'SAUtils', '1.5.2'
-  s.dependency 'SANetworking',  '0.3.0'
   s.dependency 'SAMobileBase', '2.2.3'
   s.dependency 'SAProtobufs', '1.6.5'
   
