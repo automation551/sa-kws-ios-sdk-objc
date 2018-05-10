@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+3.0.0
+ - First major release of the new codebase
+ - Merged develop into master
+ - Massive clean up of the SDK, refactoring old code and fully relying on the new architecture
+ - Added and improved tests
+
 2.4.0
  - Imrpved WebView OAuth flow
 
