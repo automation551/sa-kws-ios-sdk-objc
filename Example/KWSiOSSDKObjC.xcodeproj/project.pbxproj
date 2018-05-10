@@ -618,6 +618,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				7F3FDC2FC81484E59574767E /* [CP] Embed Pods Frameworks */,
+				359442FA60C8B54DEBF81E78 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -637,6 +638,7 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				BFC6C55CE222AD62C004A1EF /* [CP] Embed Pods Frameworks */,
+				52D254227C632BCD9BD1A4B1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -721,6 +723,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		359442FA60C8B54DEBF81E78 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KWSiOSSDKObjC_Example/Pods-KWSiOSSDKObjC_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52D254227C632BCD9BD1A4B1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KWSiOSSDKObjC_Tests/Pods-KWSiOSSDKObjC_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		53DED5EF88B01A0F757E152E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
