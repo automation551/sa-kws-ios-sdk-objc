@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Services/KWS/Auth/KWSOAuthToken.m"
-            timestampString = "538677267.722759"
+            filePath = "KWSiOSSDKObjC/SwiftStuffTableViewController.swift"
+            timestampString = "544448272.525943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "-successWithStatus:andPayload:andSuccess:"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "loginUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,14 +25,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Services/KWS/Auth/KWSOAuthToken.m"
-            timestampString = "538677267.723171"
+            filePath = "Tests/CreateUser_CreateUser+ObjectProvider.swift"
+            timestampString = "544896651.084258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-successWithStatus:andPayload:andSuccess:"
-            landmarkType = "7">
+            startingLineNumber = "66"
+            endingLineNumber = "66">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,13 +39,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../KWSiOSSDKObjC/Classes/Services/WebAuth/OAuthHelper.m"
-            timestampString = "538677450.559319"
+            filePath = "../KWSiOSSDKObjC/Classes/Base/WebAuth/OAuthCodeTask.swift"
+            timestampString = "545590579.692264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-execute"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "execute(input:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

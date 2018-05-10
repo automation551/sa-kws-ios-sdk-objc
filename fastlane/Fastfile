@@ -1,0 +1,15 @@
+
+if ENV['SA_USE_DEV_FASTFILE'] then
+  USER = `printf $USER`
+  #Fetch sa-continous-integration path and trim any newlines and trailing white space
+  dirtySALocalRepoDirectory = sh("find /users/#{USER} -name sa-continuous-integration -maxdepth 2 -type d | tr -d '\n'")
+  saLocalRepoDirectory = "#{dirtySALocalRepoDirectory}".strip
+  import "#{saLocalRepoDirectory}/mobile/sdks/ios/Fastfile"
+else
+
+  import_from_git(
+    url: "git@github.com:SuperAwesomeLTD/sa-continuous-integration.git",
+    branch: "master",
+    path: "mobile/sdks/ios/Fastfile",
+  )
+end

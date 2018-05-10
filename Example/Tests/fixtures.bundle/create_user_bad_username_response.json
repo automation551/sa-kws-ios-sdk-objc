@@ -1,0 +1,12 @@
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"username\" fails because [\"username\" length must be at least 3 characters long]",
+    "invalid": {
+        "username": {
+            "code": 7,
+            "codeMeaning": "invalidValue",
+            "errorMessage": "\"username\" length must be at least 3 characters long"
+        }
+    }
+}

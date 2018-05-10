@@ -1,4 +1,5 @@
 PODS:
+  - Decodable (0.6.0)
   - Firebase (3.7.1):
     - Firebase/Core (= 3.7.1)
   - Firebase/Core (3.7.1):
@@ -27,24 +28,53 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - KWSiOSSDKObjC (2.3.6):
-    - SAJsonParser (= 1.3.3)
-    - SANetworking (= 0.3.0)
-    - SAUtils (= 1.5.2)
-  - SAJsonParser (1.3.3)
-  - SANetworking (0.3.0)
-  - SAUtils (1.5.2)
+  - KWSiOSSDKObjC (2.3.2):
+    - SAMobileBase (= 2.2.3)
+    - SAProtobufs (= 1.6.5)
+  - Mockingjay (2.0.1):
+    - Mockingjay/Core (= 2.0.1)
+    - Mockingjay/XCTest (= 2.0.1)
+  - Mockingjay/Core (2.0.1):
+    - URITemplate (~> 2.0)
+  - Mockingjay/XCTest (2.0.1):
+    - Mockingjay/Core
+  - Nimble (7.1.1)
+  - SAMobileBase (2.2.3):
+    - Decodable (~> 0.6.0)
+  - SAProtobufs (1.6.5)
+  - URITemplate (2.0.3)
 
 DEPENDENCIES:
   - Firebase (= 3.7.1)
   - FirebaseMessaging (= 1.2.0)
   - KWSiOSSDKObjC (from `../`)
+  - Mockingjay
+  - Nimble
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Decodable
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleInterchangeUtilities
+    - GoogleIPhoneUtilities
+    - GoogleSymbolUtilities
+    - GoogleUtilities
+    - Mockingjay
+    - Nimble
+    - SAMobileBase
+    - SAProtobufs
+    - URITemplate
 
 EXTERNAL SOURCES:
   KWSiOSSDKObjC:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
+  Decodable: f0b95fa2fcf8633dd097aa8f7f09838ab3524f5d
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
   FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
@@ -54,11 +84,13 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  KWSiOSSDKObjC: b4fd7dcee73b3bf89352d7dc98de722917fa72b0
-  SAJsonParser: 528ef25b7cf7f362164731a7aa8401bc89dc4cf5
-  SANetworking: 4abd5443131b7dc3ca373f83f156045d7e7d0836
-  SAUtils: c0d6c68af97b4fdc18a1dcc613f9b5cde25b78f8
+  KWSiOSSDKObjC: 656a83ec1d6b012b6e307bb487ad7e3fcb1548ed
+  Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
+  Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
+  SAMobileBase: a4df3b42502cecf085c95fcc97b5301ed7daa1f3
+  SAProtobufs: 9bc1d6240939c3cfe2b700fe4dd10638973d808c
+  URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: 4544102f753083e0d8781a3e7a7339c84e10340d
+PODFILE CHECKSUM: 84479e3e908c902965bb9a33c87cee4fe6be7073
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.0

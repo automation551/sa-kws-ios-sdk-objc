@@ -1,0 +1,48 @@
+{
+    "id": 25,
+    "username": "genioustiger123",
+    "firstName": "John",
+    "lastName": "Doe",
+    "address": {
+        "street": "Number 12",
+        "city": "London",
+        "postCode": "NW1 23L",
+        "country": "United Kingdom",
+        "countryCode": "GB",
+        "countryName": "United Kingdom"
+    },
+    "dateOfBirth": "2012-03-02",
+    "gender": "male",
+    "language": "en",
+    "email": "john.doe@email",
+    "hasSetParentEmail": true,
+    "consentAgeForCountry": 13,
+    "isMinor": true,
+    "applicationProfile": {
+        "username": "genioustiger123",
+        "customField1": 0,
+        "customField2": 0,
+        "avatarId": 0
+    },
+    "applicationPermissions": {
+        "accessAddress": false,
+        "accessFirstName": false,
+        "accessLastName": false,
+        "accessEmail": false,
+        "accessStreetAddress": false,
+        "accessCity": false,
+        "accessPostalCode": false,
+        "accessCountry": false,
+        "sendPushNotification": true,
+        "sendNewsletter": false,
+        "enterCompetitions": false
+    },
+    "points": {
+        "totalReceived": 600,
+        "total": 600,
+        "totalPointsReceivedInCurrentApp": 600,
+        "availableBalance": 600,
+        "pending": 1
+    },
+    "createdAt": "2018-01-19"
+}

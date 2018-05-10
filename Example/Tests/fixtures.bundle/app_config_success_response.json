@@ -1,0 +1,73 @@
+{
+    "app": {
+        "id": 358,
+        "name": "good_name",
+        "domain": null,
+        "displayLightnings": true,
+        "emailPlusActive": true,
+        "splashScreenBgColour": null,
+        "mainContainerBgColour": null,
+        "oauthImplicitEnabled": true,
+        "oauthCallbackUrls": [
+                              "good_url",
+                              "good_url",
+                              "good_url",
+                              "good_url",
+                              "good_url"
+                              ],
+        "featPushNotification": true,
+        "featAccountNotification": true,
+        "featPrizesAndDeliveries": true,
+        "featNewsletter": true,
+        "featCompetitions": true,
+        "parentEmailRequired": true,
+        "logoUrl": {
+            "en": null
+        },
+        "iconUrl": {
+            "en": null
+        },
+        "description": {
+            "en": "test"
+        },
+        "headerLogoUrl": {
+            "en": null
+        },
+        "faviconUrl": {
+            "en": null
+        },
+        "splashScreenLogoUrl": {
+            "en": null
+        },
+        "splashScreenBgImageUrl": {
+            "en": null
+        },
+        "mainContainerBgImageUrl": {
+            "en": null
+        },
+        "mainContainerBgImageFill": {
+            "en": false
+        },
+        "termsAndConditionsUrl": {
+            "en": null
+        },
+        "privacyPolicyUrl": {
+            "en": null
+        },
+        "brandingEmailHeaderBgImg": {
+            "en": null
+        }
+    },
+    "apps": [],
+    "appsShort": {
+        "superawesomeclub": {
+            "name": "good_name"
+        },
+        "test-1234": {
+            "name": "good_name"
+        }
+    },
+    "languages": [
+                  "en"
+                  ]
+}

@@ -1,0 +1,5 @@
+{
+    "code": 2,
+    "codeMeaning": "notFound",
+    "errorMessage": "permissions not found: mock_permission"
+}

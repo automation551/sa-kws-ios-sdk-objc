@@ -1,0 +1,5 @@
+{
+    "code": 1,
+    "codeMeaning": "forbidden",
+    "errorMessage": "operation not supported for this client"
+}

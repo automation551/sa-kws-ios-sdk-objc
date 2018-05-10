@@ -1,0 +1,13 @@
+
+{
+    "code": 10,
+    "codeMeaning": "conflict",
+    "errorMessage": "parentEmail already set",
+    "invalid": {
+        "parentEmail": {
+            "code": 10,
+            "codeMeaning": "conflict",
+            "errorMessage": "parentEmail already set"
+        }
+    }
+}

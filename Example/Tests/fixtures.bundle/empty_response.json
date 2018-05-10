@@ -1,0 +1,12 @@
+{
+    "code": 5,
+    "codeMeaning": "validation",
+    "errorMessage": "child \"name\" fails because [\"name\" is not allowed to be empty]",
+    "invalid": {
+        "name": {
+            "code": 7,
+            "codeMeaning": "invalidValue",
+            "errorMessage": "\"name\" is not allowed to be empty"
+        }
+    }
+}
