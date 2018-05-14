@@ -4,8 +4,6 @@
 //
 //  Created by Guilherme Mota on 14/05/2018.
 //
-
-import SAProtobufs
 import SAMobileBase
 
 public class UtilsHelper : NSObject{
