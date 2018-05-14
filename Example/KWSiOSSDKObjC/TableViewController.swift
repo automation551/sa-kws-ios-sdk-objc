@@ -203,7 +203,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if let user = result{
                 
-                if let tokenData = UtilsHelper.getMetadataFromToke(token: user.token){
+                if let tokenData = UtilsHelper.getMetadataFromToken(token: user.token){
                     if let userId = tokenData.userId{
                         responseText = "\nThe login result is success: User ID is \(userId)\n"
                     } else {
