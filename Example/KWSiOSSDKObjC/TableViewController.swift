@@ -201,13 +201,17 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             var responseText: String = ""
             
-            if let user = result {
-                self.saveUser(user: user)
-                if let userCached = self.getLoggedUser(){
-                    responseText = "\nThe login result is success: User ID is \(userCached.id as? Int ?? 0)\n"
-                } else {
-                    responseText = "\nThe login result is success but something went bad caching it...\n"
+            if let user = result{
+                
+                if let tokenData = UtilsHelper.getMetadataFromToken(token: user.token){
+                    if let userId = tokenData.userId{
+                        responseText = "\nThe login result is success: User ID is \(userId)\n"
+                    } else {
+                        responseText = "\nThe login result is success but something went bad caching it...\n"
+                    }
                 }
+                //then save it
+                self.saveUser(user: user)
             } else {
                 if let errorMessage : String = (error as! ErrorWrapper).error {
                     responseText = "\nSomething went wrong for login: '\(errorMessage)'\n"
