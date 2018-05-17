@@ -32,7 +32,7 @@ class ScoringServiceTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        let sdk = ComplianceSDK(withEnvirnoment: self.environment)
+        let sdk = ComplianceSDK(withEnvironment: self.environment)
         self.scoringService = sdk.getService(withType: ScoreServiceProtocol.self)
     }
     

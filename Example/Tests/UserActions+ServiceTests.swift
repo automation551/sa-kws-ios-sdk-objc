@@ -32,7 +32,7 @@ class UserActionsServiceTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        let sdk = ComplianceSDK(withEnvirnoment: self.environment)
+        let sdk = ComplianceSDK(withEnvironment: self.environment)
         self.userActionsService = sdk.getService(withType: UserActionsServiceProtocol.self)
     }
     

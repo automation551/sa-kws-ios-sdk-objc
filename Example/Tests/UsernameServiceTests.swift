@@ -26,7 +26,7 @@ class UsernameServiceTests: XCTestCase {
         self.environment = GoodMockNetworkEnvironment()
         
         //when
-        let sdk = ComplianceSDK(withEnvirnoment: self.environment)
+        let sdk = ComplianceSDK(withEnvironment: self.environment)
         self.service = sdk.getService(withType: UsernameServiceProtocol.self)
     }
     
