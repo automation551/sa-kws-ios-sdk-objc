@@ -15,7 +15,7 @@ public class ComplianceSDK : NSObject, AbstractFactoryProtocol {
     
     private let environment: ComplianceNetworkEnvironment!
     
-    public init(withEnvirnoment environment: ComplianceNetworkEnvironment) {
+    public init(withEnvironment environment: ComplianceNetworkEnvironment) {
         self.environment = environment
     }
     
