@@ -51,9 +51,27 @@ DEPENDENCIES:
   - Mockingjay
   - Nimble
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Decodable
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleInterchangeUtilities
+    - GoogleIPhoneUtilities
+    - GoogleSymbolUtilities
+    - GoogleUtilities
+    - Mockingjay
+    - Nimble
+    - SAMobileBase
+    - SAProtobufs
+    - URITemplate
+
 EXTERNAL SOURCES:
   KWSiOSSDKObjC:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Decodable: f0b95fa2fcf8633dd097aa8f7f09838ab3524f5d
@@ -75,4 +93,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 84479e3e908c902965bb9a33c87cee4fe6be7073
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
