@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KWSiOSSDKObjC"
-  s.version          = "3.1.0"
+  s.version          = "3.1.1"
   s.summary          = "The SuperAwesome Kids Web Services SDK"
   s.description      = <<-DESC
 The SuperAwesome Kids Web Services iOS SDK
