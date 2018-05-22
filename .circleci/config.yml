@@ -1,0 +1,40 @@
+version: 2
+jobs:
+
+  build:
+    macos:
+      xcode: "9.3.1"
+    steps:
+      - checkout
+      - run: echo build
+
+  test:
+    docker:
+      - image: ubuntu
+    steps:
+      - checkout
+      - run: echo test
+
+  deployment:
+    type: approval
+    docker:
+      - image: ubuntu
+    steps:
+      - checkout
+      - run: echo test
+
+workflows:
+  version: 2
+  workflow1:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deployment_approval:
+          type: approval
+          requires:
+           - test
+      - deployment:
+          requires:
+            - deployment_approval
