@@ -3,7 +3,7 @@ jobs:
 
   build:
     macos:
-      xcode: "9.3.1"
+      xcode: "9.3.0"
     steps:
       - checkout
       - run: echo build
