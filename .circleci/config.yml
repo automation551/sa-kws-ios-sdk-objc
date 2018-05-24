@@ -24,7 +24,16 @@ jobs:
     steps:
       - checkout
       - *fastlane_dependencies
-      - run: bundle install
+      - run: 
+          name: Install Gems
+          command: bundle install
+      - run:
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run:
+          name: Install CocoaPods
+          command: pod install --verbose
       - run:
           name: Fastlane
           command: fastlane $FASTLANE_LANE
