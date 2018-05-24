@@ -13,7 +13,12 @@ references:
       name: Download fastlane
       command: gem install fastlane --user-install
 
+
+      PODFILE_PATH
+
 jobs:
+
+
 
   build-and-test:
     <<: *ios_config
@@ -32,6 +37,7 @@ jobs:
           command: |
             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
+          working_directory: Example/Podfile
           name: Install CocoaPods
           command: pod install --verbose
       - run:
