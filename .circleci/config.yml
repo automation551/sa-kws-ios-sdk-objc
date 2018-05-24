@@ -13,13 +13,7 @@ references:
       name: Download fastlane
       command: gem install fastlane --user-install
 
-
-      PODFILE_PATH
-
 jobs:
-
-
-
   build-and-test:
     <<: *ios_config
     environment:
