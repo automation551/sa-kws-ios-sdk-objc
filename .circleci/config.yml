@@ -1,40 +1,58 @@
 version: 2
-jobs:
 
-  build:
+## Declare de references
+references:
+  ## Docker image configurations
+  ios_config: &ios_config
     macos:
       xcode: "9.3.0"
-    steps:
-      - checkout
-      - run: echo build
 
-  test:
-    docker:
-      - image: ubuntu
-    steps:
-      - checkout
-      - run: echo test
+  ## Dependencies
+  fastlane_dependencies: &fastlane_dependencies
+    run:
+      name: Download fastlane
+      command: gem install fastlane
 
-  deployment:
-    type: approval
-    docker:
-      - image: ubuntu
+jobs:
+
+  build-and-test:
+    <<: *ios_config
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: run_all_tests
+    shell: /bin/bash --login -o pipefail
     steps:
       - checkout
-      - run: echo test
+      - *fastlane_dependencies
+      - run: bundle install
+      - run:
+          name: Fastlane
+          command: fastlane $FASTLANE_LANE
+      - store_artifacts:
+          path: output
+      - store_test_results:
+          path: output/scan
+
+  ## Run sdk push
+  sdk_push:
+    <<: *ios_config
+    steps:
+      - checkout
+      - *fastlane_dependencies
+      - run:
+          name: Set configs for git
+          command: git config --global user.email ${GIT_COMMITTER_EMAIL} | git config --global user.name ${GIT_COMMITTER_NAME}
+      - run:
+          name: Push the SDK to CocoaPods
+          ## this sdk push will need to be automated for the SEMVER and also 'isPrivateRepo'
+          command: fastlane sdk_push type:patch isPrivateRepo:false   
 
 workflows:
   version: 2
   workflow1:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - deployment_approval:
-          type: approval
-          requires:
-           - test
-      - deployment:
-          requires:
-            - deployment_approval
+      - build-and-test
+      #uncomment this when ready to go live  -> should be above the jobs!!!
+          #filters:
+          #  branches:
+          #    only: master
