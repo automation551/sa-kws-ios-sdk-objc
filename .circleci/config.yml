@@ -16,6 +16,7 @@ references:
 jobs:
   build-and-test:
     <<: *ios_config
+    working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: run_all_tests
@@ -31,7 +32,7 @@ jobs:
           command: |
             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
-          working_directory: Example/Podfile
+          working_directory: /Users/distiller/project/Example
           name: Install CocoaPods
           command: pod install --verbose
       - run:
