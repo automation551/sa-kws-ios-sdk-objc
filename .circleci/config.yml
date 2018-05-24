@@ -36,7 +36,7 @@ jobs:
           name: Install CocoaPods
           command: pod install --verbose
       - run:
-          name: Fastlane
+          name: Run all tests
           command: fastlane $FASTLANE_LANE
       - store_artifacts:
           path: output
@@ -62,7 +62,9 @@ workflows:
   workflow1:
     jobs:
       - build-and-test
-      #uncomment this when ready to go live  -> should be above the jobs!!!
-          #filters:
-          #  branches:
-          #    only: master
+      - sdk_push:
+        requires:
+          - build-and-test
+          filters:
+            branches:
+              only: master
