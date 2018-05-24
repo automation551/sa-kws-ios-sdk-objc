@@ -11,7 +11,7 @@ references:
   fastlane_dependencies: &fastlane_dependencies
     run:
       name: Download fastlane
-      command: gem install fastlane
+      command: gem install fastlane --user-install
 
 jobs:
 
