@@ -9,7 +9,6 @@
 import UIKit
 import KWSiOSSDKObjC
 import SAProtobufs
-import SAMobileBase
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
