@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+3.1.1
+ - Cleaned up some code and updated dependencies.
+
+3.1.0
+ - Added Utils class to handle authentication token data with ease.
+ 
 3.0.0
  - First major release of the new codebase
  - Merged develop into master
