@@ -54,8 +54,10 @@ jobs:
           command: git config --global user.email ${GIT_COMMITTER_EMAIL} | git config --global user.name ${GIT_COMMITTER_NAME}
       - run:
           name: Push the SDK to CocoaPods
-          ## this sdk push will need to be automated for the SEMVER and also 'isPrivateRepo'
-          command: fastlane sdk_push type:patch isPrivateRepo:false   
+          command: fastlane sdk_push type:patch isPrivateRepo:${IS_PRIVATE_REPO}   
+      - run:
+          name: Commit changes
+          command: InitialBranch=$(git rev-parse --abbrev-ref HEAD) | git add -A && git commit -m 'Updated version [ci skip]' && git push origin $InitialBranch
 
 workflows:
   version: 2
