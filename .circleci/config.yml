@@ -13,60 +13,148 @@ references:
       name: Download fastlane
       command: gem install fastlane --user-install
 
+  ruby_dependencies: &ruby_dependencies
+    run:
+      name: Download Ruby Dependencies
+      command: bundle check || bundle install --path vendor/bundle
+
+  fetch_cocoapods: &fetch_cocoapods
+    run:
+      name: Fetch CocoaPods Specs
+      command: |
+        curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+
+  install_cocoapods: &install_cocoapods
+    run:
+      name: Install CocoaPods
+      command: pod install --verbose
+
+  setup_private_specs: &setup_private_specs
+    run:
+      name: Setup private specs
+      command: |
+        pod repo add temp-spec-repo $REMOTE_SPECS_REPO
+        cd ~/.cocoapods/repos/temp-spec-repo
+        pod repo lint .
+
+  create_temp_dir_for_temp_files: &create_temp_dir_for_temp_files
+    run:
+      name: Create temp folder
+      command: mkdir -p temp
+
+  delete_temp_folders: &delete_temp_folders
+    run:
+      name: Remove temporary files
+      command: rm -r temp && rm -r vendor
+
+  git_cred_logic: &git_cred_logic
+    run:
+      name: Set configs for git
+      command: git config --global user.email ${GIT_COMMITTER_EMAIL} && git config --global user.name ${GIT_COMMITTER_NAME}
+
+  skip_github_ssh: &skip_github_ssh
+    run:
+      name: Avoid hosts unknown for github
+      command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+  push_changes: &push_changes
+    run:
+      name: Commit and push changes 
+      command: |
+        InitialBranch=$(git rev-parse --abbrev-ref HEAD)
+        git add -A
+        git commit -m 'Updated version - [ci skip]'
+        git push origin $InitialBranch
+
 jobs:
-  build-and-test:
+
+  setup_workspace:
     <<: *ios_config
-    working_directory: /Users/distiller/project
-    environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: run_all_tests
-    shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - *ruby_dependencies
+      - *fetch_cocoapods
+      - *install_cocoapods
+      - *setup_private_specs
+      - *create_temp_dir_for_temp_files
+      - persist_to_workspace:
+          root: "."
+          paths:
+            - "*"
+
+  ## Run unit tests
+  test_unit:
+    <<: *ios_config
+    environment:
+      FL_OUTPUT_DIR: output
+    steps:
+      - attach_workspace:
+          at: .
+      - *skip_github_ssh
+      - *ruby_dependencies
+      - *fetch_cocoapods
+      - *install_cocoapods
       - *fastlane_dependencies
-      - run: 
-          name: Install Gems
-          command: bundle install
+      - *git_cred_logic
       - run:
-          name: Fetch CocoaPods Specs
-          command: |
-            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-      - run:
-          working_directory: /Users/distiller/project/Example
-          name: Install CocoaPods
-          command: pod install --verbose
-      - run:
-          name: Run all tests
-          command: fastlane $FASTLANE_LANE
-      - store_artifacts:
-          path: output
+          name: Run unit tests
+          command: fastlane run_all_tests
       - store_test_results:
-          path: output/scan
+          path: temp/test-results
+      
+  ## Bump the SDK versions
+  bump_versions:
+    <<: *ios_config
+    steps:
+      - attach_workspace:
+          at: .
+      - *skip_github_ssh
+      - *ruby_dependencies
+      - *fetch_cocoapods
+      - *install_cocoapods
+      - *fastlane_dependencies
+      - *git_cred_logic
+      - run:
+          name: Bump SDK version
+          command: fastlane bump_versions type:patch
+      - persist_to_workspace:
+          root: "."
+          paths:
+            - "*"
+      - *delete_temp_folders
+      - *push_changes
 
   ## Run sdk push
   sdk_push:
     <<: *ios_config
     steps:
-      - checkout
+      - attach_workspace:
+          at: .
+      - *skip_github_ssh
+      - *ruby_dependencies
+      - *fetch_cocoapods
+      - *install_cocoapods
       - *fastlane_dependencies
-      - run:
-          name: Set configs for git
-          command: git config --global user.email ${GIT_COMMITTER_EMAIL} | git config --global user.name ${GIT_COMMITTER_NAME}
+      - *git_cred_logic
       - run:
           name: Push the SDK to CocoaPods
-          command: fastlane sdk_push type:patch isPrivateRepo:${IS_PRIVATE_REPO}   
-      - run:
-          name: Commit changes
-          command: InitialBranch=$(git rev-parse --abbrev-ref HEAD) | git add -A && git commit -m 'Updated version [ci skip]' && git push origin $InitialBranch
+          command: fastlane sdk_push isPrivateRepo:${IS_PRIVATE_REPO}
+      - *delete_temp_folders   
 
 workflows:
   version: 2
   workflow1:
     jobs:
-      - build-and-test
-      - sdk_push:
+      - setup_workspace
+      - test_unit:
           requires:
-            - build-and-test
+            - setup_workspace
+      - bump_versions:
+          requires:
+            - test_unit
           filters:
             branches:
               only: master
+      - sdk_push:
+          requires:
+            - bump_versions
