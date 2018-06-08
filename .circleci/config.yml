@@ -24,10 +24,10 @@ references:
       command: |
         curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
 
-  install_cocoapods: &install_cocoapods
+  sdk_install_cocoapods: &sdk_install_cocoapods
     run:
-      name: Install CocoaPods
-      command: pod install --verbose
+      name: SDK Install CocoaPods
+      command: cd $PWD/Example pod install --verbose
 
   setup_private_specs: &setup_private_specs
     run:
@@ -74,7 +74,7 @@ jobs:
       - checkout
       - *ruby_dependencies
       - *fetch_cocoapods
-      - *install_cocoapods
+      - *sdk_install_cocoapods
       - *setup_private_specs
       - *create_temp_dir_for_temp_files
       - persist_to_workspace:
@@ -93,7 +93,7 @@ jobs:
       - *skip_github_ssh
       - *ruby_dependencies
       - *fetch_cocoapods
-      - *install_cocoapods
+      - *sdk_install_cocoapods
       - *fastlane_dependencies
       - *git_cred_logic
       - run:
@@ -115,7 +115,7 @@ jobs:
       - *skip_github_ssh
       - *ruby_dependencies
       - *fetch_cocoapods
-      - *install_cocoapods
+      - *sdk_install_cocoapods
       - *fastlane_dependencies
       - *git_cred_logic
       - run:
@@ -137,7 +137,7 @@ jobs:
       - *skip_github_ssh
       - *ruby_dependencies
       - *fetch_cocoapods
-      - *install_cocoapods
+      - *sdk_install_cocoapods
       - *fastlane_dependencies
       - *git_cred_logic
       - run:
