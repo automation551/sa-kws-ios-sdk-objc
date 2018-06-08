@@ -33,7 +33,7 @@ references:
     run:
       name: Setup private specs
       command: |
-        pod repo add temp-spec-repo $REMOTE_SPECS_REPO
+        pod repo add temp-spec-repo $SA_IOS_REMOTE_SPECS_REPO
         cd ~/.cocoapods/repos/temp-spec-repo
         pod repo lint .
 
@@ -45,7 +45,7 @@ references:
   delete_temp_folders: &delete_temp_folders
     run:
       name: Remove temporary files
-      command: rm -r temp && rm -r vendor
+      command: rm -r temp && rm -r vendor && rm -r output
 
   git_cred_logic: &git_cred_logic
     run:
@@ -100,7 +100,11 @@ jobs:
           name: Run unit tests
           command: fastlane run_all_tests
       - store_test_results:
-          path: temp/test-results
+          path: output/scan
+      - store_artifacts:
+          path: output
+
+  # ::::::::::::::::::::: TODO - JOB for semantic release ::::::::::::::::::::::::::::
       
   ## Bump the SDK versions
   bump_versions:
@@ -116,7 +120,7 @@ jobs:
       - *git_cred_logic
       - run:
           name: Bump SDK version
-          command: fastlane bump_versions type:patch
+          command: fastlane bump_versions
       - persist_to_workspace:
           root: "."
           paths:
