@@ -104,7 +104,7 @@ jobs:
       - store_artifacts:
           path: output
 
-  # ::::::::::::::::::::: TODO - JOB for semantic release ::::::::::::::::::::::::::::
+  # ::::::::::::::::::::: TODO - JOB for semantic release :::::::::::::::::::::::::::: 
       
   ## Bump the SDK versions
   bump_versions:
