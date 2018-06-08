@@ -55,7 +55,7 @@ references:
   skip_github_ssh: &skip_github_ssh
     run:
       name: Avoid hosts unknown for github
-      command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+      command: mkdir -p ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
   push_changes: &push_changes
     run:
