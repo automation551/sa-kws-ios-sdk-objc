@@ -33,7 +33,7 @@ references:
     run:
       name: Setup private specs
       command: |
-        pod repo add temp-spec-repo $SA_IOS_REMOTE_SPECS_REPO
+        pod repo add temp-spec-repo $SA_IOS_SDKS_PRIVATE_SPECS_REPO
         cd ~/.cocoapods/repos/temp-spec-repo
         pod repo lint .
 
@@ -50,7 +50,7 @@ references:
   git_cred_logic: &git_cred_logic
     run:
       name: Set configs for git
-      command: git config --global user.email ${GIT_COMMITTER_EMAIL} && git config --global user.name ${GIT_COMMITTER_NAME}
+      command: git config --global user.email ${SA_GIT_COMMITTER_EMAIL} && git config --global user.name ${SA_GIT_COMMITTER_NAME}
 
   skip_github_ssh: &skip_github_ssh
     run:
@@ -138,14 +138,15 @@ jobs:
       - *git_cred_logic
       - run:
           name: Push the SDK to CocoaPods
-          command: fastlane sdk_push isPrivateRepo:${IS_PRIVATE_REPO}
+          command: fastlane sdk_push isPrivateRepo:${SA_MOBILE_IS_PUSH_TO_PRIVATE_REPO}
       - *delete_temp_folders   
 
 workflows:
   version: 2
   workflow1:
     jobs:
-      - setup_workspace
+      - setup_workspace:
+          context: MOBILE_IOS_SDKS
       - test_unit:
           requires:
             - setup_workspace
