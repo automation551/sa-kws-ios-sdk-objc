@@ -93,7 +93,7 @@ jobs:
 
 workflows:
   version: 2
-  workflow1:
+  ios_sdk_workflow:
     jobs:
       - setup_workspace:
           context: MOBILE_IOS_SDKS
