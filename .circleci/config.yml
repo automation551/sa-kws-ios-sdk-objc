@@ -5,13 +5,6 @@ references:
     macos:
       xcode: "9.3.0"
 
-  bootstrap: &bootstrap
-    run:
-      name: Bootstap
-      command: |
-        git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
-        ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/mobile/bootstrap/bootstrap-ios-sdks.sh
-
   create_temp_dir_for_temp_files: &create_temp_dir_for_temp_files
     run:
       name: Create temp folder
@@ -22,6 +15,13 @@ references:
       name: Remove temporary files
       command: rm -r temp && rm -r vendor && rm -r output
 
+  bootstrap: &bootstrap
+    run:
+      name: Bootstap
+      command: |
+        git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
+        ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/mobile/bootstrap/bootstrap-ios-sdks.sh
+        
   push_changes: &push_changes
     run:
       name: Commit and push changes 
