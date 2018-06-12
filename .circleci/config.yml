@@ -1,41 +1,16 @@
 version: 2
 
-## Declare de references
 references:
-  ## Docker image configurations
   ios_config: &ios_config
     macos:
       xcode: "9.3.0"
 
-  ## Dependencies
-  fastlane_dependencies: &fastlane_dependencies
+  bootstrap: &bootstrap
     run:
-      name: Download fastlane
-      command: gem install fastlane --user-install
-
-  ruby_dependencies: &ruby_dependencies
-    run:
-      name: Download Ruby Dependencies
-      command: bundle check || bundle install --path vendor/bundle
-
-  fetch_cocoapods: &fetch_cocoapods
-    run:
-      name: Fetch CocoaPods Specs
+      name: Bootstap
       command: |
-        curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-
-  sdk_install_cocoapods: &sdk_install_cocoapods
-    run:
-      name: SDK Install CocoaPods
-      command: cd $PWD/Example pod install --verbose
-
-  setup_private_specs: &setup_private_specs
-    run:
-      name: Setup private specs
-      command: |
-        pod repo add temp-spec-repo $SA_IOS_SDKS_PRIVATE_SPECS_REPO
-        cd ~/.cocoapods/repos/temp-spec-repo
-        pod repo lint .
+        git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
+        ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/mobile/bootstrap/bootstrap-ios-sdks.sh
 
   create_temp_dir_for_temp_files: &create_temp_dir_for_temp_files
     run:
@@ -47,24 +22,10 @@ references:
       name: Remove temporary files
       command: rm -r temp && rm -r vendor && rm -r output
 
-  git_cred_logic: &git_cred_logic
-    run:
-      name: Set configs for git
-      command: git config --global user.email ${SA_GIT_COMMITTER_EMAIL} && git config --global user.name ${SA_GIT_COMMITTER_NAME}
-
-  skip_github_ssh: &skip_github_ssh
-    run:
-      name: Avoid hosts unknown for github
-      command: mkdir -p ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-
   push_changes: &push_changes
     run:
       name: Commit and push changes 
-      command: |
-        InitialBranch=$(git rev-parse --abbrev-ref HEAD)
-        git add -A
-        git commit -m 'Updated version - [ci skip]'
-        git push origin $InitialBranch
+      command: ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/mobile/git-push-changes.sh
 
 jobs:
 
@@ -72,10 +33,7 @@ jobs:
     <<: *ios_config
     steps:
       - checkout
-      - *ruby_dependencies
-      - *fetch_cocoapods
-      - *sdk_install_cocoapods
-      - *setup_private_specs
+      - *bootstrap
       - *create_temp_dir_for_temp_files
       - persist_to_workspace:
           root: "."
@@ -88,19 +46,22 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - *skip_github_ssh
-      - *ruby_dependencies
-      - *fetch_cocoapods
-      - *sdk_install_cocoapods
-      - *fastlane_dependencies
-      - *git_cred_logic
+      - *bootstrap
       - run:
           name: Run unit tests
           command: PATH_TO_SCAN_OUTPUT=$PWD/temp/test-results fastlane run_all_tests
       - store_test_results:
           path: temp/test-results
 
-  # ::::::::::::::::::::: TODO - JOB for semantic release :::::::::::::::::::::::::::: 
+  semantic_release:
+    <<: *ios_config
+    steps:
+      - attach_workspace:
+          at: .
+      - *bootstrap
+      - run:
+          name: Run semantic release
+          command: NAME_OF_CIRCLECI_VARIABLE_OF_REPO_NAME=$CIRCLE_PROJECT_REPONAME ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/semantic-release/semantic-release.sh
       
   ## Bump the SDK versions
   bump_versions:
@@ -108,12 +69,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - *skip_github_ssh
-      - *ruby_dependencies
-      - *fetch_cocoapods
-      - *sdk_install_cocoapods
-      - *fastlane_dependencies
-      - *git_cred_logic
+      - *bootstrap
       - run:
           name: Bump SDK version
           command: fastlane bump_versions
@@ -130,16 +86,10 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - *skip_github_ssh
-      - *ruby_dependencies
-      - *fetch_cocoapods
-      - *sdk_install_cocoapods
-      - *fastlane_dependencies
-      - *git_cred_logic
+      - *bootstrap
       - run:
           name: Push the SDK to CocoaPods
-          command: fastlane sdk_push isPrivateRepo:${SA_MOBILE_IS_PUSH_TO_PRIVATE_REPO}
-      - *delete_temp_folders   
+          command: fastlane sdk_push isPrivateRepo:${SA_MOBILE_IS_PUSH_TO_PRIVATE_REPO}  
 
 workflows:
   version: 2
@@ -150,12 +100,15 @@ workflows:
       - test_unit:
           requires:
             - setup_workspace
-      - bump_versions:
+      - semantic_release:
           requires:
             - test_unit
           filters:
             branches:
               only: master
+      - bump_versions:
+          requires:
+            - test_unit
       - sdk_push:
           requires:
             - bump_versions
