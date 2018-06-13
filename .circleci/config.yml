@@ -15,12 +15,12 @@ references:
       name: Bootstap
       command: |
         git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
-        ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/bootstrap/bootstrap-mobile-ios-sdk.sh
+        ${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/bootstrap/bootstrap-mobile-ios-sdk.sh
         
   push_changes: &push_changes
     run:
       name: Commit and push changes 
-      command: ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/mobile/git-push-changes.sh
+      command: ${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/mobile/git-push-changes.sh
 
 jobs:
 
