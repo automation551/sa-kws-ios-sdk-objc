@@ -5,15 +5,10 @@ references:
     macos:
       xcode: "9.3.0"
 
-  create_temp_dir_for_temp_files: &create_temp_dir_for_temp_files
-    run:
-      name: Create temp folder
-      command: mkdir -p temp/test-results
-
   delete_temp_folders: &delete_temp_folders
     run:
       name: Remove temporary files
-      command: rm -r temp && rm -r vendor && rm -r output
+      command: rm -r temp_files && rm -r vendor && rm -r output
 
   bootstrap: &bootstrap
     run:
@@ -34,7 +29,6 @@ jobs:
     steps:
       - checkout
       - *bootstrap
-      - *create_temp_dir_for_temp_files
       - persist_to_workspace:
           root: "."
           paths:
@@ -49,9 +43,9 @@ jobs:
       - *bootstrap
       - run:
           name: Run unit tests
-          command: PATH_TO_SCAN_OUTPUT=$PWD/temp/test-results fastlane run_all_tests
+          command: PATH_TO_SCAN_OUTPUT=$PWD/temp_files/test-results fastlane run_all_tests
       - store_test_results:
-          path: temp/test-results
+          path: temp_files/test-results
 
   semantic_release:
     <<: *ios_config
