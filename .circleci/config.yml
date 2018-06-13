@@ -20,7 +20,7 @@ references:
       name: Bootstap
       command: |
         git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
-        ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/mobile/bootstrap/bootstrap-ios-sdks.sh
+        ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/bootstrap/bootstrap-mobile-ios-sdk.sh
         
   push_changes: &push_changes
     run:
