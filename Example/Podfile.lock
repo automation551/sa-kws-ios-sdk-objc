@@ -38,7 +38,7 @@ PODS:
     - URITemplate (~> 2.0)
   - Mockingjay/XCTest (2.0.1):
     - Mockingjay/Core
-  - Nimble (7.1.1)
+  - Nimble (7.1.3)
   - SAMobileBase (2.2.3):
     - Decodable (~> 0.6.0)
   - SAProtobufs (1.6.5)
@@ -52,7 +52,7 @@ DEPENDENCIES:
   - Nimble
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Decodable
     - Firebase
     - FirebaseAnalytics
@@ -86,11 +86,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   KWSiOSSDKObjC: 3c2b63108617e3ae48c959a470d5b80afdb4346f
   Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
-  Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
+  Nimble: 2839b01d1b31f6a6a7777a221f0d91cf52e8e27b
   SAMobileBase: a4df3b42502cecf085c95fcc97b5301ed7daa1f3
   SAProtobufs: 9bc1d6240939c3cfe2b700fe4dd10638973d808c
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
 PODFILE CHECKSUM: 84479e3e908c902965bb9a33c87cee4fe6be7073
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

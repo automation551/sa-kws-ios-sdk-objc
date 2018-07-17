@@ -1,108 +1,84 @@
 version: 2
-
 references:
+
   ios_config: &ios_config
     macos:
       xcode: "9.3.0"
 
-  delete_temp_folders: &delete_temp_folders
-    run:
-      name: Remove temporary files
-      command: rm -r temp_files && rm -r vendor && rm -r output
-
   bootstrap: &bootstrap
     run:
-      name: Bootstap
+      name: Bootstrap
       command: |
         git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
         ${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/bootstrap/bootstrap-mobile-ios-sdk.sh
-        
-  push_changes: &push_changes
-    run:
-      name: Commit and push changes 
-      command: ${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/mobile/git-push-changes.sh
 
 jobs:
 
-  setup_workspace:
+  ## Run unit tests  
+  test_unit:
     <<: *ios_config
+    environment:
+      FL_OUTPUT_DIR: output
     steps:
       - checkout
       - *bootstrap
-      - persist_to_workspace:
-          root: "."
-          paths:
-            - "*"
-
-  ## Run unit tests
-  test_unit:
-    <<: *ios_config
-    steps:
-      - attach_workspace:
-          at: .
-      - *bootstrap
       - run:
           name: Run unit tests
-          command: PATH_TO_SCAN_OUTPUT=$PWD/temp_files/test-results fastlane run_all_tests
+          command: fastlane run_all_tests
+      - run:
+          name: Copy test results to temp folder
+          command: find $PWD/fastlane/test_output -name '*.junit' -exec cp {} ${PWD}/temp_files/test-results \;
       - store_test_results:
           path: temp_files/test-results
+  
 
   semantic_release:
     <<: *ios_config
     steps:
-      - attach_workspace:
-          at: .
-      - *bootstrap
+      - checkout
       - run:
           name: Run semantic release
-          command: NAME_OF_CIRCLECI_VARIABLE_OF_REPO_NAME=$CIRCLE_PROJECT_REPONAME ~./${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/semantic-release/semantic-release.sh
-      
-  ## Bump the SDK versions
-  bump_versions:
-    <<: *ios_config
-    steps:
-      - attach_workspace:
-          at: .
-      - *bootstrap
-      - run:
-          name: Bump SDK version
-          command: fastlane bump_versions
-      - persist_to_workspace:
-          root: "."
-          paths:
-            - "*"
-      - *delete_temp_folders
-      - *push_changes
+          command: |
+            git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
+            ${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/semantic-release/semantic-release.sh
 
-  ## Run sdk push
+  ## Run sdk push 
   sdk_push:
     <<: *ios_config
     steps:
-      - attach_workspace:
-          at: .
+      - checkout
+      - *bootstrap
+      - run:
+          name: Push the SDK to PRIVATE SA specs
+          command: fastlane sdk_push isPrivateRepo:${SA_MOBILE_IS_PUSH_TO_PRIVATE_REPO}
+
+  sdk_push_public:
+    <<: *ios_config
+    steps:
+      - checkout
       - *bootstrap
       - run:
           name: Push the SDK to CocoaPods
-          command: fastlane sdk_push isPrivateRepo:${SA_MOBILE_IS_PUSH_TO_PRIVATE_REPO}  
+          command: fastlane sdk_push isPrivateRepo:false
 
 workflows:
   version: 2
   ios_sdk_workflow:
     jobs:
-      - setup_workspace:
-          context: MOBILE_IOS_SDKS
       - test_unit:
-          requires:
-            - setup_workspace
+          context: MOBILE_IOS_SDKS
       - semantic_release:
+          context: MOBILE_IOS_SDKS
           requires:
             - test_unit
           filters:
             branches:
               only: master
-      - bump_versions:
-          requires:
-            - test_unit
       - sdk_push:
+          context: MOBILE_IOS_SDKS
           requires:
-            - bump_versions
+            - semantic_release
+      - sdk_push_public:
+          context: MOBILE_IOS_SDKS
+          requires:
+            - semantic_release
