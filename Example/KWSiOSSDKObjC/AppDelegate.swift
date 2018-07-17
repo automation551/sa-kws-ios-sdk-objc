@@ -14,10 +14,5 @@ import KWSiOSSDKObjC
 public class AppDelegate: UIResponder, UIApplicationDelegate {
     
     public var window: UIWindow?
-    
-    public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        //connect to KWS SDK from SSO - returns false if not intended for KWS
-        return SDKAppDelegate.shared.application(app, open: url, options: options)
-    }
+   
 }
