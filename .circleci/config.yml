@@ -1,0 +1,84 @@
+version: 2
+references:
+
+  ios_config: &ios_config
+    macos:
+      xcode: "9.3.0"
+
+  bootstrap: &bootstrap
+    run:
+      name: Bootstrap
+      command: |
+        git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
+        ${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/bootstrap/bootstrap-mobile-ios-sdk.sh
+
+jobs:
+
+  ## Run unit tests  
+  test_unit:
+    <<: *ios_config
+    environment:
+      FL_OUTPUT_DIR: output
+    steps:
+      - checkout
+      - *bootstrap
+      - run:
+          name: Run unit tests
+          command: fastlane run_all_tests
+      - run:
+          name: Copy test results to temp folder
+          command: find $PWD/fastlane/test_output -name '*.junit' -exec cp {} ${PWD}/temp_files/test-results \;
+      - store_test_results:
+          path: temp_files/test-results
+  
+
+  semantic_release:
+    <<: *ios_config
+    steps:
+      - checkout
+      - run:
+          name: Run semantic release
+          command: |
+            git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
+            ${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/semantic-release/semantic-release.sh
+
+  ## Run sdk push 
+  sdk_push:
+    <<: *ios_config
+    steps:
+      - checkout
+      - *bootstrap
+      - run:
+          name: Push the SDK to PRIVATE SA specs
+          command: fastlane sdk_push isPrivateRepo:${SA_MOBILE_IS_PUSH_TO_PRIVATE_REPO}
+
+  sdk_push_public:
+    <<: *ios_config
+    steps:
+      - checkout
+      - *bootstrap
+      - run:
+          name: Push the SDK to CocoaPods
+          command: fastlane sdk_push isPrivateRepo:false
+
+workflows:
+  version: 2
+  ios_sdk_workflow:
+    jobs:
+      - test_unit:
+          context: MOBILE_IOS_SDKS
+      - semantic_release:
+          context: MOBILE_IOS_SDKS
+          requires:
+            - test_unit
+          filters:
+            branches:
+              only: master
+      - sdk_push:
+          context: MOBILE_IOS_SDKS
+          requires:
+            - semantic_release
+      - sdk_push_public:
+          context: MOBILE_IOS_SDKS
+          requires:
+            - semantic_release
