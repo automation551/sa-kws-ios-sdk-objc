@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/compare/v3.1.1...v3.1.2) (2018-07-18)
+
+
+### Bug Fixes
+
+* **SSFlow:** Updated webview ([ad84ca1](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/ad84ca1))
+
 # 1.0.0 (2018-07-18)
 
 
