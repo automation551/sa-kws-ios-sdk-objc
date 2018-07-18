@@ -17,7 +17,7 @@ The SuperAwesome Kids Web Services iOS SDK
   s.source           = { 
 	:git => "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git", 
 	:branch => "master", 
-	:tag => "#{s.version}" 
+	:tag => "v#{s.version}" 
   }
   s.ios.deployment_target = '9.0'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.2' }
