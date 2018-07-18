@@ -78,7 +78,6 @@ public class SAWebViewController: UIViewController {
         view.addConstraint(trailingConstraint)
         view.addConstraint(topConstraint)
         view.addConstraint(bottomConstraint)
-        
     }
     
     @objc
@@ -116,7 +115,6 @@ extension SAWebViewController: WKNavigationDelegate, WKUIDelegate {
             } else {
                 self.delegate?.finishAuthWithCode(withCode: nil)
             }
-            
         } else {
             decisionHandler(.allow)
         }
