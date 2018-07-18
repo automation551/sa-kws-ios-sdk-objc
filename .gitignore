@@ -1,6 +1,7 @@
 Example/build/*
 Example/Pods/*
-*.xcuserdata/
+
+xcuserdata/
 
 fastlane/README.md
 fastlane/report.xml
