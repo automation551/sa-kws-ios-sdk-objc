@@ -4,6 +4,16 @@
 ### Bug Fixes
 
 * **SSFlow:** Updated webview ([ad84ca1](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/ad84ca1))
+* **SSOFlow:** Added dismiss button on web view controller ([62d545d](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/62d545d))
+* **SSOFlow:** Updated close icon to use systems default one ([b9869f4](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/b9869f4))
+* **SSOFlow:** Updated podspec as per new tag versioning. ([493d90b](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/493d90b))
+
+## [3.1.2](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/compare/v3.1.1...v3.1.2) (2018-07-18)
+
+
+### Bug Fixes
+
+* **SSFlow:** Updated webview ([ad84ca1](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/ad84ca1))
 * **SSOFlow:** Updated podspec as per new tag versioning. ([493d90b](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/493d90b))
 
 ## [3.1.2](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/compare/v3.1.1...v3.1.2) (2018-07-18)
