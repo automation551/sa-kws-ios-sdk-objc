@@ -13,7 +13,7 @@ import WebKit
 public class WebAuthController: NSObject, SAWebViewControllerDelegate {
     
     private var callback: ((String?) -> ())? = nil
-    fileprivate var parentRef: UIViewController!
+    private var parentRef: UIViewController!
     
     public required init(authURL: URL,
                          parent: UIViewController,
@@ -23,19 +23,13 @@ public class WebAuthController: NSObject, SAWebViewControllerDelegate {
         callback = completionHandler
         parentRef = parent
         
-        var webViewController = SAWebViewController(nibName: nil, bundle: nil)
+        var webViewController = SAWebViewController(withURL: authURL)
         webViewController.delegate = self
-        webViewController.loadUrl(withUrl: authURL)
         parentRef.present(webViewController, animated: true, completion: nil)
     }
     
     public func finishAuthWithCode(withCode code: String?) {
-        if let authCode = code {
-            callback?(code)
-        } else {
-            callback?(nil)
-        }
-        
+        callback?(code)
         parentRef.dismiss(animated: true, completion: nil)
     }
 }
@@ -48,17 +42,14 @@ public class SAWebViewController: UIViewController {
     
     // MARK: Properties
     private var webView: WKWebView!
+    fileprivate let kSSOReference = "code="
     
     public weak var delegate: SAWebViewControllerDelegate?
     
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    public convenience init(withURL url: URL?){
+        self.init(nibName: nil, bundle: nil)
         setUp()
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setUp()
+        loadUrl(withUrl: url)
     }
     
     private func setUp() {
@@ -80,7 +71,7 @@ public class SAWebViewController: UIViewController {
         view.addConstraint(bottomConstraint)
     }
     
-    public func loadUrl(withUrl url: URL?) {
+    private func loadUrl(withUrl url: URL?) {
         guard let url = url else { return }
         let request = URLRequest(url: url)
         webView.load(request)
@@ -98,7 +89,7 @@ extension SAWebViewController: WKNavigationDelegate, WKUIDelegate {
             return
         }
         
-        if url.absoluteString.contains("code="){
+        if url.absoluteString.contains(kSSOReference){
             decisionHandler(.cancel)
             
             if let components =  NSURLComponents(url: url as URL, resolvingAgainstBaseURL: false),
