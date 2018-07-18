@@ -16,9 +16,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: UITextView!
-    
-    //strong reference to our Service Protocol
-    private var singleSignOn: SingleSignOnServiceProtocol?
 
     private let rowHeight: CGFloat = 44.0
     private let headerHeight: CGFloat = 50.0
@@ -678,7 +675,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func oAuthUser() {
         
         let sdk = ComplianceSDK(withEnvironment: kUserNetworkEnvironment!)
-        singleSignOn = sdk.getService(withType: SingleSignOnServiceProtocol.self)
+        let singleSignOn = sdk.getService(withType: SingleSignOnServiceProtocol.self)
         
         let urlString = (kUserNetworkEnvironment as! DemoTestEnvironment).singleSignOn
         
@@ -705,8 +702,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             //update text
             self.updateTextView(text: responseText)
             
-            //clear reference to Single Sign On Service
-            self.singleSignOn = nil
         }
     }
 
