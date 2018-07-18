@@ -25,7 +25,8 @@ public class WebAuthController: NSObject, SAWebViewControllerDelegate {
         
         var webViewController = SAWebViewController(withURL: authURL)
         webViewController.delegate = self
-        parentRef.present(webViewController, animated: true, completion: nil)
+        let navController = UINavigationController.init(rootViewController: webViewController)
+        parentRef.present(navController, animated: true, completion: nil)
     }
     
     public func finishAuthWithCode(withCode code: String?) {
@@ -48,11 +49,19 @@ public class SAWebViewController: UIViewController {
     
     public convenience init(withURL url: URL?){
         self.init(nibName: nil, bundle: nil)
-        setUp()
+        setUpNavController()
+        setUpWebView()
         loadUrl(withUrl: url)
     }
     
-    private func setUp() {
+    private func setUpNavController(){
+        let leftBarButton = UIBarButtonItem(title: "X", style: UIBarButtonItemStyle.done, target: self, action: #selector(closeView))
+        var leftItems: [UIBarButtonItem] = navigationItem.leftBarButtonItems ?? []
+        leftItems.append(leftBarButton)
+        navigationItem.setLeftBarButtonItems(leftItems, animated: true)
+    }
+    
+    private func setUpWebView() {
         let configuration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = self
@@ -69,6 +78,12 @@ public class SAWebViewController: UIViewController {
         view.addConstraint(trailingConstraint)
         view.addConstraint(topConstraint)
         view.addConstraint(bottomConstraint)
+        
+    }
+    
+    @objc
+    private func closeView() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     private func loadUrl(withUrl url: URL?) {
@@ -95,7 +110,7 @@ extension SAWebViewController: WKNavigationDelegate, WKUIDelegate {
             if let components =  NSURLComponents(url: url as URL, resolvingAgainstBaseURL: false),
                 let queryItems = components.queryItems,
                 let code = queryItems.first?.value {
-
+                
                 self.delegate?.finishAuthWithCode(withCode: code)
                 
             } else {
