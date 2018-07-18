@@ -55,7 +55,7 @@ public class SAWebViewController: UIViewController {
     }
     
     private func setUpNavController(){
-        let leftBarButton = UIBarButtonItem(title: "X", style: UIBarButtonItemStyle.done, target: self, action: #selector(closeView))
+        let leftBarButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(closeView))
         var leftItems: [UIBarButtonItem] = navigationItem.leftBarButtonItems ?? []
         leftItems.append(leftBarButton)
         navigationItem.setLeftBarButtonItems(leftItems, animated: true)
