@@ -1,3 +1,14 @@
+# 1.0.0 (2018-07-18)
+
+
+### Bug Fixes
+
+* **CIUpdate:** Updated config to latest version ([0668f1d](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/0668f1d))
+* **Config:** Updated config ([cc44073](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/cc44073))
+* **SSOFlow:** Update as per PR comments ([713f80a](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/713f80a))
+* **SSOFlow:** Updated gitignore ([b969785](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/b969785))
+* **SSOFlow:** Updated web view logic - replaced SafariVC with WKWebview. ([6b6e12c](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/6b6e12c))
+
 CHANGELOG
 =========
 
