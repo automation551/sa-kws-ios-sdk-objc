@@ -26,4 +26,3 @@ public class DemoTestEnvironment: ComplianceNetworkEnvironment {
     
     public var singleSignOn: String = "https://club.demo.superawesome.tv/"
 }
-

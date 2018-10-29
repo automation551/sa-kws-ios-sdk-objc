@@ -44,21 +44,57 @@ public class SAWebViewController: UIViewController {
     // MARK: Properties
     private var webView: WKWebView!
     fileprivate let kSSOReference = "code="
-    
+    fileprivate var kNeedsBackButtonCounter = 0
     public weak var delegate: SAWebViewControllerDelegate?
     
     public convenience init(withURL url: URL?){
         self.init(nibName: nil, bundle: nil)
-        setUpNavController()
         setUpWebView()
         loadUrl(withUrl: url)
     }
     
-    private func setUpNavController(){
-        let leftBarButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(closeView))
+    fileprivate func setUpNavController(counter: Int){
+        resetNavigationbar()
+        addCloseButtonToNavBar()
+        if counter > 0 {
+            addBackButtonToNavBar()
+        }
+    }
+    
+    fileprivate func addCloseButtonToNavBar(){
+        var rightItems: [UIBarButtonItem] = navigationItem.rightBarButtonItems ?? []
+        let rightBackBarButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(closeView))
+        if !rightItems.contains(rightBackBarButton) {
+            rightItems.append(rightBackBarButton)
+            navigationItem.setRightBarButtonItems(rightItems, animated: true)
+        }
+    }
+    
+    fileprivate func addBackButtonToNavBar(){
         var leftItems: [UIBarButtonItem] = navigationItem.leftBarButtonItems ?? []
-        leftItems.append(leftBarButton)
-        navigationItem.setLeftBarButtonItems(leftItems, animated: true)
+        let leftBackImage = Bundle_Resource_Loader.loadImage(name: "back_button_icon")
+        let leftBarButton = UIBarButtonItem(image: leftBackImage, style: .done, target: self, action: #selector(goBack))
+        if let wb = webView {
+            if !leftItems.contains(leftBarButton) && wb.canGoBack {
+                leftItems.append(leftBarButton)
+                navigationItem.setLeftBarButtonItems(leftItems, animated: true)
+            }
+        }
+    }
+    
+    private func resetNavigationbar(){
+        navigationItem.setLeftBarButtonItems([], animated: false)
+        navigationItem.setRightBarButtonItems([], animated: false)
+    }
+    
+    @objc
+    private func goBack() {
+        webView?.goBack()
+        if kNeedsBackButtonCounter > 0 {
+            kNeedsBackButtonCounter = kNeedsBackButtonCounter - 1
+        } else {
+            kNeedsBackButtonCounter = 0
+        }
     }
     
     private func setUpWebView() {
@@ -115,8 +151,16 @@ extension SAWebViewController: WKNavigationDelegate, WKUIDelegate {
             } else {
                 self.delegate?.finishAuthWithCode(withCode: nil)
             }
-        } else {
+        } else if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+            decisionHandler(.allow)
+            kNeedsBackButtonCounter = kNeedsBackButtonCounter + 1
+        }  else {
             decisionHandler(.allow)
         }
+    }
+    
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        setUpNavController(counter: kNeedsBackButtonCounter)
     }
 }
