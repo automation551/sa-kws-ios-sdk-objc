@@ -20,10 +20,11 @@ public class StanTestEnvironment: ComplianceNetworkEnvironment {
 
 public class DemoTestEnvironment: ComplianceNetworkEnvironment {
     
+    /** project bundle id - org.cocoapods.demo.KWSiOSSDKObjC */
+    
     public var domain: String = "https://kwsapi.demo.superawesome.tv/"
     public var clientID: String = "kws-sdk-testing"
     public var clientSecret: String = "TKZpmBq3wWjSuYHN27Id0hjzN4cIL13D"
     
     public var singleSignOn: String = "https://club.demo.superawesome.tv/"
 }
-
