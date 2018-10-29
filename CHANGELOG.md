@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git/compare/v3.1.2...v3.1.3) (2018-10-29)
+
+
+### Bug Fixes
+
+* **TargetBlankURLs:** Added logic to handle target blank URLs in webview. ([b2b016c](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git/commit/b2b016c))
+
 ## [3.1.2](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/compare/v3.1.1...v3.1.2) (2018-07-18)
 
 
