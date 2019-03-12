@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class ApplicationProfileModel: NSObject, AppProfileModelProtocol {
+public final class ApplicationProfileModel: NSObject, AppProfileModelProtocol, Codable {
     
     public var customField1:    Int?
     public var customField2:    Int?
@@ -40,5 +40,20 @@ public final class ApplicationProfileModel: NSObject, AppProfileModelProtocol {
     
     public override var hash: Int {
         return name!.hashValue
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case customField1
+        case customField2
+        case avatarId
+        case name
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        customField1 = try values.decode(Int.self, forKey: .customField1)
+        customField2 = try values.decode(Int.self, forKey: .customField2)
+        avatarId = try values.decode(Int.self, forKey: .avatarId)
+        name = try values.decode(String.self, forKey: .name)
     }
 }

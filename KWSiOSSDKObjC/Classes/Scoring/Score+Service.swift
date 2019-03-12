@@ -37,7 +37,7 @@ public class ScoreService: NSObject, ScoreServiceProtocol {
                 completionHandler(value,nil)
                 break
             case .error(let error):
-                let mappedError = AbstractService().mapErrorResponse(error: error)
+                let mappedError = AbstractService().mapErrorResponse(error: error as! PrintableErrorProtocol)
                 completionHandler(nil, mappedError)
                 break
             }
@@ -64,7 +64,7 @@ public class ScoreService: NSObject, ScoreServiceProtocol {
                 completionHandler(value,nil)
                 break
             case .error(let error):
-                let mappedError = AbstractService().mapErrorResponse(error: error)
+                let mappedError = AbstractService().mapErrorResponse(error: error as! PrintableErrorProtocol)
                 completionHandler(nil, mappedError)
                 break
             }

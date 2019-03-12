@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 //FAKE DECODER
-public final class UpdateUserDetailsFakeResponseModel: NSObject, Error {
+public final class UpdateUserDetailsFakeResponseModel: NSObject, Error, Codable {
     
     public let userUpdated: Bool?
     public let emailUpdated: Bool?
@@ -26,4 +26,21 @@ public final class UpdateUserDetailsFakeResponseModel: NSObject, Error {
         self.emailUpdated = emailUpdated
         self.permissionsRequested = permissionsRequested
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case userUpdated
+        case emailUpdated
+        case permissionsRequested
+    }
 }
+
+extension AppConfigModel: Decodable {
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        userUpdated = try values.decode(Bool.self, forKey: .userUpdated)
+        emailUpdated = try values.decode(Bool.self, forKey: .emailUpdated)
+        permissionsRequested = try values.decode(Bool.self, forKey: .permissionsRequested)
+    }
+}
+

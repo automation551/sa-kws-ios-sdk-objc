@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class LoginAuthResponseModel: NSObject, LoggedUserModelProtocol {
+public final class LoginAuthResponseModel: NSObject, LoggedUserModelProtocol, Codable {
     
     public var token:   String
     public var id:      AnyHashable
@@ -33,5 +33,16 @@ public final class LoginAuthResponseModel: NSObject, LoggedUserModelProtocol {
     
     public override var hash: Int {
         return id.hashValue
-    }    
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case token
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(AnyHashable.self, forKey: .id)
+        token = try values.decode(String.self, forKey: .token)
+    }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class ScoreModel: NSObject, ScoreModelProtocol {
+public final class ScoreModel: NSObject, ScoreModelProtocol, Codable {
     
     public var score:   Int
     public var rank:    Int
@@ -30,4 +30,16 @@ public final class ScoreModel: NSObject, ScoreModelProtocol {
         guard let object = object as? ScoreModel else { return false }
         return self == object
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case score
+        case rank
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        score = try values.decode(Int.self, forKey: .score)
+        rank = try values.decode(Int.self, forKey: .rank)
+    }
 }
+

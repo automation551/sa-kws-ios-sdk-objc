@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class UserAddressModel: NSObject, AddressModelProtocol {
+public final class UserAddressModel: NSObject, AddressModelProtocol, Codable {
     
     public var street:      String?
     public var city:        String?
@@ -45,5 +45,24 @@ public final class UserAddressModel: NSObject, AddressModelProtocol {
     public override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? UserAddressModel else { return false }
         return self == object
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case street
+        case city
+        case postCode
+        case country
+        case countryCode
+        case countryName
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.street = try values.decode(String.self, forKey: .street)
+        self.city = try values.decode(String.self, forKey: .city)
+        self.postCode = try values.decode(String.self, forKey: .postCode)
+        self.country = try values.decode(String.self, forKey: .country)
+        self.countryCode = try values.decode(String.self, forKey: .countryCode)
+        self.countryName = try values.decode(String.self, forKey: .countryName)
     }
 }

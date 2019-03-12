@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public struct TokenData: Equatable {
+public struct TokenData: Equatable, Codable {
     
     public let userId:      Int?
     public let appId:       Int
@@ -48,4 +48,26 @@ public struct TokenData: Equatable {
     public var hash: Int {
         return userId!.hashValue
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case userId
+        case appId
+        case clientId
+        case scope
+        case iat
+        case exp
+        case iss
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        userId = try values.decode(Int.self, forKey: .userId)
+        appId = try values.decode(Int.self, forKey: .appId)
+        clientId = try values.decode(String.self, forKey: .clientId)
+        scope = try values.decode(String.self, forKey: .scope)
+        iat = try values.decode(Int.self, forKey: .iat)
+        exp = try values.decode(Int.self, forKey: .exp)
+        iss = try values.decode(String.self, forKey: .iss)
+    }
 }
+

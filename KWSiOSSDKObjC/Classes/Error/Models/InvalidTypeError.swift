@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class InvalidTypeError: NSObject, Error, InvalidTypeErrorWrapperModelProtocol {
+public final class InvalidTypeError: NSObject, Error, InvalidTypeErrorWrapperModelProtocol, Codable {
     
     //types of "invalid" from API error response
     public var dateOfBirth:     ErrorModelProtocol?
@@ -56,5 +56,40 @@ public final class InvalidTypeError: NSObject, Error, InvalidTypeErrorWrapperMod
         self.nameKey = nameKey
         self.email = email
         self.token = token
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case dateOfBirth
+        case country
+        case parentEmail
+        case password
+        case username
+        case oauthClientId
+        case addressStreet
+        case addressPostCode
+        case addressCity
+        case addressCountry
+        case permissions
+        case nameKey
+        case email
+        case token
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        dateOfBirth = try values.decode(SpecificError.self, forKey: .dateOfBirth)
+        country = try values.decode(SpecificError.self, forKey: .country)
+        parentEmail = try values.decode(SpecificError.self, forKey: .parentEmail)
+        password = try values.decode(SpecificError.self, forKey: .password)
+        username = try values.decode(SpecificError.self, forKey: .username)
+        oauthClientId = try values.decode(SpecificError.self, forKey: .oauthClientId)
+        addressStreet = try values.decode(SpecificError.self, forKey: .addressStreet)
+        addressPostCode = try values.decode(SpecificError.self, forKey: .addressPostCode)
+        addressCity = try values.decode(SpecificError.self, forKey: .addressCity)
+        addressCountry = try values.decode(SpecificError.self, forKey: .addressCountry)
+        permissions = try values.decode(SpecificError.self, forKey: .permissions)
+        nameKey = try values.decode(SpecificError.self, forKey: .nameKey)
+        email = try values.decode(SpecificError.self, forKey: .email)
+        token = try values.decode(SpecificError.self, forKey: .token)
     }
 }

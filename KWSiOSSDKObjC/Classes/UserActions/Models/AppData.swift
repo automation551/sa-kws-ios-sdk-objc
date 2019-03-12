@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class AppData: NSObject, AppDataModelProtocol {
+public final class AppData: NSObject, AppDataModelProtocol, Codable {
     
     public var value:   Int
     public var name:    String?
@@ -30,4 +30,16 @@ public final class AppData: NSObject, AppDataModelProtocol {
         guard let object = object as? AppData else { return false }
         return self == object
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case value
+        case name
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        value = try values.decode(Int.self, forKey: .value)
+        name = try values.decode(String.self, forKey: .name)
+    }
 }
+

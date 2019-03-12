@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class AppConfigModel: NSObject, AppConfigModelProtocol {
+public final class AppConfigModel: NSObject, AppConfigModelProtocol, Codable {
     
     public var id:      Int
     public var name:    String
@@ -33,5 +33,16 @@ public final class AppConfigModel: NSObject, AppConfigModelProtocol {
     
     public override var hash: Int {
         return id.hashValue
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int.self, forKey: .id)
+        name = try values.decode(String.self, forKey: .name)
     }
 }

@@ -102,11 +102,11 @@ public class SingleSignOnService: NSObject, SingleSignOnServiceProtocol {
                         completionHandler(user, nil)
                     }
                 case .error(let error):
-                    let mappedError = AbstractService().mapErrorResponse(error: error)
+                    let mappedError = AbstractService().mapErrorResponse(error: error as! PrintableErrorProtocol)
                     completionHandler(nil, mappedError)
                 }
             case .error(let error):
-                let mappedError = AbstractService().mapErrorResponse(error: error)
+                let mappedError = AbstractService().mapErrorResponse(error: error as! PrintableErrorProtocol)
                 completionHandler(nil, mappedError)
             }
         }

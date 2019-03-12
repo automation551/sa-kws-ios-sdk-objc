@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Decodable
-import protocol Decodable.Decodable
 
 extension SetAppDataFakeResponseModel: Decodable {
     

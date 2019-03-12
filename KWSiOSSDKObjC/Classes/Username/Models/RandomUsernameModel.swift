@@ -21,4 +21,14 @@ public final class RandomUsernameModel: NSObject, RandomUsernameModelProtocol {
         guard let object = object as? RandomUsernameModel else { return false }
         return self.randomUsername == object.randomUsername
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case randomUsername
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        randomUsername = try values.decode(String.self, forKey: .randomUsername)
+    }
 }
+

@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public struct LoggedUserModel : LoggedUserModelProtocol, Equatable {
+public struct LoggedUserModel : LoggedUserModelProtocol, Equatable, Codable {
     
     public var token:       String
     public var tokenData:   TokenData
@@ -36,5 +36,18 @@ public struct LoggedUserModel : LoggedUserModelProtocol, Equatable {
     
     public var hash: Int {
         return id.hashValue
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case token
+        case tokenData
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(AnyHashable.self, forKey: .id)
+        token = try values.decode(String.self, forKey: .token)
+        tokenData = try values.decode(TokenData.self, forKey: .tokenData)
     }
 }

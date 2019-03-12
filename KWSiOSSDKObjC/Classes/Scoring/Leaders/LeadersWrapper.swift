@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class LeadersWrapper: NSObject, LeaderWrapperModelProtocol {
+public final class LeadersWrapper: NSObject, LeaderWrapperModelProtocol, Codable {
     
     public var results: [LeaderModelProtocol]
     public var count:   Int
@@ -24,6 +24,21 @@ public final class LeadersWrapper: NSObject, LeaderWrapperModelProtocol {
         self.count = count
         self.offset = offset
         self.limit = limit
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case results
+        case count
+        case offset
+        case limit
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        results = try values.decode([LeadersModel].self, forKey: .results)
+        count = try values.decode(Int.self, forKey: .count)
+        offset = try values.decode(Int.self, forKey: .offset)
+        limit = try values.decode(String.self, forKey: .limit)
     }
 }
 

@@ -67,7 +67,7 @@ public class UsernameService: NSObject, UsernameServiceProtocol {
                     completionHandler(RandomUsernameModel(randomUsername: value), nil)
                 }
             case .error(let error):
-                let mappedError = AbstractService().mapErrorResponse(error: error)
+                let mappedError = AbstractService().mapErrorResponse(error: error as! PrintableErrorProtocol)
                 completionHandler(nil, mappedError)
             }
         }

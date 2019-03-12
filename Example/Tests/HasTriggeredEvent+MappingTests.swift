@@ -9,8 +9,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class HasTriggeredEventMappingTests: XCTestCase {

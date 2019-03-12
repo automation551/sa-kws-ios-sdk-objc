@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SAProtobufs
 
-public final class ErrorWrapper: NSObject, Error, ErrorWrapperModelProtocol {
+public final class ErrorWrapper: NSObject, Error, ErrorWrapperModelProtocol, Codable {
     
     public var code:        Int?
     public var codeMeaning: String?
@@ -32,5 +32,24 @@ public final class ErrorWrapper: NSObject, Error, ErrorWrapperModelProtocol {
         self.errorCode = errorCode
         self.error = error
         self.message = message
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case code
+        case codeMeaning
+        case invalid
+        case errorCode
+        case error
+        case message
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        code = try values.decode(Int.self, forKey: .code)
+        codeMeaning = try values.decode(String.self, forKey: .codeMeaning)
+        invalid = try values.decode(InvalidTypeError.self, forKey: .invalid)
+        errorCode = try values.decode(String.self, forKey: .errorCode)
+        error = try values.decode(String.self, forKey: .error)
+        message = try values.decode(String.self, forKey: .message)
     }
 }

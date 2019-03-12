@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class ApplicationPermissionsModel: NSObject, PermissionsModelProtocols {
+public final class ApplicationPermissionsModel: NSObject, PermissionsModelProtocols, Codable {
     
     public var notifications:       Bool?
     public var address:             Bool?
@@ -59,5 +59,34 @@ public final class ApplicationPermissionsModel: NSObject, PermissionsModelProtoc
     public override func isEqual(_ object: Any?) -> Bool {        
         guard let object = object as? ApplicationPermissionsModel else { return false }
         return self == object
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case notifications
+        case address
+        case firstName
+        case lastName
+        case email
+        case streetAddress
+        case city
+        case postalCode
+        case country
+        case newsletter
+        case competition
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        notifications = try values.decode(Bool.self, forKey: .notifications)
+        address = try values.decode(Bool.self, forKey: .address)
+        firstName = try values.decode(Bool.self, forKey: .firstName)
+        lastName = try values.decode(Bool.self, forKey: .lastName)
+        email = try values.decode(Bool.self, forKey: .email)
+        streetAddress = try values.decode(Bool.self, forKey: .streetAddress)
+        city = try values.decode(Bool.self, forKey: .city)
+        postalCode = try values.decode(Bool.self, forKey: .postalCode)
+        country = try values.decode(Bool.self, forKey: .country)
+        newsletter = try values.decode(Bool.self, forKey: .newsletter)
+        competition = try values.decode(Bool.self, forKey: .competition)
     }
 }

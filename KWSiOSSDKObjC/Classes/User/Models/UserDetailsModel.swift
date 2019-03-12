@@ -8,10 +8,7 @@
 import Foundation
 import SAProtobufs
 
-import Decodable
-import protocol Decodable.Decodable
-
-public final class UserDetailsModel: NSObject, UserDetailsModelProtocol {
+public final class UserDetailsModel: NSObject, UserDetailsModelProtocol, Codable {
     
     public var firstName:                   String?
     public var lastName:                    String?
@@ -80,5 +77,42 @@ public final class UserDetailsModel: NSObject, UserDetailsModelProtocol {
         return id.hashValue
     }
     
+    enum CodingKeys: String, CodingKey {
+        case firstName
+        case lastName
+        case dateOfBirth
+        case gender
+        case email
+        case hasSetParentEmail
+        case createdAt
+        case address
+        case applicationProfile
+        case applicationPermissions
+        case points
+        case id
+        case name
+        case language
+        case consentAgeForCountry
+        case isMinor
+    }
     
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        firstName = try values.decode(String.self, forKey: .firstName)
+        lastName = try values.decode(String.self, forKey: .lastName)
+        dateOfBirth = try values.decode(String.self, forKey: .dateOfBirth)
+        gender = try values.decode(String.self, forKey: .gender)
+        email = try values.decode(String.self, forKey: .email)
+        hasSetParentEmail = try values.decode(Bool.self, forKey: .hasSetParentEmail)
+        createdAt = try values.decode(String.self, forKey: .createdAt)
+        address = try values.decode(UserAddressModel.self, forKey: .address)
+        applicationProfile = try values.decode(ApplicationProfileModel.self, forKey: .applicationProfile)
+        applicationPermissions = try values.decode(ApplicationPermissionsModel.self, forKey: .applicationPermissions)
+        points = try values.decode(PointsModel.self, forKey: .points)
+        id = try values.decode(String.self, forKey: .id)
+        name = try values.decode(String.self, forKey: .name)
+        language = try values.decode(String.self, forKey: .language)
+        consentAgeForCountry = try values.decode(Int.self, forKey: .consentAgeForCountry)
+        isMinor = try values.decode(Bool.self, forKey: .isMinor)
+    }
 }

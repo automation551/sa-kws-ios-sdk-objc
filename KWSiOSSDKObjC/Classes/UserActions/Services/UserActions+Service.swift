@@ -38,7 +38,7 @@ public class UserActionsService: NSObject, UserActionsServiceProtocol {
                 completionHandler(value,nil)
                 break
             case .error(let error):
-                let mappedError = AbstractService().mapErrorResponse(error: error)
+                let mappedError = AbstractService().mapErrorResponse(error: error as! PrintableErrorProtocol)
                 completionHandler(nil, mappedError)
                 break
             }
@@ -65,7 +65,7 @@ public class UserActionsService: NSObject, UserActionsServiceProtocol {
                 completionHandler(value,nil)
                 break
             case .error(let error):
-                let mappedError = AbstractService().mapErrorResponse(error: error)
+                let mappedError = AbstractService().mapErrorResponse(error: error as! PrintableErrorProtocol)
                 completionHandler(nil, mappedError)
                 break
             }
@@ -104,7 +104,7 @@ public class UserActionsService: NSObject, UserActionsServiceProtocol {
             case .success(_):
                 completionHandler(nil)
             case .error(let error):
-                let mappedError = AbstractService().mapErrorResponse(error: error)
+                let mappedError = AbstractService().mapErrorResponse(error: error as! PrintableErrorProtocol)
                 completionHandler(mappedError)
             }
         }

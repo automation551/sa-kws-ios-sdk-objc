@@ -8,7 +8,7 @@
 import Foundation
 import SAProtobufs
 
-public final class PointsModel: NSObject, PointsModelProtocols {
+public final class PointsModel: NSObject, PointsModelProtocols, Codable {
     
     public var pending:         Int?
     public var received:        Int?
@@ -46,5 +46,22 @@ public final class PointsModel: NSObject, PointsModelProtocols {
     
     public override var hash: Int {
         return inApp!.hashValue
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case pending
+        case received
+        case total
+        case balance
+        case inApp
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        pending = try values.decode(Int.self, forKey: .pending)
+        received = try values.decode(Int.self, forKey: .received)
+        total = try values.decode(Int.self, forKey: .total)
+        balance = try values.decode(Int.self, forKey: .balance)
+        inApp = try values.decode(Int.self, forKey: .inApp)
     }
 }
