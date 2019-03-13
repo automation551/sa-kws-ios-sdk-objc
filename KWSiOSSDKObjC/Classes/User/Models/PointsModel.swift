@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class PointsModel: NSObject, PointsModelProtocols {
+public final class PointsModel: NSObject, PointsProtocols {
     
     public var pending:         Int?
     public var received:        Int?

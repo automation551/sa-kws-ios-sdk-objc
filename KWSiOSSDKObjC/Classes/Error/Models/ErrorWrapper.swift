@@ -7,13 +7,12 @@
 
 import Foundation
 import UIKit
-import SAProtobufs
 
-public final class ErrorWrapper: NSObject, Error, ErrorWrapperModelProtocol {
+public final class ErrorWrapper: NSObject, Error, ErrorWrapperProtocol {
     
     public var code:        Int?
     public var codeMeaning: String?
-    public var invalid:     InvalidTypeErrorWrapperModelProtocol?
+    public var invalid:     InvalidTypeErrorWrapperProtocol?
     public var errorCode:   String?
     public var error:       String?
     public var message:     String?

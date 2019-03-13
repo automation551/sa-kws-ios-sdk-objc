@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class HasTriggeredEvent: NSObject, HasTriggeredEventModelProtocol{
+public final class HasTriggeredEvent: NSObject, HasTriggeredEventProtocol{
     
     public var hasTriggeredEvent: Bool
     

@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class AuthUserResponseModel: NSObject, LoggedUserModelProtocol {
+public final class AuthUserResponseModel: NSObject, LoggedUserProtocol {
     
     public var id:      AnyHashable
     public var token:   String

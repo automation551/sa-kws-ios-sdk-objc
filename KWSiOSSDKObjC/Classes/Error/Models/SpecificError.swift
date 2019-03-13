@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class SpecificError: NSObject, Error, ErrorModelProtocol {
+public final class SpecificError: NSObject, Error, ErrorProtocol {
     
     public var code:        Int?
     public var codeMeaning: String?

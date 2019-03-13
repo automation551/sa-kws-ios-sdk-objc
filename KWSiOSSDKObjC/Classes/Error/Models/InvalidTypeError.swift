@@ -6,25 +6,24 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class InvalidTypeError: NSObject, Error, InvalidTypeErrorWrapperModelProtocol {
+public final class InvalidTypeError: NSObject, Error, InvalidTypeErrorWrapperProtocol {
     
     //types of "invalid" from API error response
-    public var dateOfBirth:     ErrorModelProtocol?
-    public var country:         ErrorModelProtocol?
-    public var parentEmail:     ErrorModelProtocol?
-    public var password:        ErrorModelProtocol?
-    public var username:        ErrorModelProtocol?
-    public var oauthClientId:   ErrorModelProtocol?
-    public var addressStreet:   ErrorModelProtocol?
-    public var addressPostCode: ErrorModelProtocol?
-    public var addressCity:     ErrorModelProtocol?
-    public var addressCountry:  ErrorModelProtocol?
-    public var permissions:     ErrorModelProtocol?
-    public var nameKey:         ErrorModelProtocol?
-    public var email:           ErrorModelProtocol?
-    public var token:           ErrorModelProtocol?
+    public var dateOfBirth:     ErrorProtocol?
+    public var country:         ErrorProtocol?
+    public var parentEmail:     ErrorProtocol?
+    public var password:        ErrorProtocol?
+    public var username:        ErrorProtocol?
+    public var oauthClientId:   ErrorProtocol?
+    public var addressStreet:   ErrorProtocol?
+    public var addressPostCode: ErrorProtocol?
+    public var addressCity:     ErrorProtocol?
+    public var addressCountry:  ErrorProtocol?
+    public var permissions:     ErrorProtocol?
+    public var nameKey:         ErrorProtocol?
+    public var email:           ErrorProtocol?
+    public var token:           ErrorProtocol?
     
     // MARK: - Initialization    
     public required init(dateOfBirth:        SpecificError? = nil,

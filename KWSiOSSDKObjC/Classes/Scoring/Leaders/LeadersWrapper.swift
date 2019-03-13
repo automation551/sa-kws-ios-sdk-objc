@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class LeadersWrapper: NSObject, LeaderWrapperModelProtocol {
+public final class LeadersWrapper: NSObject, LeaderWrapperProtocol {
     
-    public var results: [LeaderModelProtocol]
+    public var results: [LeaderProtocol]
     public var count:   Int
     public var offset:  Int
     public var limit:   Int

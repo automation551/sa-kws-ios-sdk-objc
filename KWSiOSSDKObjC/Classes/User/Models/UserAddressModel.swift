@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class UserAddressModel: NSObject, AddressModelProtocol {
+public final class UserAddressModel: NSObject, AddressProtocol {
     
     public var street:      String?
     public var city:        String?

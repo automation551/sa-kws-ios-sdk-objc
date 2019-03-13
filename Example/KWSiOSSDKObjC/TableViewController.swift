@@ -8,7 +8,6 @@
 
 import UIKit
 import KWSiOSSDKObjC
-import SAProtobufs
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -193,7 +192,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let sdk = ComplianceSDK(withEnvironment: kUserNetworkEnvironment!)
         let auth = sdk.getService(withType: AuthServiceProtocol.self)
 
-        auth?.loginUser(userName: userName, password: pwd) { (result, error) in
+        auth?.loginUser(username: userName, password: pwd) { (result, error) in
 
             var responseText: String = ""
             
@@ -720,7 +719,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.updateTextView(text: responseText)
     }
     
-    func saveUser(user: LoggedUserModelProtocol) {
+    func saveUser(user: LoggedUserProtocol) {
         
         var responseText: String = ""
 

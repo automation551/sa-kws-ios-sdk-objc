@@ -51,9 +51,9 @@
 		9C5A79D620763888009E4B8C /* LoginAuthResponse+ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A79D520763888009E4B8C /* LoginAuthResponse+ModelTests.swift */; };
 		9C68ED87207A7A4300444D2B /* UsernameServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED85207A792400444D2B /* UsernameServiceTests.swift */; };
 		9C68ED8F207A87D900444D2B /* Session+ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68ED8B207A87BE00444D2B /* Session+ServiceTests.swift */; };
-		9C6F9D60207B7DCC00F78119 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		9C6F9D62207B7E5200F78119 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		9C6F9D64207B7E5E00F78119 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		9C6F9D60207B7DCC00F78119 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9C6F9D62207B7E5200F78119 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9C6F9D64207B7E5E00F78119 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		9C6F9D71207BD6CC00F78119 /* SetAppData+RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D70207BD6CC00F78119 /* SetAppData+RequestTests.swift */; };
 		9C6F9D74207BD73100F78119 /* SetAppDataFakeResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D72207BD73100F78119 /* SetAppDataFakeResponse+Mapping.swift */; };
 		9C6F9D75207BD73100F78119 /* SetAppDataFakeResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F9D73207BD73100F78119 /* SetAppDataFakeResponseModel.swift */; };
@@ -222,7 +222,6 @@
 				7F7AB943E43EC7A2DEE0B0DC /* Pods-KWSiOSSDKObjC_Tests.debug.xcconfig */,
 				842B84F93EEAFD62354E0B5B /* Pods-KWSiOSSDKObjC_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -661,7 +660,7 @@
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = DCC9L689QJ;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -673,7 +672,7 @@
 						};
 					};
 					6003F5AD195388D20070C39A = {
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1010;
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
@@ -782,7 +781,6 @@
 				"${BUILT_PRODUCTS_DIR}/Decodable/Decodable.framework",
 				"${BUILT_PRODUCTS_DIR}/KWSiOSSDKObjC/KWSiOSSDKObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SAMobileBase/SAMobileBase.framework",
-				"${BUILT_PRODUCTS_DIR}/SAProtobufs/SAProtobufs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -791,7 +789,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Decodable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KWSiOSSDKObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMobileBase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAProtobufs.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -851,11 +848,11 @@
 				9C18313F2020F04F00DD4083 /* Mocks.swift in Sources */,
 				9CF4569F207E84D300D3CC67 /* Score+ModelTests.swift in Sources */,
 				9C6F9D74207BD73100F78119 /* SetAppDataFakeResponse+Mapping.swift in Sources */,
-				9C6F9D62207B7E5200F78119 /* BuildFile in Sources */,
+				9C6F9D62207B7E5200F78119 /* (null) in Sources */,
 				9C6F9D79207BD74700F78119 /* SetAppData+MappingTests.swift in Sources */,
 				9C5A79CE20762C44009E4B8C /* LoggedUser+ModelTests.swift in Sources */,
 				9CD6E5DA207BE3C50077F56C /* UpdateUserDetailsFakeResponseModel.swift in Sources */,
-				9C6F9D60207B7DCC00F78119 /* BuildFile in Sources */,
+				9C6F9D60207B7DCC00F78119 /* (null) in Sources */,
 				9C59C7BA202B18B700BE4E74 /* RandomUsername+ModelTests.swift in Sources */,
 				9CF456A9207E859800D3CC67 /* GetLeaders+MappingTests.swift in Sources */,
 				9CF456A3207E857800D3CC67 /* GetScore+RequestTests.swift in Sources */,
@@ -876,7 +873,7 @@
 				9C1831332020862800DD4083 /* Login+MappingTests.swift in Sources */,
 				9C18313820209F3E00DD4083 /* TestUtils.swift in Sources */,
 				9C4DE2E6208F36D900F80668 /* GetAppData+RequestTests.swift in Sources */,
-				9C6F9D64207B7E5E00F78119 /* BuildFile in Sources */,
+				9C6F9D64207B7E5E00F78119 /* (null) in Sources */,
 				9CFD4A22207C25F4002CC7B6 /* HasTriggeredEvent+MappingTests.swift in Sources */,
 				9C5A79D420763500009E4B8C /* AuthUserResponse+ModelTests.swift in Sources */,
 				9CF456AC207E859800D3CC67 /* GetScore+MappingTests.swift in Sources */,
@@ -1059,8 +1056,7 @@
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KWSiOSSDKObjC/KWSiOSSDKObjC_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1093,8 +1089,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KWSiOSSDKObjC/KWSiOSSDKObjC_Example-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1125,8 +1120,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/KWSiOSSDKObjC_Tests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KWSiOSSDKObjC_Example.app/KWSiOSSDKObjC_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1152,8 +1146,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/KWSiOSSDKObjC_Tests-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KWSiOSSDKObjC_Example.app/KWSiOSSDKObjC_Example";
 				WRAPPER_EXTENSION = xctest;
 			};

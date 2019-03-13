@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SAProtobufs
 
 public final class AppData: NSObject, AppDataModelProtocol {
     

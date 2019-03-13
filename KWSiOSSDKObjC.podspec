@@ -24,7 +24,7 @@ The SuperAwesome Kids Web Services iOS SDK
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
   s.source_files = 'KWSiOSSDKObjC/Classes/**/*'
   s.dependency 'SAMobileBase', '2.2.3'
-  s.dependency 'SAProtobufs', '1.6.5'
+  #s.dependency 'SAProtobufs', '1.6.5'
   s.resource_bundles = {
       'KWSiOSSDKObjC' => ['KWSiOSSDKObjC/Assets/*.xcassets']
   }

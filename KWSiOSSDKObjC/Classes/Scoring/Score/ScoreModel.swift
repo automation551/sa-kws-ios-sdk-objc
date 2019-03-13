@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class ScoreModel: NSObject, ScoreModelProtocol {
+public final class ScoreModel: NSObject, ScoreProtocol {
     
     public var score:   Int
     public var rank:    Int

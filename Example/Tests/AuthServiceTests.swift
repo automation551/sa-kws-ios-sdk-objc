@@ -11,7 +11,6 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
-import SAProtobufs
 
 class AuthServiceTests: XCTestCase {
     
@@ -342,7 +341,7 @@ class AuthServiceTests: XCTestCase {
         stub(http(.post, uri: uri ) , json(JSON!))
         
         waitUntil { done in
-            self.service.loginUser(userName: self.goodUsername,
+            self.service.loginUser(username: self.goodUsername,
                                    password: self.goodPassword,
                                    completionHandler: {  loginResponse, error in
                                     
@@ -372,7 +371,7 @@ class AuthServiceTests: XCTestCase {
         
         waitUntil { done in
             
-            self.service.loginUser(userName: self.goodUsername,
+            self.service.loginUser(username: self.goodUsername,
                                    password: self.goodPassword,
                                    completionHandler: {  loginResponse, error in
                                     
@@ -402,7 +401,7 @@ class AuthServiceTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            self.service.loginUser(userName: self.goodUsername,
+            self.service.loginUser(username: self.goodUsername,
                                    password: self.goodPassword,
                                    completionHandler: {  loginResponse, error in
                                     
@@ -432,7 +431,7 @@ class AuthServiceTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            self.service.loginUser(userName: self.goodUsername,
+            self.service.loginUser(username: self.goodUsername,
                                    password: self.goodPassword,
                                    completionHandler: { loginResponse, error in
                                     
@@ -463,7 +462,7 @@ class AuthServiceTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            self.service.loginUser(userName: self.goodUsername,
+            self.service.loginUser(username: self.goodUsername,
                                    password: self.goodPassword,
                                    completionHandler: { loginResponse, error in
                                     
@@ -494,7 +493,7 @@ class AuthServiceTests: XCTestCase {
         stub(http(.post, uri: "\(request.environment.domain + request.endpoint)"), json(JSON!, status: 400))
         
         waitUntil { done in
-            self.service.loginUser(userName: self.goodUsername,
+            self.service.loginUser(username: self.goodUsername,
                                    password: self.goodPassword,
                                    completionHandler: { loginResponse, error in
                                     

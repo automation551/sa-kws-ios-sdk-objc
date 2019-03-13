@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import SAProtobufs
 
 import Decodable
 import protocol Decodable.Decodable
 
-public final class UserDetailsModel: NSObject, UserDetailsModelProtocol {
+public final class UserDetailsModel: NSObject, UserDetailsProtocol {
     
     public var firstName:                   String?
     public var lastName:                    String?
@@ -20,10 +19,10 @@ public final class UserDetailsModel: NSObject, UserDetailsModelProtocol {
     public var email:                       String?
     public var hasSetParentEmail:           Bool?
     public var createdAt:                   String
-    public var address:                     AddressModelProtocol?
+    public var address:                     AddressProtocol?
     public var applicationProfile:          AppProfileModelProtocol?
     public var applicationPermissions:      PermissionsModelProtocols?
-    public var points:                      PointsModelProtocols?
+    public var points:                      PointsProtocols?
     public var id:                          AnyHashable
     public var name:                        String?
     public var language:                    String?

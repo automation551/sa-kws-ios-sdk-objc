@@ -11,7 +11,6 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
-import SAProtobufs
 
 class SessionServiceTests: XCTestCase {
     
@@ -148,7 +147,7 @@ class SessionServiceTests: XCTestCase {
         self.defaults.removeObject(forKey: kTokenKey)
     }
     
-    private struct MockLoggedUser: LoggedUserModelProtocol {
+    private struct MockLoggedUser: LoggedUserProtocol {
         var token: String
         var id: AnyHashable
         
@@ -159,7 +158,7 @@ class SessionServiceTests: XCTestCase {
         }
     }
     
-    private struct BadLoggedUser: LoggedUserModelProtocol {
+    private struct BadLoggedUser: LoggedUserProtocol {
         var token: String
         var id: AnyHashable
         
