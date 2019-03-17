@@ -8,14 +8,14 @@ The SuperAwesome Kids Web Services iOS SDK
                        DESC
 
   s.homepage         = 'https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc'
-  s.license          = { 
+  s.license          = {
 	:type => 'GNU GENERAL PUBLIC LICENSE Version 3',
 	:file => 'LICENSE'
   }
-  s.author           = { 
+  s.author           = {
 	'Gabriel Coman' => 'gabriel.coman@superawesome.tv'
   }
-  s.source           = { 
+  s.source           = {
 	:git => 'https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git',
 	:branch => 'master',
 	:tag => 'v#{s.version}'
@@ -23,10 +23,9 @@ The SuperAwesome Kids Web Services iOS SDK
   s.ios.deployment_target = '9.0'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
   s.source_files = 'KWSiOSSDKObjC/Classes/**/*'
-  s.dependency 'SAMobileBase', '2.2.3'
-  #s.dependency 'SAProtobufs', '1.6.5'
+  s.dependency 'SAMobileBase'
   s.resource_bundles = {
       'KWSiOSSDKObjC' => ['KWSiOSSDKObjC/Assets/*.xcassets']
   }
-  
+
 end
