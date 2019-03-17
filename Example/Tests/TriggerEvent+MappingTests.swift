@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class TriggerEventMappingTests: XCTestCase {
@@ -24,18 +22,20 @@ class TriggerEventMappingTests: XCTestCase {
     
     func test_TriggerEvent_Mapping_ResponseSuccess() {
         
-        let JSON: Any? = ["{}"]
+       let JSON: [String: Any] = [:]
         
-        let triggerEvent = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON)
+        let triggerEvent = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
-        expect(triggerEvent).to(beNil())
+        expect(triggerEvent?.code).to(equal(-1))
     }
     
     func test_TriggerEvent_Mapping_BadToken_Response() {
         
         let JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //401
         expect(errorResponse).toNot(beNil())
@@ -47,7 +47,8 @@ class TriggerEventMappingTests: XCTestCase {
         
         let JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //403
         expect(errorResponse).toNot(beNil())
@@ -61,7 +62,8 @@ class TriggerEventMappingTests: XCTestCase {
         let JSON = try? fixtureWithName(name:"trigger_event_token_not_valid_response")
         
         //400
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -79,7 +81,8 @@ class TriggerEventMappingTests: XCTestCase {
         let JSON = try? fixtureWithName(name:"generic_event_not_found_response")
         
         //404
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(2))
@@ -92,7 +95,8 @@ class TriggerEventMappingTests: XCTestCase {
         let JSON = try? fixtureWithName(name:"trigger_event_token_reached_user_limit_response")
         
         //403
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(1))

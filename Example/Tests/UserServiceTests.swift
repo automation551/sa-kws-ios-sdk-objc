@@ -264,11 +264,6 @@ class UserServiceTests: XCTestCase {
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_success_response")
         
-        let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetailsMap: mapUserDetails,
-                                               userId: goodUserId,
-                                               token: token)
-        
         //when
         stub(everything, json(JSON!, status: 204))
         

@@ -7,37 +7,38 @@
 
 import Foundation
 
-public final class ApplicationProfileModel: NSObject, AppProfileModelProtocol {
+public struct ApplicationProfileModel: Equatable, AppProfileModelProtocol, Codable {
     
-    public var customField1:    Int?
-    public var customField2:    Int?
-    public var avatarId:        Int?
-    public var name:            String?
+    public var customField1: Int?
+    public var customField2: Int?
+    public var avatarId: Int?
+    public var name: String?
     
-    public required init(customField1:  Int? = nil,
-                         customField2:  Int? = nil,
-                         avatarId:      Int? = nil,
-                         name:          String?
-                         ) {
+    public init(customField1: Int? = nil,
+                customField2: Int? = nil,
+                avatarId: Int? = nil,
+                name: String?) {
         
         self.customField1 = customField1
         self.customField2 = customField2
         self.avatarId = avatarId
         self.name = name
     }
-
-    // MARK: - Equatable
-    public static func ==(lhs: ApplicationProfileModel, rhs: ApplicationProfileModel) -> Bool {
-        let areEqual = lhs.name == rhs.name && lhs.avatarId == rhs.avatarId
-        return areEqual
+    
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        customField1 = try values.decodeIfPresent(Int.self, forKey: .customField1) ?? nil
+        customField2 = try values.decodeIfPresent(Int.self, forKey: .customField2) ?? nil
+        avatarId = try values.decodeIfPresent(Int.self, forKey: .avatarId) ?? nil
+        name = try values.decodeIfPresent(String.self, forKey: .name) ?? nil
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {        
-        guard let object = object as? ApplicationProfileModel else { return false }
-        return self == object
-    }
-    
-    public override var hash: Int {
-        return name!.hashValue
+    enum CodingKeys: String, CodingKey {
+        case customField1
+        case customField2
+        case avatarId
+        case name = "username"
     }
 }

@@ -7,20 +7,20 @@
 
 import Foundation
 
-public final class PointsModel: NSObject, PointsProtocols {
+public struct PointsModel: Equatable, PointsProtocols, Codable {
     
-    public var pending:         Int?
-    public var received:        Int?
-    public var total:           Int?
-    public var balance:         Int?
-    public var inApp:           Int?
+    public var pending: Int?
+    public var received: Int?
+    public var total: Int?
+    public var balance: Int?
+    public var inApp: Int?
 
-    public required init(pending:   Int? = nil,
-                         received:  Int? = nil,
-                         total:     Int? = nil,
-                         balance:   Int? = nil,
-                         inApp:     Int? = nil) {
-
+    public init(pending: Int?,
+                received: Int?,
+                total: Int?,
+                balance: Int?,
+                inApp: Int?) {
+        
         self.pending = pending
         self.received = received
         self.total = total
@@ -28,22 +28,22 @@ public final class PointsModel: NSObject, PointsProtocols {
         self.inApp = inApp
     }
     
-    // MARK: - Equatable
-    public static func ==(lhs: PointsModel, rhs: PointsModel) -> Bool {
-        let areEqual = lhs.pending == rhs.pending
-        && lhs.received == rhs.received
-        && lhs.total == rhs.total
-        && lhs.balance == rhs.balance
-        && lhs.inApp == rhs.inApp
-        return areEqual
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        pending = try values.decodeIfPresent(Int.self, forKey: .pending) ?? nil
+        received = try values.decodeIfPresent(Int.self, forKey: .received) ?? nil
+        total = try values.decodeIfPresent(Int.self, forKey: .total) ?? nil
+        balance = try values.decodeIfPresent(Int.self, forKey: .balance) ?? nil
+        inApp = try values.decodeIfPresent(Int.self, forKey: .inApp) ?? nil
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? PointsModel else { return false }
-        return self == object
-    }
-    
-    public override var hash: Int {
-        return inApp!.hashValue
+    enum CodingKeys: String, CodingKey {
+        case pending
+        case received = "totalReceived"
+        case total
+        case balance = "availableBalance"
+        case inApp = "totalPointsReceivedInCurrentApp"
     }
 }

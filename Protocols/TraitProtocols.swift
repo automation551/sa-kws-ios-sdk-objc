@@ -7,9 +7,7 @@
 
 import Foundation
 
-public protocol TraitProtocol {
-    // empty implementatino
-}
+public protocol TraitProtocol {}
 
 // MARK: Protocol that add unique ids, names, etc to an IModel subclass
 public protocol UniqueIdentityTraitProtocol: TraitProtocol {

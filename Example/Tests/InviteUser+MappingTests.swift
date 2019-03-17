@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class InviteUserMappingTests: XCTestCase {
@@ -24,20 +22,20 @@ class InviteUserMappingTests: XCTestCase {
     
     func test_User_Actions_InviteUser_Mapping_ResponseSuccess() {
         
-        var JSON: Any?
-        JSON = ["{}"]
+        let JSON: [String: Any] = [:]
         
-        let inviteUser = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON)
+        let inviteUser = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
-        expect(inviteUser).to(beNil())
+        expect(inviteUser?.code).to(equal(-1))
     }
     
     func test_User_Actions_InviteUser_Mapping_BadToken_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_invalid_token_response")
+        let JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //401
         expect(errorResponse).toNot(beNil())
@@ -47,10 +45,10 @@ class InviteUserMappingTests: XCTestCase {
     
     func test_User_Actions_InviteUser_Mapping_BadUserId_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
+        let JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //403
         expect(errorResponse).toNot(beNil())
@@ -61,11 +59,11 @@ class InviteUserMappingTests: XCTestCase {
     
     func test_User_Actions_InviteUser_Mapping_BadEmail_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"invite_user_bad_email_response")
+        let JSON = try? fixtureWithName(name:"invite_user_bad_email_response")
         
         //403
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))

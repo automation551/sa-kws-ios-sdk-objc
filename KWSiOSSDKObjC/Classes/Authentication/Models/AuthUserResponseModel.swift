@@ -7,30 +7,36 @@
 
 import Foundation
 
-public final class AuthUserResponseModel: NSObject, LoggedUserProtocol {
+public struct AuthUserResponseModel: Equatable, LoggedUserProtocol, Codable {
     
-    public var id:      AnyHashable
-    public var token:   String
+    public var id: AnyHashable
+    public var token: String
 
-    public required init(id:    AnyHashable,
-                         token: String) {
+    public init(id: AnyHashable,
+                token: String) {
         
         self.id = id
         self.token = token
-    }    
-    
-    // MARK: - Equatable
-    public static func ==(lhs: AuthUserResponseModel, rhs: AuthUserResponseModel) -> Bool {
-        let areEqual = lhs.id == rhs.id && lhs.token == rhs.token
-        return areEqual
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? AuthUserResponseModel else { return false }
-        return self == object
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = try values.decode(Int.self, forKey: .id)
+        token = try values.decode(String.self, forKey: .token)
     }
     
-    public override var hash: Int {
-        return id.hashValue
-    }    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container (keyedBy: CodingKeys.self)
+        if let id = id as? String {
+            try container.encode (id, forKey: .id)
+        }
+        try container.encode (token, forKey: .token)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case token
+    }
 }

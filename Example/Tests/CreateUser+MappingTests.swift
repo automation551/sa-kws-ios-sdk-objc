@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class CreateUserMappingTests: XCTestCase {
@@ -27,7 +25,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_success_response")
         
-        let createUserResponse = try? AuthUserResponseModel.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let createUserResponse = try? JSONDecoder().decode(AuthUserResponseModel.self, from: jsonData!)
         
         expect(createUserResponse).toNot(beNil())
         expect(createUserResponse?.id).to(equal(170))
@@ -38,7 +37,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_username_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -53,7 +53,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_conflict_username_taken_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(10))
@@ -68,7 +69,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.errorCode).to(equal("invalid_token"))
@@ -79,7 +81,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_password_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -94,7 +97,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_dob_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -109,7 +113,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_country_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -124,7 +129,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"create_user_bad_email_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -140,7 +146,8 @@ class CreateUserMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))

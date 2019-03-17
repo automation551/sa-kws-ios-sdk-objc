@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class GetAppDataMappingTests: XCTestCase {
@@ -27,7 +25,8 @@ class GetAppDataMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"get_app_data_success_response")
         
-        let appDataResponse = try? AppDataWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let appDataResponse = try? JSONDecoder().decode(AppDataWrapper.self, from: jsonData!)
         
         expect(appDataResponse).toNot(beNil())
         expect(appDataResponse?.results.count).to(equal(4))
@@ -41,7 +40,8 @@ class GetAppDataMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //401
         expect(errorResponse).toNot(beNil())
@@ -54,7 +54,8 @@ class GetAppDataMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //403
         expect(errorResponse).toNot(beNil())
@@ -69,7 +70,8 @@ class GetAppDataMappingTests: XCTestCase {
         JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_client_response")
         
         //403
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(1))

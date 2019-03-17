@@ -8,11 +8,9 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
-class AppConfigMappingTests : XCTestCase{
+class AppConfigMappingTests : XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -25,10 +23,10 @@ class AppConfigMappingTests : XCTestCase{
     //App Config mapping
     func test_Random_Username_App_Config_Response_Success() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"app_config_success_response")
+        let JSON = try? fixtureWithName(name:"app_config_success_response")
         
-        let appConfigResponse = try? AppConfigWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let appConfigResponse = try? JSONDecoder().decode(AppConfigWrapper.self, from: jsonData!)
         
         expect(appConfigResponse).toNot(beNil())
         expect(appConfigResponse?.app.id).to(equal(358))
@@ -36,10 +34,11 @@ class AppConfigMappingTests : XCTestCase{
     }
     
     func test_Random_Username_App_Config_Nil_Auth_Client_Id_Response (){
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"app_config_null_oauthclientid_response")
+
+        let JSON = try? fixtureWithName(name:"app_config_null_oauthclientid_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -51,10 +50,11 @@ class AppConfigMappingTests : XCTestCase{
     }
     
     func test_Random_Username_App_Config_Empty_Auth_Client_Id_Response (){
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"app_config_empty_oauthclientid_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let JSON = try? fixtureWithName(name:"app_config_empty_oauthclientid_response")
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -66,10 +66,11 @@ class AppConfigMappingTests : XCTestCase{
     }
     
     func test_Random_Username_App_Config_App_Not_Found_Response (){
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"app_config_app_not_found_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let JSON = try? fixtureWithName(name:"app_config_app_not_found_response")
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(2))
@@ -79,10 +80,10 @@ class AppConfigMappingTests : XCTestCase{
     
     func test_Random_Username_App_Config_Generic_Not_Found_Response() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
+        let JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))

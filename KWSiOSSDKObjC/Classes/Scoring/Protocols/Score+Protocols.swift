@@ -16,7 +16,7 @@ public protocol HasTriggeredEventProtocol: ModelProtocol {
 
 public protocol LeaderWrapperProtocol: ModelProtocol, ListTraitProtocol {
     
-    var results: [LeaderProtocol] { get }
+    var results: [LeadersModel] { get }
 }
 
 public protocol PointsProtocols: ModelProtocol {

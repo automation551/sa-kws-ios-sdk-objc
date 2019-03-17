@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class PermissionsMappingTests: XCTestCase {
@@ -29,7 +27,8 @@ class PermissionsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"permission_request_success_response")
         
-        let userParentEmailResponse = try? UpdateUserDetailsFakeResponseModel.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let userParentEmailResponse = try? JSONDecoder().decode(UpdateUserDetailsFakeResponseModel.self, from: jsonData!)
         
         expect(userParentEmailResponse).toNot(beNil())
         expect(userParentEmailResponse?.permissionsRequested).to(beTrue())
@@ -41,7 +40,8 @@ class PermissionsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"permission_request_permission_required_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -59,7 +59,8 @@ class PermissionsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(1))
@@ -73,7 +74,8 @@ class PermissionsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"permission_request_not_found_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(2))

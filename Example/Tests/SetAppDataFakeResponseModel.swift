@@ -10,12 +10,24 @@ import Foundation
 import UIKit
 
 //FAKE DECODER
-public final class SetAppDataFakeResponseModel: NSObject, Error {
+public final class SetAppDataFakeResponseModel: NSObject, Error, Codable {
     
     public let appSet: Bool?
     
     // MARK: - Initialization    
     public required init(appSet: Bool?  = false) {
         self.appSet = appSet
+    }
+    
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        appSet = try values.decodeIfPresent(Bool.self, forKey: .appSet) ?? false
+
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case appSet
     }
 }

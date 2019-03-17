@@ -7,31 +7,31 @@
 
 import Foundation
 
-public final class ApplicationPermissionsModel: NSObject, PermissionsModelProtocols {
+public struct ApplicationPermissionsModel: Equatable, PermissionsModelProtocols, Codable {
     
-    public var notifications:       Bool?
-    public var address:             Bool?
-    public var firstName:           Bool?
-    public var lastName:            Bool?
-    public var email:               Bool?
-    public var streetAddress:       Bool?
-    public var city:                Bool?
-    public var postalCode:          Bool?
-    public var country:             Bool?
-    public var newsletter:          Bool?
-    public var competition:         Bool?
+    public var notifications: Bool?
+    public var address: Bool?
+    public var firstName: Bool?
+    public var lastName: Bool?
+    public var email: Bool?
+    public var streetAddress: Bool?
+    public var city: Bool?
+    public var postalCode: Bool?
+    public var country: Bool?
+    public var newsletter: Bool?
+    public var competition: Bool?
     
-    public required init(notifications:     Bool? = nil,
-                         address:           Bool? = nil,
-                         firstName:         Bool? = nil,
-                         lastName:          Bool? = nil,
-                         email:             Bool? = nil,
-                         streetAddress:     Bool? = nil,
-                         city:              Bool? = nil,
-                         postalCode:        Bool? = nil,
-                         country:           Bool? = nil,
-                         newsletter:        Bool? = nil,
-                         competition:       Bool? = nil) {
+    public init(notifications: Bool? = false,
+                address: Bool? = false,
+                firstName: Bool? = false,
+                lastName: Bool? = false,
+                email: Bool? = false,
+                streetAddress: Bool? = false,
+                city: Bool? = false,
+                postalCode: Bool? = false,
+                country: Bool? = false,
+                newsletter: Bool? = false,
+                competition: Bool? = false) {
         
         self.notifications = notifications
         self.address = address
@@ -45,18 +45,35 @@ public final class ApplicationPermissionsModel: NSObject, PermissionsModelProtoc
         self.newsletter = newsletter
         self.competition = competition
     }
-
-    // MARK: - Equatable
-    public static func ==(lhs: ApplicationPermissionsModel, rhs: ApplicationPermissionsModel) -> Bool {
-        let areEqual = lhs.firstName == rhs.firstName
-        && lhs.lastName == rhs.lastName
-        && lhs.address == rhs.address
-        && lhs.email == rhs.email
-        return areEqual
-    }
     
-    public override func isEqual(_ object: Any?) -> Bool {        
-        guard let object = object as? ApplicationPermissionsModel else { return false }
-        return self == object
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        notifications = try values.decodeIfPresent(Bool.self, forKey: .notifications) ?? false
+        address = try values.decodeIfPresent(Bool.self, forKey: .address) ?? false
+        firstName = try values.decodeIfPresent(Bool.self, forKey: .firstName) ?? false
+        lastName = try values.decodeIfPresent(Bool.self, forKey: .lastName) ?? false
+        email = try values.decodeIfPresent(Bool.self, forKey: .email) ?? false
+        streetAddress = try values.decodeIfPresent(Bool.self, forKey: .streetAddress) ?? false
+        city = try values.decodeIfPresent(Bool.self, forKey: .city) ?? false
+        postalCode = try values.decodeIfPresent(Bool.self, forKey: .postalCode) ?? false
+        country = try values.decodeIfPresent(Bool.self, forKey: .country) ?? false
+        newsletter = try values.decodeIfPresent(Bool.self, forKey: .newsletter) ?? false
+        competition = try values.decodeIfPresent(Bool.self, forKey: .competition) ?? false
+    }
+        
+    enum CodingKeys: String, CodingKey {
+        case notifications = "sendPushNotification"
+        case address = "accessAddress"
+        case firstName = "accessFirstName"
+        case lastName = "accessLastName"
+        case email = "accessEmail"
+        case streetAddress = "accessStreetAddress"
+        case city = "accessCity"
+        case postalCode = "accessPostalCode"
+        case country = "accessCountry"
+        case newsletter = "sendNewsletter"
+        case competition = "enterCompetitions"
     }
 }

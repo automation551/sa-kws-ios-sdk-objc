@@ -7,12 +7,23 @@
 
 import Foundation
 
-public final class HasTriggeredEvent: NSObject, HasTriggeredEventProtocol{
+public final class HasTriggeredEvent: HasTriggeredEventProtocol, Codable {
     
     public var hasTriggeredEvent: Bool
     
-    public required init(hasTriggeredEvent:    Bool) {
+    public required init(hasTriggeredEvent: Bool) {
         
         self.hasTriggeredEvent = hasTriggeredEvent
+    }
+    
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        hasTriggeredEvent = try values.decode(Bool.self, forKey: .hasTriggeredEvent)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case hasTriggeredEvent
     }
 }

@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class RandomUsernameMappingTests : XCTestCase {
@@ -31,7 +29,8 @@ class RandomUsernameMappingTests : XCTestCase {
         //note that the response for Random Username is a plain string
         //To bypass that, a `fake` mocked response was added in a JSON format with name `RandomUsernameFakeResponse`
         
-        let randomUsernameFakeResponse = try? RandomUsernameFakeResponse.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let randomUsernameFakeResponse = try? JSONDecoder().decode(RandomUsernameFakeResponse.self, from: jsonData!)
         
         expect(randomUsernameFakeResponse).toNot(beNil())
         expect(randomUsernameFakeResponse?.randomUsername).to(equal("coolrandomusername123"))
@@ -42,7 +41,8 @@ class RandomUsernameMappingTests : XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))

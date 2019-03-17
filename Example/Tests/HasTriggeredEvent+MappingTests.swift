@@ -6,11 +6,8 @@
 //  Copyright © 2018 Gabriel Coman. All rights reserved.
 //
 
-
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class HasTriggeredEventMappingTests: XCTestCase {
@@ -27,7 +24,8 @@ class HasTriggeredEventMappingTests: XCTestCase {
         
         let JSON: Any? = try? fixtureWithName(name:"has_triggered_event_success_response")
         
-        let response = try? HasTriggeredEvent.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let response = try? JSONDecoder().decode(HasTriggeredEvent.self, from: jsonData!)
         
         expect(response).toNot(beNil())
         expect(response?.hasTriggeredEvent).to(beTrue())        
@@ -37,7 +35,8 @@ class HasTriggeredEventMappingTests: XCTestCase {
         
         let JSON: Any? = try? fixtureWithName(name:"generic_invalid_token_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //401
         expect(errorResponse).toNot(beNil())
@@ -49,7 +48,8 @@ class HasTriggeredEventMappingTests: XCTestCase {
         
         let JSON: Any? = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //403
         expect(errorResponse).toNot(beNil())
@@ -63,7 +63,8 @@ class HasTriggeredEventMappingTests: XCTestCase {
         let JSON: Any? = try? fixtureWithName(name:"generic_event_not_found_response")
         
         //400
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(2))

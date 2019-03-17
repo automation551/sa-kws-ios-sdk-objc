@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class UpdateUserDetailsMappingTests: XCTestCase {
@@ -29,7 +27,8 @@ class UpdateUserDetailsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"update_user_detail_success_response")
         
-        let userDetailsResponse = try? UpdateUserDetailsFakeResponseModel.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let userDetailsResponse = try? JSONDecoder().decode(UpdateUserDetailsFakeResponseModel.self, from: jsonData!)
         
         expect(userDetailsResponse).toNot(beNil())
         expect(userDetailsResponse?.userUpdated).to(beTrue())        
@@ -40,8 +39,9 @@ class UpdateUserDetailsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"update_user_detail_permission_not_granted_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
-        
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
+
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(1))
         expect(errorResponse?.codeMeaning).to(equal("forbidden"))
@@ -53,7 +53,8 @@ class UpdateUserDetailsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"update_user_details_address_fails_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -86,7 +87,8 @@ class UpdateUserDetailsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"update_user_parent_email_success_response")
         
-        let userParentEmailResponse = try? UpdateUserDetailsFakeResponseModel.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let userParentEmailResponse = try? JSONDecoder().decode(UpdateUserDetailsFakeResponseModel.self, from: jsonData!)
         
         expect(userParentEmailResponse).toNot(beNil())
         expect(userParentEmailResponse?.emailUpdated).to(beTrue())
@@ -97,7 +99,8 @@ class UpdateUserDetailsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"update_user_parent_email_already_set_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(10))
@@ -114,7 +117,8 @@ class UpdateUserDetailsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"update_user_parent_email_invalid_email_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))

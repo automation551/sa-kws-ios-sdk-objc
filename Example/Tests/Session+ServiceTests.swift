@@ -71,7 +71,6 @@ class SessionServiceTests: XCTestCase {
         // given
         let mockUser = MockLoggedUser()
         let token = mockUser.token
-        let userId = mockUser.id
         
         // when
         defaults.set(token, forKey: kTokenKey)
@@ -107,7 +106,6 @@ class SessionServiceTests: XCTestCase {
     func testServiceToReturnTrueOnCorrectlyLoggedUser() {
         let mockUser = MockLoggedUser()
         let token = mockUser.token
-        let userId = mockUser.id
         
         // when
         defaults.set(token, forKey: kTokenKey)
