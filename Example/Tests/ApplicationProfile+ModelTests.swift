@@ -32,34 +32,4 @@ class ApplicationProfileModelTests: XCTestCase {
         let bar = ApplicationProfileModel(customField1: nil, customField2: nil, avatarId: 321, name: "cooltiger2")
         expect(foo).toNot(equal(bar))
     }
-    
-    func test_SameEquality_Between_Objc_And_Swift() {
-        let foo = ApplicationProfileModel(customField1: nil, customField2: nil, avatarId: 123, name: "cooltiger1")
-        let bar = ApplicationProfileModel(customField1: nil, customField2: nil, avatarId: 321, name: "cooltiger2")
-        let objc = foo.isEqual(bar)
-        let swift = foo == bar
-        
-        expect(objc).to(equal(swift))
-    }
-    
-    func test_ApplicationProfile_Hash_Is_Equal() {
-        let foo = ApplicationProfileModel(customField1: nil, customField2: nil, avatarId: 123, name: "cooltiger1")
-        let bar = ApplicationProfileModel(customField1: nil, customField2: nil, avatarId: 123, name: "cooltiger1")
-        
-        expect(foo.hash).to(equal(bar.hash))
-    }
-    
-    func test_ApplicationProfile_Hash_Is_Not_Equal() {
-        let foo = ApplicationProfileModel(customField1: nil, customField2: nil, avatarId: 123, name: "cooltiger1")
-        let bar = ApplicationProfileModel(customField1: nil, customField2: nil, avatarId: 123, name: "cooltiger2")
-        
-        expect(foo.hash).toNot(equal(bar.hash))
-    }
-    
-    func test_ObjcApplicationProfile_NotEquality_With_Different_Class_And_Same_Identifier() {
-        let foo = ApplicationProfileModel(customField1: nil, customField2: nil, avatarId: 123, name: "cooltiger1")
-        let bar = "12345"
-        
-        expect(foo.isEqual(bar)).to(beFalse())
-    }
 }

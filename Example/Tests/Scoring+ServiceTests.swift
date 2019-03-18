@@ -11,7 +11,6 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
-import SAProtobufs
 
 class ScoringServiceTests: XCTestCase {
     

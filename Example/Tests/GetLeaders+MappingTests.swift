@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class GetLeadersMappingTests: XCTestCase {
@@ -27,7 +25,8 @@ class GetLeadersMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"get_leaders_success_response")
         
-        let leadersResponse = try? LeadersWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let leadersResponse = try? JSONDecoder().decode(LeadersWrapper.self, from: jsonData!)
         
         expect(leadersResponse).toNot(beNil())
         
@@ -50,7 +49,8 @@ class GetLeadersMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //401
         expect(errorResponse).toNot(beNil())
@@ -64,7 +64,8 @@ class GetLeadersMappingTests: XCTestCase {
         JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_client_response")
         
         //403
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(1))

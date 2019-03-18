@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class GetUserDetailsMappingTests: XCTestCase {
@@ -27,9 +25,10 @@ class GetUserDetailsMappingTests: XCTestCase {
     func test_User_GetUserDetails_Mapping_ResponseSuccess() {
         
         var JSON: Any?
-        JSON = try? fixtureWithName(name:"get_user_details_success_response")
+        JSON = try? fixtureWithName(name: "get_user_details_success_response")
         
-        let userDetailsResponse = try? UserDetailsModel.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let userDetailsResponse = try? JSONDecoder().decode(UserDetailsModel.self, from: jsonData!)
         
         expect(userDetailsResponse).toNot(beNil())
         expect(userDetailsResponse?.id).to(equal(25))
@@ -66,9 +65,9 @@ class GetUserDetailsMappingTests: XCTestCase {
         expect(userDetailsResponse?.applicationPermissions?.city).to(beFalsy())
         expect(userDetailsResponse?.applicationPermissions?.postalCode).to(beFalsy())
         expect(userDetailsResponse?.applicationPermissions?.country).to(beFalsy())
-        expect(userDetailsResponse?.applicationPermissions?.notifications).to(beTruthy())
-        expect(userDetailsResponse?.applicationPermissions?.newsletter).to(beFalsy())
-        expect(userDetailsResponse?.applicationPermissions?.competition).to(beFalsy())
+        expect(userDetailsResponse?.applicationPermissions?.notifications).to(beTrue())
+        expect(userDetailsResponse?.applicationPermissions?.newsletter).to(beFalse())
+        expect(userDetailsResponse?.applicationPermissions?.competition).to(beFalse())
 
         expect(userDetailsResponse?.points?.received).to(equal(600))
         expect(userDetailsResponse?.points?.total).to(equal(600))
@@ -84,7 +83,8 @@ class GetUserDetailsMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_simpler_not_found_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(123))

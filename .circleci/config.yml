@@ -3,7 +3,7 @@ references:
 
   ios_config: &ios_config
     macos:
-      xcode: "9.3.0"
+      xcode: "10.1.0"
 
   bootstrap: &bootstrap
     run:
@@ -14,7 +14,7 @@ references:
 
 jobs:
 
-  ## Run unit tests  
+  ## Run unit tests
   test_unit:
     <<: *ios_config
     environment:
@@ -30,7 +30,7 @@ jobs:
           command: find $PWD/fastlane/test_output -name '*.junit' -exec cp {} ${PWD}/temp_files/test-results \;
       - store_test_results:
           path: temp_files/test-results
-  
+
 
   semantic_release:
     <<: *ios_config
@@ -42,7 +42,7 @@ jobs:
             git clone "${SA_CONTINUOUS_INTEGRATION_GIT_REPO_URL}" "${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}"
             ${SA_PATH_TO_CONTINUOUS_INTEGRATION_REPO}/semantic-release/semantic-release.sh
 
-  ## Run sdk push 
+  ## Run sdk push
   sdk_push:
     <<: *ios_config
     steps:

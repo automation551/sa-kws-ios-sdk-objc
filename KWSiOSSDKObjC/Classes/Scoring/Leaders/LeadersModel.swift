@@ -6,31 +6,34 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class LeadersModel: NSObject, LeaderModelProtocol {
+public struct LeadersModel: Equatable, LeaderProtocol, Codable {
     
-    public var score:   Int
-    public var rank:    Int
-    public var name:    String?
+    public var score: Int
+    public var rank: Int
+    public var name: String?
     
-    public required init(score: Int,
-                         rank:  Int,
-                         name:  String?) {
+    public init(score: Int,
+                rank: Int,
+                name: String?) {
         
         self.score = score
         self.rank = rank
         self.name = name
     }
     
-    // MARK: - Equatable
-    public static func ==(lhs: LeadersModel, rhs: LeadersModel) -> Bool {
-        let areEqual = lhs.score == rhs.score && lhs.rank == rhs.rank && lhs.name == rhs.name
-        return areEqual
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        score = try values.decode(Int.self, forKey: .score)
+        rank = try values.decode(Int.self, forKey: .rank)
+        name = try values.decodeIfPresent(String.self, forKey: .name) ?? nil
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? LeadersModel else { return false }
-        return self == object
+    enum CodingKeys: String, CodingKey {
+        case score
+        case rank
+        case name = "user"
     }
 }

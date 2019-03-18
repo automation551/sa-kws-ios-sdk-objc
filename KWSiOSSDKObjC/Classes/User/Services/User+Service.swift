@@ -7,7 +7,6 @@
 
 import Foundation
 import SAMobileBase
-import SAProtobufs
 
 public class UserService: NSObject, UserServiceProtocol {
     
@@ -17,7 +16,7 @@ public class UserService: NSObject, UserServiceProtocol {
         self.environment = environment
     }
     
-    public func getUser(userId: Int, token: String, completionHandler: @escaping (UserDetailsModelProtocol?, Error?) -> ()) {
+    public func getUser(userId: Int, token: String, completionHandler: @escaping (UserDetailsProtocol?, Error?) -> ()) {
         
         let getUserDetailsNetworkRequest = UserDetailsRequest(environment: environment,
                                                               userId: userId,

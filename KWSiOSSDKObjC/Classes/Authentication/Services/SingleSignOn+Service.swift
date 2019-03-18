@@ -7,7 +7,6 @@
 
 import Foundation
 import SAMobileBase
-import SAProtobufs
 
 public class SingleSignOnService: NSObject, SingleSignOnServiceProtocol {
     
@@ -18,7 +17,7 @@ public class SingleSignOnService: NSObject, SingleSignOnServiceProtocol {
         self.environment = environment
     }
     
-    public func signOn(url: String, parent: UIViewController, completionHandler: @escaping (LoggedUserModelProtocol?, Error?) -> ()) {
+    public func signOn(url: String, parent: UIViewController, completionHandler: @escaping (LoggedUserProtocol?, Error?) -> ()) {
         
         let oAuthCodeGenerator = OAuthCodeTask()
         let oAuthDataClass = oAuthCodeGenerator.execute(input: ())

@@ -7,7 +7,6 @@
 
 import Foundation
 import SAMobileBase
-import SAProtobufs
 
 public class AbstractService: NSObject, ServiceProtocol {
 

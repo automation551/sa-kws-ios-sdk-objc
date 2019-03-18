@@ -5,7 +5,6 @@
 //  Created by Guilherme Mota on 08/04/2018.
 //
 
-import SAProtobufs
 import SAMobileBase
 import UIKit
 
@@ -32,7 +31,7 @@ internal struct SessionService: SessionServiceProtocol {
         return result ?? false
     }
 
-    func getLoggedUser() -> LoggedUserModelProtocol? {
+    func getLoggedUser() -> LoggedUserProtocol? {
 
         let tokenRequest = ReadDbRequest(storage: storage, key: kTokenKey)
         let dbTask = ReadDbTask<String>()
@@ -60,7 +59,7 @@ internal struct SessionService: SessionServiceProtocol {
         }
     }
 
-    func saveLoggedUser(user: LoggedUserModelProtocol) -> Bool {
+    func saveLoggedUser(user: LoggedUserProtocol) -> Bool {
 
         let token = user.token
         let tokenRequest = WriteDbRequest(storage: storage, key: kTokenKey, value: token)

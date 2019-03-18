@@ -7,7 +7,6 @@
 
 import Foundation
 import SAMobileBase
-import SAProtobufs
 
 public class ScoreService: NSObject, ScoreServiceProtocol {
     
@@ -17,7 +16,7 @@ public class ScoreService: NSObject, ScoreServiceProtocol {
         self.environment = environment
     }
     
-    public func getScore(appId: Int, token: String, completionHandler: @escaping (ScoreModelProtocol?, Error?) -> ()) {
+    public func getScore(appId: Int, token: String, completionHandler: @escaping (ScoreProtocol?, Error?) -> ()) {
         
         let getScoreNetworkRequest = GetUserScoreRequest(environment: environment, appId: appId, token: token)
         
@@ -44,7 +43,7 @@ public class ScoreService: NSObject, ScoreServiceProtocol {
         }
     }
     
-    public func getLeaderboard(appId: Int, token: String, completionHandler: @escaping (LeaderWrapperModelProtocol?, Error?) -> ()) {
+    public func getLeaderboard(appId: Int, token: String, completionHandler: @escaping (LeaderWrapperProtocol?, Error?) -> ()) {
         
         let leaderBoardNetworkRequest = LeadersRequest(environment: environment, appId: appId, token: token)
 
