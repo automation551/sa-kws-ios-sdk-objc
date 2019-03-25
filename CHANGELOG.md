@@ -1,3 +1,10 @@
+## [3.1.5](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/compare/v3.1.4...v3.1.5) (2019-03-25)
+
+
+### Bug Fixes
+
+* **Pod:** Fixed pod errors ([13aa11c](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/13aa11c))
+
 ## [3.1.4](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/compare/v3.1.3...v3.1.4) (2019-03-25)
 
 
