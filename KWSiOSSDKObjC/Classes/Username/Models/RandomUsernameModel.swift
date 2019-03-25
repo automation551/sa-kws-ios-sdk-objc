@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class RandomUsernameModel: NSObject, RandomUsernameModelProtocol {
+public final class RandomUsernameModel: NSObject, RandomUsernameProtocol {
     
     public var randomUsername: String?
     
@@ -21,4 +20,10 @@ public final class RandomUsernameModel: NSObject, RandomUsernameModelProtocol {
         guard let object = object as? RandomUsernameModel else { return false }
         return self.randomUsername == object.randomUsername
     }
+}
+
+public protocol VerifiedUsernameProtocol: ModelProtocol {
+    
+    var available: Bool { get }
+    var allowed: Bool { get }
 }

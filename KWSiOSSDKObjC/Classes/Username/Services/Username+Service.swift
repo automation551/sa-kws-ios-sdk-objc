@@ -7,7 +7,6 @@
 
 import Foundation
 import SAMobileBase
-import SAProtobufs
 
 public class UsernameService: NSObject, UsernameServiceProtocol {
     
@@ -17,7 +16,7 @@ public class UsernameService: NSObject, UsernameServiceProtocol {
         self.environment = environment
     }
     
-    public func getRandomUsername(completionHandler: @escaping (RandomUsernameModelProtocol?, Error?) -> ()) {
+    public func getRandomUsername(completionHandler: @escaping (RandomUsernameProtocol?, Error?) -> ()) {
         
         let getAppConfigNetworkRequest = AppConfigRequest(environment: environment,
                                                           clientID: environment.clientID)
@@ -73,7 +72,7 @@ public class UsernameService: NSObject, UsernameServiceProtocol {
         }
     }
     
-    public func verifiyUsername(username: String, completionHandler: @escaping (VerifiedUsernameModelProtocol?, Error?) -> ()) {        
+    public func verifiyUsername(username: String, completionHandler: @escaping (VerifiedUsernameProtocol?, Error?) -> ()) {        
         //not used
     }
 }

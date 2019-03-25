@@ -7,7 +7,6 @@
 
 import Foundation
 import SAMobileBase
-import SAProtobufs
 
 public class AuthService: NSObject, AuthServiceProtocol {
     
@@ -17,10 +16,10 @@ public class AuthService: NSObject, AuthServiceProtocol {
         self.environment = environment
     }
     
-    public func loginUser(userName: String, password: String, completionHandler: @escaping (LoggedUserModelProtocol?, Error?) -> ()) {
+    public func loginUser(username: String, password: String, completionHandler: @escaping (LoggedUserProtocol?, Error?) -> ()) {
         
         let loginUserNetworkRequest = LoginRequest(environment: self.environment,
-                                                   username: userName,
+                                                   username: username,
                                                    password: password,
                                                    clientID: self.environment.clientID,
                                                    clientSecret: self.environment.clientSecret)
@@ -46,7 +45,7 @@ public class AuthService: NSObject, AuthServiceProtocol {
         }
     }
     
-    public func createUser(username: String, password: String, timeZone: String?, dateOfBirth: String?, country: String?, parentEmail: String?, completionHandler: @escaping (LoggedUserModelProtocol?, Error?) -> ()) {
+    public func createUser(username: String, password: String, timeZone: String?, dateOfBirth: String?, country: String?, parentEmail: String?, completionHandler: @escaping (LoggedUserProtocol?, Error?) -> ()) {
         
         let dobValue = dateOfBirth ?? ""
         let countryValue = country ?? ""

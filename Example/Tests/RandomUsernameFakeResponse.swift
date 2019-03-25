@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 //FAKE DECODER
-public final class RandomUsernameFakeResponse: NSObject, Error {
+public final class RandomUsernameFakeResponse: Error, Codable {
     
     public let randomUsername: String?
     
@@ -18,5 +18,16 @@ public final class RandomUsernameFakeResponse: NSObject, Error {
     
     public required init(randomUsername: String?  = "") {
         self.randomUsername = randomUsername
+    }
+    
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        randomUsername = try values.decode(String.self, forKey: .randomUsername)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case randomUsername
     }
 }

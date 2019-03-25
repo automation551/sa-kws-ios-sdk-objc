@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public struct LoggedUserModel : LoggedUserModelProtocol, Equatable {
+public struct LoggedUserModel : LoggedUserProtocol, Equatable {
     
     public var token:       String
     public var tokenData:   TokenData

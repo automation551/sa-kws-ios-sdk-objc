@@ -11,7 +11,6 @@ import Mockingjay
 import Nimble
 import KWSiOSSDKObjC
 import SAMobileBase
-import SAProtobufs
 
 class UserServiceTests: XCTestCase {
     
@@ -264,11 +263,6 @@ class UserServiceTests: XCTestCase {
         let mapUserDetails : [String : Any] = ["parentEmail" : "parent.email@mail.com"]
         
         let JSON: Any? = try? fixtureWithName(name:"update_user_parent_email_success_response")
-        
-        let request = UpdateUserDetailsRequest(environment: self.environment,
-                                               userDetailsMap: mapUserDetails,
-                                               userId: goodUserId,
-                                               token: token)
         
         //when
         stub(everything, json(JSON!, status: 204))

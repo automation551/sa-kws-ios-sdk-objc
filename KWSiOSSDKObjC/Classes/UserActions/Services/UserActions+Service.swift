@@ -6,9 +6,7 @@
 //
 
 import Foundation
-import Foundation
 import SAMobileBase
-import SAProtobufs
 
 public class UserActionsService: NSObject, UserActionsServiceProtocol {
     
@@ -45,7 +43,7 @@ public class UserActionsService: NSObject, UserActionsServiceProtocol {
         }
     }
     
-    public func hasTriggeredEvent(eventId: Int, userId: Int, token: String, completionHandler: @escaping (HasTriggeredEventModelProtocol?, Error?) -> ()) {
+    public func hasTriggeredEvent(eventId: Int, userId: Int, token: String, completionHandler: @escaping (HasTriggeredEventProtocol?, Error?) -> ()) {
         
         let hasTriggeredEventNetworkRequest = HasTriggeredEventRequest.init(environment: environment, eventId: eventId, userId: userId, token: token)
         

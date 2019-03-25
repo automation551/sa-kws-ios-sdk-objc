@@ -8,8 +8,6 @@
 
 import XCTest
 import Nimble
-import Decodable
-import protocol Decodable.Decodable
 import KWSiOSSDKObjC
 
 class SetAppDataMappingTests: XCTestCase {
@@ -24,10 +22,10 @@ class SetAppDataMappingTests: XCTestCase {
     
     func test_User_Actions_setAppData_Mapping_ResponseSuccess() {
         
-        var JSON: Any?
-        JSON = try? fixtureWithName(name:"set_app_data_fake_success_response")
+        let JSON = try? fixtureWithName(name:"set_app_data_fake_success_response")
         
-        let setAppDataResponse = try? SetAppDataFakeResponseModel.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let setAppDataResponse = try? JSONDecoder().decode(SetAppDataFakeResponseModel.self, from: jsonData!)
         
         expect(setAppDataResponse).toNot(beNil())
         expect(setAppDataResponse?.appSet).to(beTrue())
@@ -39,7 +37,8 @@ class SetAppDataMappingTests: XCTestCase {
         JSON = try? fixtureWithName(name:"set_app_data_empty_name_response")
         
         //403
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(5))
@@ -57,7 +56,8 @@ class SetAppDataMappingTests: XCTestCase {
         JSON = try? fixtureWithName(name:"set_app_name_len_bad_response")
         
         //403
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(11))
@@ -70,7 +70,8 @@ class SetAppDataMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_invalid_token_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //401
         expect(errorResponse).toNot(beNil())
@@ -83,7 +84,8 @@ class SetAppDataMappingTests: XCTestCase {
         var JSON: Any?
         JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_user_response")
         
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         //403
         expect(errorResponse).toNot(beNil())
@@ -98,7 +100,8 @@ class SetAppDataMappingTests: XCTestCase {
         JSON = try? fixtureWithName(name:"generic_operation_not_supported_for_client_response")
         
         //403
-        let errorResponse = try? ErrorWrapper.decode(JSON!)
+        let jsonData = try? JSONSerialization.data(withJSONObject: JSON!)
+        let errorResponse = try? JSONDecoder().decode(ErrorWrapper.self, from: jsonData!)
         
         expect(errorResponse).toNot(beNil())
         expect(errorResponse?.code).to(equal(1))

@@ -6,32 +6,37 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class LoginAuthResponseModel: NSObject, LoggedUserModelProtocol {
+public struct LoginAuthResponseModel: Equatable, LoggedUserProtocol, Codable {
     
-    public var token:   String
-    public var id:      AnyHashable
+    public var token: String
+    public var id: AnyHashable
     
-    public required init(token: String,
-                         id:    AnyHashable) {
-    
+    public init(token: String,
+                id: AnyHashable) {
+        
         self.token = token
         self.id = id
     }
     
-    // MARK: - Equatable
-    public static func ==(lhs: LoginAuthResponseModel, rhs: LoginAuthResponseModel) -> Bool {
-        let areEqual = lhs.id == rhs.id && lhs.token == rhs.token
-        return areEqual
+    enum CodingKeys: String, CodingKey {
+        case id
+        case token = "access_token"
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? LoginAuthResponseModel else { return false }
-        return self == object
+    public init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = try values.decodeIfPresent(Int.self, forKey: .id) ?? 0
+        token = try values.decode(String.self, forKey: .token)
     }
     
-    public override var hash: Int {
-        return id.hashValue
-    }    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container (keyedBy: CodingKeys.self)
+        if let id = id as? Int {
+            try container.encode (id, forKey: .id)
+        }
+        try container.encode (token, forKey: .token)
+    }
 }

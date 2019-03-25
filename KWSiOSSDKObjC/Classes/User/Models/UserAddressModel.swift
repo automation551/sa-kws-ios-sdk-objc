@@ -6,23 +6,22 @@
 //
 
 import Foundation
-import SAProtobufs
 
-public final class UserAddressModel: NSObject, AddressModelProtocol {
+public struct UserAddressModel: Equatable, AddressProtocol, Codable {
     
-    public var street:      String?
-    public var city:        String?
-    public var postCode:    String?
-    public var country:     String?
+    public var street: String?
+    public var city: String?
+    public var postCode: String?
+    public var country: String?
     public var countryCode: String?
     public var countryName: String?
     
-    public required init(street:        String? = nil,
-                         city:          String? = nil,
-                         postCode:      String? = nil,
-                         country:       String? = nil,
-                         countryCode:   String? = nil,
-                         countryName:   String? = nil) {
+    public init(street: String?,
+                city: String?,
+                postCode: String?,
+                country: String?,
+                countryCode: String?,
+                countryName: String?) {
         
         self.street = street
         self.city = city
@@ -32,18 +31,24 @@ public final class UserAddressModel: NSObject, AddressModelProtocol {
         self.countryName = countryName
     }
     
-    // MARK: - Equatable
-    public static func ==(lhs: UserAddressModel, rhs: UserAddressModel) -> Bool {
+    public init(from decoder: Decoder) throws {
         
-        let areEqual = lhs.city == rhs.city
-                && lhs.postCode == rhs.postCode
-                && lhs.countryCode == rhs.countryCode
-    
-        return areEqual
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        street = try values.decodeIfPresent(String.self, forKey: .street) ?? nil
+        city = try values.decodeIfPresent(String.self, forKey: .city) ?? nil
+        postCode = try values.decodeIfPresent(String.self, forKey: .postCode) ?? nil
+        country = try values.decodeIfPresent(String.self, forKey: .country) ?? nil
+        countryCode = try values.decodeIfPresent(String.self, forKey: .countryCode) ?? nil
+        countryName = try values.decodeIfPresent(String.self, forKey: .countryName) ?? nil
     }
     
-    public override func isEqual(_ object: Any?) -> Bool {
-        guard let object = object as? UserAddressModel else { return false }
-        return self == object
+    enum CodingKeys: String, CodingKey {
+        case street
+        case city
+        case postCode
+        case country
+        case countryCode
+        case countryName
     }
 }
