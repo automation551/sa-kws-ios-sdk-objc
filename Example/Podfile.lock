@@ -1,5 +1,4 @@
 PODS:
-  - Decodable (0.6.0)
   - Firebase (3.7.1):
     - Firebase/Core (= 3.7.1)
   - Firebase/Core (3.7.1):
@@ -29,7 +28,7 @@ PODS:
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
   - KWSiOSSDKObjC (3.1.1):
-    - SAMobileBase
+    - SAMobileBase (= 2.3.12)
   - Mockingjay (2.0.1):
     - Mockingjay/Core (= 2.0.1)
     - Mockingjay/XCTest (= 2.0.1)
@@ -38,8 +37,7 @@ PODS:
   - Mockingjay/XCTest (2.0.1):
     - Mockingjay/Core
   - Nimble (7.3.1)
-  - SAMobileBase (2.3.0):
-    - Decodable (~> 0.6.0)
+  - SAMobileBase (2.3.12)
   - URITemplate (2.0.3)
 
 DEPENDENCIES:
@@ -51,7 +49,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Decodable
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -63,15 +60,15 @@ SPEC REPOS:
     - GoogleUtilities
     - Mockingjay
     - Nimble
-    - SAMobileBase
     - URITemplate
+  https://github.com/SuperAwesomeLTD/sa-private-pods-specs-ios.git:
+    - SAMobileBase
 
 EXTERNAL SOURCES:
   KWSiOSSDKObjC:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Decodable: f0b95fa2fcf8633dd097aa8f7f09838ab3524f5d
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
   FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
@@ -81,12 +78,12 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  KWSiOSSDKObjC: 5bf3b97abc8f23da7e99885ccaa8617d77de2a80
+  KWSiOSSDKObjC: b85eb6d87a30a98580210e402debbe76d6eda26e
   Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
   Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
-  SAMobileBase: a665c565a8ca91b5720f4266d3159009091f72de
+  SAMobileBase: d743dfd5a7137d4026f5a5ae17a5215d8822ae45
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: 22bdb4d0e526e66419de1aab1ef192f9d249447a
+PODFILE CHECKSUM: a78ae488cda7a8ba93c8b0a1d53f0d6d0f65cf65
 
 COCOAPODS: 1.6.1

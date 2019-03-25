@@ -20,7 +20,7 @@ The SuperAwesome Kids Web Services iOS SDK
 	:branch => 'master',
 	:tag => 'v#{s.version}'
   }
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
   s.source_files = 'KWSiOSSDKObjC/Classes/**/*'
   s.dependency 'SAMobileBase', '2.3.12'
