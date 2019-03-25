@@ -23,7 +23,7 @@ public class WebAuthController: NSObject, SAWebViewControllerDelegate {
         callback = completionHandler
         parentRef = parent
         
-        var webViewController = SAWebViewController(withURL: authURL)
+        let webViewController = SAWebViewController(withURL: authURL)
         webViewController.delegate = self
         let navController = UINavigationController.init(rootViewController: webViewController)
         parentRef.present(navController, animated: true, completion: nil)
