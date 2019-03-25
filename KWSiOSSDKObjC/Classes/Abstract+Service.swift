@@ -10,9 +10,15 @@ import SAMobileBase
 
 public class AbstractService: NSObject, ServiceProtocol {
 
-    func mapErrorResponse(error: PrintableErrorProtocol) -> Error {
+    func mapErrorResponse(error: Error) -> Error {
         let parseTask = ParseJsonTask<ErrorWrapper>()
-        let parsedError = parseTask.execute(input: error.message)
+        let message: String
+        if let error = error as? PrintableErrorProtocol {
+            message = error.message
+        } else {
+            message = ""
+        }
+        let parsedError = parseTask.execute(input: message)
         
         switch (parsedError) {
         case .success(let serverError):
@@ -20,5 +26,6 @@ public class AbstractService: NSObject, ServiceProtocol {
         case .error(_):
             return error
         }
+        return NSError(domain: "", code: 123, userInfo: nil)
     }
 }
