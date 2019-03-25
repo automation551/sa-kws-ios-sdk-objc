@@ -26,6 +26,5 @@ public class AbstractService: NSObject, ServiceProtocol {
         case .error(_):
             return error
         }
-        return NSError(domain: "", code: 123, userInfo: nil)
     }
 }
