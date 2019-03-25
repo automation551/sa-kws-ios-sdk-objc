@@ -1,3 +1,18 @@
+## [3.1.4](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/compare/v3.1.3...v3.1.4) (2019-03-25)
+
+
+### Bug Fixes
+
+* **CI:** Updated CI xcode version to 10.1.0 ([18e9bfb](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/18e9bfb))
+* **Podfile:** locked Nimble version ([891cfb6](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/891cfb6))
+* **Podspec:** SAMobile version locked at 2.3.12 ([b4b9abf](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/b4b9abf))
+* **Project:** Remove Protobufs dependency ([951f900](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/951f900))
+* **Project:** Removed Decodable dependency, added conformity to Codable ([afe7c62](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/afe7c62))
+* **Project:** update project protocols folder ([6957cff](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/6957cff))
+* **Project:** Updated pod file to support Swift 4.2 ([2f0e45c](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/2f0e45c))
+* **Project:** updated project file ([fd465a8](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/fd465a8))
+* **SAMobileBase:** Updated SAMobileBase version to 2.3.12 ([c3c9f8e](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc/commit/c3c9f8e))
+
 ## [3.1.3](https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git/compare/v3.1.2...v3.1.3) (2018-10-29)
 
 
