@@ -8,7 +8,7 @@
 @class SADownloadItem;
 
 // callback for generic success
-typedef void (^saDidDownloadFile)(BOOL success, NSString* diskPath);
+typedef void (^saDidDownloadFile)(BOOL success, NSString *key, NSString* diskPath);
 
 /**
  * This class abstracts away the details of downloading files through a queue.
@@ -20,13 +20,6 @@ typedef void (^saDidDownloadFile)(BOOL success, NSString* diskPath);
  *
  */
 @interface SAFileDownloader : NSObject
-
-/**
- * Main singleton instance accessor method
- *
- * @return  the only instance of the SAFileDownloader object
- */
-+ (instancetype) getInstance;
 
 /**
  * This method allows users to add URLs to a queue of downloading items.
@@ -46,6 +39,6 @@ typedef void (^saDidDownloadFile)(BOOL success, NSString* diskPath);
  * This is useful so as to not end up with a lot of space being wasted
  * on the user's device.
  */
-- (void) cleanup;
++ (void) cleanup;
 
 @end

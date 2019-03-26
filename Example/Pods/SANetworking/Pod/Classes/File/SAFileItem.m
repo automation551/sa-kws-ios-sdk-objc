@@ -11,13 +11,10 @@
 
 - (id) init {
     if (self = [super init]) {
-        _urlKey = nil;
-        _diskName = nil;
+        _url = nil;
+        _fileName = nil;
         _key = nil;
-        _diskUrl = nil;
-        _isOnDisk = false;
-        _nrRetries = 0;
-        _responses = [@[] mutableCopy];
+        _filePath = nil;
     }
     
     return self;
@@ -25,48 +22,23 @@
 
 - (id) initWithUrl:(NSString *)url {
     if (self = [self init]) {
-        // get the URL Key
-        _urlKey = url;
         
-        // get the disk location
-        _diskName = [self getNewDiskName:_urlKey];
-        if (_diskName != nil) {
-            _diskUrl = [NSString stringWithFormat:@"%@/%@", [self getDocumentsDirectory], _diskName];
-            _key = [self getKeyFromDiskName:_diskName];
+        if (url == nil || url == (NSString*)[NSNull null] || [url isEqualToString:@""]) {
+            return self;
+        }
+        
+        _url = [NSURL URLWithString:url];
+        
+        if (_url != nil) {
+            NSString *component = [_url lastPathComponent];
+            
+            _key = [self getKeyFromDiskName:component];
+            _fileName = component;
+            _filePath = [NSString stringWithFormat:@"%@/%@", [self getDocumentsDirectory], _fileName];
         }
     }
     
     return self;
-}
-
-- (id) initWithUrl:(NSString *)url andInitialResponse:(id)firstResponse {
-    if (self = [self initWithUrl:url]) {
-        [self addResponse:firstResponse];
-    }
-    
-    return self;
-}
-
-- (void) incrementNrRetries {
-    _nrRetries++;
-}
-
-- (BOOL) hasRetriesRemaining {
-    return _nrRetries < MAX_RETRIES;
-}
-
-- (void) clearResponses {
-    [_responses removeAllObjects];
-}
-
-- (void) addResponse:(id)response {
-    if (response != nil && response != [NSNull null]) {
-        [_responses addObject:response];
-    }
-}
-
-- (NSString*) getNewDiskName:(NSString*) url {
-    return url != nil && url != (NSString*)[NSNull null] && ![url isEqualToString:@""] ? [url lastPathComponent] : nil;
 }
 
 - (NSString*) getDocumentsDirectory {
@@ -78,7 +50,7 @@
 }
 
 - (BOOL) isValid {
-    return _urlKey != nil && _diskName != nil && _diskUrl != nil && _key != nil;
+    return _url != nil && _fileName != nil && _filePath != nil && _key != nil;
 }
 
 

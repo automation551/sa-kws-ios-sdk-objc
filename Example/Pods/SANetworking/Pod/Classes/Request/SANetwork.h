@@ -14,6 +14,8 @@ typedef void (^saDidGetResponse)(NSInteger status, NSString *payload, BOOL succe
  */
 @interface SANetwork : NSObject
 
+- (id) initWithTimeout: (NSTimeInterval) timeout;
+
 /**
  * This is a sister method to the private "sendRequest" method that
  * will execute a GET HTTP request

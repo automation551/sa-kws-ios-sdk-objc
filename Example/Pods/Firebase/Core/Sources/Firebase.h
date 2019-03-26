@@ -1,6 +1,13 @@
-#import <FirebaseAnalytics/FirebaseAnalytics.h>
-#import <FirebaseCore/FirebaseCore.h>
+//#import <FirebaseAnalytics/FirebaseAnalytics.h>
+//#import <FirebaseCore/FirebaseCore.h>
 
+#if __has_include(<FirebaseAnalytics/FirebaseAnalytics.h>)
+#import <FirebaseAnalytics/FirebaseAnalytics.h>
+#endif
+
+#if __has_include(<FirebaseCore/FirebaseCore.h>)
+#import <FirebaseCore/FirebaseCore.h>
+#endif
 #if !defined(__has_include)
   #error "Firebase.h won't import anything if your compiler doesn't support __has_include. Please \
           import the headers individually."

@@ -6,7 +6,25 @@
 // file header
 #import "SANetwork.h"
 
+@interface SANetwork ()
+@property (nonatomic, assign) NSTimeInterval timeout;
+@end
+
 @implementation SANetwork
+
+- (id) init {
+    if (self = [super init]) {
+        _timeout = 15;
+    }
+    return self;
+}
+
+- (id) initWithTimeout:(NSTimeInterval)timeout {
+    if (self = [super init]) {
+        _timeout = timeout;
+    }
+    return self;
+}
 
 /**
  * This is the generic request method.
@@ -37,7 +55,7 @@
           withResponse:(saDidGetResponse) response {
     
     // check the URL for nullness
-    if (endpoint == nil || endpoint == (NSString*)[NSNull null]) {
+    if (endpoint == nil || endpoint == (NSString*)[NSNull null] || [endpoint isEqualToString:@""]) {
         response(0, nil, false);
         return;
     }
@@ -56,6 +74,7 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:url];
     [request setHTTPMethod:method];
+    [request setTimeoutInterval:_timeout];
     
     // set headers
     if (header != nil && header != (NSDictionary*)[NSNull null] && header.allKeys.count > 0) {
