@@ -16,9 +16,9 @@ The SuperAwesome Kids Web Services iOS SDK
 	'Gabriel Coman' => 'gabriel.coman@superawesome.tv'
   }
   s.source           = {
-	:git => 'https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git',
+	:git => 'git@github.com:SuperAwesomeLTD/sa-kws-ios-sdk-objc.git',
 	:branch => 'master',
-	:tag => 'v#{s.version}'
+	:tag => "v#{s.version}"
   }
   s.ios.deployment_target = '10.0'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
