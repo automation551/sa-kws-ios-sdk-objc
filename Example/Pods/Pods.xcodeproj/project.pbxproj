@@ -157,7 +157,7 @@
 		05DB16F012F9C0F19F9F20EFB0550057 /* SABaseObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SABaseObject.m; path = Pod/Classes/SABaseObject.m; sourceTree = "<group>"; };
 		0884A15940E2936CA032E1C39AEB0924 /* SAImageUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAImageUtils.m; path = Pod/Classes/SAImageUtils.m; sourceTree = "<group>"; };
 		1045A4D874C951A1458213F05A744DA7 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
-		15822DE76E1954E6F32EC5FEC13B7839 /* libSAJsonParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSAJsonParser.a; path = libSAJsonParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		15822DE76E1954E6F32EC5FEC13B7839 /* libSAJsonParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSAJsonParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A318EB2A01299F983BB0781FD585704 /* KWSRandomNameManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSRandomNameManager.h; sourceTree = "<group>"; };
 		1A718E5715D5F2727F841F4D6A9760B8 /* NSArray+SAJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+SAJson.h"; path = "Pod/Classes/NSArray+SAJson.h"; sourceTree = "<group>"; };
 		1C4F6536F4D953421706CDB8285A0A65 /* SAUtils-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAUtils-prefix.pch"; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		218DD2904BFC6317F4B6915A8E1A0BF7 /* KWSLeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSLeader.m; sourceTree = "<group>"; };
 		23C51208A98A0285A0354461ECE82F84 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Frameworks/frameworks/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		23CAB254DE3524D4B3ADE3C12EF88508 /* FIRMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRMessaging.h; path = Sources/FIRMessaging.h; sourceTree = "<group>"; };
-		24390EFD555DD124430DFF9724065945 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		24390EFD555DD124430DFF9724065945 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		25678FD4E82ECCD61A92DB745EBB10C0 /* CheckManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CheckManager.h; sourceTree = "<group>"; };
 		27F1DCAF3AE47ADBA2F9348BB65268DA /* SAImageUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAImageUtils.h; path = Pod/Classes/SAImageUtils.h; sourceTree = "<group>"; };
 		295D03D41F54FB28D931DEFD9455ECEF /* KWSManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSManager.m; sourceTree = "<group>"; };
@@ -180,11 +180,11 @@
 		3936C914D9EDDA127387F7C9CED266FD /* KWSGetAppConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetAppConfig.h; sourceTree = "<group>"; };
 		3A15C2C3B935CD6463234E23ED896571 /* KWSiOSSDKObjC.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KWSiOSSDKObjC.xcconfig; sourceTree = "<group>"; };
 		3AA0D4AC49FBC90008A96F11AE95FE50 /* Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KWSiOSSDKObjC_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3BD3BB36D695534073EEFF3A209D42E4 /* libSANetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSANetworking.a; path = libSANetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BD3BB36D695534073EEFF3A209D42E4 /* libSANetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSANetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C2DCE60859CB7C1FFA198E220EEA33 /* KWSLeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSLeader.h; sourceTree = "<group>"; };
 		430482DB7FA49C561621A318B880F485 /* SAAlert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAAlert.h; path = Pod/Classes/SAAlert.h; sourceTree = "<group>"; };
 		46C1917DBF704BD30AE7DB156649CF9B /* SAUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAUtils.h; path = Pod/Classes/SAUtils.h; sourceTree = "<group>"; };
-		48B18C95263D2FA2FAEF3AF288ED9ACF /* KWSiOSSDKObjC.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = KWSiOSSDKObjC.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		48B18C95263D2FA2FAEF3AF288ED9ACF /* KWSiOSSDKObjC.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = KWSiOSSDKObjC.podspec; sourceTree = "<group>"; };
 		4A3D1C528E466DEFE79596869966C5D4 /* KWSGetLeaderboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSGetLeaderboard.h; sourceTree = "<group>"; };
 		4AB2609CE0D86FC9D41B7B64DEB7F97C /* SALoadScreen.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SALoadScreen.m; path = Pod/Classes/SALoadScreen.m; sourceTree = "<group>"; };
 		507D5F3CD20910C43211AB597A110B72 /* NSDictionary+SAJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+SAJson.h"; path = "Pod/Classes/NSDictionary+SAJson.h"; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 		67453955EEB650F429E97FA973DD799E /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		6827AFC445A1BE568CB4A7EAB09C59B7 /* SAJsonParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAJsonParser.xcconfig; sourceTree = "<group>"; };
 		699586AE4D109C978E5FB12141F63850 /* KWSCheckAllowed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSCheckAllowed.h; sourceTree = "<group>"; };
-		6B02FD4B672A5A377FA041A4EC34E663 /* README.rst */ = {isa = PBXFileReference; includeInIndex = 1; path = README.rst; sourceTree = "<group>"; };
+		6B02FD4B672A5A377FA041A4EC34E663 /* README.rst */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = README.rst; sourceTree = "<group>"; };
 		6C5721D10911D56BD4F70F209F64415E /* SANetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SANetworking-prefix.pch"; sourceTree = "<group>"; };
 		70F7C522BE2342107C11DACA122CFCE5 /* SABaseObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SABaseObject.h; path = Pod/Classes/SABaseObject.h; sourceTree = "<group>"; };
 		79A94140B1B74EB68AE73E7E85853C12 /* Pods-KWSiOSSDKObjC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 		89E49DE6FF350FAB2579EFBD664D25EF /* SAJsonParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAJsonParser.h; path = Pod/Classes/SAJsonParser.h; sourceTree = "<group>"; };
 		8A6E6AB0AAFAA9C7FC847FDCB493AAC1 /* FirebaseGetToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseGetToken.h; sourceTree = "<group>"; };
 		8B1662360C875FFBFA162C48DBB46E20 /* KWSAppConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSAppConfig.m; sourceTree = "<group>"; };
-		8C5825ACF5905DB4FF52EAA48DC9D3CC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		8C5825ACF5905DB4FF52EAA48DC9D3CC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8E7FF2A5805861732E3E015EFBC6D70D /* SAUtils-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAUtils-dummy.m"; sourceTree = "<group>"; };
 		8ECDE77B6EF2A1B3566B5178DAA100F3 /* Pods-KWSiOSSDKObjC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KWSiOSSDKObjC_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9157A61194F9FC996F72BC4535836F1D /* Pods-KWSiOSSDKObjC_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KWSiOSSDKObjC_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 		955426BA8EB318569FB6EB4F211BF2A7 /* KWSRandomNameManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSRandomNameManager.m; sourceTree = "<group>"; };
 		96F2E5624FAC4D4B6161BD974C3436B9 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		9758D52681942226A81AF699674D9A24 /* SAFileDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAFileDownloader.h; path = Pod/Classes/File/SAFileDownloader.h; sourceTree = "<group>"; };
-		A0F207A24CB411D84DDB0DC20F5D0AFC /* libKWSiOSSDKObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libKWSiOSSDKObjC.a; path = libKWSiOSSDKObjC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0F207A24CB411D84DDB0DC20F5D0AFC /* libKWSiOSSDKObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKWSiOSSDKObjC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54636DD05FF52968F3216A0F9E3826F /* SAUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAUtils.m; path = Pod/Classes/SAUtils.m; sourceTree = "<group>"; };
 		A68EC4381B94401DF4A2A806C4B87D55 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
 		A8933A546747845E4AF843C56485C41E /* SAAlert.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAAlert.m; path = Pod/Classes/SAAlert.m; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 		AF742EBB563837550DCE14C0BE293A1E /* KWSApplicationProfile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KWSApplicationProfile.m; sourceTree = "<group>"; };
 		AF7D4B137A57FE8D85928511333B54C0 /* KWSiOSSDKObjC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KWSiOSSDKObjC-dummy.m"; sourceTree = "<group>"; };
 		B5F867389E2256B24B0471C0366928DA /* KWSInvalid.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSInvalid.h; sourceTree = "<group>"; };
-		B8211735A5E9CC63149A568F172C01C4 /* libPods-KWSiOSSDKObjC_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-KWSiOSSDKObjC_Example.a"; path = "libPods-KWSiOSSDKObjC_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8211735A5E9CC63149A568F172C01C4 /* libPods-KWSiOSSDKObjC_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KWSiOSSDKObjC_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B900438274D895C9FF0E294F3092BA8B /* KWS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWS.m; path = Pod/Classes/KWS.m; sourceTree = "<group>"; };
 		BB8BD31CB61D2498B8184C89418F80AD /* CheckManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CheckManager.m; sourceTree = "<group>"; };
 		BCAC08DE145CEFB7CB08D710D369AA90 /* PushCheckAllowed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PushCheckAllowed.h; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 		CC40BCC3FC40817855B914A2820F9B06 /* SAJsonParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAJsonParser-dummy.m"; sourceTree = "<group>"; };
 		CC890731217DD873E4383C397070DF21 /* KWSApplicationProfile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSApplicationProfile.h; sourceTree = "<group>"; };
 		CCD937710393B1AC7AB452C992C35434 /* NSDictionary+SafeHandling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+SafeHandling.m"; path = "Pod/Classes/NSDictionary+SafeHandling.m"; sourceTree = "<group>"; };
-		D66952EA3937CA06921193B6A2D6F02E /* libSAUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSAUtils.a; path = libSAUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D66952EA3937CA06921193B6A2D6F02E /* libSAUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSAUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D73794B1EBCAFE534CAA185FB1E65FD9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D86131582ABB31FBE46E6158B23F865B /* SAFileDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAFileDownloader.m; path = Pod/Classes/File/SAFileDownloader.m; sourceTree = "<group>"; };
 		DF8826007BD52883B69BD01BDBB1BA91 /* KWSUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KWSUser.h; sourceTree = "<group>"; };
@@ -380,7 +380,6 @@
 			children = (
 				5DA7F5090F93A83D9526743825E61B86 /* Frameworks */,
 			);
-			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -390,7 +389,6 @@
 				40C2DCE60859CB7C1FFA198E220EEA33 /* KWSLeader.h */,
 				218DD2904BFC6317F4B6915A8E1A0BF7 /* KWSLeader.m */,
 			);
-			name = Leaderboard;
 			path = Leaderboard;
 			sourceTree = "<group>";
 		};
@@ -432,7 +430,6 @@
 			children = (
 				0BD22E93E5682853D5F176C631AFC9B1 /* Frameworks */,
 			);
-			name = GoogleIPhoneUtilities;
 			path = GoogleIPhoneUtilities;
 			sourceTree = "<group>";
 		};
@@ -441,7 +438,6 @@
 			children = (
 				91A66DA29DECD3DF14A28609990EF630 /* Core */,
 			);
-			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -479,7 +475,6 @@
 			children = (
 				51DCD2A4012C72B4C88F7F7713C4475C /* Frameworks */,
 			);
-			name = GoogleSymbolUtilities;
 			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
@@ -508,7 +503,6 @@
 			children = (
 				67CE63E46B8ED907B16B87D85FD62287 /* Frameworks */,
 			);
-			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -538,7 +532,6 @@
 				C216E156E1912A484301B849927F638D /* KWSParentEmailError.h */,
 				C3B3490A311BA1AAD187E9740CB7F7BC /* KWSParentEmailError.m */,
 			);
-			name = Error;
 			path = Error;
 			sourceTree = "<group>";
 		};
@@ -556,7 +549,6 @@
 				89E49DE6FF350FAB2579EFBD664D25EF /* SAJsonParser.h */,
 				FF00F54BC95DAF139323CECA3877CD86 /* Support Files */,
 			);
-			name = SAJsonParser;
 			path = SAJsonParser;
 			sourceTree = "<group>";
 		};
@@ -566,7 +558,6 @@
 				FFB2B9D349C3C159E941FF2F33F0FD45 /* KWSAppConfig.h */,
 				8B1662360C875FFBFA162C48DBB46E20 /* KWSAppConfig.m */,
 			);
-			name = AppConfig;
 			path = AppConfig;
 			sourceTree = "<group>";
 		};
@@ -630,7 +621,6 @@
 				BD6FA385D826FB0BD41A063420DAC81A /* SANetwork.m */,
 				4DD37567F8FB2E135AB40144D37C0B70 /* Support Files */,
 			);
-			name = SANetworking;
 			path = SANetworking;
 			sourceTree = "<group>";
 		};
@@ -640,7 +630,6 @@
 				23CAB254DE3524D4B3ADE3C12EF88508 /* FIRMessaging.h */,
 				BC7EEBBC653DFA51AEB7A99B08D218C4 /* Frameworks */,
 			);
-			name = FirebaseMessaging;
 			path = FirebaseMessaging;
 			sourceTree = "<group>";
 		};
@@ -692,7 +681,6 @@
 				DF8826007BD52883B69BD01BDBB1BA91 /* KWSUser.h */,
 				F123B9E143202F9349E31058CA632966 /* KWSUser.m */,
 			);
-			name = User;
 			path = User;
 			sourceTree = "<group>";
 		};
@@ -752,7 +740,6 @@
 			children = (
 				30C040B5F4896108B2D313CD15FDC711 /* Frameworks */,
 			);
-			name = GoogleUtilities;
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
@@ -761,7 +748,6 @@
 			children = (
 				6D3062317F43A23D9036DD06B2BE2F60 /* Frameworks */,
 			);
-			name = GoogleInterchangeUtilities;
 			path = GoogleInterchangeUtilities;
 			sourceTree = "<group>";
 		};
@@ -780,7 +766,6 @@
 				A54636DD05FF52968F3216A0F9E3826F /* SAUtils.m */,
 				08255602CD082A5CCE07B14745702D3A /* Support Files */,
 			);
-			name = SAUtils;
 			path = SAUtils;
 			sourceTree = "<group>";
 		};
@@ -799,7 +784,6 @@
 			children = (
 				AAF9E670E99A86B54768607A0CA9C262 /* Frameworks */,
 			);
-			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -1482,8 +1466,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
