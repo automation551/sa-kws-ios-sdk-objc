@@ -11,7 +11,9 @@
 
 // other imports
 #if defined(__has_include)
-#if __has_include("Firebase.h")
+#if __has_include(<Firebase/Firebase.h>)
+#import <Firebase/Firebase.h>
+#else
 #import "Firebase.h"
 #endif
 #endif

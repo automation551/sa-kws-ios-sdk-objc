@@ -22,8 +22,6 @@
     NSLog(@"Status %ld and payload %@", (long)status, payload);
 }
 
-- (void) failure {
-    
-}
+- (void) failure {}
 
 @end
