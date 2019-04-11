@@ -6,7 +6,13 @@
 //
 //
 
+#if defined(__has_include)
+#if __has_include(<SAUtils/SAUtils.h>)
 #import <SAUtils/SAUtils.h>
+#else
+#import "SAUtils.h"
+#endif
+#endif
 #import "PushManager.h"
 #import "PushCheckAllowed.h"
 
