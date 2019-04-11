@@ -12,7 +12,14 @@
 #import "KWSUnsubscribeToken.h"
 #import "FirebaseGetToken.h"
 #import "KWSGetUser.h"
+
+#if defined(__has_include)
+#if __has_include(<SAUtils/SAAlert.h>)
+#import <SAUtils/SAAlert.h>
+#else
 #import "SAAlert.h"
+#endif
+#endif
 
 @interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, CheckManagerProtocol>
 

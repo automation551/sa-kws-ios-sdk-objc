@@ -11,7 +11,13 @@
 
 // import other important headers
 #import "KWS.h"
+#if defined(__has_include)
+#if __has_include(<SANetwork/SANetwork.h>)
+#import <SANetwork/SANetwork.h>
+#else
 #import "SANetwork.h"
+#endif
+#endif
 
 @interface KWSRequest ()
 @property (nonatomic, strong) SANetwork *network;

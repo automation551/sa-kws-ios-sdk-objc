@@ -11,8 +11,18 @@
 
 // aux
 #import "KWS.h"
+#if defined(__has_include)
+#if __has_include(<SANetwork/SANetwork.h>)
+#import <SANetwork/SANetwork.h>
+#else
 #import "SANetwork.h"
+#endif
+#if __has_include(<SAUtils/SAUtils.h>)
+#import <SAUtils/SAUtils.h>
+#else
 #import "SAUtils.h"
+#endif
+#endif
 
 // models
 #import "KWSMetadata.h"
