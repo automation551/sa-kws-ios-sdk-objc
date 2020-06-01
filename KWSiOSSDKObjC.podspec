@@ -9,7 +9,7 @@ The SuperAwesome Kids Web Services iOS SDK
 
   s.homepage         = 'https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc'
   s.license          = {
-	:type => 'GNU GENERAL PUBLIC LICENSE Version 3',
+	:type => 'GNU LESSER GENERAL PUBLIC LICENSE Version 3',
 	:file => 'LICENSE'
   }
   s.author           = {
