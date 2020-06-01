@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'KWSiOSSDKObjC'
-  s.version          = '3.1.1'
+  s.version          = '3.1.4'
   s.summary          = 'The SuperAwesome Kids Web Services SDK'
   s.swift_version    = '4.2'
   s.description      = <<-DESC
@@ -9,7 +9,7 @@ The SuperAwesome Kids Web Services iOS SDK
 
   s.homepage         = 'https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc'
   s.license          = {
-	:type => 'GNU GENERAL PUBLIC LICENSE Version 3',
+	:type => 'GNU LESSER GENERAL PUBLIC LICENSE Version 3',
 	:file => 'LICENSE'
   }
   s.author           = {
@@ -18,7 +18,7 @@ The SuperAwesome Kids Web Services iOS SDK
   s.source           = {
 	:git => 'git@github.com:SuperAwesomeLTD/sa-kws-ios-sdk-objc.git',
 	:branch => 'master',
-	:tag => "v#{s.version}"
+	:tag => "v3.1.4"
   }
   s.ios.deployment_target = '10.0'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
