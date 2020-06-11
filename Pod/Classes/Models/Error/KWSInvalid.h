@@ -7,26 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#if defined(__has_include)
-#if __has_include(<SAJsonParser/SAJsonParser.h>)
-#import <SAJsonParser/SAJsonParser.h>
-#else
-#import "SAJsonParser.h"
-#endif
-#if __has_include(<SAJsonParser/SABaseObject.h>)
-#import <SAJsonParser/SABaseObject.h>
-#else
-#import "SABaseObject.h"
-#endif
-#endif
+#import "KWSJsonParser.h"
+#import "KWSBaseObject.h"
 
 @class KWSParentEmailError;
 
 /**
  *  Object representing an Invalid parent email
  */
-@interface KWSInvalid : SABaseObject <SADeserializationProtocol, SASerializationProtocol>
+@interface KWSInvalid : KWSBaseObject <KWSDeserializationProtocol, KWSSerializationProtocol>
 
 // Object representing an invalid parent email error
 @property (nonatomic, strong) KWSParentEmailError *parentEmail;

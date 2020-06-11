@@ -19,7 +19,7 @@
 #if __has_include(<SAUtils/SAUtils.h>)
 #import <SAUtils/SAUtils.h>
 #else
-#import "SAUtils.h"
+#import "KWSUtils.h"
 #endif
 #endif
 @interface FirebaseGetToken ()

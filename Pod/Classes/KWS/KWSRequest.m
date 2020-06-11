@@ -15,12 +15,12 @@
 #if __has_include(<SANetwork/SANetwork.h>)
 #import <SANetwork/SANetwork.h>
 #else
-#import "SANetwork.h"
+#import "KWSNetwork.h"
 #endif
 #endif
 
 @interface KWSRequest ()
-@property (nonatomic, strong) SANetwork *network;
+@property (nonatomic, strong) KWSNetwork *network;
 @end
 
 @implementation KWSRequest
@@ -29,7 +29,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        _network = [[SANetwork alloc] init];
+        _network = [[KWSNetwork alloc] init];
     }
     return self;
 }

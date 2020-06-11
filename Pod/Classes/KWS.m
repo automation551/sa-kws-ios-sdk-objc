@@ -12,14 +12,7 @@
 #import "KWSUnsubscribeToken.h"
 #import "FirebaseGetToken.h"
 #import "KWSGetUser.h"
-
-#if defined(__has_include)
-#if __has_include(<SAUtils/SAAlert.h>)
-#import <SAUtils/SAAlert.h>
-#else
-#import "SAAlert.h"
-#endif
-#endif
+#import "KWSAlert.h"
 
 @interface KWS () <KWSManagerProtocol, PushManagerProtocol, KWSParentEmailProtocol, CheckManagerProtocol>
 
@@ -35,8 +28,8 @@
 @property (nonatomic, assign) BOOL showPermissionPopup;
 
 // email popup
-@property (nonatomic, strong) SAAlert *permissionPopup;
-@property (nonatomic, strong) SAAlert *emailPopup;
+@property (nonatomic, strong) KWSAlert *permissionPopup;
+@property (nonatomic, strong) KWSAlert *emailPopup;
 
 // delegates
 @property (nonatomic, weak) id <KWSRegisterProtocol> registerDelegate;
@@ -94,7 +87,7 @@
     
     // perform action
     if (_showPermissionPopup) {
-        [[SAAlert getInstance] showWithTitle:@"Hey!"
+        [[KWSAlert getInstance] showWithTitle:@"Hey!"
                                   andMessage:@"Do you want to allow Push Notifications?"
                                   andOKTitle:@"Yes"
                                  andNOKTitle:@"No"
@@ -133,7 +126,7 @@
 }
 
 - (void) showParentEmailPopup {
-    [[SAAlert getInstance] showWithTitle:@"Hey!"
+    [[KWSAlert getInstance] showWithTitle:@"Hey!"
                     andMessage:@"To enable Push Notifications in KWS you'll need to provide a parent's email."
                     andOKTitle:@"Submit"
                    andNOKTitle:@"Cancel"

@@ -6,10 +6,10 @@
 //  Copyright © 2016 Gabriel Coman. All rights reserved.
 //
 
-#import <SAJsonParser/SAJsonParser.h>
-#import "SABaseObject.h"
+#import "KWSJsonParser.h"
+#import "KWSBaseObject.h"
 
-@interface KWSModel : SABaseObject
+@interface KWSModel : KWSBaseObject
 @property (nonatomic, assign) NSInteger status;
 @property (nonatomic, assign) NSInteger userId;
 @property (nonatomic, strong) NSString *username;

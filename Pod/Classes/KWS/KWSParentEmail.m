@@ -15,12 +15,12 @@
 #if __has_include(<SANetwork/SANetwork.h>)
 #import <SANetwork/SANetwork.h>
 #else
-#import "SANetwork.h"
+#import "KWSNetwork.h"
 #endif
 #if __has_include(<SAUtils/SAUtils.h>)
 #import <SAUtils/SAUtils.h>
 #else
-#import "SAUtils.h"
+#import "KWSUtils.h"
 #endif
 #endif
 
@@ -75,7 +75,7 @@
     }
     
     // check parameter is actually valid
-    if (_emailToSubmit == NULL || _emailToSubmit.length == 0 || [SAUtils isEmailValid:_emailToSubmit] == NULL) {
+    if (_emailToSubmit == NULL || _emailToSubmit.length == 0 || [KWSUtils isEmailValid:_emailToSubmit] == NULL) {
         [self delInvalidEmail];
         return;
     }

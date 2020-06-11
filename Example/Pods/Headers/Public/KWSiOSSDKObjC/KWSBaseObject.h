@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/JsonParser/KWSBaseObject.h

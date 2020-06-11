@@ -7,21 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KWSJsonParser.h"
+#import "KWSBaseObject.h"
 
-#if defined(__has_include)
-#if __has_include(<SAJsonParser/SAJsonParser.h>)
-#import <SAJsonParser/SAJsonParser.h>
-#else
-#import "SAJsonParser.h"
-#endif
-#if __has_include(<SAJsonParser/SABaseObject.h>)
-#import <SAJsonParser/SABaseObject.h>
-#else
-#import "SABaseObject.h"
-#endif
-#endif
-
-@interface KWSApplicationProfile : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
+@interface KWSApplicationProfile : KWSBaseObject <KWSSerializationProtocol, KWSDeserializationProtocol>
 
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, assign) NSInteger avatarId;

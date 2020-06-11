@@ -15,7 +15,7 @@
 #if __has_include(<SANetwork/SANetwork.h>)
 #import <SANetwork/SANetwork.h>
 #else
-#import "SANetwork.h"
+#import "KWSNetwork.h"
 #endif
 #endif
 

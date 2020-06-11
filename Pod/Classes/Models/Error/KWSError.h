@@ -7,19 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#if defined(__has_include)
-#if __has_include(<SAJsonParser/SAJsonParser.h>)
-#import <SAJsonParser/SAJsonParser.h>
-#else
-#import "SAJsonParser.h"
-#endif
-#if __has_include(<SAJsonParser/SABaseObject.h>)
-#import <SAJsonParser/SABaseObject.h>
-#else
-#import "SABaseObject.h"
-#endif
-#endif
+#import "KWSJsonParser.h"
+#import "KWSBaseObject.h"
 
 @class KWSInvalid;
 
@@ -27,7 +16,7 @@
  *  Object representing a KWS error object that mostly represents the "invalid"
  *  type of error reported by KWS
  */
-@interface KWSError : SABaseObject <SASerializationProtocol, SADeserializationProtocol>
+@interface KWSError : KWSBaseObject <KWSSerializationProtocol, KWSDeserializationProtocol>
 
 // error code
 @property (nonatomic, assign) NSInteger code;

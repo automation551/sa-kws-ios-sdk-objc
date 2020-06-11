@@ -9,9 +9,9 @@
 #import "KWSViewController.h"
 #import "KWS.h"
 #import "KWSMetadata.h"
-#import "SANetwork.h"
+#import "KWSNetwork.h"
 #import "KWSModel.h"
-#import "SAUtils.h"
+#import "KWSUtils.h"
 
 #define API @"https://kwsapi.demo.superawesome.tv/"
 #define CLIENTID @"sa-mobile-app-sdk-client-0"
@@ -33,13 +33,13 @@
     
     
     NSString *url = @"https://kwsdemobackend.herokuapp.com/create";
-    NSString *username = [NSString stringWithFormat:@"testuser_%ld", (long)[SAUtils randomNumberBetween:100 maxNumber:500]];
+    NSString *username = [NSString stringWithFormat:@"testuser_%ld", (long)[KWSUtils randomNumberBetween:100 maxNumber:500]];
     NSDictionary *header = @{@"Content-Type":@"application/json"};
     NSDictionary *body = @{@"username":username,
                            @"password":@"testtest",
                            @"dateOfBirth":@"2011-03-02"};
     
-    SANetwork *network = [[SANetwork alloc] init];
+    KWSNetwork *network = [[KWSNetwork alloc] init];
     [network sendPOST:url withQuery:@{} andHeader:header andBody:body withResponse:^(NSInteger status, NSString *payload, BOOL success) {
         
         if (status == 200) {
