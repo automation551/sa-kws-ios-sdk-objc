@@ -8,20 +8,15 @@
 
 // header
 #import "FirebaseGetToken.h"
+#import "KWSUtils.h"
 
 // other imports
 #if defined(__has_include)
 #if __has_include(<Firebase/Firebase.h>)
 #import <Firebase/Firebase.h>
-#else
-#import "Firebase.h"
-#endif
-#if __has_include(<SAUtils/SAUtils.h>)
-#import <SAUtils/SAUtils.h>
-#else
-#import "KWSUtils.h"
 #endif
 #endif
+
 @interface FirebaseGetToken ()
 @end
 
