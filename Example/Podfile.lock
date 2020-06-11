@@ -27,7 +27,9 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - KWSiOSSDKObjC (1.3.0.9)
+  - KWSiOSSDKObjC (1.3.0.10):
+    - Firebase (= 3.7.1)
+    - FirebaseMessaging (= 1.2.0)
 
 DEPENDENCIES:
   - Firebase (= 3.7.1)
@@ -60,7 +62,7 @@ SPEC CHECKSUMS:
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  KWSiOSSDKObjC: 84e3eea25a5ded4a6eeab2f33a4cf8441237c425
+  KWSiOSSDKObjC: 3ad5988c36f068c04370d62ee2647cc962b10132
 
 PODFILE CHECKSUM: bc3efe273511f2318742d63fe0e0c9e952061017
 

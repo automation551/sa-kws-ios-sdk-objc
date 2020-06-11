@@ -1,11 +1,11 @@
 {
   "name": "KWSiOSSDKObjC",
-  "version": "1.3.0.9",
+  "version": "1.3.0.10",
   "summary": "The SuperAwesome Kids Web Services SDK",
   "description": "The SuperAwesome Kids Web Services iOS SDK",
   "homepage": "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc",
   "license": {
-    "type": "GNU GENERAL PUBLIC LICENSE Version 3",
+    "type": "GNU LESSER GENERAL PUBLIC LICENSE Version 3",
     "file": "LICENSE"
   },
   "authors": {
@@ -13,11 +13,19 @@
   },
   "source": {
     "git": "https://github.com/SuperAwesomeLTD/sa-kws-ios-sdk-objc.git",
-    "branch": "bugFix/KWS-6388_AddFrameworkCompatibility",
-    "tag": "1.3.0.9"
+    "branch": "feat/1.3.0.10",
+    "tag": "1.3.0.10"
   },
   "platforms": {
     "ios": "10.0"
   },
-  "source_files": "Pod/Classes/**/*"
+  "source_files": "Pod/Classes/**/*",
+  "dependencies": {
+    "Firebase": [
+      "3.7.1"
+    ],
+    "FirebaseMessaging": [
+      "1.2.0"
+    ]
+  }
 }
